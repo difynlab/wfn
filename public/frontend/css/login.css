@@ -1,0 +1,71 @@
+.login .right {
+    padding-left: 8%;
+}
+.login .image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+.login .title {
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--light_black);
+    margin-bottom: 5px!important;
+}
+.login .description {
+    font-size: 16px;
+    color: var(--gray);
+    margin-bottom: 30px!important;
+}
+.login .label {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--light_black);
+    margin-bottom: 10px!important;
+}
+.login .input-field {
+    border: 1px solid var(--input_border);
+    border-radius: 4px;
+    height: 50px;
+    font-size: 14px;
+    color: var(--medium_gray);
+}
+.login .remember {
+    font-size: 14px;
+    color: var(--medium_gray);
+}
+.login .checkbox {
+    border-radius: 0!important;
+    width: 13px;
+    height: 13px;
+    margin-right: 6px;
+    margin-top: 0px;
+}
+.login .forgot-password {
+    font-size: 14px;
+    color: #7F7D7E;
+}
+.login .login-button {
+    background-color: var(--red);
+    width: 100%;
+    border-radius: 4px;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 30px;
+    transition: all 0.3s;
+    &:hover {
+        background-color: var(--light_black);
+        transition: all 0.3s;
+    }
+}
+.login .no-account {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--medium_gray);
+    text-align: center;
+}
+.login .no-account .span-link {
+    color: var(--blue);
+}

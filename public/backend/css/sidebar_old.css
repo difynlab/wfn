@@ -1,0 +1,93 @@
+.wrapper .sidebar {
+    position: fixed;
+    width: 230px;
+}
+.wrapper .sidebar .scroll-bar {
+    height: 100vh;
+    overflow: scroll;
+    padding-bottom: 45%;
+    padding-right: 2%;
+}
+.wrapper .sidebar .logo {
+    width: 130px;
+}
+.wrapper .sidebar .gradient-line {
+    margin: 25px 0;
+    height: 1px;
+    background: rgb(224,225,226);
+    background: linear-gradient(90deg, rgba(224,225,226,0.5) 0%, rgb(224,225,226,1) 50%, rgba(224,225,226,0.5) 100%);
+}
+.wrapper .sidebar .components {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 15%;
+}
+.wrapper .sidebar .components .link {
+    height: 50px;
+    font-size: 14px;
+    color: #0B0B0B;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    margin-bottom: 5px;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    box-shadow: none;
+}
+.wrapper .sidebar .components .link img {
+    color: #0040C3;
+    height: 16px;
+    margin-right: 20px;
+}
+.wrapper .sidebar .components .link:hover {
+    background-color: #0040C3;
+    border-radius: 15px;
+    color: var(--white);
+}
+.wrapper .sidebar .components .link:hover img {
+    filter: brightness(0) invert(1);
+}
+.wrapper .sidebar .components .link.active {
+    background-color: #0040C3;
+    border-radius: 15px;
+    color: var(--white);
+}
+.wrapper .sidebar .components .link.active img {
+    filter: brightness(0) invert(1);
+}
+.wrapper .sidebar .scroll-bar::-webkit-scrollbar {
+    width: 6px;
+}
+.wrapper .sidebar .scroll-bar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.wrapper .sidebar .scroll-bar::-webkit-scrollbar-thumb {
+    background: rgb(238 237 237);
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+.wrapper .sidebar .scroll-bar::-webkit-scrollbar-thumb:hover {
+    background: rgb(214, 214, 214);
+    transition: all 0.2s;
+}
+.wrapper .sidebar .components .accordion ul {
+    padding: 0;
+    list-style-type: none;
+}
+.wrapper .sidebar .components .accordion ul .link {
+    padding-left: 60px;
+    font-size: 13px;
+}
+.wrapper .sidebar .components .accordion .accordion-body {
+    padding: 0;
+}
+
+
+
+
+.wrapper .sidebar .components .dropdown-menu.show {
+    display: block;
+    width: 100%;
+    border-radius: 0;
+}

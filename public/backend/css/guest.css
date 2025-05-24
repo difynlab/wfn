@@ -1,0 +1,275 @@
+/* Common styles */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    * {
+        font-family: "Poppins", sans-serif;
+    }
+    :root {
+        --white: white;
+        --black: #0E0E0E;
+    }
+    h1, h2, h3, h4, h5, h6, p {
+        margin-bottom: 0;
+    }
+/* Common styles */
+
+
+/* Page styles */
+    .guest-page {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .guest-page .image {
+        border-radius: 20px;
+        width: 100%;
+        object-fit: cover;
+    }
+    .guest-page .form {
+        padding: 0 0 0 10%;
+    }
+    .guest-page .form .title {
+        font-size: 40px;
+        font-weight: 500;
+        margin-bottom: 1%;
+        text-align: center;
+        color: var(--black);
+    }
+    .guest-page .form .subtitle {
+        color: #505050;
+        font-size: 17px;
+        text-align: center;
+        margin-bottom: 10%;
+    }
+    .guest-page .form .form-input {
+        margin-bottom: 5%;
+    }
+    .guest-page .form .form-label {
+        color: #282828;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 15px;
+    }
+    .guest-page .form .form-control {
+        font-size: 15px;
+        border: 1px solid #EAEAEA;
+        height: 50px;
+        border-radius: 10px;
+        box-shadow: none;
+    }
+    .guest-page .form .form-control:focus {
+        border-color: #d1d1d1;
+    }
+    .guest-page .form .form-control::placeholder {
+        color: #9A9A9A;
+        font-size: 14px;
+    }
+    .guest-page .form .remember-password {
+        color: #908E8E;
+        font-size: 15px;
+    }
+    .guest-page .form .remember-password.form-check-input[type=checkbox] {
+        border-radius: 0;
+    }
+    .guest-page .form .forgot-password-text {
+        text-decoration: none;
+        color: #2C68E3;
+        font-size: 15px;
+    }
+    .guest-page .form .submit-button {
+        color: white;
+        background: #94b0e9;
+        border: 0;
+        font-size: 16px;
+        border-radius: 3px;
+        width: 160px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        transition: all 0.3s;
+    }
+    .guest-page .form .submit-button.active {
+        background: #0040C3;
+    }
+    .guest-page .form .submit-button.active:hover {
+        color: #0040C3;
+        background: var(--white);
+        border: 1px solid #0040C3;
+        transition: all 0.3s;
+    }
+    .guest-page .form .form-input:last-of-type {
+        margin-bottom: 0;
+    }
+    .guest-page .form .toggle-password {
+        color: #9A9A9A;
+        cursor: pointer;
+        position: absolute;
+        top: 48px;
+        font-size: 20px;
+        right: 15px;
+    }
+    .guest-page .form .error-message {
+        font-size: 14px;
+        color: #e31010;
+        margin-top: 5px;
+    }
+    .guest-page .form .captcha {
+        background-color: rgba(0, 64, 195, 0.06);
+        padding: 4%;
+        align-items: center;
+    }
+    .guest-page .form .captcha .text {
+        color: #0040C3;
+        font-size: 16px;
+    }
+    .guest-page .form .captcha .number {
+        font-size: 16px;
+        color: #282828;
+    }
+    .guest-page .form .captcha .sum-value {
+        background-color: rgba(240, 244, 251, 1);
+        padding: 0;
+        height: 30px;
+        border: none;
+        border-bottom: 1px solid black;
+        border-radius: 0;
+        text-align: center;
+    }
+    .guest-page .form .captcha .verify-button {
+        color: #0040C3;
+        border: 1px solid #0040C3;
+        font-size: 13px;
+        font-weight: 500;
+        border-radius: 3px;
+        width: 100px;
+        height: 35px;
+        transition: all 0.3s;
+    }
+    .guest-page .form .captcha .verify-button:hover {
+        color: var(--white);
+        background-color: #0040C3;
+        transition: all 0.3s;
+    }
+    .guest-page .form .captcha .verified-button {
+        background-color: #0040C3;
+        color: white;
+        border: none;
+        font-size: 13px;
+        font-weight: 500;
+        border-radius: 3px;
+        width: 100px;
+        height: 35px;
+        transition: all 0.3s;
+    }
+/* Page styles */
+
+
+/* Forgot password page styles */
+    .guest-page .forgot-password .message {
+        color: #908E8E;
+        font-size: 15px;
+        text-align: center;
+        margin-top: 5%;
+    }
+/* Forgot password page styles */
+
+
+
+
+/* Responsive */
+    @media screen and (max-width: 1921px) {
+    }
+    @media screen and (max-width: 1901px) {
+    }
+    @media screen and (max-width: 1851px) {
+    }
+    @media screen and (max-width: 1801px) {
+    }
+    @media screen and (max-width: 1751px) {
+    }
+    @media screen and (max-width: 1751px) and (max-height: 875px) {
+    }
+    @media screen and (max-width: 1681px) {
+    }
+    @media screen and (max-width: 1601px) {
+    }
+    @media screen and (max-width: 1537px) {
+    }
+    /* Height: 900 */
+    @media screen and (max-width: 1441px) {
+    }
+    /* Height: 768 */
+    @media screen and (max-width: 1367px) {
+    }
+    @media screen and (max-width: 1367px) and (max-height: 730px) {
+    }
+    @media screen and (max-width: 1367px) and (max-height: 660px) {
+    }
+    /* Height: 768 */
+    @media screen and (max-width: 1367px) {
+    }
+    /* Height: 800 */
+    @media screen and (max-width: 1281px) {
+    }
+    /* Height: 768 */
+    @media screen and (max-width: 1025px) {
+        .guest-page .form {
+            padding: 0%;
+        }
+    }
+    /* Height: 1024 */
+    @media screen and (max-width: 992px) { 
+    }
+    /* Height: 1024 */
+    @media screen and (max-width: 845px) {
+    }
+    /* Height: 1024 */
+    @media screen and (max-width: 769px) {
+        .guest-page .form .subtitle {
+            margin-bottom: 7%;
+        }
+    }
+    /* Height: 1080 */
+    @media screen and (max-width: 721px) {
+    }
+    /* Height: 960 */
+    @media screen and (max-width: 651px) {
+    }
+    @media screen and (max-width: 576px) {
+        .guest-page .form .captcha .row {
+            justify-content: center;
+        }
+    }
+    @media screen and (max-width: 481px) {
+    }
+    /* Height: 736 */
+    @media screen and (max-width: 429px) {
+        .guest-page .form .title {
+            font-size: 30px;
+        }
+        .guest-page .form .subtitle {
+            font-size: 15px;
+        }
+        .guest-page .form .form-label {
+            margin-bottom: 10px;
+        }
+    }
+    /* Height: 736 */
+    @media screen and (max-width: 415px) {
+    }
+    /* Height: 667 */
+    @media screen and (max-width: 396px) {
+    }
+    /* Height: 667 */
+    @media screen and (max-width: 377px) {
+    }
+    /* Height: 720 */
+    @media screen and (max-width: 361px) {   
+    }
+    /* Height: 568 */
+    @media screen and (max-width: 321px) {
+    }
+/* Responsive */

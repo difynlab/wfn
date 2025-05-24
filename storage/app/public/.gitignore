@@ -1,0 +1,6 @@
+*
+# Include everything in the frontend folder
+!/frontend/
+!/frontend/**
+
+!.gitignore
