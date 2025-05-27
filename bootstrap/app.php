@@ -22,7 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
             Route::middleware('web')->name('website.')->group(base_path('routes/frontend/website.php'));
         },
     )
-    ->withMiddleware(function (Middleware $middleware) {
+    ->withMiddleware(function (Middleware $middleware) {        
         $middleware->alias([
             'set_language' => SetLanguage::class,
         ]);
