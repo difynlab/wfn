@@ -16,322 +16,567 @@
 
                 <p class="description">Discover the warehouse that works for you. Whether you're growing a business or need personal storage, our global network lets you search and book flexible spaces that meet your needs, anytime, anywhere.</p>
 
-
-                <!-- Search Bar -->
                 <div class="search-bar" id="searchBar">
                     <div class="search-inputs">
                         <div class="search-item">
-                            <p class="label">Location</p>
-                            <input type="text" placeholder="Search warehouses">
+                            <p class="search-label">Location</p>
+                            <input type="text" class="search-input" placeholder="Search warehouses">
                         </div>
                         <div class="divider"></div>
 
                         <div class="search-item">
-                            <p class="label">Start Date</p>
-                            <input type="text" placeholder="Add dates">
+                            <p class="search-label">Start Date</p>
+                            <input type="text" class="search-input" placeholder="Add dates">
                         </div>
                         <div class="divider"></div>
 
                         <div class="search-item">
-                            <p class="label">End Date</p>
-                            <input type="text" placeholder="Add dates">
+                            <p class="search-label">End Date</p>
+                            <input type="text" class="search-input" placeholder="Add dates">
                         </div>
                         <div class="divider"></div>
 
                         <div class="search-item">
-                            <p class="label">Storage Type</p>
-                            <div id="storageType" class="custom-select">Choose</div>
-                        </div>
+                            <p class="search-label">Storage Type</p>
 
-                        <button class="search-btn"><i class="fas fa-search"></i> Search</button>
-                    </div>
-                    <!-- Filter Panel (initially hidden) -->
-                    <div class="filter-panel">
-                        <div class="filter-section">
-                            <p class="filter-title">Warehouse Size</p>
-                            <div class="radio-group">
-                                <label><input type="radio" name="size"> Up to 50 Pallets</label>
-                                <label><input type="radio" name="size"> Up to 100 Pallets</label>
-                                <label><input type="radio" name="size"> Up to 200 Pallets</label>
-                                <label><input type="radio" name="size"> 200+ Pallets</label>
+                            <div class="dropdown">
+                                <a class="btn search-input dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Choose
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <div class="filter">
+                                        <p class="title">Warehouse Size</p>
+                                        <div class="radio-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="size" id="radio1">
+                                                <label class="form-check-label" for="radio1">Up to 50 Pallets</label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="size" id="radio2">
+                                                <label class="form-check-label" for="radio2">Up to 100 Pallets</label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="size" id="radio3">
+                                                <label class="form-check-label" for="radio3">Up to 200 Pallets</label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="size" id="radio4">
+                                                <label class="form-check-label" for="radio4">200+ Pallets</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+                                    
+                                    <div class="filter">
+                                        <p class="title">Warehouse Storage Type</p>
+                                        <div class="checkbox-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="storage_type[]" value="dry_storage" id="check1">
+                                                <label class="form-check-label" for="check1">
+                                                    Dry Storage
+                                                </label>
+                                            </div>
+
+                                            <label><input type="checkbox"> Chilled Storage (2°C - 8°C)</label>
+                                            <label><input type="checkbox"> Frozen Storage (-18°C or below)</label>
+                                            <label><input type="checkbox"> Humidity Controlled</label>
+                                            <label><input type="checkbox"> Hazardous Materials Storage</label>
+                                            <label><input type="checkbox"> Climate-Controlled Storage</label>
+                                        </div>
+                                    </div>
+
+                                    <button class="clear-filter-button">Clear All Filters</button>
+                                </ul>
                             </div>
                         </div>
-                        <hr>
-                        <div class="filter-section">
-                            <p class="filter-title">Warehouse Storage Type</p>
-                            <div class="checkbox-group">
-                                <label><input type="checkbox"> Dry Storage</label>
-                                <label><input type="checkbox"> Chilled Storage (2°C - 8°C)</label>
-                                <label><input type="checkbox"> Frozen Storage (-18°C or below)</label>
-                                <label><input type="checkbox"> Humidity Controlled</label>
-                                <label><input type="checkbox"> Hazardous Materials Storage</label>
-                                <label><input type="checkbox"> Climate-Controlled Storage</label>
-                            </div>
-                        </div>
-                        <p class="clear-filters">Clear All Filters</p>
+
+                        <button type="submit" class="search-btn"><i class="bi bi-search"></i>Search</button>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Warehouse section -->
         <div class="section-2 container">
             <p class="section-title">Explore New Warehouses In Saudi Arabia</p>
             <p class="section-description">Keep up with the newest warehouse updates.</p>
 
-            <!-- City Tabs -->
-            <ul class="city-tabs">
-                <li class="tab active" data-city="riyadh">Riyadh</li>
-                <li class="tab" data-city="jeddah">Jeddah</li>
-                <li class="tab" data-city="mecca">Mecca</li>
-                <li class="tab" data-city="medina">Medina</li>
+            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-riyadh-tab" data-bs-toggle="pill" data-bs-target="#pills-riyadh" type="button" role="tab" aria-controls="pills-riyadh" aria-selected="true">Riyadh</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-jeddah-tab" data-bs-toggle="pill" data-bs-target="#pills-jeddah" type="button" role="tab" aria-controls="pills-jeddah" aria-selected="false">Jeddah</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-mecca-tab" data-bs-toggle="pill" data-bs-target="#pills-mecca" type="button" role="tab" aria-controls="pills-mecca" aria-selected="false">Mecca</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-medina-tab" data-bs-toggle="pill" data-bs-target="#pills-medina" type="button" role="tab" aria-controls="pills-medina" aria-selected="false">Medina</button>
+                </li>
             </ul>
 
-            <!-- City Content Wrapper -->
-            <div class="warehouse-grid-wrapper">
-                <!-- Riyadh Warehouses -->
-                <div class="warehouse-grid city-content active" data-city="riyadh">
-                    @foreach (['Al Claya', 'Al Hamra', 'Al Morouj'] as $index => $area)
-                        <div class="warehouse-card">
-                            <img src="{{ asset('storage/frontend/riyadh-' . ($index + 1) . '.png') }}" class="card-image" alt="Warehouse">
-                            <div class="card-body">
-                                <p class="type">Warehouse Type</p>
-                                <p class="title">Lorem ipsum dolor</p>
-                                <p class="description">Sample text describing the warehouse in {{ ucfirst($area) }} area of Riyadh.</p>
-                                <p class="location"><i class="fas fa-map-marker-alt"></i> {{ ucfirst($area) }}, Riyadh</p>
-                                <div class="meta">
-                                    <span>Listed 1 day ago</span>
-                                    <span><i class="fas fa-share-alt"></i> Share</span>
-                                    <span><i class="fas fa-flag"></i> Report</span>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-riyadh" role="tabpanel" aria-labelledby="pills-riyadh-tab" tabindex="0">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="card">
+                                <img src="{{ asset('storage/frontend/riyadh-1.png') }}" class="card-image" alt="Warehouse">
+
+                                <div class="card-body">
+                                    <p class="type">Warehouse Type</p>
+                                    <p class="title">Lorem ipsum dolor</p>
+                                    <p class="description">Sample text describing the warehouse in  area of Riyadh.</p>
+                                    <p class="location"><i class="bi bi-geo-alt"></i>Al Olaya, Riyadh 12211</p>
+                                    <div class="bottom-box">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <p class="text">Listed 1 day ago</p>
+                                            </div>
+                                            <div class="col-7 text-end">
+                                                <span class="span-text"><i class="bi bi-share"></i>Share</span>
+                                                <span class="span-text"><i class="bi bi-flag"></i>Report</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+
+                        <div class="col-4">
+                            <div class="card">
+                                <img src="{{ asset('storage/frontend/riyadh-2.png') }}" class="card-image" alt="Warehouse">
+
+                                <div class="card-body">
+                                    <p class="type">Warehouse Type</p>
+                                    <p class="title">Lorem ipsum dolor</p>
+                                    <p class="description">Sample text describing the warehouse in  area of Riyadh.</p>
+                                    <p class="location"><i class="bi bi-geo-alt"></i>Al Hamra, Riyadh 11493</p>
+                                    <div class="bottom-box">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <p class="text">Listed 1 day ago</p>
+                                            </div>
+                                            <div class="col-7 text-end">
+                                                <span class="span-text"><i class="bi bi-share"></i>Share</span>
+                                                <span class="span-text"><i class="bi bi-flag"></i>Report</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="card">
+                                <img src="{{ asset('storage/frontend/riyadh-3.png') }}" class="card-image" alt="Warehouse">
+
+                                <div class="card-body">
+                                    <p class="type">Warehouse Type</p>
+                                    <p class="title">Lorem ipsum dolor</p>
+                                    <p class="description">Sample text describing the warehouse in  area of Riyadh.</p>
+                                    <p class="location"><i class="bi bi-geo-alt"></i>, Riyadh</p>
+                                    <div class="bottom-box">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <p class="text">Listed 1 day ago</p>
+                                            </div>
+                                            <div class="col-7 text-end">
+                                                <span class="span-text"><i class="bi bi-share"></i>Share</span>
+                                                <span class="span-text"><i class="bi bi-flag"></i>Report</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Jeddah Warehouses -->
-                <div class="warehouse-grid city-content" data-city="jeddah">
-                    @foreach (['Al Shati', 'Al Balad', 'Al Rawdah'] as $index => $area)
-                        <div class="warehouse-card">
-                            <img src="{{ asset('storage/frontend/jeddah-' . ($index + 1) . '.png') }}" class="card-image" alt="Warehouse">
-                            <div class="card-body">
-                                <p class="type">Warehouse Type</p>
-                                <p class="title">Lorem ipsum dolor</p>
-                                <p class="description">Warehouse located in {{ ucfirst($area) }} Jeddah. Great for storage needs.</p>
-                                <p class="location"><i class="fas fa-map-marker-alt"></i> {{ ucfirst($area) }}, Jeddah</p>
-                                <div class="meta">
-                                    <span>Listed 2 days ago</span>
-                                    <span><i class="fas fa-share-alt"></i> Share</span>
-                                    <span><i class="fas fa-flag"></i> Report</span>
+                <div class="tab-pane fade" id="pills-jeddah" role="tabpanel" aria-labelledby="pills-jeddah-tab" tabindex="0">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="card">
+                                <img src="{{ asset('storage/frontend/riyadh-1.png') }}" class="card-image" alt="Warehouse">
+
+                                <div class="card-body">
+                                    <p class="type">Warehouse Type</p>
+                                    <p class="title">Lorem ipsum dolor</p>
+                                    <p class="description">Sample text describing the warehouse in  area of Riyadh.</p>
+                                    <p class="location"><i class="bi bi-geo-alt"></i>Al Olaya, Riyadh 12211</p>
+                                    <div class="bottom-box">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <p class="text">Listed 1 day ago</p>
+                                            </div>
+                                            <div class="col-7 text-end">
+                                                <span class="span-text"><i class="bi bi-share"></i>Share</span>
+                                                <span class="span-text"><i class="bi bi-flag"></i>Report</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+
+                        <div class="col-4">
+                            <div class="card">
+                                <img src="{{ asset('storage/frontend/riyadh-2.png') }}" class="card-image" alt="Warehouse">
+
+                                <div class="card-body">
+                                    <p class="type">Warehouse Type</p>
+                                    <p class="title">Lorem ipsum dolor</p>
+                                    <p class="description">Sample text describing the warehouse in  area of Riyadh.</p>
+                                    <p class="location"><i class="bi bi-geo-alt"></i>Al Hamra, Riyadh 11493</p>
+                                    <div class="bottom-box">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <p class="text">Listed 1 day ago</p>
+                                            </div>
+                                            <div class="col-7 text-end">
+                                                <span class="span-text"><i class="bi bi-share"></i>Share</span>
+                                                <span class="span-text"><i class="bi bi-flag"></i>Report</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="card">
+                                <img src="{{ asset('storage/frontend/riyadh-3.png') }}" class="card-image" alt="Warehouse">
+
+                                <div class="card-body">
+                                    <p class="type">Warehouse Type</p>
+                                    <p class="title">Lorem ipsum dolor</p>
+                                    <p class="description">Sample text describing the warehouse in  area of Riyadh.</p>
+                                    <p class="location"><i class="bi bi-geo-alt"></i>, Riyadh</p>
+                                    <div class="bottom-box">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <p class="text">Listed 1 day ago</p>
+                                            </div>
+                                            <div class="col-7 text-end">
+                                                <span class="span-text"><i class="bi bi-share"></i>Share</span>
+                                                <span class="span-text"><i class="bi bi-flag"></i>Report</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Mecca Warehouses -->
-                <div class="warehouse-grid city-content" data-city="mecca">
-                    @foreach (['Al Naseem', 'Al Azizah', 'Al Taneem'] as $index => $area)
-                        <div class="warehouse-card">
-                            <img src="{{ asset('storage/frontend/mecca-' . ($index + 1) . '.png') }}" class="card-image" alt="Warehouse">
-                            <div class="card-body">
-                                <p class="type">Warehouse Type</p>
-                                <p class="title">Lorem ipsum dolor</p>
-                                <p class="description">Storage near {{ ucfirst($area) }} in Mecca with flexible access options.</p>
-                                <p class="location"><i class="fas fa-map-marker-alt"></i> {{ ucfirst($area) }}, Mecca</p>
-                                <div class="meta">
-                                    <span>Listed 3 days ago</span>
-                                    <span><i class="fas fa-share-alt"></i> Share</span>
-                                    <span><i class="fas fa-flag"></i> Report</span>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
+                <div class="tab-pane fade" id="pills-mecca" role="tabpanel" aria-labelledby="pills-mecca-tab" tabindex="0">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="card">
+                                <img src="{{ asset('storage/frontend/riyadh-1.png') }}" class="card-image" alt="Warehouse">
 
-                <!-- Medina Warehouses -->
-                <div class="warehouse-grid city-content" data-city="medina">
-                    @foreach (['Al Nozha', 'Al Qibla', 'Al Gharra'] as $index => $area)
-                        <div class="warehouse-card">
-                            <img src="{{ asset('storage/frontend/medina-' . ($index + 1) . '.png') }}" class="card-image" alt="Warehouse">
-                            <div class="card-body">
-                                <p class="type">Warehouse Type</p>
-                                <p class="title">Lorem ipsum dolor</p>
-                                <p class="description">Located in {{ ucfirst($area) }}, Medina. Ideal for business inventory.</p>
-                                <p class="location"><i class="fas fa-map-marker-alt"></i> {{ ucfirst($area) }}, Medina</p>
-                                <div class="meta">
-                                    <span>Listed 4 days ago</span>
-                                    <span><i class="fas fa-share-alt"></i> Share</span>
-                                    <span><i class="fas fa-flag"></i> Report</span>
+                                <div class="card-body">
+                                    <p class="type">Warehouse Type</p>
+                                    <p class="title">Lorem ipsum dolor</p>
+                                    <p class="description">Sample text describing the warehouse in  area of Riyadh.</p>
+                                    <p class="location"><i class="bi bi-geo-alt"></i>Al Olaya, Riyadh 12211</p>
+                                    <div class="bottom-box">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <p class="text">Listed 1 day ago</p>
+                                            </div>
+                                            <div class="col-7 text-end">
+                                                <span class="span-text"><i class="bi bi-share"></i>Share</span>
+                                                <span class="span-text"><i class="bi bi-flag"></i>Report</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+
+                        <div class="col-4">
+                            <div class="card">
+                                <img src="{{ asset('storage/frontend/riyadh-2.png') }}" class="card-image" alt="Warehouse">
+
+                                <div class="card-body">
+                                    <p class="type">Warehouse Type</p>
+                                    <p class="title">Lorem ipsum dolor</p>
+                                    <p class="description">Sample text describing the warehouse in  area of Riyadh.</p>
+                                    <p class="location"><i class="bi bi-geo-alt"></i>Al Hamra, Riyadh 11493</p>
+                                    <div class="bottom-box">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <p class="text">Listed 1 day ago</p>
+                                            </div>
+                                            <div class="col-7 text-end">
+                                                <span class="span-text"><i class="bi bi-share"></i>Share</span>
+                                                <span class="span-text"><i class="bi bi-flag"></i>Report</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="card">
+                                <img src="{{ asset('storage/frontend/riyadh-3.png') }}" class="card-image" alt="Warehouse">
+
+                                <div class="card-body">
+                                    <p class="type">Warehouse Type</p>
+                                    <p class="title">Lorem ipsum dolor</p>
+                                    <p class="description">Sample text describing the warehouse in  area of Riyadh.</p>
+                                    <p class="location"><i class="bi bi-geo-alt"></i>, Riyadh</p>
+                                    <div class="bottom-box">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <p class="text">Listed 1 day ago</p>
+                                            </div>
+                                            <div class="col-7 text-end">
+                                                <span class="span-text"><i class="bi bi-share"></i>Share</span>
+                                                <span class="span-text"><i class="bi bi-flag"></i>Report</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-pane fade" id="pills-medina" role="tabpanel" aria-labelledby="pills-medina-tab" tabindex="0">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="card">
+                                <img src="{{ asset('storage/frontend/riyadh-1.png') }}" class="card-image" alt="Warehouse">
+
+                                <div class="card-body">
+                                    <p class="type">Warehouse Type</p>
+                                    <p class="title">Lorem ipsum dolor</p>
+                                    <p class="description">Sample text describing the warehouse in  area of Riyadh.</p>
+                                    <p class="location"><i class="bi bi-geo-alt"></i>Al Olaya, Riyadh 12211</p>
+                                    <div class="bottom-box">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <p class="text">Listed 1 day ago</p>
+                                            </div>
+                                            <div class="col-7 text-end">
+                                                <span class="span-text"><i class="bi bi-share"></i>Share</span>
+                                                <span class="span-text"><i class="bi bi-flag"></i>Report</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="card">
+                                <img src="{{ asset('storage/frontend/riyadh-2.png') }}" class="card-image" alt="Warehouse">
+
+                                <div class="card-body">
+                                    <p class="type">Warehouse Type</p>
+                                    <p class="title">Lorem ipsum dolor</p>
+                                    <p class="description">Sample text describing the warehouse in  area of Riyadh.</p>
+                                    <p class="location"><i class="bi bi-geo-alt"></i>Al Hamra, Riyadh 11493</p>
+                                    <div class="bottom-box">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <p class="text">Listed 1 day ago</p>
+                                            </div>
+                                            <div class="col-7 text-end">
+                                                <span class="span-text"><i class="bi bi-share"></i>Share</span>
+                                                <span class="span-text"><i class="bi bi-flag"></i>Report</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="card">
+                                <img src="{{ asset('storage/frontend/riyadh-3.png') }}" class="card-image" alt="Warehouse">
+
+                                <div class="card-body">
+                                    <p class="type">Warehouse Type</p>
+                                    <p class="title">Lorem ipsum dolor</p>
+                                    <p class="description">Sample text describing the warehouse in  area of Riyadh.</p>
+                                    <p class="location"><i class="bi bi-geo-alt"></i>, Riyadh</p>
+                                    <div class="bottom-box">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <p class="text">Listed 1 day ago</p>
+                                            </div>
+                                            <div class="col-7 text-end">
+                                                <span class="span-text"><i class="bi bi-share"></i>Share</span>
+                                                <span class="span-text"><i class="bi bi-flag"></i>Report</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Optimize search section -->
         <div class="section-3 container">
             <p class="section-title">Optimize Your Warehouse Search</p>
             <p class="section-description">Discover the best warehouse spaces in the UAE with the most trusted information for your business needs.</p>
 
-            <div class="features-grid">
-                <!-- Card 1 -->
-                <div class="feature-card">
-                    <img src="{{ asset('storage/frontend/feature-1.png') }}" alt="Prime Location">
-                    <div class="text">
-                        <h4>Prime Location and Accessibility</h4>
-                        <p>Warehouses with easy access to major transport routes for efficient logistics.</p>
-                        <span class="cta">Checkout</span>
+            <div class="row">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="row card-row">
+                            <div class="col-3">
+                                <img src="{{ asset('storage/frontend/feature-1.png') }}" class="image" alt="Image">
+                            </div>
+                            <div class="col-9">
+                                <p class="title">Prime Location and Accessibility</p>
+                                <p class="description">Warehouses with easy access to major transport routes for efficient logistics.</p>
+                                <a href="#" class="checkout">Checkout</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="feature-card">
-                    <img src="{{ asset('storage/frontend/feature-2.png') }}" alt="Appropriate Size">
-                    <div class="text">
-                        <h4>Appropriate Size and Layout</h4>
-                        <p>Warehouses with the right space and layout to fit your business needs.</p>
-                        <span class="cta">Checkout</span>
+                <div class="col-6">
+                    <div class="card">
+                        <div class="row card-row">
+                            <div class="col-3">
+                                <img src="{{ asset('storage/frontend/feature-2.png') }}" class="image" alt="Image">
+                            </div>
+                            <div class="col-9">
+                                <p class="title">Prime Location and Accessibility</p>
+                                <p class="description">Warehouses with easy access to major transport routes for efficient logistics.</p>
+                                <a href="#" class="checkout">Checkout</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="feature-card">
-                    <img src="{{ asset('storage/frontend/feature-3.png') }}" alt="Security Standards">
-                    <div class="text">
-                        <h4>Security and Safety Standards</h4>
-                        <p>Warehouses with easy access to major transport routes for efficient logistics.</p>
-                        <span class="cta">Checkout</span>
+                <div class="col-6">
+                    <div class="card">
+                        <div class="row card-row">
+                            <div class="col-3">
+                                <img src="{{ asset('storage/frontend/feature-3.png') }}" class="image" alt="Image">
+                            </div>
+                            <div class="col-9">
+                                <p class="title">Prime Location and Accessibility</p>
+                                <p class="description">Warehouses with easy access to major transport routes for efficient logistics.</p>
+                                <a href="#" class="checkout">Checkout</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Card 4 -->
-                <div class="feature-card">
-                    <img src="{{ asset('storage/frontend/feature-4.png') }}" alt="Cost Effectiveness">
-                    <div class="text">
-                        <h4>Cost-Effectiveness and Value</h4>
-                        <p>Warehouses with competitive rates and strong long-term investment potential.</p>
-                        <span class="cta">Checkout</span>
+                <div class="col-6">
+                    <div class="card">
+                        <div class="row card-row">
+                            <div class="col-3">
+                                <img src="{{ asset('storage/frontend/feature-4.png') }}" class="image" alt="Image">
+                            </div>
+                            <div class="col-9">
+                                <p class="title">Prime Location and Accessibility</p>
+                                <p class="description">Warehouses with easy access to major transport routes for efficient logistics.</p>
+                                <a href="#" class="checkout">Checkout</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Comming soon section -->
         <div class="section-4">
-            <div class="coming-soon container">
-                <div class="content">
-                    <h2>Coming Soon: App Version of <br>Warehouse Finder Network</h2>
-                    <p>Bringing you an even faster and more convenient way to discover and rent warehouses across Saudi Arabia. With user-friendly features and real-time listings, you’ll be able to find the perfect warehouse anytime, anywhere, right from your mobile device. Stay tuned for a seamless rental experience at your fingertips!</p>
+            <div class="container">
+                <div class="row section-4-row">
+                    <div class="col-6">
+                        <p class="title">Coming Soon: App Version of <br>Warehouse Finder Network</p>
+                        <p class="description">Bringing you an even faster and more convenient way to discover and rent warehouses across Saudi Arabia. With user-friendly features and real-time listings, you’ll be able to find the perfect warehouse anytime, anywhere, right from your mobile device. Stay tuned for a seamless rental experience at your fingertips!</p>
 
-                    <form class="notify-form">
-                        <input type="email" placeholder="Enter email address" required>
-                        <button type="submit">Notify Me</button>
-                    </form>
-                </div>
+                        <form class="form">
+                            <div class="row form-row">
+                                <div class="col-9">
+                                    <input type="email" class="input" placeholder="Enter email address" required>
+                                </div>
 
-                <div class="phone-image">
-                    <img src="{{ asset('storage/frontend/coming-soon.png') }}" alt="Coming Soon App">
+                                <div class="col-3">
+                                    <button type="submit" class="submit-button">Notify Me</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-6">
+                        <img src="{{ asset('storage/frontend/coming-soon.png') }}" class="image" alt="Coming Soon App">
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Articles section -->
         <div class="section-5 container">
-            <div class="articles-header">
-                <div>
+            <div class="row">
+                <div class="col-8">
                     <p class="section-title">Insights & Articles</p>
                     <p class="section-description">Stay informed with the latest industry trends, expert insights, and actionable articles.</p>
                 </div>
-                <a href="#" class="view-more-btn">View More Articles</a>
+
+                <div class="col-4 text-end">
+                    <a href="#" class="view-more-button">View More Articles</a>
+                </div>
             </div>
 
-            <div class="articles-grid">
-                <!-- Left: Main article -->
-                <div class="left-column">
-                    <img src="{{ asset('storage/frontend/article-main.png') }}" alt="Main Article">
+            <div class="row bottom-row">
+                <div class="col-8">
+                    <img src="{{ asset('storage/frontend/article-main.png') }}" class="left-image" alt="Image">
+
                     <div class="content">
                         <p class="date">April 4th 2025</p>
-                        <h4 class="title">Sed do eiusmod tempor incididun ut labore et dolore</h4>
+                        <p class="title">Sed do eiusmod tempor incididun ut labore et dolore</p>
                         <p class="description">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
-                        <a href="#" class="read-more">Read more</a>
+                        <a href="#" class="read-more-button">Read more</a>
                     </div>
                 </div>
 
-                <!-- Right: Side articles + button -->
-                <div class="right-column">
-                    @for ($i = 1; $i <= 2; $i++)
-                        <div class="side-article">
-                            <img src="{{ asset('storage/frontend/article-side.png') }}" alt="Article Image">
-                            <h5>Sed do eiusmod tempor incididun ut labore et dolore</h5>
-                            <a href="#" class="read-more">Read more</a>
-                        </div>
-                    @endfor
+                <div class="col-4">
+                    <div class="single-article">
+                        <img src="{{ asset('storage/frontend/article-side.png') }}" class="right-image" alt="Image">
+                        <p class="title">Sed do eiusmod tempor incididun ut labore et dolore</p>
+                        <a href="#" class="read-more-button">Read more</a>
+                    </div>
+
+                    <div class="single-article">
+                        <img src="{{ asset('storage/frontend/article-side.png') }}" class="right-image" alt="Image">
+                        <p class="title">Sed do eiusmod tempor incididun ut labore et dolore</p>
+                        <a href="#" class="read-more-button">Read more</a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- CTA Banner section -->
         <div class="section-6">
-            <div class="cta-banner container">
-                <div class="text">
-                    <h3>Ready to advertise your warehouse?</h3>
-                    <p>We’ve got you covered.</p>
+            <div class="container">
+                <div class="row advertise">
+                    <div class="col-9">
+                        <p class="text">Ready to advertise your warehouse?</p>
+                        <p class="text">We’ve got you covered.</p>
+                    </div>
+
+                    <div class="col-3">
+                        <a href="#" class="advertise-button">Advertise Now</a>
+                    </div>
                 </div>
-                <a href="#" class="cta-button">Advertise Now</a>
             </div>
         </div>
-
-        
-
     </div>
 @endsection
-
-<script>
-    // search bar dropdown functionality
-    document.addEventListener('DOMContentLoaded', function () {
-        const storageSelect = document.getElementById('storageType');
-        const searchBar = document.getElementById('searchBar');
-        const section1 = document.querySelector('.homepage .section-1');
-
-        storageSelect.addEventListener('click', function (e) {
-            // Prevent default dropdown toggle
-            e.preventDefault();
-
-            searchBar.classList.toggle('expanded');
-            section1.classList.toggle('expanded');
-        });
-    });
-
-
-    //city tab functionality
-    document.addEventListener('DOMContentLoaded', function () {
-        const tabs = document.querySelectorAll('.section-2 .tab');
-        const contents = document.querySelectorAll('.section-2 .city-content');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const selectedCity = tab.getAttribute('data-city');
-
-                // Switch active tab
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-
-                // Show only the selected city content
-                contents.forEach(content => {
-                    if (content.getAttribute('data-city') === selectedCity) {
-                        content.classList.add('active');
-                    } else {
-                        content.classList.remove('active');
-                    }
-                });
-            });
-        });
-    });
-</script>
-
