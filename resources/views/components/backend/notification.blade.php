@@ -1,19 +1,11 @@
 @if(session('success'))
     <div class="notification-box">
-        <div class="row">
-            <div class="col-12 text-center">
-                <div class="alert alert-success">{{ session('success') }}</div>
-            </div>
-        </div>
+        <p class="success">{{ session('success') }}</p>
     </div>
 @endif
 
 @if(session('error'))
     <div class="notification-box">
-        <div class="row">
-            <div class="col-12 text-center">
-                <div class="alert alert-danger">{{ session('error') }}</div>
-            </div>
-        </div>
+        <p class="error">{{ session('error') }}</p>
     </div>
 @endif

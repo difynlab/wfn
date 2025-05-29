@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Validator;
 
 class ResetPasswordController extends Controller
 {
-    public function create($email, $token)
+    public function index($email, $token)
     {
-        $reset_password = PasswordResetToken::where('email', $email)->whereNotNull('token')->orderBy('created_at', 'desc')->first();
+        $reset_password = PasswordResetToken::where('email', $email)->orderBy('created_at', 'desc')->first();
 
         if(!$reset_password || $reset_password->token !== $token) {
             abort(404);
@@ -29,11 +29,8 @@ class ResetPasswordController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required|min:8',
-            'confirm_password' => 'required|same:password',
+            'password_confirmation' => 'required|same:password',
             'token' => 'required'
-        ], [
-            'password.min' => 'The password must be at least 8 characters long',
-            'confirm_password.same' => 'The confirm password must match the password'
         ]);
     
         if($validator->fails()) {
@@ -43,7 +40,7 @@ class ResetPasswordController extends Controller
         $reset_password = PasswordResetToken::where('email', $request->email)->orderBy('created_at', 'desc')->first();
 
         if(!$reset_password || $reset_password->token !== $request->token) {
-            return redirect()->back()->with('error', 'Invalid or expired reset token');
+            return redirect()->back()->with('error', 'Invalid or expired token');
         }
 
         $user = User::where('email', $request->email)->first();
@@ -51,9 +48,9 @@ class ResetPasswordController extends Controller
             $user->password = $request->password;
             $user->save();
 
-            return redirect()->route('backend.login')->with('success', 'Password has been reset successfully');
+            return redirect()->route('backend-auth.portal.login')->with('success', 'Password has been reset successfully');
         }
 
-        return redirect()->back()->with('email', 'The email does not exist in the database');
+        return redirect()->back()->with('email', 'Email not found');
     }
 }

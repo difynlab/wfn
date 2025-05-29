@@ -18,6 +18,18 @@ class AuthenticationController extends Controller
     {
         $contents = AuthenticationContent::find(1);
 
+        $request->session()->regenerate();
+
+    $user = Auth::user();
+
+    // Role check and redirection
+    if ($user->role === 'user') {
+        return redirect()->intended('/dashboard');
+    } else {
+        Auth::logout();
+        return redirect()->route('user.login')->withErrors(['email' => 'Unauthorized.']);
+    }
+
         if(Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
 

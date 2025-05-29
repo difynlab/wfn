@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Middleware\SetLanguage;
+use App\Http\Middleware\RedirectIfAuthenticatedMiddleware;
+use App\Http\Middleware\RoleMiddleware;
+use App\Http\Middleware\LanguageMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -22,9 +24,18 @@ return Application::configure(basePath: dirname(__DIR__))
             Route::middleware('web')->name('website.')->group(base_path('routes/frontend/website.php'));
         },
     )
-    ->withMiddleware(function (Middleware $middleware) {        
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->redirectTo(function ($request) {
+            if($request->is('admin/*') || $request->is('manager/*') || $request->is('landlord/*')) {
+                return route('backend-auth.portal.login');
+            }
+            return route('frontend-auth.login');
+        });
+
         $middleware->alias([
-            'set_language' => SetLanguage::class,
+            'language' => LanguageMiddleware::class,
+            'role' => RoleMiddleware::class,
+            'redirect' => RedirectIfAuthenticatedMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

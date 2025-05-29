@@ -6,7 +6,7 @@ use App\Http\Controllers\Frontend\Website\HomepageController;
 use App\Http\Controllers\Frontend\Website\WarehouseController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['set_language'])->group(function () {
+Route::middleware(['language'])->group(function () {
     // Page routes
         Route::get('/', [HomepageController::class, 'index'])->name('homepage');
         Route::get('/about', [AboutController::class, 'index'])->name('about');

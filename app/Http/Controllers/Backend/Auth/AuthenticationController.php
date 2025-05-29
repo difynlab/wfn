@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AuthenticationController extends Controller
 {
@@ -15,27 +16,43 @@ class AuthenticationController extends Controller
 
     public function store(Request $request)
     {
-        if(Auth::attempt($request->only('email', 'password'))) {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+        
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        
+        $credentials = $request->only('email', 'password');
+        $credentials['status'] = '1';
+
+        if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            if(Auth::user()->role == 'admin') {
-                return redirect()->route('backend.dashboard.index');
+            $user = Auth::user();
+
+            if(in_array($user->role, ['admin', 'manager', 'landlord'])) {
+                return redirect()->intended("/{$user->role}/dashboard");
+            }
+            else {
+                Auth::logout();
+                return redirect()->route('backend-auth.portal.login')->withInput()->with('error', 'Unauthorized');
             }
         }
 
-        return back()->withErrors([
-            'login_failed' => 'These credentials do not match our records',
+        return back()->withInput()->withErrors([
+            'email' => 'These credentials do not match our records.',
         ]);
     }
 
     public function logout(Request $request)
     {
-        Auth::guard('web')->logout();
-
+        Auth::logout();
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
-        return redirect()->route('backend-auth.login');
+        return redirect()->route('backend-auth.portal.login');
     }
 }

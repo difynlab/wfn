@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
-class SetLanguage
+class LanguageMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
