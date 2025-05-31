@@ -1,0 +1,409 @@
+/* Global */
+    .aboutpage .section-title {
+        font-size: 32px;
+        font-weight: 500;
+        color: var(--light_black);
+        padding-bottom: 8px;
+    }
+    .aboutpage .section-description {
+        font-size: 20px;
+        color: var(--gray);
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    .aboutpage .text-red {
+        color: var(--red);
+    }
+    .aboutpage .text-muted {
+        color: var(--gray);
+    }
+    .footer {
+        margin-top: 0;
+    }
+
+/* Section 1 */
+    .aboutpage .section-1 {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .aboutpage .section-1 .title {
+        font-size: 56px;
+        font-weight: 600;
+        text-align: center;
+        color: var(--light_black);
+    }
+    .aboutpage .section-1 .description {
+        font-size: 20px;
+        text-align: center;
+        color: var(--gray);
+    }
+    .aboutpage .section-1 .story-block{
+        margin-top: 50px;
+    }
+    .aboutpage .section-1 .story-block img {
+        width: 518px;
+        height: 357px;
+        border-radius: 4px;
+    }
+    .aboutpage .section-1 .stats-row .stat-box {
+        border-left: 1px solid var(--input_border);
+        padding: 0 15px;
+    }
+    .aboutpage .section-1 .stats-row .stat-box:first-child {
+        border-left: none;
+    }
+    .aboutpage .section-1 .stats-row h3 {
+        font-size: 36px;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+    .aboutpage .section-1 .stats-row p {
+        font-size: 16px;
+        margin: 0;
+    }
+/* Section 1 */
+
+
+/* section 2 */
+    .aboutpage .section-2 {
+        background-color: var(--dark_red);
+        padding: 60px 0;
+    }
+    .aboutpage .section-2 .section-title {
+        color: var(--white);
+        margin-bottom: 10px;
+    }
+    .aboutpage .section-2 .section-description {
+        color: var(--white);
+        margin-bottom: 0;
+    }
+/* section 2 */
+
+
+/* Section 3 */
+    .aboutpage .section-3 {
+        background-color: var(--white);
+        margin-top: 50px;
+    }
+    .aboutpage .section-3 .row {
+        align-items: center;
+    }
+    .aboutpage .section-3 .section-title {
+        color: var(--light_black);
+        margin-bottom: 30px;
+    }
+    .aboutpage .section-3 .section-description {
+        color: var(--gray);
+        margin-bottom: 20px;
+    }
+    .aboutpage .section-3 .learn-more-btn {
+        padding: 10px 25px;
+        font-size: 16px;
+        font-weight: 500;
+        border: 2px solid var(--light_black);
+        border-radius: 6px;
+        color: var(--light_black);
+        text-decoration: none;
+        transition: all 0.3s;
+        margin-top: 10px;
+        &:hover{
+            background-color: var(--light_black);
+            color: var(--white);
+        }
+    }
+    .aboutpage .section-3 .exchange-box {
+        background-color: #fdf2f2;
+        padding: 20px;
+        border-radius: 16px;
+        margin-bottom: 30px;
+        box-shadow: none;
+    }
+    .aboutpage .section-3 .exchange-box .box-header {
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    .aboutpage .section-3 .exchange-box .icon {
+        font-size: 22px;
+        color: var(--red);
+        margin-right: 10px;
+    }
+    .aboutpage .section-3 .exchange-box .label {
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--light_black);
+    }
+    .aboutpage .section-3 .exchange-box img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+/* Section 3*/
+
+
+/* Section 4*/
+    .aboutpage .section-4 {
+        padding: 80px 0;
+    }
+    .aboutpage .section-4 .video-box img {
+        width: 541px;
+        height: 518px;
+        border-radius: 4px;
+        object-fit: cover;
+    }
+    .aboutpage .section-4 .procedure-steps li {
+        margin-top: 10px;
+        margin-bottom: 25px;
+    }
+    .aboutpage .section-4 .procedure-steps .step-number {
+        width: 35px;
+        height: 35px;
+        background-color: var(--low_gray);
+        border-radius: 50px;
+        display: inline-flex;
+        font-size: 16px;
+        align-items: center;
+        justify-content: center;
+        color: var(--light_black);
+        margin-right: 15px;
+    }
+    .aboutpage .section-4 .procedure-steps p {
+        font-size: 14px;
+        color: var(--gray);
+        margin: 5px 0 0;
+    }
+/* Section 4*/
+
+
+/* Section 5*/
+    .aboutpage .section-5 {
+        background-color: var(--dark_red);
+        padding: 80px 0;
+    }
+    .aboutpage .section-5 .section-title {
+        color: var(--white);
+    }
+    .aboutpage .section-5 .section-description {
+        color: var(--white);
+    }
+    .aboutpage .section-5 .section-paragraph {
+        font-size: 16px;
+        color: var(--white);
+    }
+/* Section 5*/
+
+
+/* Section 6*/
+    .aboutpage .section-6 {
+        background-color: var(--white);
+    }
+    .aboutpage .section-6 .section-title {
+        font-size: 36px;
+    }
+    .aboutpage .section-6 .section-description {
+        font-size: 16px;
+        color: var(--gray);
+    }
+    .aboutpage .section-6 .founder-signature {
+        font-size: 16px;
+        font-style: italic;
+        color: var(--light_black);
+        margin-top: 20px;
+    }
+    .aboutpage .section-6 .founder-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        object-fit: cover;
+    }
+/* Section 6*/
+
+
+/* Section 7*/
+    .aboutpage .section-7 {
+        background-color: var(--white);
+        padding: 80px 0;
+    }
+    .aboutpage .section-7 .form-wrapper {
+        background-color: var(--dark_red);
+        border-radius: 10px;
+        padding: 50px;
+        color: var(--white);
+    }
+    .aboutpage .section-7 .form-title {
+        font-size: 32px;
+        font-weight: 600;
+        color: var(--white);
+        margin-bottom: 20px;
+        line-height: 1.4;
+    }
+    .aboutpage .section-7 .form-subtitle {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: var(--white);
+    }
+    .aboutpage .section-7 .pricing-form .form-label {
+        color: var(--white);
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+    .aboutpage .section-7 .pricing-form .form-control {
+        border-radius: 6px;
+        padding: 12px 15px;
+        font-size: 15px;
+        border: none;
+        box-shadow: none;
+        margin-bottom: 15px;
+    }
+    .aboutpage .section-7 .form-check-label {
+        font-size: 14px;
+        color: var(--white);
+    }
+    .aboutpage .section-7 .form-check-input {
+        margin-top: 5px;
+        margin-right: 10px;
+    }
+    .aboutpage .section-7 .submit-btn {
+        background-color: transparent;
+        color: var(--white);
+        border: 2px solid var(--white);
+        padding: 10px 30px;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 6px;
+        transition: all 0.3s;
+        &:hover{
+            background-color: var(--white);
+            color: var(--dark_red);
+        }
+    }
+    .aboutpage .section-7 .video-placeholder img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+/* Section 7*/
+
+
+/* Section 8*/
+    .aboutpage .section-8 {
+        padding: 80px 0;
+        background-color: var(--white);
+    }
+    .aboutpage .section-8 .testimonial-card {
+        background-color: var(--white);
+        border: 1px solid var(--input_border);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+        height: 100%;
+    }
+    .aboutpage .section-8 .testimonial-content {
+        justify-content: center;
+    }
+    .aboutpage .section-8 .testimonial-text {
+        font-size: 16px;
+        color: var(--gray);
+    }
+    .aboutpage .section-8 .testimonial-author {
+        font-size: 14px;
+        color: var(--gray);
+    }
+    .aboutpage .section-8 .testimonial-author .role {
+        color: var(--gray);
+        font-weight: normal;
+    }
+    .aboutpage .section-8 .stars i {
+        color: var(--red);
+        font-size: 25px;
+        margin-right: 4px;
+    }
+    .aboutpage .section-8 .testimonial-image img {
+        height: 250px; 
+        width: 320px;
+        object-fit: cover;
+        border-radius: 0 12px 12px 0;
+    }
+    .aboutpage .section-8 .testimonial-dots {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 30px;
+    }
+    .aboutpage .section-8 .testimonial-dots .dot {
+        width: 10px;
+        height: 10px;
+        background-color: #d3d3d3;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.3s;
+    }
+    .aboutpage .section-8 .testimonial-dots .dot.active {
+        background-color: var(--red);
+        width: 15px;
+        height: 10px;
+        border-radius: 45%;
+    }
+/* Section 8*/
+
+
+/* Section 9*/
+    .aboutpage .section-9 {
+        position: relative;
+        height: 450px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .aboutpage .section-9 .network-bg-img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        object-fit: cover;
+    }
+    .aboutpage .section-9 .overlay-content {
+        position: relative;
+        z-index: 2;
+        padding: 0 20px;
+    }
+    .aboutpage .section-9 .network-text {
+        color: var(--white);
+        font-size: 32px;
+        font-weight: 500;
+    }
+/* Section 9*/
+
+
+/* Section 10*/
+    .aboutpage .section-10 {
+        margin-top: 50px;
+        background-color: var(--white);
+    }
+    .aboutpage .section-10 .section-title {
+        color: var(--light_black);
+    }
+    .aboutpage .section-10 .section-description {
+        color: var(--gray);
+    }
+    .aboutpage .section-10 .accordion-button {
+        background-color: transparent;
+        border: none;
+        font-weight: 500;
+        font-size: 16px;
+        color: var(--light_black);
+        box-shadow: none;
+    }
+    .aboutpage .section-10 .accordion-button::after {
+        display: none;
+    }
+    .aboutpage .section-10 .accordion-body {
+        font-size: 14px;
+        padding-left: 34px;
+    }
+    .aboutpage .section-10 .accordion-item {
+        border: none;
+        margin-bottom: 20px;
+    }
+/* Section 10*/
