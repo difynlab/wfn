@@ -18,6 +18,8 @@
 
     <body>
 
+        <x-backend.sidebar></x-backend.sidebar>
+        
         @yield('content')
     
         @stack('before-scripts')
