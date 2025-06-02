@@ -1,0 +1,290 @@
+/* Global */
+    .warehouses .section-title {
+        font-size: 56px;
+        font-weight: 500;
+        text-align: center;
+        color: var(--light_black);
+        padding-bottom: 8px;
+        margin-top: 50px;
+    }
+    .warehouses .section-description {
+        font-size: 20px;
+        text-align: center;
+        color: var(--gray);
+        padding-bottom: 30px;
+    }
+/* Global */
+
+/* Section 1 */
+    .warehouses .section-1 .search-wrapper{
+        background-color: var(--medium_white);
+        border-radius: 16px;
+        padding: 30px 25px;
+        margin: auto;
+        margin-bottom: 40px;
+    }
+    .warehouses .section-1 .search-wrapper .search-title {
+        font-size: 24px;
+        font-weight: 500;
+        color: var(--light_black);
+        margin-bottom: 5px;
+    }
+    .warehouses .section-1 .search-wrapper .search-subtitle{
+        font-size: 16px;
+        color: var(--gray);
+        margin-bottom: 15px;
+    }
+    .warehouses .section-1 .search-wrapper .map-view-btn,
+    .warehouses .section-1 .search-wrapper .apply-filters-btn{
+        padding: 10px 20px;
+        font-style: 14px;
+        font-weight: 500;
+        border-radius: 10px;
+        background-color: var(--medium_white);
+        border: 1px solid var(--input_border);
+        color: var(--light_black);
+        margin-left: 10px;
+        &:hover{
+            color: var(--white);
+            background-color: var(--light_black);
+            transition: all 0.3s
+        }
+    }
+    .warehouses .section-1 .search-wrapper .apply-filters-btn {
+        border: 1px solid var(--light_black);
+    }
+    .warehouses .section-1 .search-wrapper .map-view-btn i {
+        margin-right: 6px;
+        font-size: 16px;
+    }
+    .warehouses .section-1 .search-wrapper .row{
+        margin-bottom: 15px;
+    }
+    .warehouses .section-1 .search-wrapper .search-item {
+        position: relative;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    .warehouses .section-1 .search-wrapper .search-location {
+        width: 100%;
+    }
+    .warehouses .section-1 .search-wrapper .search-location .search-input{
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+        border: 1px solid var(--input_border);
+        border-radius: 50px;
+        background-color: var(--medium_white);
+        color: var(--gray);
+    }
+    .warehouses .section-1 .search-wrapper .search-location .search-icon{
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 16px;
+        color: var(--gray);
+    }
+    .warehouses .section-1 .search-wrapper .search-item .search-select{
+        width: 100%;
+        padding: 12px 40px 12px 20px;
+        font-size: 14px;
+        border: 1px solid var(--input_border);
+        border-radius: 50px;
+        background-color: var(--medium_white);
+        color: var(--gray);
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,<svg width='12' height='7' viewBox='0 0 10 7' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1 1L5 5L9 1' stroke='%23484546' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+        background-repeat: no-repeat;
+        background-position: right 15px center;
+    }
+/* Section 1 */
+
+
+/* Section 2 */
+    .warehouses .section-2 {
+        margin-top: 40px;
+        margin-bottom: 60px;
+    }
+    .warehouses .section-2 .card {
+        background-color: var(--white);
+        border: 1px solid #E4E4E4;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 25px;
+        position: relative;
+    }
+    .warehouses .section-2 .card .badge {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: var(--red);
+        color: var(--white);
+        font-size: 12px;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-weight: 600;
+        margin: 5px;
+    }
+    .warehouses .section-2 .card .card-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+    .warehouses .section-2 .card .type {
+        font-size: 14px;
+        color: var(--gray);
+        margin-bottom: 10px;
+    }
+    .warehouses .section-2 .card .price {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .warehouses .section-2 .card .red {
+        color: var(--red);
+    }
+    .warehouses .section-2 .card .description-bold {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--light_black);
+        margin-bottom: 10px;
+    }
+    .warehouses .section-2 .card .description-text {
+        font-size: 14px;
+        color: var(--gray);
+        line-height: 22px;
+        margin-bottom: 10px;
+    }
+    .warehouses .section-2 .card .location {
+        margin-top: 30px;
+        font-size: 14px;
+        color: var(--gray);
+    }
+    .warehouses .section-2 .card .location i{
+        padding-right: 5px;
+    }
+    .warehouses .section-2 .card .bottom-box {
+        background-color: var(--low_gray);
+        font-size: 14px;
+        color: var(--medium_gray);
+        padding: 10px 15px;
+        border-radius: 8px;
+        margin-top: 15px;
+    }
+    .warehouses .section-2 .card .listing-time {
+        margin: 0;
+        font-size: 13px;
+        color: var(--medium_gray);
+    }
+    .warehouses .section-2 .card .action {
+        margin-left: 15px;
+        font-size: 13px;
+        color: var(--medium_gray);
+    }
+    .warehouses .section-2 .card .action i {
+        margin-right: 5px;
+    }
+    .warehouses .section-2 .sidebar-card {
+        background-color: var(--white);
+        border: 1px solid var(--input_border);
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .warehouses .section-2 .sidebar-card .divider{
+        border: 1px solid var(--medium_gray);
+    }
+    .warehouses .section-2 .sidebar-heading {
+        font-weight: 600;
+        font-size: 16px;
+        color: var(--light_black);
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+    .warehouses .section-2 .sidebar-item {
+        font-size: 14px;
+        color: var(--gray);
+        margin-top: 8px;
+    }
+    .warehouses .section-2 hr {
+        border: none;
+        border-top: 1px solid var(--medium_white);
+        margin: 20px 0;
+    }
+/* Section 2 */
+
+
+/* section 3 */
+    .warehouses .section-3 {
+        margin-top: 60px;
+    }
+    .warehouses .section-3 .section-title {
+        font-size: 16px;
+        font-weight: 500;
+        text-align: left;
+        color: var(--light_black);
+        margin-bottom: 30px;
+    }
+    .warehouses .section-3 .card {
+        border: 1px solid var(--input_border);
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: var(--white);
+    }
+    .warehouses .section-3 .card-image {
+        width: 100%;
+        object-fit: cover;
+        border-bottom: 1px solid var(--medium_white);
+    }
+    .warehouses .section-3 .card-body {
+        padding: 15px;
+    }
+    .warehouses .section-3 .card-body .title {
+        font-size: 16px;
+        color: var(--light_black);
+    }
+    .warehouses .section-3 .card-body .subtitle {
+        font-size: 14px;
+        color: var(--gray);
+        margin-top: 5px;
+    }
+    .warehouses .section-3 .card-body .price {
+        margin-top: 20px;
+        font-size: 16px;
+        color: var(--light_black);
+    }
+/* Section 3 */
+
+
+.warehouses .modal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.warehouses .modal .modal-content{
+    margin: 5% auto;
+    padding: 20px;
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.warehouses .modal .modal-content .close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--light_black);
+}
