@@ -202,6 +202,7 @@
             </div>
         </div>
 
+
         <div class="section-3 container">
             <p class="section-title">More available warehouses in the same area</p>
             <div class="row">

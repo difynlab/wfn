@@ -1,0 +1,439 @@
+/* Section 1 */
+    .singlewarehouse .section-1{
+        margin-top: 50px;
+    }
+    .singlewarehouse .section-1 .row .col-8 .card-image{
+        width: 820px;
+        height: 450px;
+    }
+    .singlewarehouse .section-1 .row .col-4 .card-image{
+        padding-bottom: 25px;
+    }
+/* Section 1 */
+
+
+/* Section 2 */
+    .singlewarehouse .section-2 {
+        margin-top: 50px;
+    }
+    .singlewarehouse .section-2 .profile-row {
+        margin-bottom: 20px;
+    }
+    .singlewarehouse .section-2 .profile-row .profile-img {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .singlewarehouse .section-2 .profile-row .profile-name {
+        font-weight: 600;
+        color: var(--light_black);
+        margin-bottom: 3px;
+    }
+    .singlewarehouse .section-2 .profile-row .profile-exp {
+        font-size: 14px;
+        color: var(--gray);
+    }
+    .singlewarehouse .section-2 .profile-row .icon-cell {
+        text-align: center;
+        padding-top: 10px;
+    }
+    .singlewarehouse .section-2 .profile-row .expert-link {
+        padding-top: 10px;
+        font-weight: 500;
+    }
+    .singlewarehouse .section-2 .title-row {
+        margin-bottom: 20px;
+    }
+    .singlewarehouse .section-2 .title-row .warehouse-title {
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--light_black);
+        margin-bottom: 25px;
+    }
+    .singlewarehouse .section-2 .title-row .warehouse-location {
+        font-size: 16px;
+        color: var(--gray);
+        margin-bottom: 15px;
+    }
+    .singlewarehouse .section-2 .title-row .rating-box {
+        border-right: 1px solid var(--input_border);
+    }
+    .singlewarehouse .section-2 .title-row .rating-score {
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--light_black);
+        margin: 0;
+    }
+    .singlewarehouse .section-2 .title-row .rating-label {
+        font-size: 14px;
+        color: var(--gray);
+        margin: 0;
+    }
+    .singlewarehouse .section-2 .warehouse-description {
+        font-size: 16px;
+        color: var(--gray);
+        margin-bottom: 20px;
+    }
+    .singlewarehouse .section-2 .feature-row {
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    .singlewarehouse .section-2 .feature-row .feature-title {
+        font-weight: 600;
+        color: var(--light_black);
+        margin-bottom: 2px;
+    }
+    .singlewarehouse .section-2 .feature-row .feature-sub {
+        font-size: 14px;
+        color: var(--gray);
+        margin-bottom: 0;
+    }
+    .singlewarehouse .section-2 .amenities .amenities-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--light_black);
+    }
+    .singlewarehouse .section-2 .amenity-item {
+        margin-top: 15px;
+    }
+    .singlewarehouse .section-2 .amenity-title {
+        color: var(--light_black);
+        margin-bottom: 2px;
+    }
+    .singlewarehouse .section-2 .amenity-sub {
+        font-size: 14px;
+        color: var(--gray);
+        margin-bottom: 0;
+    }
+    .singlewarehouse .section-2 .booking-box {
+        border: 1px solid var(--input_border);
+        border-radius: 10px;
+        padding: 20px;
+        background-color: var(--white);
+    }
+    .singlewarehouse .section-2 .booking-box .total-cost {
+        font-size: 14px;
+        text-align: center;
+    }
+    .singlewarehouse .section-2 .booking-box .unlock-pricing {
+        font-size: 32px;
+        font-weight: 500;
+        text-align: center;
+        color: var(--red);
+        margin-bottom: 20px;
+    }
+    .singlewarehouse .section-2 .booking-box .date-picker {
+        border: 1px solid var(--input_border);
+        border-radius: 10px;
+        margin-bottom: 20px;
+        padding: 15px;
+    }
+    .singlewarehouse .section-2 .booking-box input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid var(--input_border);
+        border-radius: 6px;
+        font-size: 14px;
+    }
+    .singlewarehouse .section-2 .booking-box .book-now-btn {
+        width: 100%;
+        background-color: var(--red);
+        color: var(--white);
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+    .singlewarehouse .section-2 .booking-box .note {
+        font-size: 13px;
+        color: var(--gray);
+        text-align: center;
+    }
+    .singlewarehouse .section-2 .report-link {
+        font-size: 14px;
+        text-align: center;
+        color: var(--gray);
+        cursor: pointer;
+        margin-top: 15px;
+    }
+    .singlewarehouse .section-2 .report-link i {
+        padding-right: 5px;
+    }
+    .singlewarehouse .report-link .underline-link {
+        border-bottom: 1px solid var(--input_border);
+        padding-bottom: 2px;
+    }
+    .singlewarehouse .section-2 .lender-info {
+        border: 1px solid var(--input_border);
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    .singlewarehouse .section-2 .lender-info .lender-heading {
+        font-style: 18px;
+        font-weight: 600;
+    }
+    .singlewarehouse .section-2 .lender-info .lender-details li {
+        font-size: 14px;
+        color: var(--gray);
+        margin-top: 5px;
+    }
+    .singlewarehouse .section-2 .lender-info .lender-details i {
+        padding-right: 10px;
+        padding-left: 5px;
+    }
+/* Section 2 */
+
+
+/* Section 3 */
+    .singlewarehouse .section-3 {
+        margin-top: 50px;
+    }
+    .singlewarehouse .section-3 .map-wrapper .map-image {
+        text-align: center;
+        width: 100%;
+        max-width: 1400px;
+        border-radius: 10px;
+    }
+    .singlewarehouse .section-3 .map-wrapper .map-separator {
+        border: 1px solid var(--medium_gray);
+        width: 100%;
+        max-width: 1400px;
+    }
+/* Section 3 */
+
+
+/* Section 4 */
+    .singlewarehouse .section-4 {
+        margin-top: 50px;
+    }
+    .singlewarehouse .section-4 .review-heading {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--light_black);
+        margin-bottom: 20px;
+    }
+    .singlewarehouse .section-4 .review-box {
+        background-color: #FFF8F8;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+    .singlewarehouse .section-4 .review-box .review-item {
+        margin-bottom: 20px;
+    }
+    .singlewarehouse .section-4 .review-box .review-item .review-stars {
+        font-size: 18px;
+        color: var(--red);
+        margin-bottom: 10px;
+    }
+    .singlewarehouse .section-4 .review-box .review-item .review-text {
+        font-size: 15px;
+        color: var(--light_black);
+        margin-bottom: 15px;
+    }
+    .singlewarehouse .section-4 .review-box .review-item .review-author {
+        font-size: 14px;
+        color: var(--light_black);
+    }
+    .singlewarehouse .section-4 .review-box .review-item .review-author .author-name {
+        font-weight: 600;
+    }
+    .singlewarehouse .section-4 .review-box .review-item .review-author .author-divider {
+        margin: 0 8px;
+        color: var(--gray);
+    }
+    .singlewarehouse .section-4 .review-box .review-item .review-author .author-role {
+        color: var(--gray);
+    }
+    .singlewarehouse .section-4 .separator {
+        border: 1px solid var(--medium_gray);
+        width: 100%;
+        max-width: 1400px;
+    }
+/* Section 4 */
+
+
+/* Section 5 */
+    .singlewarehouse .section-5 {
+        margin-top: 50px;
+    }
+    .singlewarehouse .section-5 .policy-heading {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--light_black);
+        margin-bottom: 20px;
+    }
+    .singlewarehouse .section-5 .policy-block {
+        padding-right: 30px;
+        margin-bottom: 20px;
+    }
+    .singlewarehouse .section-5 .policy-title {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--light_black);
+        margin-top: 12px;
+    }
+    .singlewarehouse .section-5 .policy-desc {
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--gray);
+        margin-top: 8px;
+    }
+    .singlewarehouse .section-5 .section-divider {
+        border-top: 1px solid var(--medium_gray);
+        margin-top: 20px;
+    }
+
+/* Section 5 */
+
+
+/* Section 6 */
+    .singlewarehouse .section-6 {
+        margin-top: 50px;
+    }
+    .singlewarehouse .section-6 .section-title {
+        font-size: 18px;
+        font-weight: 600;
+        text-align: left;
+        color: var(--light_black);
+    }
+    .singlewarehouse .section-6 .card {
+        border: 1px solid var(--input_border);
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: var(--white);
+        margin-top: 10px;
+    }
+    .singlewarehouse .section-6 .card-image {
+        width: 100%;
+        object-fit: cover;
+        border-bottom: 1px solid var(--medium_white);
+    }
+    .singlewarehouse .section-6 .card-body {
+        padding: 15px;
+    }
+    .singlewarehouse .section-6 .card-body .title {
+        font-size: 16px;
+        color: var(--light_black);
+    }
+    .singlewarehouse .section-6 .card-body .subtitle {
+        font-size: 14px;
+        color: var(--gray);
+        margin-top: 5px;
+    }
+    .singlewarehouse .section-6 .card-body .price {
+        margin-top: 20px;
+        font-size: 16px;
+        color: var(--light_black);
+    }
+/* Section 6 */
+
+
+/* Booking Modal */
+    .singlewarehouse .section-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1050;
+    }
+    .singlewarehouse .section-modal .modal-overlay {
+        background: rgba(0, 0, 0, 0.4);
+        width: 200%;
+        max-width: 2400px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .singlewarehouse .section-modal .modal-content {
+        background-color: var(--white);
+        width: 95%;
+        max-width: 1200px;
+        margin: 60px auto;
+        border-radius: 10px;
+        padding: 40px 30px;
+        position: relative;
+        z-index: 10;
+    }
+    .singlewarehouse .section-modal .modal-close {
+        font-size: 24px;
+        cursor: pointer;
+        font-weight: bold;
+        color: var(--gray);
+    }
+    .singlewarehouse .section-modal .modal-title {
+        font-size: 22px;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 10px;
+        color: var(--light_black);
+    }
+    .singlewarehouse .section-modal .modal-subtitle {
+        font-size: 15px;
+        text-align: center;
+        margin-bottom: 20px;
+        color: var(--gray);
+    }
+    .singlewarehouse .section-modal .legend-box {
+        margin-bottom: 20px;
+    }
+    .singlewarehouse .section-modal .legend {
+        display: inline-block;
+        margin: 0 10px;
+        font-size: 14px;
+        color: var(--gray);
+        position: relative;
+        padding-left: 20px;
+    }
+    .singlewarehouse .section-modal .lot-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 30px;
+    }
+    .singlewarehouse .section-modal .lot-grid .lot-row {
+        display: grid;
+        grid-template-columns: repeat(21, 40px);
+        gap: 6px;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    .singlewarehouse .section-modal .lot-grid .lot-row .lot {
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        text-align: center;
+        font-size: 12px;
+        border-radius: 6px;
+        background-color: #f0f0f0;
+        color: var(--light_black);
+    }
+    .singlewarehouse .section-modal .lot-grid .lot-row .available {
+        background-color: #f0f0f0;
+    }
+    .singlewarehouse .section-modal .lot-grid .lot-row .reserved {
+        background-color: #ffd5d5;
+    }
+    .singlewarehouse .section-modal .lot-grid .lot-row .selected {
+        background-color: var(--red);
+        color: #fff;
+    }
+    .singlewarehouse .section-modal .lot-grid .lot-row .empty {
+        background-color: transparent;
+        pointer-events: none;
+    }
+    .singlewarehouse .section-modal .modal-content .confirm-btn {
+        padding: 12px 40px;
+        background-color: var(--red);
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+/* Booking Modal */
