@@ -12,9 +12,13 @@ Route::middleware(['set_language'])->group(function () {
         Route::get('/about', [AboutController::class, 'index'])->name('about');
         Route::get('/warehouses', [WarehouseController::class, 'index'])->name('warehouses');
         Route::get('/support', [SupportController::class, 'index'])->name('support');
-Route::get('/warehouses/single', function () {
-    return view('frontend.website.singlewarehouse');
-})->name('singlewarehouse');
+        Route::get('/warehouses/single', function () {
+            return view('frontend.website.singlewarehouse');
+        })->name('singlewarehouse');
+        
+        Route::get('/confirmbooking', function () {
+            return view('frontend.website.confirmbooking');
+        })->name('confirmbooking');
 
 
     // Page routes
