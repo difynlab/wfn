@@ -20,6 +20,22 @@ Route::middleware(['set_language'])->group(function () {
             return view('frontend.website.confirmbooking');
         })->name('confirmbooking');
 
+        Route::get('/articles', function () {
+            return view('frontend.website.articles');
+        })->name('articles');
+
+        Route::get('/singlearticle', function () {
+            return view('frontend.website.singlearticle');
+        })->name('singlearticle');
+
+        Route::get('/privacy-policy', function () {
+            return view('frontend.website.privacy-policy');
+        })->name('privacy-policy');
+
+        Route::get('/terms-of-use', function () {
+            return view('frontend.website.terms-of-use');
+        })->name('terms-of-use');
+
 
     // Page routes
 });

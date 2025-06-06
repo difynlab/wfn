@@ -1,0 +1,75 @@
+/* Global */
+    .articles .section-title {
+        font-size: 32px;
+        font-weight: 500;
+        color: var(--light_black);
+        text-align: center;
+        padding-bottom: 8px;
+    }
+    .articles .section-description {
+        font-size: 16px;
+        color: var(--gray);
+        text-align: center;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+/* Global */
+
+
+/* Section 1 */
+    .articles .section-1 {
+        margin-top: 50px;
+    }
+    .articles .section-1 .row .nav-pills {
+        margin-bottom: 25px;
+    }
+    .articles .section-1 .row .nav-pills .nav-item {
+        margin-right: 40px;
+    }
+    .articles .section-1 .row .nav-pills .nav-item .nav-link {
+        font-size: 17px;
+        padding: 0;
+        padding-bottom: 10px;
+        color: var(--gray);
+        border-radius: 0;
+    }
+    .articles .section-1 .row .nav-pills .nav-item .nav-link.active {
+        background-color: transparent;
+        font-weight: 500;
+        color: var(--light_black);
+        border-bottom: 2px solid var(--red);
+    }
+    .articles .section-1 .row .col-2 .row {
+        margin-left: 120px;
+    }
+    .articles .section-1 .row .col-2 .list-btn,
+    .articles .section-1 .row .col-2 .grid-btn {
+        cursor: pointer;
+        &:hover {
+            color: var(--red);
+        }
+    }
+    .articles .section-1 .tab-content .tab-pane .card .row .card-body .text-muted {
+        font-size: 14px;
+    }
+    .articles .section-1 .tab-content .tab-pane .card .row .card-body .card-title {
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 15px;
+    }
+    .articles .section-1 .tab-content .tab-pane .card .row .card-body .badge {
+        font-size: 14px;
+        font-weight: 400;
+        margin-top: 10px;
+    }
+    .articles .section-1 .tab-content .tab-pane .card .row .card-body .card-text {
+        font-size: 16px;
+        font-weight: 400;
+        margin-top: 10px;
+    }
+    .articles .section-1 .tab-content .tab-pane .card .row .card-body .card-text a {
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 15px;
+    }
+/* Section 1 */
