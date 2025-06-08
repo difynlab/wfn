@@ -1,0 +1,114 @@
+/* Global */
+    .checkout .section-title {
+        font-size: 32px;
+        font-weight: 600;
+        text-align: center;
+        color: var(--light_black);
+        padding-bottom: 8px;
+        margin-top: 50px;
+    }
+    .checkout .section-description {
+        font-size: 16px;
+        text-align: center;
+        color: var(--gray);
+        padding-bottom: 30px;
+    }
+/* Global */
+
+
+/* section 2 */
+    .checkout .section-2 .warehouse {
+        margin-bottom: 50px;
+    }
+    .checkout .section-2 .warehouse .heading {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+    .checkout .section-2 .warehouse .subheading {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--gray);
+        margin: 20px 0 10px;
+    }
+    .checkout .section-2 .warehouse .image {
+        width: 100%;
+        height: auto;
+        margin: 20px 0;
+        border-radius: 10px;
+    }
+    .checkout .section-2 .warehouse .paragraph {
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--gray);
+        margin-bottom: 15px;
+    }
+    .checkout .section-2 .warehouse .list {
+        list-style-type: disc;
+        padding-left: 20px;
+        margin-bottom: 20px;
+    }
+    .checkout .section-2 .warehouse .list li {
+        font-size: 15px;
+        color: var(--gray);
+        margin-bottom: 8px;
+    }
+    .checkout .section-2 .warehouse .subheading strong {
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+    .checkout .section-2 .warehouse .row .card {
+        margin: 10px;
+        padding: 10px;
+        border: none;
+        border-radius: 15px;
+        height: auto;
+        background-color: var(--low_gray);
+    }
+    .checkout .section-2 .warehouse .row .short-text {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--medium_gray);
+    }
+    .checkout .section-2 .divider{
+        border: none;
+        border-top: 1px solid var(--medium_gray);
+        margin: 50px 0;
+    }
+/* Section 2 */
+
+
+/* Section 3 */
+    .checkout .section-3{
+        background-color: var(--black);
+        padding: 30px 0;
+    }
+    .checkout .section-3 .advertise {
+        align-items: center;
+    }
+    .checkout .section-3 .advertise .text {
+        font-size: 32px;
+        color: var(--white);
+    }
+    .checkout .section-3 .advertise .text:last-child {
+        padding-bottom: 0;
+    }
+    .checkout .section-3 .advertise .advertise-button {
+        background-color: var(--red);
+        color: var(--white);
+        font-size: 18px;
+        font-weight: 500;
+        width: 200px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        border-radius: 4px;
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--light_black);
+            transition: all 0.3s;
+        }
+    }
+/* Section 3 */

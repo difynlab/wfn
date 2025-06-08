@@ -36,6 +36,10 @@ Route::middleware(['set_language'])->group(function () {
             return view('frontend.website.terms-of-use');
         })->name('terms-of-use');
 
+        Route::get('/checkout', function () {
+            return view('frontend.website.checkout');
+        })->name('checkout');
+
 
     // Page routes
 });
