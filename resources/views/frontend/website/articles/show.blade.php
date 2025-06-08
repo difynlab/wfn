@@ -1,40 +1,33 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Singlearticles')
+@section('title', 'Article')
 
 @push('after-styles')
-    <link rel="stylesheet" href="{{ asset('frontend/css/singlearticles.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/article.css') }}">
 @endpush
 
 @section('content')
-    <div class="singlearticles container">
-        <div class="section-1 container">
-            <div class="row header-row">
-                <div class="col-11">
-                    <div class="title-meta">
-                        <h1 class="article-title">Sed ut perspiciatis unde omnis iste natus error sit voluptatem</h1>
-                        <div class="article-meta">
-                            <span class="author">Written by John doe</span>
-                            <span class="separator">|</span>
-                            <span class="date">March 20, 2025</span>
-                        </div>
-                    </div>
+    <div class="article page-global">
+        <div class="section-1 container section-margin">
+            <div class="row title-row">
+                <div class="col-10 left">
+                    <h1 class="section-title">Sed ut perspiciatis unde omnis iste natus error sit voluptatem</h1>
+
+                    <p class="details">
+                        <span class="author">Written by John doe</span>
+                        <span class="line">|</span>
+                        <span class="date">March 20, 2025</span>
+                    </p>
                 </div>
-                <div class="col-1 text-end">
-                    <div class="share-icon">
-                        <i class="bi bi-share"></i>
-                    </div>
+
+                <div class="col-2 right">
+                    <i class="bi bi-share icon"></i>
                 </div>
             </div>
 
-            <div class="img">
-                <img src="{{ asset('storage/frontend/singlearticle-1.png') }}" class="card-image" alt="article-image">
-            </div>
-        </div>
+            <img src="{{ asset('storage/frontend/single-article-1.png') }}" alt="image" class="thumbnail-image">
 
-
-        <div class="section-2 container">
-            <div class="paragraph">
+            <div class="section-description">
                 <p>
                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque 
                     laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto 
@@ -46,8 +39,9 @@
                     aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit 
                     esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
                 </p>
-            </div>
-            <div class="paragraph">
+
+                <br>
+
                 <p>
                     At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti 
                     atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique 
@@ -58,9 +52,9 @@
                     repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
                     voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat
                 </p>
-            </div>
-            <div class="subsection">
-                <h5>Section 1</h5>
+
+                <br>
+
                 <p>
                     At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti 
                     atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique 
@@ -71,9 +65,9 @@
                     repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut 
                     reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
                 </p>
-            </div>
-            <div class="subsection">
-                <h5>Section 2</h5>
+
+                <br>
+
                 <p>
                     At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti 
                     atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique 
@@ -84,6 +78,9 @@
                     repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut 
                     reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
                 </p>
+
+                <br>
+
                 <p>
                     At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti 
                     atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique 
@@ -96,64 +93,45 @@
                 </p>
             </div>
         </div>
-
         
-        <div class="section-3 container">
-            <div class="title">
-                <p>Related Insights & Articles</p>
-            </div>
-            <div class="card-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-                <div class="col">
-                    <div class="card h-100 border-0">
-                        <img src="{{ asset('storage/frontend/article-1.png') }}" class="card-img-top" alt="article-image">
-                        <div class="card-body">
-                            <p class="text-muted mb-1">April 4th 2025</p>
-                            <h5 class="card-title mb-2">Sed do eiusmod tempor incididun ut labore et dolore</h5>
-                            <p class="card-text text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscin  elit, exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <p class="card-text mb-0">
-                                <a href="#" class="text-decoration-none text-dark fw-semibold">Read more</a>
-                            </p>
-                        </div>
-                    </div>
+        <div class="section-2 container">
+            <p class="section-title">Related Insights & Articles</p>
+
+            <div class="row">
+                <div class="col-4 single-article">
+                    <img src="{{ asset('storage/frontend/article-1.png') }}" alt="article-image" class="image">
+
+                    <p class="date">April 4th 2025</p>
+
+                    <p class="title">Sed do eiusmod tempor incididun ut labore et dolore</p>
+
+                    <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscin  elit, exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+
+                    <a href="{{ route('website.articles.show', 1) }}" class="read-more">Read more</a>
                 </div>
-                <div class="col">
-                    <div class="card h-100 border-0">
-                        <img src="{{ asset('storage/frontend/article-2.png') }}" class="card-img-top" alt="article-image">
-                        <div class="card-body">
-                            <p class="text-muted mb-1">April 4th 2025</p>
-                            <h5 class="card-title mb-2">Sed do eiusmod tempor incididun ut labore et dolore</h5>
-                            <p class="card-text text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscin  elit, exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <p class="card-text mb-0">
-                                <a href="#" class="text-decoration-none text-dark fw-semibold">Read more</a>
-                            </p>
-                        </div>
-                    </div>
+
+                <div class="col-4 single-article">
+                    <img src="{{ asset('storage/frontend/article-2.png') }}" alt="article-image" class="image">
+
+                    <p class="date">April 4th 2025</p>
+
+                    <p class="title">Sed do eiusmod tempor incididun ut labore et dolore</p>
+
+                    <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscin  elit, exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+
+                    <a href="{{ route('website.articles.show', 1) }}" class="read-more">Read more</a>
                 </div>
-                <div class="col">
-                    <div class="card h-100 border-0">
-                        <img src="{{ asset('storage/frontend/article-3.png') }}" class="card-img-top" alt="article-image">
-                        <div class="card-body">
-                            <p class="text-muted mb-1">April 4th 2025</p>
-                            <h5 class="card-title mb-2">Sed do eiusmod tempor incididun ut labore et dolore</h5>
-                            <p class="card-text text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscin  elit, exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <p class="card-text mb-0">
-                                <a href="#" class="text-decoration-none text-dark fw-semibold">Read more</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100 border-0">
-                        <img src="{{ asset('storage/frontend/article-4.png') }}" class="card-img-top" alt="article-image">
-                        <div class="card-body">
-                            <p class="text-muted mb-1">April 4th 2025</p>
-                            <h5 class="card-title mb-2">Sed do eiusmod tempor incididun ut labore et dolore</h5>
-                            <p class="card-text text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscin  elit, exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <p class="card-text mb-0">
-                                <a href="#" class="text-decoration-none text-dark fw-semibold">Read more</a>
-                            </p>
-                        </div>
-                    </div>
+
+                <div class="col-4 single-article">
+                    <img src="{{ asset('storage/frontend/article-3.png') }}" alt="article-image" class="image">
+
+                    <p class="date">April 4th 2025</p>
+
+                    <p class="title">Sed do eiusmod tempor incididun ut labore et dolore</p>
+
+                    <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscin  elit, exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+
+                    <a href="{{ route('website.articles.show', 1) }}" class="read-more">Read more</a>
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::segment(1) == 'warehouses' ? 'active' : '' }}" href="{{ route('website.warehouses') }}">Warehouses</a>
+                    <a class="nav-link {{ Request::segment(1) == 'warehouses' ? 'active' : '' }}" href="{{ route('website.warehouses.index') }}">Warehouses</a>
                 </li>
 
                 <li class="nav-item">

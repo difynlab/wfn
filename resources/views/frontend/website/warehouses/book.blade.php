@@ -9,7 +9,7 @@
 
 @section('content')
 
-    <div class="confirmbooking container">
+    <div class="confirmbooking">
         <div class="section-1 container">
             <p class="section-title">Confirm Booking</p>
             <p class="section-description">

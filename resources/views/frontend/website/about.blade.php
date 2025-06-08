@@ -7,433 +7,590 @@
 @endpush
 
 @section('content')
-<div class="aboutpage">
+    <div class="about page-global">
+        <div class="section-1 container section-margin">
+            <h1 class="page-title">About</h1>
+            <p class="page-description">We make storage easy and accessible with transparent pricing and flexible options.
+                Whether it’s seasonal items, business supplies, or personal belongings, we keep your things safe and secure,
+                ready for you whenever you need them.</p>
+        </div>
 
-    <div class="section-1 container">
-        <p class="title">About</p>
-        <p class="description">
-            We make storage easy and accessible with transparent pricing and flexible options.
-            Whether it’s seasonal items, business supplies, or personal belongings, we keep your things safe and secure,
-            ready for you whenever you need them.
-        </p>
-        <div class="row story-block">
-            <div class="col-md-5">
-                <img src="{{ asset('storage/frontend/about-us.png') }}" alt="Our Story">
-            </div>
-            <div class="col-md-7">
-                <h2 class="section-title">Our Story</h2>
-                <p class="section-description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.
-                </p>
-                <p class="section-description">
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-                <div class="row stats-row text-center mt-4">
-                    <div class="col-md-4 stat-box">
-                        <h3 class="text-red">2100+</h3>
-                        <p class="text-muted">Lorem ipsum</p>
+        <div class="section-2 container section-margin">
+            <div class="row our-story-row">
+                <div class="col-5 left">
+                    <img src="{{ asset('storage/frontend/about-us.png') }}" alt="Our Story" class="image">
+                </div>
+                <div class="col-7 right">
+                    <p class="section-title">Our Story</p>
+                    <div class="section-description">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                        <br>
+
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
-                    <div class="col-md-4 stat-box">
-                        <h3 class="text-red">17+</h3>
-                        <p class="text-muted">Years of Experience</p>
-                    </div>
-                    <div class="col-md-4 stat-box">
-                        <h3 class="text-red">2100+</h3>
-                        <p class="text-muted">Lorem ipsum</p>
+
+                    <div class="row stats-row">
+                        <div class="col-4 stat-box">
+                            <p class="number">2100+</p>
+                            <p class="text">Lorem ipsum</p>
+                        </div>
+                        <div class="col-4 stat-box">
+                            <p class="number">17+</p>
+                            <p class="text">Years of Experience</p>
+                        </div>
+                        <div class="col-4 stat-box">
+                            <p class="number">2100+</p>
+                            <p class="text">Lorem ipsum</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
+        <div class="section-3 section-margin">
+            <div class="container">
+                <div class="row single-row">
+                    <div class="col-6">
+                        <p class="section-title">Our Value</p>
+                        <p class="section-description">Where Your Growth Meets Opportunity</p>
+                    </div>
 
-    <div class="section-2">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-md-6">
-                    <h3 class="section-title">Our Value</h3>
-                    <p class="section-description">Where Your Growth Meets Opportunity</p>
+                    <div class="col-6">
+                        <p class="section-title">From startups to enterprises, we grow with you.</p>
+                        <p class="section-description">
+                            Every business, big or small, deserves a space that adapts and evolves.
+                            We’re here to provide flexible warehouse solutions that scale alongside your success.
+                        </p>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <h3 class="section-title">From startups to enterprises, we grow with you.</h3>
-                    <p class="section-description">
-                        Every business, big or small, deserves a space that adapts and evolves.
-                        We’re here to provide flexible warehouse solutions that scale alongside your success.
-                    </p>
+
+                <div class="row single-row">
+                    <div class="col-6">
+                        <p class="section-title">Our Mission</p>
+                        <p class="section-description">Bridging the Gap Between You and the Perfect Space</p>
+                    </div>
+
+                    <div class="col-6">
+                        <p class="section-title">We make storage accessible for all anytime.</p>
+                        <p class="section-description">
+                            Our platform makes finding the right warehouse space effortless,
+                            empowering you with the tools to manage logistics and streamline
+                            operations without the hassle anytime.
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="row mb-5">
-                <div class="col-md-6">
-                    <h3 class="section-title">Our Mission</h3>
-                    <p class="section-description">Bridging the Gap Between You and the Perfect Space</p>
-                </div>
-                <div class="col-md-6">
-                    <h3 class="section-title">We make storage accessible for all anytime.</h3>
-                    <p class="section-description">
-                        Our platform makes finding the right warehouse space effortless,
-                        empowering you with the tools to manage logistics and streamline
-                        operations without the hassle anytime.
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <h3 class="section-title">Our Vision</h3>
-                    <p class="section-description">Empowering Businesses to Thrive in a Boundless Future</p>
-                </div>
-                <div class="col-md-6">
-                    <h3 class="section-title">Every business deserves the space to thrive.</h3>
-                    <p class="section-description">
-                        We believe in breaking down barriers to growth. Our vision is to provide
-                        every business, no matter its size, with the warehouse space it needs to
-                        reach new heights.
-                    </p>
+
+                <div class="row single-row">
+                    <div class="col-6">
+                        <p class="section-title">Our Vision</p>
+                        <p class="section-description">Empowering Businesses to Thrive in a Boundless Future</p>
+                    </div>
+
+                    <div class="col-6">
+                        <p class="section-title">Every business deserves the space to thrive.</p>
+                        <p class="section-description">
+                            We believe in breaking down barriers to growth. Our vision is to provide
+                            every business, no matter its size, with the warehouse space it needs to
+                            reach new heights.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
+        <div class="section-4 container section-margin">
+            <div class="row exchange-row">
+                <div class="col-6 left">
+                    <p class="section-title">Who Can Use Warehouse Exchange?</p>
+                    <div class="section-description">
+                        <p>
+                            Our Warehouse Exchange lets you easily access a variety of spaces,
+                            whether you’re a business in need of inventory storage, or someone
+                            seeking a safe place for personal belongings. With options to rent,
+                            exchange, or share warehouse spaces, you can quickly find the perfect
+                            match that meets your specific needs.
+                        </p>
 
-    <div class="section-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2 class="section-title">Who Can Use Warehouse Exchange?</h2>
-                    <p class="section-description">
-                        Our Warehouse Exchange lets you easily access a variety of spaces,
-                        whether you’re a business in need of inventory storage, or someone
-                        seeking a safe place for personal belongings. With options to rent,
-                        exchange, or share warehouse spaces, you can quickly find the perfect
-                        match that meets your specific needs.
-                    </p>
-                    <p class="section-description">
-                        Whether it’s for short-term business storage, long-term personal use, or
-                        anything in between, our platform is designed to make warehouse
-                        exchanges seamless and hassle-free.
-                    </p>
-                    <a href="#" class="learn-more-btn">Learn More</a>
+                        <br>
+
+                        <p>
+                            Whether it’s for short-term business storage, long-term personal use, or
+                            anything in between, our platform is designed to make warehouse
+                            exchanges seamless and hassle-free.
+                        </p>
+                    </div>
+
+                    <a href="{{ route('website.warehouses.index') }}" class="learn-more-btn">Learn More</a>
                 </div>
-                <div class="col-md-6">
+
+                <div class="col-6 right">
                     <div class="exchange-box">
                         <div class="box-header">
                             <i class="bi bi-briefcase icon"></i>
-                            <span class="label">Business Storages</span>
+                            <p class="text">Business Storages</p>
                         </div>
-                        <img src="{{ asset('storage/frontend/business-storage.png') }}" alt="Business Storage">
+
+                        <img src="{{ asset('storage/frontend/business-storage.png') }}" alt="Business Storage" class="image">
                     </div>
+
                     <div class="exchange-box">
                         <div class="box-header">
                             <i class="bi bi-person icon"></i>
-                            <span class="label">Personal Storages</span>
+                            <p class="text">Personal Storages</p>
                         </div>
-                        <img src="{{ asset('storage/frontend/personal-storage.png') }}" alt="Personal Storage">
+
+                        <img src="{{ asset('storage/frontend/personal-storage.png') }}" alt="Personal Storage" class="image">
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-
-    <div class="section-4 container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="video-box">
-                    <img src="{{ asset('storage/frontend/video-placeholder.png') }}" alt="Video Coming Soon">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <h2 class="section-title">How the Procedure Works?</h2>
-                <p class="section-description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-                <div class="procedure-steps">
-                    <div class="row mb-3">
-                        <div class="col-auto">
-                            <span class="step-number">1</span>
-                        </div>
-                        <div class="col">
-                            <span>Register</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-auto">
-                            <span class="step-number">2</span>
-                        </div>
-                        <div class="col">
-                            <span>Search for Space</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-auto">
-                            <span class="step-number">3</span>
-                        </div>
-                        <div class="col">
-                            <span>Receive Quotes</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-auto">
-                            <span class="step-number">4</span>
-                        </div>
-                        <div class="col">
-                            <span>Make Payment</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-auto">
-                            <span class="step-number">5</span>
-                        </div>
-                        <div class="col">
-                            <span>Space is Yours</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
-    <div class="section-5">
-        <div class="container">
-            <h2 class="section-title">Lorem ipsum</h2>
-            <div class="row gx-5 gy-4">
-                <div class="col-4">
-                    <h4 class="section-description">Lorem ipsum</h4>
-                    <p class="section-paragraph">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua.
-                    </p>
-                </div>
-                <div class="col-4">
-                    <h4 class="section-description">Lorem ipsum</h4>
-                    <p class="section-paragraph">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua.
-                    </p>
-                </div>
-                <div class="col-4">
-                    <h4 class="section-description">Lorem ipsum</h4>
-                    <p class="section-paragraph">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua.
-                    </p>
-                </div>
-                <div class="col-4">
-                    <h4 class="section-description">Lorem ipsum</h4>
-                    <p class="section-paragraph">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua.
-                    </p>
-                </div>
-                <div class="col-4">
-                    <h4 class="section-description">Lorem ipsum</h4>
-                    <p class="section-paragraph">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua.
-                    </p>
-                </div>
-                <div class="col-4">
-                    <h4 class="section-description">Lorem ipsum</h4>
-                    <p class="section-paragraph">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="section-6 py-5">
-        <div class="container">
+        <div class="section-5 container section-margin">
             <div class="row">
-                <div class="col-md-6">
-                    <h2 class="section-title">A Note from the Founders</h2>
-                    <p class="section-description">
-                        “We started with a simple idea – to provide businesses of all sizes with flexible, scalable warehouse solutions that grow with them. 
-                        We know firsthand the challenges of finding the right space, and our mission is to make that process seamless, efficient, and tailored to your needs.”
-                    </p>
-                    <p class="section-description">
-                        We believe every business, whether it’s just starting or scaling, deserves a space where it can thrive. Our team is committed to your success, 
-                        and we’re excited to be part of your journey. Let’s build something great together.”
-                    </p>
-                    <p class="founder-signature">— The Founders Team</p>
+                <div class="col-6 left video-box">
+                    <img src="{{ asset('storage/frontend/video-placeholder.png') }}" alt="Video Coming Soon" class="image">
+
+                    <!-- <video src="" class="video"></video> -->
                 </div>
-                <div class="col-md-6 text-center">
-                    <img src="{{ asset('storage/frontend/founders-image.png') }}" alt="Founders">
+
+                <div class="col-6 right">
+                    <p class="section-title">How the Procedure Works?</p>
+                    <p class="section-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+
+                    <div class="steps">
+                        <div class="row single-row">
+                            <div class="col-2 single-row-left">
+                                <p class="number">1</p>
+                            </div>
+
+                            <div class="col-10 single-row-right">
+                                <p class="title">Register</p>
+                                <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </div>
+
+                        <div class="row single-row">
+                            <div class="col-2 single-row-left">
+                                <p class="number">2</p>
+                            </div>
+
+                            <div class="col-10 single-row-right">
+                                <p class="title">Search for Space</p>
+                                <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </div>
+
+                        <div class="row single-row">
+                            <div class="col-2 single-row-left">
+                                <p class="number">3</p>
+                            </div>
+
+                            <div class="col-10 single-row-right">
+                                <p class="title">Receive Quotes</p>
+                                <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </div>
+
+                        <div class="row single-row">
+                            <div class="col-2 single-row-left">
+                                <p class="number">4</p>
+                            </div>
+
+                            <div class="col-10 single-row-right">
+                                <p class="title">Make Payment</p>
+                                <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </div>
+
+                        <div class="row single-row">
+                            <div class="col-2 single-row-left">
+                                <p class="number">5</p>
+                            </div>
+
+                            <div class="col-10 single-row-right">
+                                <p class="title">Space is Yours</p>
+                                <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        
+        <div class="section-6 section-margin">
+            <div class="container">
+                <p class="section-title">Lorem ipsum</p>
+                
+                <div class="row">
+                    <div class="col-4 single-column">
+                        <p class="section-description">Lorem ipsum</p>
+                        <p class="content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
 
+                    <div class="col-4 single-column">
+                        <p class="section-description">Lorem ipsum</p>
+                        <p class="content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
 
-    <div class="section-7">
-        <div class="container">
-            <div class="form-wrapper">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <h2 class="form-title">
-                            Instant Access to Transparent<br>
-                            Storage Pricing – Right in Your Inbox Now!
-                        </h2>
-                        <p class="form-subtitle">
-                            Enter your details to receive a straightforward storage price list sent straight to you!
+                    <div class="col-4 single-column">
+                        <p class="section-description">Lorem ipsum</p>
+                        <p class="content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
+
+                    <div class="col-4 single-column">
+                        <p class="section-description">Lorem ipsum</p>
+                        <p class="content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
+
+                    <div class="col-4 single-column">
+                        <p class="section-description">Lorem ipsum</p>
+                        <p class="content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
+
+                    <div class="col-4 single-column">
+                        <p class="section-description">Lorem ipsum</p>
+                        <p class="content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-7 container section-margin">
+            <div class="row founders-row">
+                <div class="col-6 left">
+                    <p class="section-title">A Note from the Founders</p>
+                    <div class="section-description">
+                        <p>
+                            “We started with a simple idea – to provide businesses of all sizes with flexible, scalable warehouse solutions that grow with them. 
+                            We know firsthand the challenges of finding the right space, and our mission is to make that process seamless, efficient, and tailored to your needs.”
                         </p>
 
-                        <form class="pricing-form">
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" id="name" class="form-control" placeholder="Please enter your name">
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" id="email" class="form-control" placeholder="Ex: johnmercury@gmail.com">
-                            </div>
-                            <div class="form-check mb-4">
-                                <input class="form-check-input" type="checkbox" id="terms">
-                                <label class="form-check-label" for="terms">
-                                    I have read and agree to the Terms and Conditions of the platform.
-                                </label>
-                            </div>
-                            <button type="submit" class="submit-btn">Submit Now</button>
-                        </form>
+                        <br>
+
+                        <p>
+                            We believe every business, whether it’s just starting or scaling, deserves a space where it can thrive. Our team is committed to your success, 
+                            and we’re excited to be part of your journey. Let’s build something great together.”
+                        </p>
                     </div>
-                    <div class="col-md-6 text-center">
-                        <div class="video-placeholder">
-                            <img src="{{ asset('storage/frontend/video-placeholder.png') }}" alt="Video Coming Soon" class="img-fluid rounded">
-                        </div>
-                    </div>
+                    
+                    <p class="signature">— The Founders Team</p>
+                </div>
+
+                <div class="col-6 right">
+                    <img src="{{ asset('storage/frontend/founders-image.png') }}" alt="Founders" class="image">
                 </div>
             </div>
         </div>
-    </div>
 
+        <div class="section-8 container section-margin">
+            <div class="row form-row">
+                <div class="col-6">
+                    <p class="section-title">Instant Access to Transparent Storage Pricing – Right in Your Inbox Now!
+                    </p>
+                    <p class="section-description">
+                        Enter your details to receive a straightforward storage price list sent straight to you!
+                    </p>
 
-    <div class="section-8">
-        <div class="container text-center">
-            <h2 class="section-title">Trusted by Many, See What Our Customers Think</h2>
+                    <form action="" method="POST">
+                        <div class="mb-4">
+                            <label for="name" class="form-label label">Name</label>
+                            <input type="text" class="form-control input-field" id="name" name="name" placeholder="Please enter your name" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="email" class="form-label label">Email</label>
+                            <input type="email" class="form-control input-field" id="email" name="email" placeholder="Ex: johnmercury@gmail.com" required>
+                        </div>
+
+                        <div class="form-check d-flex align-items-center mb-4">
+                            <input type="checkbox" class="form-check-input checkbox" id="terms">
+                            <label class="form-check-label terms" for="terms">I have read and agree to the Terms and Conditions of the platform.</label>
+                        </div>
+
+                        <button type="submit" class="submit-button">Submit Now</button>
+                    </form>
+                </div>
+
+                <div class="col-6">
+                    <img src="{{ asset('storage/frontend/video-placeholder.png') }}" alt="Video Coming Soon" class="image">
+
+                    <!-- <video src="" class="video"></video> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="section-9 container section-margin">
+            <p class="section-title">Trusted by Many, See What Our Customers Think</p>
             <p class="section-description">
                 See why our customers love us! Feedback from those who trust us with their business needs.
             </p>
-            <div class="row justify-content-center mt-5">
-                <div class="col-6">
-                    <div class="testimonial-card d-flex flex-wrap rounded">
-                        <div class="testimonial-content p-4 col-6">
-                            <div class="stars mb-2">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial-row">
+                            <div class="left">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+
+                                <p class="content">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+
+                                <p class="author">
+                                    <span class="name">Danial Mark</span>
+                                    <span class="line">|</span>
+                                    <span class="designation">Marketing Coordinator</span>
+                                </p>
                             </div>
-                            <p class="testimonial-text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </p>
-                            <p class="testimonial-author mt-3">
-                                <strong>Danial Mark</strong> <span class="role">| Marketing Coordinator</span>
-                            </p>
-                        </div>
-                        <div class="testimonial-image col-6 p-0">
-                            <img src="{{ asset('storage/frontend/testimonial-1.png') }}" alt="Customer 1">
+
+                            <div class="right">
+                                <img src="{{ asset('storage/frontend/testimonial-1.png') }}" alt="Image" class="image">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="testimonial-card d-flex flex-wrap rounded">
-                        <div class="testimonial-content p-4 col-6">
-                            <div class="stars mb-2">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-row">
+                            <div class="left">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+
+                                <p class="content">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+
+                                <p class="author">
+                                    <span class="name">Danial Mark</span>
+                                    <span class="line">|</span>
+                                    <span class="designation">Marketing Coordinator</span>
+                                </p>
                             </div>
-                            <p class="testimonial-text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </p>
-                            <p class="testimonial-author mt-3">
-                                <strong>Danial Mark</strong> <span class="role">| Marketing Coordinator</span>
-                            </p>
+
+                            <div class="right">
+                                <img src="{{ asset('storage/frontend/testimonial-2.png') }}" alt="Image" class="image">
+                            </div>
                         </div>
-                        <div class="testimonial-image col-6 p-0">
-                            <img src="{{ asset('storage/frontend/testimonial-2.png') }}" alt="Customer 2">
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-row">
+                            <div class="left">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+
+                                <p class="content">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+
+                                <p class="author">
+                                    <span class="name">Danial Mark</span>
+                                    <span class="line">|</span>
+                                    <span class="designation">Marketing Coordinator</span>
+                                </p>
+                            </div>
+
+                            <div class="right">
+                                <img src="{{ asset('storage/frontend/testimonial-1.png') }}" alt="Image" class="image">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-row">
+                            <div class="left">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+
+                                <p class="content">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+
+                                <p class="author">
+                                    <span class="name">Danial Mark</span>
+                                    <span class="line">|</span>
+                                    <span class="designation">Marketing Coordinator</span>
+                                </p>
+                            </div>
+
+                            <div class="right">
+                                <img src="{{ asset('storage/frontend/testimonial-2.png') }}" alt="Image" class="image">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-row">
+                            <div class="left">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+
+                                <p class="content">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+
+                                <p class="author">
+                                    <span class="name">Danial Mark</span>
+                                    <span class="line">|</span>
+                                    <span class="designation">Marketing Coordinator</span>
+                                </p>
+                            </div>
+
+                            <div class="right">
+                                <img src="{{ asset('storage/frontend/testimonial-1.png') }}" alt="Image" class="image">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-row">
+                            <div class="left">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+
+                                <p class="content">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+
+                                <p class="author">
+                                    <span class="name">Danial Mark</span>
+                                    <span class="line">|</span>
+                                    <span class="designation">Marketing Coordinator</span>
+                                </p>
+                            </div>
+
+                            <div class="right">
+                                <img src="{{ asset('storage/frontend/testimonial-2.png') }}" alt="Image" class="image">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="testimonial-dots mt-4">
-                <span class="dot"></span>
-                <span class="dot active"></span>
-                <span class="dot"></span>
-            </div>
+
+            <div class="swiper-pagination"></div>
         </div>
-    </div>
 
-
-    <div class="section-9">
-        <img src="{{ asset('storage/frontend/network-bg.png') }}" alt="Network Background" class="network-bg-img">
-        <div class="overlay-content container text-center">
-            <h2 class="network-text">
+        <div class="section-10 section-margin">
+            <p class="text">
                 A network that provides smooth access to and from every<br>
                 corner of the world, anytime.
-            </h2>
+            </p>
         </div>
-    </div>
 
-
-    <div class="section-10">
-        <div class="container">
+        <div class="section-11 container">
             <div class="row">
-                <div class="col-md-6 mb-4">
-                    <h3 class="section-title">Have questions?</h3>
+                <div class="col-6">
+                    <p class="section-title">Have questions?</p>
                     <p class="section-description">
                         We’ve compiled answers to the most common inquiries.<br>
                         Browse through our FAQs for quick and easy information.<br>
                         If you need further assistance, feel free to reach out!
                     </p>
                 </div>
-                <div class="col-md-6">
+
+                <div class="col-6">
                     <div class="accordion" id="faqAccordion">
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="faqOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <i class="bi bi-dash text-red me-2"></i> Lorem ipsum dolor sit amet consectetur?
+                            <p class="accordion-header" id="faqOne">
+                                <button class="accordion-button button-active" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <span class="symbol">
+                                        <i class="bi bi-dash active"></i>
+                                    </span>
+                                    Lorem ipsum dolor sit amet consectetur?
                                 </button>
-                            </h2>
+                            </p>
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="faqOne" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-muted">
+                                <div class="accordion-body">
+                                    <span class="symbol"></span>
+
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
                                 </div>
                             </div>
                         </div>
+
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="faqTwo">
+                            <p class="accordion-header" id="faqTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <i class="bi bi-plus-lg text-muted me-2"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit?
+                                    <span class="symbol">
+                                        <i class="bi bi-plus"></i>
+                                    </span>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit?
                                 </button>
-                            </h2>
+                            </p>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="faqTwo" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-muted">
+                                <div class="accordion-body">
+                                    <span class="symbol"></span>
+
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
                                 </div>
                             </div>
                         </div>
+
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="faqThree">
+                            <p class="accordion-header" id="faqThree">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    <i class="bi bi-plus-lg text-muted me-2"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit?
+                                    <span class="symbol">
+                                        <i class="bi bi-plus"></i>
+                                    </span>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit?
                                 </button>
-                            </h2>
+                            </p>
                             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="faqThree" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-muted">
+                                <div class="accordion-body">
+                                    <span class="symbol"></span>
+
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
                                 </div>
                             </div>
@@ -443,8 +600,30 @@
             </div>
         </div>
     </div>
-
-
-
-</div>
 @endsection
+
+@push('after-scripts')
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
+
+    <script>
+        $('.section-11 .accordion .accordion-button').on('click', function() {
+            $('.section-11 .accordion .accordion-button').each(function(){
+                $(this).removeClass('button-active');
+                $(this).find('.symbol').html('<i class="bi bi-plus"></i>');
+            });
+
+            $(this).addClass('button-active');
+            $(this).find('.symbol').html('<i class="bi bi-dash active"></i>');
+        });
+    </script>
+@endpush

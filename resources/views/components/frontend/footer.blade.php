@@ -17,7 +17,7 @@
                         </li>
 
                         <li>
-                            <a href="{{ route('website.warehouses') }}">Warehouses</a>
+                            <a href="{{ route('website.warehouses.index') }}">Warehouses</a>
                         </li>
                     </ul>
                 </div>
@@ -26,7 +26,7 @@
                     <p class="title">Support</p>
                     <ul>
                         <li>
-                            <a href="/faq">FAQ</a>
+                            <a href="{{ route('website.articles.index') }}">Articles</a>
                         </li>
 
                         <li>

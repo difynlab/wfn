@@ -407,7 +407,7 @@
                     </div>
                 </div>
                 <div class="text-center mt-4">
-                    <button class="confirm-btn">Confirm Booking</button>
+                    <a href="{{ route('website.warehouses.book', 1) }}" class="confirm-btn">Confirm Booking</a>
                 </div>
             </div>
         </div>

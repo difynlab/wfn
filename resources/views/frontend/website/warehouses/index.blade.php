@@ -78,19 +78,21 @@
             <div class="row">
                 <div class="col-7">
                     <div class="card">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="badge">New</div>
-                                <img src="{{ asset('storage/frontend/warehouses-1.png') }}" class="card-image" alt="Warehouse">
+                        <a href="{{ route('website.warehouses.show', 1) }}">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="badge">New</div>
+                                    <img src="{{ asset('storage/frontend/warehouses-1.png') }}" class="card-image" alt="Warehouse">
+                                </div>
+                                <div class="col-8">
+                                    <p class="type">Warehouse Type</p>
+                                    <p class="price red">Unlock Pricing <i class="bi bi-lock-fill text-danger"></i></p>
+                                    <p class="description-bold">Riyadh Logistics Hub</p>
+                                    <p class="description-text">Orem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consect tur Lorem ipsum dolor sit amt onsectetu.</p>
+                                    <p class="location"><i class="bi bi-geo-alt"></i>Al Quds St., Riyadh</p>
+                                </div>
                             </div>
-                            <div class="col-8">
-                                <p class="type">Warehouse Type</p>
-                                <p class="price red">Unlock Pricing <i class="bi bi-lock-fill text-danger"></i></p>
-                                <p class="description-bold">Riyadh Logistics Hub</p>
-                                <p class="description-text">Orem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consect tur Lorem ipsum dolor sit amt onsectetu.</p>
-                                <p class="location"><i class="bi bi-geo-alt"></i>Al Quds St., Riyadh</p>
-                            </div>
-                        </div>
+                        </a>
                         <div class="bottom-box">
                             <div class="row">
                                 <div class="col-6">

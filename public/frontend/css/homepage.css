@@ -1,16 +1,4 @@
 /* Global */
-    .homepage .section-title {
-        font-size: 32px;
-        font-weight: 500;
-        color: var(--light_black);
-        padding-bottom: 8px;
-    }
-    .homepage .section-description {
-        font-size: 17px;
-        color: var(--gray);
-        padding-bottom: 30px;
-    }
-
     .footer {
         margin-top: 0;
     }
@@ -101,137 +89,136 @@
     .homepage .search-inputs .search-btn i {
         margin-right: 5px;
     }
-    .homepage .search-inputs .search-item .start-date .dropdown-inner {
-        border: 1px solid var(--input_border);
-        border-radius: 16px;
-        margin: 0 40px;
-        padding: 10px;
-        background-color: #FDFDFD;
-    }
-    .homepage .search-inputs .search-item .start-date .calendar-dropdown {
-        width: 900px;
-        max-width: 90vw;
-        left: 2% !important;
-        transform: translateX(-28%) translateY(29px) !important;
-        border-radius: 16px;
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
-        border: none;
-        border-radius: 5px 5px 32px 32px;
-        background-color: var(--white);
-        box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
-        padding: 20px;
-    }
-    .homepage .search-inputs .search-item .end-date .dropdown-inner {
-        border: 1px solid var(--input_border);
-        border-radius: 16px;
-        margin: 0 40px;
-        padding: 10px;
-        background-color: #FDFDFD;
-    }
-    .homepage .search-inputs .search-item .end-date .calendar-dropdown {
-        width: 900px;
-        max-width: 90vw;
-        left: 17% !important;
-        transform: translateX(-55%) translateY(29px) !important;
-        border-radius: 16px;
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
-        border: none;
-        border-radius: 5px 5px 32px 32px;
-        background-color: var(--white);
-        box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
-        padding: 20px;
-    }
-    .homepage .search-inputs .search-item .dropdown-inner .calendar-wrapper{
-        display: flex;
-        gap: 40px;
-    }
-    .homepage .search-inputs .search-item .dropdown-inner .calendar-month {
-        width: 300px;
-    }
-    .homepage .search-inputs .search-item .dropdown-inner .calendar-header {
-        font-size: 16px;
-        font-weight: bold;
-        margin-bottom: 10px;
-        text-align: left;
-    }
-    .homepage .search-inputs .search-item .dropdown-inner .calendar-grid {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        gap: 5px;
-        font-size: 14px;
-        text-align: center;
-    }
-    .homepage .search-inputs .search-item .dropdown-inner .calendar-day {
-        padding: 10px 0;
-        cursor: pointer;
-        border-radius: 50%;
-        &:hover{
-            background-color: #f0f0f0;
+    /* Ifham */
+        .homepage .search-inputs .search-item .start-date .dropdown-inner {
+            border: 1px solid var(--input_border);
+            border-radius: 16px;
+            margin: 0 40px;
+            padding: 10px;
+            background-color: #FDFDFD;
         }
-    }
-    .homepage .search-inputs .search-item .dropdown-inner .calendar-day.selected {
-        background-color: #c00;
-        color: white;
-    }
-    .homepage .search-inputs .search-item .warehouse-dropdown {
-        width: 900px;
-        max-width: 90vw;
-        left: 50% !important;
-        transform: translateX(-80%) translateY(29px) !important;
-        border: none;
-        border-radius: 5px 5px 32px 32px;
-        background-color: var(--white);
-        box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
-        padding: 20px;
-    }
-    .homepage .warehouse-dropdown .dropdown-inner {
-        border: 1px solid var(--input_border);
-        border-radius: 16px;
-        margin: 0 40px;
-        padding: 10px;
-        background-color: #FDFDFD;
-    }
-    .homepage .search-inputs .search-item .warehouse-dropdown .dropdown-title {
-        font-size: 14px;
-        color: var(--light_black);
-        margin-bottom: 10px;
-    }
-    .homepage .search-inputs .search-item .warehouse-dropdown .dropdown-row {
-        padding: 0 5px;
-    }
-    .homepage .search-inputs .search-item .warehouse-dropdown .form-check{
-        align-items: center;
-    }
-    .homepage .search-inputs .search-item .warehouse-dropdown .form-check-label {
-        font-size: 12px;
-        color: var(--gray);
-    }
-    .homepage .search-inputs .search-item .warehouse-dropdown .form-check-input {
-        margin-right: 10px;
-    }
-    .homepage .search-inputs .search-item .warehouse-dropdown .dropdown-divider{
-        border-top: 1px solid var(--input_border);
-        margin: 15px 0;
-    }
-    .homepage .search-inputs .search-item .warehouse-dropdown .clear-filter-button {
-        background: none;
-        border: none;
-        color: var(--red);
-        font-size: 12px;
-        font-weight: 500;
-        text-align: right;
-        cursor: pointer;
-        &:hover {
-            color: var(--black);
+        .homepage .search-inputs .search-item .start-date .calendar-dropdown {
+            width: 900px;
+            max-width: 90vw;
+            left: 2% !important;
+            transform: translateX(-28%) translateY(29px) !important;
+            border-radius: 16px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            border: none;
+            border-radius: 5px 5px 32px 32px;
+            background-color: var(--white);
+            box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
+            padding: 20px;
         }
-    }
+        .homepage .search-inputs .search-item .end-date .dropdown-inner {
+            border: 1px solid var(--input_border);
+            border-radius: 16px;
+            margin: 0 40px;
+            padding: 10px;
+            background-color: #FDFDFD;
+        }
+        .homepage .search-inputs .search-item .end-date .calendar-dropdown {
+            width: 900px;
+            max-width: 90vw;
+            left: 17% !important;
+            transform: translateX(-55%) translateY(29px) !important;
+            border-radius: 16px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            border: none;
+            border-radius: 5px 5px 32px 32px;
+            background-color: var(--white);
+            box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+        .homepage .search-inputs .search-item .dropdown-inner .calendar-wrapper{
+            display: flex;
+            gap: 40px;
+        }
+        .homepage .search-inputs .search-item .dropdown-inner .calendar-month {
+            width: 300px;
+        }
+        .homepage .search-inputs .search-item .dropdown-inner .calendar-header {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .homepage .search-inputs .search-item .dropdown-inner .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .homepage .search-inputs .search-item .dropdown-inner .calendar-day {
+            padding: 10px 0;
+            cursor: pointer;
+            border-radius: 50%;
+            &:hover{
+                background-color: #f0f0f0;
+            }
+        }
+        .homepage .search-inputs .search-item .dropdown-inner .calendar-day.selected {
+            background-color: #c00;
+            color: white;
+        }
+        .homepage .search-inputs .search-item .warehouse-dropdown {
+            width: 900px;
+            max-width: 90vw;
+            left: 50% !important;
+            transform: translateX(-80%) translateY(29px) !important;
+            border: none;
+            border-radius: 5px 5px 32px 32px;
+            background-color: var(--white);
+            box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+        .homepage .warehouse-dropdown .dropdown-inner {
+            border: 1px solid var(--input_border);
+            border-radius: 16px;
+            margin: 0 40px;
+            padding: 10px;
+            background-color: #FDFDFD;
+        }
+        .homepage .search-inputs .search-item .warehouse-dropdown .dropdown-title {
+            font-size: 14px;
+            color: var(--light_black);
+            margin-bottom: 10px;
+        }
+        .homepage .search-inputs .search-item .warehouse-dropdown .dropdown-row {
+            padding: 0 5px;
+        }
+        .homepage .search-inputs .search-item .warehouse-dropdown .form-check{
+            align-items: center;
+        }
+        .homepage .search-inputs .search-item .warehouse-dropdown .form-check-label {
+            font-size: 12px;
+            color: var(--gray);
+        }
+        .homepage .search-inputs .search-item .warehouse-dropdown .form-check-input {
+            margin-right: 10px;
+        }
+        .homepage .search-inputs .search-item .warehouse-dropdown .dropdown-divider{
+            border-top: 1px solid var(--input_border);
+            margin: 15px 0;
+        }
+        .homepage .search-inputs .search-item .warehouse-dropdown .clear-filter-button {
+            background: none;
+            border: none;
+            color: var(--red);
+            font-size: 12px;
+            font-weight: 500;
+            text-align: right;
+            cursor: pointer;
+            &:hover {
+                color: var(--black);
+            }
+        }
+    /* Ifham */
 /* Section 1 */
 
 
 /* Section 2 */
-    .homepage .section-2 {
-        margin-bottom: 50px;
-    }
     .homepage .section-2 .nav-pills {
         border-bottom: 1px solid var(--input_border);
         margin-bottom: 25px;
@@ -305,9 +292,6 @@
 
 
 /* Section 3 */
-    .homepage .section-3 {
-        margin-bottom: 30px;
-    }
     .homepage .section-3 .card {
         border-radius: 4px;
         padding: 15px;
@@ -346,7 +330,6 @@
         background-image: url('/storage/frontend/homepage-coming-soon.png');
         background-size: contain;
         padding-top: 60px;
-        margin-bottom: 50px;
     }
     .homepage .section-4 .section-4-row {
         align-items: center;
@@ -407,9 +390,6 @@
 
 
 /* Section 5 */
-    .homepage .section-5 {
-        margin-bottom: 50px;
-    }
     .homepage .section-5 .view-more-button {
         border: 1px solid var(--red);
         color: var(--red);
