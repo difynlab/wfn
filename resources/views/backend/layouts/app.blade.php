@@ -17,10 +17,15 @@
     </head>
 
     <body>
+        <x-backend.header></x-backend.header>
 
-        <x-backend.sidebar></x-backend.sidebar>
-        
-        @yield('content')
+        <div class="wrapper">
+            <x-backend.sidebar></x-backend.sidebar>
+
+            <div class="content">
+                @yield('content')
+            </div>
+        </div>
     
         @stack('before-scripts')
             <script src="{{ asset('backend/js/jquery.js') }}"></script>

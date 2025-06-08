@@ -1,0 +1,81 @@
+.wrapper .sidebar {
+    position: fixed;
+    z-index: 9999;
+    background-color: var(--white);
+    height: 100vh;
+    width: 270px;
+}
+.wrapper .sidebar .main-menu {
+    padding: 0;
+    margin: 10px 0;
+    list-style-type: none;
+}
+.wrapper .sidebar .main-menu .link {
+    display: flex;
+    align-items: center;
+}
+.wrapper .sidebar .main-menu .link .box {
+    width: 10px;
+    background-color: var(--white);
+    height: 60px;
+    margin-right: 25px;
+}
+.wrapper .sidebar hr {
+    margin: 0;
+    border: 1px solid #cccccc;
+}
+.wrapper .sidebar .main-menu .link a {
+    color: var(--black);
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    transition: all 0.3s;
+    &:hover {
+        color: var(--white);
+        transition: all 0.3s;
+    };
+    &:hover > .box {
+        background-color: #DC291E;
+        transition: all 0.3s;
+    };
+    &:hover > .actual-link {
+        background-color: #DC291E;
+        border-radius: 4px;
+        transition: all 0.3s;
+    };
+    &:hover > .actual-link .log-out {
+        color: var(--white)!important;
+        transition: all 0.3s;
+    };
+}
+.wrapper .sidebar .main-menu .link a.active {
+    color: var(--white);
+}
+.wrapper .sidebar .main-menu .link a.active .box {
+    background-color: #DC291E;
+}
+.wrapper .sidebar .main-menu .link a.active .actual-link {
+    background-color: #DC291E;
+    border-radius: 4px;
+}
+.wrapper .sidebar .main-menu .link .actual-link  {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    width: 75%;
+}
+.wrapper .sidebar .main-menu .link:last-child {
+    margin-bottom: 0;
+}
+.wrapper .sidebar .main-menu .link a i {
+    font-size: 20px;
+    padding-right: 15px;
+}
+.wrapper .sidebar .main-menu .link .log-out {
+    border: none;
+    background-color: transparent;
+    font-weight: 500;
+    padding: 0;
+}
