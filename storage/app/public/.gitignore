@@ -1,10 +1,18 @@
+# Ignore everything
 *
-# Include everything in the frontend folder
+
+# Keep .gitignore
+!.gitignore
+
+# Include frontend (optional if needed)
 !/frontend/
 !/frontend/**
 
+# Unignore backend folder so Git sees it
 !/backend/
-!/backend/global
-!/backend/sidebar
 
-!.gitignore
+# Unignore only specific sub folders
+!/backend/global/
+!/backend/global/**
+!/backend/sidebar/
+!/backend/sidebar/**
