@@ -1,0 +1,25 @@
+/* Section 2 */
+    .terms-of-use .section-2 .nav-row {
+        margin-bottom: 25px;
+    }
+    .terms-of-use .section-2 .nav-row .nav-pills {
+        justify-content: space-between;
+    }
+    .terms-of-use .section-2 .nav-pills .nav-item .nav-link {
+        font-size: 17px;
+        padding: 0;
+        padding-bottom: 10px;
+        color: var(--gray);
+        border-radius: 0;
+    }
+    .terms-of-use .section-2 .nav-pills .nav-item .nav-link.active {
+        background-color: transparent;
+        font-weight: 500;
+        color: var(--light_black);
+        border-bottom: 2px solid var(--red);
+    }
+    .terms-of-use .section-2 .content, .terms-of-use .section-2 .content p {
+        font-size: 17px;
+        color: var(--gray);
+    }
+/* Section 2 */

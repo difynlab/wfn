@@ -1,0 +1,317 @@
+/* Global */
+    .confirmbooking .section-title {
+        font-size: 32px;
+        font-weight: 600;
+        text-align: center;
+        color: var(--light_black);
+        padding-bottom: 8px;
+        margin-top: 50px;
+    }
+    .confirmbooking .section-description {
+        font-size: 16px;
+        text-align: center;
+        color: var(--gray);
+        padding-bottom: 30px;
+    }
+/* Global */
+
+
+
+/* Section 01 */
+    .confirmbooking .section-1 .row .col-6 .left-card {
+        background-color: var(--low_gray);
+        border: 2px solid var(--input_border);
+        border-radius: 8px;
+        margin-bottom: 20px;
+        padding: 20px;
+        padding-right: 0;
+    }
+    .confirmbooking .section-1 .row .col-6 .left-card .property-info .property-image {
+        width: 90px;
+        height: 90px;
+        border-radius: 4px;
+        object-fit: cover;
+    }
+    .confirmbooking .section-1 .row .col-6 .left-card .property-info .property-title {
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--light_black);
+        margin-bottom: 4px;
+    }
+    .confirmbooking .section-1 .row .col-6 .left-card .property-info .property-subtitle {
+        font-size: 14px;
+        color: var(--gray);
+        margin-bottom: 6px;
+    }
+    .confirmbooking .section-1 .row .col-6 .left-card .property-info .rating {
+        align-items: center;
+    }
+    .confirmbooking .section-1 .row .col-6 .left-card .property-info .rating .rating-value {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--light_black);
+        margin-right: 4px;
+    }
+    .confirmbooking .section-1 .row .col-6 .left-card .property-info .rating .rating-count {
+        font-size: 12px;
+        color: var(--medium_gray);
+    }
+    .confirmbooking .section-1 .row .col-6 .left-card .price-details .price-title {
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--light_black);
+        margin-top: 20px;
+    }
+    .confirmbooking .section-1 .row .col-6 .left-card .price-details .row{
+        margin-top: 9px;
+    }
+    .confirmbooking .section-1 .row .col-6 .left-card .price-details .price {
+        font-size: 16px;
+        color: var(--light_black);
+    }
+    .confirmbooking .section-1 .row .col-6 .left-card .price-details .total {
+        border-top: 2px solid var(--input_border);
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+    .confirmbooking .section-1 .row .col-6 .left-card .booking-title {
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--light_black);
+        margin-bottom: 15px;
+    }
+    .confirmbooking .section-1 .row .col-6 .left-card .row {
+        margin-top: 20px;
+    }
+    .confirmbooking .section-1 .row .col-6 .left-card .short-border {
+        width: 95%;
+        margin-top: 10px;
+        border-top: 2px solid var(--input_border);
+    }
+    .confirmbooking .section-1 .row .col-6 .left-card .row .label {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--gray);
+        margin-bottom: 2px;
+    }
+    .confirmbooking .section-1 .row .col-6 .left-card .row .value {
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--light_black);
+    }
+    .confirmbooking .section-1 .row .col-6 .left-card .row .edit {
+        font-size: 16px;
+        color: var(--light_black);
+    }
+    .confirmbooking .section-1 .row .col-6 .left-card .row .edit .bi-pencil-square{
+        color: var(--light_black);
+        margin-right: 4px;
+    }
+    .confirmbooking .section-1 .row .col-6 .right-card {
+        border: 2px solid var(--input_border);
+        border-radius: 8px;
+        padding: 20px;
+    }
+    .confirmbooking .section-1 .row .col-6 .right-card .right-info {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+    .confirmbooking .section-1 .row .col-6 .right-card .form-group{
+        margin-top: 16px;
+    }
+    .confirmbooking .section-1 .row .col-6 .right-card .form-group label {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+    .confirmbooking .section-1 .row .col-6 .right-card .form-group .input-with-icon {
+        position: relative;
+    }
+    .confirmbooking .section-1 .row .col-6 .right-card .form-group .input-with-icon .password-toggle {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: var(--medium_gray);
+    }
+    .confirmbooking .section-1 .row .col-6 .right-card .form-group .form-check-input{
+        margin-right: 5px;
+    }
+    .confirmbooking .section-1 .row .col-6 .right-card .form-group .forgot-password {
+        font-size: 14px;
+        color: var(--medium_gray);
+        margin-left: 60px;
+        text-decoration: none;
+    }
+    .confirmbooking .section-1 .row .col-6 .right-card .btn-continue {
+        background-color: var(--red);
+        border: none;
+        width: 100%;
+        height: 50px;
+        border-radius: 4px;
+        color: var(--white);
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        transition: background-color 0.3s;
+        &:hover {
+            background-color: var(--black);
+        }
+    }
+    .confirmbooking .section-1 .row .col-6 .right-card .btn-outline-google,
+    .confirmbooking .section-1 .row .col-6 .right-card .btn-outline-email {
+        width: 100%;
+        height: 45px;
+        border: 1px solid var(--input_border);
+        border-radius: 4px;
+        background-color: var(--white);
+        font-size: 14px;
+        color: var(--light_black);
+        margin-bottom: 10px;
+    }
+    .confirmbooking .section-1 .row .col-6 .right-card .btn-outline-google .bi-google,
+    .confirmbooking .section-1 .row .col-6 .right-card .btn-outline-email .bi-envelope {
+        margin-right: 8px;
+    }
+    .confirmbooking .section-1 .row .col-6 .right-card .or-text {
+        text-align: center;
+        font-size: 16px;
+        color: var(--medium_gray);
+        margin: 15px;
+    }
+    .confirmbooking .section-1 .row .col-6 .right-card .phone-group label {
+        font-size: 14px;
+        color: var(--gray);
+    }
+    .confirmbooking .section-1 .row .col-6 .right-card .phone-group select {
+        width: 100%;
+        border: 1px solid var(--input_border);
+        height: 45px;
+        padding-left: 10px;
+    }
+    .confirmbooking .section-1 .row .col-6 .right-card .phone-group .phone-number {
+        width: 100%;
+        border: 1px solid var(--input_border);
+        height: 45px;
+        padding-left: 10px;
+    }
+/* Section 1 */
+
+
+/* Modal */
+    .confirmbooking .warehouse-modal .modal-content {
+        border-radius: 12px;
+        padding: 20px;
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-header {
+        position: relative;
+        display: block;
+        padding: 0;
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-header .btn-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 15px;
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-top: 30px;
+        text-align: center;
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-subtitle {
+        font-size: 16px;
+        color: var(--gray);
+        margin-top: 4px;
+        text-align: center;
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-body {
+        align-self: center;
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-body .legend-row {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-body .legend-row .lot-title {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-body .legend-row .lot-legend {
+        display: flex;
+        gap: 20px;
+        font-size: 14px;
+        color: var(--gray);
+        margin-left: 340px;
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-body .legend-row .lot-legend .legend-box {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border-radius: 3px;
+        margin-right: 4px;
+        border: 1px solid var(--input_border);
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-body .legend-row .lot-legend .available {
+        background-color: var(--low_gray);
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-body .legend-row .lot-legend .reserved {
+        background-color: #FCE8E8;
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-body .legend-row .lot-legend .selected {
+        background-color: var(--red);
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-body .lot-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-body .lot-grid .lot-row {
+        display: flex;
+        gap: 5px;
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-body .lot-grid .lot-row .lot {
+        width: 35px;
+        height: 35px;
+        border-radius: 6px;
+        text-align: center;
+        line-height: 35px;
+        font-size: 14px;
+        cursor: pointer;
+        user-select: none;
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-body .lot-grid .lot-row .lot.available {
+        background-color: var(--low_gray);
+        color: var(--gray);
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-body .lot-grid .lot-row .lot.reserved {
+        background-color: #FCE8E8;
+        color: var(--red);
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-body .lot-grid .lot-row .lot.selected {
+        background-color: var(--red);
+        color: var(--white);
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-body .lot-grid .lot-row .lot.space {
+        background-color: var(--white);
+        color: var(--white);
+    }
+    .confirmbooking .warehouse-modal .modal-content .modal-footer .btn-confirm {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: var(--red);
+        color: var(--white);
+        font-size: 16px;
+        padding: 15px 30px;
+        border-radius: 4px;
+        border: none;
+        transition: background 0.3s;
+        &:hover {
+            background-color: var(--black);
+        }
+    }
+/* Modal */

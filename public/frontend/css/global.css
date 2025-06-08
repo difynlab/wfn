@@ -10,9 +10,12 @@
         --black: #000000;
         --light_black: #231F20;
         --red: #E31D1D;
+        --dark_red: #B00606;
         --gray: #484546;
+        --low_gray: #F8F8F8;
         --medium_gray: #7F7D7E;
         --medium_white: #F5F5F5;
+        --dark_white: #FFF8F8;
         --input_border: #E9E9E9;
         --blue: #3673F0;
     }
@@ -22,7 +25,7 @@
     a, a:hover {
         text-decoration: none!important;
     }
-    .form-control:focus, .form-check-input:focus {
+    .form-control:focus, .form-select:focus, .form-check-input:focus {
         box-shadow: none!important;
     }
     form .error-message {
@@ -31,10 +34,46 @@
         font-size: 14px;
         margin-top: 2px;
     }
+    form .asterisk {
+        color: rgb(221, 5, 5);
+        margin-left: 3px;
+    }
+/* Common styles */
+
+
+/* Page related styles */
     .page-global {
         margin-top: 3%;
     }
-/* Common styles */
+    .page-title {
+        font-size: 56px;
+        font-weight: 600;
+        text-align: center;
+        color: var(--light_black);
+        padding-bottom: 20px;
+    }
+    .page-description {
+        font-size: 20px;
+        text-align: center;
+        color: var(--gray);
+        width: 75%;
+        margin: auto;
+    }
+    .section-title {
+        font-size: 32px;
+        font-weight: 500;
+        color: var(--light_black);
+        padding-bottom: 8px;
+    }
+    .section-description {
+        font-size: 17px;
+        color: var(--gray);
+        padding-bottom: 30px;
+    }
+    .section-margin {
+        margin-bottom: 50px;
+    }
+/* Page related styles */
 
 
 /* Navbar styles */
