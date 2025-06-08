@@ -3,4 +3,7 @@
 !/frontend/
 !/frontend/**
 
+!/backend/global
+!/backend/sidebar
+
 !.gitignore
