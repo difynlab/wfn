@@ -3,6 +3,7 @@
 !/frontend/
 !/frontend/**
 
+!/backend/
 !/backend/global
 !/backend/sidebar
 
