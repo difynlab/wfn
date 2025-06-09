@@ -9,7 +9,7 @@
 @section('content')
     <div class="terms-of-use page-global">
         <div class="section-1 container section-margin">
-            <p class="page-title">Terms and Conditions</p>
+            <h1 class="page-title">Terms and Conditions</h1>
             <p class="page-description">
                 These Terms and Conditions govern your use of our warehouse rental platform. 
                 By accessing or using our services, you agree to comply with the rules, responsibilities, 

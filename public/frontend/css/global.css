@@ -10,13 +10,16 @@
         --black: #000000;
         --light_black: #231F20;
         --red: #E31D1D;
+        --medium_red: #FCE8E8;
         --dark_red: #B00606;
         --gray: #484546;
         --low_gray: #F8F8F8;
         --medium_gray: #7F7D7E;
+        --low_white: #F9F9F9;
         --medium_white: #F5F5F5;
         --dark_white: #FFF8F8;
         --input_border: #E9E9E9;
+        --separator: #c7c7c7;
         --blue: #3673F0;
     }
     h1, h2, h3, h4, h5, h6, p {

@@ -1,290 +1,230 @@
-/* Global */
-    .warehouses .section-title {
-        font-size: 56px;
-        font-weight: 500;
-        text-align: center;
-        color: var(--light_black);
-        padding-bottom: 8px;
-        margin-top: 50px;
-    }
-    .warehouses .section-description {
-        font-size: 20px;
-        text-align: center;
-        color: var(--gray);
-        padding-bottom: 30px;
-    }
-/* Global */
-
-/* Section 1 */
-    .warehouses .section-1 .search-wrapper{
-        background-color: var(--medium_white);
+/* Section 2 */
+    .warehouses .section-2 {
+        background-color: var(--low_white);
         border-radius: 16px;
         padding: 30px 25px;
-        margin: auto;
-        margin-bottom: 40px;
     }
-    .warehouses .section-1 .search-wrapper .search-title {
-        font-size: 24px;
+    .warehouses .section-2 .top-row {
+        align-items: center;
+        margin-bottom: 25px;
+    }
+    .warehouses .section-2 .top-row .title {
+        font-size: 20px;
         font-weight: 500;
         color: var(--light_black);
-        margin-bottom: 5px;
+        padding-bottom: 5px;
     }
-    .warehouses .section-1 .search-wrapper .search-subtitle{
-        font-size: 16px;
+    .warehouses .section-2 .top-row .description {
+        font-size: 15px;
         color: var(--gray);
-        margin-bottom: 15px;
     }
-    .warehouses .section-1 .search-wrapper .map-view-btn,
-    .warehouses .section-1 .search-wrapper .apply-filters-btn{
-        padding: 10px 20px;
+    .warehouses .section-2 .top-row .right {
+        text-align: end;
+    }
+    .warehouses .section-2 .top-row .right .map-view-button {
         font-style: 14px;
-        font-weight: 500;
-        border-radius: 10px;
-        background-color: var(--medium_white);
+        border-radius: 8px;
+        padding: 10px 20px;
         border: 1px solid var(--input_border);
-        color: var(--light_black);
-        margin-left: 10px;
+        background-color: var(--medium_white);
+        color: var(--gray);
+        transition: all 0.3s;
         &:hover{
+            border: none;
             color: var(--white);
             background-color: var(--light_black);
             transition: all 0.3s
         }
     }
-    .warehouses .section-1 .search-wrapper .apply-filters-btn {
-        border: 1px solid var(--light_black);
-    }
-    .warehouses .section-1 .search-wrapper .map-view-btn i {
+    .warehouses .section-2 .top-row .right .map-view-button i {
         margin-right: 6px;
         font-size: 16px;
     }
-    .warehouses .section-1 .search-wrapper .row{
-        margin-bottom: 15px;
-    }
-    .warehouses .section-1 .search-wrapper .search-item {
-        position: relative;
-        margin-right: 10px;
-        margin-bottom: 10px;
-    }
-    .warehouses .section-1 .search-wrapper .search-location {
-        width: 100%;
-    }
-    .warehouses .section-1 .search-wrapper .search-location .search-input{
-        width: 100%;
-        padding: 12px;
-        font-size: 14px;
+    .warehouses .section-2 .bottom-row .input-field {
         border: 1px solid var(--input_border);
-        border-radius: 50px;
-        background-color: var(--medium_white);
+        border-radius: 30px;
         color: var(--gray);
-    }
-    .warehouses .section-1 .search-wrapper .search-location .search-icon{
-        position: absolute;
-        right: 16px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 16px;
-        color: var(--gray);
-    }
-    .warehouses .section-1 .search-wrapper .search-item .search-select{
-        width: 100%;
-        padding: 12px 40px 12px 20px;
         font-size: 14px;
-        border: 1px solid var(--input_border);
-        border-radius: 50px;
         background-color: var(--medium_white);
-        color: var(--gray);
-        appearance: none;
-        background-image: url("data:image/svg+xml;charset=UTF-8,<svg width='12' height='7' viewBox='0 0 10 7' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1 1L5 5L9 1' stroke='%23484546' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-        background-repeat: no-repeat;
-        background-position: right 15px center;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-/* Section 1 */
-
-
+    .warehouses .section-2 .bottom-row .apply-filters-button {
+        border: none;
+        font-style: 14px;
+        border-radius: 30px;
+        width: 100%;
+        height: 50px;
+        background-color: var(--light_black);
+        color: var(--white);
+        transition: all 0.3s;
+        &:hover{
+            background-color: var(--red);
+            transition: all 0.3s
+        }
+    }
 /* Section 2 */
-    .warehouses .section-2 {
-        margin-top: 40px;
-        margin-bottom: 60px;
+
+
+/* Section 3 */
+    .warehouses .section-3 .warehouse-row .left {
+        padding-left: 0;
     }
-    .warehouses .section-2 .card {
-        background-color: var(--white);
-        border: 1px solid #E4E4E4;
-        border-radius: 10px;
-        padding: 20px;
+    .warehouses .section-3 .warehouse-row .right {
+        padding-right: 0;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse {
+        border: 1px solid var(--input_border);
+        border-radius: 8px;
+        padding: 15px;
         margin-bottom: 25px;
         position: relative;
     }
-    .warehouses .section-2 .card .badge {
+    .warehouses .section-3 .warehouse-row .single-warehouse:last-child {
+        margin-bottom: 0;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .badge {
         position: absolute;
-        top: 20px;
-        left: 20px;
+        top: 28px;
+        left: 28px;
         background-color: var(--red);
         color: var(--white);
         font-size: 12px;
-        padding: 3px 8px;
-        border-radius: 4px;
         font-weight: 600;
-        margin: 5px;
+        padding: 5px 10px;
+        border-radius: 2px;
     }
-    .warehouses .section-2 .card .card-image {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 6px;
-    }
-    .warehouses .section-2 .card .type {
+    .warehouses .section-3 .warehouse-row .single-warehouse .type {
         font-size: 14px;
         color: var(--gray);
-        margin-bottom: 10px;
+        padding-bottom: 8px;
     }
-    .warehouses .section-2 .card .price {
+    .warehouses .section-3 .warehouse-row .single-warehouse .price {
+        color: var(--red);
         font-size: 24px;
         font-weight: 600;
-        margin-bottom: 10px;
+        padding-bottom: 2px;
     }
-    .warehouses .section-2 .card .red {
-        color: var(--red);
+    .warehouses .section-3 .warehouse-row .single-warehouse .price i {
+        position: relative;
+        font-size: 17px;
+        bottom: 10px;
+        left: 5px;
     }
-    .warehouses .section-2 .card .description-bold {
+    .warehouses .section-3 .warehouse-row .single-warehouse .name {
         font-size: 16px;
         font-weight: 500;
         color: var(--light_black);
-        margin-bottom: 10px;
+        padding-bottom: 5px;
     }
-    .warehouses .section-2 .card .description-text {
+    .warehouses .section-3 .warehouse-row .single-warehouse .description {
         font-size: 14px;
         color: var(--gray);
         line-height: 22px;
-        margin-bottom: 10px;
+        padding-bottom: 30px;
     }
-    .warehouses .section-2 .card .location {
-        margin-top: 30px;
+    .warehouses .section-3 .warehouse-row .single-warehouse .location {
         font-size: 14px;
         color: var(--gray);
     }
-    .warehouses .section-2 .card .location i{
+    .warehouses .section-3 .warehouse-row .single-warehouse .location i {
+        font-size: 16px;
         padding-right: 5px;
     }
-    .warehouses .section-2 .card .bottom-box {
-        background-color: var(--low_gray);
+    .warehouses .section-3 .warehouse-row .single-warehouse .box {
+        background-color: var(--medium_white);
         font-size: 14px;
-        color: var(--medium_gray);
+        color: var(--gray);
         padding: 10px 15px;
         border-radius: 8px;
         margin-top: 15px;
     }
-    .warehouses .section-2 .card .listing-time {
-        margin: 0;
-        font-size: 13px;
-        color: var(--medium_gray);
-    }
-    .warehouses .section-2 .card .action {
+    .warehouses .section-3 .warehouse-row .single-warehouse .box .action {
         margin-left: 15px;
-        font-size: 13px;
-        color: var(--medium_gray);
     }
-    .warehouses .section-2 .card .action i {
+    .warehouses .section-3 .warehouse-row .single-warehouse .box .action i {
         margin-right: 5px;
     }
-    .warehouses .section-2 .sidebar-card {
+    .warehouses .section-3 .sidebar {
         background-color: var(--white);
         border: 1px solid var(--input_border);
         border-radius: 10px;
-        padding: 20px;
+        padding: 25px 20px;
     }
-    .warehouses .section-2 .sidebar-card .divider{
-        border: 1px solid var(--medium_gray);
+    .warehouses .section-3 .sidebar .divider {
+        border: 1px solid var(--input_border);
+        margin-top: 0;
+        margin-bottom: 15px;
     }
-    .warehouses .section-2 .sidebar-heading {
+    .warehouses .section-3 .sidebar .heading {
         font-weight: 600;
         font-size: 16px;
         color: var(--light_black);
-        margin-top: 15px;
-        margin-bottom: 10px;
+        padding-bottom: 15px;
     }
-    .warehouses .section-2 .sidebar-item {
+    .warehouses .section-3 .sidebar .item {
         font-size: 14px;
+        display: table;
         color: var(--gray);
-        margin-top: 8px;
+        padding-bottom: 15px;
     }
-    .warehouses .section-2 hr {
-        border: none;
-        border-top: 1px solid var(--medium_white);
-        margin: 20px 0;
-    }
-/* Section 2 */
-
-
-/* section 3 */
-    .warehouses .section-3 {
-        margin-top: 60px;
-    }
-    .warehouses .section-3 .section-title {
-        font-size: 16px;
-        font-weight: 500;
-        text-align: left;
-        color: var(--light_black);
-        margin-bottom: 30px;
-    }
-    .warehouses .section-3 .card {
-        border: 1px solid var(--input_border);
-        border-radius: 10px;
-        overflow: hidden;
-        background-color: var(--white);
-    }
-    .warehouses .section-3 .card-image {
-        width: 100%;
-        object-fit: cover;
-        border-bottom: 1px solid var(--medium_white);
-    }
-    .warehouses .section-3 .card-body {
-        padding: 15px;
-    }
-    .warehouses .section-3 .card-body .title {
-        font-size: 16px;
-        color: var(--light_black);
-    }
-    .warehouses .section-3 .card-body .subtitle {
-        font-size: 14px;
-        color: var(--gray);
-        margin-top: 5px;
-    }
-    .warehouses .section-3 .card-body .price {
-        margin-top: 20px;
-        font-size: 16px;
-        color: var(--light_black);
+    .warehouses .section-3 .sidebar .item:last-child {
+        padding-bottom: 0;
     }
 /* Section 3 */
 
 
-.warehouses .modal {
-    display: none;
-    position: fixed;
-    z-index: 1050;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-}
+/* section 4 */
+    .warehouses .section-4 .section-title {
+        font-size: 25px;
+        font-weight: 500;
+        color: var(--light_black);
+        padding-bottom: 20px;
+    }
+    .warehouses .section-4 .single-warehouse {
+        border: 1px solid var(--input_border);
+        border-radius: 8px;
+    }
+    .warehouses .section-4 .single-warehouse .image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+    }
+    .warehouses .section-4 .single-warehouse .details {
+        padding: 20px 25px;
+    }
+    .warehouses .section-4 .single-warehouse .details .title {
+        font-size: 16px;
+        color: var(--light_black);
+        padding-bottom: 5px;
+    }
+    .warehouses .section-4 .single-warehouse .details .subtitle {
+        font-size: 14px;
+        color: var(--gray);
+        padding-bottom: 15px;
+    }
+    .warehouses .section-4 .single-warehouse .details .price {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--light_black);
+    }
+/* Section 4 */
 
-.warehouses .modal .modal-content{
-    margin: 5% auto;
-    padding: 20px;
-    position: relative;
-    width: 90%;
-    max-width: 800px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    text-align: center;
-}
 
-.warehouses .modal .modal-content .close {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    color: var(--light_black);
-}
+/* Modal */
+    .map-modal .image {
+        width: 100%;
+        height: 90vh;
+        object-fit: cover;
+    }
+/* Modal */

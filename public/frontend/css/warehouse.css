@@ -1,0 +1,528 @@
+/* Global */
+    .separator {
+        border: 1px solid var(--separator);
+        margin: 30px 0;
+    }
+/* Global */
+
+
+/* Section 1 */
+    .warehouse .section-1 .left .main-image {
+        width: 100%;
+        height: 475px;
+        object-fit: cover;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .warehouse .section-1 .right {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+    .warehouse .section-1 .right .side-image {
+        width: 100%;
+        height: 225px;
+        object-fit: cover;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+/* Section 1 */
+
+
+/* Slider modal */
+    .slider-modal .mySwiper2 .swiper-slide img {
+        width: 100%;
+        height: 550px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+    .slider-modal .mySwiper2 {
+        margin-bottom: 25px;
+    }
+    .slider-modal .mySwiper .swiper-slide img {
+        width: 100%;
+        height: 90px;
+        object-fit: cover;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+/* Slider modal */
+
+
+/* Section 2 */
+    .warehouse .section-2 .profile-row {
+        margin-bottom: 25px;
+    }
+    .warehouse .section-2 .profile-row .left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .warehouse .section-2 .profile-row .right {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 20px;
+    }
+    .warehouse .section-2 .profile-row .left .image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .warehouse .section-2 .profile-row .left .name {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--light_black);
+    }
+    .warehouse .section-2 .profile-row .left .description {
+        font-size: 14px;
+        color: var(--gray);
+    }
+    .warehouse .section-2 .profile-row .right i {
+        font-size: 20px;
+        color: var(--red);
+        -webkit-text-stroke: 1px;
+    }
+    .warehouse .section-2 .profile-row .right .expert {
+        font-size: 20px;
+        color: var(--red);
+        font-weight: 500;
+    }
+    .warehouse .section-2 .title-row {
+        margin-bottom: 25px;
+    }
+    .warehouse .section-2 .title-row .right {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 30px;
+    }
+    .warehouse .section-2 .title-row .left .title {
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--light_black);
+        padding-bottom: 2px;
+    }
+    .warehouse .section-2 .title-row .left .description {
+        font-size: 14px;
+        color: var(--gray);
+    }
+    .warehouse .section-2 .title-row .right .rating {
+        text-align: center;
+    }
+    .warehouse .section-2 .title-row .right .rating .score {
+        font-size: 24px;
+        font-weight: 500;
+        color: var(--gray);
+        line-height: 25px;
+    }
+    .warehouse .section-2 .title-row .right .rating .label {
+        font-size: 14px;
+        color: var(--gray);
+    }
+    .warehouse .section-2 .title-row .right .line {
+        height: 30px;
+        border: 1px solid var(--input_border);
+    }
+    .warehouse .section-2 .warehouse-description {
+        font-size: 16px;
+        color: var(--gray);
+        line-height: 26px;
+        padding-bottom: 25px;
+    }
+    .warehouse .section-2 .features-row .single-feature {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .warehouse .section-2 .features-row .single-feature .details .title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--light_black);
+    }
+    .warehouse .section-2 .features-row .single-feature .details .description {
+        font-size: 14px;
+        color: var(--gray);
+    }
+    .warehouse .section-2 .features-row .single-feature i {
+        font-size: 25px;
+        -webkit-text-stroke: 0.3px;
+    }
+    .warehouse .section-2 .amenities .amenity-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--light_black);
+        padding-bottom: 15px;
+    }
+    .warehouse .section-2 .amenities .amenities-row .single-amenity {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .warehouse .section-2 .amenities .amenities-row .single-amenity:nth-last-child(-n+2) {
+        margin-bottom: 0;
+    }
+    .warehouse .section-2 .amenities .amenities-row .single-amenity i {
+        font-size: 25px;
+        -webkit-text-stroke: 0.3px;
+    }
+    .warehouse .section-2 .amenities .amenities-row .single-amenity .details .title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--light_black);
+    }
+    .warehouse .section-2 .amenities .amenities-row .single-amenity .details .description {
+        font-size: 14px;
+        color: var(--gray);
+    }
+    .warehouse .section-2 .booking-box {
+        border: 1px solid var(--input_border);
+        border-radius: 12px;
+        padding: 20px;
+        background-color: var(--low_white);
+        margin-bottom: 30px;
+    }
+    .warehouse .section-2 .booking-box .cost {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--light_black);
+        text-align: center;
+        padding-bottom: 5px;
+    }
+     .warehouse .section-2 .booking-box .price {
+        color: var(--red);
+        font-size: 32px;
+        font-weight: 600;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+    .warehouse .section-2 .booking-box .price i {
+        position: relative;
+        -webkit-text-stroke: 1px;
+        font-size: 25px;
+        bottom: 20px;
+        left: 5px;
+    }
+    .warehouse .section-2 .booking-box .date-picker {
+        border: 1px solid var(--input_border);
+        border-radius: 4px;
+        margin-bottom: 20px;
+        padding: 15px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .warehouse .section-2 .booking-box .date-picker .line {
+        height: 40px;
+        border: 1px solid var(--input_border);
+    }
+    .warehouse .section-2 .booking-box .date-picker .check {
+        font-size: 14px;
+        font-weight: 500;
+        padding-bottom: 5px;
+        text-align: center;
+    }
+    .warehouse .section-2 .booking-box .date-picker .date {
+        font-size: 13px;
+        color: var(--gray);
+        text-align: center;
+    }
+    .warehouse .section-2 .booking-box .book-now-button {
+        width: 100%;
+        height: 55px;
+        background-color: var(--red);
+        color: var(--white);
+        font-size: 18px;
+        font-weight: 500;
+        border: none;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--light_black);
+            transition: all 0.3s;
+        }
+    }
+    .warehouse .section-2 .booking-box .note {
+        font-size: 14px;
+        color: var(--gray);
+        text-align: center;
+    }
+    .warehouse .section-2 .report-link {
+        font-size: 15px;
+        text-align: center;
+        color: var(--gray);
+        cursor: pointer;
+        margin-bottom: 30px!important;
+        &:hover {
+            font-weight: 600;
+        }
+    }
+    .warehouse .section-2 .report-link i {
+        padding-right: 5px;
+        -webkit-text-stroke: 0.3px;
+    }
+    .warehouse .section-2 .report-link span {
+        border-bottom: 1px solid var(--input_border);
+        padding-bottom: 2px;
+    }
+    .warehouse .section-2 .lender {
+        border: 1px solid var(--input_border);
+        border-radius: 12px;
+        padding: 20px;
+    }
+    .warehouse .section-2 .lender .heading {
+        font-style: 16px;
+        font-weight: 500;
+        color: var(--light_black);
+        padding-bottom: 15px;
+    }
+    .warehouse .section-2 .lender .details .single {
+        font-size: 15px;
+        color: var(--gray);
+        padding-bottom: 10px;
+    }
+    .warehouse .section-2 .lender .details .single:last-child {
+        padding-bottom: 0;
+    }
+    .warehouse .section-2 .lender .details .single i {
+        padding-right: 10px;
+    }
+/* Section 2 */
+
+
+/* Section 3 */
+    .warehouse .section-3 .image {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+/* Section 3 */
+
+
+/* Section 4 */
+    .warehouse .section-4 .title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--light_black);
+        padding-bottom: 20px;
+    }
+    .warehouse .section-4 .reviews {
+        background-color: var(--dark_white);
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .warehouse .section-4 .reviews .single-review {
+        margin-bottom: 25px;
+    }
+    .warehouse .section-4 .reviews .single-review:last-child {
+        margin-bottom: 0;
+    }
+    .warehouse .section-4 .reviews .single-review .stars {
+        font-size: 17px;
+        color: var(--red);
+        margin-bottom: 5px;
+    }
+    .warehouse .section-4 .reviews .single-review .stars i {
+        margin-right: 3px;
+    }
+    .warehouse .section-4 .reviews .single-review .content {
+        font-size: 15px;
+        line-height: 24px;
+        color: var(--gray);
+        margin-bottom: 5px!important;
+    }
+    .warehouse .section-4 .reviews .single-review .name {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--light_black);
+    }
+    .warehouse .section-4 .reviews .single-review .line {
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--input_border);
+        margin: 0 2px;
+    }
+    .warehouse .section-4 .reviews .single-review .role {
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--gray);
+    }
+/* Section 4 */
+
+
+/* Section 5 */
+    .warehouse .section-5 .policy-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--light_black);
+        padding-bottom: 20px;
+    }
+    .warehouse .section-5 .single-policy {
+        margin-bottom: 30px;
+    }
+    .warehouse .section-5 .single-policy:nth-last-child(-n+2) {
+        margin-bottom: 0;
+    }
+    .warehouse .section-5 .single-policy .title {
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--light_black);
+        padding-bottom: 5px;
+    }
+    .warehouse .section-5 .single-policy .description {
+        font-size: 14px;
+        color: var(--gray);
+        line-height: 24px;
+    }
+/* Section 5 */
+
+
+/* Section 6 */
+    .warehouse .section-6 .title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--light_black);
+        padding-bottom: 20px;
+    }
+    .warehouse .section-6 .single-warehouse {
+        border: 1px solid var(--input_border);
+        border-radius: 8px;
+    }
+    .warehouse .section-6 .single-warehouse .image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+    }
+    .warehouse .section-6 .single-warehouse .details {
+        padding: 20px 25px;
+    }
+    .warehouse .section-6 .single-warehouse .details .title {
+        font-size: 16px;
+        color: var(--light_black);
+        padding-bottom: 5px;
+    }
+    .warehouse .section-6 .single-warehouse .details .subtitle {
+        font-size: 14px;
+        color: var(--gray);
+        padding-bottom: 15px;
+    }
+    .warehouse .section-6 .single-warehouse .details .price {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--light_black);
+    }
+/* Section 6 */
+
+
+/* Lot modal */
+    .warehouse .lot-modal .modal-body {
+        margin: auto;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        /* width: 80%; */
+    }
+    .warehouse .lot-modal .title {
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 5px!important;
+        color: var(--light_black);
+    }
+    .warehouse .lot-modal .description {
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 40px!important;
+        color: var(--gray);
+    }
+    .warehouse .lot-modal .top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    .warehouse .lot-modal .top-row .top-row-title {
+        font-size: 16px;
+        font-weight: 600;
+    }
+    .warehouse .lot-modal .top-row .legends {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+    .warehouse .lot-modal .top-row .legends .legend {
+        font-size: 14px;
+        color: var(--light_black);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .warehouse .lot-modal .top-row .legends .legend .box {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-radius: 4px;
+    }
+    .warehouse .lot-modal .top-row .legends .legend.available .box {
+        background-color: var(--input_border);
+    }
+    .warehouse .lot-modal .top-row .legends .legend.reserved .box {
+        background-color: var(--medium_red);
+    }
+    .warehouse .lot-modal .top-row .legends .legend.selected .box {
+        background-color: var(--red);
+    }
+    .warehouse .lot-modal .lots .row {
+        margin-bottom: 20px;
+    }
+    .warehouse .lot-modal .lots .row:last-child {
+        margin-bottom: 0;
+    }
+    .warehouse .lot-modal .lots .lot-box {
+        font-size: 15px;
+        font-weight: 600;
+        text-align: center;
+        border-radius: 4px;
+        height: 35px;
+        width: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .warehouse .lot-modal .lots .available .lot-box {
+        background-color: var(--medium_white);
+        color: var(--gray);
+    }
+    .warehouse .lot-modal .lots .reserved .lot-box {
+        background-color: var(--medium_red);
+        color: var(--red);
+    }
+    .warehouse .lot-modal .lots .selected .lot-box {
+        background-color: var(--red);
+        color: var(--white);
+    }
+    .warehouse .lot-modal .confirm-button {
+        width: 200px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--red);
+        border: none;
+        color: var(--white);
+        font-size: 18px;
+        font-family: 500;
+        border-radius: 4px;
+        margin: auto;
+        margin-top: 40px;
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--light_black);
+        }
+    }
+/* Lot modal */

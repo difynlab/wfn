@@ -9,7 +9,7 @@
 @section('content')
     <div class="privacy-policy page-global">
         <div class="section-1 container section-margin">
-            <p class="page-title">Privacy Policy</p>
+            <h1 class="page-title">Privacy Policy</h1>
             <p class="page-description">
                 Your privacy is important to us. This Privacy Policy outlines how we collect, use, 
                 and protect your personal information when you visit our website or use our services. 

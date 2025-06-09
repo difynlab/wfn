@@ -1,429 +1,833 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Singlewarehouse')
+@section('title', 'Warehouse')
 
 @push('after-styles')
-    <link rel="stylesheet" href="{{ asset('frontend/css/singlewarehouse.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/warehouse.css') }}">
 @endpush
  
 @section('content')
-    <div class="singlewarehouse container">
-        <div class="section-1 container">
+    <div class="warehouse page-global">
+        <div class="section-1 container section-margin">
             <div class="row">
-                <div class="col-8">
-                    <img src="{{ asset('storage/frontend/sw-1.png') }}" class="card-image" alt="Warehouse">
+                <div class="col-7 left">
+                    <img src="{{ asset('storage/frontend/sw-1.png') }}" class="main-image" alt="Warehouse" data-bs-toggle="modal" data-bs-target="#sliderModal">
                 </div>
-                <div class="col-4">
-                    <div class="col">
-                        <img src="{{ asset('storage/frontend/sw-2.png') }}" class="card-image" alt="Warehouse">
-                    </div>
-                    <div class="col">
-                        <img src="{{ asset('storage/frontend/sw-3.png') }}" class="card-image" alt="Warehouse">
-                    </div>
+
+                <div class="col-5 right">
+                    <img src="{{ asset('storage/frontend/sw-2.png') }}" class="side-image" alt="Warehouse" data-bs-toggle="modal" data-bs-target="#sliderModal">
+                    <img src="{{ asset('storage/frontend/sw-3.png') }}" class="side-image" alt="Warehouse" data-bs-toggle="modal" data-bs-target="#sliderModal">
                 </div>
             </div>
         </div>
-
         
-        <div class="section-2 container">
+        <div class="section-2 container section-margin">
             <div class="row">
                 <div class="col-8">
                     <div class="row profile-row">
-                        <div class="col-1">
-                            <img src="{{ asset('storage/frontend/wsp-1.png') }}" class="profile-img" alt="Profile">
+                        <div class="col-8 left">
+                            <img src="{{ asset('storage/frontend/wsp-1.png') }}" class="image" alt="Image">
+                            <div class="profile">
+                                <p class="name">Ahmed Al-Mansoori</p>
+                                <p class="description">3 years of experience as lender</p>
+                            </div>
                         </div>
-                        <div class="col-6">
-                            <p class="profile-name">Ahmed Al-Mansoori</p>
-                            <p class="profile-exp">3 years of experience as lender</p>
+
+                        <div class="col-4 right">
+                            <i class="bi bi-heart"></i>
+                            <i class="bi bi-chat-left"></i>
+                            <p class="expert">Talk to an Expert</p>
                         </div>
-                        <div class="col-1 icon-cell"><i class="bi bi-heart text-danger fs-5"></i></div>
-                        <div class="col-1 icon-cell"><i class="bi bi-chat-left text-danger fs-5"></i></div>
-                        <div class="col-3 expert-link text-danger">Talk to an Expert</div>
                     </div>
+
                     <div class="row title-row">
-                        <div class="col-8">
-                            <h1 class="warehouse-title">Al-Falah Distribution Center</h1>
-                            <p class="warehouse-location">Al Quds Street, Warehouse No. 35, Industrial City, Riyadh, Saudi Arabia</p>
+                        <div class="col-8 left">
+                            <h1 class="title">Al-Falah Distribution Center</h1>
+                            <p class="description">Al Quds Street, Warehouse No. 35, Industrial City, Riyadh, Saudi Arabia</p>
                         </div>
-                        <div class="col-4 text-end">
-                            <div class="row">
-                                <div class="col-6 rating-box">
-                                    <p class="rating-score">4.84</p>
-                                    <p class="rating-label">Rating</p>
-                                </div>
-                                <div class="col-6 rating-box">
-                                    <p class="rating-score">120</p>
-                                    <p class="rating-label">Reviews</p>
-                                </div>
+
+                        <div class="col-4 right">
+                            <div class="rating">
+                                <p class="score">4.84</p>
+                                <p class="label">Rating</p>
+                            </div>
+
+                            <div class="line"></div>
+                            
+                            <div class="rating">
+                                <p class="score">120</p>
+                                <p class="label">Reviews</p>
                             </div>
                         </div>
                     </div>
+
                     <p class="warehouse-description">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
                         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia nulla deserunt mollit anim id est laborum.
                     </p>
-                    <div class="row feature-row">
-                        <div class="col-6">
-                            <div class="row">
-                                <div class="col-1"><i class="bi bi-calendar4 fs-5"></i></div>
-                                <div class="col-11">
-                                    <p class="feature-title">Free cancellation before 1 week</p>
-                                    <p class="feature-sub">Get a full refund</p>
-                                </div>
+
+                    <div class="row features-row">
+                        <div class="col-6 single-feature">
+                            <i class="bi bi-calendar4"></i>
+                            <div class="details">
+                                <p class="title">Free cancellation before 1 week</p>
+                                <p class="description">Get a full refund</p>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <div class="row">
-                                <div class="col-1"><i class="bi bi-people fs-5"></i></div>
-                                <div class="col-11">
-                                    <p class="feature-title">Private Washrooms</p>
-                                    <p class="feature-sub">Private washrooms facilities plus a public toilet.</p>
-                                </div>
+
+                        <div class="col-6 single-feature">
+                            <i class="bi bi-people"></i>
+                            <div class="details">
+                                <p class="title">Private Washrooms</p>
+                                <p class="description">Private washrooms facilities plus a public toilet.</p>
                             </div>
                         </div>
                     </div>
+
+                    <hr class="separator">
+
                     <div class="amenities">
-                        <p class="amenities-title">Other Amenities</p>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="row amenity-item">
-                                    <div class="col-1"><i class="bi bi-box fs-5"></i></div>
-                                    <div class="col-11">
-                                        <p class="amenity-title">Size</p>
-                                        <p class="amenity-sub">25,000 sq ft</p>
-                                    </div>
+                        <p class="amenity-title">Other Amenities</p>
+
+                        <div class="row amenities-row">
+                            <div class="col-6 single-amenity">
+                                <i class="bi bi-box"></i>
+                                <div class="details">
+                                    <p class="title">Size</p>
+                                    <p class="description">25,000 sq ft</p>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="row amenity-item">
-                                    <div class="col-1"><i class="bi bi-box fs-5"></i></div>
-                                    <div class="col-11">
-                                        <p class="amenity-title">Lorem ipsum dolor sit amet</p>
-                                        <p class="amenity-sub">Lorem ipsum dolor</p>
-                                    </div>
+
+                            <div class="col-6 single-amenity">
+                                <i class="bi bi-box"></i>
+                                <div class="details">
+                                    <p class="title">Lorem ipsum dolor sit amet</p>
+                                    <p class="description">Lorem ipsum dolor</p>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="row amenity-item">
-                                    <div class="col-1"><i class="bi bi-box fs-5"></i></div>
-                                    <div class="col-11">
-                                        <p class="amenity-title">Lorem ipsum dolor sit amet</p>
-                                        <p class="amenity-sub">Lorem ipsum dolor</p>
-                                    </div>
+
+                            <div class="col-6 single-amenity">
+                                <i class="bi bi-box"></i>
+                                <div class="details">
+                                    <p class="title">Lorem ipsum dolor sit amet</p>
+                                    <p class="description">Lorem ipsum dolor</p>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="row amenity-item">
-                                    <div class="col-1"><i class="bi bi-box fs-5"></i></div>
-                                    <div class="col-11">
-                                        <p class="amenity-title">Lorem ipsum dolor sit amet</p>
-                                        <p class="amenity-sub">Lorem ipsum dolor</p>
-                                    </div>
+
+                            <div class="col-6 single-amenity">
+                                <i class="bi bi-box"></i>
+                                <div class="details">
+                                    <p class="title">Lorem ipsum dolor sit amet</p>
+                                    <p class="description">Lorem ipsum dolor</p>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="row amenity-item">
-                                    <div class="col-1"><i class="bi bi-box fs-5"></i></div>
-                                    <div class="col-11">
-                                        <p class="amenity-title">Lorem ipsum dolor sit amet</p>
-                                        <p class="amenity-sub">Lorem ipsum dolor</p>
-                                    </div>
+
+                            <div class="col-6 single-amenity">
+                                <i class="bi bi-box"></i>
+                                <div class="details">
+                                    <p class="title">Lorem ipsum dolor sit amet</p>
+                                    <p class="description">Lorem ipsum dolor</p>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="row amenity-item">
-                                    <div class="col-1"><i class="bi bi-box fs-5"></i></div>
-                                    <div class="col-11">
-                                        <p class="amenity-title">Lorem ipsum dolor sit amet</p>
-                                        <p class="amenity-sub">Lorem ipsum dolor</p>
-                                    </div>
+
+                            <div class="col-6 single-amenity">
+                                <i class="bi bi-box"></i>
+                                <div class="details">
+                                    <p class="title">Lorem ipsum dolor sit amet</p>
+                                    <p class="description">Lorem ipsum dolor</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-4">
                     <div class="booking-box">
-                        <p class="total-cost">Total Cost</p>
-                        <p class="unlock-pricing">Unlock Pricing <i class="bi bi-lock text-danger"></i></p>
+                        <p class="cost">Total Cost</p>
+                        <p class="price">Unlock Pricing<i class="bi bi-lock"></i></p>
+
                         <div class="date-picker">
-                            <div class="row">
-                                <div class="col-6 text-center">
-                                    <p>Check in</p>
-                                    <p>Add dates</p>
-                                </div>
-                                <div class="col-6 text-center">
-                                    <p>Check out</p>
-                                    <p>Add dates</p>
-                                </div>
+                            <div class="box">
+                                <p class="check">Check in</p>
+                                <p class="date">Add dates</p>
+                            </div>
+
+                            <div class="line"></div>
+                            
+                            <div class="box">
+                                <p class="check">Check out</p>
+                                <p class="date">Add dates</p>
                             </div>
                         </div>
-                        <button class="book-now-btn">Book Now</button>
+
+                        <button class="book-now-button" data-bs-toggle="modal" data-bs-target="#lotModal">Book Now</button>
+
                         <p class="note">You won’t be charged yet</p>
                     </div>
+                    
                     <p class="report-link">
                         <i class="bi bi-flag"></i>
-                        <span class="underline-link">Report this listing</span>
+                        <span>Report this listing</span>
                     </p>
-                    <div class="lender-info">
-                        <p class="lender-heading">More about Lender</p>
-                        <ul class="lender-details list-unstyled">
-                            <li><i class="bi bi-flag"></i> Speaks in English & Arabic</li>
-                            <li><i class="bi bi-flag"></i> Usually replies within an hour</li>
-                            <li><i class="bi bi-flag"></i> Lives in Saudi Arabia</li>
-                        </ul>
+
+                    <div class="lender">
+                        <p class="heading">More about Lender</p>
+                        <div class="details">
+                            <p class="single">
+                                <i class="bi bi-flag"></i>
+                                Speaks in English & Arabic
+                            </p>
+                            <p class="single">
+                                <i class="bi bi-flag"></i>
+                                Usually replies within an hour
+                            </p>
+                            <p class="single">
+                                <i class="bi bi-flag"></i>
+                                Lives in Saudi Arabia
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <div class="container section-margin">
+            <hr class="separator">
+        </div>
         
-        <div class="section-3 container">
-            <div class="map-wrapper">
-                <hr class="map-separator">
-                <img src="{{ asset('storage/frontend/singlewarehouse-map.png') }}" class="map-image" alt="Warehouse Location on Map">
-                <hr class="map-separator">
-            </div>
+        <div class="section-3 container section-margin">
+            <img src="{{ asset('storage/frontend/single-warehouse-map.png') }}" class="image" alt="Map">
         </div>
 
-
-        <div class="section-4 container">
-            <p class="review-heading">Client Reviews</p>
-            <div class="review-box">
-                <div class="review-item">
-                    <p class="review-stars">
-                        <i class="bi bi-star-fill text-danger"></i>
-                        <i class="bi bi-star-fill text-danger"></i>
-                        <i class="bi bi-star-fill text-danger"></i>
-                        <i class="bi bi-star-fill text-danger"></i>
-                        <i class="bi bi-star-fill text-danger"></i>
-                    </p>
-                    <p class="review-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
-                    <p class="review-author">
-                        <span class="author-name">Danial Mark</span>
-                        <span class="author-divider">|</span>
-                        <span class="author-role">Marketing Coordinator</span>
-                    </p>
-                </div>
-                <div class="review-item">
-                    <p class="review-stars">
-                        <i class="bi bi-star-fill text-danger"></i>
-                        <i class="bi bi-star-fill text-danger"></i>
-                        <i class="bi bi-star-fill text-danger"></i>
-                        <i class="bi bi-star-fill text-danger"></i>
-                        <i class="bi bi-star-fill text-danger"></i>
-                    </p>
-                    <p class="review-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
-                    <p class="review-author">
-                        <span class="author-name">Aliqua Amet</span>
-                        <span class="author-divider">|</span>
-                        <span class="author-role">Lorem ipsum dolor</span>
-                    </p>
-                </div>
-            </div>
+        <div class="container section-margin">
             <hr class="separator">
         </div>
 
+        <div class="section-4 container section-margin">
+            <p class="title">Client Reviews</p>
 
-        <div class="section-5 container">
-            <p class="policy-heading">More Details on Policies & Safety</p>
+            <div class="reviews">
+                <div class="single-review">
+                    <div class="stars">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+
+                    <p class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+
+                    <p class="author">
+                        <span class="name">Danial Mark</span>
+                        <span class="line">|</span>
+                        <span class="role">Marketing Coordinator</span>
+                    </p>
+                </div>
+
+                <div class="single-review">
+                    <div class="stars">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+
+                    <p class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+
+                    <p class="author">
+                        <span class="name">Danial Mark</span>
+                        <span class="line">|</span>
+                        <span class="role">Marketing Coordinator</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container section-margin">
+            <hr class="separator">
+        </div>
+
+        <div class="section-5 container section-margin">
+            <p class="policy-title">More Details on Policies & Safety</p>
+
             <div class="row">
-                <div class="col-6 policy-block">
-                    <p class="policy-title">Lorem ipsum dolor sit amet consect</p>
-                    <p class="policy-desc">
+                <div class="col-6 single-policy">
+                    <p class="title">Lorem ipsum dolor sit amet consect</p>
+                    <p class="description">
                         Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     </p>
                 </div>
-                <div class="col-6 policy-block">
-                    <p class="policy-title">Lorem ipsum dolor sit amet consect</p>
-                    <p class="policy-desc">
+
+                <div class="col-6 single-policy">
+                    <p class="title">Lorem ipsum dolor sit amet consect</p>
+                    <p class="description">
+                        Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                </div>
+
+                 <div class="col-6 single-policy">
+                    <p class="title">Lorem ipsum dolor sit amet consect</p>
+                    <p class="description">
+                        Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                </div>
+
+                <div class="col-6 single-policy">
+                    <p class="title">Lorem ipsum dolor sit amet consect</p>
+                    <p class="description">
                         Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     </p>
                 </div>
             </div>
-            <hr class="section-divider">
         </div>
 
+        <div class="container section-margin">
+            <hr class="separator">
+        </div>
 
         <div class="section-6 container">
-            <p class="section-title">More available warehouses in the same area</p>
+            <p class="title">More available warehouses in the same area</p>
+
             <div class="row">
                 <div class="col-3">
-                    <div class="card">
-                        <img src="{{ asset('storage/frontend/warehouse-c-1.png') }}" class="card-image" alt="Warehouse">
-                        <div class="card-body">
+                    <div class="single-warehouse">
+                        <img src="{{ asset('storage/frontend/warehouse-c-1.png') }}" class="image" alt="Warehouse">
+                        <div class="details">
                             <p class="title">Lorem ipsum</p>
                             <p class="subtitle">Lorem ipsum dolor sit amet</p>
                             <p class="price">SAR 13,250.62</p>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-3">
-                    <div class="card">
-                        <img src="{{ asset('storage/frontend/warehouse-c-2.png') }}" class="card-image" alt="Warehouse">
-                        <div class="card-body">
-                            <p class="title">Lorem ipsum</p>
-                            <p class="subtitle">Lorem ipsum dolor sit amet</p>
-                            <p class="price">SAR 8,377.87</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="card">
-                        <img src="{{ asset('storage/frontend/warehouse-c-3.png') }}" class="card-image" alt="Warehouse">
-                        <div class="card-body">
+                    <div class="single-warehouse">
+                        <img src="{{ asset('storage/frontend/warehouse-c-2.png') }}" class="image" alt="Warehouse">
+                        <div class="details">
                             <p class="title">Lorem ipsum</p>
                             <p class="subtitle">Lorem ipsum dolor sit amet</p>
                             <p class="price">SAR 13,250.62</p>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-3">
-                    <div class="card">
-                        <img src="{{ asset('storage/frontend/warehouse-c-4.png') }}" class="card-image" alt="Warehouse">
-                        <div class="card-body">
+                    <div class="single-warehouse">
+                        <img src="{{ asset('storage/frontend/warehouse-c-3.png') }}" class="image" alt="Warehouse">
+                        <div class="details">
                             <p class="title">Lorem ipsum</p>
                             <p class="subtitle">Lorem ipsum dolor sit amet</p>
-                            <p class="price">SAR 16,987.90</p>
+                            <p class="price">SAR 13,250.62</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="single-warehouse">
+                        <img src="{{ asset('storage/frontend/warehouse-c-4.png') }}" class="image" alt="Warehouse">
+                        <div class="details">
+                            <p class="title">Lorem ipsum</p>
+                            <p class="subtitle">Lorem ipsum dolor sit amet</p>
+                            <p class="price">SAR 13,250.62</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <div class="modal fade slider-modal" id="sliderModal">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="swiper mySwiper2">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/frontend/warehouse-c-1.png') }}"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/frontend/warehouse-c-2.png') }}"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/frontend/warehouse-c-3.png') }}"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/frontend/warehouse-c-4.png') }}"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/frontend/warehouses-1.png') }}"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/frontend/warehouses-2.png') }}"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/frontend/warehouses-3.png') }}"/>
+                                </div>
+                            </div>
+                        </div>
 
-        <div class="section-modal container" id="lotReservationModal" style="display: none;">
-            <div class="modal-overlay"></div>
-            <div class="modal-content wide-modal">
-                <div style="display: flex; justify-content: flex-end;">
-                    <span class="modal-close" onclick="closeModal()"><i class="bi bi-x"></i></span>
-                </div>
-                <p class="modal-title">Choose Your Warehouse Spaces</p>
-                <p class="modal-subtitle">Select the warehouse lots that meet your storage requirements</p>
-                <div class="legend-box text-center">
-                    <span class="legend available">Available</span>
-                    <span class="legend reserved">Reserved</span>
-                    <span class="legend selected">Selected</span>
-                </div>
-                <div class="lot-grid">
-                    <div class="lot-row">
-                        <div class="lot available">A1</div>
-                        <div class="lot available">A2</div>
-                        <div class="lot empty"></div>
-                        <div class="lot available">A3</div>
-                        <div class="lot available">A4</div>
-                        <div class="lot available">A5</div>
-                        <div class="lot available">A6</div>
-                        <div class="lot empty"></div>
-                        <div class="lot available">A7</div>
-                        <div class="lot available">A8</div>
-                        <div class="lot available">A9</div>
-                        <div class="lot available">A10</div>
-                        <div class="lot empty"></div>
-                        <div class="lot reserved">A11</div>
-                        <div class="lot reserved">A12</div>
-                        <div class="lot empty"></div>
-                        <div class="lot reserved">A13</div>
-                        <div class="lot reserved">A14</div>
-                        <div class="lot reserved">A15</div>
-                        <div class="lot reserved">A16</div>
-                        <div class="lot reserved">A17</div>
-                    </div>
-                    <div class="lot-row">
-                        <div class="lot available">F1</div>
-                        <div class="lot available">F2</div>
-                        <div class="lot empty"></div>
-                        <div class="lot reserved">F3</div>
-                        <div class="lot reserved">F4</div>
-                        <div class="lot reserved">F5</div>
-                        <div class="lot reserved">F6</div>
-                        <div class="lot empty"></div>
-                        <div class="lot reserved">F7</div>
-                        <div class="lot reserved">F8</div>
-                        <div class="lot reserved">F9</div>
-                        <div class="lot reserved">F10</div>
-                        <div class="lot empty"></div>
-                        <div class="lot available">F11</div>
-                        <div class="lot available">F12</div>
-                        <div class="lot empty"></div>
-                        <div class="lot available">F13</div>
-                        <div class="lot available">F14</div>
-                        <div class="lot available">F15</div>
-                        <div class="lot available">F16</div>
-                        <div class="lot available">F17</div>
-                    </div>
-                    <div class="lot-row">
-                        <div class="lot available">B1</div>
-                        <div class="lot available">B2</div>
-                        <div class="lot empty"></div>
-                        <div class="lot reserved">B3</div>
-                        <div class="lot reserved">B4</div>
-                        <div class="lot reserved">B5</div>
-                        <div class="lot reserved">B6</div>
-                        <div class="lot empty"></div>
-                        <div class="lot selected">B7</div>
-                        <div class="lot selected">B8</div>
-                        <div class="lot selected">B9</div>
-                        <div class="lot selected">B10</div>
-                        <div class="lot empty"></div>
-                        <div class="lot available">B11</div>
-                        <div class="lot available">B12</div>
-                        <div class="lot empty"></div>
-                        <div class="lot available">B13</div>
-                        <div class="lot available">B14</div>
-                        <div class="lot available">B15</div>
-                        <div class="lot available">B16</div>
-                        <div class="lot available">B17</div>
-                    </div>
-                    <div class="lot-row">
-                        <div class="lot available">H1</div>
-                        <div class="lot available">H2</div>
-                        <div class="lot empty"></div>
-                        <div class="lot available">H3</div>
-                        <div class="lot available">H4</div>
-                        <div class="lot available">H5</div>
-                        <div class="lot available">H6</div>
-                        <div class="lot empty"></div>
-                        <div class="lot available">H7</div>
-                        <div class="lot available">H8</div>
-                        <div class="lot available">H9</div>
-                        <div class="lot available">H10</div>
-                        <div class="lot empty"></div>
-                        <div class="lot reserved">H11</div>
-                        <div class="lot reserved">H12</div>
-                        <div class="lot empty"></div>
-                        <div class="lot reserved">H13</div>
-                        <div class="lot reserved">H14</div>
-                        <div class="lot reserved">H15</div>
-                        <div class="lot reserved">H16</div>
-                        <div class="lot reserved">H17</div>
+                        <div thumbsSlider="" class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/frontend/warehouse-c-1.png') }}"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/frontend/warehouse-c-2.png') }}"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/frontend/warehouse-c-3.png') }}"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/frontend/warehouse-c-4.png') }}"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/frontend/warehouses-1.png') }}"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/frontend/warehouses-2.png') }}"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/frontend/warehouses-3.png') }}"/>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="text-center mt-4">
-                    <a href="{{ route('website.warehouses.book', 1) }}" class="confirm-btn">Confirm Booking</a>
+            </div>
+        </div>
+
+        <div class="modal fade lot-modal" id="lotModal">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="title">Choose Your Warehouse Spaces</p>
+                        <p class="description">Select the warehouse lots that meet your storage requirements</p>
+
+                        <div class="top-row">
+                            <p class="top-row-title">Lot Reservation</p>
+
+                            <div class="legends">
+                                <p class="legend available"><span class="box"></span>Available</p>
+                                <p class="legend reserved"><span class="box"></span>Reserved</p>
+                                <p class="legend selected"><span class="box"></span>Selected</p>
+                            </div>
+                        </div>
+
+                        <div class="lots">
+                            <div class="row">
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        A1
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        A2
+                                    </div>
+                                </div>
+                                <div class="col reserved">
+                                    <div class="lot-box">
+                                        A3
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        A4
+                                    </div>
+                                </div>
+                                <div class="col reserved">
+                                    <div class="lot-box">
+                                        A5
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        A6
+                                    </div>
+                                </div>
+                                <div class="col reserved">
+                                    <div class="lot-box">
+                                        A7
+                                    </div>
+                                </div>
+                                <div class="col reserved">
+                                    <div class="lot-box">
+                                        A8
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        A9
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        A10
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        A11
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        A12
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        A13
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        A14
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        A15
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        A16
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        A17
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        A18
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        B1
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        B2
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        B3
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        B4
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        B5
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        B6
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        B7
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        B8
+                                    </div>
+                                </div>
+                                <div class="col selected">
+                                    <div class="lot-box">
+                                        B9
+                                    </div>
+                                </div>
+                                <div class="col selected">
+                                    <div class="lot-box">
+                                        B10
+                                    </div>
+                                </div>
+                                <div class="col selected">
+                                    <div class="lot-box">
+                                        B11
+                                    </div>
+                                </div>
+                                <div class="col selected">
+                                    <div class="lot-box">
+                                        B12
+                                    </div>
+                                </div>
+                                <div class="col selected">
+                                    <div class="lot-box">
+                                        B13
+                                    </div>
+                                </div>
+                                <div class="col selected">
+                                    <div class="lot-box">
+                                        B14
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        B15
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        B16
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        B17
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        B18
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C1
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C2
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C3
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C4
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C5
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C6
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C7
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C8
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C9
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C10
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C11
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C12
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C13
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C14
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C15
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C16
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C17
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        C18
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D1
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D2
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D3
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D4
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D5
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D6
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D7
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D8
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D9
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D10
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D11
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D12
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D13
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D14
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D15
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D16
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D17
+                                    </div>
+                                </div>
+                                <div class="col available">
+                                    <div class="lot-box">
+                                        D18
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="{{ route('website.warehouses.book', 1) }}" class="confirm-button">Confirm Booking</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection
 
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        document.querySelector('.book-now-btn').addEventListener('click', function () {
-            document.getElementById('lotReservationModal').style.display = 'block';
+@push('after-scripts')
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            spaceBetween: 10,
+            slidesPerView: 6,
+            freeMode: true,
+            watchSlidesProgress: true,
         });
-    });
 
-    function closeModal() {
-        document.getElementById('lotReservationModal').style.display = 'none';
-    }
-</script>
+        var swiper2 = new Swiper(".mySwiper2", {
+            loop: true,
+            spaceBetween: 10,
+            slidesPerView: 1,
+            thumbs: {
+                swiper: swiper,
+            },
+        });
+    </script>
+@endpush
