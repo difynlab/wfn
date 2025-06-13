@@ -29,14 +29,14 @@
                             <!-- Ifham -->
                                 <div class="start-date">
                                     <div class="dropdown">
-                                        <input type="text" class="search-input dropdown-toggle" placeholder="Add dates" id="startDateDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <div class="dropdown-menu calendar-dropdown p-3">
-                                            <div class="dropdown-inner p-4">
-                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <input type="text" class="search-input" placeholder="Add dates" id="startDateDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <div class="dropdown-menu calendar-dropdown">
+                                            <div class="dropdown-inner">
+                                                <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <span class="me-2 fw-semibold">Pick by:</span>
-                                                        <button class="btn btn-sm btn-dark me-2 pick-mode" data-mode="exact">Exact Date</button>
-                                                        <button class="btn btn-sm btn-outline-dark me-2 pick-mode" data-mode="1day">±1 Day</button>
+                                                        <span class="fw-semibold">Pick by:</span>
+                                                        <button class="btn btn-sm btn-dark pick-mode" data-mode="exact">Exact Date</button>
+                                                        <button class="btn btn-sm btn-outline-dark pick-mode" data-mode="1day">±1 Day</button>
                                                         <button class="btn btn-sm btn-outline-dark pick-mode" data-mode="2day">±2 Days</button>
                                                     </div>
                                                     <button class="btn fw-semibold text-decoration-none pick-mode" data-mode="monthly">For Monthly Reservations</button>
@@ -49,25 +49,25 @@
                                                     </div>
                                                 </div>
                                                 <div class="calendar-view calendar-monthly d-none">
-                                                    <p class="fw-semibold text-center">Thu, March 1 - Thu, May 1</p>
-                                                    <div class="container mt-3">
-                                                        <div class="row mb-2">
-                                                            <div class="col-3"><button class="btn btn-light w-100">January</button></div>
-                                                            <div class="col-3"><button class="btn btn-light w-100">February</button></div>
-                                                            <div class="col-3"><button class="btn btn-danger w-100">March</button></div>
-                                                            <div class="col-3"><button class="btn btn-light w-100">April</button></div>
-                                                        </div>
-                                                        <div class="row mb-2">
-                                                            <div class="col-3"><button class="btn btn-danger w-100">May</button></div>
-                                                            <div class="col-3"><button class="btn btn-light w-100">June</button></div>
-                                                            <div class="col-3"><button class="btn btn-light w-100">July</button></div>
-                                                            <div class="col-3"><button class="btn btn-light w-100">August</button></div>
+                                                    <p class="fw-semibold text-center mb-4 mt-4">Thu, March 1 - Thu, May 1</p>
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">January</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">February</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-danger w-100 p-3">March</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">April</button></div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col-3"><button class="btn btn-light w-100">September</button></div>
-                                                            <div class="col-3"><button class="btn btn-light w-100">October</button></div>
-                                                            <div class="col-3"><button class="btn btn-light w-100">November</button></div>
-                                                            <div class="col-3"><button class="btn btn-light w-100">December</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-danger w-100 p-3">May</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">June</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">July</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">August</button></div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">September</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">October</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">November</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">December</button></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -84,14 +84,14 @@
                             <!-- Ifham -->
                                 <div class="end-date">
                                     <div class="dropdown">
-                                        <input type="text" class="search-input dropdown-toggle" placeholder="Add dates" id="startDateDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <div class="dropdown-menu calendar-dropdown p-3">
-                                            <div class="dropdown-inner p-4">
-                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <input type="text" class="search-input" placeholder="Add dates" id="endDateDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <div class="dropdown-menu calendar-dropdown">
+                                            <div class="dropdown-inner">
+                                                <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <span class="me-2 fw-semibold">Pick by:</span>
-                                                        <button class="btn btn-sm btn-dark me-2 pick-mode" data-mode="exact">Exact Date</button>
-                                                        <button class="btn btn-sm btn-outline-dark me-2 pick-mode" data-mode="1day">±1 Day</button>
+                                                        <span class="fw-semibold">Pick by:</span>
+                                                        <button class="btn btn-sm btn-dark pick-mode" data-mode="exact">Exact Date</button>
+                                                        <button class="btn btn-sm btn-outline-dark pick-mode" data-mode="1day">±1 Day</button>
                                                         <button class="btn btn-sm btn-outline-dark pick-mode" data-mode="2day">±2 Days</button>
                                                     </div>
                                                     <button class="btn fw-semibold text-decoration-none pick-mode" data-mode="monthly">For Monthly Reservations</button>
@@ -104,25 +104,25 @@
                                                     </div>
                                                 </div>
                                                 <div class="calendar-view calendar-monthly d-none">
-                                                    <p class="fw-semibold text-center">Thu, March 1 - Thu, May 1</p>
-                                                    <div class="container mt-3">
-                                                        <div class="row mb-2">
-                                                            <div class="col-3"><button class="btn btn-light w-100">January</button></div>
-                                                            <div class="col-3"><button class="btn btn-light w-100">February</button></div>
-                                                            <div class="col-3"><button class="btn btn-danger w-100">March</button></div>
-                                                            <div class="col-3"><button class="btn btn-light w-100">April</button></div>
-                                                        </div>
-                                                        <div class="row mb-2">
-                                                            <div class="col-3"><button class="btn btn-danger w-100">May</button></div>
-                                                            <div class="col-3"><button class="btn btn-light w-100">June</button></div>
-                                                            <div class="col-3"><button class="btn btn-light w-100">July</button></div>
-                                                            <div class="col-3"><button class="btn btn-light w-100">August</button></div>
+                                                    <p class="fw-semibold text-center mt-4 mb-4">Thu, March 1 - Thu, May 1</p>
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100  p-3">January</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">February</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-danger w-100 p-3">March</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">April</button></div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col-3"><button class="btn btn-light w-100">September</button></div>
-                                                            <div class="col-3"><button class="btn btn-light w-100">October</button></div>
-                                                            <div class="col-3"><button class="btn btn-light w-100">November</button></div>
-                                                            <div class="col-3"><button class="btn btn-light w-100">December</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-danger w-100 p-3">May</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">June</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">July</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">August</button></div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">September</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">October</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">November</button></div>
+                                                            <div class="col-3 mb-4"><button class="btn btn-light w-100 p-3">December</button></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -138,12 +138,12 @@
                             <p class="search-label">Storage Type</p>
                             <!-- Ifham -->
                                 <div class="dropdown">
-                                    <a class="btn search-input btn-lg dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="search-input dropdown-toggle " id="storageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                         Choose
                                     </a>
-                                    <ul class="dropdown-menu p-4 warehouse-dropdown shadow-lg">
-                                        <div class="dropdown-inner p-4">
-                                            <div class="dropdown-row mb-3">
+                                    <ul class="dropdown-menu warehouse-dropdown">
+                                        <div class="dropdown-inner">
+                                            <div class="dropdown-row">
                                                 <p class="dropdown-title">Warehouse Size</p>
                                                 <div class="d-flex flex-wrap gap-4">
                                                     <div class="form-check">
@@ -165,10 +165,10 @@
                                                 </div>
                                             </div>
                                             <hr class="dropdown-divider">
-                                            <div class="dropdown-row mb-3">
+                                            <div class="dropdown-row">
                                                 <p class="dropdown-title">Warehouse Storage Type</p>
                                                 <div class="container">
-                                                    <div class="row mb-2">
+                                                    <div class="row">
                                                         <div class="col-4">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="checkbox" id="type1">
@@ -765,11 +765,53 @@
                         }
 
                         // Update button styles (optional)
-                        parent.querySelectorAll('.pick-mode').forEach(btn => btn.classList.remove('btn-dark'));
+                        parent.querySelectorAll('.pick-mode').forEach(btn => {
+                            btn.classList.remove('btn-dark');
+                            btn.classList.add('btn-outline-dark');
+                        });
+                        this.classList.remove('btn-outline-dark');
                         this.classList.add('btn-dark');
                     });
                 });
             });
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const startDropdown = document.getElementById('startDateDropdown');
+                const endDropdown = document.getElementById('endDateDropdown');
+                const storageDropdown = document.getElementById('storageDropdown');
+
+                new bootstrap.Dropdown(startDropdown, {
+                    popperConfig: {
+                    modifiers: [
+                        {
+                        name: 'flip',
+                        enabled: false 
+                        }
+                    ]
+                    }
+                });
+                new bootstrap.Dropdown(endDropdown, {
+                    popperConfig: {
+                    modifiers: [
+                        {
+                        name: 'flip',
+                        enabled: false
+                        }
+                    ]
+                    }
+                });
+                new bootstrap.Dropdown(storageDropdown, {
+                    popperConfig: {
+                    modifiers: [
+                        {
+                        name: 'flip',
+                        enabled: false
+                        }
+                    ]
+                    }
+                });
+            });
+
         </script>
     @endpush
 <!-- Ifham -->

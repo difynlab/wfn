@@ -9,6 +9,7 @@
     .homepage .section-1 {
         position: relative;
         margin-bottom: 50px;
+        z-index: 1;
     }
     .homepage .section-1 .banner {
         width: 100%;
@@ -45,13 +46,20 @@
         border-radius: 32px;
         padding: 15px;
         box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+        max-width: 1200px;
+        min-width: 900px;
+        margin: auto;
     }
     .homepage .search-inputs {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        width: 100%;
     }
     .homepage .search-inputs .search-item {
+        position: relative;
+        flex: 1;
+        min-width: 0;
         padding: 0 20px;
     }
     .homepage .search-inputs .search-item .search-label {
@@ -95,13 +103,12 @@
             border-radius: 16px;
             margin: 0 40px;
             padding: 10px;
-            background-color: #FDFDFD;
+            background-color: var(--white);
         }
         .homepage .search-inputs .search-item .start-date .calendar-dropdown {
-            width: 900px;
-            max-width: 90vw;
-            left: 2% !important;
-            transform: translateX(-28%) translateY(29px) !important;
+            min-width: 900px;
+            max-width: 1200px;
+            transform: translateX(-25%) translateY(32px) !important;
             border-radius: 16px;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
             border: none;
@@ -115,13 +122,11 @@
             border-radius: 16px;
             margin: 0 40px;
             padding: 10px;
-            background-color: #FDFDFD;
         }
         .homepage .search-inputs .search-item .end-date .calendar-dropdown {
-            width: 900px;
-            max-width: 90vw;
-            left: 17% !important;
-            transform: translateX(-55%) translateY(29px) !important;
+            min-width: 900px;
+            max-width: 1200px;
+            transform: translateX(-46%) translateY(32px) !important;
             border-radius: 16px;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
             border: none;
@@ -163,10 +168,9 @@
             color: white;
         }
         .homepage .search-inputs .search-item .warehouse-dropdown {
-            width: 900px;
-            max-width: 90vw;
-            left: 50% !important;
-            transform: translateX(-80%) translateY(29px) !important;
+            min-width: 900px;
+            max-width: 1200px;
+            transform: translateX(-67.5%) translateY(32px) !important;
             border: none;
             border-radius: 5px 5px 32px 32px;
             background-color: var(--white);
