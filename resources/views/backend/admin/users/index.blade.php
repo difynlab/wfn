@@ -20,30 +20,39 @@
         <div class="row mb-4">
             <div class="col-12">
                 <form action="{{ route('admin.users.filter') }}" method="GET" class="filter-form">
-                    <div class="row align-items-center">
-                        <div class="col-3">
-                            <input type="text" class="form-control" name="name" value="{{ $name ?? '' }}" placeholder="Name">
-                        </div>
-
-                        <div class="col-3">
-                            <input type="text" class="form-control" name="email" value="{{ $email ?? '' }}" placeholder="Email">
-                        </div>
-
-                        <div class="col-3">
-                            <select class="form-control form-select" name="language">
-                                <option value="All" selected>All languages</option>
-                                <option value="English" {{ isset($language) && $language == 'English' ? "selected" : "" }}>English</option>
-                                <option value="Chinese" {{ isset($language) && $language == 'Chinese' ? "selected" : "" }}>Chinese</option>
-                                <option value="Japanese" {{ isset($language) && $language == 'Japanese' ? "selected" : "" }}>Japanese</option>
-                            </select>
-                        </div>
-
-                        <div class="col-3 d-flex justify-content-between">
-                            <button type="submit" class="filter-search-button" name="action" value="search">SEARCH</button>
-
-                            <button type="submit" class="filter-reset-button" name="action" value="reset">RESET</button>
-                        </div>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                        <input type="text" class="form-control input-field" name="name" placeholder="Search by Name">
                     </div>
+
+                    <select class="form-select input-field width" name="role">
+                        <option>User Role</option>
+                        <option>Admin</option>
+                        <option>Manager</option>
+                        <option>Landlord</option>
+                        <option>Tenant</option>
+                    </select>
+
+                    <input type="text" class="form-control input-field width" name="city" placeholder="City">
+
+                    <select class="form-select input-field width" name="order_by">
+                        <option>Order by: A-Z</option>
+                        <option>A-Z</option>
+                        <option>Z-A</option>
+                    </select>
+
+                    <select class="form-select input-field width" name="status">
+                        <option>Status</option>
+                        <option>Active</option>
+                        <option>Inactive</option>
+                    </select>
+
+                    <a href="" class="form-control input-field reset">
+                        <span>⟲</span>
+                        Reset Filter
+                    </a>
+
+                    <button class="apply-button">Apply Filters</button>
                 </form>
             </div>
         </div>
@@ -52,7 +61,7 @@
             <div class="col-12">
                 <x-backend.pagination items="{{ $items }}"></x-backend.pagination>
             
-                <div class="table-container mb-3">
+                <div class="table-container">
                     <table class="table w-100">
                         <thead>
                             <tr>
@@ -103,16 +112,16 @@
 @push('after-scripts')
     <script>
         $(document).ready(function() {
-            $('.pages .table .delete-button').on('click', function() {
+            $('.page .table .delete-button').on('click', function() {
                 let id = $(this).attr('id');
                 let url = "{{ route('admin.users.destroy', [':id']) }}";
                 destroy_url = url.replace(':id', id);
 
-                $('.pages .delete-modal form').attr('action', destroy_url);
-                $('.pages .delete-modal').modal('show');
+                $('.page .delete-modal form').attr('action', destroy_url);
+                $('.page .delete-modal').modal('show');
             });
 
-            $(".pages .pagination-form select").change(function () {
+            $(".page .pagination-form select").change(function () {
                 window.location = "{!! $users->url(1) !!}&items=" + this.value; 
             });
         });

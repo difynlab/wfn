@@ -5,6 +5,7 @@
 /* Import */
     @import url("../../backend/css/sidebar.css");
     @import url("../../backend/css/page.css");
+    @import url("../../backend/css/inner-page.css");
 /* Import */
 
 
@@ -24,6 +25,8 @@
         --input_border: #E9E9E9;
         --background: #F4F5F9;
         --blue: #3673F0;
+        --green_opacity: rgba(41, 255, 152, 0.2);
+        --dark_green: #095D35;
     }
     body {
         background-color: var(--background);
@@ -34,7 +37,7 @@
     a, a:hover {
         text-decoration: none!important;
     }
-    .form-control:focus, .form-check-input:focus {
+    .form-control:focus, .form-check-input:focus, .form-select:focus {
         box-shadow: none!important;
     }
     form .error-message {
@@ -135,6 +138,6 @@
         padding-top: 85px;
     }
     .wrapper .content {
-        padding: 30px 40px 0 310px;
+        padding: 30px 40px 30px 310px;
     }
 /* Wrapper styles */

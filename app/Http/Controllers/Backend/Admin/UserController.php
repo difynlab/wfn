@@ -22,19 +22,18 @@ use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
-    private function processUsers($users)
+    private function processData($data)
     {
-        foreach($users as $user) {
-            $user->action = '
-            <a href="'. route('admin.users.edit', $user->id) .'" class="edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
-            <a id="'.$user->id.'" class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
+        foreach($data as $da) {
+            $da->action = '
+            <a href="'. route('admin.users.edit', $da->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
+            <a href="#" class="action-button warehouses-button" title="Warehouses"><i class="bi bi-houses"></i></a>
+            <a id="'.$da->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
-            $user->image = $user->image != null ? '<img src="'. asset('storage/backend/persons/users/' . $user->image) .'" class="table-image">' : '<img src="'. asset('storage/backend/global/no-profile-image.png') .'" class="table-image">';
-
-            $user->status = ($user->status == '1') ? '<span class="active-status">Active</span>' : '<span class="inactive-status">Inactive</span>';
+            $da->status = ($da->status == '1') ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
         }
 
-        return $users;
+        return $data;
     }
 
     public function index(Request $request)
@@ -44,7 +43,7 @@ class UserController extends Controller
 
         $users = User::whereNot('id', $auth->id)->where('status', '!=', '0')->orderBy('id', 'desc')->paginate($items);
         
-        $users = $this->processUsers($users);
+        $users = $this->processData($users);
 
         return view('backend.admin.users.index', [
             'users' => $users,
@@ -309,7 +308,7 @@ class UserController extends Controller
             "Zimbabwe"
         ];
 
-        return view('backend.persons.users.create', [
+        return view('backend.admin.users.create', [
             'countries' => $countries
         ]);
     }
