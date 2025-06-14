@@ -9,6 +9,7 @@
     .homepage .section-1 {
         position: relative;
         margin-bottom: 50px;
+        z-index: 1;
     }
     .homepage .section-1 .banner {
         width: 100%;
@@ -17,7 +18,7 @@
         filter:opacity(0.6)
     }
     .homepage .section-1 .overlay {
-        width: 60%;
+        width: 65%;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -39,40 +40,43 @@
         color: var(--gray);
         padding-bottom: 30px;
     }
-    .homepage .search-bar {
+    .homepage .section-1 .overlay .search-bar {
         position: relative;
         background-color: var(--white);
         border-radius: 32px;
         padding: 15px;
         box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+        width: 100%;
     }
-    .homepage .search-inputs {
+    .homepage .section-1 .overlay .search-bar .search-inputs {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        width: 100%;
     }
-    .homepage .search-inputs .search-item {
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item {
         padding: 0 20px;
     }
-    .homepage .search-inputs .search-item .search-label {
-        font-size: 12px;
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .search-label {
+        font-size: 14px;
         font-weight: 500;
         color: var(--light_black);
-        margin-bottom: 3px;
+        padding-bottom: 3px;
     }
-    .homepage .search-inputs .search-item .search-input {
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .search-input {
         font-size: 14px;
         color: var(--gray);
         padding: 0;
         border: none;
         outline: none;
+        cursor: pointer;
     }
-    .homepage .search-inputs .search-item .divider {
+    .homepage .section-1 .overlay .search-bar .search-inputs .divider {
         width: 1px;
         height: 40px;
         background-color: var(--input_border);
     }
-    .homepage .search-inputs .search-btn {
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-button {
         font-size: 14px;
         font-weight: 500;
         border: none;
@@ -86,135 +90,210 @@
             transition: all 0.3s;
         }
     }
-    .homepage .search-inputs .search-btn i {
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-button {
         margin-right: 5px;
     }
-    /* Ifham */
-        .homepage .search-inputs .search-item .start-date .dropdown-inner {
-            border: 1px solid var(--input_border);
-            border-radius: 16px;
-            margin: 0 40px;
-            padding: 10px;
-            background-color: #FDFDFD;
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown {
+        position: initial!important;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .dropdown-menu {
+        width: 100%;
+        transform: none!important;
+        top: 100%!important;
+        border: none;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .dropdown-menu {
+        border-radius: 32px;
+        box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .dropdown-menu .dropdown-inner {
+        padding: 25px 100px;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .dropdown-inner {
+        padding: 25px 50px;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .top-row .legends {
+        display: flex;
+        align-items: center;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .top-row .legends .pick-by {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--light_black);
+        margin-right: 10px;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .top-row .legends .pick-mode {
+        background-color: var(--white);
+        color: var(--light_black);
+        border: 1px solid var(--input_border);
+        border-radius: 4px;
+        font-size: 13px;
+        font-weight: 500;
+        margin-right: 15px;
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--light_black);
+            color: var(--white);
+            transition: all 0.3s;
         }
-        .homepage .search-inputs .search-item .start-date .calendar-dropdown {
-            width: 900px;
-            max-width: 90vw;
-            left: 2% !important;
-            transform: translateX(-28%) translateY(29px) !important;
-            border-radius: 16px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
-            border: none;
-            border-radius: 5px 5px 32px 32px;
-            background-color: var(--white);
-            box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
-            padding: 20px;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .top-row .monthly-reservations {
+        background-color: transparent;
+        color: var(--light_black);
+        padding: 0;
+        border: none;
+        font-size: 16px;
+        font-weight: 500;
+        transition: all 0.3s;
+        &:hover {
+            font-weight: 700;
+            transition: all 0.3s;
         }
-        .homepage .search-inputs .search-item .end-date .dropdown-inner {
-            border: 1px solid var(--input_border);
-            border-radius: 16px;
-            margin: 0 40px;
-            padding: 10px;
-            background-color: #FDFDFD;
-        }
-        .homepage .search-inputs .search-item .end-date .calendar-dropdown {
-            width: 900px;
-            max-width: 90vw;
-            left: 17% !important;
-            transform: translateX(-55%) translateY(29px) !important;
-            border-radius: 16px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
-            border: none;
-            border-radius: 5px 5px 32px 32px;
-            background-color: var(--white);
-            box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-        }
-        .homepage .search-inputs .search-item .dropdown-inner .calendar-wrapper{
-            display: flex;
-            gap: 40px;
-        }
-        .homepage .search-inputs .search-item .dropdown-inner .calendar-month {
-            width: 300px;
-        }
-        .homepage .search-inputs .search-item .dropdown-inner .calendar-header {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-align: left;
-        }
-        .homepage .search-inputs .search-item .dropdown-inner .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
-            font-size: 14px;
-            text-align: center;
-        }
-        .homepage .search-inputs .search-item .dropdown-inner .calendar-day {
-            padding: 10px 0;
-            cursor: pointer;
-            border-radius: 50%;
-            &:hover{
-                background-color: #f0f0f0;
-            }
-        }
-        .homepage .search-inputs .search-item .dropdown-inner .calendar-day.selected {
-            background-color: #c00;
-            color: white;
-        }
-        .homepage .search-inputs .search-item .warehouse-dropdown {
-            width: 900px;
-            max-width: 90vw;
-            left: 50% !important;
-            transform: translateX(-80%) translateY(29px) !important;
-            border: none;
-            border-radius: 5px 5px 32px 32px;
-            background-color: var(--white);
-            box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-        }
-        .homepage .warehouse-dropdown .dropdown-inner {
-            border: 1px solid var(--input_border);
-            border-radius: 16px;
-            margin: 0 40px;
-            padding: 10px;
-            background-color: #FDFDFD;
-        }
-        .homepage .search-inputs .search-item .warehouse-dropdown .dropdown-title {
-            font-size: 14px;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .dropdown-divider {
+        border-top: 1px solid var(--input_border);
+        margin: 20px 0 30px 0;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars {
+        display: flex;
+        justify-content: space-between;
+        /* align-items: center; */
+        gap: 50px;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar {
+        width: 50%;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker.-inline- {
+        width: 100%;
+        border: none;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-nav {
+        border: none;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-nav--title {
+        font-size: 17px;
+        font-weight: 500;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-body--day-names {
+        margin: 8px 0 5px;
+        gap: 20px;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-body--day-name {
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--light_black);
+        width: 40px;
+        height: 40px;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-body--cells {
+        gap: 10px;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-cell.-day- {
+        font-size: 15px;
+        color: var(--light_black);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-cell.-focus- {
+        background: var(--red);
+        color: var(--white);
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-cell.-disabled- {
+        color: #A5A3A4;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-cell.-disabled-.-focus- {
+        background: none;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-cell.-selected- {
+        color: var(--white);
+        border: none;
+        background: var(--red);
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-cell.-selected-.-current- {
+        color: var(--white);
+        border: none;
+        background: var(--red);
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-cell.-current-.-focus- {
+        color: var(--white);
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-cell.-selected-.-focus- {
+        background: var(--red);
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .warehouse-dropdown .dropdown-title {
+        font-size: 14px;
+        color: var(--gray);
+        padding-bottom: 10px;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .warehouse-dropdown .radios {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .warehouse-dropdown .label {
+        font-size: 14px;
+        color: var(--medium_gray);
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .warehouse-dropdown .dropdown-divider {
+        border-top: 1px solid var(--input_border);
+        margin: 20px 0 30px 0;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .warehouse-dropdown .checkboxes .single-check {
+        margin-bottom: 15px;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .warehouse-dropdown .checkboxes .single-check:nth-last-child(-n+3) {
+        margin-bottom: 0;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .warehouse-dropdown .clear-button {
+        background: none;
+        border: none;
+        color: var(--red);
+        font-size: 15px;
+        font-weight: 500;
+        margin: auto;
+        display: block;
+        margin-top: 25px;
+        transition: all 0.3s;
+        &:hover {
             color: var(--light_black);
-            margin-bottom: 10px;
+            transition: all 0.3s;
         }
-        .homepage .search-inputs .search-item .warehouse-dropdown .dropdown-row {
-            padding: 0 5px;
-        }
-        .homepage .search-inputs .search-item .warehouse-dropdown .form-check{
-            align-items: center;
-        }
-        .homepage .search-inputs .search-item .warehouse-dropdown .form-check-label {
-            font-size: 12px;
-            color: var(--gray);
-        }
-        .homepage .search-inputs .search-item .warehouse-dropdown .form-check-input {
-            margin-right: 10px;
-        }
-        .homepage .search-inputs .search-item .warehouse-dropdown .dropdown-divider{
-            border-top: 1px solid var(--input_border);
-            margin: 15px 0;
-        }
-        .homepage .search-inputs .search-item .warehouse-dropdown .clear-filter-button {
-            background: none;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .monthly-calendar-view .monthly-calendar-view-title {
+        font-size: 16px;
+        text-align: center;
+        font-weight: 600;
+        padding-bottom: 25px;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .monthly-calendar-view .months-row .single-month {
+        margin-bottom: 40px;
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .monthly-calendar-view .months-row .single-month .single-month-button {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--white);
+        border: 1px solid var(--input_border);
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--red);
             border: none;
-            color: var(--red);
-            font-size: 12px;
-            font-weight: 500;
-            text-align: right;
-            cursor: pointer;
-            &:hover {
-                color: var(--black);
-            }
+            color: var(--white);
+            transition: all 0.3s;
         }
-    /* Ifham */
+    }
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .monthly-calendar-view .months-row .single-month:nth-last-child(-n+4) {
+        margin-bottom: 0;
+    }
 /* Section 1 */
 
 
