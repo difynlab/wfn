@@ -22,37 +22,34 @@
                 <form action="{{ route('admin.users.filter') }}" method="GET" class="filter-form">
                     <div class="input-group">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
-                        <input type="text" class="form-control input-field" name="name" placeholder="Search by Name">
+                        <input type="text" class="form-control input-field" name="name" value="{{ $name ?? '' }}" placeholder="Search by Name">
                     </div>
 
                     <select class="form-select input-field width" name="role">
-                        <option>User Role</option>
-                        <option>Admin</option>
-                        <option>Manager</option>
-                        <option>Landlord</option>
-                        <option>Tenant</option>
+                        <option value="">User Role</option>
+                        <option value="admin" {{ isset($role) && $role == 'admin' ? "selected" : "" }}>Admin</option>
+                        <option value="manager" {{ isset($role) && $role == 'manager' ? "selected" : "" }}>Manager</option>
+                        <option value="landlord" {{ isset($role) && $role == 'landlord' ? "selected" : "" }}>Landlord</option>
+                        <option value="tenant" {{ isset($role) && $role == 'tenant' ? "selected" : "" }}>Tenant</option>
                     </select>
 
-                    <input type="text" class="form-control input-field width" name="city" placeholder="City">
+                    <input type="text" class="form-control input-field width" name="city" value="{{ $city ?? '' }}" placeholder="City">
 
                     <select class="form-select input-field width" name="order_by">
-                        <option>Order by: A-Z</option>
-                        <option>A-Z</option>
-                        <option>Z-A</option>
+                        <option value="">Order by: Z-A</option>
+                        <option value="a-z" {{ isset($order_by) && $order_by == 'a-z' ? "selected" : "" }}>A-Z</option>
+                        <option value="z-a" {{ isset($order_by) && $order_by == 'z-a' ? "selected" : "" }}>Z-A</option>
                     </select>
 
                     <select class="form-select input-field width" name="status">
-                        <option>Status</option>
-                        <option>Active</option>
-                        <option>Inactive</option>
+                        <option value="">Status</option>
+                        <option value="1" {{ isset($status) && $status == '1' ? "selected" : "" }}>Active</option>
+                        <option value="2" {{ isset($status) && $status == '2' ? "selected" : "" }}>Inactive</option>
                     </select>
 
-                    <a href="" class="form-control input-field reset">
-                        <span>⟲</span>
-                        Reset Filter
-                    </a>
+                    <input type="submit" class="form-control input-field reset" name="action" value="⟲ Reset Filter">
 
-                    <button class="apply-button">Apply Filters</button>
+                    <input type="submit" class="apply-button" name="action" value="Apply Filters">
                 </form>
             </div>
         </div>
@@ -103,9 +100,9 @@
             </div>
         </div>
 
-        <x-backend.delete-data title="User"></x-backend.delete-data>
+        <x-backend.delete data="user"></x-backend.delete>
+        <x-backend.notification></x-backend.notification>
     </div>
-
 @endsection
 
 
@@ -117,11 +114,11 @@
                 let url = "{{ route('admin.users.destroy', [':id']) }}";
                 destroy_url = url.replace(':id', id);
 
-                $('.page .delete-modal form').attr('action', destroy_url);
-                $('.page .delete-modal').modal('show');
+                $('.page #delete-modal form').attr('action', destroy_url);
+                $('.page #delete-modal').modal('show');
             });
 
-            $(".page .pagination-form select").change(function () {
+            $(".page .custom-pagination select").change(function () {
                 window.location = "{!! $users->url(1) !!}&items=" + this.value; 
             });
         });

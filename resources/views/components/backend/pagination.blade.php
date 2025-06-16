@@ -1,6 +1,6 @@
 @props(['items'])
 
-<form class="pagination">
+<form class="custom-pagination">
     <span>Show</span>
         <select value="{{ $items }}">
             <option value="10" {{ $items == 10 ? "selected" : "" }}>10</option>

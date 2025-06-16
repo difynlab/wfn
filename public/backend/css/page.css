@@ -1,4 +1,4 @@
-/* Page title */
+/* #region: Page */
     .page .title {
         font-size: 26px;
         font-weight: 600;
@@ -24,10 +24,10 @@
         font-size: 15px;
         margin-right: 7px;
     }
-/* Page title */
+/* #endregion */
 
 
-/* Filter form */
+/* #region: Filter */
     .page .filter-form {
         display: flex;
         height: 80px;
@@ -64,10 +64,16 @@
     .page .filter-form .reset {
         color: var(--red);
         font-weight: 600;
-        display: flex;
+        /* display: flex;
         align-items: center;
         justify-content: center;
-        gap: 5px;
+        gap: 5px; */
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--light_black);
+            color: var(--white);
+            transition: all 0.3s;
+        }
     }
     .page .filter-form .apply-button {
         background-color: var(--red);
@@ -84,36 +90,49 @@
             transition: all 0.3s;
         }
     }
-/* Filter form */
+/* #endregion */
 
 
-/* Pagination */
-    .page .pagination {
+/* #region: Pagination */
+    .page .custom-pagination {
         margin-bottom: 10px;
         font-size: 13px;
         color: var(--gray);
     }
-    .page .pagination select {
+    .page .custom-pagination select {
         margin: 0 5px;
         font-size: 12px;
     }
-    /* .page .pagination .page-link {
+    .page nav {
+        margin-top: 20px;
+    }
+    .page nav .small {
+        font-size: 13px;
+        color: var(--gray);
+    }
+    .page nav .pagination {
+        margin-bottom: 0;
+    }
+    .page nav .page-link {
         font-size: 13px;
         color: var(--black);
-        border-radius: 0;
+        border-top-left-radius: 0!important;
+        border-bottom-left-radius: 0!important;
+        border-top-right-radius: 0!important;
+        border-bottom-right-radius: 0!important;
     }
-    .page .pagination .page-link:focus {
+    .page nav .page-link:focus {
         box-shadow: none;
     }
-    .page .pagination .active .page-link {
+    .page nav .active .page-link {
         color: var(--white);
-        background-color: #0040C3;
-        border-color: #0040C3;
-    } */
-/* Pagination */
+        background-color: var(--light_black);
+        border-color: var(--input_border);
+    }
+/* #endregion */
 
 
-/* Table */
+/* #region: Table */
     /* .page .table-container {
         overflow-x: auto;
         white-space: nowrap;
@@ -193,112 +212,88 @@
         color: var(--gray);
         background: var(--medium_white);
     }
+/* #endregion */
 
-/* 
 
-.page .modal .modal-content {
-    border-radius: 0;
-    padding: 10px;
-}
-.page .modal .modal-title {
-    font-size: 21px;
-    color: #E53E3E;
-    font-weight: 500;
-    letter-spacing: 0.8px;
-}
-.page .modal .modal-message {
-    color: var(--black);
-    font-size: 15px;
-}
-.page .modal .delete-button {
-    color: var(--white);
-    background: #E53E3E;
-    font-size: 15px;
-    border-radius: 0;
-    padding: 5px 20px;
-    transition: all 0.3s;
-}
-.page .modal .delete-button:hover {
-    color: #E53E3E;
-    background: var(--white);
-    border: 1px solid #E53E3E;
-    transition: all 0.3s;
-}
-.page .modal .close-button {
-    color: var(--white);
-    background: #0040C3;
-    font-size: 15px;
-    border-radius: 0;
-    padding: 5px 20px;
-    transition: all 0.3s;
-}
-.page .modal .close-button:hover {
-    color: #0040C3;
-    background: var(--white);
-    border: 1px solid #0040C3;
-    transition: all 0.3s;
-}
-.page .table-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-.page .modal .send-button {
-    color: var(--white);
-    background: #b4a006;
-    font-size: 15px;
-    border-radius: 0;
-    padding: 5px 20px;
-    transition: all 0.3s;
-}
-.page .modal .send-button:hover {
-    color: #b4a006;
-    background: var(--white);
-    border: 1px solid #b4a006;
-    transition: all 0.3s;
-}
-.page .user-course-image {
-    height: 75px;
-    width: 75px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-right: 2%;
-}
-.page .user-course-image {
-    height: 75px;
-    width: 75px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-right: 2%;
-}
-.page .user-course-name {
-    color: black;
-}
-.page .table .new-icon {
-    color: #088813;
-    position: absolute;
-    left: 3px;
-    top: 3px;
-    font-size: 10px;
-}
-.page .table .spinner {
-    height: 20px;
-    width: 20px;
-    display: none;
-}
-.page .table .form-switch {
-    margin-bottom: 0;
-} */
-/* .page .table .count-badge {
-    color: white;
-    font-size: 10px;
-    margin-left: 10px;
-    background-color: red;
-    padding: 5px 10px;
-    transition: all 0.3s;
-}
-.page .table .count-badge:hover {
-    background-color: rgb(180, 5, 5);
-    transition: all 0.3s;
-} */
+/* #region: Modal */
+    .notification-modal {
+        text-align: center;
+    }
+    .notification-modal .modal-body {
+        padding: 30px;
+    }
+    .notification-modal .tick-icon {
+        font-size: 35px;
+        color: var(--dark_green);
+    }
+    .notification-modal .title {
+        font-size: 24px;
+        font-weight: 600;
+        padding-bottom: 10px;
+        color: var(--black);
+    }
+    .notification-modal .description {
+        font-size: 16px;
+        color: var(--light_black);
+    }
+    .notification-modal .close-button {
+        border: 1px solid var(--light_black);
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 0;
+        color: var(--light_black);
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--light_black);
+            color: var(--white);
+            transition: all 0.3s;
+        }
+    }
+    .notification-modal .arrow-icon {
+        padding-right: 10px;
+    }
+    .notification-modal .triangle-icon {
+        font-size: 35px;
+        color: var(--medium_red);
+    }
+    .notification-modal .close-icon {
+        font-size: 35px;
+        color: var(--red);
+    }
+    .notification-modal .buttons {
+        display: flex;
+        align-items: center;
+        margin-top: 25px;
+        justify-content: center;
+        gap: 20px;
+    }
+    .notification-modal .cancel-button {
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 0;
+        color: var(--light_black);
+        transition: all 0.3s;
+        &:hover {
+            font-weight: 800;
+            transition: all 0.3s;
+        }
+    }
+    .notification-modal .delete-button {
+        background-color: var(--red);
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 0;
+        border: none;
+        color: var(--white);
+        width: 200px;
+        height: 60px;
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--light_black);
+            transition: all 0.3s;
+        }
+    }
+    .notification-modal .delete-button .delete-icon {
+        padding-right: 5px;
+    }
+/* #endregion */

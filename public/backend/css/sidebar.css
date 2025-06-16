@@ -1,6 +1,6 @@
 .wrapper .sidebar {
     position: fixed;
-    z-index: 9999;
+    /* z-index: 9999; */
     background-color: var(--white);
     height: 100vh;
     width: 270px;

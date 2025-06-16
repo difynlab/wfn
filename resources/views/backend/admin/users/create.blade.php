@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="inner-page">
-        <form action="{{ route('admin.users.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.users.store') }}" method="POST" enctype="multipart/form-data" class="form">
             @csrf
 
             <div class="page-details">
@@ -55,9 +55,9 @@
                     </select>
                 </div>
 
-                 <div class="col-6 mb-4">
+                <div class="col-6 mb-4">
                     <label class="form-label label">Role<span class="asterisk">*</span></label>
-                    <select class="form-control form-select" id="role" name="role" required>
+                    <select class="form-select input-field" id="role" name="role" required>
                         <option value="">Select role</option>
                         <option value="Admin" {{ old('role') == 'Admin' ? 'selected' : '' }}>Admin</option>
                         <option value="Manager" {{ old('role') == 'Manager' ? 'selected' : '' }}>Manager</option>
@@ -80,13 +80,14 @@
                     <x-backend.input-error field="confirm_password"></x-backend.input-error>
                 </div>
 
-                <div class="col-12">
-                    <x-backend.upload-image old_name="old_image" old_value="{{ old('image') }}" new_name="new_image" path="persons/users" label="User"></x-backend.upload-image>
+                <div class="col-12 mb-4">
+                    <x-backend.upload-image old_name="old_image" old_value="{{ old('image') }}" new_name="new_image" path="users" label="User"></x-backend.upload-image>
                     <x-backend.input-error field="new_image"></x-backend.input-error>
                 </div>
-            </div>
 
-            <x-backend.create-status></x-backend.create-status>
+                <x-backend.create></x-backend.create>
+                <x-backend.notification></x-backend.notification>
+            </div>
         </form>
     </div>
 

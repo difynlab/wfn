@@ -14,5 +14,3 @@
 # Unignore only specific sub folders
 !/backend/global/
 !/backend/global/**
-!/backend/sidebar/
-!/backend/sidebar/**
