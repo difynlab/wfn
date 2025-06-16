@@ -1,11 +1,11 @@
-/* Global */
+/* #region Global */
     .footer {
         margin-top: 0;
     }
-/* Global */
+/* #endregion */
 
 
-/* Section 1 */
+/* #region Section 1 */
     .homepage .section-1 {
         position: relative;
         margin-bottom: 50px;
@@ -294,10 +294,10 @@
     .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .monthly-calendar-view .months-row .single-month:nth-last-child(-n+4) {
         margin-bottom: 0;
     }
-/* Section 1 */
+/* #endregion */
 
 
-/* Section 2 */
+/* #region Section 2 */
     .homepage .section-2 .nav-pills {
         border-bottom: 1px solid var(--input_border);
         margin-bottom: 25px;
@@ -367,10 +367,10 @@
     .homepage .section-2 .tab-content .card .card-body .bottom-box i {
         margin-right: 5px;
     }
-/* Section 2 */
+/* #endregion */
 
 
-/* Section 3 */
+/* #region Section 3 */
     .homepage .section-3 .card {
         border-radius: 4px;
         padding: 15px;
@@ -401,10 +401,10 @@
         font-size: 15px;
         color: var(--gray);
     }
-/* Section 3 */
+/* #endregion */
 
 
-/* Section 4 */
+/* #region Section 4 */
     .homepage .section-4 {
         background-image: url('/storage/frontend/homepage-coming-soon.png');
         background-size: contain;
@@ -465,10 +465,10 @@
         width: 100%;
         object-fit: cover;
     }
-/* Section 4 */
+/* #endregion */
 
 
-/* Section 5 */
+/* #region Section 5 */
     .homepage .section-5 .view-more-button {
         border: 1px solid var(--red);
         color: var(--red);
@@ -530,10 +530,10 @@
         object-fit: cover;
         padding-bottom: 10px;
     }
-/* Section 5 */
+/* #endregion */
     
 
-/* Section 6 */
+/* #region Section 6 */
     .homepage .section-6 {
         background-color: var(--black);
         padding: 30px 0;
@@ -566,4 +566,36 @@
             transition: all 0.3s;
         }
     }
-/* Section 6 */
+/* #endregion */
+
+
+/* #region Responsive */
+    @media (width <= 1921px) {}
+    @media (width <= 1901px) {}
+    @media (width <= 1851px) {}
+    @media (width <= 1801px) {}
+    @media (width <= 1751px) {}
+    @media (width <= 1681px) {}
+    @media (width <= 1601px) {}
+    @media (width <= 1537px) {}
+    @media (width <= 1441px) {}
+    @media (width <= 1367px) {}
+    @media (width <= 1301px) {}
+    @media (width <= 1281px) {}
+    @media (width <= 1151px) {}
+    @media (width <= 1076px) {}
+    @media (width <= 1025px) {}
+    @media (width <= 991px) {}
+    @media (width <= 845px) {}
+    @media (width <= 768px) {}
+    @media (width <= 721px) {}
+    @media (width <= 651px) {}
+    @media (width <= 576px) {}
+    @media (width <= 481px) {}
+    @media (width <= 429px) {}
+    @media (width <= 415px) {}
+    @media (width <= 396px) {}
+    @media (width <= 377px) {}
+    @media (width <= 361px) {}
+    @media (width <= 331px) {}
+/* #endregion */

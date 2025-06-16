@@ -1,4 +1,4 @@
-/* Section 2 */
+/* #region Section 2 */
     .terms-of-use .section-2 .nav-row {
         margin-bottom: 25px;
     }
@@ -22,4 +22,4 @@
         font-size: 17px;
         color: var(--gray);
     }
-/* Section 2 */
+/* #endregion */

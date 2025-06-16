@@ -1,6 +1,6 @@
-/* Section 2 */
+/* #region Section 2 */
     .privacy-policy .section-2 .content, .privacy-policy .section-2 .content p {
         font-size: 17px;
         color: var(--gray);
     }
-/* Section 2 */
+/* #endregion */

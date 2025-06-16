@@ -1,4 +1,4 @@
-/* Global */
+/* #region Global */
     .page-title {
         font-size: 50px;
     }
@@ -8,19 +8,19 @@
     .footer {
         margin-top: 0;
     }
-/* Global */
+/* #endregion */
 
 
-/* section 2 */
+/* #region Section 2 */
     .area .section-2 .content, .area .section-2 .content p {
         font-size: 16px;
         line-height: 28px;
         color: var(--gray);
     }
-/* Section 2 */
+/* #endregion */
 
 
-/* Section 3 */
+/* #region Section 3 */
     .area .section-3{
         background-color: var(--black);
         padding: 30px 0;
@@ -53,4 +53,4 @@
             transition: all 0.3s;
         }
     }
-/* Section 3 */
+/* #endregion */

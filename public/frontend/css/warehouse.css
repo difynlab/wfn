@@ -1,12 +1,12 @@
-/* Global */
+/* #region Global */
     .separator {
         border: 1px solid var(--separator);
         margin: 30px 0;
     }
-/* Global */
+/* #endregion */
 
 
-/* Section 1 */
+/* #region Section 1 */
     .warehouse .section-1 .left .main-image {
         width: 100%;
         height: 475px;
@@ -26,10 +26,10 @@
         cursor: pointer;
         border-radius: 5px;
     }
-/* Section 1 */
+/* #endregion */
 
 
-/* Slider modal */
+/* #region Slider modal */
     .slider-modal .mySwiper2 .swiper-slide img {
         width: 100%;
         height: 550px;
@@ -46,10 +46,10 @@
         cursor: pointer;
         border-radius: 5px;
     }
-/* Slider modal */
+/* #endregion */
 
 
-/* Section 2 */
+/* #region Section 2 */
     .warehouse .section-2 .profile-row {
         margin-bottom: 25px;
     }
@@ -290,20 +290,20 @@
     .warehouse .section-2 .lender .details .single i {
         padding-right: 10px;
     }
-/* Section 2 */
+/* #endregion */
 
 
-/* Section 3 */
+/* #region Section 3 */
     .warehouse .section-3 .image {
         width: 100%;
         height: 600px;
         object-fit: cover;
         border-radius: 4px;
     }
-/* Section 3 */
+/* #endregion */
 
 
-/* Section 4 */
+/* #region Section 4 */
     .warehouse .section-4 .title {
         font-size: 18px;
         font-weight: 600;
@@ -351,10 +351,10 @@
         font-weight: 500;
         color: var(--gray);
     }
-/* Section 4 */
+/* #endregion */
 
 
-/* Section 5 */
+/* #region Section 5 */
     .warehouse .section-5 .policy-title {
         font-size: 18px;
         font-weight: 600;
@@ -378,10 +378,10 @@
         color: var(--gray);
         line-height: 24px;
     }
-/* Section 5 */
+/* #endregion */
 
 
-/* Section 6 */
+/* #region Section 6 */
     .warehouse .section-6 .title {
         font-size: 18px;
         font-weight: 600;
@@ -417,10 +417,10 @@
         font-weight: 500;
         color: var(--light_black);
     }
-/* Section 6 */
+/* #endregion */
 
 
-/* Lot modal */
+/* #region Lot modal */
     .warehouse .lot-modal .modal-body {
         margin: auto;
         padding-top: 30px;
@@ -525,4 +525,4 @@
             background-color: var(--light_black);
         }
     }
-/* Lot modal */
+/* #endregion */

@@ -1,12 +1,12 @@
-/* Global */
+/* #region Global */
     .about .section-description p {
         font-size: 17px;
         color: var(--gray);
     }
-/* Global */
+/* #endregion */
 
 
-/* Section 2 */
+/* #region Section 2 */
     .about .section-2 .our-story-row {
         margin-top: 50px;
         align-items: center;
@@ -36,10 +36,10 @@
         border-left: none;
         padding-left: 12px;
     }
-/* Section 2 */
+/* #endregion */
 
 
-/* section 3 */
+/* #region Section 3 */
     .about .section-3 {
         background-color: var(--dark_red);
         padding: 60px 0;
@@ -57,10 +57,10 @@
         color: var(--white);
         padding-bottom: 0;
     }
-/* section 3 */
+/* #endregion */
 
 
-/* Section 4 */
+/* #region Section 4 */
     .about .section-4 .exchange-row {
         align-items: center;
     }
@@ -116,10 +116,10 @@
         border-radius: 4px;
         object-fit: cover;
     }
-/* Section 4 */
+/* #endregion */
 
 
-/* Section 5 */
+/* #region Section 5 */
     .about .section-5 .video-box .image {
         width: 100%;
         height: 500px;
@@ -167,10 +167,10 @@
         font-size: 14px;
         color: var(--gray);
     }
-/* Section 5 */
+/* #endregion */
 
 
-/* Section 6 */
+/* #region Section 6 */
     .about .section-6 {
         background-color: var(--dark_red);
         padding: 60px 0;
@@ -193,10 +193,10 @@
         font-size: 16px;
         color: var(--white);
     }
-/* Section 6 */
+/* #endregion */
 
 
-/* Section 7 */
+/* #region Section 7 */
     .about .section-7 .founders-row {
         align-items: center;
     }
@@ -214,10 +214,10 @@
         border-radius: 4px;
         object-fit: cover;
     }
-/* Section 7 */
+/* #endregion */
 
 
-/* Section 8 */
+/* #region Section 8 */
     .about .section-8 {
         background-color: var(--dark_red);
         padding: 40px 60px;
@@ -276,10 +276,10 @@
         border-radius: 4px;
         object-fit: cover;
     }
-/* Section 8 */
+/* #endregion */
 
 
-/* Section 9 */
+/* #region Section 9 */
     .about .section-9 {
         padding: 0;
     }
@@ -357,10 +357,10 @@
         width: 20px;
         border-radius: 5px;
     }
-/* Section 9 */
+/* #endregion */
 
 
-/* Section 10 */
+/* #region Section 10 */
     .about .section-10 {
         height: 550px;
         background-image: url('../../../storage/frontend/network-bg.png');
@@ -376,10 +376,10 @@
         font-weight: 500;
         text-align: center;
     }
-/* Section 10 */
+/* #endregion */
 
 
-/* Section 11 */
+/* #region Section 11 */
     .about .section-11 .accordion .accordion-item {
         border: none;
     }
@@ -413,4 +413,4 @@
     .about .section-11 .accordion .accordion-item .accordion-button .symbol .active {
         color: var(--red);
     }
-/* Section 11 */
+/* #endregion */
