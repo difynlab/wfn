@@ -417,32 +417,359 @@
 
 
 /* #region Responsive */
-    @media (width <= 1921px) {}
-    @media (width <= 1901px) {}
-    @media (width <= 1851px) {}
-    @media (width <= 1801px) {}
-    @media (width <= 1751px) {}
-    @media (width <= 1681px) {}
-    @media (width <= 1601px) {}
-    @media (width <= 1537px) {}
-    @media (width <= 1441px) {}
-    @media (width <= 1367px) {}
-    @media (width <= 1301px) {}
-    @media (width <= 1281px) {}
-    @media (width <= 1151px) {}
-    @media (width <= 1076px) {}
-    @media (width <= 1025px) {}
-    @media (width <= 991px) {}
-    @media (width <= 845px) {}
-    @media (width <= 768px) {}
-    @media (width <= 721px) {}
-    @media (width <= 651px) {}
-    @media (width <= 576px) {}
-    @media (width <= 481px) {}
-    @media (width <= 429px) {}
-    @media (width <= 415px) {}
-    @media (width <= 396px) {}
-    @media (width <= 377px) {}
-    @media (width <= 361px) {}
-    @media (width <= 331px) {}
+    @media (width <= 1921px) {
+        /* General font size adjustments */
+        .about .section-description p {
+            font-size: 16px;
+        }
+        .about .section-title {
+            font-size: 28px;
+        }
+    } 
+    @media (width <= 1901px) {
+        .about .section-2 .our-story-row .right .stats-row .stat-box .number {
+            font-size: 36px;
+        }
+        .about .section-2 .our-story-row .right .stats-row .stat-box .text {
+            font-size: 16px;
+        }
+    }   
+    @media (width <= 1851px) {
+        .about .section-4 .right .exchange-box .box-header .text {
+            font-size: 18px;
+        }
+        .about .section-5 .right .steps .single-row .single-row-right .title {
+            font-size: 14px;
+        }
+    }   
+    @media (width <= 1801px) {
+        .about .section-10 .text {
+            font-size: 36px;
+        }
+    }   
+    @media (width <= 1751px) {
+        .about .section-2 .our-story-row .left .image,
+        .about .section-7 .founders-row .right .image {
+            height: 380px;
+        }
+        .about .section-5 .left .video-box .image {
+            height: 480px;
+        }
+    }
+    @media (width <= 1681px) {
+        .about .section-8 .form-row .image {
+            height: 450px;
+        }
+    }
+    @media (width <= 1601px) {
+        .about .section-description p {
+            font-size: 15px;
+        }
+        .about .section-2 .our-story-row .right .stats-row .stat-box .number {
+            font-size: 32px;
+        }
+    }
+    @media (width <= 1537px) {
+        .about .section-4 .right .exchange-box .image {
+            height: 180px;
+        }
+        .about .section-10 .text {
+            font-size: 32px;
+        }
+    } 
+    @media (width <= 1441px) {
+        .about .section-2 .our-story-row .left .image,
+        .about .section-7 .founders-row .right .image {
+            height: 350px;
+        }
+        .about .section-5 .left .video-box .image {
+            height: 450px;
+        }
+    }
+    @media (width <= 1367px) {
+        .about .section-8 .form-row .image {
+            height: 420px;
+        }
+        .about .section-10 .text {
+            font-size: 30px;
+        }
+    }
+    @media (width <= 1301px) {
+        .about .section-4 .right .exchange-box .box-header .text {
+            font-size: 16px;
+        }
+    }
+    @media (width <= 1281px) {
+        .about .section-title {
+            font-size: 26px;
+        }
+    }
+    @media (width <= 1151px) {
+        .about .section-2 .our-story-row .left .image,
+        .about .section-7 .founders-row .right .image {
+            height: 320px;
+        }
+        .about .section-5 .left .video-box .image {
+            height: 420px;
+        }
+    }
+    @media (width <= 1076px) {
+        .about .section-10 .text {
+            font-size: 28px;
+        }
+        .about .section-8 .form-row .image {
+            height: 400px;
+        }
+    }
+    @media (width <= 1025px) {
+        /* Tablet landscape adjustments */
+        .about .section-2 .our-story-row,
+        .about .section-4 .exchange-row,
+        .about .section-5 .row,
+        .about .section-7 .founders-row {
+            flex-direction: column;
+        }
+        .about .section-2 .our-story-row .left,
+        .about .section-2 .our-story-row .right,
+        .about .section-4 .exchange-row .left,
+        .about .section-4 .exchange-row .right,
+        .about .section-5 .row .left,
+        .about .section-5 .row .right,
+        .about .section-7 .founders-row .left,
+        .about .section-7 .founders-row .right {
+            width: 100%;
+            padding: 0;
+        }
+        .about .section-2 .our-story-row .left .image,
+        .about .section-7 .founders-row .right .image {
+            height: 300px;
+            margin-bottom: 30px;
+        }
+        .about .section-4 .exchange-row .right {
+            margin-top: 30px;
+        }
+        .about .section-5 .row .left .video-box {
+            margin-bottom: 30px;
+        }
+        .about .section-5 .right .steps .single-row {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .about .section-3 .single-row {
+            flex-direction: column;
+        }
+        .about .section-3 .single-row .col-6 {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        .about .section-6 .single-column {
+            width: 50%;
+            margin-bottom: 30px;
+        }
+        .about .section-7 .founders-row .right .image {
+            margin-top: 10px;
+            height: 650px;
+        }
+        .about .section-8 .form-row {
+            flex-direction: column-reverse;
+        }
+        .about .section-8 .form-row .col-6 {
+            width: 100%;
+        }
+        .about .section-8 .form-row .image {
+            margin-bottom: 30px;
+            height: 350px;
+        }
+        .about .section-9 .swiper .swiper-slide .testimonial-row .left {
+            width: 60%;
+        }
+        .about .section-9 .swiper .swiper-slide .testimonial-row .right {
+            width: 40%;
+        }
+        .about .section-11 .row {
+            flex-direction: column;
+        }
+        .about .section-11 .row .col-6 {
+            width: 100%;
+        }
+        .about .section-11 .row .col-6:first-child {
+            margin-bottom: 30px;
+        }
+    }
+    @media (width <= 991px) {
+        /* Tablet portrait adjustments */
+        .about .section-6 .single-column {
+            width: 100%;
+        }
+        .about .section-9 .swiper {
+            padding-bottom: 40px;
+        }
+        .about .section-10 {
+            height: 450px;
+        }
+    }
+    @media (width <= 845px) {
+        .about .section-5 .left .video-box .image {
+            height: 380px;
+        }
+        .about .section-10 .text {
+            font-size: 26px;
+        }
+    }
+    @media (width <= 768px) {
+        /* Mobile landscape adjustments */        
+        .about .section-9 .swiper .swiper-slide .testimonial-row {
+            flex-direction: column;
+        }
+        .about .section-9 .swiper .swiper-slide .testimonial-row .left,
+        .about .section-9 .swiper .swiper-slide .testimonial-row .right {
+            width: 100%;
+        }
+        .about .section-9 .swiper .swiper-slide .testimonial-row .right .image {
+            border-radius: 0 0 4px 4px;
+            border-top-right-radius: 0;
+            height: 250px;
+        }
+        .about .section-10 {
+            height: 400px;
+        }
+    }
+    @media (width <= 721px) {
+        .about .section-5 .left .video-box .image {
+            height: 350px;
+        }
+        .about .section-8 .form-row .image {
+            height: 320px;
+        }
+    }
+    @media (width <= 651px) {
+        .about .section-2 .our-story-row .left .image,
+        .about .section-7 .founders-row .right .image {
+            height: 280px;
+        }
+        .about .section-10 .text {
+            font-size: 24px;
+        }
+    }
+    @media (width <= 576px) {
+        /* Mobile portrait adjustments */
+        .about .section-title {
+            font-size: 24px;
+        }
+        .about .section-2 .our-story-row .left .image,
+        .about .section-7 .founders-row .right .image {
+            height: 250px;
+        }
+        .about .section-2 .our-story-row .left,
+        .about .section-2 .our-story-row .right { 
+            width: 95%
+        }
+        .about .section-2 .our-story-row .right .stats-row .stat-box .number{
+            font-size: 18px;
+        }
+        .about .section-2 .our-story-row .right .stats-row .stat-box .text{
+            font-size: 14px;
+        }
+        .about .section-4 .exchange-row .left{
+            width: 95%;
+        }
+        .about .section-7 .founders-row .left,
+        .about .section-7 .founders-row .right{
+            width: 95%;
+        }
+        .about .section-4 .right .exchange-box .image,
+        .about .section-5 .left .video-box .image {
+            height: 220px;
+        }
+        .about .section-7 .founders-row .right .image {
+            margin-top: 10px;
+            height: 300px;
+        }
+        .about .section-5 .row .right,
+        .about .section-5 .row .left {
+            width: 95%;
+            padding-left: 15px;
+        }
+        .about .section-8 {
+            padding: 30px;
+        }
+        .about .section-8 .form-row .image {
+            height: 280px;
+        }
+        .about .section-10 {
+            height: 350px;
+            background-size: cover;
+        }
+        .about .section-10 .text {
+            font-size: 22px;
+        }
+    }
+    @media (width <= 481px) {
+        .about .section-2 .our-story-row .left .image,
+        .about .section-7 .founders-row .right .image {
+            height: 220px;
+        }
+        .about .section-5 .left .video-box .image {
+            height: 200px;
+        }
+        .about .section-8 {
+            padding: 20px;
+        }
+        .about .section-8 .form-row .image {
+            height: 250px;
+        }
+        .about .section-10 .text {
+            font-size: 20px;
+        }
+    }
+    @media (width <= 429px) {
+        .about .section-4 .right .exchange-box .box-header .text {
+            font-size: 15px;
+        }
+        .about .section-5 .right .steps .single-row .single-row-right .description {
+            font-size: 13px;
+        }
+        .about .section-10 {
+            height: 320px;
+        }
+    }
+    @media (width <= 415px) {
+        .about .section-2 .our-story-row .left .image,
+        .about .section-7 .founders-row .right .image {
+            height: 200px;
+        }
+        .about .section-8 .form-row .image {
+            height: 220px;
+        }
+    }
+    @media (width <= 396px) {
+        .about .section-10 .text {
+            font-size: 18px;
+        }
+    }
+    @media (width <= 377px) {
+        .about .section-5 .left .video-box .image {
+            height: 180px;
+        }
+        .about .section-8 .form-row .image {
+            height: 200px;
+        }
+    }
+    @media (width <= 361px) {
+        .about .section-2 .our-story-row .left .image,
+        .about .section-7 .founders-row .right .image {
+            height: 180px;
+        }
+        .about .section-10 {
+            height: 300px;
+        }
+    }
+    @media (width <= 331px) {
+        .about .section-4 .right .exchange-box .box-header .text {
+            font-size: 14px;
+        }
+        .about .section-10 .text {
+            font-size: 16px;
+        }
+    }
 /* #endregion */

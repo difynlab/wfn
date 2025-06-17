@@ -26,12 +26,12 @@
                         </div>
 
                         <div class="mb-4">
-                            <div class="row">
-                                <div class="col-6">
+                            <div class="row contact-row">
+                                <div class="col-6 col-md-6 contact-field">
                                     <label for="contact-number" class="form-label label">Contact Number</label>
                                     <input type="text" id="contact-number" class="form-control input-field" name="contact_number" placeholder="Eg: +966 13 453 2874">
                                 </div>
-                                <div class="col-6">
+                                <div class="col-6 col-md-6 contact-field">
                                     <label for="email" class="form-label label">Email<span class="asterisk">*</span></label>
                                     <input type="email" id="email" class="form-control input-field" placeholder="Ex: johnmercury@gmail.com">
                                 </div>

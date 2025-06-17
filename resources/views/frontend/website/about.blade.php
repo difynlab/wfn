@@ -605,13 +605,19 @@
 @push('after-scripts')
     <script>
         var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 30,
             loop: true,
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
             },
+            breakpoints: {
+                481: {
+                    slidesPerView: 2, // Show one slide on smaller screens
+                    spaceBetween: 10, // Adjust space between slides
+                }
+            }
         });
     </script>
 

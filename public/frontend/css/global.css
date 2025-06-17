@@ -216,26 +216,373 @@
     @media (width <= 1801px) {}
     @media (width <= 1751px) {}
     @media (width <= 1681px) {}
-    @media (width <= 1601px) {}
-    @media (width <= 1537px) {}
-    @media (width <= 1441px) {}
-    @media (width <= 1367px) {}
-    @media (width <= 1301px) {}
-    @media (width <= 1281px) {}
-    @media (width <= 1151px) {}
-    @media (width <= 1076px) {}
-    @media (width <= 1025px) {}
-    @media (width <= 991px) {}
-    @media (width <= 845px) {}
-    @media (width <= 768px) {}
-    @media (width <= 721px) {}
-    @media (width <= 651px) {}
-    @media (width <= 576px) {}
-    @media (width <= 481px) {}
-    @media (width <= 429px) {}
-    @media (width <= 415px) {}
-    @media (width <= 396px) {}
-    @media (width <= 377px) {}
-    @media (width <= 361px) {}
-    @media (width <= 331px) {}
+    @media (width <= 1601px) {
+        .page-title {
+            font-size: 52px;
+        }
+        .page-description {
+            font-size: 19px;
+        }
+        .section-title {
+            font-size: 30px;
+        }
+        .footer .top .text {
+            font-size: 38px;
+        }
+    }
+    @media (width <= 1537px) {
+        .page-title {
+            font-size: 48px;
+        }
+        .section-title {
+            font-size: 28px;
+        }
+        .navbar .logo {
+            width: 155px;
+            height: 47px;
+        }
+        .footer .top .text {
+            font-size: 36px;
+        }
+    }
+    @media (width <= 1441px) {
+        .page-title {
+            font-size: 44px;
+        }
+        .page-description {
+            font-size: 18px;
+            width: 80%;
+        }
+        .section-title {
+            font-size: 26px;
+        }
+        .section-description {
+            font-size: 16px;
+        }
+        .navbar .logo {
+            width: 150px;
+            height: 45px;
+        }
+        .footer .top .text {
+            font-size: 34px;
+        }
+        .footer .bottom {
+            width: 65%;
+        }
+    } 
+    @media (width <= 1367px) {
+        .page-title {
+            font-size: 42px;
+        }
+        .section-margin {
+            margin-bottom: 45px;
+        }
+        .footer .top .text {
+            font-size: 32px;
+        }
+    } 
+    @media (width <= 1301px) {
+        .page-description {
+            width: 85%;
+        }
+        .navbar .nav-item {
+            margin-left: 35px;
+        }
+        .navbar .login-button {
+            margin-left: 120px;
+        }
+    }
+    @media (width <= 1281px) {
+        .page-title {
+            font-size: 40px;
+        }
+        .section-title {
+            font-size: 24px;
+        }
+        .navbar .logo {
+            width: 145px;
+            height: 43px;
+        }
+        .footer .top .text {
+            font-size: 30px;
+        }
+        .footer .bottom .title,
+        .footer .bottom a {
+            font-size: 15px;
+        }
+    }   
+    @media (width <= 1151px) {
+        .page-description {
+            width: 90%;
+        }
+        .navbar .register-button,
+        .navbar .login-button {
+            padding: 8px 25px!important;
+            font-size: 17px;
+        }
+        .footer .top .button {
+            font-size: 17px;
+            padding: 9px 28px;
+        }
+    }   
+    @media (width <= 1076px) {
+        .page-title {
+            font-size: 38px;
+        }
+        .section-margin {
+            margin-bottom: 40px;
+        }
+        .footer .top .text {
+            font-size: 28px;
+        }
+    }  
+    @media (width <= 1025px) {
+        .page-title {
+            font-size: 36px;
+            padding-bottom: 15px;
+        }
+        .page-description {
+            font-size: 17px;
+        }
+        .section-title {
+            font-size: 22px;
+        }
+        .navbar .logo {
+            width: 140px;
+            height: 40px;
+        }
+        .navbar .nav-item {
+            margin-left: 30px;
+        }
+        .navbar .login-button {
+            margin-left: 100px;
+        }
+        .footer .top {
+            margin-bottom: 5%;
+        }
+    }
+    @media (width <= 991px) {
+        .page-title {
+            font-size: 34px;
+        }
+        .page-description {
+            width: 95%;
+        }
+        .section-description {
+            padding-bottom: 25px;
+        }
+        .navbar .nav-link {
+            font-size: 15px;
+        }
+        .navbar .register-button,
+        .navbar .login-button {
+            font-size: 16px;
+            margin: 0 15px;
+        }
+        .navbar .login-button {
+            margin-left: 80px;
+        }
+        .footer .top .text {
+            font-size: 26px;
+        }
+        .footer .bottom {
+            width: 75%;
+        }
+        .footer .copyright .text {
+            font-size: 13px;
+        }
+    }
+    @media (width <= 845px) {
+        .page-title {
+            font-size: 32px;
+        }
+        .section-margin {
+            margin-bottom: 35px;
+        }
+        .navbar .logo {
+            width: 135px;
+            height: 38px;
+        }
+        .footer .top .text {
+            font-size: 24px;
+        }
+    }
+    @media (width <= 768px) {
+        .page-title {
+            font-size: 30px;
+        }
+        .page-description {
+            font-size: 16px;
+            width: 100%;
+        }
+        .section-title {
+            font-size: 20px;
+        }
+        .section-description {
+            font-size: 15px;
+            padding-bottom: 20px;
+        }
+        .navbar .logo {
+            width: 130px;
+            height: 36px;
+        }
+        .navbar .nav-item {
+            margin-left: 25px;
+        }
+        .navbar .login-button {
+            margin-left: 60px;
+        }
+        .footer .top .text {
+            font-size: 22px;
+        }
+        .footer .top .button {
+            font-size: 16px;
+            padding: 8px 25px;
+        }
+        .footer .bottom {
+            width: 85%;
+        }
+    }   
+    @media (width <= 721px) {
+        .page-title {
+            font-size: 28px;
+        }
+        .navbar .logo {
+            width: 125px;
+            height: 35px;
+        }
+    }  
+    @media (width <= 651px) {
+        .section-margin {
+            margin-bottom: 30px;
+        }
+        .footer .top .text {
+            font-size: 20px;
+        }
+    }
+    @media (width <= 576px) {
+        .page-title {
+            font-size: 26px;
+        }
+        .section-title {
+            font-size: 19px;
+        }
+        .navbar .logo {
+            width: 120px;
+            height: 34px;
+        }
+        .navbar .nav-item {
+            margin-left: 20px;
+        }
+        .navbar .register-button,
+        .navbar .login-button {
+            font-size: 15px;
+            padding: 7px 20px!important;
+            margin: 0 10px;
+        }
+        .navbar .login-button {
+            margin-left: 40px;
+        }
+        .footer .top .text {
+            font-size: 18px;
+        }
+        .footer .bottom {
+            width: 95%;
+        }
+        .footer .bottom .title,
+        .footer .bottom a {
+            font-size: 14px;
+        }
+    }
+    @media (width <= 481px) {
+        .page-title {
+            font-size: 24px;
+        }
+        .page-description {
+            font-size: 15px;
+        }
+        .section-title {
+            font-size: 18px;
+        }
+        .section-description {
+            font-size: 14px;
+            padding-bottom: 15px;
+        }
+        .navbar .logo {
+            width: 115px;
+            height: 32px;
+        }
+        .footer .top .button {
+            font-size: 15px;
+            padding: 7px 22px;
+        }
+        .footer .copyright .text {
+            font-size: 12px;
+        }
+    }
+    @media (width <= 429px) {
+        .page-title {
+            font-size: 22px;
+        }
+        .navbar .register-button,
+        .navbar .login-button {
+            font-size: 14px;
+            padding: 6px 18px!important;
+        }
+        .footer .top .text {
+            font-size: 17px;
+        }
+    }
+    @media (width <= 415px) {
+        .section-margin {
+            margin-bottom: 25px;
+        }
+        .navbar .logo {
+            width: 110px;
+            height: 30px;
+        }
+        .footer .top .button {
+            padding: 6px 20px;
+        }
+    }
+    @media (width <= 396px) {
+        .page-title {
+            font-size: 20px;
+        }
+        .footer .top .text {
+            font-size: 16px;
+        }
+    }
+    @media (width <= 377px) {
+        .navbar .nav-item {
+            margin-left: 15px;
+        }
+        .navbar .login-button {
+            margin-left: 30px;
+        }
+    }
+    @media (width <= 361px) {
+        .page-description {
+            font-size: 14px;
+        }
+        .section-title {
+            font-size: 17px;
+        }
+    }
+    @media (width <= 331px) {
+        .page-title {
+            font-size: 18px;
+        }
+        .navbar .register-button,
+        .navbar .login-button {
+            font-size: 13px;
+            padding: 5px 15px!important;
+        }
+        .footer .top .text {
+            font-size: 15px;
+        }
+        .footer .top .button {
+            font-size: 14px;
+        }
+    }
 /* #endregion */
