@@ -12,6 +12,8 @@
             <label class="form-check-label" for="inactive">Inactive</label>
         </div>
     </div>
+
+    <x-backend.input-error field="status"></x-backend.input-error>
 </div>
 
 <div class="col-12">

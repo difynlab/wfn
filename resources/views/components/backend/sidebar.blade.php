@@ -25,7 +25,7 @@
         </li>
 
         <li class="link">
-            <a href="#">
+            <a href="{{ route('admin.warehouses.index') }}" class="{{ Request::segment(2) == 'warehouses' ? 'active' : '' }}">
                 <div class="box"></div>
                 <div class="actual-link">
                     <i class="bi bi-houses"></i>
@@ -74,6 +74,26 @@
                 <div class="actual-link">
                     <i class="bi bi-list-check"></i>
                     To-Do
+                </div>
+            </a>
+        </li>
+
+        <li class="link">
+            <a href="{{ route('admin.pages.index') }}">
+                <div class="box"></div>
+                <div class="actual-link">
+                    <i class="bi bi-file-break"></i>
+                    Pages
+                </div>
+            </a>
+        </li>
+
+        <li class="link">
+            <a href="{{ route('admin.storage-types.index') }}" class="{{ Request::segment(2) == 'storage-types' ? 'active' : '' }}">
+                <div class="box"></div>
+                <div class="actual-link">
+                    <i class="bi bi-house-gear"></i>
+                    Storage Types
                 </div>
             </a>
         </li>

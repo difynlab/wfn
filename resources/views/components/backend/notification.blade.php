@@ -8,7 +8,7 @@
                 <p class="description">Your information is now fully updated.</p>
 
                 <div class="buttons">
-                    <button type="button" class="btn cancel-button" data-bs-dismiss="modal" title="Cancel">Cancel</button>
+                    <button type="button" class="btn cancel-button" data-bs-dismiss="modal" title="Cancel">Close</button>
 
                     <a href="{{ session('route') }}" class="btn close-button"><i class="bi bi-arrow-left arrow-icon"></i>Back to Dashboard</a>
                 </div>

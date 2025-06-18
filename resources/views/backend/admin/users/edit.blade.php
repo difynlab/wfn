@@ -16,11 +16,13 @@
                 <div class="col-6 mb-4">
                     <label for="first_name" class="form-label label">First Name<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="first_name" name="first_name" placeholder="First Name" value="{{ old('first_name', $user->first_name) }}" required>
+                    <x-backend.input-error field="first_name"></x-backend.input-error>
                 </div>
 
                 <div class="col-6 mb-4">
                     <label for="last_name" class="form-label label">Last Name<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="last_name" name="last_name" placeholder="Last Name" value="{{ old('last_name', $user->last_name) }}" required>
+                    <x-backend.input-error field="last_name"></x-backend.input-error>
                 </div>
 
                 <div class="col-6 mb-4">
@@ -30,19 +32,21 @@
                 </div>
 
                 <div class="col-6 mb-4">
-                    <label for="phone" class="form-label label">Phone</label>
-                    <input type="text" class="form-control input-field" id="phone" name="phone" placeholder="Phone" value="{{ old('phone', $user->phone) }}">
+                    <label for="phone" class="form-label label">Phone<span class="asterisk">*</span></label>
+                    <input type="text" class="form-control input-field" id="phone" name="phone" placeholder="Phone" value="{{ old('phone', $user->phone) }}" required>
                     <x-backend.input-error field="phone"></x-backend.input-error>
                 </div>
 
                 <div class="col-6 mb-4">
                     <label for="address" class="form-label label">Address<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="address" name="address" placeholder="Address" value="{{ old('address', $user->address) }}" required>
+                    <x-backend.input-error field="address"></x-backend.input-error>
                 </div>
 
                 <div class="col-6 mb-4">
                     <label for="city" class="form-label label">City<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="city" name="city" placeholder="City" value="{{ old('city', $user->city) }}" required>
+                    <x-backend.input-error field="city"></x-backend.input-error>
                 </div>
 
                 <div class="col-6 mb-4">
@@ -53,6 +57,7 @@
                             <option value="{{ $country }}" {{ old('country', $user->country) == $country ? 'selected' : '' }}>{{ $country }}</option>
                         @endforeach
                     </select>
+                    <x-backend.input-error field="country"></x-backend.input-error>
                 </div>
 
                 <div class="col-6 mb-4">
@@ -64,6 +69,7 @@
                         <option value="landlord" {{ old('role', $user->role) == 'landlord' ? 'selected' : '' }}>Landlord</option>
                         <option value="tenant" {{ old('role', $user->role) == 'tenant' ? 'selected' : '' }}>Tenant</option>
                     </select>
+                    <x-backend.input-error field="role"></x-backend.input-error>
                 </div>
 
                 <div class="col-6 mb-4 position-relative">

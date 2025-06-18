@@ -4,20 +4,22 @@ namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class WarehouseController extends Controller
 {
     private function processData($items)
     {
         foreach($items as $item) {
             $item->action = '
-            <a href="'. route('admin.users.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
-            <a href="#" class="action-button" title="Warehouses"><i class="bi bi-houses"></i></a>
+            <a href="'. route('admin.warehouses.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
+            <a href="#" class="action-button" title="Company"><i class="bi bi-building"></i></a>
+            <a href="#" class="action-button" title="User"><i class="bi bi-person-exclamation"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             $item->status = ($item->status == 1) ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
@@ -29,12 +31,10 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $pagination = $request->pagination ?? 10;
-        $auth = Auth::user();
-
-        $items = User::whereNot('id', $auth->id)->orderBy('id', 'desc')->paginate($pagination);
+        $items = Warehouse::orderBy('id', 'desc')->paginate($pagination);
         $items = $this->processData($items);
 
-        return view('backend.admin.users.index', [
+        return view('backend.admin.warehouses.index', [
             'items' => $items,
             'pagination' => $pagination
         ]);
@@ -297,7 +297,7 @@ class UserController extends Controller
             "Zimbabwe"
         ];
 
-        return view('backend.admin.users.create', [
+        return view('backend.admin.warehouses.create', [
             'countries' => $countries
         ]);
     }
@@ -305,18 +305,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required',
-            'last_name' => 'required',
             'email' => 'required|email|unique:users,email',
             'phone' => 'required|regex:/^\+?[0-9]+$/|unique:users,phone',
-            'address' => 'required',
-            'city' => 'required',
-            'country' => 'required',
-            'role' => 'required|in:admin,manager,landlord,tenant',
             'password' => 'required|min:8',
             'confirm_password' => 'required|same:password',
-            'new_image' => 'nullable|max:30720',
-            'status' => 'required|in:0,1'
+            'new_image' => 'nullable|max:30720'
         ]);
         
         if($validator->fails()) {
@@ -611,16 +604,9 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required',
-            'last_name' => 'required',
             'email' => 'required|email|unique:users,email,'.$user->id,
             'phone' => 'required|regex:/^\+?[0-9]+$/|unique:users,phone,'.$user->id,
-            'address' => 'required',
-            'city' => 'required',
-            'country' => 'required',
-            'role' => 'required|in:admin,manager,landlord,tenant',
-            'new_image' => 'nullable|max:30720',
-            'status' => 'required|in:0,1'
+            'new_image' => 'nullable|max:30720'
         ]);
 
         if($validator->fails()) {
@@ -684,7 +670,8 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        $user->delete();
+        $user->status = '0';
+        $user->save();
 
         return redirect()->back()->with('delete', 'Successfully Deleted!');
     }
@@ -703,41 +690,41 @@ class UserController extends Controller
 
         $admin = Auth::user();
 
-        $items = User::whereNot('id', $admin->id);
+        $users = User::whereNot('id', $admin->id)->where('status', '!=', '0');
 
         if($name) {
-            $items->where(function ($query) use ($name) {
+            $users->where(function ($query) use ($name) {
                 $query->whereRaw("CONCAT(first_name, ' ', last_name) LIKE ?", ['%' . $name . '%'])
                       ->orWhereRaw("CONCAT(last_name, ' ', first_name) LIKE ?", ['%' . $name . '%']);
             });
         }
 
         if($role) {
-            $items->where('role', $role);
+            $users->where('role', $role);
         }
 
         if($city) {
-            $items->where('city', 'like', '%' . $city . '%');
+            $users->where('city', 'like', '%' . $city . '%');
         }
 
         if($order_by == 'a-z') {
-            $items->orderBy('id', 'asc');
+            $users->orderBy('id', 'asc');
         }
         else {
-            $items->orderBy('id', 'desc');
+            $users->orderBy('id', 'desc');
         }
 
-        if($status != null) {
-            $items->where('status', $status);
+        if($status) {
+            $users->where('status', $status);
         }
 
-        $pagination = $request->pagination ?? 10;
-        $items = $items->paginate($pagination);
-        $items = $this->processData($items);
+        $items = $request->items ?? 10;
+        $users = $users->paginate($items);
+        $users = $this->processData($users);
 
         return view('backend.admin.users.index', [
+            'users' => $users,
             'items' => $items,
-            'pagination' => $pagination,
             'name' => $name,
             'role' => $role,
             'city' => $city,

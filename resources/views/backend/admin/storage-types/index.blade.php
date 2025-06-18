@@ -1,39 +1,29 @@
 @extends('backend.layouts.app')
 
-@section('title', 'Users')
+@section('title', 'Storage Types')
 
 @section('content')
     <div class="page">
         <div class="row align-items-center mb-4">
             <div class="col-8">
-                <p class="title">Users</p>
-                <p class="description">Manage user accounts, roles, and activity here.</p>
+                <p class="title">Storage Types</p>
+                <p class="description">Manage storage types here.</p>
             </div>
             <div class="col-4 text-end">
-                <a href="{{ route('admin.users.create') }}" class="add-button">
+                <a href="{{ route('admin.storage-types.create') }}" class="add-button">
                     <i class="bi bi-plus-lg"></i>
-                    Add New User
+                    Add New Storage Type
                 </a>
             </div>
         </div>
 
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('admin.users.filter') }}" method="GET" class="filter-form">
+                <form action="{{ route('admin.storage-types.filter') }}" method="GET" class="filter-form">
                     <div class="input-group">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                         <input type="text" class="form-control input-field" name="name" value="{{ $name ?? '' }}" placeholder="Search by Name">
                     </div>
-
-                    <select class="form-select input-field width" name="role">
-                        <option value="">User Role</option>
-                        <option value="admin" {{ isset($role) && $role == 'admin' ? "selected" : "" }}>Admin</option>
-                        <option value="manager" {{ isset($role) && $role == 'manager' ? "selected" : "" }}>Manager</option>
-                        <option value="landlord" {{ isset($role) && $role == 'landlord' ? "selected" : "" }}>Landlord</option>
-                        <option value="tenant" {{ isset($role) && $role == 'tenant' ? "selected" : "" }}>Tenant</option>
-                    </select>
-
-                    <input type="text" class="form-control input-field width" name="city" value="{{ $city ?? '' }}" placeholder="City">
 
                     <select class="form-select input-field width" name="order_by">
                         <option value="">Order by: Z-A</option>
@@ -64,10 +54,6 @@
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">NAME</th>
-                                <th scope="col">CITY</th>
-                                <th scope="col">COUNTRY</th>
-                                <th scope="col">EMAIL</th>
-                                <th scope="col">ROLE</th>
                                 <th scope="col">STATUS</th>
                                 <th scope="col">ACTIONS</th>
                             </tr>
@@ -78,18 +64,14 @@
                                 @foreach($items as $item)
                                     <tr>
                                         <td>#{{ $item->id }}</td>
-                                        <td>{{ $item->first_name }} {{ $item->last_name }}</td>
-                                        <td>{{ $item->city }}</td>
-                                        <td>{{ $item->country }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->role }}</td>
+                                        <td>{{ $item->name }}</td>
                                         <td>{!! $item->status !!}</td>
                                         <td>{!! $item->action !!}</td>
                                     </tr>
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="8" style="text-align: center;">No data available in the table</td>
+                                    <td colspan="4" style="text-align: center;">No data available in the table</td>
                                 </tr>
                             @endif
                         </tbody>
@@ -100,7 +82,7 @@
             </div>
         </div>
 
-        <x-backend.delete data="user"></x-backend.delete>
+        <x-backend.delete data="storage type"></x-backend.delete>
         <x-backend.notification></x-backend.notification>
     </div>
 @endsection
@@ -111,7 +93,7 @@
         $(document).ready(function() {
             $('.page .table .delete-button').on('click', function() {
                 let id = $(this).attr('id');
-                let url = "{{ route('admin.users.destroy', [':id']) }}";
+                let url = "{{ route('admin.storage-types.destroy', [':id']) }}";
                 destroy_url = url.replace(':id', id);
 
                 $('.page #delete-modal form').attr('action', destroy_url);

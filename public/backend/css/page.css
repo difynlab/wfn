@@ -185,10 +185,7 @@
         margin: 0 7px;
         cursor: pointer;
     }
-    .page .table-container .table .action-button.edit-button {
-        color: var(--light_black);
-    }
-    .page .table-container .table .action-button.warehouses-button {
+    .page .table-container .table .action-button {
         color: var(--light_black);
     }
     .page .table-container .table .action-button.delete-button {
@@ -294,6 +291,37 @@
         }
     }
     .notification-modal .delete-button .delete-icon {
+        padding-right: 5px;
+    }
+/* #endregion */
+
+
+/* #region: Pages */
+    .page .single-page {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        background-color: var(--white);
+        padding: 30px;
+    }
+    .page .single-page .page-name {
+        font-size: 17px;
+        color: var(--black);
+        font-weight: 500;
+    }
+    .page .single-page .links {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+    }
+    .page .single-page .links .link {
+        font-size: 16px;
+        color: var(--gray);
+        font-weight: 500;
+        line-height: 20px;
+    }
+    .page .single-page .links .link i {
         padding-right: 5px;
     }
 /* #endregion */

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('image')->nullable();
             $table->enum('role', ['admin', 'manager', 'landlord', 'tenant']);
-            $table->enum('status', [0, 1, 2])->index();
+            $table->boolean('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

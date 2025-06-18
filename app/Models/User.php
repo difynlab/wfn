@@ -25,6 +25,11 @@ class User extends Authenticatable
 
     protected $guarded = [];
 
+    public function warehouses()
+    {
+        return $this->hasMany(Warehouse::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
