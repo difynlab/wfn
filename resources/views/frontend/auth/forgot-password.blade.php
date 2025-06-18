@@ -10,7 +10,7 @@
     
     <div class="container page-global forgot-password">
         <div class="row justify-content-center">
-            <div class="col-md-6 col-12">
+            <div class="col-lg-6 col-md-8 col-sm-10 col-12">
                 <p class="title">Forgot Your Password</p>
                 <p class="description">Don't worry! Resetting your password is easy. Just type in the email you registered to Warehouse Exchange.</p>
 

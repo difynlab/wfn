@@ -10,11 +10,11 @@
 
     <div class="container page-global login">
         <div class="row">
-            <div class="col-8 col-md-6 left">
+            <div class="col-lg-4 col-md-6 col-sm-12 left">
                 <img src="{{ asset('storage/frontend/login.jpg') }}" alt="Log In" class="image">
             </div>
 
-            <div class="col-8 col-md-6 right">
+            <div class="col-lg-8 col-md-6 col-sm-12 right">
                 <p class="title">Get Started Now</p>
                 <p class="description">Log in to access portal, track progress, and manage requests</p>
 

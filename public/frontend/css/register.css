@@ -74,31 +74,15 @@
     @media (width <= 1281px) {}
     @media (width <= 1151px) {}
     @media (width <= 1076px) {}
-    @media (width <= 1025px) {
-        .register .title {
-            font-size: 28px;
-        }
-    }
-    @media (width <= 991px) {
-        .register .radio {
-            width: 28px;
-            height: 28px;
-        }
-        .register .radio-label {
-            font-size: 15px;
-        }
-    }
-    @media (width <= 845px) {
-        .register .title {
-            font-size: 26px;
-        }
-        .register .description {
-            font-size: 15px;
-        }
-    }
+    @media (width <= 1025px) {}
+    @media (width <= 991px) {}
+    @media (width <= 845px) {}
     @media (width <= 768px) {
         .register .title {
             font-size: 24px;
+        }
+        .register .description {
+            font-size: 15px;
         }
         .register .input-field {
             height: 45px;
@@ -116,27 +100,23 @@
         }
     }
     @media (width <= 721px) {
+        .register .label {
+            font-size: 14px;
+        }
+    }
+    @media (width <= 651px) {
         .register .title {
             font-size: 22px;
         }
         .register .description {
             font-size: 14px;
-            margin-bottom: 20px;
-        }
-        .register .label {
-            font-size: 15px;
-        }
-    }
-    @media (width <= 651px) {
-        .register .title {
-            font-size: 20px;
         }
         .register .radio {
             width: 24px;
             height: 24px;
         }
         .register .radio-label {
-            font-size: 13px;
+            font-size: 15px;
         }
     }
     @media (width <= 576px) {
@@ -144,7 +124,7 @@
             padding: 0 15px;
         }
         .register .title {
-            font-size: 18px;
+            font-size: 20px;
         }
         .register .description {
             font-size: 13px;
@@ -158,7 +138,7 @@
         }
         .register .register-button {
             padding: 10px 25px;
-            font-size: 15px;
+            font-size: 16px;
         }
         .register .exist-account {
             font-size: 13px;
@@ -173,7 +153,7 @@
     }
     @media (width <= 481px) {
         .register .title {
-            font-size: 17px;
+            font-size: 18px;
         }
         .register .description {
             font-size: 12px;
@@ -186,7 +166,7 @@
         }
         .register .register-button {
             padding: 8px 20px;
-            font-size: 14px;
+            font-size: 15px;
         }
         .register .radio {
             width: 20px;
@@ -209,11 +189,11 @@
     }
     @media (width <= 415px) {
         .register .title {
-            font-size: 15px;
+            font-size: 16px;
         }
         .register .register-button {
             padding: 6px 15px;
-            font-size: 13px;
+            font-size: 14px;
         }
         .register .radio {
             width: 18px;
@@ -233,13 +213,13 @@
     }
     @media (width <= 377px) {
         .register .title {
-            font-size: 13px;
+            font-size: 14px;
         }
         .register .label {
-            font-size: 12px;
+            font-size: 10px;
         }
         .register .register-button {
-            font-size: 12px;
+            font-size: 13px;
         }
     }
     @media (width <= 361px) {
@@ -249,13 +229,13 @@
     }
     @media (width <= 331px) {
         .register .title {
-            font-size: 12px;
+            font-size: 13px;
         }
         .register .description {
             font-size: 10px;
         }
         .register .label {
-            font-size: 11px;
+            font-size: 10px;
         }
         .register .input-field {
             height: 32px;
@@ -273,7 +253,7 @@
             height: 16px;
         }
         .register .radio-label {
-            font-size: 9px;
+            font-size: 10px;
         }
     }
 /* #endregion */

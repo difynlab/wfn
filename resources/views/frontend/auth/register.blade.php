@@ -14,7 +14,7 @@
 
         <form action="">
             <div class="row mb-4">
-                <div class="col-md-6 col-12">
+                <div class="col-6 ">
                     <div class="form-check d-flex align-items-center">
                         <input class="form-check-input radio" type="radio" name="role" id="flexRadioDefault1" value="tenant" checked>
                         <label class="form-check-label radio-label" for="flexRadioDefault1">
@@ -23,7 +23,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-12">
+                <div class="col-6">
                     <div class="form-check d-flex align-items-center">
                         <input class="form-check-input radio" type="radio" name="role" id="flexRadioDefault2" value="landlord">
                         <label class="form-check-label radio-label" for="flexRadioDefault2">
