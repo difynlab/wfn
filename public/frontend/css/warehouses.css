@@ -1,4 +1,4 @@
-/* Section 2 */
+/* #region Section 2 */
     .warehouses .section-2 {
         background-color: var(--low_white);
         border-radius: 16px;
@@ -65,10 +65,10 @@
             transition: all 0.3s
         }
     }
-/* Section 2 */
+/* #endregion */
 
 
-/* Section 3 */
+/* #region Section 3 */
     .warehouses .section-3 .warehouse-row .left {
         padding-left: 0;
     }
@@ -179,10 +179,10 @@
     .warehouses .section-3 .sidebar .item:last-child {
         padding-bottom: 0;
     }
-/* Section 3 */
+/* #endregion */
 
 
-/* section 4 */
+/* #region Section 4 */
     .warehouses .section-4 .section-title {
         font-size: 25px;
         font-weight: 500;
@@ -218,13 +218,13 @@
         font-weight: 500;
         color: var(--light_black);
     }
-/* Section 4 */
+/* #endregion */
 
 
-/* Modal */
+/* #region Modal */
     .map-modal .image {
         width: 100%;
         height: 90vh;
         object-fit: cover;
     }
-/* Modal */
+/* #endregion */

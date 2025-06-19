@@ -1,4 +1,4 @@
-/* Section 2 */
+/* #region Section 2 */
     .confirm-booking .section-2 .left .top-box {
         background-color: var(--low_gray);
         border: 2px solid var(--input_border);
@@ -178,4 +178,4 @@
     .confirm-booking .section-2 .right .box .register-button i {
         padding-right: 5px;
     }
-/* Section 2 */
+/* #endregion */
