@@ -60,24 +60,24 @@
 
 
 /* #region Responsive */
-    @media (width <= 1921px) {}
-    @media (width <= 1901px) {}
-    @media (width <= 1851px) {}
-    @media (width <= 1801px) {}
-    @media (width <= 1751px) {}
-    @media (width <= 1681px) {}
-    @media (width <= 1601px) {}
-    @media (width <= 1537px) {}
-    @media (width <= 1441px) {}
-    @media (width <= 1367px) {}
-    @media (width <= 1301px) {}
-    @media (width <= 1281px) {}
-    @media (width <= 1151px) {}
-    @media (width <= 1076px) {}
-    @media (width <= 1025px) {}
-    @media (width <= 991px) {}
-    @media (width <= 845px) {}
-    @media (width <= 768px) {
+    @media (width < 1921px) {}
+    @media (width < 1901px) {}
+    @media (width < 1851px) {}
+    @media (width < 1801px) {}
+    @media (width < 1751px) {}
+    @media (width < 1681px) {}
+    @media (width < 1601px) {}
+    @media (width < 1537px) {}
+    @media (width < 1441px) {}
+    @media (width < 1367px) {}
+    @media (width < 1301px) {}
+    @media (width < 1281px) {}
+    @media (width < 1151px) {}
+    @media (width < 1076px) {}
+    @media (width < 1025px) {}
+    @media (width < 992px) {}
+    @media (width < 845px) {}
+    @media (width < 768px) {
         .register .title {
             font-size: 24px;
         }
@@ -99,12 +99,12 @@
             font-size: 14px;
         }
     }
-    @media (width <= 721px) {
+    @media (width < 721px) {
         .register .label {
             font-size: 14px;
         }
     }
-    @media (width <= 651px) {
+    @media (width < 651px) {
         .register .title {
             font-size: 22px;
         }
@@ -119,7 +119,7 @@
             font-size: 15px;
         }
     }
-    @media (width <= 576px) {
+    @media (width < 576px) {
         body {
             padding: 0 15px;
         }
@@ -151,7 +151,7 @@
             font-size: 12px;
         }
     }
-    @media (width <= 481px) {
+    @media (width < 481px) {
         .register .title {
             font-size: 18px;
         }
@@ -176,7 +176,7 @@
             font-size: 11px;
         }
     }
-    @media (width <= 429px) {
+    @media (width < 429px) {
         .register .title {
             font-size: 16px;
         }
@@ -187,7 +187,7 @@
             height: 38px;
         }
     }
-    @media (width <= 415px) {
+    @media (width < 415px) {
         .register .title {
             font-size: 16px;
         }
@@ -203,7 +203,7 @@
             font-size: 10px;
         }
     }
-    @media (width <= 396px) {
+    @media (width < 396px) {
         .register .title {
             font-size: 14px;
         }
@@ -211,7 +211,7 @@
             height: 36px;
         }
     }
-    @media (width <= 377px) {
+    @media (width < 377px) {
         .register .title {
             font-size: 14px;
         }
@@ -222,12 +222,12 @@
             font-size: 13px;
         }
     }
-    @media (width <= 361px) {
+    @media (width < 361px) {
         .register .input-field {
             height: 34px;
         }
     }
-    @media (width <= 331px) {
+    @media (width < 331px) {
         .register .title {
             font-size: 13px;
         }

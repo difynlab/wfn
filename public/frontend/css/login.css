@@ -74,119 +74,69 @@
 
 
 /* #region Responsive */
-    @media (width <= 1921px) {}
-    @media (width <= 1901px) {}
-    @media (width <= 1851px) {}
-    @media (width <= 1801px) {}
-    @media (width <= 1751px) {}
-    @media (width <= 1681px) {}
-    @media (width <= 1601px) {}
-    @media (width <= 1537px) {}
-    @media (width <= 1441px) {}
-    @media (width <= 1367px) {}
-    @media (width <= 1301px) {}
-    @media (width <= 1281px) {}
-    @media (width <= 1151px) {}
-    @media (width <= 1076px) {}
-    @media (width <= 1025px) {
-        .login .right {
-            padding-left: 4%;
+    @media (width < 1921px) {}
+    @media (width < 1901px) {}
+    @media (width < 1851px) {}
+    @media (width < 1801px) {}
+    @media (width < 1751px) {}
+    @media (width < 1681px) {}
+    @media (width < 1601px) {}
+    @media (width < 1537px) {}
+    @media (width < 1441px) {}
+    @media (width < 1367px) {}
+    @media (width < 1301px) {}
+    @media (width < 1281px) {
+        .login .image {
+            height: 440px;
         }
     }
-    @media (width <= 991px) {}
-    @media (width <= 845px) {
+    @media (width < 1151px) {}
+    @media (width < 1076px) {}
+    @media (width < 1025px) {}
+    @media (width < 992px) {
         .login .right {
-            padding-left: 2%;
-        }
-    }
-    @media (width <= 768px) {
-        .login .login-button {
-            padding: 12px;
+            padding-left: 3%;
         }
         .login .image {
-            display: none;
+            height: 500px;
         }
-        .login .col-4 {
+    }
+    @media (width < 845px) {}
+    @media (width < 768px) {
+        .login .left {
             display: none;
-        }
-        .login .col-8 {
-            width: 100%;
         }
         .login .right {
-            padding-left: 0;
+            padding-left: 12px;
         }
         .login .title {
             font-size: 24px;
         }
         .login .description {
             font-size: 15px;
+            margin-bottom: 20px!important;
         }
-    }
-    @media (width <= 721px) {
-        .login .input-field {
-            height: 45px;
-        }
-    }
-    @media (width <= 651px) {
-        .login .title {
-            font-size: 22px;
-        }
-        .login .description {
-            font-size: 14px;
+        .login .login-button {
+            padding: 13px 0;
+            font-size: 17px;
             margin-bottom: 20px;
         }
         .login .label {
             font-size: 15px;
-        }
-    }
-    @media (width <= 576px) {
-        body {
-            padding: 0 15px;
-        }
-        .login .title {
-            font-size: 20px;
-        }
-        .login .description {
-            font-size: 13px;
-        }
-        .login .label {
-            font-size: 14px;
+            margin-bottom: 5px!important;
         }
         .login .input-field {
-            height: 42px;
-            font-size: 13px;
+            height: 45px;
         }
-        .login .remember,
-        .login .forgot-password {
-            font-size: 13px;
-        }
-        .login .login-button {
-            padding: 12px 0;
-            font-size: 16px;
-        }
-        .login .no-account {
+        .login .remember, .login .forgot-password, .login .no-account {
             font-size: 13px;
         }
     }
-    @media (width <= 481px) {
-        .login .title {
-            font-size: 18px;
-        }
-        .login .description {
-            font-size: 12px;
-        }
-        .login .label {
-            font-size: 13px;
-        }
-        .login .input-field {
-            height: 40px;
-        }
-        .login .login-button {
-            padding: 10px 0;
-            font-size: 15px;
-        }
-    }
-    @media (width <= 429px) {
+    @media (width < 721px) {}
+    @media (width < 651px) {}
+    @media (width < 576px) {}
+    @media (width < 481px) {}
+    @media (width < 429px) {
         .login .title {
             font-size: 16px;
         }
@@ -196,62 +146,33 @@
         .login .input-field {
             height: 38px;
         }
-    }
-    @media (width <= 415px) {
+
         .login .title {
-            font-size: 16px;
-        }
-        .login .login-button {
-            padding: 8px 0;
-            font-size: 14px;
-        }
-    }
-    @media (width <= 396px) {
-        .login .title {
-            font-size: 14px;
-        }
-        .login .input-field {
-            height: 36px;
-        }
-    }
-    @media (width <= 377px) {
-        .login .title {
-            font-size: 14px;
-        }
-        .login .label {
-            font-size: 10px;
-        }
-        .login .login-button {
-            font-size: 13px;
-        }
-    }
-    @media (width <= 361px) {
-        .login .input-field {
-            height: 34px;
-        }
-    }
-    @media (width <= 331px) {
-        .login .title {
-            font-size: 13px;
+            font-size: 22px;
         }
         .login .description {
-            font-size: 10px;
+            font-size: 14px;
+            margin-bottom: 15px!important;
         }
         .login .label {
-            font-size: 11px;
+            font-size: 14px;
+            margin-bottom: 2px!important;
         }
         .login .input-field {
-            height: 32px;
-            font-size: 12px;
+            height: 40px;
         }
         .login .login-button {
-            padding: 6px 0;
+            padding: 10px 0;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        .login .remember, .login .forgot-password, .login .no-account {
             font-size: 12px;
         }
-        .login .remember,
-        .login .forgot-password,
-        .login .no-account {
-            font-size: 11px;
-        }
     }
+    @media (width < 415px) {}
+    @media (width < 396px) {}
+    @media (width < 377px) {}
+    @media (width < 361px) {}
+    @media (width < 331px) {}
 /* #endregion */
