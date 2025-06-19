@@ -79,7 +79,7 @@
         </li>
 
         <li class="link">
-            <a href="{{ route('admin.pages.index') }}">
+            <a href="{{ route('admin.pages.index') }}" class="{{ Request::segment(2) == 'pages' ? 'active' : '' }}">
                 <div class="box"></div>
                 <div class="actual-link">
                     <i class="bi bi-file-break"></i>

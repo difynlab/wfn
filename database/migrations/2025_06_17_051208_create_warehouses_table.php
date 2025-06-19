@@ -22,7 +22,11 @@ return new class extends Migration
             $table->string('contact_person_name');
             $table->string('contact_person_email');
             $table->string('contact_person_phone');
-            $table->integer('pallets');
+            $table->string('total_area');
+            $table->integer('total_lots');
+            $table->integer('pallets_count_per_lot');
+            $table->integer('pallets_for_rent');
+            $table->enum('pallets_stacked', ['yes', 'no']);
             $table->string('thumbnail');
             $table->text('images')->nullable();
             $table->text('notes')->nullable();

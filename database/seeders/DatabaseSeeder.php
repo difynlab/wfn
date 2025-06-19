@@ -10,7 +10,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             StorageTypeSeeder::class,
-            WarehouseSeeder::class
+            WarehouseSeeder::class,
+            HomepageContentSeeder::class,
         ]);
     }
 }

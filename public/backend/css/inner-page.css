@@ -16,6 +16,17 @@
 
 
 /* #region: Form */
+    .inner-page .section {
+        border: 2px solid var(--input_border);
+        padding: 25px;
+    }
+    .inner-page .inner-page-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--red);
+        /* text-decoration: underline; */
+        padding-bottom: 10px;
+    }
     .inner-page .form .label {
         font-size: 16px;
         font-weight: 500;
@@ -159,7 +170,7 @@
         color: var(--gray);
     }
     .inner-page .drop-area.highlight {
-        border-color: var(--medium_red);
+        border: 1px solid var(--red);
     }
     .inner-page .drop-area .image-preview {
         width: 200px;
