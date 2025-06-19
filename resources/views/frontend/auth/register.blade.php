@@ -34,41 +34,41 @@
             </div>
 
             <div class="row mb-4">
-                <div class="col-md-6 col-12">
+                <div class="col-12 col-md-6">
                     <label for="firstName" class="form-label label">First Name</label>
                     <input type="text" class="form-control input-field" id="firstName" name="first_name" placeholder="Please enter your first name" required>
                 </div>
 
-                <div class="col-md-6 col-12">
+                <div class="col-12 col-md-6">
                     <label for="lastName" class="form-label label">Last Name</label>
                     <input type="text" class="form-control input-field" id="lastName" name="last_name" placeholder="Please enter your last name" required>
                 </div>
             </div>
 
             <div class="row mb-4">
-                <div class="col-md-4 col-12">
+                <div class="col-12 col-md-4">
                     <label for="email" class="form-label label">Email Address</label>
                     <input type="text" class="form-control input-field" id="email" name="email" placeholder="Ex: johnmercury@gmail.com" required>
                 </div>
 
-                <div class="col-md-4 col-12">
+                <div class="col-12 col-md-4">
                     <label for="phone" class="form-label label">Phone Number</label>
                     <input type="text" class="form-control input-field" id="phone" name="phone" placeholder="Eg: 999 999 9999" required>
                 </div>
 
-                <div class="col-md-4 col-12">
+                <div class="col-12 col-md-4">
                     <label for="city" class="form-label label">Phone Number</label>
                     <input type="text" class="form-control input-field" id="city" name="city" placeholder="Please enter your city" required>
                 </div>
             </div>
 
             <div class="row mb-4">
-                <div class="col-md-6 col-12">
+                <div class="col-12 col-md-6">
                     <label for="password" class="form-label label">Password</label>
                     <input type="password" class="form-control input-field" id="password" name="password" placeholder="* * * * * * *" required>
                 </div>
 
-                <div class="col-md-6 col-12">
+                <div class="col-12 col-md-6">
                     <label for="passwordConfirmation" class="form-label label">Password Confirmation</label>
                     <input type="password" class="form-control input-field" id="passwordConfirmation" name="password_confirmation" placeholder="* * * * * * *" required/>
                 </div>

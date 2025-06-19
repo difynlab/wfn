@@ -138,16 +138,6 @@
     @media (width < 481px) {}
     @media (width < 429px) {
         .login .title {
-            font-size: 16px;
-        }
-        .login .description {
-            font-size: 11px;
-        }
-        .login .input-field {
-            height: 38px;
-        }
-
-        .login .title {
             font-size: 22px;
         }
         .login .description {
