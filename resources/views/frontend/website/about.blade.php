@@ -17,10 +17,10 @@
 
         <div class="section-2 container section-margin">
             <div class="row our-story-row">
-                <div class="col-5 left">
+                <div class="col-12 col-md-5 col-lg-5 col-xxl-5 left">
                     <img src="{{ asset('storage/frontend/about-us.png') }}" alt="Our Story" class="image">
                 </div>
-                <div class="col-7 right">
+                <div class="col-12 col-md-7 col-lg-7 col-xxl-7 right">
                     <p class="section-title">Our Story</p>
                     <div class="section-description">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -523,10 +523,12 @@
         </div>
 
         <div class="section-10 section-margin">
-            <p class="text">
-                A network that provides smooth access to and from every<br>
-                corner of the world, anytime.
-            </p>
+            <div class="container">
+                <p class="text">
+                    A network that provides smooth access to and from every<br>
+                    corner of the world, anytime.
+                </p>
+            </div>
         </div>
 
         <div class="section-11 container">

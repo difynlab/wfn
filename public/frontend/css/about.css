@@ -529,8 +529,6 @@
         .about .section-7 .founders-row {
             flex-direction: column;
         }
-        .about .section-2 .our-story-row .left,
-        .about .section-2 .our-story-row .right,
         .about .section-4 .exchange-row .left,
         .about .section-4 .exchange-row .right,
         .about .section-5 .row .left,
@@ -539,6 +537,11 @@
         .about .section-7 .founders-row .right {
             width: 100%;
             padding: 0;
+        }
+        .about .section-2 .our-story-row .left,
+        .about .section-2 .our-story-row .right{
+            width: 100%;
+            padding-left: 10px;
         }
         .about .section-2 .our-story-row .left .image,
         .about .section-7 .founders-row .right .image {

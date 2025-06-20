@@ -303,6 +303,11 @@
             width: 145px;
             height: 43px;
         }
+        .navbar .register-button,
+        .navbar .login-button {
+            font-size: 16px;
+            padding: 5px 15px !important;
+        }
         .footer .top .text {
             font-size: 30px;
         }
@@ -317,12 +322,12 @@
         }
         .navbar .register-button,
         .navbar .login-button {
-            padding: 8px 25px!important;
-            font-size: 17px;
+            font-size: 16px;
+            padding: 5px 15px!important;
         }
         .footer .top .button {
-            font-size: 17px;
-            padding: 9px 28px;
+            font-size: 16px;
+            padding: 5px 15px;
         }
     }   
     @media (width <= 1076px) {
@@ -371,8 +376,55 @@
         .section-description {
             padding-bottom: 25px;
         }
-        .navbar .nav-link {
-            font-size: 15px;
+        .navbar {
+            position: relative;
+        }
+        .navbar-collapse {
+            position: fixed;
+            top: 70px;
+            right: 15px;
+            width: 280px;
+            background-color: var(--light_black);
+            border-radius: 5px;
+            z-index: 1050;
+            padding: 20px;
+        }
+        .navbar-nav {
+            flex-direction: column;
+            gap: 8px;
+        }
+        .nav-item {
+            margin: 0 !important;
+        }
+        .nav-link {
+            color: var(--white) !important;
+            font-size: 16px !important;
+            padding: 10px 15px !important;
+            border-radius: 4px;
+            transition: all 0.3s;
+            display: block;
+            &:hover{
+                background-color: var(--red) !important;
+                color: var(--white) !important;
+            }
+        }
+        .nav-link.active {
+            background-color: var(--red) !important;
+            color: var(--white) !important;
+        }
+        .login-button,
+        .register-button {
+            display: block !important;
+            width: 100%;
+            margin: 8px 0 !important;
+            text-align: center;
+            padding: 10px 15px !important;
+        }
+        .login-button {
+            border: 1px solid var(--white);
+        }
+        .register-button {
+            background-color: var(--red);
         }
         .navbar .register-button,
         .navbar .login-button {
@@ -476,8 +528,8 @@
         }
         .navbar .register-button,
         .navbar .login-button {
-            font-size: 15px;
-            padding: 7px 20px!important;
+            font-size: 14px;
+            padding: 5px 15px !important;
             margin: 0 10px;
         }
         .navbar .login-button {
@@ -514,7 +566,7 @@
         }
         .footer .top .button {
             font-size: 15px;
-            padding: 7px 22px;
+            padding: 5px 15px;
         }
         .footer .copyright .text {
             font-size: 12px;
@@ -527,10 +579,10 @@
         .navbar .register-button,
         .navbar .login-button {
             font-size: 14px;
-            padding: 6px 18px!important;
+            padding: 5px 15px!important;
         }
         .footer .top .text {
-            font-size: 17px;
+            font-size: 16px;
         }
     }
     @media (width <= 415px) {
@@ -575,7 +627,7 @@
         }
         .navbar .register-button,
         .navbar .login-button {
-            font-size: 13px;
+            font-size: 12px;
             padding: 5px 15px!important;
         }
         .footer .top .text {
