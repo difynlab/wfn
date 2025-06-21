@@ -52,7 +52,7 @@
                 <div class="col-6 mb-4">
                     <label class="form-label label">Country<span class="asterisk">*</span></label>
                     <select class="form-select input-field" name="country" required>
-                        <option value="">Select Country</option>
+                        <option value="">Select country</option>
                         @foreach($countries as $country)
                             <option value="{{ $country }}" {{ old('country') == $country ? 'selected' : '' }}>{{ $country }}</option>
                         @endforeach

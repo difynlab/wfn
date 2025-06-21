@@ -29,7 +29,82 @@
                 </div>
 
                 <div class="single-page">
-                    <p class="page-name">Homepage</p>
+                    <p class="page-name">Area</p>
+                    <div class="links">
+                        <a href="{{ route('admin.pages.homepage.index', 'english') }}" title="Edit" class="link">
+                            <i class="bi bi-pencil-square"></i>
+                            English
+                        </a>
+
+                        <a href="{{ route('admin.pages.homepage.index', 'arabic') }}" title="Edit" class="link">
+                            <i class="bi bi-pencil-square"></i>
+                            Arabic
+                        </a>
+                    </div>
+                </div>
+
+                <div class="single-page">
+                    <p class="page-name">Articles</p>
+                    <div class="links">
+                        <a href="{{ route('admin.pages.homepage.index', 'english') }}" title="Edit" class="link">
+                            <i class="bi bi-pencil-square"></i>
+                            English
+                        </a>
+
+                        <a href="{{ route('admin.pages.homepage.index', 'arabic') }}" title="Edit" class="link">
+                            <i class="bi bi-pencil-square"></i>
+                            Arabic
+                        </a>
+                    </div>
+                </div>
+
+                <div class="single-page">
+                    <p class="page-name">About</p>
+                    <div class="links">
+                        <a href="{{ route('admin.pages.homepage.index', 'english') }}" title="Edit" class="link">
+                            <i class="bi bi-pencil-square"></i>
+                            English
+                        </a>
+
+                        <a href="{{ route('admin.pages.homepage.index', 'arabic') }}" title="Edit" class="link">
+                            <i class="bi bi-pencil-square"></i>
+                            Arabic
+                        </a>
+                    </div>
+                </div>
+
+                <div class="single-page">
+                    <p class="page-name">Warehouses</p>
+                    <div class="links">
+                        <a href="{{ route('admin.pages.homepage.index', 'english') }}" title="Edit" class="link">
+                            <i class="bi bi-pencil-square"></i>
+                            English
+                        </a>
+
+                        <a href="{{ route('admin.pages.homepage.index', 'arabic') }}" title="Edit" class="link">
+                            <i class="bi bi-pencil-square"></i>
+                            Arabic
+                        </a>
+                    </div>
+                </div>
+
+                <div class="single-page">
+                    <p class="page-name">Support</p>
+                    <div class="links">
+                        <a href="{{ route('admin.pages.homepage.index', 'english') }}" title="Edit" class="link">
+                            <i class="bi bi-pencil-square"></i>
+                            English
+                        </a>
+
+                        <a href="{{ route('admin.pages.homepage.index', 'arabic') }}" title="Edit" class="link">
+                            <i class="bi bi-pencil-square"></i>
+                            Arabic
+                        </a>
+                    </div>
+                </div>
+
+                <div class="single-page">
+                    <p class="page-name">Authentications</p>
                     <div class="links">
                         <a href="{{ route('admin.pages.homepage.index', 'english') }}" title="Edit" class="link">
                             <i class="bi bi-pencil-square"></i>

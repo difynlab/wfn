@@ -25,7 +25,7 @@
                         <input type="text" class="form-control input-field" name="name" value="{{ $name ?? '' }}" placeholder="Search by Name">
                     </div>
 
-                    <input type="text" class="form-control input-field width" name="city" value="{{ $city ?? '' }}" placeholder="City">
+                    <input type="text" class="form-control input-field width" name="address" value="{{ $address ?? '' }}" placeholder="Address">
 
                     <select class="form-select input-field width" name="order_by">
                         <option value="">Order by: Z-A</option>
@@ -56,11 +56,9 @@
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">NAME</th>
-                                <th scope="col">CITY</th>
-                                <th scope="col">COUNTRY</th>
+                                <th scope="col">ADDRESS</th>
+                                <th scope="col">TOTAL AREA</th>
                                 <th scope="col">TOTAL PALLETS</th>
-                                <th scope="col">AVAILABLE PALLETS</th>
-                                <th scope="col">RENTED PALLETS</th>
                                 <th scope="col">STATUS</th>
                                 <th scope="col">ACTIONS</th>
                             </tr>
@@ -72,18 +70,16 @@
                                     <tr>
                                         <td>#{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
-                                        <td>{{ $item->city }}</td>
-                                        <td>{{ $item->country }}</td>
-                                        <td>{{ $item->pallets }}</td>
-                                        <td>{{ $item->available_pallets }}</td>
-                                        <td>{{ $item->rented_pallets }}</td>
+                                        <td>{{ $item->address }}</td>
+                                        <td>{{ $item->total_area }}</td>
+                                        <td>{{ $item->total_pallets }}</td>
                                         <td>{!! $item->status !!}</td>
                                         <td>{!! $item->action !!}</td>
                                     </tr>
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="8" style="text-align: center;">No data available in the table</td>
+                                    <td colspan="7" style="text-align: center;">No data available in the table</td>
                                 </tr>
                             @endif
                         </tbody>

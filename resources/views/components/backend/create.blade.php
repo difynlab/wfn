@@ -8,7 +8,7 @@
         </div>
 
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="status" value="2" id="inactive" {{ old('status') == '2' ? 'checked' : '' }} required>
+            <input class="form-check-input" type="radio" name="status" value="0" id="inactive" {{ old('status') == '0' ? 'checked' : '' }} required>
             <label class="form-check-label" for="inactive">Inactive</label>
         </div>
     </div>

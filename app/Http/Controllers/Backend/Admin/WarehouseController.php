@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\StorageType;
 use App\Models\User;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
@@ -42,636 +43,249 @@ class WarehouseController extends Controller
 
     public function create()
     {
-        $countries = [
-            "Afghanistan",
-            "Aland Islands",
-            "Albania",
-            "Algeria",
-            "American Samoa",
-            "Andorra",
-            "Angola",
-            "Anguilla",
-            "Antarctica",
-            "Antigua and Barbuda",
-            "Argentina",
-            "Armenia",
-            "Aruba",
-            "Australia",
-            "Austria",
-            "Azerbaijan",
-            "Bahamas",
-            "Bahrain",
-            "Bangladesh",
-            "Barbados",
-            "Belarus",
-            "Belgium",
-            "Belize",
-            "Benin",
-            "Bermuda",
-            "Bhutan",
-            "Bolivia",
-            "Bonaire, Sint Eustatius and Saba",
-            "Bosnia and Herzegovina",
-            "Botswana",
-            "Bouvet Island",
-            "Brazil",
-            "British Indian Ocean Territory",
-            "Brunei Darussalam",
-            "Bulgaria",
-            "Burkina Faso",
-            "Burundi",
-            "Cambodia",
-            "Cameroon",
-            "Canada",
-            "Cape Verde",
-            "Cayman Islands",
-            "Central African Republic",
-            "Chad",
-            "Chile",
-            "China",
-            "Christmas Island",
-            "Cocos (Keeling) Islands",
-            "Colombia",
-            "Comoros",
-            "Congo",
-            "Congo, Democratic Republic of the Congo",
-            "Cook Islands",
-            "Costa Rica",
-            "Cote D'Ivoire",
-            "Croatia",
-            "Cuba",
-            "Curacao",
-            "Cyprus",
-            "Czech Republic",
-            "Denmark",
-            "Djibouti",
-            "Dominica",
-            "Dominican Republic",
-            "Ecuador",
-            "Egypt",
-            "El Salvador",
-            "Equatorial Guinea",
-            "Eritrea",
-            "Estonia",
-            "Ethiopia",
-            "Falkland Islands (Malvinas)",
-            "Faroe Islands",
-            "Fiji",
-            "Finland",
-            "France",
-            "French Guiana",
-            "French Polynesia",
-            "French Southern Territories",
-            "Gabon",
-            "Gambia",
-            "Georgia",
-            "Germany",
-            "Ghana",
-            "Gibraltar",
-            "Greece",
-            "Greenland",
-            "Grenada",
-            "Guadeloupe",
-            "Guam",
-            "Guatemala",
-            "Guernsey",
-            "Guinea",
-            "Guinea-Bissau",
-            "Guyana",
-            "Haiti",
-            "Heard Island and Mcdonald Islands",
-            "Holy See (Vatican City State)",
-            "Honduras",
-            "Hong Kong",
-            "Hungary",
-            "Iceland",
-            "India",
-            "Indonesia",
-            "Iran, Islamic Republic of",
-            "Iraq",
-            "Ireland",
-            "Isle of Man",
-            "Israel",
-            "Italy",
-            "Jamaica",
-            "Japan",
-            "Jersey",
-            "Jordan",
-            "Kazakhstan",
-            "Kenya",
-            "Kiribati",
-            "Korea, Democratic People's Republic of",
-            "Korea, Republic of",
-            "Kosovo",
-            "Kuwait",
-            "Kyrgyzstan",
-            "Lao People's Democratic Republic",
-            "Latvia",
-            "Lebanon",
-            "Lesotho",
-            "Liberia",
-            "Libyan Arab Jamahiriya",
-            "Liechtenstein",
-            "Lithuania",
-            "Luxembourg",
-            "Macao",
-            "Macedonia, the Former Yugoslav Republic of",
-            "Madagascar",
-            "Malawi",
-            "Malaysia",
-            "Maldives",
-            "Mali",
-            "Malta",
-            "Marshall Islands",
-            "Martinique",
-            "Mauritania",
-            "Mauritius",
-            "Mayotte",
-            "Mexico",
-            "Micronesia, Federated States of",
-            "Moldova, Republic of",
-            "Monaco",
-            "Mongolia",
-            "Montenegro",
-            "Montserrat",
-            "Morocco",
-            "Mozambique",
-            "Myanmar",
-            "Namibia",
-            "Nauru",
-            "Nepal",
-            "Netherlands",
-            "Netherlands Antilles",
-            "New Caledonia",
-            "New Zealand",
-            "Nicaragua",
-            "Niger",
-            "Nigeria",
-            "Niue",
-            "Norfolk Island",
-            "Northern Mariana Islands",
-            "Norway",
-            "Oman",
-            "Pakistan",
-            "Palau",
-            "Palestinian Territory, Occupied",
-            "Panama",
-            "Papua New Guinea",
-            "Paraguay",
-            "Peru",
-            "Philippines",
-            "Pitcairn",
-            "Poland",
-            "Portugal",
-            "Puerto Rico",
-            "Qatar",
-            "Reunion",
-            "Romania",
-            "Russian Federation",
-            "Rwanda",
-            "Saint Barthelemy",
-            "Saint Helena",
-            "Saint Kitts and Nevis",
-            "Saint Lucia",
-            "Saint Martin",
-            "Saint Pierre and Miquelon",
-            "Saint Vincent and the Grenadines",
-            "Samoa",
-            "San Marino",
-            "Sao Tome and Principe",
-            "Saudi Arabia",
-            "Senegal",
-            "Serbia",
-            "Serbia and Montenegro",
-            "Seychelles",
-            "Sierra Leone",
-            "Singapore",
-            "Sint Maarten",
-            "Slovakia",
-            "Slovenia",
-            "Solomon Islands",
-            "Somalia",
-            "South Africa",
-            "South Georgia and the South Sandwich Islands",
-            "South Sudan",
-            "Spain",
-            "Sri Lanka",
-            "Sudan",
-            "Suriname",
-            "Svalbard and Jan Mayen",
-            "Swaziland",
-            "Sweden",
-            "Switzerland",
-            "Syrian Arab Republic",
-            "Taiwan, Province of China",
-            "Tajikistan",
-            "Tanzania, United Republic of",
-            "Thailand",
-            "Timor-Leste",
-            "Togo",
-            "Tokelau",
-            "Tonga",
-            "Trinidad and Tobago",
-            "Tunisia",
-            "Turkey",
-            "Turkmenistan",
-            "Turks and Caicos Islands",
-            "Tuvalu",
-            "Uganda",
-            "Ukraine",
-            "United Arab Emirates",
-            "United Kingdom",
-            "United States",
-            "United States Minor Outlying Islands",
-            "Uruguay",
-            "Uzbekistan",
-            "Vanuatu",
-            "Venezuela",
-            "Viet Nam",
-            "Virgin Islands, British",
-            "Virgin Islands, U.s.",
-            "Wallis and Futuna",
-            "Western Sahara",
-            "Yemen",
-            "Zambia",
-            "Zimbabwe"
-        ];
+        $users = User::where('status', 1)->where('role', 'landlord')->get();
+        $storage_types = StorageType::where('status', 1)->get();
 
         return view('backend.admin.warehouses.create', [
-            'countries' => $countries
+            'users' => $users,
+            'storage_types' => $storage_types
         ]);
     }
     
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:users,email',
-            'phone' => 'required|regex:/^\+?[0-9]+$/|unique:users,phone',
-            'password' => 'required|min:8',
-            'confirm_password' => 'required|same:password',
-            'new_image' => 'nullable|max:30720'
+            'name' => 'required',
+            'address' => 'required',
+            'user_id' => 'required|integer',
+            'storage_type_id' => 'required|integer',
+            'total_area' => 'required',
+            'total_pallets' => 'required|integer',
+            'available_pallets' => 'required|integer',
+            'pallet_dimension' => 'required',
+            'temperature_type' => 'required|in:dry,ambient,cold,freezer',
+            'temperature_range' => 'required',
+            'wms' => 'required|in:yes,no',
+            'equipment_handling' => 'required|in:yes,no',
+            'temperature_sensor' => 'required|in:yes,no',
+            'humidity_sensor' => 'required|in:yes,no',
+            'new_thumbnail' => 'max:30720',
+            'new_images.*' => 'max:30720',
+            'new_videos.*' => 'max:204800',
+            'new_licenses.*' => 'max:30720',
+            'status' => 'required|in:0,1'
         ]);
         
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Creation Failed!',
-                'route' => route('admin.users.index')
+                'route' => route('admin.warehouses.index')
             ]);
         }
 
-        if($request->file('new_image')) {
-            $image = $request->file('new_image');
-            $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('backend/users', $image_name);
+        if($request->file('new_thumbnail')) {
+            $thumbnail = $request->file('new_thumbnail');
+            $thumbnail_name = Str::random(40) . '.' . $thumbnail->getClientOriginalExtension();
+            $thumbnail->storeAs('backend/warehouses', $thumbnail_name);
         }
         else {
-            $image_name = $request->old_image;
+            $thumbnail_name = $request->old_thumbnail;
         }
 
-        $data = $request->except('old_image', 'new_image', 'confirm_password');
-        $data['image'] = $image_name;
-        $user = User::create($data);  
+        $new_images = [];
+        if($request->file('new_images')) {
+            foreach($request->file('new_images') as $image) {
+                $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
+                $image->storeAs('backend/warehouses', $image_name);
+                $new_images[] = $image_name;
+            }
+        }
 
-        return redirect()->route('admin.users.edit', $user)->with([
+        $new_videos = [];
+        if($request->file('new_videos')) {
+            foreach($request->file('new_videos') as $video) {
+                $video_name = Str::random(40) . '.' . $video->getClientOriginalExtension();
+                $video->storeAs('backend/warehouses', $video_name);
+                $new_videos[] = $video_name;
+            }
+        }
+
+        $new_licenses = [];
+        if($request->file('new_licenses')) {
+            foreach($request->file('new_licenses') as $license) {
+                $license_name = Str::random(40) . '.' . $license->getClientOriginalExtension();
+                $license->storeAs('backend/warehouses', $license_name);
+                $new_licenses[] = $license_name;
+            }
+        }
+
+        $data = $request->except(
+            'old_thumbnail',
+            'new_thumbnail',
+            'old_images',
+            'new_images',
+            'old_videos',
+            'new_videos',
+            'old_licenses',
+            'new_licenses'
+        );
+        $data['thumbnail'] = $thumbnail_name;
+        $data['images'] = $new_images ? json_encode($new_images) : null;
+        $data['videos'] = $new_videos ? json_encode($new_videos) : null;
+        $data['licenses'] = $new_licenses ? json_encode($new_licenses) : null;
+        $warehouse = Warehouse::create($data);  
+
+        return redirect()->route('admin.warehouses.edit', $warehouse)->with([
             'success' => "Update Successful!",
-            'route' => route('admin.users.index')
+            'route' => route('admin.warehouses.index')
         ]);
     }
 
-    public function edit(User $user)
+    public function edit(Warehouse $warehouse)
     {
-        $countries = [
-            "Afghanistan",
-            "Aland Islands",
-            "Albania",
-            "Algeria",
-            "American Samoa",
-            "Andorra",
-            "Angola",
-            "Anguilla",
-            "Antarctica",
-            "Antigua and Barbuda",
-            "Argentina",
-            "Armenia",
-            "Aruba",
-            "Australia",
-            "Austria",
-            "Azerbaijan",
-            "Bahamas",
-            "Bahrain",
-            "Bangladesh",
-            "Barbados",
-            "Belarus",
-            "Belgium",
-            "Belize",
-            "Benin",
-            "Bermuda",
-            "Bhutan",
-            "Bolivia",
-            "Bonaire, Sint Eustatius and Saba",
-            "Bosnia and Herzegovina",
-            "Botswana",
-            "Bouvet Island",
-            "Brazil",
-            "British Indian Ocean Territory",
-            "Brunei Darussalam",
-            "Bulgaria",
-            "Burkina Faso",
-            "Burundi",
-            "Cambodia",
-            "Cameroon",
-            "Canada",
-            "Cape Verde",
-            "Cayman Islands",
-            "Central African Republic",
-            "Chad",
-            "Chile",
-            "China",
-            "Christmas Island",
-            "Cocos (Keeling) Islands",
-            "Colombia",
-            "Comoros",
-            "Congo",
-            "Congo, Democratic Republic of the Congo",
-            "Cook Islands",
-            "Costa Rica",
-            "Cote D'Ivoire",
-            "Croatia",
-            "Cuba",
-            "Curacao",
-            "Cyprus",
-            "Czech Republic",
-            "Denmark",
-            "Djibouti",
-            "Dominica",
-            "Dominican Republic",
-            "Ecuador",
-            "Egypt",
-            "El Salvador",
-            "Equatorial Guinea",
-            "Eritrea",
-            "Estonia",
-            "Ethiopia",
-            "Falkland Islands (Malvinas)",
-            "Faroe Islands",
-            "Fiji",
-            "Finland",
-            "France",
-            "French Guiana",
-            "French Polynesia",
-            "French Southern Territories",
-            "Gabon",
-            "Gambia",
-            "Georgia",
-            "Germany",
-            "Ghana",
-            "Gibraltar",
-            "Greece",
-            "Greenland",
-            "Grenada",
-            "Guadeloupe",
-            "Guam",
-            "Guatemala",
-            "Guernsey",
-            "Guinea",
-            "Guinea-Bissau",
-            "Guyana",
-            "Haiti",
-            "Heard Island and Mcdonald Islands",
-            "Holy See (Vatican City State)",
-            "Honduras",
-            "Hong Kong",
-            "Hungary",
-            "Iceland",
-            "India",
-            "Indonesia",
-            "Iran, Islamic Republic of",
-            "Iraq",
-            "Ireland",
-            "Isle of Man",
-            "Israel",
-            "Italy",
-            "Jamaica",
-            "Japan",
-            "Jersey",
-            "Jordan",
-            "Kazakhstan",
-            "Kenya",
-            "Kiribati",
-            "Korea, Democratic People's Republic of",
-            "Korea, Republic of",
-            "Kosovo",
-            "Kuwait",
-            "Kyrgyzstan",
-            "Lao People's Democratic Republic",
-            "Latvia",
-            "Lebanon",
-            "Lesotho",
-            "Liberia",
-            "Libyan Arab Jamahiriya",
-            "Liechtenstein",
-            "Lithuania",
-            "Luxembourg",
-            "Macao",
-            "Macedonia, the Former Yugoslav Republic of",
-            "Madagascar",
-            "Malawi",
-            "Malaysia",
-            "Maldives",
-            "Mali",
-            "Malta",
-            "Marshall Islands",
-            "Martinique",
-            "Mauritania",
-            "Mauritius",
-            "Mayotte",
-            "Mexico",
-            "Micronesia, Federated States of",
-            "Moldova, Republic of",
-            "Monaco",
-            "Mongolia",
-            "Montenegro",
-            "Montserrat",
-            "Morocco",
-            "Mozambique",
-            "Myanmar",
-            "Namibia",
-            "Nauru",
-            "Nepal",
-            "Netherlands",
-            "Netherlands Antilles",
-            "New Caledonia",
-            "New Zealand",
-            "Nicaragua",
-            "Niger",
-            "Nigeria",
-            "Niue",
-            "Norfolk Island",
-            "Northern Mariana Islands",
-            "Norway",
-            "Oman",
-            "Pakistan",
-            "Palau",
-            "Palestinian Territory, Occupied",
-            "Panama",
-            "Papua New Guinea",
-            "Paraguay",
-            "Peru",
-            "Philippines",
-            "Pitcairn",
-            "Poland",
-            "Portugal",
-            "Puerto Rico",
-            "Qatar",
-            "Reunion",
-            "Romania",
-            "Russian Federation",
-            "Rwanda",
-            "Saint Barthelemy",
-            "Saint Helena",
-            "Saint Kitts and Nevis",
-            "Saint Lucia",
-            "Saint Martin",
-            "Saint Pierre and Miquelon",
-            "Saint Vincent and the Grenadines",
-            "Samoa",
-            "San Marino",
-            "Sao Tome and Principe",
-            "Saudi Arabia",
-            "Senegal",
-            "Serbia",
-            "Serbia and Montenegro",
-            "Seychelles",
-            "Sierra Leone",
-            "Singapore",
-            "Sint Maarten",
-            "Slovakia",
-            "Slovenia",
-            "Solomon Islands",
-            "Somalia",
-            "South Africa",
-            "South Georgia and the South Sandwich Islands",
-            "South Sudan",
-            "Spain",
-            "Sri Lanka",
-            "Sudan",
-            "Suriname",
-            "Svalbard and Jan Mayen",
-            "Swaziland",
-            "Sweden",
-            "Switzerland",
-            "Syrian Arab Republic",
-            "Taiwan, Province of China",
-            "Tajikistan",
-            "Tanzania, United Republic of",
-            "Thailand",
-            "Timor-Leste",
-            "Togo",
-            "Tokelau",
-            "Tonga",
-            "Trinidad and Tobago",
-            "Tunisia",
-            "Turkey",
-            "Turkmenistan",
-            "Turks and Caicos Islands",
-            "Tuvalu",
-            "Uganda",
-            "Ukraine",
-            "United Arab Emirates",
-            "United Kingdom",
-            "United States",
-            "United States Minor Outlying Islands",
-            "Uruguay",
-            "Uzbekistan",
-            "Vanuatu",
-            "Venezuela",
-            "Viet Nam",
-            "Virgin Islands, British",
-            "Virgin Islands, U.s.",
-            "Wallis and Futuna",
-            "Western Sahara",
-            "Yemen",
-            "Zambia",
-            "Zimbabwe"
-        ];
+        $users = User::where('status', 1)->where('role', 'landlord')->get();
+        $storage_types = StorageType::where('status', 1)->get();
 
-        return view('backend.admin.users.edit', [
-            'user' => $user,
-            'countries' => $countries
+        return view('backend.admin.warehouses.edit', [
+            'warehouse' => $warehouse,
+            'users' => $users,
+            'storage_types' => $storage_types
         ]);
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, Warehouse $warehouse)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:users,email,'.$user->id,
-            'phone' => 'required|regex:/^\+?[0-9]+$/|unique:users,phone,'.$user->id,
-            'new_image' => 'nullable|max:30720'
+            'name' => 'required',
+            'address' => 'required',
+            'user_id' => 'required|integer',
+            'storage_type_id' => 'required|integer',
+            'total_area' => 'required',
+            'total_pallets' => 'required|integer',
+            'available_pallets' => 'required|integer',
+            'pallet_dimension' => 'required',
+            'temperature_type' => 'required|in:dry,ambient,cold,freezer',
+            'temperature_range' => 'required',
+            'wms' => 'required|in:yes,no',
+            'equipment_handling' => 'required|in:yes,no',
+            'temperature_sensor' => 'required|in:yes,no',
+            'humidity_sensor' => 'required|in:yes,no',
+            'new_thumbnail' => 'max:30720',
+            'new_images.*' => 'max:30720',
+            'new_videos.*' => 'max:204800',
+            'new_licenses.*' => 'max:30720',
+            'status' => 'required|in:0,1'
         ]);
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Update Failed!',
-                'route' => route('admin.users.index')
+                'route' => route('admin.warehouses.index')
             ]);
         }
 
-        $data = $request->except(
-            'old_image',
-            'new_image',
-            'password',
-            'confirm_password'
-        );
-
-        if($request->password) {
-            $validator = Validator::make($request->all(), [
-                'password' => 'nullable|min:8',
-                'confirm_password' => 'nullable|same:password',
-            ]);
-
-            if($validator->fails()) {
-                return redirect()->back()->withErrors($validator)->withInput()->with([
-                    'error' => 'Update Failed!',
-                    'route' => route('admin.users.index')
-                ]);
+        if($request->file('new_thumbnail')) {
+            if($request->old_thumbnail) {
+                Storage::delete('backend/warehouses/' . $request->old_thumbnail);
             }
 
-            $data['password'] = $request->password;
+            $thumbnail = $request->file('new_thumbnail');
+            $thumbnail_name = Str::random(40) . '.' . $thumbnail->getClientOriginalExtension();
+            $thumbnail->storeAs('backend/warehouses', $thumbnail_name);
         }
-
-        if($request->file('new_image')) {
-            if($request->old_image) {
-                Storage::delete('backend/users/' . $request->old_image);
+        else if($request->old_thumbnail == null) {
+            if($warehouse->thumbnail) {
+                Storage::delete('backend/warehouses/' . $warehouse->thumbnail);
             }
-
-            $image = $request->file('new_image');
-            $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('backend/users', $image_name);
-        }
-        else if($request->old_image == null) {
-            if($user->image) {
-                Storage::delete('backend/users/' . $user->image);
-            }
-
-            $image_name = null;
+            $thumbnail_name = null;
         }
         else {
-            $image_name = $request->old_image;
+            $thumbnail_name = $request->old_thumbnail;
         }
 
-        $data['image'] = $image_name;
-        $user->fill($data)->save();
+        // Images
+            $existing_images = json_decode($warehouse->images ?? '[]', true);
+            $current_images  = json_decode(htmlspecialchars_decode($request->old_images ?? '[]'), true);
+
+            foreach(array_diff($existing_images, $current_images) as $image) {
+                Storage::delete('backend/warehouses/' . $image);
+            }
+
+            if($request->file('new_images')) {
+                foreach($request->file('new_images') as $image) {
+                    $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
+                    $image->storeAs('backend/warehouses', $image_name);
+                    $current_images[] = $image_name;
+                }
+            }
+            
+            $images = $current_images ? json_encode($current_images) : null;
+        // Images
+
+        // Videos
+            $existing_videos = json_decode($warehouse->videos ?? '[]', true);
+            $current_videos  = json_decode(htmlspecialchars_decode($request->old_videos ?? '[]'), true);
+
+            foreach(array_diff($existing_videos, $current_videos) as $video) {
+                Storage::delete('backend/warehouses/' . $video);
+            }
+
+            if($request->file('new_videos')) {
+                foreach($request->file('new_videos') as $video) {
+                    $video_name = Str::random(40) . '.' . $video->getClientOriginalExtension();
+                    $video->storeAs('backend/warehouses', $video_name);
+                    $current_videos[] = $video_name;
+                }
+            }
+            
+            $videos = $current_videos ? json_encode($current_videos) : null;
+        // Videos
+
+        // Licenses
+            $existing_licenses = json_decode($warehouse->licenses ?? '[]', true);
+            $current_licenses  = json_decode(htmlspecialchars_decode($request->old_licenses ?? '[]'), true);
+
+            foreach(array_diff($existing_licenses, $current_licenses) as $license) {
+                Storage::delete('backend/warehouses/' . $license);
+            }
+
+            if($request->file('new_licenses')) {
+                foreach($request->file('new_licenses') as $license) {
+                    $license_name = Str::random(40) . '.' . $license->getClientOriginalExtension();
+                    $license->storeAs('backend/warehouses', $license_name);
+                    $current_licenses[] = $license_name;
+                }
+            }
+            
+            $licenses = $current_licenses ? json_encode($current_licenses) : null;
+        // Licenses
+
+        $data = $request->except(
+            'old_thumbnail',
+            'new_thumbnail',
+            'old_images',
+            'new_images',
+            'old_videos',
+            'new_videos',
+            'old_licenses',
+            'new_licenses',
+        );
+
+        $data['thumbnail'] = $thumbnail_name;
+        $data['images'] = $images;
+        $data['videos'] = $videos;
+        $data['licenses'] = $licenses;
+        $warehouse->fill($data)->save();
         
         return redirect()->back()->with([
             'success' => "Update Successful!",
-            'route' => route('admin.users.index')
+            'route' => route('admin.warehouses.index')
         ]);
     }
 
-    public function destroy(User $user)
+    public function destroy(Warehouse $warehouse)
     {
-        $user->status = '0';
-        $user->save();
+        $warehouse->delete();
 
         return redirect()->back()->with('delete', 'Successfully Deleted!');
     }
@@ -679,55 +293,44 @@ class WarehouseController extends Controller
     public function filter(Request $request)
     {
         if($request->action == '⟲ Reset Filter') {
-            return redirect()->route('admin.users.index');
+            return redirect()->route('admin.warehouses.index');
         }
 
         $name = $request->name;
-        $role = $request->role;
-        $city = $request->city;
+        $address = $request->address;
         $order_by = $request->order_by;
         $status = $request->status;
 
-        $admin = Auth::user();
-
-        $users = User::whereNot('id', $admin->id)->where('status', '!=', '0');
+        $items = Warehouse::query();
 
         if($name) {
-            $users->where(function ($query) use ($name) {
-                $query->whereRaw("CONCAT(first_name, ' ', last_name) LIKE ?", ['%' . $name . '%'])
-                      ->orWhereRaw("CONCAT(last_name, ' ', first_name) LIKE ?", ['%' . $name . '%']);
-            });
+            $items->where('name', 'like', '%' . $name . '%');
         }
 
-        if($role) {
-            $users->where('role', $role);
-        }
-
-        if($city) {
-            $users->where('city', 'like', '%' . $city . '%');
+        if($address) {
+            $items->where('address', 'like', '%' . $address . '%');
         }
 
         if($order_by == 'a-z') {
-            $users->orderBy('id', 'asc');
+            $items->orderBy('id', 'asc');
         }
         else {
-            $users->orderBy('id', 'desc');
+            $items->orderBy('id', 'desc');
         }
 
-        if($status) {
-            $users->where('status', $status);
+        if($status != null) {
+            $items->where('status', $status);
         }
 
-        $items = $request->items ?? 10;
-        $users = $users->paginate($items);
-        $users = $this->processData($users);
+        $pagination = $request->pagination ?? 10;
+        $items = $items->paginate($pagination);
+        $items = $this->processData($items);
 
-        return view('backend.admin.users.index', [
-            'users' => $users,
+        return view('backend.admin.warehouses.index', [
             'items' => $items,
+            'pagination' => $pagination,
             'name' => $name,
-            'role' => $role,
-            'city' => $city,
+            'address' => $address,
             'order_by' => $order_by,
             'status' => $status
         ]);

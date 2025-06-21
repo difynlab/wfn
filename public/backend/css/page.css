@@ -305,6 +305,9 @@
         background-color: var(--white);
         padding: 30px;
     }
+    .page .single-page:last-child {
+        margin-bottom: 0;
+    }
     .page .single-page .page-name {
         font-size: 17px;
         color: var(--black);
