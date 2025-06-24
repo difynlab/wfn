@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-6 mb-4">
                     <label for="user_id" class="form-label label">User<span class="asterisk">*</span></label>
-                    <select class="form-select input-field" id="user_id" name="user_id" required>
+                    <select class="form-select input-field js-single" id="user_id" name="user_id" required>
                         <option value="">Select user</option>
                         @foreach($users as $user)
                             <option value="{{ $user->id }}" {{ old('user_id', $booking->user_id) == $user->id ? 'selected' : '' }}>{{ $user->first_name }} {{ $user->last_name }}</option>
@@ -26,7 +26,7 @@
 
                 <div class="col-6 mb-4">
                     <label for="warehouse_id" class="form-label label">Warehouse<span class="asterisk">*</span></label>
-                    <select class="form-select input-field" id="warehouse_id" name="warehouse_id" required>
+                    <select class="form-select input-field js-single" id="warehouse_id" name="warehouse_id" required>
                         <option value="">Select warehouse</option>
                         @foreach($warehouses as $warehouse)
                             <option value="{{ $warehouse->id }}" {{ old('warehouse_id', $booking->warehouse_id) == $warehouse->id ? 'selected' : '' }}>{{ $warehouse->name }}</option>

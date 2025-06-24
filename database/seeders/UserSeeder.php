@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Ahmath',
                 'email' => 'zajjith@epirco.net',
                 'password' => bcrypt('secret'),
-                'role' => 'manager',
+                'role' => 'landlord',
             ],
             [
                 'first_name' => 'Yaara',
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Banu',
                 'email' => 'shajitha@gmail.com',
                 'password' => bcrypt('secret'),
-                'role' => 'landlord',
+                'role' => 'tenant',
             ]
         ];
 

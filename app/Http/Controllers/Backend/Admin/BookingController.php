@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
-use App\Models\Company;
 use App\Models\User;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
@@ -17,11 +16,11 @@ class BookingController extends Controller
     private function processData($items)
     {
         foreach($items as $item) {
-            $company = Company::find($item->warehouse_id)->where('status', 1)->first();
+            $selected_warehouse = Warehouse::where('status', 1)->find($item->warehouse_id);
             
             $item->action = '
             <a href="'. route('admin.bookings.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
-            <a href="'. route('admin.users.company.index', $company->user_id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
+            <a href="'. route('admin.users.company.index', $selected_warehouse->user_id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             $tenant = User::find($item->user_id);
@@ -48,7 +47,9 @@ class BookingController extends Controller
 
         return view('backend.admin.bookings.index', [
             'items' => $items,
-            'pagination' => $pagination
+            'pagination' => $pagination,
+            'users' => $users,
+            'warehouses' => $warehouses
         ]);
     }
 
@@ -182,24 +183,19 @@ class BookingController extends Controller
             return redirect()->route('admin.bookings.index');
         }
 
-        $tenant = $request->tenant;
-        $warehouse = $request->warehouse;
-        $tenancy_date = $request->tenancy_date;
-        $renewal_date = $request->renewal_date;
+        $selected_tenant = $request->selected_tenant;
+        $selected_warehouse = $request->selected_warehouse;
         $order_by = $request->order_by;
         $status = $request->status;
 
-        $items = Warehouse::query();
+        $items = Booking::query();
 
-        if($name) {
-            $items->where('name', 'like', '%' . $name . '%');
+        if($selected_tenant) {
+            $items->where('user_id', $selected_tenant);
         }
 
-        if($address) {
-            $items->where(function($data) use ($address) {
-                $data->where('address_en', 'like', "%{$address}%")
-                ->orWhere('address_ar', 'like', "%{$address}%");
-            });
+        if($selected_warehouse) {
+            $items->where('warehouse_id', $selected_warehouse);
         }
 
         if($order_by == 'a-z') {
@@ -217,13 +213,18 @@ class BookingController extends Controller
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 
-        return view('backend.admin.warehouses.index', [
+        $users = User::where('status', 1)->where('role', 'tenant')->get();
+        $warehouses = Warehouse::where('status', 1)->get();
+
+        return view('backend.admin.bookings.index', [
             'items' => $items,
             'pagination' => $pagination,
-            'name' => $name,
-            'address' => $address,
+            'selected_tenant' => $selected_tenant,
+            'selected_warehouse' => $selected_warehouse,
             'order_by' => $order_by,
-            'status' => $status
+            'status' => $status,
+            'users' => $users,
+            'warehouses' => $warehouses
         ]);
     }
 }

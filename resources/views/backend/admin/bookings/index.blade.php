@@ -20,12 +20,19 @@
         <div class="row mb-4">
             <div class="col-12">
                 <form action="{{ route('admin.bookings.filter') }}" method="GET" class="filter-form">
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="bi bi-search"></i></span>
-                        <input type="text" class="form-control input-field" name="name" value="{{ $name ?? '' }}" placeholder="Search by Name">
-                    </div>
+                    <select class="form-select input-field js-single w-100" id="selected_tenant" name="selected_tenant">
+                        <option value="">Select tenant</option>
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}" {{ isset($selected_tenant) && $selected_tenant == $user->id ? "selected" : "" }}>{{ $user->first_name }} {{ $user->last_name }}</option>
+                        @endforeach
+                    </select>
 
-                    <input type="text" class="form-control input-field width" name="address" value="{{ $address ?? '' }}" placeholder="Address">
+                    <select class="form-select input-field js-single" id="selected_warehouse" name="selected_warehouse">
+                        <option value="">Select warehouse</option>
+                        @foreach($warehouses as $warehouse)
+                            <option value="{{ $warehouse->id }}" {{ isset($selected_warehouse) && $selected_warehouse == $warehouse->id ? "selected" : "" }}>{{ $warehouse->name }}</option>
+                        @endforeach
+                    </select>
 
                     <select class="form-select input-field width" name="order_by">
                         <option value="">Order by: Z-A</option>

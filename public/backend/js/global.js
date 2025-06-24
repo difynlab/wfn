@@ -6,4 +6,8 @@
             });
         });
     });
+
+    $(document).ready(function() {
+        $('.js-single').select2();
+    });
 // Prevent too many clicks

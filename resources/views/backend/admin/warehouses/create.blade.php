@@ -39,7 +39,7 @@
 
                 <div class="col-6 mb-4">
                     <label for="user_id" class="form-label label">User<span class="asterisk">*</span></label>
-                    <select class="form-select input-field" id="user_id" name="user_id" required>
+                    <select class="form-select input-field js-single" id="user_id" name="user_id" required>
                         <option value="">Select user</option>
                         @foreach($users as $user)
                             <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>{{ $user->first_name }} {{ $user->last_name }}</option>
@@ -50,7 +50,7 @@
 
                 <div class="col-6 mb-4">
                     <label for="storage_type_id" class="form-label label">Storage Type<span class="asterisk">*</span></label>
-                    <select class="form-select input-field" id="storage_type_id" name="storage_type_id" required>
+                    <select class="form-select input-field js-single" id="storage_type_id" name="storage_type_id" required>
                         <option value="">Select storage type</option>
                         @foreach($storage_types as $storage_type)
                             <option value="{{ $storage_type->id }}" {{ old('storage_type_id') == $storage_type->id ? 'selected' : '' }}>{{ $storage_type->name }}</option>

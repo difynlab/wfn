@@ -99,6 +99,29 @@
 /* #endregion */
 
 
+/* #region: Select 2 */
+    .inner-page .select2-container--default .select2-selection--single {
+        border: 1px solid var(--input_border);
+        border-radius: 0;
+        height: 60px;
+        font-size: 15px;
+        color: var(--medium_gray);
+        outline: none;
+        display: flex;
+        align-items: center;
+    }
+    .inner-page .select2-container--default .select2-selection--single .select2-selection__arrow {
+        top: initial!important;
+    }
+    .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+        background-color: var(--red);
+    }
+    .select2-results__option {
+        font-size: 15px;
+    }
+/* #endregion */
+
+
 /* #region: Drop area */
     .inner-page .drop-area {
         border: 1px dashed var(--medium_red);

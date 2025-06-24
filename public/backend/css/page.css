@@ -90,6 +90,35 @@
             transition: all 0.3s;
         }
     }
+    .page .filter-form .select2-container {
+        height: 100%;
+        width: 300px!important;
+    }
+    .page .filter-form .select2-container--default .select2-selection--single {
+        border: none;
+        border-right: 1px solid var(--input_border);
+        border-radius: 0;
+        height: 100%;
+        width: 250px;
+        outline: none;
+        display: flex;
+        align-items: center;
+    }
+    .page .filter-form .select2-container--default .select2-selection--single .select2-selection__rendered {
+        font-size: 15px;
+        color: var(--light_black);
+        font-weight: 600;
+        line-height: 28px;
+    }
+    .page .filter-form .select2-container--default .select2-selection--single .select2-selection__arrow {
+        top: initial!important;
+    }
+    .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+        background-color: var(--red);
+    }
+    .select2-results__option {
+        font-size: 15px;
+    }
 /* #endregion */
 
 
