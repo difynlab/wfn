@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +18,7 @@ class UserController extends Controller
         foreach($items as $item) {
             $item->action = '
             <a href="'. route('admin.users.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
-            <a href="#" class="action-button" title="Warehouses"><i class="bi bi-houses"></i></a>
+            <a href="'. route('admin.users.company.index', $item->id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             $item->status = ($item->status == 1) ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
@@ -743,6 +744,75 @@ class UserController extends Controller
             'city' => $city,
             'order_by' => $order_by,
             'status' => $status
+        ]);
+    }
+
+    public function company(User $user)
+    {
+        $company = Company::firstOrCreate(
+            ['user_id' => $user->id],
+            [
+                'user_id'   => $user->id,
+            ]
+        );
+
+        return view('backend.admin.users.company', [
+            'user' => $user,
+            'company' => $company
+        ]);
+    }
+
+    public function companyUpdate(Request $request, User $user, Company $company)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'address' => 'required',
+            'email' => 'required|email|unique:companies,email,'.$company->id,
+            'phone' => 'required|regex:/^\+?[0-9]+$/|unique:companies,phone,'.$company->id,
+            'website' => 'nullable|url',
+            'industry' => 'required',
+            'date' => 'nullable|date',
+            'new_registration_certificates.*' => 'max:30720',
+            'status' => 'required|in:0,1'
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput()->with([
+                'error' => 'Update Failed!',
+                'route' => route('admin.users.index')
+            ]);
+        }
+
+        // Registration certificates
+            $existing_registration_certificates = json_decode($company->registration_certificates ?? '[]', true);
+            $current_registration_certificates  = json_decode(htmlspecialchars_decode($request->old_registration_certificates ?? '[]'), true);
+
+            foreach(array_diff($existing_registration_certificates, $current_registration_certificates) as $registration_certificate) {
+                Storage::delete('backend/warehouses/' . $registration_certificate);
+            }
+
+            if($request->file('new_registration_certificates')) {
+                foreach($request->file('new_registration_certificates') as $registration_certificate) {
+                    $registration_certificate_name = Str::random(40) . '.' . $registration_certificate->getClientOriginalExtension();
+                    $registration_certificate->storeAs('backend/warehouses', $registration_certificate_name);
+                    $current_registration_certificates[] = $registration_certificate_name;
+                }
+            }
+            
+            $registration_certificates = $current_registration_certificates ? json_encode($current_registration_certificates) : null;
+        // Registration certificates
+
+        $data = $request->except(
+            'old_registration_certificates',
+            'new_registration_certificates'
+        );
+
+        $data['registration_certificates'] = $registration_certificates;
+        $company->fill($data)->save();
+        
+        return redirect()->back()->with([
+            'success' => "Update Successful!",
+            'route' => route('admin.users.index')
         ]);
     }
 }

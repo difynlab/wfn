@@ -14,7 +14,13 @@ return new class extends Migration
         Schema::create('warehouses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('address');
+            $table->string('address_name');
+            $table->string('address_en');
+            $table->string('city_en');
+            $table->string('address_ar');
+            $table->string('city_ar');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->string('total_area');
             $table->integer('total_pallets');
             $table->integer('available_pallets');

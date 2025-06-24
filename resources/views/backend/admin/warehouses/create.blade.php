@@ -21,8 +21,20 @@
 
                 <div class="col-12 mb-4">
                     <label for="address" class="form-label label">Address<span class="asterisk">*</span></label>
-                    <input type="text" class="form-control input-field" id="address" name="address" placeholder="Address" value="{{ old('address') }}" required>
-                    <x-backend.input-error field="address"></x-backend.input-error>
+                    <input type="hidden" id="address_name" name="address_name" required>
+
+                    <input type="hidden" id="address_en" name="address_en" required>
+                    <input type="hidden" id="city_en" name="city_en" required>
+
+                    <input type="hidden" id="address_ar" name="address_ar" required>
+                    <input type="hidden" id="city_ar" name="city_ar" required>
+                    
+                    <input type="hidden" id="latitude" name="latitude" required>
+                    <input type="hidden" id="longitude" name="longitude" required>
+
+                    <p class="place-autocomplete-card form-control input-field" id="place-autocomplete-card"></p>
+
+                    <x-backend.input-error field="address_en"></x-backend.input-error>
                 </div>
 
                 <div class="col-6 mb-4">
@@ -213,4 +225,5 @@
     <script src="{{ asset('backend/js/drag-drop-image.js') }}"></script>
     <script src="{{ asset('backend/js/drag-drop-images.js') }}"></script>
     <script src="{{ asset('backend/js/drag-drop-videos.js') }}"></script>
+    <script src="{{ asset('backend/js/google-map.js') }}" data-maps-key="{{ config('services.google_maps.key') }}"></script>
 @endpush

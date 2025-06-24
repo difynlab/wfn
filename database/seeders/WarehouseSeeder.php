@@ -12,7 +12,13 @@ class WarehouseSeeder extends Seeder
         $records = [
             [
                 'name' => 'Al-Falah Distribution Center',
-                'address' => 'Al Quds Street, Warehouse No. 35, Industrial City, Riyadh, Saudi Arabia',
+                'address_name' => 'Al Quds',
+                'address_en' => 'Al Quds Street, Warehouse No. 35, Industrial City, Riyadh, Saudi Arabia',
+                'city_en' => 'Industrial City',
+                'address_ar' => 'Al Quds Street, Warehouse No. 35, Industrial City, Riyadh, Saudi Arabia',
+                'city_ar' => 'Industrial City',
+                'latitude' => '23.8859',
+                'longitude' => '45.0792',
                 'total_area' => '2000 Sq.m',
                 'total_pallets' => '200',
                 'available_pallets' => '160',
@@ -23,7 +29,7 @@ class WarehouseSeeder extends Seeder
                 'equipment_handling' => 'yes',
                 'temperature_sensor' => 'yes',
                 'humidity_sensor' => 'yes',
-                'user_id' => 2,
+                'user_id' => 3,
                 'storage_type_id' => 1,
             ],
         ];

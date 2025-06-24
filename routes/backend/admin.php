@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\Admin\BookingController;
 use App\Http\Controllers\Backend\Admin\DashboardController;
 use App\Http\Controllers\Backend\Admin\Page\HomepageController;
 use App\Http\Controllers\Backend\Admin\Page\PageController;
@@ -35,6 +36,11 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
             Route::get('{user}/edit', 'edit')->name('edit');
             Route::post('{user}', 'update')->name('update');
             Route::delete('{user}', 'destroy')->name('destroy');
+
+            Route::controller(UserController::class)->prefix('company')->name('company.')->group(function() {
+                Route::get('{user}', 'company')->name('index');
+                Route::post('{user}/{company}', 'companyUpdate')->name('update');
+            });
         });
     // Users routes
 
@@ -61,4 +67,16 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
             Route::delete('{storage_type}', 'destroy')->name('destroy');
         });
     // Storage types routes
+
+    // Booking routes
+        Route::controller(BookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
+            Route::get('/', 'index')->name('index');
+            Route::get('filter', 'filter')->name('filter');
+            Route::get('create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('{booking}/edit', 'edit')->name('edit');
+            Route::post('{booking}', 'update')->name('update');
+            Route::delete('{booking}', 'destroy')->name('destroy');
+        });
+    // Booking routes
 });

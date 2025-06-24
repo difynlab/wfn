@@ -35,7 +35,7 @@
         </li>
 
         <li class="link">
-            <a href="#">
+            <a href="{{ route('admin.bookings.index') }}" class="{{ Request::segment(2) == 'bookings' ? 'active' : '' }}">
                 <div class="box"></div>
                 <div class="actual-link">
                     <i class="bi bi-ui-checks"></i>

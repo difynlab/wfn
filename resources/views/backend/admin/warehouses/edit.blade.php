@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title', 'Edit User')
+@section('title', 'Edit Warehouse')
 
 @section('content')
     <div class="inner-page">
@@ -8,7 +8,7 @@
             @csrf
 
             <div class="page-details">
-                <p class="title">User Details</p>
+                <p class="title">Warehouse Details</p>
                 <p class="description">View or update warehouse details. Save changes to apply.</p>
             </div>
 
@@ -21,8 +21,25 @@
 
                 <div class="col-12 mb-4">
                     <label for="address" class="form-label label">Address<span class="asterisk">*</span></label>
-                    <input type="text" class="form-control input-field" id="address" name="address" placeholder="Address" value="{{ old('address', $warehouse->address) }}" required>
-                    <x-backend.input-error field="address"></x-backend.input-error>
+
+                    <p class="map-address">English: {{ $warehouse->address_en }}</p>
+
+                    <p class="map-address">Arabic: {{ $warehouse->address_ar }}</p>
+
+                    <input type="hidden" id="address_name" name="address_name" value="{{ $warehouse->address_name }}" required>
+
+                    <input type="hidden" id="address_en" name="address_en" value="{{ $warehouse->address_en }}" required>
+                    <input type="hidden" id="city_en" name="city_en" value="{{ $warehouse->city_en }}" required>
+
+                    <input type="hidden" id="address_ar" name="address_ar" value="{{ $warehouse->address_ar }}" required>
+                    <input type="hidden" id="city_ar" name="city_ar" value="{{ $warehouse->city_ar }}" required>
+
+                    <input type="hidden" id="latitude" name="latitude" value="{{ $warehouse->latitude }}" required>
+                    <input type="hidden" id="longitude" name="longitude" value="{{ $warehouse->longitude }}" required>
+
+                    <p class="place-autocomplete-card form-control input-field" id="place-autocomplete-card"></p>
+
+                    <x-backend.input-error field="address_en"></x-backend.input-error>
                 </div>
 
                 <div class="col-6 mb-4">
@@ -214,4 +231,5 @@
     <script src="{{ asset('backend/js/drag-drop-image.js') }}"></script>
     <script src="{{ asset('backend/js/drag-drop-images.js') }}"></script>
     <script src="{{ asset('backend/js/drag-drop-videos.js') }}"></script>
+    <script src="{{ asset('backend/js/google-map.js') }}" data-maps-key="{{ config('services.google_maps.key') }}"></script>
 @endpush

@@ -62,7 +62,6 @@
                     <table class="table w-100">
                         <thead>
                             <tr>
-                                <th scope="col">ID</th>
                                 <th scope="col">NAME</th>
                                 <th scope="col">CITY</th>
                                 <th scope="col">COUNTRY</th>
@@ -77,19 +76,18 @@
                             @if(count($items) > 0)
                                 @foreach($items as $item)
                                     <tr>
-                                        <td>#{{ $item->id }}</td>
                                         <td>{{ $item->first_name }} {{ $item->last_name }}</td>
-                                        <td>{{ $item->city }}</td>
-                                        <td>{{ $item->country }}</td>
+                                        <td>{{ $item->city ?? '-' }}</td>
+                                        <td>{{ $item->country ?? '-' }}</td>
                                         <td>{{ $item->email }}</td>
-                                        <td>{{ $item->role }}</td>
+                                        <td>{{ ucfirst($item->role) }}</td>
                                         <td>{!! $item->status !!}</td>
                                         <td>{!! $item->action !!}</td>
                                     </tr>
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="8" style="text-align: center;">No data available in the table</td>
+                                    <td colspan="7" style="text-align: center;">No data available in the table</td>
                                 </tr>
                             @endif
                         </tbody>

@@ -209,6 +209,13 @@
         color: var(--gray);
         background: var(--medium_white);
     }
+    .page .table-container .table .table-link {
+        font-weight: 600;
+        color: var(--blue);
+        &:hover {
+            text-decoration: underline!important;
+        }
+    }
 /* #endregion */
 
 

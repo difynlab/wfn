@@ -1,25 +1,25 @@
 @extends('backend.layouts.app')
 
-@section('title', 'Warehouses')
+@section('title', 'Bookings')
 
 @section('content')
     <div class="page">
         <div class="row align-items-center mb-4">
             <div class="col-8">
-                <p class="title">Warehouses</p>
-                <p class="description">Manage warehouse details here.</p>
+                <p class="title">Bookings</p>
+                <p class="description">Manage booking details here.</p>
             </div>
             <div class="col-4 text-end">
-                <a href="{{ route('admin.warehouses.create') }}" class="add-button">
+                <a href="{{ route('admin.bookings.create') }}" class="add-button">
                     <i class="bi bi-plus-lg"></i>
-                    Add New Warehouse
+                    Add New Booking
                 </a>
             </div>
         </div>
 
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('admin.warehouses.filter') }}" method="GET" class="filter-form">
+                <form action="{{ route('admin.bookings.filter') }}" method="GET" class="filter-form">
                     <div class="input-group">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                         <input type="text" class="form-control input-field" name="name" value="{{ $name ?? '' }}" placeholder="Search by Name">
@@ -54,10 +54,12 @@
                     <table class="table w-100">
                         <thead>
                             <tr>
-                                <th scope="col">NAME</th>
-                                <th scope="col">ADDRESS</th>
-                                <th scope="col">TOTAL AREA</th>
-                                <th scope="col">TOTAL PALLETS</th>
+                                <th scope="col">TENANT</th>
+                                <th scope="col">WAREHOUSE</th>
+                                <th scope="col">PALLETS RENTED</th>
+                                <th scope="col">TOTAL RENT</th>
+                                <th scope="col">TENANCY DATE</th>
+                                <th scope="col">RENEWAL DATE</th>
                                 <th scope="col">STATUS</th>
                                 <th scope="col">ACTIONS</th>
                             </tr>
@@ -67,17 +69,19 @@
                             @if(count($items) > 0)
                                 @foreach($items as $item)
                                     <tr>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->address_en }}</td>
-                                        <td>{{ $item->total_area }}</td>
-                                        <td>{{ $item->total_pallets }}</td>
+                                        <td>{!! $item->tenant !!}</td>
+                                        <td>{!! $item->warehouse !!}</td>
+                                        <td>{{ $item->no_of_pallets }}</td>
+                                        <td>{{ $item->total_rent }}</td>
+                                        <td>{{ $item->tenancy_date }}</td>
+                                        <td>{{ $item->renewal_date }}</td>
                                         <td>{!! $item->status !!}</td>
                                         <td>{!! $item->action !!}</td>
                                     </tr>
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="6" style="text-align: center;">No data available in the table</td>
+                                    <td colspan="8" style="text-align: center;">No data available in the table</td>
                                 </tr>
                             @endif
                         </tbody>
@@ -88,7 +92,7 @@
             </div>
         </div>
 
-        <x-backend.delete data="warehouse"></x-backend.delete>
+        <x-backend.delete data="booking"></x-backend.delete>
         <x-backend.notification></x-backend.notification>
     </div>
 @endsection
@@ -99,7 +103,7 @@
         $(document).ready(function() {
             $('.page .table .delete-button').on('click', function() {
                 let id = $(this).attr('id');
-                let url = "{{ route('admin.warehouses.destroy', [':id']) }}";
+                let url = "{{ route('admin.bookings.destroy', [':id']) }}";
                 destroy_url = url.replace(':id', id);
 
                 $('.page #delete-modal form').attr('action', destroy_url);

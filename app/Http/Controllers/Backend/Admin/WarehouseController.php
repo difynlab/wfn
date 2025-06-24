@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Auth;
 
 class WarehouseController extends Controller
 {
@@ -19,8 +18,8 @@ class WarehouseController extends Controller
         foreach($items as $item) {
             $item->action = '
             <a href="'. route('admin.warehouses.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
-            <a href="#" class="action-button" title="Company"><i class="bi bi-building"></i></a>
-            <a href="#" class="action-button" title="User"><i class="bi bi-person-exclamation"></i></a>
+            <a href="'. route('admin.users.company.index', $item->user_id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
+            <a href="'. route('admin.users.edit', $item->user_id) .'" class="action-button" title="User"><i class="bi bi-person-exclamation"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             $item->status = ($item->status == 1) ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
@@ -56,7 +55,13 @@ class WarehouseController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'address' => 'required',
+            'address_name' => 'required',
+            'address_en' => 'required',
+            'city_en' => 'required',
+            'address_ar' => 'required',
+            'city_ar' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
             'user_id' => 'required|integer',
             'storage_type_id' => 'required|integer',
             'total_area' => 'required',
@@ -74,6 +79,14 @@ class WarehouseController extends Controller
             'new_videos.*' => 'max:204800',
             'new_licenses.*' => 'max:30720',
             'status' => 'required|in:0,1'
+        ], [
+            'address_name' => 'Address field is required.',
+            'address_en' => 'Address field is required.',
+            'city_en' => 'Address field is required.',
+            'address_ar' => 'Address field is required.',
+            'city_ar' => 'Address field is required.',
+            'latitude' => 'Address field is required.',
+            'longitude' => 'Address field is required.',
         ]);
         
         if($validator->fails()) {
@@ -157,7 +170,13 @@ class WarehouseController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'address' => 'required',
+            'address_name' => 'required',
+            'address_en' => 'required',
+            'city_en' => 'required',
+            'address_ar' => 'required',
+            'city_ar' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
             'user_id' => 'required|integer',
             'storage_type_id' => 'required|integer',
             'total_area' => 'required',
@@ -175,6 +194,14 @@ class WarehouseController extends Controller
             'new_videos.*' => 'max:204800',
             'new_licenses.*' => 'max:30720',
             'status' => 'required|in:0,1'
+        ], [
+            'address_name' => 'Address field is required.',
+            'address_en' => 'Address field is required.',
+            'city_en' => 'Address field is required.',
+            'address_ar' => 'Address field is required.',
+            'city_ar' => 'Address field is required.',
+            'latitude' => 'Address field is required.',
+            'longitude' => 'Address field is required.',
         ]);
 
         if($validator->fails()) {
@@ -308,7 +335,10 @@ class WarehouseController extends Controller
         }
 
         if($address) {
-            $items->where('address', 'like', '%' . $address . '%');
+            $items->where(function($data) use ($address) {
+                $data->where('address_en', 'like', "%{$address}%")
+                ->orWhere('address_ar', 'like', "%{$address}%");
+            });
         }
 
         if($order_by == 'a-z') {
