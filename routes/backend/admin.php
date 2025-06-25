@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\Admin\BookingController;
 use App\Http\Controllers\Backend\Admin\DashboardController;
 use App\Http\Controllers\Backend\Admin\Page\HomepageController;
 use App\Http\Controllers\Backend\Admin\Page\PageController;
+use App\Http\Controllers\Backend\Admin\SettingsController;
 use App\Http\Controllers\Backend\Admin\StorageTypeController;
 use App\Http\Controllers\Backend\Admin\TodoController;
 use App\Http\Controllers\Backend\Admin\UserController;
@@ -91,4 +92,13 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
             Route::post('{todo}/destroy', 'destroy')->name('destroy');
         });
     // Todo routes
+
+    // Settings routes
+        Route::controller(SettingsController::class)->prefix('settings')->name('settings.')->group(function() {
+            Route::get('/', 'index')->name('index');
+            Route::post('{user}/profile', 'profile')->name('profile');
+            Route::post('{user}/password', 'password')->name('password');
+            Route::post('{setting}/website', 'website')->name('website');
+        });
+    // Settings routes
 });

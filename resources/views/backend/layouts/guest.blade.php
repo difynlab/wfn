@@ -21,7 +21,7 @@
             <div class="container-fluid">
                 <div class="row align-items-center justify-content-center">
                     <div class="d-none d-md-block col-md-5 p-0">
-                        <img src="{{ asset('storage/backend/global/guest-image.jpg') }}" alt="Image" class="image">
+                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->guest_image) }}" alt="Image" class="image">
                     </div>
 
                     <div class="col-12 col-md-7 p-0">

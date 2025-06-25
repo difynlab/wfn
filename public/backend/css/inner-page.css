@@ -1,4 +1,13 @@
 /* #region: Page */
+    .inner-page .inner-page-top-title {
+        font-size: 26px;
+        font-weight: 600;
+        color: var(--black);
+    }
+    .inner-page .inner-page-top-description {
+        font-size: 18px;
+        color: var(--light_black);
+    }
     .inner-page .page-details .title {
         font-size: 24px;
         font-weight: 600;
@@ -247,5 +256,40 @@
         font-weight: 600;
         color: var(--medium_gray);
         margin-bottom: 10px!important;
+    }
+/* #endregion */
+
+
+/* #region: Nav */
+    .inner-page .nav-pills {
+        border-bottom: 1px solid var(--input_border);
+        margin-bottom: 25px;
+    }
+    .inner-page .nav-pills .nav-item {
+        margin-right: 50px;
+    }
+    .inner-page .nav-pills .nav-item .nav-link {
+        font-size: 16px;
+        padding: 0;
+        padding-bottom: 10px;
+        color: var(--gray);
+        border-radius: 0;
+    }
+    .inner-page .nav-pills .nav-item .nav-link.active {
+        background-color: transparent;
+        font-weight: 500;
+        color: var(--light_black);
+        border-bottom: 2px solid var(--red);
+    }
+    .inner-page .tab-content {
+        background-color: var(--white);
+        border-radius: 10px;
+        padding: 30px;
+    }
+    .inner-page .tab-content .tab-content-title {
+        font-size: 17px;
+        font-weight: 600;
+        padding-bottom: 10px;
+        color: var(--light_black);
     }
 /* #endregion */

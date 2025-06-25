@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
             StorageTypeSeeder::class,
             WarehouseSeeder::class,
             HomepageContentSeeder::class,
+            SettingsSeeder::class,
         ]);
     }
 }
