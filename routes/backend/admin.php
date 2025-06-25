@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\Admin\DashboardController;
 use App\Http\Controllers\Backend\Admin\Page\HomepageController;
 use App\Http\Controllers\Backend\Admin\Page\PageController;
 use App\Http\Controllers\Backend\Admin\StorageTypeController;
+use App\Http\Controllers\Backend\Admin\TodoController;
 use App\Http\Controllers\Backend\Admin\UserController;
 use App\Http\Controllers\Backend\Admin\WarehouseController;
 use Illuminate\Support\Facades\Route;
@@ -79,4 +80,15 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
             Route::delete('{booking}', 'destroy')->name('destroy');
         });
     // Booking routes
+
+    // Todo routes
+        Route::controller(TodoController::class)->prefix('todos')->name('todos.')->group(function() {
+            Route::get('/', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::post('{todo}/favorite', 'favorite')->name('favorite');
+            Route::post('{todo}/complete', 'complete')->name('complete');
+            Route::post('{todo}/destroy', 'destroy')->name('destroy');
+        });
+    // Todo routes
 });

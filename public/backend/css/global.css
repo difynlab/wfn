@@ -26,6 +26,7 @@
         --blue: #3673F0;
         --green_opacity: rgba(41, 255, 152, 0.2);
         --dark_green: #095D35;
+        --gold: #FFAE4C;
     }
     body {
         background-color: var(--background);

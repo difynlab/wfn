@@ -69,7 +69,7 @@
 
     <ul class="main-menu">
         <li class="link">
-            <a href="#">
+            <a href="{{ route('admin.todos.index') }}" class="{{ Request::segment(2) == 'todos' ? 'active' : '' }}">
                 <div class="box"></div>
                 <div class="actual-link">
                     <i class="bi bi-list-check"></i>

@@ -332,7 +332,7 @@
 /* #endregion */
 
 
-/* #region: Pages */
+/* #region: Single loop */
     .page .single-page {
         display: flex;
         justify-content: space-between;
@@ -362,5 +362,71 @@
     }
     .page .single-page .links .link i {
         padding-right: 5px;
+    }
+
+    .page .single-todo {
+        align-items: center;
+        margin-bottom: 15px;
+        background-color: var(--white);
+        padding: 30px;
+    }
+    .page .single-todo:last-child {
+        margin-bottom: 0;
+    }
+    .page .single-todo .details {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    .page .single-todo .todo-name {
+        font-size: 17px;
+        color: var(--black);
+        font-weight: 500;
+        margin-bottom: 5px!important;
+    }
+    .page .single-todo .todo-description {
+        font-size: 15px;
+        color: var(--gray);
+    }
+    .page .single-todo .links {
+        justify-content: end;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+    .page .single-todo .links .link {
+        font-size: 25px;
+        color: var(--medium_gray);
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+            color: var(--gray);
+            transition: all 0.3s;
+        }
+    }
+    .page .single-todo .links .link.gold {
+        color: var(--gold);
+    }
+    .page .single-todo .form-check-input {
+        margin-top: 0;
+        font-size: 25px;
+        border-radius: 5px;
+        border: 1px solid var(--input_border);
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+            border-color: var(--red);
+            transition: all 0.3s;
+        }
+    }
+    .page .single-todo .form-check-input:checked {
+        background-color: var(--red);
+        border-color: var(--red);
+    }
+    .page .single-todo .no-data {
+        font-size: 22px;
+        color: var(--red);
+        font-weight: 600;
+        text-align: center;
     }
 /* #endregion */

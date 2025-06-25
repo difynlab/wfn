@@ -40,6 +40,9 @@
         font-size: 15px;
         color: var(--medium_gray);
     }
+    .inner-page .form .textarea {
+        height: initial;
+    }
     .inner-page .form .input-field::placeholder {
         font-size: 15px;
     }
