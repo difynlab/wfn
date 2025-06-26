@@ -388,6 +388,9 @@
         font-size: 15px;
         color: var(--gray);
     }
+    .page .single-todo .cross-line {
+        text-decoration: line-through;
+    }
     .page .single-todo .links {
         justify-content: end;
         display: flex;
@@ -428,5 +431,169 @@
         color: var(--red);
         font-weight: 600;
         text-align: center;
+    }
+/* #endregion */
+
+
+/* #region: Message */
+    .page .messages {
+        background-color: var(--white);
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .page .messages .top-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+    .page .messages .top-row .form {
+        width: 50%;
+    }
+    .page .messages .top-row .input-field {
+        background-color: #F5F6FA;
+        border: none;
+        border-radius: 0;
+        height: 50px;
+        font-size: 15px;
+        color: var(--light_black);
+    }
+    .page .messages .top-row .input-field::placeholder {
+        font-size: 15px;
+    }
+    .page .messages .top-row .icons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #F5F6FA;
+        border: none;
+        border-radius: 0;
+        height: 50px;
+        width: 12%;
+        padding: 0 15px;
+    }
+    .page .messages .top-row .icons.bin-icons {
+        width: 15%;
+    }
+    .page .messages .top-row .icons .icon {
+        font-size: 22px;
+        font-weight: 600;
+        color: var(--medium_gray);
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+            color: var(--gray);
+            transition: all 0.3s;
+        }
+    }
+    .page .messages .all-messages {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .page .messages .all-messages::-webkit-scrollbar {
+        height: 5px;
+    }
+    .page .messages .all-messages::-webkit-scrollbar-track {
+        background: var(--input_border);
+        border-radius: 5px;
+    }
+    .page .messages .all-messages::-webkit-scrollbar-thumb {
+        background-color: var(--red);
+        border-radius: 5px;
+    }
+    .page .messages .all-messages::-webkit-scrollbar-thumb:hover {
+        background-color: var(--light_black);
+        cursor: pointer;
+    }
+    .page .messages .single-message {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        gap: 15px;
+        padding: 10px;
+        transition: all 0.3s;
+        &:hover {
+            background-color: rgb(72, 128, 255, 0.1);
+            transition: all 0.3s;
+        }
+    }
+    .page .messages .single-message:last-child {
+        margin-bottom: 0;
+    }
+    .page .messages .single-message .form-check-input {
+        margin-top: 0;
+        font-size: 20px;
+        border-radius: 5px;
+        border: 1px solid var(--input_border);
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+            border-color: var(--red);
+            transition: all 0.3s;
+        }
+    }
+    .page .messages .single-message .star {
+        font-size: 20px;
+        color: var(--medium_gray);
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+            color: var(--gray);
+            transition: all 0.3s;
+        }
+    }
+    .page .messages .single-message .star.gold {
+        color: var(--gold);
+    }
+    .page .messages .single-message .name {
+        font-size: 14px;
+        color: var(--black);
+        font-weight: 500;
+    }
+    .page .messages .single-message .category {
+        font-size: 12px;
+        border-radius: 2px;
+        width: 110px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .page .messages .single-message .category.general {
+        background-color: rgb(90, 140, 255, 0.2);
+        color: #5A8CFF;
+    }
+    .page .messages .single-message .category.landlord {
+        background-color: rgb(239, 124, 124, 0.2);
+        color: #EF7C7C;
+    }
+    .page .messages .single-message .category.tenant {
+        background-color: rgb(212, 86, 253, 0.2);
+        color: #D456FD;
+    }
+    .page .messages .single-message .message-content {
+        font-size: 14px;
+        color: var(--gray);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 50ch;
+    }
+    .page .messages .single-message .date-time {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--gray);
+    }
+    .page .messages .single-message .form-check-input:checked {
+        background-color: var(--red);
+        border-color: var(--red);
+    }
+    .page .messages .single-message .no-data {
+        font-size: 22px;
+        text-align: center;
+        color: var(--red);
+        font-weight: 600;
     }
 /* #endregion */

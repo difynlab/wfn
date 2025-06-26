@@ -144,3 +144,75 @@
         padding: 30px 40px 30px 310px;
     }
 /* #endregion */
+
+
+/* #region: Message */
+    .message-sidebar {
+        background-color: var(--white);
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .message-sidebar .title {
+        font-size: 18px;
+        font-weight: 600;
+        padding-bottom: 10px;
+        color: var(--light_black);
+    }
+    .message-sidebar .title {
+        font-size: 18px;
+        font-weight: 600;
+        padding-bottom: 10px;
+        color: var(--light_black);
+    }
+    .message-sidebar .menu {
+        list-style-type: none;
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+    .message-sidebar .link {
+        margin-bottom: 5px;
+    }
+    .message-sidebar .link:last-child {
+        margin-bottom: 0;
+    }
+    .message-sidebar .link .actual-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 15px;
+        font-weight: 400;
+        color: var(--light_black);
+        padding: 15px;
+        transition: all 0.3s;
+        &:hover {
+            background-color: rgb(244, 162, 162, 0.2);
+            border-radius: 5px;
+            transition: all 0.3s;
+            color: #B00606;
+            font-weight: 500;
+        }
+        &:hover .number {
+            color: #B00606;
+        }
+    }
+    .message-sidebar .link .actual-link .number {
+        color: var(--medium_gray);
+        font-size: 14px;
+        transition: all 0.3s;
+    }
+    .message-sidebar .link .actual-link.active {
+        background-color: rgb(244, 162, 162, 0.2);
+        border-radius: 5px;
+        transition: all 0.3s;
+        color: #B00606;
+        font-weight: 500;
+    }
+    .message-sidebar .link .actual-link.active > .number {
+        color: #B00606;
+    }
+    .message-sidebar .link .actual-link i {
+        margin-right: 20px;
+        font-size: 20px;
+        line-height: 0;
+    }
+/* #endregion */

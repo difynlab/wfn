@@ -55,7 +55,7 @@
         </li>
 
         <li class="link">
-            <a href="#">
+            <a href="{{ route('admin.messages.index', 'all') }}" class="{{ Request::segment(2) == 'messages' ? 'active' : '' }}">
                 <div class="box"></div>
                 <div class="actual-link">
                     <i class="bi bi-chat-dots"></i>

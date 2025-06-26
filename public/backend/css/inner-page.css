@@ -293,3 +293,81 @@
         color: var(--light_black);
     }
 /* #endregion */
+
+
+/* #region: Message */
+    .inner-page .message-form {
+        background-color: var(--white);
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .inner-page .message-form .chat-box {
+        overflow-y: scroll;
+        height: 350px;
+        padding: 0 10px;
+    }
+    .inner-page .message-form .chat-box .profile-image {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+    }
+    .inner-page .message-form .chat-box .admin-single-message {
+        display: flex;
+        width: 75%;
+        align-items: end;
+        justify-content: end;
+        margin-left: auto;
+        gap: 15px;
+    }
+    .inner-page .message-form .chat-box .admin-single-message .admin-message {
+        background-color: #ffefef;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 14px;
+        line-height: 26px;
+    }
+    .inner-page .message-form .chat-box .user-single-message {
+        display: flex;
+        width: 75%;
+        align-items: end;
+        margin-right: auto;
+        gap: 15px;
+    }
+    .inner-page .message-form .chat-box .user-single-message .user-message {
+        background-color: #efeeee;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 14px;
+        line-height: 26px;
+    }
+    .inner-page .message-form .chat-box .single-message:last-child {
+        margin-bottom: 0!important;
+    }
+    .inner-page .message-form .chat-box .user-single-message .time {
+        font-size: 12px;
+        color: var(--medium_gray);
+        padding-top: 3px;
+    }
+    .inner-page .message-form .chat-box .admin-single-message .time {
+        font-size: 12px;
+        color: var(--medium_gray);
+        padding-top: 3px;
+        text-align: end;
+    }
+    .inner-page .message-form .chat-box::-webkit-scrollbar {
+        width: 5px;
+    }
+    .inner-page .message-form .chat-box::-webkit-scrollbar-track {
+        background: var(--input_border);
+        border-radius: 5px;
+    }
+    .inner-page .message-form .chat-box::-webkit-scrollbar-thumb {
+        background-color: var(--red);
+        border-radius: 5px;
+    }
+    .inner-page .message-form .chat-box::-webkit-scrollbar-thumb:hover {
+        background-color: var(--light_black);
+        cursor: pointer;
+    }
+/* #endregion */
+

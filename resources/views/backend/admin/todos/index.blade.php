@@ -20,26 +20,53 @@
         <div class="todos">
             @if(count($items) > 0)
                 @foreach($items as $item)
-                    <div class="row single-todo" data-id="{{ $item->id }}">
-                        <div class="col-9 details">
-                            <input class="form-check-input" type="checkbox">
+                    @if($item->complete == null)
+                        <div class="row single-todo" data-id="{{ $item->id }}">
+                            <div class="col-9 details">
+                                <input class="form-check-input" type="checkbox">
 
-                            <div class="texts">
-                                <p class="todo-name">{{ $item->title }}</p>
-                                <p class="todo-description">{{ $item->description }}</p>
+                                <div class="text">
+                                    <p class="todo-name">{{ $item->title }}</p>
+                                    <p class="todo-description">{{ $item->description }}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="col-3 links">
+                                @if($item->favorite)
+                                    <i class="bi bi-star-fill link favorite gold" title="Favorite"></i>
+                                @else
+                                    <i class="bi bi-star link favorite" title="Favorite"></i>
+                                @endif
+
+                                <i class="bi bi-x-lg link delete" title="Delete"></i>
                             </div>
                         </div>
-                        
-                        <div class="col-3 links">
-                            @if($item->favorite)
-                                <i class="bi bi-star-fill link favorite gold" title="Favorite"></i>
-                            @else
-                                <i class="bi bi-star link favorite" title="Favorite"></i>
-                            @endif
+                    @endif
+                @endforeach
 
-                            <i class="bi bi-x-lg link delete" title="Delete"></i>
+                @foreach($items as $item)
+                    @if($item->complete)
+                        <div class="row single-todo" data-id="{{ $item->id }}">
+                            <div class="col-9 details">
+                                <input class="form-check-input" type="checkbox" checked>
+
+                                <div class="text">
+                                    <p class="todo-name cross-line">{{ $item->title }}</p>
+                                    <p class="todo-description cross-line">{{ $item->description }}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="col-3 links">
+                                @if($item->favorite)
+                                    <i class="bi bi-star-fill link favorite gold" title="Favorite"></i>
+                                @else
+                                    <i class="bi bi-star link favorite" title="Favorite"></i>
+                                @endif
+
+                                <i class="bi bi-x-lg link delete" title="Delete"></i>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
             @else
                 <div class="row single-todo">
@@ -66,6 +93,9 @@
                     todoItem.fadeOut(300, function () {
                         if(completed === 1) {
                             $(this).appendTo($(this).parent()).fadeIn(300);
+
+                            $(this).find('.todo-name').addClass('cross-line');
+                            $(this).find('.todo-description').addClass('cross-line');
                         }
                         else {
                             const container = $(this).parent();
@@ -76,6 +106,9 @@
                             else {
                                 $(this).prependTo(container).fadeIn(300);
                             }
+
+                            $(this).find('.todo-name').removeClass('cross-line');
+                            $(this).find('.todo-description').removeClass('cross-line');
                         }
                     });
                 });

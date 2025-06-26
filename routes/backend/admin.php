@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\Admin\BookingController;
 use App\Http\Controllers\Backend\Admin\DashboardController;
+use App\Http\Controllers\Backend\Admin\MessageController;
 use App\Http\Controllers\Backend\Admin\Page\HomepageController;
 use App\Http\Controllers\Backend\Admin\Page\PageController;
 use App\Http\Controllers\Backend\Admin\SettingsController;
@@ -70,7 +71,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
         });
     // Storage types routes
 
-    // Booking routes
+    // Bookings routes
         Route::controller(BookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
             Route::get('/', 'index')->name('index');
             Route::get('filter', 'filter')->name('filter');
@@ -80,9 +81,9 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
             Route::post('{booking}', 'update')->name('update');
             Route::delete('{booking}', 'destroy')->name('destroy');
         });
-    // Booking routes
+    // Bookings routes
 
-    // Todo routes
+    // Todos routes
         Route::controller(TodoController::class)->prefix('todos')->name('todos.')->group(function() {
             Route::get('/', 'index')->name('index');
             Route::get('create', 'create')->name('create');
@@ -91,7 +92,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
             Route::post('{todo}/complete', 'complete')->name('complete');
             Route::post('{todo}/destroy', 'destroy')->name('destroy');
         });
-    // Todo routes
+    // Todos routes
 
     // Settings routes
         Route::controller(SettingsController::class)->prefix('settings')->name('settings.')->group(function() {
@@ -101,4 +102,20 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
             Route::post('{setting}/website', 'website')->name('website');
         });
     // Settings routes
+
+    // Messages routes
+        Route::controller(MessageController::class)->prefix('messages')->name('messages.')->group(function() {
+            Route::get('create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('{category}', 'index')->name('index');
+            Route::get('{category}/filter', 'filter')->name('filter');
+            Route::get('{message}/edit', 'edit')->name('edit');
+            Route::post('{message}/update', 'update')->name('update');
+
+            Route::post('{message}/favorite', 'favorite')->name('favorite');
+            Route::post('favorite/bulk', 'bulkFavorite')->name('bulk-favorite');
+            Route::post('destroy/bulk', 'bulkDestroy')->name('bulk-destroy');
+            Route::post('recover/bulk', 'bulkRecover')->name('bulk-recover');
+        });
+    // Messages routes
 });

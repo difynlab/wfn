@@ -73,8 +73,4 @@
 
 @push('after-scripts')
     <script src="{{ asset('backend/js/drag-drop-images.js') }}"></script>
-
-    <script>
-        
-    </script>
 @endpush
