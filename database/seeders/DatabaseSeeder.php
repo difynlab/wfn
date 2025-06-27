@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
             WarehouseSeeder::class,
             HomepageContentSeeder::class,
             SettingsSeeder::class,
+            AuthenticationContentSeeder::class,
         ]);
     }
 }

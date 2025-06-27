@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\Admin\BookingController;
 use App\Http\Controllers\Backend\Admin\DashboardController;
 use App\Http\Controllers\Backend\Admin\MessageController;
+use App\Http\Controllers\Backend\Admin\Page\AuthenticationController;
 use App\Http\Controllers\Backend\Admin\Page\HomepageController;
 use App\Http\Controllers\Backend\Admin\Page\PageController;
 use App\Http\Controllers\Backend\Admin\SettingsController;
@@ -24,6 +25,11 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
             Route::get('/', [PageController::class, 'index'])->name('index');
 
             Route::controller(HomepageController::class)->prefix('homepage')->name('homepage.')->group(function() {
+                Route::get('{language}', 'index')->name('index');
+                Route::post('{language}', 'update')->name('update');
+            });
+
+            Route::controller(AuthenticationController::class)->prefix('authentications')->name('authentications.')->group(function() {
                 Route::get('{language}', 'index')->name('index');
                 Route::post('{language}', 'update')->name('update');
             });

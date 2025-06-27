@@ -45,8 +45,8 @@ class HomepageController extends Controller
             'new_section_1_image' => 'nullable|max:30720',
             'new_section_4_image' => 'nullable|max:30720'
         ], [
-            'new_section_1_image.max' => 'Image must not be greater than 30 MB',
-            'new_section_1_image.max' => 'Image must not be greater than 200 MB',
+            'new_section_1_image.max' => 'Image must not be greater than 30 MB.',
+            'new_section_4_image.max' => 'Image must not be greater than 30 MB.',
         ]);
 
         if($validator->fails()) {

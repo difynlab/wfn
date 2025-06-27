@@ -26,8 +26,9 @@
 
 /* #region: Form */
     .inner-page .section {
-        border: 2px solid var(--input_border);
+        border: 1px solid var(--input_border);
         padding: 25px;
+        border-radius: 10px;
     }
     .inner-page .inner-page-title {
         font-size: 18px;
@@ -370,4 +371,3 @@
         cursor: pointer;
     }
 /* #endregion */
-
