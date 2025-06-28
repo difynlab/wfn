@@ -284,9 +284,9 @@ class SettingsController extends Controller
     public function profile(Request $request, User $user)
     {
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$user->id,
+            'first_name' => 'required|min:0|max:255',
+            'last_name' => 'required|min:0|max:255',
+            'email' => 'required|email|min:0|max:255|unique:users,email,'.$user->id,
             'new_image' => 'nullable|max:30720'
         ]);
 

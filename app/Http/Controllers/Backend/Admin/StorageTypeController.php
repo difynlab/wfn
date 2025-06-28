@@ -42,7 +42,7 @@ class StorageTypeController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'name' => 'required|min:0|max:255',
             'status' => 'required|in:0,1'
         ]);
         
@@ -72,7 +72,7 @@ class StorageTypeController extends Controller
     public function update(Request $request, StorageType $storage_type)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'name' => 'required|min:0|max:255',
             'status' => 'required|in:0,1'
         ]);
 

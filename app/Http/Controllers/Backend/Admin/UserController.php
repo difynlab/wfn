@@ -306,13 +306,13 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'phone' => 'required|regex:/^\+?[0-9]+$/|unique:users,phone',
-            'address' => 'required',
-            'city' => 'required',
-            'country' => 'required',
+            'first_name' => 'required|min:0|max:255',
+            'last_name' => 'required|min:0|max:255',
+            'email' => 'required|email|min:0|max:255|unique:users,email',
+            'phone' => 'required|min:0|max:255|regex:/^\+?[0-9]+$/|unique:users,phone',
+            'address' => 'required|min:0|max:255',
+            'city' => 'required|min:0|max:255',
+            'country' => 'required|min:0|max:255',
             'role' => 'required|in:admin,manager,landlord,tenant',
             'password' => 'required|min:8',
             'confirm_password' => 'required|same:password',
@@ -612,13 +612,13 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$user->id,
-            'phone' => 'required|regex:/^\+?[0-9]+$/|unique:users,phone,'.$user->id,
-            'address' => 'required',
-            'city' => 'required',
-            'country' => 'required',
+            'first_name' => 'required|min:0|max:255',
+            'last_name' => 'required|min:0|max:255',
+            'email' => 'required|email|min:0|max:255|unique:users,email,'.$user->id,
+            'phone' => 'required|min:0|max:255|regex:/^\+?[0-9]+$/|unique:users,phone,'.$user->id,
+            'address' => 'required|min:0|max:255',
+            'city' => 'required|min:0|max:255',
+            'country' => 'required|min:0|max:255',
             'role' => 'required|in:admin,manager,landlord,tenant',
             'new_image' => 'nullable|max:30720',
             'status' => 'required|in:0,1'
@@ -765,12 +765,12 @@ class UserController extends Controller
     public function companyUpdate(Request $request, User $user, Company $company)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'address' => 'required',
-            'email' => 'required|email|unique:companies,email,'.$company->id,
-            'phone' => 'required|regex:/^\+?[0-9]+$/|unique:companies,phone,'.$company->id,
+            'name' => 'required|min:0|max:255',
+            'address' => 'required|min:0|max:255',
+            'email' => 'required|email|min:0|max:255|unique:companies,email,'.$company->id,
+            'phone' => 'required|min:0|max:255|regex:/^\+?[0-9]+$/|unique:companies,phone,'.$company->id,
             'website' => 'nullable|url',
-            'industry' => 'required',
+            'industry' => 'required|min:0|max:255',
             'date' => 'nullable|date',
             'new_registration_certificates.*' => 'max:30720',
             'status' => 'required|in:0,1'

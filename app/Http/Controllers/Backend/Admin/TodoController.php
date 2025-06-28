@@ -28,7 +28,7 @@ class TodoController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required'
+            'title' => 'required|min:0|max:255'
         ]);
         
         if($validator->fails()) {
