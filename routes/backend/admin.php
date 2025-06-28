@@ -1,11 +1,16 @@
 <?php
 
 use App\Http\Controllers\Backend\Admin\BookingController;
+use App\Http\Controllers\Backend\Admin\CKEditorController;
 use App\Http\Controllers\Backend\Admin\DashboardController;
 use App\Http\Controllers\Backend\Admin\MessageController;
+use App\Http\Controllers\Backend\Admin\Page\AboutController;
+use App\Http\Controllers\Backend\Admin\Page\ArticleController;
 use App\Http\Controllers\Backend\Admin\Page\AuthenticationController;
 use App\Http\Controllers\Backend\Admin\Page\HomepageController;
 use App\Http\Controllers\Backend\Admin\Page\PageController;
+use App\Http\Controllers\Backend\Admin\Page\SupportController;
+use App\Http\Controllers\Backend\Admin\Page\WarehouseController as PageWarehouseController;
 use App\Http\Controllers\Backend\Admin\SettingsController;
 use App\Http\Controllers\Backend\Admin\StorageTypeController;
 use App\Http\Controllers\Backend\Admin\TodoController;
@@ -20,6 +25,11 @@ Route::get('admin', function () {
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    // CkEditor upload route
+        Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
+    // CkEditor upload route
+
+
     // Pages routes
         Route::prefix('pages')->name('pages.')->group(function() {
             Route::get('/', [PageController::class, 'index'])->name('index');
@@ -30,6 +40,26 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
             });
 
             Route::controller(AuthenticationController::class)->prefix('authentications')->name('authentications.')->group(function() {
+                Route::get('{language}', 'index')->name('index');
+                Route::post('{language}', 'update')->name('update');
+            });
+
+            Route::controller(SupportController::class)->prefix('support')->name('support.')->group(function() {
+                Route::get('{language}', 'index')->name('index');
+                Route::post('{language}', 'update')->name('update');
+            });
+
+            Route::controller(PageWarehouseController::class)->prefix('warehouses')->name('warehouses.')->group(function() {
+                Route::get('{language}', 'index')->name('index');
+                Route::post('{language}', 'update')->name('update');
+            });
+
+            Route::controller(AboutController::class)->prefix('about')->name('about.')->group(function() {
+                Route::get('{language}', 'index')->name('index');
+                Route::post('{language}', 'update')->name('update');
+            });
+
+            Route::controller(ArticleController::class)->prefix('articles')->name('articles.')->group(function() {
                 Route::get('{language}', 'index')->name('index');
                 Route::post('{language}', 'update')->name('update');
             });

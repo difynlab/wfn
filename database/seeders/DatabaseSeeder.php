@@ -14,6 +14,9 @@ class DatabaseSeeder extends Seeder
             HomepageContentSeeder::class,
             SettingsSeeder::class,
             AuthenticationContentSeeder::class,
+            SupportContentSeeder::class,
+            ArticleContentSeeder::class,
+            AboutContentSeeder::class,
         ]);
     }
 }

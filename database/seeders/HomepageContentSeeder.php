@@ -11,6 +11,7 @@ class HomepageContentSeeder extends Seeder
     {
         $records = [
             [
+                // English fields
                 'id'                        => 1,
                 'page_name_en'              => 'Home',
                 'section_1_title_en'        => 'Find Your Perfect Warehouse, Anytime, Anywhere',
@@ -43,6 +44,7 @@ class HomepageContentSeeder extends Seeder
                 'section_6_sub_title_en'    => 'We\'ve got you covered.',
                 'section_6_button_en'       => 'Advertise Now',
 
+                // Arabic fields
                 'page_name_ar'              => 'الصفحة الرئيسية',
                 'section_1_title_ar'        => 'اعثر على مستودعك المثالي، في أي وقت، وفي أي مكان',
                 'section_1_description_ar'  => 'اكتشف المستودع الأنسب لك. سواء كنت تُنمّي أعمالك أو تحتاج إلى تخزين شخصي، تُتيح لك شبكتنا العالمية البحث عن مساحات مرنة تُلبي احتياجاتك وحجزها، في أي وقت، وفي أي مكان.',
