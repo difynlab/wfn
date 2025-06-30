@@ -44,7 +44,7 @@
             </a>
         </li>
 
-        <li class="link">
+        <!-- <li class="link">
             <a href="#">
                 <div class="box"></div>
                 <div class="actual-link">
@@ -52,7 +52,7 @@
                     Documents
                 </div>
             </a>
-        </li>
+        </li> -->
 
         <li class="link">
             <a href="{{ route('admin.messages.index', 'all') }}" class="{{ Request::segment(2) == 'messages' ? 'active' : '' }}">

@@ -29,7 +29,7 @@ class WarehouseSeeder extends Seeder
                 'equipment_handling' => 'yes',
                 'temperature_sensor' => 'yes',
                 'humidity_sensor' => 'yes',
-                'user_id' => 3,
+                'user_id' => 2,
                 'storage_type_id' => 1,
             ],
         ];

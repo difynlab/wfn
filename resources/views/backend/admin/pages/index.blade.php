@@ -43,7 +43,7 @@
                     </div>
                 </div>
 
-                <div class="single-page">
+                <!-- <div class="single-page">
                     <p class="page-name">Warehouses</p>
                     <div class="links">
                         <a href="#" title="Edit" class="link">
@@ -56,7 +56,7 @@
                             Arabic
                         </a>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="single-page">
                     <p class="page-name">Support</p>
