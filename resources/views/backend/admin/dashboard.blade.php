@@ -17,7 +17,7 @@
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
                             <p class="text">Total Tenants</p>
-                            <p class="value">{{ $this_month_tenants }}</p>
+                            <p class="value">{{ $total_tenants }}</p>
                         </div>
 
                         <div class="right">
@@ -36,7 +36,7 @@
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
                             <p class="text">Total Landlords</p>
-                            <p class="value">{{ $this_month_landlords }}</p>
+                            <p class="value">{{ $total_landlords }}</p>
                         </div>
 
                         <div class="right">
@@ -55,7 +55,7 @@
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
                             <p class="text">Total Warehouses</p>
-                            <p class="value">{{ $this_month_warehouses }}</p>
+                            <p class="value">{{ $total_warehouses }}</p>
                         </div>
 
                         <div class="right">
@@ -74,7 +74,7 @@
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
                             <p class="text">Total Income</p>
-                            <p class="value">{{ $this_month_income }} SAR</p>
+                            <p class="value">{{ $total_income }} SAR</p>
                         </div>
 
                         <div class="right">

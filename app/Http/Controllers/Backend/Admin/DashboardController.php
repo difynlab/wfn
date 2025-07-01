@@ -21,6 +21,8 @@ class DashboardController extends Controller
         $months = range(1, 12);
 
         // Total tenants
+            $total_tenants = User::where('role', 'tenant')->count();
+
             $this_month_tenants = User::where('role', 'tenant')
                 ->whereMonth('created_at', $current_month)
                 ->whereYear('created_at', $current_year)
@@ -56,6 +58,8 @@ class DashboardController extends Controller
         // Total tenants
 
         // Total landlords
+            $total_landlords = User::where('role', 'landlord')->count();
+
             $this_month_landlords = User::where('role', 'landlord')
                 ->whereMonth('created_at', $current_month)
                 ->whereYear('created_at', $current_year)
@@ -91,6 +95,8 @@ class DashboardController extends Controller
         // Total landlords
 
         // Total warehouses
+            $total_warehouses = Warehouse::count();
+
             $this_month_warehouses = Warehouse::whereMonth('created_at', $current_month)
                 ->whereYear('created_at', $current_year)
                 ->count();
@@ -124,6 +130,8 @@ class DashboardController extends Controller
         // Total warehouses
 
         // Total income
+            $total_income = Booking::where('status', 1)->sum('total_rent');
+
             $this_month_income = Booking::where('status', 1)
                 ->whereMonth('created_at', $current_month)
                 ->whereYear('created_at', $current_year)
@@ -377,13 +385,16 @@ class DashboardController extends Controller
         }
 
         return view('backend.admin.dashboard', [
-            'this_month_tenants' => $this_month_tenants,
+            'total_tenants' => $total_tenants,
             'tenant_month_percentage' => $tenant_month_percentage,
-            'this_month_landlords' => $this_month_landlords,
+
+            'total_landlords' => $total_landlords,
             'landlord_month_percentage' => $landlord_month_percentage,
-            'this_month_warehouses' => $this_month_warehouses,
+
+            'total_warehouses' => $total_warehouses,
             'warehouse_month_percentage' => $warehouse_month_percentage,
-            'this_month_income' => $this_month_income,
+
+            'total_income' => $total_income,
             'income_month_percentage' => $income_month_percentage,
 
             'months' => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
