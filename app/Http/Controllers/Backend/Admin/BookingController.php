@@ -16,19 +16,15 @@ class BookingController extends Controller
     private function processData($items)
     {
         foreach($items as $item) {
-            $selected_warehouse = Warehouse::where('status', 1)->find($item->warehouse_id);
-            
             $item->action = '
             <a href="'. route('admin.bookings.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
-            <a href="'. route('admin.users.company.index', $selected_warehouse->user_id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
+            <a href="'. route('admin.users.company.index', $item->warehouse->user_id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
-            $tenant = User::find($item->user_id);
-            $tenant_name = $tenant->first_name . ' ' . $tenant->last_name;
+            $tenant_name = $item->user->first_name . ' ' . $item->user->last_name;
             $item->tenant = '<a href="'. route('admin.users.edit', $item->user_id) .'" class="table-link">' . $tenant_name . '</a>';
 
-            $warehouse = Warehouse::find($item->warehouse_id)->name;
-            $item->warehouse = '<a href="'. route('admin.warehouses.edit', $item->warehouse_id) .'" class="table-link">' . $warehouse . '</a>';
+            $item->warehouse = '<a href="'. route('admin.warehouses.edit', $item->warehouse_id) .'" class="table-link">' . $item->warehouse->name . '</a>';
 
             $item->status = ($item->status == 1) ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
         }

@@ -17,4 +17,9 @@ class Warehouse extends Model
     {
         return $this->belongsTo(StorageType::class);
     }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
 }

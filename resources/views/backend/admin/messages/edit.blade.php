@@ -11,7 +11,7 @@
 
         <div class="row">
             <div class="col-4">
-                <x-backend.message-sidebar
+                <x-backend.admin-message-sidebar
                     :all_count="$all_count" 
                     :general_count="$general_count" 
                     :landlord_count="$landlord_count" 
@@ -29,9 +29,9 @@
                             <div class="col-12 mb-5">
                                 <div class="chat-box">
                                     @if($message->creator == auth()->user()->id)
-                                        <div class="single-message admin-single-message mb-3">
+                                        <div class="single-message right-single-message mb-3">
                                             <div>
-                                                <p class="admin-message">{{ $message->initial_message }}</p>
+                                                <p class="right-message">{{ $message->initial_message }}</p>
                                                 <p class="time">{{ $message->time_difference }}</p>
                                             </div>
 
@@ -42,7 +42,7 @@
                                             @endif
                                         </div>
                                     @else
-                                        <div class="single-message user-single-message mb-3">
+                                        <div class="single-message left-single-message mb-3">
                                             @if($user->image)
                                                 <img src="{{ asset('storage/backend/users/' . $user->image) }}" class="profile-image" alt="Profile Image">
                                             @else
@@ -50,7 +50,7 @@
                                             @endif
 
                                             <div>
-                                                <p class="user-message">{{ $message->initial_message }}</p>
+                                                <p class="left-message">{{ $message->initial_message }}</p>
                                                 <p class="time">{{ $message->time_difference }}</p>
                                             </div>
                                         </div>
@@ -58,7 +58,7 @@
 
                                     @foreach($message_replies as $message_reply)
                                         @if($user->id == $message_reply->replier)
-                                            <div class="single-message user-single-message mb-3">
+                                            <div class="single-message left-single-message mb-3">
                                                 @if($user->image)
                                                     <img src="{{ asset('storage/backend/users/' . $user->image) }}" class="profile-image" alt="Profile Image">
                                                 @else
@@ -66,14 +66,14 @@
                                                 @endif
                                                 
                                                 <div>
-                                                    <p class="user-message">{{ $message_reply->message }}</p>
+                                                    <p class="left-message">{{ $message_reply->message }}</p>
                                                     <p class="time">{{ $message_reply->time_difference }}</p>
                                                 </div>
                                             </div>
                                         @else
-                                            <div class="single-message admin-single-message mb-3">
+                                            <div class="single-message right-single-message mb-3">
                                                 <div>
-                                                    <p class="admin-message">{{ $message_reply->message }}</p>
+                                                    <p class="right-message">{{ $message_reply->message }}</p>
                                                     <p class="time">{{ $message_reply->time_difference }}</p>
                                                 </div>
 

@@ -11,7 +11,7 @@
         
         <div class="row">
             <div class="col-4">
-                <x-backend.message-sidebar
+                <x-backend.admin-message-sidebar
                     :all_count="$all_count" 
                     :general_count="$general_count" 
                     :landlord_count="$landlord_count" 

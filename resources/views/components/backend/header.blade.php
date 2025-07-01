@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
+    <a class="navbar-brand" href="{{ route(auth()->user()->role . '.dashboard') }}">
         <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->logo) }}" alt="Logo" class="logo">
     </a>
 
@@ -37,12 +37,12 @@
 
                 <ul class="dropdown-menu">
                     <li>
-                        <a class="dropdown-item" href="{{ route('admin.settings.index') }}"><i class="bi bi-person"></i>My Profile</a>
+                        <a class="dropdown-item" href="{{ route(auth()->user()->role . '.settings.index') }}"><i class="bi bi-person"></i>My Profile</a>
                     </li>
 
                     <li>
                         <a class="dropdown-item" href="#">
-                            <form action="{{ route('backend-auth.portal.logout') }}" method="POST">
+                            <form action="{{ auth()->user()->role != 'tenant' ? route('backend-auth.portal.logout') : route('frontend-auth.logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="log-out"><i class="bi bi-power"></i>Log Out</button>
                             </form>

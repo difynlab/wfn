@@ -15,8 +15,7 @@ class MessageController extends Controller
     private function processData($items)
     {
         foreach($items as $item) {
-            $user = User::find($item->user_id);
-            $item->name = $user->first_name . ' ' . $user->last_name;
+            $item->name = $item->user->first_name . ' ' . $item->user->last_name;
 
             $time = Carbon::createFromFormat('H:i:s', $item->time);
             $item->time = $time->format('h:i A');
@@ -29,12 +28,12 @@ class MessageController extends Controller
     {
         $pagination = $request->pagination ?? 10;
 
-        $all_count = $items = Message::where('status', 1)->get()->count();
-        $general_count = $items = Message::where('status', 1)->where('category', 'general')->get()->count();
-        $landlord_count = $items = Message::where('status', 1)->where('category', 'landlord')->get()->count();
-        $tenant_count = $items = Message::where('status', 1)->where('category', 'tenant')->get()->count();
-        $starred_count = $items = Message::where('status', 1)->where('favorite', 1)->get()->count();
-        $bin_count = $items = Message::where('status', 0)->get()->count();
+        $all_count = Message::where('status', 1)->get()->count();
+        $general_count = Message::where('status', 1)->where('category', 'general')->get()->count();
+        $landlord_count = Message::where('status', 1)->where('category', 'landlord')->get()->count();
+        $tenant_count = Message::where('status', 1)->where('category', 'tenant')->get()->count();
+        $starred_count = Message::where('status', 1)->where('favorite', 1)->get()->count();
+        $bin_count = Message::where('status', 0)->get()->count();
 
         if($category == 'all') {
             $items = Message::where('status', 1)->orderBy('id', 'desc')->paginate($pagination);
@@ -137,7 +136,6 @@ class MessageController extends Controller
             $message->save();
         }
 
-        $user = User::find($message->user_id);
         $message_replies = MessageReply::where('message_id', $message->id)->where('status', 1)->get();
 
         $date_time_string = $message->date . ' ' . $message->time;
@@ -158,7 +156,7 @@ class MessageController extends Controller
         return view('backend.admin.messages.edit', [
             'message' => $message,
             'message_replies' => $message_replies,
-            'user' => $user,
+            'user' => $message->user,
             'all_count' => $all_count,
             'general_count' => $general_count,
             'landlord_count' => $landlord_count,
@@ -199,12 +197,12 @@ class MessageController extends Controller
     {
         $text = $request->text;
 
-        $all_count = $items = Message::where('status', 1)->get()->count();
-        $general_count = $items = Message::where('status', 1)->where('category', 'general')->get()->count();
-        $landlord_count = $items = Message::where('status', 1)->where('category', 'landlord')->get()->count();
-        $tenant_count = $items = Message::where('status', 1)->where('category', 'tenant')->get()->count();
-        $starred_count = $items = Message::where('status', 1)->where('favorite', 1)->get()->count();
-        $bin_count = $items = Message::where('status', 0)->get()->count();
+        $all_count = Message::where('status', 1)->get()->count();
+        $general_count = Message::where('status', 1)->where('category', 'general')->get()->count();
+        $landlord_count = Message::where('status', 1)->where('category', 'landlord')->get()->count();
+        $tenant_count = Message::where('status', 1)->where('category', 'tenant')->get()->count();
+        $starred_count = Message::where('status', 1)->where('favorite', 1)->get()->count();
+        $bin_count = Message::where('status', 0)->get()->count();
 
         if($category == 'all') {
             $items = Message::where('status', 1)->orderBy('id', 'desc');

@@ -39,6 +39,7 @@ class TodoController extends Controller
         }
 
         $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
         $todo = Todo::create($data);  
 
         return redirect()->route('admin.todos.index');

@@ -19,7 +19,7 @@ Route::middleware(['language'])->group(function () {
     Route::get('reset-password/{email}/{token}', [ResetPasswordController::class, 'index'])->name('reset-password');
     Route::post('reset-password', [ResetPasswordController::class, 'store'])->name('reset-password.store');
 
-    Route::middleware('auth', 'role:student')->group(function () {
+    Route::middleware('auth')->group(function () {
         Route::post('logout', [AuthenticationController::class, 'logout'])->name('logout');
     });
 });

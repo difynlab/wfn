@@ -509,7 +509,7 @@
     .page .messages .single-message {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        /* justify-content: space-between; */
         margin-bottom: 10px;
         gap: 15px;
         padding: 10px;

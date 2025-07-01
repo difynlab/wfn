@@ -29,7 +29,6 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
         Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
     // CkEditor upload route
 
-
     // Pages routes
         Route::prefix('pages')->name('pages.')->group(function() {
             Route::get('/', [PageController::class, 'index'])->name('index');

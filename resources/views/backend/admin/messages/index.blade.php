@@ -19,7 +19,7 @@
 
         <div class="row">
             <div class="col-4">
-                <x-backend.message-sidebar
+                <x-backend.admin-message-sidebar
                     :all_count="$all_count" 
                     :general_count="$general_count" 
                     :landlord_count="$landlord_count" 
@@ -67,7 +67,7 @@
 
                                     <a href="{{ route('admin.messages.edit', $item->id) }}"><p class="message-content">{{ $item->subject }} - {{ $item->initial_message }}</p></a>
 
-                                    <a href="{{ route('admin.messages.edit', $item->id) }}"><p class="date-time">{{ $item->time }}</p></a>
+                                    <a href="{{ route('admin.messages.edit', $item->id) }}" class="ms-auto"><p class="date-time">{{ $item->time }}</p></a>
                                 </div>
                             @endforeach
                         @else

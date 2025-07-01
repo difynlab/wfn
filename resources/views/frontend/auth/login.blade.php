@@ -18,10 +18,12 @@
                 <p class="title">Get Started Now</p>
                 <p class="description">Log in to access portal, track progress, and manage requests</p>
 
-                <form action="">
+                <form action="{{ route('frontend-auth.login.store') }}" method="POST" class="form">
+                    @csrf
                     <div class="mb-4">
                         <label for="email" class="form-label label">Email Address</label>
-                        <input type="email" class="form-control input-field" id="email" name="email" placeholder="Please enter your email address" required>
+                        <input type="email" class="form-control input-field" id="email" name="email" value="{{ old('email') }}" placeholder="Please enter your email address" required>
+                        <x-backend.input-error field="email"></x-backend.input-error>
                     </div>
 
                     <div class="mb-4">

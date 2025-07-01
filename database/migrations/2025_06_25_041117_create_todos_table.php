@@ -19,6 +19,8 @@ return new class extends Migration
             $table->boolean('favorite')->default(0);
             $table->boolean('complete')->default(0);
             $table->boolean('status')->default(1);
+
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
