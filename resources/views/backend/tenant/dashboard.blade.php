@@ -12,26 +12,7 @@
         </div>
 
         <div class="row mb-4">
-            <div class="col-3">
-                <div class="single-box">
-                    <div class="d-flex align-items-center justify-content-between mb-2">
-                        <div class="left">
-                            <p class="text">Total Warehouses</p>
-                            <p class="value">{{ $total_warehouses }}</p>
-                        </div>
-
-                        <div class="right">
-                            <div class="icon-box">
-                                <i class="bi bi-key"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p class="text">{!! $warehouse_month_percentage !!}</p>
-                </div>
-            </div>
-
-            <div class="col-3">
+            <div class="col-4">
                 <div class="single-box">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
@@ -41,7 +22,7 @@
 
                         <div class="right">
                             <div class="icon-box">
-                                <i class="bi bi-house-lock"></i>
+                                <i class="bi bi-house-add"></i>
                             </div>
                         </div>
                     </div>
@@ -50,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-4">
                 <div class="single-box">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
@@ -60,7 +41,7 @@
 
                         <div class="right">
                             <div class="icon-box">
-                                <i class="bi bi-houses"></i>
+                                <i class="bi bi-bezier2"></i>
                             </div>
                         </div>
                     </div>
@@ -69,12 +50,12 @@
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-4">
                 <div class="single-box">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
-                            <p class="text">Total Income</p>
-                            <p class="value">{{ $total_income }} SAR</p>
+                            <p class="text">Total Paid</p>
+                            <p class="value">{{ $total_paid }} SAR</p>
                         </div>
 
                         <div class="right">
@@ -84,25 +65,73 @@
                         </div>
                     </div>
 
-                    <p class="text">{!! $income_month_percentage !!}</p>
+                    <p class="text">{!! $paid_month_percentage !!}</p>
                 </div>
             </div>
         </div>
 
         <div class="row mb-4">
-            <div class="col-6">
-                <div class="box">
-                    <p class="box-title">Revenue</p>
-                    <p class="box-description">{!! $income_month_percentage !!}</p>
-                    <canvas id="revenue-year-chart"></canvas>
-                </div>
-            </div>
+            <div class="col-12">
+                <div class="box todos">
+                    <p class="box-title mb-2">To-Do Overview</p>
 
-            <div class="col-6">
-                <div class="box">
-                    <p class="box-title">Monthly Bookings</p>
-                    <p class="box-description">{!! $booking_month_percentage !!}</p>
-                    <canvas id="booking-year-chart"></canvas>
+                    @if(count($todos) > 0)
+                        @foreach($todos as $todo)
+                            @if($todo->complete == null)
+                                <div class="row single-todo" data-id="{{ $todo->id }}">
+                                    <div class="col-9 details">
+                                        <input class="form-check-input" type="checkbox">
+
+                                        <div class="text">
+                                            <p class="todo-name">{{ $todo->title }}</p>
+                                            <p class="todo-description">{{ $todo->description }}</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-3 links">
+                                        @if($todo->favorite)
+                                            <i class="bi bi-star-fill link favorite gold" title="Favorite"></i>
+                                        @else
+                                            <i class="bi bi-star link favorite" title="Favorite"></i>
+                                        @endif
+
+                                        <i class="bi bi-x-lg link delete" title="Delete"></i>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+
+                        @foreach($todos as $todo)
+                            @if($todo->complete)
+                                <div class="row single-todo" data-id="{{ $todo->id }}">
+                                    <div class="col-9 details">
+                                        <input class="form-check-input" type="checkbox" checked>
+
+                                        <div class="text">
+                                            <p class="todo-name cross-line">{{ $todo->title }}</p>
+                                            <p class="todo-description cross-line">{{ $todo->description }}</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-3 links">
+                                        @if($todo->favorite)
+                                            <i class="bi bi-star-fill link favorite gold" title="Favorite"></i>
+                                        @else
+                                            <i class="bi bi-star link favorite" title="Favorite"></i>
+                                        @endif
+
+                                        <i class="bi bi-x-lg link delete" title="Delete"></i>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    @else
+                        <div class="row single-todo">
+                            <div class="col-12">
+                                <p class="no-data">No data available in the todo list</p>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -113,7 +142,6 @@
                     <table class="table w-100">
                         <thead>
                             <tr>
-                                <th scope="col">TENANT</th>
                                 <th scope="col">WAREHOUSE</th>
                                 <th scope="col">PALLET RENTED</th>
                                 <th scope="col">TOTAL RENT</th>
@@ -128,7 +156,6 @@
                             @if(count($items) > 0)
                                 @foreach($items as $item)
                                     <tr>
-                                        <td>{!! $item->tenant !!}</td>
                                         <td>{!! $item->warehouse !!}</td>
                                         <td>{{ $item->no_of_pallets }}</td>
                                         <td>{{ $item->total_rent }}</td>
@@ -140,7 +167,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="8" style="text-align: center;">No data available in the table</td>
+                                    <td colspan="7" style="text-align: center;">No data available in the table</td>
                                 </tr>
                             @endif
                         </tbody>
@@ -157,127 +184,81 @@
 
 @push('after-scripts')
     <script>
-        const revenueYearChart = document.getElementById('revenue-year-chart');
-        new Chart(revenueYearChart, {
-            type: 'line',
-            data: {
-                labels: @json($months),
-                datasets: [
-                    {
-                        label: 'Last Year Revenue',
-                        data: @json($last_year_income_data),
-                        borderColor: '#A5A3A4',
-                        // backgroundColor: '#F6F6F6',
-                        borderWidth: 3,
-                        fill: false,
-                        pointRadius: 2,
-                        tension: 0.4
-                    },
-                    {
-                        label: 'Current Year Revenue',
-                        data: @json($current_year_income_data),
-                        borderColor: '#EF7C7C',
-                        // backgroundColor: '#F9D7D7A3',
-                        borderWidth: 3,
-                        fill: false,
-                        pointRadius: 2,
-                        tension: 0.4
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    title: {
-                        display: false,
-                    },
-                    legend: {
-                        position: 'bottom',
-                         labels: {
-                            color: '#444'
-                        }
-                    },
-                    tooltip: {
-                    enabled: true,
-                    callbacks: {
-                            label: function(context) {
-                                const value = context.parsed.y;
-
-                                return `Revenue: ${value.toLocaleString()} SAR`;
-                            }
-                        }
-                    }
-                }
-            }
-        });
-    </script>
-
-    <script>
-        const bookingYearChart = document.getElementById('booking-year-chart');
-        new Chart(bookingYearChart, {
-            type: 'line',
-            data: {
-                labels: @json($months),
-                datasets: [
-                    {
-                        label: 'Last Year Bookings',
-                        data: @json($last_year_booking_data),
-                        borderColor: '#FFAE4C',
-                        // backgroundColor: '#EBF0FB',
-                        borderWidth: 3,
-                        fill: false,
-                        pointRadius: 2,
-                        tension: 0.4
-                    },
-                    {
-                        label: 'Current Year Bookings',
-                        data: @json($current_year_booking_data),
-                        borderColor: '#EF7C7C',
-                        // backgroundColor: '#FFFAEF',
-                        borderWidth: 3,
-                        fill: false,
-                        pointRadius: 2,
-                        tension: 0.4
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                     title: {
-                        display: false,
-                    },
-                    legend: {
-                        position: 'bottom',
-                         labels: {
-                            color: '#444'
-                        }
-                    },
-                    tooltip: {
-                    enabled: true,
-                    callbacks: {
-                            label: function(context) {
-                                const value = context.parsed.y;
-
-                                return `Bookings: ${value.toLocaleString()}`;
-                            }
-                        }
-                    }
-                }
-            }
-        });
-    </script>
-
-    <script>
         $(document).ready(function() {
             $('.page .table .delete-button').on('click', function() {
                 let id = $(this).attr('id');
-                let url = "{{ route('landlord.bookings.destroy', [':id']) }}";
+                let url = "{{ route('tenant.bookings.destroy', [':id']) }}";
                 destroy_url = url.replace(':id', id);
 
                 $('.page #delete-modal form').attr('action', destroy_url);
                 $('.page #delete-modal').modal('show');
             });
+        });
+    </script>
+
+    <script>
+        let csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $('.form-check-input').on('change', function () {
+            const todoItem = $(this).closest('.single-todo');
+            const todoId = $(this).closest('.single-todo').data('id');
+            const completed = $(this).is(':checked') ? 1 : 0;
+
+            $.post(`todos/${todoId}/complete`, { complete: completed, _token: csrfToken })
+                .done(() => {
+                    todoItem.fadeOut(300, function () {
+                        if(completed === 1) {
+                            $(this).appendTo($(this).parent()).fadeIn(300);
+
+                            $(this).find('.todo-name').addClass('cross-line');
+                            $(this).find('.todo-description').addClass('cross-line');
+                        }
+                        else {
+                            const container = $(this).parent();
+                            const firstCompleted = container.find('.form-check-input:checked').first().closest('.single-todo');
+                            if(firstCompleted.length > 0) {
+                                $(this).insertBefore(firstCompleted).fadeIn(300);
+                            }
+                            else {
+                                const firstTodo = container.children('.single-todo').first();
+    
+                                if(firstTodo.length > 0) {
+                                    $(this).insertAfter(firstTodo).fadeIn(300);
+                                }
+                                else {
+                                    container.append($(this).fadeIn(300));
+                                }
+                            }
+
+                            $(this).find('.todo-name').removeClass('cross-line');
+                            $(this).find('.todo-description').removeClass('cross-line');
+                        }
+                    });
+                });
+        });
+
+        $('.favorite').on('click', function () {
+            const todoId = $(this).closest('.single-todo').data('id');
+
+            $.post(`todos/${todoId}/favorite`, { _token: csrfToken })
+                .done(() => {
+                    $(this).toggleClass('bi-star');
+                    $(this).toggleClass('bi-star-fill');
+                    $(this).toggleClass('gold');
+                });
+        });
+
+        $('.delete').on('click', function () {
+            const todoId = $(this).closest('.single-todo').data('id');
+
+            $.post(`todos/${todoId}/destroy`, { _token: csrfToken })
+                .done(() => {
+                    $(this).closest('.single-todo').remove();
+
+                    if($('.single-todo').length === 0) {
+                        location.reload();
+                    }
+                });
         });
     </script>
 @endpush

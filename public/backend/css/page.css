@@ -670,4 +670,20 @@
         color: var(--red);
         margin-right: 5px;
     }
+    .dashboard .single-todo {
+        padding: 15px;
+        background-color: #f6f6f6;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+    .dashboard .single-todo .todo-name {
+        font-size: 16px;
+        margin-bottom: 2px!important;
+    }
+    .dashboard .single-todo .links .link {
+        font-size: 22px;
+    }
+    .dashboard .single-todo .form-check-input {
+        font-size: 22px;
+    }
 /* #endregion */

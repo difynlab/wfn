@@ -41,7 +41,7 @@
 
                         <div class="right">
                             <div class="icon-box">
-                                <i class="bi bi-house-lock"></i>
+                                <i class="bi bi-house-add"></i>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
 
                         <div class="right">
                             <div class="icon-box">
-                                <i class="bi bi-houses"></i>
+                                <i class="bi bi-bezier2"></i>
                             </div>
                         </div>
                     </div>
