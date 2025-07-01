@@ -51,6 +51,22 @@
     </div>
 </div>
 
+<div class="modal fade notification-modal" id="authentication-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <i class="bi bi-check-circle-fill tick-icon"></i>
+                <p class="title">{{ session('authentication') }}</p>
+                <p class="description">Request successful.</p>
+
+                <div class="buttons">
+                    <button type="button" class="btn close-button" data-bs-dismiss="modal" title="Close">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @push('after-scripts')
     @if(session('success'))
         <script>
@@ -72,6 +88,14 @@
         <script>
             $(document).ready(function() {
                 $('#delete-notification-modal').modal('show');
+            });
+        </script>
+    @endif
+
+    @if(session('authentication'))
+        <script>
+            $(document).ready(function() {
+                $('#authentication-modal').modal('show');
             });
         </script>
     @endif

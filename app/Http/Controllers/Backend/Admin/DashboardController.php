@@ -303,7 +303,7 @@ class DashboardController extends Controller
             $total_pallets = $warehouses->sum('total_pallets');
             $available_pallets = $warehouses->sum('available_pallets');
             $rented_pallets = Booking::where('status', 1)->get()->sum('no_of_pallets');
-            $occupancy_rate = $rented_pallets != 0 ? ($rented_pallets / $total_pallets) * 100 : 0;
+            $occupancy_rate = $rented_pallets != 0 ? number_format(($rented_pallets / $total_pallets) * 100, 2) : 0;
         // Pallets
 
         // Pallet distribution chart

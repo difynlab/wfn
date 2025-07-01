@@ -21,7 +21,7 @@
             <span class="bi bi-eye-slash-fill toggle-password"></span>
         </div>
 
-        <div class="row align-items-center mb-5">
+        <div class="row align-items-center mb-4 mb-md-5">
             <div class="col-6">
                 <div class="form-check d-flex align-items-center">
                     <input type="checkbox" class="form-check-input checkbox" id="remember">

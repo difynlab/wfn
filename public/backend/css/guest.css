@@ -18,6 +18,7 @@
         --success_background: #d1e7dd;
         --success_color: #0a3622;
         --error_red: #e31010;
+        --dark_green: #095D35;
     }
     h1, h2, h3, h4, h5, h6, p {
         margin-bottom: 0;
@@ -138,6 +139,50 @@
 /* #endregion */
 
 
+/* #region: Modal */
+    .notification-modal {
+        text-align: center;
+    }
+    .notification-modal .modal-body {
+        padding: 30px;
+    }
+    .notification-modal .tick-icon {
+        font-size: 35px;
+        color: var(--dark_green);
+    }
+    .notification-modal .title {
+        font-size: 24px;
+        font-weight: 600;
+        padding-bottom: 10px;
+        color: var(--black);
+    }
+    .notification-modal .description {
+        font-size: 16px;
+        color: var(--light_black);
+    }
+    .notification-modal .buttons {
+        display: flex;
+        align-items: center;
+        margin-top: 25px;
+        justify-content: center;
+        gap: 20px;
+    }
+    .notification-modal .close-button {
+        border: 1px solid var(--light_black);
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 0;
+        color: var(--light_black);
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--light_black);
+            color: var(--white);
+            transition: all 0.3s;
+        }
+    }
+/* #endregion */
+
+
 /* #region: Responsive */
     @media (width <= 1921px) {}
     @media (width <= 1901px) {}
@@ -151,11 +196,7 @@
     @media (width <= 1367px) {}
     @media (width <= 1301px) {}
     @media (width <= 1281px) {}
-    @media (width <= 1151px) {
-        .guest .form {
-            padding: 0 5%;
-        }
-    }
+    @media (width <= 1151px) {}
     @media (width <= 1076px) {}
     @media (width <= 1025px) {
         .guest .form .title {
@@ -188,8 +229,8 @@
             font-size: 15px;
         }
         .guest .remember-password {
-            font-size: 15px;
-            margin-top: 25px;
+            font-size: 14px;
+            margin-top: 20px;
         }
     }
     @media (width <= 991px) {}
@@ -199,6 +240,9 @@
             display: flex;
             align-items: center;
             height: 100vh;
+        }
+        .guest .form {
+            padding: 0 5%;
         }
     }
     @media (width <= 721px) {}
@@ -216,10 +260,11 @@
     @media (width <= 361px) {}
     @media (width <= 331px) {
         .guest .form .title {
-            font-size: 35px;
+            font-size: 30px;
         }
         .guest .form .description {
             font-size: 15px;
+            margin-bottom: 15px!important;
         }
         .guest .form .remember {
             font-size: 14px;
@@ -228,8 +273,7 @@
             font-size: 14px;
         }
         .guest .remember-password {
-            font-size: 14px;
-            margin-top: 20px;
+            margin-top: 10px;
         }
     }
 /* #endregion */
