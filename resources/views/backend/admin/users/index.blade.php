@@ -28,7 +28,6 @@
                     <select class="form-select input-field width" name="role">
                         <option value="">User Role</option>
                         <option value="admin" {{ isset($role) && $role == 'admin' ? "selected" : "" }}>Admin</option>
-                        <option value="manager" {{ isset($role) && $role == 'manager' ? "selected" : "" }}>Manager</option>
                         <option value="landlord" {{ isset($role) && $role == 'landlord' ? "selected" : "" }}>Landlord</option>
                         <option value="tenant" {{ isset($role) && $role == 'tenant' ? "selected" : "" }}>Tenant</option>
                     </select>

@@ -21,7 +21,6 @@ class RedirectIfAuthenticatedMiddleware
 
             return match ($role) {
                 'admin' => redirect()->route('admin.dashboard'),
-                'manager' => redirect()->route('manager.dashboard'),
                 'landlord' => redirect()->route('landlord.dashboard'),
                 default => redirect()->route('backend-auth.portal.login')
             };

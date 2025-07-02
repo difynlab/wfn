@@ -25,7 +25,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->redirectTo(function ($request) {
-            if($request->is('admin/*') || $request->is('manager/*') || $request->is('landlord/*')) {
+            if($request->is('admin/*') || $request->is('landlord/*')) {
                 return route('backend-auth.portal.login');
             }
             return route('frontend-auth.login');

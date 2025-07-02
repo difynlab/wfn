@@ -65,7 +65,6 @@
                     <select class="form-select input-field" id="role" name="role" required>
                         <option value="">Select role</option>
                         <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
-                        <option value="manager" {{ old('role') == 'manager' ? 'selected' : '' }}>Manager</option>
                         <option value="landlord" {{ old('role') == 'landlord' ? 'selected' : '' }}>Landlord</option>
                         <option value="tenant" {{ old('role') == 'tenant' ? 'selected' : '' }}>Tenant</option>
                     </select>

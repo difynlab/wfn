@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('country')->nullable();
             $table->string('password');
             $table->string('image')->nullable();
-            $table->enum('role', ['admin', 'manager', 'landlord', 'tenant']);
+            $table->enum('role', ['admin', 'landlord', 'tenant']);
             $table->boolean('status')->default(1);
             $table->rememberToken();
             $table->timestamps();

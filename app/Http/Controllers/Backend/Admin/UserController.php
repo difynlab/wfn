@@ -313,7 +313,7 @@ class UserController extends Controller
             'address' => 'required|min:0|max:255',
             'city' => 'required|min:0|max:255',
             'country' => 'required|min:0|max:255',
-            'role' => 'required|in:admin,manager,landlord,tenant',
+            'role' => 'required|in:admin,landlord,tenant',
             'password' => 'required|min:8',
             'confirm_password' => 'required|same:password',
             'new_image' => 'nullable|max:30720',
@@ -619,7 +619,7 @@ class UserController extends Controller
             'address' => 'required|min:0|max:255',
             'city' => 'required|min:0|max:255',
             'country' => 'required|min:0|max:255',
-            'role' => 'required|in:admin,manager,landlord,tenant',
+            'role' => 'required|in:admin,landlord,tenant',
             'new_image' => 'nullable|max:30720',
             'status' => 'required|in:0,1'
         ]);
