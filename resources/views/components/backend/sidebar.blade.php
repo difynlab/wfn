@@ -104,6 +104,30 @@
 
         <ul class="main-menu">
             <li class="link">
+                <a href="{{ route('admin.article-categories.index') }}" class="{{ Request::segment(2) == 'article-categories' ? 'active' : '' }}">
+                    <div class="box"></div>
+                    <div class="actual-link">
+                        <i class="bi bi-bookmarks"></i>
+                        Article Categories
+                    </div>
+                </a>
+            </li>
+
+            <li class="link">
+                <a href="{{ route('admin.articles.index') }}" class="{{ Request::segment(2) == 'articles' ? 'active' : '' }}">
+                    <div class="box"></div>
+                    <div class="actual-link">
+                        <i class="bi bi-newspaper"></i>
+                        Articles
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+        <hr>
+
+        <ul class="main-menu">
+            <li class="link">
                 <a href="{{ route('admin.settings.index') }}" class="{{ Request::segment(2) == 'settings' ? 'active' : '' }}">
                     <div class="box"></div>
                     <div class="actual-link">

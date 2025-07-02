@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
             SupportContentSeeder::class,
             ArticleContentSeeder::class,
             AboutContentSeeder::class,
+            ArticleCategorySeeder::class,
+            ArticleSeeder::class,
         ]);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend\Admin\Article\ArticleCategoryController;
+use App\Http\Controllers\Backend\Admin\Article\ArticleController as ArticleArticleController;
 use App\Http\Controllers\Backend\Admin\BookingController;
 use App\Http\Controllers\Backend\Admin\CKEditorController;
 use App\Http\Controllers\Backend\Admin\DashboardController;
@@ -153,4 +155,28 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
             Route::post('recover/bulk', 'bulkRecover')->name('bulk-recover');
         });
     // Messages routes
+
+    // Article categories routes
+        Route::controller(ArticleCategoryController::class)->prefix('article-categories')->name('article-categories.')->group(function() {
+            Route::get('/', 'index')->name('index');
+            Route::get('filter', 'filter')->name('filter');
+            Route::get('create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('{article_category}/edit', 'edit')->name('edit');
+            Route::post('{article_category}', 'update')->name('update');
+            Route::delete('{article_category}', 'destroy')->name('destroy');
+        });
+    // Article categories routes
+
+    // Articles routes
+        Route::controller(ArticleArticleController::class)->prefix('articles')->name('articles.')->group(function() {
+            Route::get('/', 'index')->name('index');
+            Route::get('filter', 'filter')->name('filter');
+            Route::get('create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('{article}/edit', 'edit')->name('edit');
+            Route::post('{article}', 'update')->name('update');
+            Route::delete('{article}', 'destroy')->name('destroy');
+        });
+    // Articles routes
 });
