@@ -15,6 +15,9 @@ Element.prototype.attachShadow = function(init) {
             .focus-ring {
                 border: 0 !important;
             }
+            :host {
+                border: 0 !important;
+            }
         `;
         root.append(style);
         return root;

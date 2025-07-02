@@ -429,7 +429,53 @@
     @media (width <= 1151px) {}
     @media (width <= 1076px) {}
     @media (width <= 1025px) {}
-    @media (width <= 991px) {}
+    @media (width <= 992px) {
+        .inner-page .inner-page-top-title {
+            font-size: 24px;
+        }
+        .inner-page .inner-page-top-description {
+            font-size: 17px;
+        }
+        .inner-page .form .submit-button {
+            font-size: 16px;
+            width: 180px;
+            height: 50px;
+        }
+        .inner-page .form .label {
+            font-size: 15px;
+            margin-bottom: 5px!important;
+        }
+        .inner-page .form .input-field {
+            height: 50px;
+            font-size: 15px;
+        }
+        .inner-page .drop-area {
+            height: 325px;
+        }
+        .inner-page .drop-area i {
+            font-size: 30px;
+        }
+        .inner-page .drop-area .drag-drop {
+            font-size: 15px;
+        }
+        .inner-page .drop-area .line-or {
+            margin-top: 0px;
+        }
+        .inner-page .drop-area .button {
+            width: 100px;
+            height: 30px;
+            margin-top: 2px;
+            margin-bottom: 15px;
+        }
+        .inner-page .drop-area .image-preview, .inner-page .drop-area .video-preview {
+            width: 150px;
+            height: 90px;
+        }
+        .inner-page .drop-area .image-preview img, .inner-page .drop-area .video-preview video {
+            width: 150px;
+            height: 90px;
+        }
+    }
     @media (width <= 845px) {}
     @media (width <= 768px) {}
     @media (width <= 721px) {}

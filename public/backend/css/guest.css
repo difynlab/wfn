@@ -233,7 +233,7 @@
             margin-top: 20px;
         }
     }
-    @media (width <= 991px) {}
+    @media (width <= 992px) {}
     @media (width <= 845px) {}
     @media (width <= 768px) {
         .guest {

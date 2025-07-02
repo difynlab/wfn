@@ -30,18 +30,18 @@
                 <form action="{{ route('admin.settings.profile', $user) }}" method="POST" enctype="multipart/form-data" class="form">
                     @csrf
 
-                    <div class="row mb-5">
-                        <div class="col-6 mb-4">
+                    <div class="row mb-4 mb-lg-5">
+                        <div class="col-12 col-lg-6 mb-3 mb-lg-4">
                             <label for="first_name" class="form-label label">First Name<span class="asterisk">*</span></label>
                             <input type="text" class="form-control input-field" id="first_name" name="first_name" placeholder="First Name" value="{{ old('first_name', $user->first_name) }}" required>
                         </div>
 
-                        <div class="col-6 mb-4">
+                        <div class="col-12 col-lg-6 mb-3 mb-lg-4">
                             <label for="last_name" class="form-label label">Last Name<span class="asterisk">*</span></label>
                             <input type="text" class="form-control input-field" id="last_name" name="last_name" placeholder="Last Name" value="{{ old('last_name', $user->last_name) }}" required>
                         </div>
 
-                        <div class="col-12 mb-4">
+                        <div class="col-12 mb-3 mb-lg-4">
                             <label for="email" class="form-label label">Email<span class="asterisk">*</span></label>
                             <input type="email" class="form-control input-field" id="email" name="email" placeholder="Email" value="{{ old('email', $user->email) }}" required>
                             <x-backend.input-error field="email"></x-backend.input-error>

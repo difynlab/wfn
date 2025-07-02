@@ -6,7 +6,7 @@
     <div class="page">
         <div class="row align-items-center mb-4">
             <div class="col-8">
-                <p class="title">T-Do</p>
+                <p class="title">To-Do</p>
                 <p class="description">Manage reminders and notes with the to-do list.</p>
             </div>
             <div class="col-4 text-end">
