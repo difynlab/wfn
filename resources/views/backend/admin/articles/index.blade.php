@@ -25,10 +25,10 @@
                         <input type="text" class="form-control input-field" name="title" value="{{ $title ?? '' }}" placeholder="Search by Title">
                     </div>
 
-                    <select class="form-select input-field js-single" id="selected_article_category" name="selected_article_category">
-                        <option value="">Select article category</option>
+                    <select class="form-select input-field js-single" id="category" name="category">
+                        <option value="">Category</option>
                         @foreach($article_categories as $article_category)
-                            <option value="{{ $article_category->id }}" {{ isset($selected_article_category) && $selected_article_category == $article_category->id ? "selected" : "" }}>{{ $article_category->name }}</option>
+                            <option value="{{ $article_category->id }}" {{ isset($category) && $category == $article_category->id ? "selected" : "" }}>{{ $article_category->name }}</option>
                         @endforeach
                     </select>
 

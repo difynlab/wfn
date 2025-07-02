@@ -164,7 +164,7 @@ class ArticleController extends Controller
         }
 
         $title = $request->title;
-        $selected_article_category = $request->selected_article_category;
+        $category = $request->category;
         $status = $request->status;
 
         $items = Article::query();
@@ -173,8 +173,8 @@ class ArticleController extends Controller
             $items->where('title', 'like', '%' . $title . '%');
         }
 
-        if($selected_article_category) {
-            $items->where('article_category_id', $selected_article_category);
+        if($category) {
+            $items->where('article_category_id', $category);
         }
 
         if($status != null) {
@@ -191,7 +191,7 @@ class ArticleController extends Controller
             'items' => $items,
             'pagination' => $pagination,
             'title' => $title,
-            'selected_article_category' => $selected_article_category,
+            'category' => $category,
             'status' => $status,
             'article_categories' => $article_categories
         ]);
