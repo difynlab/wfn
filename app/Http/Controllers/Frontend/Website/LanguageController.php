@@ -10,7 +10,11 @@ class LanguageController extends Controller
     public function setLanguage(Request $request)
     {
         $language = $request->language;
-        session(['language' => $language]);
+        session(
+            [
+                'language' => $language
+            ]
+        );
 
         return response()->json([
             'success' => true,

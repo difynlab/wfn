@@ -8,46 +8,49 @@
 
 @section('content')
     <div class="about page-global">
-        <div class="section-1 container section-margin">
-            <h1 class="page-title">About</h1>
-            <p class="page-description">We make storage easy and accessible with transparent pricing and flexible options.
-                Whether it’s seasonal items, business supplies, or personal belongings, we keep your things safe and secure,
-                ready for you whenever you need them.</p>
-        </div>
+        @if($contents->section_1_title_en)
+            <div class="section-1 container section-margin">
+                <h1 class="page-title">{{ $contents->{'section_1_title_' . $middleware_language} ?? $contents->section_1_title_en }}</h1>
 
-        <div class="section-2 container section-margin">
-            <div class="row our-story-row">
-                <div class="col-5 left">
-                    <img src="{{ asset('storage/frontend/about-us.png') }}" alt="Our Story" class="image">
-                </div>
-                <div class="col-7 right">
-                    <p class="section-title">Our Story</p>
-                    <div class="section-description">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p class="page-description">{{ $contents->{'section_1_description_' . $middleware_language} ?? $contents->section_1_description_en }}</p>
+            </div>
+        @endif
 
-                        <br>
-
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        @if($contents->section_2_title_en)
+            <div class="section-2 container section-margin">
+                <div class="row our-story-row">
+                    <div class="col-5 left">
+                        @if($contents->{'section_2_image_' . $middleware_language})
+                            <img src="{{ asset('storage/backend/pages/' . $contents->{'section_2_image_' . $middleware_language}) }}" alt="Our Story" class="image">
+                        @elseif($contents->section_2_image_en)
+                            <img src="{{ asset('storage/backend/pages/' . $contents->section_2_image_en) }}" alt="Our Story" class="image">
+                        @else
+                            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Our Story" class="image">
+                        @endif
                     </div>
 
-                    <div class="row stats-row">
-                        <div class="col-4 stat-box">
-                            <p class="number">2100+</p>
-                            <p class="text">Lorem ipsum</p>
-                        </div>
-                        <div class="col-4 stat-box">
-                            <p class="number">17+</p>
-                            <p class="text">Years of Experience</p>
-                        </div>
-                        <div class="col-4 stat-box">
-                            <p class="number">2100+</p>
-                            <p class="text">Lorem ipsum</p>
+                    <div class="col-7 right">
+                        <p class="section-title">{{ $contents->{'section_2_title_' . $middleware_language} ?? $contents->section_2_title_en }}</p>
+                        <div class="section-description">{!! $contents->{'section_2_description_' . $middleware_language} ?? $contents->section_2_description_en !!}</div>
+
+                        <div class="row stats-row">
+                            <div class="col-4 stat-box">
+                                <p class="number">2100+</p>
+                                <p class="text">Lorem ipsum</p>
+                            </div>
+                            <div class="col-4 stat-box">
+                                <p class="number">17+</p>
+                                <p class="text">Years of Experience</p>
+                            </div>
+                            <div class="col-4 stat-box">
+                                <p class="number">2100+</p>
+                                <p class="text">Lorem ipsum</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
 
         <div class="section-3 section-margin">
             <div class="container">
