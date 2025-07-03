@@ -7,12 +7,3 @@
 # Include frontend (optional if needed)
 !/frontend/
 !/frontend/**
-
-# Unignore backend folder so Git sees it
-!/backend/
-
-# Unignore only specific sub folders
-!/backend/global/
-!/backend/global/**
-!/backend/sidebar/
-!/backend/sidebar/**

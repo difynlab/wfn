@@ -33,7 +33,7 @@ class ForgotPasswordController extends Controller
             return redirect()->back()->withErrors(['email' => 'Email not found.'])->withInput();
         }
 
-        if(!in_array($user->role, ['admin', 'manager', 'landlord'])) {
+        if(!in_array($user->role, ['admin', 'landlord'])) {
             return redirect()->back()->withErrors(['email' => 'Unauthorized email.'])->withInput();
         }
 
@@ -55,6 +55,6 @@ class ForgotPasswordController extends Controller
 
         Mail::to([$request->email])->send(new ResetPasswordMail($mail_data));
 
-        return redirect()->back()->with('success', "Email sent successfully");
+        return redirect()->back()->with('authentication', "Email sent successfully");
     }
 }

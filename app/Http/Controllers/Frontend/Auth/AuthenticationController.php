@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\AuthenticationContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AuthenticationController extends Controller
 {
@@ -16,44 +16,43 @@ class AuthenticationController extends Controller
 
     public function store(Request $request)
     {
-        $contents = AuthenticationContent::find(1);
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+        
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        
+        $credentials = $request->only('email', 'password');
+        $credentials['status'] = '1';
 
-        $request->session()->regenerate();
-
-    $user = Auth::user();
-
-    // Role check and redirection
-    if ($user->role === 'user') {
-        return redirect()->intended('/dashboard');
-    } else {
-        Auth::logout();
-        return redirect()->route('user.login')->withErrors(['email' => 'Unauthorized.']);
-    }
-
-        if(Auth::attempt($request->only('email', 'password'))) {
+        if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            if(Auth::user()->role == 'student') {
-                $redirect_url = $request->redirect ?? route('frontend.dashboard.index');
-        
-                return redirect()->intended($redirect_url);
+            $user = Auth::user();
+
+            if($user->role == 'tenant') {
+                return redirect()->intended("/tenant/dashboard");
+            }
+            else {
+                Auth::logout();
+                return redirect()->route('frontend-auth.login')->withInput()->with('error', 'Unauthorized');
             }
         }
 
-        return back()->withErrors([
-            'contents' => $contents,
-            'login_failed' => 'These credentials do not match our records',
+        return back()->withInput()->withErrors([
+            'email' => 'These credentials do not match our records.',
         ]);
     }
 
     public function logout(Request $request)
     {
-        Auth::guard('web')->logout();
-
+        Auth::logout();
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
-        return redirect()->route('frontend.homepage');
+        return redirect()->route('frontend-auth.login');
     }
 }

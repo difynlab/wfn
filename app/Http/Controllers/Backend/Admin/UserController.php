@@ -3,51 +3,41 @@
 namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\CECPointActivity;
-use App\Models\Course;
-use App\Models\CoursePurchase;
-use App\Models\ReferPointActivity;
-use App\Models\Setting;
+use App\Models\Company;
 use App\Models\User;
-use App\Models\Wallet;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use App\Mail\CECPointApprovedMail;
-use App\Mail\CECPointRejectedMail;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
-    private function processData($data)
+    private function processData($items)
     {
-        foreach($data as $da) {
-            $da->action = '
-            <a href="'. route('admin.users.edit', $da->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
-            <a href="#" class="action-button warehouses-button" title="Warehouses"><i class="bi bi-houses"></i></a>
-            <a id="'.$da->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
+        foreach($items as $item) {
+            $item->action = '
+            <a href="'. route('admin.users.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
+            <a href="'. route('admin.users.company.index', $item->id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
+            <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
-            $da->status = ($da->status == '1') ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
+            $item->status = ($item->status == 1) ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
         }
 
-        return $data;
+        return $items;
     }
 
     public function index(Request $request)
     {
-        $items = $request->items ?? 10;
+        $pagination = $request->pagination ?? 10;
         $auth = Auth::user();
 
-        $users = User::whereNot('id', $auth->id)->where('status', '!=', '0')->orderBy('id', 'desc')->paginate($items);
-        
-        $users = $this->processData($users);
+        $items = User::whereNot('id', $auth->id)->orderBy('id', 'desc')->paginate($pagination);
+        $items = $this->processData($items);
 
         return view('backend.admin.users.index', [
-            'users' => $users,
-            'items' => $items
+            'items' => $items,
+            'pagination' => $pagination
         ]);
     }
 
@@ -316,54 +306,44 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:users,email',
-            'phone' => 'nullable|regex:/^\+?[0-9]+$/|unique:users,phone',
+            'first_name' => 'required|min:0|max:255',
+            'last_name' => 'required|min:0|max:255',
+            'email' => 'required|email|min:0|max:255|unique:users,email',
+            'phone' => 'required|min:0|max:255|regex:/^\+?[0-9]+$/|unique:users,phone',
+            'address' => 'required|min:0|max:255',
+            'city' => 'required|min:0|max:255',
+            'country' => 'required|min:0|max:255',
+            'role' => 'required|in:admin,landlord,tenant',
             'password' => 'required|min:8',
             'confirm_password' => 'required|same:password',
-            'new_image' => 'nullable|max:30720'
-        ], [
-            'email.unique' => 'The email address is already in use',
-            'phone.unique' => 'The phone number is already in use',
-            'phone.regex' => 'The phone number is invalid',
-            'password.required' => 'The password field is required',
-            'password.min' => 'The password must be at least 8 characters long',
-            'confirm_password.required' => 'The confirm password field is required',
-            'confirm_password.same' => 'The confirm password must match the password',
-            'new_image.max' => 'The image must not be greater than 30 MB'
+            'new_image' => 'nullable|max:30720',
+            'status' => 'required|in:0,1'
         ]);
         
         if($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Creation failed!');
+            return redirect()->back()->withErrors($validator)->withInput()->with([
+                'error' => 'Creation Failed!',
+                'route' => route('admin.users.index')
+            ]);
         }
 
-        if($request->file('new_image') != null) {
+        if($request->file('new_image')) {
             $image = $request->file('new_image');
             $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('public/backend/persons/users', $image_name);
+            $image->storeAs('backend/users', $image_name);
         }
         else {
             $image_name = $request->old_image;
         }
 
-        $user = new User();
         $data = $request->except('old_image', 'new_image', 'confirm_password');
-        
-        $is_certified = $request->has('is_certified') ? '1' : null;
-        $is_sns = $request->has('is_sns') ? '1' : null;
-        $is_snc = $request->has('is_snc') ? '1' : null;
-        $is_cissn = $request->has('is_cissn') ? '1' : null;
-        $is_pne = $request->has('is_pne') ? '1' : null;
-
         $data['image'] = $image_name;
-        $data['is_certified'] = $is_certified;
-        $data['is_sns'] = $is_sns;
-        $data['is_snc'] = $is_snc;
-        $data['is_cissn'] = $is_cissn;
-        $data['is_pne'] = $is_pne;
-        $data['role'] = 'student';
-        $user->create($data);
+        $user = User::create($data);  
 
-        return redirect()->route('backend.persons.users.index')->with('success', 'Successfully created!');
+        return redirect()->route('admin.users.edit', $user)->with([
+            'success' => "Update Successful!",
+            'route' => route('admin.users.index')
+        ]);
     }
 
     public function edit(User $user)
@@ -623,7 +603,7 @@ class UserController extends Controller
             "Zimbabwe"
         ];
 
-        return view('backend.persons.users.edit', [
+        return view('backend.admin.users.edit', [
             'user' => $user,
             'countries' => $countries
         ]);
@@ -632,38 +612,23 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:users,email,'.$user->id,
-            'phone' => 'nullable|regex:/^\+?[0-9]+$/|unique:users,phone,'.$user->id,
-            'new_image' => 'nullable|max:30720'
-        ], [
-            'email.unique' => 'The email address is already in use',
-            'phone.unique' => 'The phone number is already in use',
-            'phone.regex' => 'The phone number is invalid',
-            'new_image.max' => 'The image size must not exceed 30 MB'
+            'first_name' => 'required|min:0|max:255',
+            'last_name' => 'required|min:0|max:255',
+            'email' => 'required|email|min:0|max:255|unique:users,email,'.$user->id,
+            'phone' => 'required|min:0|max:255|regex:/^\+?[0-9]+$/|unique:users,phone,'.$user->id,
+            'address' => 'required|min:0|max:255',
+            'city' => 'required|min:0|max:255',
+            'country' => 'required|min:0|max:255',
+            'role' => 'required|in:admin,landlord,tenant',
+            'new_image' => 'nullable|max:30720',
+            'status' => 'required|in:0,1'
         ]);
 
         if($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Update failed!');
-        }
-
-        if($request->file('new_image') != null) {
-            if($request->old_image) {
-                Storage::delete('public/backend/persons/users/' . $request->old_image);
-            }
-
-            $image = $request->file('new_image');
-            $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('public/backend/persons/users', $image_name);
-        }
-        else if($request->old_image == null) {
-            if($user->image) {
-                Storage::delete('public/backend/persons/users/' . $user->image);
-            }
-
-            $image_name = null;
-        }
-        else {
-            $image_name = $request->old_image;
+            return redirect()->back()->withErrors($validator)->withInput()->with([
+                'error' => 'Update Failed!',
+                'route' => route('admin.users.index')
+            ]);
         }
 
         $data = $request->except(
@@ -673,224 +638,182 @@ class UserController extends Controller
             'confirm_password'
         );
 
-        if($request->password != null) {
+        if($request->password) {
             $validator = Validator::make($request->all(), [
                 'password' => 'nullable|min:8',
                 'confirm_password' => 'nullable|same:password',
-            ], [
-                'password.min' => 'The password must be at least 8 characters long',
-                'confirm_password.same' => 'The confirm password must match the password'
             ]);
 
             if($validator->fails()) {
-                return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Update failed!');
+                return redirect()->back()->withErrors($validator)->withInput()->with([
+                    'error' => 'Update Failed!',
+                    'route' => route('admin.users.index')
+                ]);
             }
 
             $data['password'] = $request->password;
         }
-        
-        $is_certified = $request->has('is_certified') ? '1' : null;
-        $is_sns = $request->has('is_sns') ? '1' : null;
-        $is_snc = $request->has('is_snc') ? '1' : null;
-        $is_cissn = $request->has('is_cissn') ? '1' : null;
-        $is_pne = $request->has('is_pne') ? '1' : null;
+
+        if($request->file('new_image')) {
+            if($request->old_image) {
+                Storage::delete('backend/users/' . $request->old_image);
+            }
+
+            $image = $request->file('new_image');
+            $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('backend/users', $image_name);
+        }
+        else if($request->old_image == null) {
+            if($user->image) {
+                Storage::delete('backend/users/' . $user->image);
+            }
+
+            $image_name = null;
+        }
+        else {
+            $image_name = $request->old_image;
+        }
 
         $data['image'] = $image_name;
-        $data['is_certified'] = $is_certified;
-        $data['is_sns'] = $is_sns;
-        $data['is_snc'] = $is_snc;
-        $data['is_cissn'] = $is_cissn;
-        $data['is_pne'] = $is_pne;
         $user->fill($data)->save();
         
-        return redirect()->route('backend.persons.users.index')->with('success', "Successfully updated!");
+        return redirect()->back()->with([
+            'success' => "Update Successful!",
+            'route' => route('admin.users.index')
+        ]);
     }
 
     public function destroy(User $user)
     {
-        $user->status = '0';
-        $user->save();
+        $user->delete();
 
-        return redirect()->back()->with('success', 'Successfully deleted!');
+        return redirect()->back()->with('delete', 'Successfully Deleted!');
     }
 
     public function filter(Request $request)
     {
-        if($request->action == 'reset') {
-            return redirect()->route('backend.persons.users.index');
+        if($request->action == '⟲ Reset Filter') {
+            return redirect()->route('admin.users.index');
         }
 
         $name = $request->name;
-        $email = $request->email;
-        $language = $request->language;
+        $role = $request->role;
+        $city = $request->city;
+        $order_by = $request->order_by;
+        $status = $request->status;
 
-        if(auth()->user()->admin_language) {
-            $users = User::where('role', 'student')->where('language', auth()->user()->admin_language)->where('status', '!=', '0')->orderBy('id', 'desc');
-        }
-        else {
-            $users = User::where('role', 'student')->where('status', '!=', '0')->orderBy('id', 'desc');
-        }
+        $admin = Auth::user();
+
+        $items = User::whereNot('id', $admin->id);
 
         if($name) {
-            $users->where(function ($query) use ($name) {
+            $items->where(function ($query) use ($name) {
                 $query->whereRaw("CONCAT(first_name, ' ', last_name) LIKE ?", ['%' . $name . '%'])
                       ->orWhereRaw("CONCAT(last_name, ' ', first_name) LIKE ?", ['%' . $name . '%']);
             });
         }
 
-        if($email != null) {
-            $users->where('email', 'like', '%' . $email . '%');
+        if($role) {
+            $items->where('role', $role);
         }
 
-        if($language != 'All') {
-            $users->where('language', $language);
+        if($city) {
+            $items->where('city', 'like', '%' . $city . '%');
         }
 
-        $items = $request->items ?? 10;
-        $users = $users->paginate($items);
-        $users = $this->processUsers($users);
+        if($order_by == 'a-z') {
+            $items->orderBy('id', 'asc');
+        }
+        else {
+            $items->orderBy('id', 'desc');
+        }
 
-        $cec_point_count = CECPointActivity::where('status', '!=', '0')->where('is_new', '1')->count();
+        if($status != null) {
+            $items->where('status', $status);
+        }
 
-        return view('backend.persons.users.index', [
-            'users' => $users,
+        $pagination = $request->pagination ?? 10;
+        $items = $items->paginate($pagination);
+        $items = $this->processData($items);
+
+        return view('backend.admin.users.index', [
             'items' => $items,
+            'pagination' => $pagination,
             'name' => $name,
-            'email' => $email,
-            'language' => $language,
-            'cec_point_count' => $cec_point_count
+            'role' => $role,
+            'city' => $city,
+            'order_by' => $order_by,
+            'status' => $status
         ]);
     }
 
-    public function points(Request $request, User $user)
+    public function company(User $user)
     {
-        $items = $request->items ?? 10;
+        $company = Company::firstOrCreate(
+            ['user_id' => $user->id],
+            [
+                'user_id'   => $user->id,
+                'status' => 1
+            ]
+        );
 
-        $activities = ReferPointActivity::where('referred_by_id', $user->id)->where('status', '1')->orderBy('id', 'desc')->paginate($items);
-
-        return view('backend.persons.users.points', [
+        return view('backend.admin.users.company', [
             'user' => $user,
-            'activities' => $activities,
-            'items' => $items
+            'company' => $company
         ]);
     }
 
-    public function cecPointsCommon(Request $request, User $user)
+    public function companyUpdate(Request $request, User $user, Company $company)
     {
-        $items = $request->items ?? 10;
-
-        $cec_point_users = CECPointActivity::where('status', '!=', '0')->where('is_new', '1')->pluck('user_id')->unique()->values()->toArray();
-
-        $users = User::whereIn('id', $cec_point_users)->where('status', '!=', '0')->orderBy('id', 'desc')->paginate($items);
-
-        $users = $this->processUsers($users);
-
-        $cec_point_count = CECPointActivity::where('status', '!=', '0')->where('is_new', '1')->count();
-
-        return view('backend.persons.users.index', [
-            'users' => $users,
-            'items' => $items,
-            'cec_point_count' => $cec_point_count
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|min:0|max:255',
+            'address' => 'required|min:0|max:255',
+            'email' => 'required|email|min:0|max:255|unique:companies,email,'.$company->id,
+            'phone' => 'required|min:0|max:255|regex:/^\+?[0-9]+$/|unique:companies,phone,'.$company->id,
+            'website' => 'nullable|url',
+            'industry' => 'required|min:0|max:255',
+            'date' => 'nullable|date',
+            'new_registration_certificates.*' => 'max:30720',
+            'status' => 'required|in:0,1'
         ]);
-    }
 
-    public function cecPoints(Request $request, User $user)
-    {
-        $items = $request->items ?? 10;
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput()->with([
+                'error' => 'Update Failed!',
+                'route' => route('admin.users.index')
+            ]);
+        }
 
-        $activities = CECPointActivity::where('user_id', $user->id)->where('status', '!=', '0')->orderBy('id', 'desc')->paginate($items);
+        // Registration certificates
+            $existing_registration_certificates = json_decode($company->registration_certificates ?? '[]', true);
+            $current_registration_certificates  = json_decode(htmlspecialchars_decode($request->old_registration_certificates ?? '[]'), true);
+
+            foreach(array_diff($existing_registration_certificates, $current_registration_certificates) as $registration_certificate) {
+                Storage::delete('backend/warehouses/' . $registration_certificate);
+            }
+
+            if($request->file('new_registration_certificates')) {
+                foreach($request->file('new_registration_certificates') as $registration_certificate) {
+                    $registration_certificate_name = Str::random(40) . '.' . $registration_certificate->getClientOriginalExtension();
+                    $registration_certificate->storeAs('backend/warehouses', $registration_certificate_name);
+                    $current_registration_certificates[] = $registration_certificate_name;
+                }
+            }
+            
+            $registration_certificates = $current_registration_certificates ? json_encode($current_registration_certificates) : null;
+        // Registration certificates
+
+        $data = $request->except(
+            'old_registration_certificates',
+            'new_registration_certificates'
+        );
+
+        $data['registration_certificates'] = $registration_certificates;
+        $company->fill($data)->save();
         
-        $purchases = CoursePurchase::
-        where('user_id', $user->id)
-        ->where(function ($query) {
-            $query->where('payment_status', 'Completed')
-                ->orWhereNull('payment_status');
-        })
-        ->where('course_access_status', 'Active')
-        ->where(function ($query) {
-            $query->where('refund_status', 'Not Refunded')
-                ->orWhereNull('refund_status');
-        })
-        ->where('status', '1')
-        ->get();
-        
-        $course_ids = $purchases->pluck('course_id')->toArray();
-
-        $cec_courses = Course::whereIn('id', $course_ids)->where('status', '1')->get();
-
-        CECPointActivity::where('user_id', $user->id)->where('status', '!=', '0')->where('is_new', '1')->update(['is_new' => '0']);
-
-        return view('backend.persons.users.cec-points', [
-            'user' => $user,
-            'activities' => $activities,
-            'items' => $items,
-            'cec_courses' => $cec_courses
+        return redirect()->back()->with([
+            'success' => "Update Successful!",
+            'route' => route('admin.users.index')
         ]);
-    }
-
-    public function cecPointsStore(Request $request, User $user)
-    {
-        CECPointActivity::create([
-            'user_id' => $user->id,
-            'course_id' => $request->course_id,
-            'activity_name' => $request->activity_name,
-            'type' => $request->type,
-            'date' => Carbon::now()->toDateString(),
-            'time' => Carbon::now()->toTimeString(),
-            'points' => $request->points,
-            'admin_comment' => $request->admin_comment,
-            'status' => '1'
-        ]);
-
-        if($request->type == 'Addition') {
-            $user->cec_balance += $request->points;
-        }
-        else {
-            $user->cec_balance -= $request->points;
-        }
-       
-        $user->save();
-
-        return redirect()->back()->with('success', 'Request successfully completed');
-    }
-
-    public function cecPointsUpdate(Request $request, User $user, CECPointActivity $cec_point_activity)
-    {
-        $cec_point_activity->status = $request->status;
-        $cec_point_activity->save();
-        $course = Course::find($cec_point_activity->course_id);
-
-        $mail_data = [
-            'name' => $user->first_name . ' ' . $user->last_name,
-            'email' => $user->email,
-            'points' => $cec_point_activity->points,
-            'course' => $course->title ?? null,
-            'activity_name' => $cec_point_activity->activity_name ?? null
-        ];
-
-        if($request->status == '1') {
-            if($cec_point_activity->type == 'Addition') {
-                $user->cec_balance += $cec_point_activity->points;
-            }
-            else {
-                $user->cec_balance -= $cec_point_activity->points;
-            }
-
-            Mail::to($user->email)->send(new CECPointApprovedMail($mail_data));
-        }
-        else {
-            if($cec_point_activity->type == 'Addition') {
-                $user->cec_balance -= $cec_point_activity->points;
-            }
-            else {
-                $user->cec_balance += $cec_point_activity->points;
-            }
-
-            Mail::to($user->email)->send(new CECPointRejectedMail($mail_data));
-        }
-       
-        $user->save();
-
-        return response($cec_point_activity);
     }
 }

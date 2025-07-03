@@ -4,10 +4,13 @@ use App\Http\Controllers\Frontend\Website\AboutController;
 use App\Http\Controllers\Frontend\Website\ArticleController;
 use App\Http\Controllers\Frontend\Website\SupportController;
 use App\Http\Controllers\Frontend\Website\HomepageController;
+use App\Http\Controllers\Frontend\Website\LanguageController;
 use App\Http\Controllers\Frontend\Website\PrivacyPolicyController;
 use App\Http\Controllers\Frontend\Website\TermsOfUseController;
 use App\Http\Controllers\Frontend\Website\WarehouseController;
 use Illuminate\Support\Facades\Route;
+
+Route::post('set-language', [LanguageController::class, 'setLanguage'])->name('set-language');
 
 Route::middleware(['language'])->group(function () {
     // Page routes

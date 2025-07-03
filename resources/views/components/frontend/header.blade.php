@@ -39,11 +39,11 @@
 
                     <ul class="dropdown-menu">
                         <li>
-                            <a class="dropdown-item" href="#">English</a>
+                            <a class="dropdown-item language-option" href="#" data-language="en">English</a>
                         </li>
 
                         <li>
-                            <a class="dropdown-item" href="#">Arabic</a>
+                            <a class="dropdown-item language-option" href="#" data-language="ar">Arabic</a>
                         </li>
                     </ul>
                 </li>
@@ -51,3 +51,31 @@
         </div>
     </nav>
 </div>
+
+@push('after-scripts')
+    <script>
+        $('.navbar .language-option').on('click', function() {
+            let language = $(this).attr('data-language');
+            let route = '{{ route("website.set-language") }}';
+            let csrfToken = '{{ csrf_token() }}';
+
+            $.ajax({
+                url: route,
+                method: 'POST',
+                data: {
+                    language: language,
+                    _token: csrfToken
+                },
+                success: function(data) {
+                    if(data.success) {
+                        // window.location.href = data.redirect_url;
+                        location.reload();
+                    }
+                },
+                error: function() {
+                    alert('Error setting language')
+                }
+            });
+        })
+    </script>
+@endpush

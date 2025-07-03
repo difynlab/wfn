@@ -33,7 +33,7 @@ class AuthenticationController extends Controller
 
             $user = Auth::user();
 
-            if(in_array($user->role, ['admin', 'manager', 'landlord'])) {
+            if(in_array($user->role, ['admin', 'landlord'])) {
                 return redirect()->intended("/{$user->role}/dashboard");
             }
             else {

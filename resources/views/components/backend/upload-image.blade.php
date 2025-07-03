@@ -1,12 +1,12 @@
-@props(['old_name', 'old_value', 'new_name', 'path', 'class', 'label'])
+@props(['old_name', 'old_value', 'new_name', 'path', 'label'])
 
 @if(isset($label))
-    <label for="image" class="form-label">Upload {{ $label }} Image</label>
+    <label for="image" class="form-label label">Upload {{ $label }} Image</label>
 @else
-    <label for="image" class="form-label">Upload Image</label>
+    <label for="image" class="form-label label">Upload Image</label>
 @endif
 
-<div class="drop-area image-drop-area {{ isset($class) ? $class : '' }}">
+<div class="drop-area image-drop-area">
     <i class="bi bi-cloud-arrow-up"></i>
     <p class="drag-drop">Drag and drop files here</p>
 
@@ -31,7 +31,7 @@
         @if($old_value)
             <img src="{{ asset('storage/backend/' . $path . '/' . $old_value) }}">
 
-            <button type="button" class="close-icon">
+            <button type="button" class="close-icon image-close-icon">
                 <i class="bi bi-x small"></i>
             </button>
         @endif
@@ -40,7 +40,7 @@
 
 @push('after-scripts')
     <script>
-        $('.close-icon').on('click', function() {
+        $('.image-close-icon').on('click', function() {
             $(this).parent('.image-preview').prev().val('');
             $(this).parent('.image-preview').remove();
         })

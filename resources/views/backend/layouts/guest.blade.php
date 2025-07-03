@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name') }} | @yield('title')</title>
-        <!-- <link rel="icon" href=""> -->
+        <title>{{ App\Models\Setting::find(1)->name }} | @yield('title')</title>
+        <link rel="icon" href="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->favicon) }}">
 
         @stack('before-styles')
             <link rel="stylesheet" href="{{ asset('backend/css/bootstrap.css') }}"></link>
@@ -21,7 +21,7 @@
             <div class="container-fluid">
                 <div class="row align-items-center justify-content-center">
                     <div class="d-none d-md-block col-md-5 p-0">
-                        <img src="{{ asset('storage/backend/global/guest-image.jpg') }}" alt="Image" class="image">
+                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->guest_image) }}" alt="Image" class="image">
                     </div>
 
                     <div class="col-12 col-md-7 p-0">
@@ -36,6 +36,7 @@
         @stack('before-scripts')
             <script src="{{ asset('backend/js/jquery.js') }}"></script>
             <script src="{{ asset('backend/js/bootstrap.js') }}"></script>
+            <script src="{{ asset('backend/js/select2.js') }}"></script>
             <script src="{{ asset('backend/js/global.js') }}"></script>
         @stack('after-scripts')
     </body>

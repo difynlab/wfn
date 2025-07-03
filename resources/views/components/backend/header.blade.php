@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
-        <img src="{{ asset('storage/backend/global/logo.png') }}" alt="Logo" class="logo">
+    <a class="navbar-brand" href="{{ route(auth()->user()->role . '.dashboard') }}">
+        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->logo) }}" alt="Logo" class="logo">
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,9 +17,9 @@
                 <div class="row align-items-center">
                     <div class="col-4">
                         @if(auth()->user()->image)
-                            <img src="{{ asset('storage/backend/') }}" alt="Image" class="profile-image">
+                            <img src="{{ asset('storage/backend/users/' . auth()->user()->image) }}" alt="Image" class="profile-image">
                         @else
-                            <img src="{{ asset('storage/backend/global/no-profile-image.png') }}" alt="Image" class="profile-image">
+                            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_profile_image) }}" alt="Image" class="profile-image">
                         @endif
                     </div>
 
@@ -37,12 +37,12 @@
 
                 <ul class="dropdown-menu">
                     <li>
-                        <a class="dropdown-item" href="#"><i class="bi bi-person"></i>My Profile</a>
+                        <a class="dropdown-item" href="{{ route(auth()->user()->role . '.settings.index') }}"><i class="bi bi-person"></i>My Profile</a>
                     </li>
 
                     <li>
                         <a class="dropdown-item" href="#">
-                            <form action="{{ route('backend-auth.portal.logout') }}" method="POST">
+                            <form action="{{ auth()->user()->role != 'tenant' ? route('backend-auth.portal.logout') : route('frontend-auth.logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="log-out"><i class="bi bi-power"></i>Log Out</button>
                             </form>

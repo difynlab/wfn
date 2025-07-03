@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 
-/* Common styles */
+/* #region: Global */
     * {
         font-family: "Poppins", sans-serif;
     }
@@ -18,6 +18,7 @@
         --success_background: #d1e7dd;
         --success_color: #0a3622;
         --error_red: #e31010;
+        --dark_green: #095D35;
     }
     h1, h2, h3, h4, h5, h6, p {
         margin-bottom: 0;
@@ -46,97 +47,143 @@
         color: var(--success_color);
         border-radius: 6px;
     }
-/* Common styles */
+/* #endregion */
 
 
-.guest .image {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-}
-.guest .form {
-    padding: 0 10%;
-}
-.guest .form .title {
-    font-size: 45px;
-    font-weight: 600;
-    color: var(--light_black);
-    text-align: center;
-    margin-bottom: 10px!important;
-}
-.guest .form .description {
-    font-size: 20px;
-    color: var(--gray);
-    text-align: center;
-    margin-bottom: 60px!important;
-}
-.guest .form .label {
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--light_black);
-    margin-bottom: 10px!important;
-}
-.guest .form .input-field {
-    border: 1px solid var(--input_border);
-    border-radius: 0;
-    height: 60px;
-    font-size: 17px;
-    color: var(--medium_gray);
-}
-.guest .form .input-field::placeholder {
-    font-size: 15px;
-}
-.guest .form .error-message {
-    font-size: 16px;
-    color: var(--error_red);
-    margin-top: 8px;
-}
-.guest .form .remember {
-    font-size: 16px;
-    color: var(--medium_gray);
-}
-.guest .form .checkbox {
-    border-radius: 0!important;
-    width: 17px;
-    height: 17px;
-    margin-right: 8px;
-    margin-top: -2px;
-}
-.guest .form .forgot-password {
-    font-size: 16px;
-    color: var(--medium_gray);
-}
-.guest .form .button {
-    background-color: var(--red);
-    width: 100%;
-    border-radius: 4px;
-    padding: 15px 0;
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--white);
-    transition: all 0.3s;
-    &:hover {
-        background-color: var(--light_black);
-        transition: all 0.3s;
+/* #region: Page */
+    .guest .image {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
     }
-}
-.guest .form .toggle-password {
-    color: var(--medium_gray);
-    cursor: pointer;
-    position: absolute;
-    top: 52px;
-    font-size: 20px;
-    right: 20px;
-}
-.guest .remember-password {
-    color: var(--medium_gray);
-    font-size: 16px;
-    text-align: center;
-    margin-top: 30px;
-}
+    .guest .form {
+        padding: 0 10%;
+    }
+    .guest .form .title {
+        font-size: 45px;
+        font-weight: 600;
+        color: var(--light_black);
+        text-align: center;
+        margin-bottom: 10px!important;
+    }
+    .guest .form .description {
+        font-size: 20px;
+        color: var(--gray);
+        text-align: center;
+        margin-bottom: 60px!important;
+    }
+    .guest .form .label {
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--light_black);
+        margin-bottom: 10px!important;
+    }
+    .guest .form .input-field {
+        border: 1px solid var(--input_border);
+        border-radius: 0;
+        height: 60px;
+        font-size: 17px;
+        color: var(--medium_gray);
+    }
+    .guest .form .input-field::placeholder {
+        font-size: 15px;
+    }
+    .guest .form .error-message {
+        font-size: 16px;
+        color: var(--error_red);
+        margin-top: 8px;
+    }
+    .guest .form .remember {
+        font-size: 16px;
+        color: var(--medium_gray);
+    }
+    .guest .form .checkbox {
+        border-radius: 0!important;
+        width: 17px;
+        height: 17px;
+        margin-right: 8px;
+        margin-top: -2px;
+    }
+    .guest .form .forgot-password {
+        font-size: 16px;
+        color: var(--medium_gray);
+    }
+    .guest .form .button {
+        background-color: var(--red);
+        width: 100%;
+        border-radius: 4px;
+        padding: 15px 0;
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--white);
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--light_black);
+            transition: all 0.3s;
+        }
+    }
+    .guest .form .toggle-password {
+        color: var(--medium_gray);
+        cursor: pointer;
+        position: absolute;
+        top: 52px;
+        font-size: 20px;
+        right: 20px;
+    }
+    .guest .remember-password {
+        color: var(--medium_gray);
+        font-size: 16px;
+        text-align: center;
+        margin-top: 30px;
+    }
+/* #endregion */
 
 
-/* Responsive */
+/* #region: Modal */
+    .notification-modal {
+        text-align: center;
+    }
+    .notification-modal .modal-body {
+        padding: 30px;
+    }
+    .notification-modal .tick-icon {
+        font-size: 35px;
+        color: var(--dark_green);
+    }
+    .notification-modal .title {
+        font-size: 24px;
+        font-weight: 600;
+        padding-bottom: 10px;
+        color: var(--black);
+    }
+    .notification-modal .description {
+        font-size: 16px;
+        color: var(--light_black);
+    }
+    .notification-modal .buttons {
+        display: flex;
+        align-items: center;
+        margin-top: 25px;
+        justify-content: center;
+        gap: 20px;
+    }
+    .notification-modal .close-button {
+        border: 1px solid var(--light_black);
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 0;
+        color: var(--light_black);
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--light_black);
+            color: var(--white);
+            transition: all 0.3s;
+        }
+    }
+/* #endregion */
+
+
+/* #region: Responsive */
     @media (width <= 1921px) {}
     @media (width <= 1901px) {}
     @media (width <= 1851px) {}
@@ -149,11 +196,7 @@
     @media (width <= 1367px) {}
     @media (width <= 1301px) {}
     @media (width <= 1281px) {}
-    @media (width <= 1151px) {
-        .guest .form {
-            padding: 0 5%;
-        }
-    }
+    @media (width <= 1151px) {}
     @media (width <= 1076px) {}
     @media (width <= 1025px) {
         .guest .form .title {
@@ -186,17 +229,20 @@
             font-size: 15px;
         }
         .guest .remember-password {
-            font-size: 15px;
-            margin-top: 25px;
+            font-size: 14px;
+            margin-top: 20px;
         }
     }
-    @media (width <= 991px) {}
+    @media (width <= 992px) {}
     @media (width <= 845px) {}
     @media (width <= 768px) {
         .guest {
             display: flex;
             align-items: center;
             height: 100vh;
+        }
+        .guest .form {
+            padding: 0 5%;
         }
     }
     @media (width <= 721px) {}
@@ -214,10 +260,11 @@
     @media (width <= 361px) {}
     @media (width <= 331px) {
         .guest .form .title {
-            font-size: 35px;
+            font-size: 30px;
         }
         .guest .form .description {
             font-size: 15px;
+            margin-bottom: 15px!important;
         }
         .guest .form .remember {
             font-size: 14px;
@@ -226,8 +273,7 @@
             font-size: 14px;
         }
         .guest .remember-password {
-            font-size: 14px;
-            margin-top: 20px;
+            margin-top: 10px;
         }
     }
-/* Responsive */
+/* #endregion */

@@ -16,17 +16,16 @@ return Application::configure(basePath: dirname(__DIR__))
         then: function () {
             Route::middleware('web')->name('backend-auth.')->group(base_path('routes/backend/auth.php'));
             Route::middleware('web')->name('admin.')->group(base_path('routes/backend/admin.php'));
-            Route::middleware('web')->name('manager.')->group(base_path('routes/backend/manager.php'));
             Route::middleware('web')->name('landlord.')->group(base_path('routes/backend/landlord.php'));
+            Route::middleware('web')->name('tenant.')->group(base_path('routes/backend/tenant.php'));
 
             Route::middleware('web')->name('frontend-auth.')->group(base_path('routes/frontend/auth.php'));
-            Route::middleware('web')->name('tenant.')->group(base_path('routes/frontend/tenant.php'));
             Route::middleware('web')->name('website.')->group(base_path('routes/frontend/website.php'));
         },
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->redirectTo(function ($request) {
-            if($request->is('admin/*') || $request->is('manager/*') || $request->is('landlord/*')) {
+            if($request->is('admin/*') || $request->is('landlord/*')) {
                 return route('backend-auth.portal.login');
             }
             return route('frontend-auth.login');

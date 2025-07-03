@@ -1,16 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 
-
-/* Import */
+/* #region: Import */
     @import url("../../backend/css/sidebar.css");
     @import url("../../backend/css/page.css");
     @import url("../../backend/css/inner-page.css");
-/* Import */
+/* #endregion */
 
 
-
-/* Common styles */
+/* #region: Global */
     * {
         font-family: "Manrope", serif;
     }
@@ -19,6 +17,7 @@
         --black: #000000;
         --light_black: #231F20;
         --red: #E31D1D;
+        --medium_red: #F4A2A2;
         --gray: #484546;
         --medium_gray: #7F7D7E;
         --medium_white: #F5F5F5;
@@ -27,6 +26,7 @@
         --blue: #3673F0;
         --green_opacity: rgba(41, 255, 152, 0.2);
         --dark_green: #095D35;
+        --gold: #FFAE4C;
     }
     body {
         background-color: var(--background);
@@ -46,17 +46,21 @@
         font-size: 14px;
         margin-top: 2px;
     }
-/* Common styles */
+    form .asterisk {
+        color: var(--red);
+        margin-left: 3px;
+    }
+/* #endregion */
 
 
-
-/* Navbar styles */
+/* #region: Navbar */
     .navbar {
         padding: 0 40px 0 55px;
         position: fixed;
         width: 100%;
         height: 85px;
         background-color: var(--white);
+        z-index: 9;
     }
     .navbar .navbar-brand {
         margin-right: 0;
@@ -129,15 +133,119 @@
         padding: 0;
         font-size: 15px;
     }
-/* Navbar styles */
+/* #endregion */
 
 
-
-/* Wrapper styles */
+/* #region: Wrapper */
     .wrapper {
         padding-top: 85px;
     }
     .wrapper .content {
         padding: 30px 40px 30px 310px;
     }
-/* Wrapper styles */
+/* #endregion */
+
+
+/* #region: Message */
+    .message-sidebar {
+        background-color: var(--white);
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .message-sidebar .title {
+        font-size: 18px;
+        font-weight: 600;
+        padding-bottom: 10px;
+        color: var(--light_black);
+    }
+    .message-sidebar .title {
+        font-size: 18px;
+        font-weight: 600;
+        padding-bottom: 10px;
+        color: var(--light_black);
+    }
+    .message-sidebar .menu {
+        list-style-type: none;
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+    .message-sidebar .link {
+        margin-bottom: 5px;
+    }
+    .message-sidebar .link:last-child {
+        margin-bottom: 0;
+    }
+    .message-sidebar .link .actual-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 15px;
+        font-weight: 400;
+        color: var(--light_black);
+        padding: 15px;
+        transition: all 0.3s;
+        &:hover {
+            background-color: rgb(244, 162, 162, 0.2);
+            border-radius: 5px;
+            transition: all 0.3s;
+            color: #B00606;
+            font-weight: 500;
+        }
+        &:hover .number {
+            color: #B00606;
+        }
+    }
+    .message-sidebar .link .actual-link .number {
+        color: var(--medium_gray);
+        font-size: 14px;
+        transition: all 0.3s;
+    }
+    .message-sidebar .link .actual-link.active {
+        background-color: rgb(244, 162, 162, 0.2);
+        border-radius: 5px;
+        transition: all 0.3s;
+        color: #B00606;
+        font-weight: 500;
+    }
+    .message-sidebar .link .actual-link.active > .number {
+        color: #B00606;
+    }
+    .message-sidebar .link .actual-link i {
+        margin-right: 20px;
+        font-size: 20px;
+        line-height: 0;
+    }
+/* #endregion */
+
+
+/* #region: Responsive */
+    @media (width <= 1921px) {}
+    @media (width <= 1901px) {}
+    @media (width <= 1851px) {}
+    @media (width <= 1801px) {}
+    @media (width <= 1751px) {}
+    @media (width <= 1681px) {}
+    @media (width <= 1601px) {}
+    @media (width <= 1537px) {}
+    @media (width <= 1441px) {}
+    @media (width <= 1367px) {}
+    @media (width <= 1301px) {}
+    @media (width <= 1281px) {}
+    @media (width <= 1151px) {}
+    @media (width <= 1076px) {}
+    @media (width <= 1025px) {}
+    @media (width <= 992px) {}
+    @media (width <= 845px) {}
+    @media (width <= 768px) {}
+    @media (width <= 721px) {}
+    @media (width <= 651px) {}
+    @media (width <= 576px) {}
+    @media (width <= 481px) {}
+    @media (width <= 429px) {}
+    @media (width <= 415px) {}
+    @media (width <= 396px) {}
+    @media (width <= 377px) {}
+    @media (width <= 361px) {}
+    @media (width <= 331px) {}
+/* #endregion */
+
