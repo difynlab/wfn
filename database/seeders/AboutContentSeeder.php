@@ -73,13 +73,13 @@ class AboutContentSeeder extends Seeder
                 // Section 4
                     'section_4_title_en' => 'Who Can Use Warehouse Exchange?',
                     'section_4_description_en' => '<p>Our Warehouse Exchange lets you easily access a variety of spaces, whether you’re a business in need of inventory storage or someone seeking a safe place for personal belongings. With options to rent, exchange, or share warehouse spaces, you can quickly find the perfect match that meets your specific needs.</p><p>&nbsp;</p><p>Whether it’s for short-term business storage, long-term personal use, or anything in between, our platform is designed to make warehouse exchanges seamless and hassle-free.</p>',
-                    'section_4_label_en' => 'Learn More',
+                    'section_4_button_en' => 'Learn More',
                     'section_4_image_1_title_en' => 'Business Storages',
                     'section_4_image_2_title_en' => 'Personal Storages',
 
                     'section_4_title_ar' => 'من يمكنه استخدام تبادل المستودعات؟',
                     'section_4_description_ar' => 'تتيح لك خدمة تبادل المستودعات لدينا الوصول بسهولة إلى مجموعة متنوعة من المساحات، سواءً كنت شركةً بحاجة إلى تخزين بضائعك أو تبحث عن مكان آمن لممتلكاتك الشخصية. مع خيارات استئجار أو تبادل أو مشاركة مساحات المستودعات، يمكنك بسهولة العثور على الخيار الأمثل الذي يلبي احتياجاتك الخاصة.</p><p>&nbsp;</p><p>سواءً كنتَ ترغب في تخزين أعمالك على المدى القصير، أو للاستخدام الشخصي طويل الأمد، أو لأي غرض آخر، صُممت منصتنا لجعل تبادل المستودعات سلسًا وخاليًا من المتاعب.</p>',
-                    'section_4_label_ar' => 'يتعلم أكثر',
+                    'section_4_button_ar' => 'يتعلم أكثر',
                     'section_4_image_1_title_ar' => 'مخازن الأعمال',
                     'section_4_image_2_title_ar' => 'التخزين الشخصي',
                 // Section 4

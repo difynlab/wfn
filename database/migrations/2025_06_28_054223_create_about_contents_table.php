@@ -46,7 +46,7 @@ return new class extends Migration
 
             $table->text('section_4_title_en')->nullable();
             $table->text('section_4_description_en')->nullable();
-            $table->text('section_4_label_en')->nullable();
+            $table->text('section_4_button_en')->nullable();
             $table->text('section_4_image_1_en')->nullable();
             $table->text('section_4_image_1_title_en')->nullable();
             $table->text('section_4_image_2_en')->nullable();
@@ -134,7 +134,7 @@ return new class extends Migration
 
             $table->text('section_4_title_ar')->nullable();
             $table->text('section_4_description_ar')->nullable();
-            $table->text('section_4_label_ar')->nullable();
+            $table->text('section_4_button_ar')->nullable();
             $table->text('section_4_image_1_ar')->nullable();
             $table->text('section_4_image_1_title_ar')->nullable();
             $table->text('section_4_image_2_ar')->nullable();
