@@ -12,7 +12,7 @@
 
     <ul class="menu">
         <li class="link">
-            <a href="{{ route('admin.messages.index', 'all') }}" class="actual-link {{ Request::segment(2) == 'messages' && Request::segment(3) == 'all' ? 'active' : '' }}">
+            <a href="{{ route('backend.messages.index', 'all') }}" class="actual-link {{ Request::segment(2) == 'messages' && Request::segment(3) == 'all' ? 'active' : '' }}">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-envelope"></i>
                     All Messages
@@ -23,7 +23,7 @@
         </li>
 
         <li class="link">
-            <a href="{{ route('admin.messages.index', 'general') }}" class="actual-link {{ Request::segment(2) == 'messages' && Request::segment(3) == 'general' ? 'active' : '' }}">
+            <a href="{{ route('backend.messages.index', 'general') }}" class="actual-link {{ Request::segment(2) == 'messages' && Request::segment(3) == 'general' ? 'active' : '' }}">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-layout-text-window-reverse"></i>
                     General Inquiry
@@ -34,7 +34,7 @@
         </li>
 
         <li class="link">
-            <a href="{{ route('admin.messages.index', 'landlord') }}" class="actual-link {{ Request::segment(2) == 'messages' && Request::segment(3) == 'landlord' ? 'active' : '' }}">
+            <a href="{{ route('backend.messages.index', 'landlord') }}" class="actual-link {{ Request::segment(2) == 'messages' && Request::segment(3) == 'landlord' ? 'active' : '' }}">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-house-lock"></i>
                     Landlord Inquiry
@@ -45,7 +45,7 @@
         </li>
 
         <li class="link">
-            <a href="{{ route('admin.messages.index', 'tenant') }}" class="actual-link {{ Request::segment(2) == 'messages' && Request::segment(3) == 'tenant' ? 'active' : '' }}">
+            <a href="{{ route('backend.messages.index', 'tenant') }}" class="actual-link {{ Request::segment(2) == 'messages' && Request::segment(3) == 'tenant' ? 'active' : '' }}">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-key"></i>
                     Tenant Inquiry
@@ -56,7 +56,7 @@
         </li>
 
         <li class="link">
-            <a href="{{ route('admin.messages.index', 'starred') }}" class="actual-link {{ Request::segment(2) == 'messages' && Request::segment(3) == 'starred' ? 'active' : '' }}">
+            <a href="{{ route('backend.messages.index', 'starred') }}" class="actual-link {{ Request::segment(2) == 'messages' && Request::segment(3) == 'starred' ? 'active' : '' }}">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-star"></i>
                     Starred
@@ -67,7 +67,7 @@
         </li>
 
         <li class="link">
-            <a href="{{ route('admin.messages.index', 'bin') }}" class="actual-link {{ Request::segment(2) == 'messages' && Request::segment(3) == 'bin' ? 'active' : '' }}">
+            <a href="{{ route('backend.messages.index', 'bin') }}" class="actual-link {{ Request::segment(2) == 'messages' && Request::segment(3) == 'bin' ? 'active' : '' }}">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-trash"></i>
                     Bin

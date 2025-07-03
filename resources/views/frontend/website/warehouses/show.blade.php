@@ -803,7 +803,7 @@
                             </div>
                         </div>
 
-                        <a href="{{ route('website.warehouses.book', 1) }}" class="confirm-button">Confirm Booking</a>
+                        <a href="{{ route('frontend.warehouses.book', 1) }}" class="confirm-button">Confirm Booking</a>
                     </div>
                 </div>
             </div>

@@ -51,13 +51,29 @@
     </div>
 </div>
 
-<div class="modal fade notification-modal" id="authentication-modal">
+<div class="modal fade notification-modal" id="forgot-password-modal">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body">
                 <i class="bi bi-check-circle-fill tick-icon"></i>
-                <p class="title">{{ session('authentication') }}</p>
-                <p class="description">Request successful.</p>
+                <p class="title">{{ session('forgot-password') }}</p>
+                <p class="description">Please check your inbox and follow the steps to reset your password.</p>
+
+                <div class="buttons">
+                    <button type="button" class="btn close-button" data-bs-dismiss="modal" title="Close">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade notification-modal" id="unauthorized-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <i class="bi bi-x-circle-fill close-icon"></i>
+                <p class="title">{{ session('unauthorized') }}</p>
+                <p class="description">You cannot access the admin portal.</p>
 
                 <div class="buttons">
                     <button type="button" class="btn close-button" data-bs-dismiss="modal" title="Close">Close</button>
@@ -92,10 +108,18 @@
         </script>
     @endif
 
-    @if(session('authentication'))
+    @if(session('forgot-password'))
         <script>
             $(document).ready(function() {
-                $('#authentication-modal').modal('show');
+                $('#forgot-password-modal').modal('show');
+            });
+        </script>
+    @endif
+
+    @if(session('unauthorized'))
+        <script>
+            $(document).ready(function() {
+                $('#unauthorized-modal').modal('show');
             });
         </script>
     @endif

@@ -10,7 +10,7 @@
                 <p class="description">Manage reminders and notes with the to-do list.</p>
             </div>
             <div class="col-4 text-end">
-                <a href="{{ route('admin.todos.create') }}" class="add-button">
+                <a href="{{ route('backend.todos.create') }}" class="add-button">
                     <i class="bi bi-plus-lg"></i>
                     Add New
                 </a>

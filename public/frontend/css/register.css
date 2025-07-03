@@ -1,57 +1,148 @@
-.register .title {
-    font-size: 32px;
-    font-weight: 500;
-    color: var(--light_black);
-    margin-bottom: 5px!important;
-}
-.register .description {
-    font-size: 16px;
-    color: var(--gray);
-    margin-bottom: 30px!important;
-}
-.register .radio-label {
-    font-size: 16px;
-    color: var(--gray);
-}
-.register .radio {
-    border: 2px solid var(--input_border);
-    width: 32px;
-    height: 32px;
-    margin-right: 6px;
-    margin-top: 0px;
-}
-.register .label {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--light_black);
-    margin-bottom: 10px!important;
-}
-.register .input-field {
-    border: 1px solid var(--input_border);
-    border-radius: 4px;
-    height: 50px;
-    font-size: 14px;
-    color: var(--medium_gray);
-}
-.register .register-button {
-    background-color: var(--red);
-    border-radius: 4px;
-    padding: 15px 35px;
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--white);
-    margin-bottom: 20px;
-    transition: all 0.3s;
-    &:hover {
-        background-color: var(--light_black);
-        transition: all 0.3s;
+/* #region Page */
+    .register .title {
+        font-size: 32px;
+        font-weight: 500;
+        color: var(--light_black);
+        margin-bottom: 5px!important;
     }
-}
-.register .exist-account {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--medium_gray);
-}
-.register .exist-account .span-link {
-    color: var(--blue);
-}
+    .register .description {
+        font-size: 16px;
+        color: var(--gray);
+        margin-bottom: 30px!important;
+    }
+    .register .radio-label {
+        font-size: 16px;
+        color: var(--gray);
+        cursor: pointer;
+    }
+    .register .radio {
+        border: 2px solid var(--input_border);
+        width: 32px;
+        height: 32px;
+        margin-right: 6px;
+        margin-top: 0px;
+        cursor: pointer;
+    }
+    .register .label {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--light_black);
+        margin-bottom: 10px!important;
+    }
+    .register .input-field {
+        border: 1px solid var(--input_border);
+        border-radius: 4px;
+        height: 50px;
+        font-size: 14px;
+        color: var(--medium_gray);
+    }
+    .register .toggle-password {
+        color: var(--medium_gray);
+        cursor: pointer;
+        position: absolute;
+        top: 43px;
+        font-size: 20px;
+        right: 20px;
+    }
+    .register .register-button {
+        background-color: var(--red);
+        border-radius: 4px;
+        padding: 15px 35px;
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--white);
+        margin-bottom: 20px;
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--light_black);
+            transition: all 0.3s;
+        }
+    }
+    .register .exist-account {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--medium_gray);
+    }
+    .register .exist-account .span-link {
+        color: var(--blue);
+    }
+/* #endregion */
+
+
+/* #region Responsive */
+    @media (width < 1921px) {}
+    @media (width < 1901px) {}
+    @media (width < 1851px) {}
+    @media (width < 1801px) {}
+    @media (width < 1751px) {}
+    @media (width < 1681px) {}
+    @media (width < 1601px) {}
+    @media (width < 1537px) {}
+    @media (width < 1441px) {}
+    @media (width < 1367px) {}
+    @media (width < 1301px) {}
+    @media (width < 1281px) {}
+    @media (width < 1151px) {}
+    @media (width < 1076px) {}
+    @media (width < 1025px) {}
+    @media (width < 992px) {}
+    @media (width < 845px) {}
+    @media (width < 768px) {
+        .register .title {
+            font-size: 20px;
+        }
+        .register .description {
+            font-size: 14px;
+            margin-bottom: 15px!important;
+        }
+        .register .radio {
+            width: 23px;
+            height: 23px;
+        }
+        .register .radio-label {
+            font-size: 15px;
+        }
+        .register .label {
+            font-size: 15px;
+            margin-bottom: 5px!important;
+        }
+        .register .input-field {
+            height: 45px;
+        }
+        .register .toggle-password {
+            top: 39px;
+            font-size: 18px;
+            right: 25px;
+        }
+        .register .register-button {
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        .register .exist-account {
+            text-align: center;
+        }
+    }
+    @media (width < 721px) {}
+    @media (width < 576px) {}
+    @media (width < 481px) {}
+    @media (width < 429px) {
+        .register .title {
+            margin-bottom: 3px!important;
+        }
+        .register .radio-label {
+            font-size: 14px;
+        }
+        .register .label {
+            font-size: 14px;
+            margin-bottom: 2px!important;
+        }
+        .register .exist-account {
+            font-size: 13px;
+        }
+    }
+    @media (width < 415px) {}
+    @media (width < 396px) {}
+    @media (width < 377px) {}
+    @media (width < 361px) {}
+    @media (width < 331px) {}
+/* #endregion */

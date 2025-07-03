@@ -4,7 +4,7 @@
             <p class="text">Need warehouse space?</p>
             <p class="text">Let's match you with the ideal location!</p>
 
-            <a href="{{ route('frontend-auth.register') }}" class="button">Register Now</a>
+            <a href="{{ route('frontend.register') }}" class="button">Register Now</a>
         </div>
 
         <div class="bottom">
@@ -13,11 +13,11 @@
                     <p class="title">Navigation</p>
                     <ul>
                         <li>
-                            <a href="{{ route('website.about') }}">About</a>
+                            <a href="{{ route('frontend.about') }}">About</a>
                         </li>
 
                         <li>
-                            <a href="{{ route('website.warehouses.index') }}">Warehouses</a>
+                            <a href="{{ route('frontend.warehouses.index') }}">Warehouses</a>
                         </li>
                     </ul>
                 </div>
@@ -26,11 +26,11 @@
                     <p class="title">Support</p>
                     <ul>
                         <li>
-                            <a href="{{ route('website.articles.index') }}">Articles</a>
+                            <a href="{{ route('frontend.articles.index') }}">Articles</a>
                         </li>
 
                         <li>
-                            <a href="{{ route('website.support') }}">Support</a>
+                            <a href="{{ route('frontend.support') }}">Support</a>
                         </li>
                     </ul>
                 </div>

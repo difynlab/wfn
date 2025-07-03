@@ -9,25 +9,26 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RoleMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
-    public function handle(Request $request, Closure $next, ...$roles): Response
+    public function handle(Request $request, Closure $next, $role): Response
     {
-        if(!Auth::check()) {
-            return redirect()->route('backend-auth.portal.login');
-        }
-
         $user = Auth::user();
 
-        if(!in_array($user->role, $roles)) {
+        if($user->role != $role) {
             Auth::guard('web')->logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();
 
-            return redirect()->route('backend-auth.portal.login')->withInput()->with('error', 'Unauthorized');
+            if($role == 'admin') {
+                return redirect()->route('backend.login')->withInput()->with('unauthorized', 'Unauthossssrized');
+            }
+            else {
+                return redirect()->route('frontend.login')->withInput()->with(
+                    [
+                        'error' => 'Unauthorized Access',
+                        'message' => 'You cannot access that URL.',
+                    ]
+                );
+            }
         }
 
         return $next($request);

@@ -23,7 +23,7 @@
 
             <div class="col-8">
                 <div class="message-form">
-                    <form action="{{ route('admin.messages.update', $message) }}" method="POST" enctype="multipart/form-data" class="form">
+                    <form action="{{ route('backend.messages.update', $message) }}" method="POST" enctype="multipart/form-data" class="form">
                         @csrf
                         <div class="row">
                             <div class="col-12 mb-5">

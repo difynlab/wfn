@@ -4,7 +4,7 @@
 
 @section('content')
     
-    <form action="{{ route('backend-auth.portal.reset-password.store') }}" method="POST" class="form">
+    <form action="{{ route('backend.reset-password.store') }}" method="POST" class="form">
         @csrf
 
         <p class="title">Reset Password</p>

@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name') }} | @yield('title')</title>
-        <!-- <link rel="icon" href=""> -->
+        <title>{{ App\Models\Setting::find(1)->name }} | @yield('title')</title>
+        <link rel="icon" href="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->favicon) }}">
         
         @stack('before-styles')
             <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css') }}">

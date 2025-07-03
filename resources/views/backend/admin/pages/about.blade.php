@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="inner-page">
-        <form action="{{ route('admin.pages.about.update', $language) }}" method="POST" enctype="multipart/form-data" class="form">
+        <form action="{{ route('backend.pages.about.update', $language) }}" method="POST" enctype="multipart/form-data" class="form">
             @csrf
             <div class="page-details">
                 <p class="title">{{ ucfirst($language) }} Language</p>

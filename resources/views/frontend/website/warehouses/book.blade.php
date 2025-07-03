@@ -125,14 +125,14 @@
                                 </div>
 
                                 <div class="col-6 text-end">
-                                    <a href="{{ route('frontend-auth.forgot-password') }}" class="forgot-password">Forgot Password?</a>
+                                    <a href="{{ route('frontend.forgot-password') }}" class="forgot-password">Forgot Password?</a>
                                 </div>
                             </div>
                             
                             <button type="submit" class="btn login-button">Continue</button>
                         </form>
 
-                        <a href="{{ route('frontend-auth.register') }}" class="register-button">
+                        <a href="{{ route('frontend.register') }}" class="register-button">
                             <i class="bi bi-envelope"></i>
                             Register with Email
                         </a>

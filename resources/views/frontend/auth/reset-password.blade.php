@@ -1,57 +1,46 @@
 @extends('frontend.layouts.app')
 
-@section('title', $contents->{'reset_page_name_' . $middleware_language} !== '' 
-    ? $contents->{'reset_page_name_' . $middleware_language} 
-    : $contents->reset_page_name_en)
+@section('title', 'Reset Password')
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/reset-password.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/captcha.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/auth.css') }}">
 @endpush
 
 @section('content')
-    
-<div class="container custom-container my-lg-5 mb-4 my-0">
-    <div class="row flex-grow-1 d-flex align-items-center">
+    <div class="container page-global reset-password">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-5">
+                <p class="title">{{ $contents->{'reset_title_' . $middleware_language} ?? $contents->reset_title_en }}</p>
+                <p class="description">{{ $contents->{'reset_description_' . $middleware_language} ?? $contents->reset_description_en }}</p>
 
-            <div class="col-lg-8 white-section d-flex justify-content-center">
-                <div class="form-container">
+                <form action="{{ route('frontend.reset-password.store') }}" method="POST">
+                    @csrf
+                    <div class="mb-3 mb-md-4 position-relative">
+                        <label for="password" class="form-label label">{{ $contents->{'	reset_new_password_' . $middleware_language} ?? $contents->	reset_new_password_en }}</label>
+                        <input type="password" class="form-control input-field" id="password" name="password" placeholder="* * * * * * *" required>
+                        <span class="bi bi-eye-slash-fill toggle-password"></span>
+                        <x-backend.input-error field="password"></x-backend.input-error>
+                    </div>
 
-                    <h1 class="fs-39">{{ $contents->{'reset_page_title_' . $middleware_language} ?? $contents->reset_page_title_en }}</h1>
-                    <p class="subheading fs-16">{{ $contents->{'reset_page_sub_title_' . $middleware_language} ?? $contents->reset_page_sub_title_en }}</p>
+                    <div class="mb-3 mb-md-4 position-relative">
+                        <label for="passwordConfirmation" class="form-label label">{{ $contents->{'reset_confirm_password_' . $middleware_language} ?? $contents->reset_confirm_password_en }}</label>
+                        <input type="password" class="form-control input-field" id="passwordConfirmation" name="password_confirmation" placeholder="* * * * * * *" required/>
+                        <span class="bi bi-eye-slash-fill toggle-password"></span>
+                        <x-backend.input-error field="password_confirmation"></x-backend.input-error>
+                    </div>
 
-                    <form method="POST" action="{{ route('frontend.password.store') }}">
-                        @csrf
-                        <div class="form-group position-relative">
-                            <label for="new-password">{{ $contents->{'reset_page_new_password_' . $middleware_language} ?? $contents->reset_page_new_password_en }}</label>
-                            <input type="password" class="form-control pr-5" id="new-password" name="password" required>
-                            <span class="bi bi-eye-slash-fill toggle-password"></span>
-                            <x-backend.input-error field="password"></x-backend.input-error>
-                        </div>
-                        
-                        <div class="form-group position-relative">
-                            <label for="confirm-password">{{ $contents->{'reset_page_confirm_password_' . $middleware_language} ?? $contents->reset_page_confirm_password_en }}</label>
-                            <input type="password" class="form-control pr-5" id="confirm-password" name="confirm_password" required>
-                            <span class="bi bi-eye-slash-fill toggle-password"></span>
-                            <x-backend.input-error field="confirm_password"></x-backend.input-error>
-                        </div>
-
-                        <div class="form-input">
-                            <input type="hidden" name="email" value="{{ $email }}">
-                            <input type="hidden" name="token" value="{{ $token }}">
-                            <button type="submit" class="btn btn-primary btn-block submit-button" disabled>{{ $contents->{'reset_page_button_' . $middleware_language} ?? $contents->reset_page_button_en }}</button>
-                        </div>
-                    </form>
-                </div>
+                    <input type="hidden" name="email" value="{{ $email }}">
+                    <input type="hidden" name="token" value="{{ $token }}">
+                    <button type="submit" class="btn reset-password-button">{{ $contents->{'reset_button_' . $middleware_language} ?? $contents->reset_button_en }}</button>
+                </form>
             </div>
         </div>
-    </div>
 
+        <x-frontend.notification></x-frontend.notification>
+    </div>
 @endsection
 
 @push('after-scripts')
-    <script src="{{ asset('frontend/js/captcha.js') }}"></script>
     <script>
         $(".toggle-password").click(function () {
             $(this).toggleClass("bi-eye-slash-fill bi-eye-fill");

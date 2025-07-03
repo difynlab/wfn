@@ -26,19 +26,19 @@ class AuthenticationController extends Controller
         }
         
         $credentials = $request->only('email', 'password');
-        $credentials['status'] = '1';
+        $credentials['status'] = 1;
 
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
             $user = Auth::user();
 
-            if(in_array($user->role, ['admin', 'landlord'])) {
-                return redirect()->intended("/{$user->role}/dashboard");
+            if($user->role == 'admin') {
+                return redirect()->route('backend.dashboard');
             }
             else {
                 Auth::logout();
-                return redirect()->route('backend-auth.portal.login')->withInput()->with('error', 'Unauthorized');
+                return redirect()->route('backend.login')->withInput()->with('unauthorized', 'Unauthorized');
             }
         }
 
@@ -53,6 +53,6 @@ class AuthenticationController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('backend-auth.portal.login');
+        return redirect()->route('backend.login');
     }
 }

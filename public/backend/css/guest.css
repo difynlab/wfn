@@ -160,13 +160,6 @@
         font-size: 16px;
         color: var(--light_black);
     }
-    .notification-modal .buttons {
-        display: flex;
-        align-items: center;
-        margin-top: 25px;
-        justify-content: center;
-        gap: 20px;
-    }
     .notification-modal .close-button {
         border: 1px solid var(--light_black);
         font-size: 14px;
@@ -179,6 +172,53 @@
             color: var(--white);
             transition: all 0.3s;
         }
+    }
+    .notification-modal .arrow-icon {
+        padding-right: 10px;
+    }
+    .notification-modal .triangle-icon {
+        font-size: 35px;
+        color: var(--medium_red);
+    }
+    .notification-modal .close-icon {
+        font-size: 35px;
+        color: var(--red);
+    }
+    .notification-modal .buttons {
+        display: flex;
+        align-items: center;
+        margin-top: 25px;
+        justify-content: center;
+        gap: 20px;
+    }
+    .notification-modal .cancel-button {
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 0;
+        color: var(--light_black);
+        transition: all 0.3s;
+        &:hover {
+            font-weight: 800;
+            transition: all 0.3s;
+        }
+    }
+    .notification-modal .delete-button {
+        background-color: var(--red);
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 0;
+        border: none;
+        color: var(--white);
+        width: 200px;
+        height: 60px;
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--light_black);
+            transition: all 0.3s;
+        }
+    }
+    .notification-modal .delete-button .delete-icon {
+        padding-right: 5px;
     }
 /* #endregion */
 

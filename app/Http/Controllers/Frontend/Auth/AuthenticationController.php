@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\AuthenticationContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -11,7 +12,11 @@ class AuthenticationController extends Controller
 {
     public function login()
     {
-        return view('frontend.auth.login');
+        $contents = AuthenticationContent::find(1);
+
+        return view('frontend.auth.login', [
+            'contents' => $contents
+        ]);
     }
 
     public function store(Request $request)
@@ -26,19 +31,27 @@ class AuthenticationController extends Controller
         }
         
         $credentials = $request->only('email', 'password');
-        $credentials['status'] = '1';
+        $credentials['status'] = 1;
 
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
             $user = Auth::user();
 
-            if($user->role == 'tenant') {
-                return redirect()->intended("/tenant/dashboard");
+            if($user->role == 'landlord') {
+                return redirect()->route('frontend.landlord.dashboard');
+            }
+            elseif($user->role == 'tenant') {
+                return redirect()->route('frontend.tenant.dashboard');
             }
             else {
                 Auth::logout();
-                return redirect()->route('frontend-auth.login')->withInput()->with('error', 'Unauthorized');
+                return redirect()->route('frontend.login')->withInput()->with(
+                    [
+                        'error' => 'Unauthorized Access',
+                        'message' => 'You cannot access that URL.',
+                    ]
+                );
             }
         }
 
@@ -53,6 +66,6 @@ class AuthenticationController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('frontend-auth.login');
+        return redirect()->route('frontend.login');
     }
 }

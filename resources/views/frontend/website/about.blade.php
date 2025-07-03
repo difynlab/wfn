@@ -125,7 +125,7 @@
                         </p>
                     </div>
 
-                    <a href="{{ route('website.warehouses.index') }}" class="learn-more-btn">Learn More</a>
+                    <a href="{{ route('frontend.warehouses.index') }}" class="learn-more-btn">Learn More</a>
                 </div>
 
                 <div class="col-6 right">

@@ -1,6 +1,6 @@
 <div class="container">
     <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="{{ route('website.homepage') }}">
+        <a class="navbar-brand" href="{{ route('frontend.homepage') }}">
             <img src="{{ asset('storage/frontend/logo.png') }}" alt="Logo" class="logo">
         </a>
 
@@ -11,27 +11,27 @@
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav align-items-center ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::segment(1) == '' ? 'active' : '' }}" href="{{ route('website.homepage') }}">Home</a>
+                    <a class="nav-link {{ Request::segment(1) == '' ? 'active' : '' }}" href="{{ route('frontend.homepage') }}">Home</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::segment(1) == 'about' ? 'active' : '' }}" href="{{ route('website.about') }}">About</a>
+                    <a class="nav-link {{ Request::segment(1) == 'about' ? 'active' : '' }}" href="{{ route('frontend.about') }}">About</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::segment(1) == 'warehouses' ? 'active' : '' }}" href="{{ route('website.warehouses.index') }}">Warehouses</a>
+                    <a class="nav-link {{ Request::segment(1) == 'warehouses' ? 'active' : '' }}" href="{{ route('frontend.warehouses.index') }}">Warehouses</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::segment(1) == 'support' ? 'active' : '' }}" href="{{ route('website.support') }}">Support</a>
+                    <a class="nav-link {{ Request::segment(1) == 'support' ? 'active' : '' }}" href="{{ route('frontend.support') }}">Support</a>
                 </li>
 
                 <li class="nav-item m-0">
-                    <a class="nav-link login-button" href="{{ route('frontend-auth.login') }}">Log In</a>
+                    <a class="nav-link login-button" href="{{ route('frontend.login') }}">Log In</a>
                 </li>
 
                 <li class="nav-item m-0">
-                    <a class="nav-link register-button" href="{{ route('frontend-auth.register') }}">Register Now</a>
+                    <a class="nav-link register-button" href="{{ route('frontend.register') }}">Register Now</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -56,7 +56,7 @@
     <script>
         $('.navbar .language-option').on('click', function() {
             let language = $(this).attr('data-language');
-            let route = '{{ route("website.set-language") }}';
+            let route = '{{ route("frontend.language") }}';
             let csrfToken = '{{ csrf_token() }}';
 
             $.ajax({

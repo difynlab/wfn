@@ -10,48 +10,57 @@
 
     <div class="container page-global login">
         <div class="row">
-            <div class="col-4 left">
-                <img src="{{ asset('storage/frontend/login.jpg') }}" alt="Log In" class="image">
+            <div class="col-12 col-lg-5 col-xl-4 left">
+                @if($contents->{'login_image_' . $middleware_language})
+                    <img src="{{ asset('storage/backend/pages/' . $contents->{'login_image_' . $middleware_language}) }}" alt="Log In" class="image">
+                @elseif($contents->login_image_en)
+                    <img src="{{ asset('storage/backend/pages/' . $contents->login_image_en) }}" alt="Log In" class="image">
+                @else
+                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Log In" class="image">
+                @endif
             </div>
 
-            <div class="col-8 right">
-                <p class="title">Get Started Now</p>
-                <p class="description">Log in to access portal, track progress, and manage requests</p>
+            <div class="col-12 col-lg-7 col-xl-8 right">
+                <p class="title">{{ $contents->{'login_title_' . $middleware_language} ?? $contents->login_title_en }}</p>
+                <p class="description">{{ $contents->{'login_description_' . $middleware_language} ?? $contents->login_description_en }}</p>
 
-                <form action="{{ route('frontend-auth.login.store') }}" method="POST" class="form">
+                <form action="{{ route('frontend.login.store') }}" method="POST" class="form">
                     @csrf
-                    <div class="mb-4">
-                        <label for="email" class="form-label label">Email Address</label>
-                        <input type="email" class="form-control input-field" id="email" name="email" value="{{ old('email') }}" placeholder="Please enter your email address" required>
+                    <div class="mb-3 mb-md-4">
+                        <label for="email" class="form-label label">{{ $contents->{'login_username_' . $middleware_language} ?? $contents->login_username_en }}</label>
+                        <input type="email" class="form-control input-field" id="email" name="email" value="{{ old('email') }}" placeholder="{{ $contents->{'login_username_placeholder_' . $middleware_language} ?? $contents->login_username_placeholder_en }}" required>
                         <x-backend.input-error field="email"></x-backend.input-error>
                     </div>
 
-                    <div class="mb-4">
-                        <label for="password" class="form-label label">Password</label>
+                    <div class="mb-3 mb-md-4 position-relative">
+                        <label for="password" class="form-label label">{{ $contents->{'login_password_' . $middleware_language} ?? $contents->login_password_en }}</label>
                         <input type="password" class="form-control input-field" id="password" name="password" placeholder="* * * * * * *" required>
+                        <span class="bi bi-eye-slash-fill toggle-password"></span>
                     </div>
 
                     <div class="row align-items-center mb-4">
                         <div class="col-6">
                             <div class="form-check d-flex align-items-center">
                                 <input type="checkbox" class="form-check-input checkbox" id="remember">
-                                <label class="form-check-label remember" for="remember">Remember Me</label>
+                                <label class="form-check-label remember" for="remember">{{ $contents->{'login_remember_' . $middleware_language} ?? $contents->login_remember_en }}</label>
                             </div>
                         </div>
 
                         <div class="col-6 text-end">
-                            <a href="{{ route('frontend-auth.forgot-password') }}" class="forgot-password">Forgot Password?</a>
+                            <a href="{{ route('frontend.forgot-password') }}" class="forgot-password">{{ $contents->{'login_forgot_password_' . $middleware_language} ?? $contents->login_forgot_password_en }}</a>
                         </div>
                     </div>
                     
-                    <button type="submit" class="btn login-button">Login Now</button>
+                    <button type="submit" class="btn login-button">{{ $contents->{'login_button_' . $middleware_language} ?? $contents->login_button_en }}</button>
                 </form>
 
-                <p class="no-account">Don't have an account?
-                    <a href="{{ route('frontend-auth.register') }}" class="span-link">Register here</a>
+                <p class="no-account">{{ $contents->{'login_no_account_' . $middleware_language} ?? $contents->login_no_account_en }}
+                    <a href="{{ route('frontend.register') }}" class="span-link">{{ $contents->{'login_register_' . $middleware_language} ?? $contents->login_register_en }}</a>
                 </p>
             </div>
         </div>
+
+        <x-frontend.notification></x-frontend.notification>
     </div>
 
 @endsection

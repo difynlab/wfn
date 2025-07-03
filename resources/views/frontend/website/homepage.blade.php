@@ -318,7 +318,7 @@
                 <div class="tab-pane fade show active" id="pills-riyadh" role="tabpanel" aria-labelledby="pills-riyadh-tab" tabindex="0">
                     <div class="row">
                         <div class="col-4">
-                            <a href="{{ route('website.warehouses.show', 1) }}">
+                            <a href="{{ route('frontend.warehouses.show', 1) }}">
                                 <div class="card">
                                     <img src="{{ asset('storage/frontend/riyadh-1.png') }}" class="card-image" alt="Warehouse">
 
@@ -637,7 +637,7 @@
                             <div class="col-9">
                                 <p class="title">Prime Location and Accessibility</p>
                                 <p class="description">Warehouses with easy access to major transport routes for efficient logistics.</p>
-                                <a href="{{ route('website.warehouses.area', 1) }}" class="checkout">Checkout</a>
+                                <a href="{{ route('frontend.warehouses.area', 1) }}" class="checkout">Checkout</a>
                             </div>
                         </div>
                     </div>
@@ -652,7 +652,7 @@
                             <div class="col-9">
                                 <p class="title">Prime Location and Accessibility</p>
                                 <p class="description">Warehouses with easy access to major transport routes for efficient logistics.</p>
-                                <a href="{{ route('website.warehouses.area', 1) }}" class="checkout">Checkout</a>
+                                <a href="{{ route('frontend.warehouses.area', 1) }}" class="checkout">Checkout</a>
                             </div>
                         </div>
                     </div>
@@ -667,7 +667,7 @@
                             <div class="col-9">
                                 <p class="title">Prime Location and Accessibility</p>
                                 <p class="description">Warehouses with easy access to major transport routes for efficient logistics.</p>
-                                <a href="{{ route('website.warehouses.area', 1) }}" class="checkout">Checkout</a>
+                                <a href="{{ route('frontend.warehouses.area', 1) }}" class="checkout">Checkout</a>
                             </div>
                         </div>
                     </div>
@@ -682,7 +682,7 @@
                             <div class="col-9">
                                 <p class="title">Prime Location and Accessibility</p>
                                 <p class="description">Warehouses with easy access to major transport routes for efficient logistics.</p>
-                                <a href="{{ route('website.warehouses.area', 1) }}" class="checkout">Checkout</a>
+                                <a href="{{ route('frontend.warehouses.area', 1) }}" class="checkout">Checkout</a>
                             </div>
                         </div>
                     </div>
@@ -725,7 +725,7 @@
                 </div>
 
                 <div class="col-4 text-end">
-                    <a href="{{ route('website.articles.index') }}" class="view-more-button">View More Articles</a>
+                    <a href="{{ route('frontend.articles.index') }}" class="view-more-button">View More Articles</a>
                 </div>
             </div>
 
@@ -740,7 +740,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
-                        <a href="{{ route('website.articles.show', 1) }}" class="read-more-button">Read more</a>
+                        <a href="{{ route('frontend.articles.show', 1) }}" class="read-more-button">Read more</a>
                     </div>
                 </div>
 
@@ -748,13 +748,13 @@
                     <div class="single-article">
                         <img src="{{ asset('storage/frontend/article-side.png') }}" class="right-image" alt="Image">
                         <p class="title">Sed do eiusmod tempor incididun ut labore et dolore</p>
-                        <a href="{{ route('website.articles.show', 1) }}" class="read-more-button">Read more</a>
+                        <a href="{{ route('frontend.articles.show', 1) }}" class="read-more-button">Read more</a>
                     </div>
 
                     <div class="single-article">
                         <img src="{{ asset('storage/frontend/article-side.png') }}" class="right-image" alt="Image">
                         <p class="title">Sed do eiusmod tempor incididun ut labore et dolore</p>
-                        <a href="{{ route('website.articles.show', 1) }}" class="read-more-button">Read more</a>
+                        <a href="{{ route('frontend.articles.show', 1) }}" class="read-more-button">Read more</a>
                     </div>
                 </div>
             </div>
@@ -769,7 +769,7 @@
                     </div>
 
                     <div class="col-3">
-                        <a href="{{ route('frontend-auth.register') }}" class="advertise-button">Advertise Now</a>
+                        <a href="{{ route('frontend.register') }}" class="advertise-button">Advertise Now</a>
                     </div>
                 </div>
             </div>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('login_name_en')->nullable();
             $table->text('login_title_en')->nullable();
             $table->text('login_description_en')->nullable();
+            $table->text('login_image_en')->nullable();
             $table->text('login_username_en')->nullable();
             $table->text('login_username_placeholder_en')->nullable();
             $table->text('login_password_en')->nullable();
@@ -67,6 +68,7 @@ return new class extends Migration
             $table->text('login_name_ar')->nullable();
             $table->text('login_title_ar')->nullable();
             $table->text('login_description_ar')->nullable();
+            $table->text('login_image_ar')->nullable();
             $table->text('login_username_ar')->nullable();
             $table->text('login_username_placeholder_ar')->nullable();
             $table->text('login_password_ar')->nullable();

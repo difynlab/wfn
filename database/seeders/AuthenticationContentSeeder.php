@@ -20,7 +20,7 @@ class AuthenticationContentSeeder extends Seeder
                 'login_username_placeholder_en' => 'Please enter your username',
                 'login_password_en'         => 'Password',
                 'login_remember_en'=> 'Remember Me',
-                'login_forgot_password_en' => 'Forgot Password',
+                'login_forgot_password_en' => 'Forgot Password?',
                 'login_button_en'           => 'Login Now',
                 'login_no_account_en'      => 'Don\'t have an account?',
                 'login_register_en'        => 'Register here',

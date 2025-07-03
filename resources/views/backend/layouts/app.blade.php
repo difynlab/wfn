@@ -33,7 +33,7 @@
             <script src="{{ asset('backend/js/bootstrap.js') }}"></script>
             <script src="https://cdn.ckeditor.com/ckeditor5/12.3.1/classic/ckeditor.js"></script>
             <script>
-                const uploadUrl = "{{ route('admin.ckeditor.upload') }}?_token={{ csrf_token() }}";
+                const uploadUrl = "{{ route('backend.ckeditor.upload') }}?_token={{ csrf_token() }}";
             </script>
             <script src="{{ asset('backend/js/select2.js') }}"></script>
             <script src="{{ asset('backend/js/chart.js') }}"></script>

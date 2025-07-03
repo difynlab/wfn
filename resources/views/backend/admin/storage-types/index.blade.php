@@ -10,7 +10,7 @@
                 <p class="description">Manage storage types here.</p>
             </div>
             <div class="col-4 text-end">
-                <a href="{{ route('admin.storage-types.create') }}" class="add-button">
+                <a href="{{ route('backend.storage-types.create') }}" class="add-button">
                     <i class="bi bi-plus-lg"></i>
                     Add New Storage Type
                 </a>
@@ -19,7 +19,7 @@
 
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('admin.storage-types.filter') }}" method="GET" class="filter-form">
+                <form action="{{ route('backend.storage-types.filter') }}" method="GET" class="filter-form">
                     <div class="input-group">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                         <input type="text" class="form-control input-field" name="name" value="{{ $name ?? '' }}" placeholder="Search by Name">
@@ -91,7 +91,7 @@
         $(document).ready(function() {
             $('.page .table .delete-button').on('click', function() {
                 let id = $(this).attr('id');
-                let url = "{{ route('admin.storage-types.destroy', [':id']) }}";
+                let url = "{{ route('backend.storage-types.destroy', [':id']) }}";
                 destroy_url = url.replace(':id', id);
 
                 $('.page #delete-modal form').attr('action', destroy_url);

@@ -9,21 +9,20 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RedirectIfAuthenticatedMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
     public function handle(Request $request, Closure $next): Response
     {
         if(Auth::check()) {
             $role = Auth::user()->role;
 
-            return match ($role) {
-                'admin' => redirect()->route('admin.dashboard'),
-                'landlord' => redirect()->route('landlord.dashboard'),
-                default => redirect()->route('backend-auth.portal.login')
-            };
+            if($role == 'admin') {
+                return redirect()->route('backend.dashboard');
+            }
+            elseif($role == 'landlord') {
+                return redirect()->route('frontend.landlord.dashboard');
+            }
+            else {
+                return redirect()->route('frontend.tenant.dashboard');
+            }
         }
 
         return $next($request);

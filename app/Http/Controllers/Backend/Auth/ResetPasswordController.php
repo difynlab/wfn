@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\PasswordResetToken;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class ResetPasswordController extends Controller
@@ -45,10 +46,10 @@ class ResetPasswordController extends Controller
 
         $user = User::where('email', $request->email)->first();
         if($user) {
-            $user->password = $request->password;
+            $user->password = Hash::make($request->password);
             $user->save();
 
-            return redirect()->route('backend-auth.portal.login')->with('success', 'Password has been reset successfully');
+            return redirect()->route('backend.login')->with('success', 'Password has been reset successfully');
         }
 
         return redirect()->back()->with('email', 'Email not found');

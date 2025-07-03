@@ -3,7 +3,7 @@
 @section('title', 'Forgot Password')
 
 @section('content')
-    <form action="{{ route('backend-auth.portal.forgot-password.store') }}" method="POST" class="form">
+    <form action="{{ route('backend.forgot-password.store') }}" method="POST" class="form">
         @csrf
         
         <p class="title">Forgot Your Password</p>
@@ -19,6 +19,6 @@
     </form>
 
     <p class="remember-password">Did you remember your password?
-        <a href="{{ route('backend-auth.portal.login') }}" class="span-link">Login</a>
+        <a href="{{ route('backend.login') }}" class="span-link">Login</a>
     </p>
 @endsection

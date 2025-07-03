@@ -3,9 +3,8 @@
 @section('title', 'Authentications')
 
 @section('content')
-
     <div class="inner-page">
-        <form action="{{ route('admin.pages.authentications.update', $language) }}" method="POST" enctype="multipart/form-data" class="form">
+        <form action="{{ route('backend.pages.authentications.update', $language) }}" method="POST" enctype="multipart/form-data" class="form">
             @csrf
             <div class="page-details">
                 <p class="title">{{ ucfirst($language) }} Language</p>
@@ -61,14 +60,19 @@
                         <input type="text" class="form-control input-field" id="login_button_{{ $short_code }}" name="login_button_{{ $short_code }}" value="{{ $contents->{'login_button_' . $short_code} ?? '' }}" placeholder="Button">
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-6 mb-4">
                         <label for="login_no_account_{{ $short_code }}" class="form-label label">No Account</label>
                         <input type="text" class="form-control input-field" id="login_no_account_{{ $short_code }}" name="login_no_account_{{ $short_code }}" value="{{ $contents->{'login_no_account_' . $short_code} ?? '' }}" placeholder="No Account">
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-6 mb-4">
                         <label for="login_register_{{ $short_code }}" class="form-label label">Register</label>
                         <input type="text" class="form-control input-field" id="login_register_{{ $short_code }}" name="login_register_{{ $short_code }}" value="{{ $contents->{'login_register_' . $short_code} ?? '' }}" placeholder="Register">
+                    </div>
+
+                    <div class="col-12">
+                        <x-backend.upload-image old_name="old_login_image" old_value="{{ $contents->{'login_image_' . $short_code} ?? '' }}" new_name="new_login_image" path="pages"></x-backend.upload-image>
+                        <x-backend.input-error field="new_login_image"></x-backend.input-error>
                     </div>
                 </div>
             </div>
@@ -266,5 +270,8 @@
             <x-backend.notification></x-backend.notification>
         </form>
     </div>
+@endsection
 
-@endsection 
+@push('after-scripts')
+    <script src="{{ asset('backend/js/drag-drop-image.js') }}"></script>
+@endpush
