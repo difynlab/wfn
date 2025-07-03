@@ -52,8 +52,9 @@
             </div>
         @endif
 
-            <div class="section-3 section-margin">
-                <div class="container">
+        <div class="section-3 section-margin">
+            <div class="container">
+                @if($contents->section_3_left_title_1_en)
                     <div class="row single-row">
                         <div class="col-6">
                             <p class="section-title">{{ $contents->{'section_3_left_title_1_' . $middleware_language} ?? $contents->section_3_left_title_1_en }}</p>
@@ -65,7 +66,9 @@
                             <p class="section-description">{{ $contents->{'section_3_right_description_1_' . $middleware_language} ?? $contents->section_3_right_description_1_en }}</p>
                         </div>
                     </div>
+                @endif
 
+                @if($contents->section_3_left_title_2_en)
                     <div class="row single-row">
                         <div class="col-6">
                             <p class="section-title">{{ $contents->{'section_3_left_title_2_' . $middleware_language} ?? $contents->section_3_left_title_2_en }}</p>
@@ -77,7 +80,9 @@
                             <p class="section-description">{{ $contents->{'section_3_right_description_2_' . $middleware_language} ?? $contents->section_3_right_description_2_en }}</p>
                         </div>
                     </div>
+                @endif
 
+                @if($contents->section_3_left_title_3_en)
                     <div class="row single-row">
                         <div class="col-6">
                             <p class="section-title">{{ $contents->{'section_3_left_title_3_' . $middleware_language} ?? $contents->section_3_left_title_3_en }}</p>
@@ -89,27 +94,18 @@
                             <p class="section-description">{{ $contents->{'section_3_right_description_3_' . $middleware_language} ?? $contents->section_3_right_description_3_en }}</p>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
+        </div>
 
         @if($contents->section_4_title_en)
             <div class="section-4 container section-margin">
                 <div class="row exchange-row">
                     <div class="col-6 left">
                         <p class="section-title">{{ $contents->{'section_4_title_' . $middleware_language} ?? $contents->section_4_title_en }}</p>
-                        <div class="section-description">
-                            <p>
-                                {!! $contents->{'section_4_description_' . $middleware_language} ?? $contents->section_4_description_en !!}
-                            </p>
+                        <div class="section-description">{!! $contents->{'section_4_description_' . $middleware_language} ?? $contents->section_4_description_en !!}</div>
 
-                            <br>
-
-                            <p>
-                                {!! $contents->{'section_4_description_' . $middleware_language} ?? $contents->section_4_description_en !!}
-                            </p>
-                        </div>
-
-                        <a href="{{ route('website.warehouses.index') }}" class="learn-more-btn">Learn More</a>
+                        <a href="{{ route('website.warehouses.index') }}" class="learn-more-btn">{!! $contents->{'section_4_button_' . $middleware_language} ?? $contents->section_4_button_en !!}</a>
                     </div>
 
                     <div class="col-6 right">
@@ -119,7 +115,13 @@
                                 <p class="text">{{ $contents->{'section_4_image_1_title_' . $middleware_language} ?? $contents->section_4_image_1_title_en }}</p>
                             </div>
 
-                            <img src="{{ asset('storage/frontend/business-storage.png') }}" alt="Business Storage" class="image">
+                            @if($contents->{'section_4_image_1_' . $middleware_language})
+                                <img src="{{ asset('storage/backend/pages/' . $contents->{'section_4_image_1_' . $middleware_language}) }}" alt="Business Storage" class="image">
+                            @elseif($contents->section_4_image_1_en)
+                                <img src="{{ asset('storage/backend/pages/' . $contents->section_4_image_1_en) }}" alt="Business Storage" class="image">
+                            @else
+                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Business Storage" class="image">
+                            @endif
                         </div>
 
                         <div class="exchange-box">
@@ -128,7 +130,13 @@
                                 <p class="text">{{ $contents->{'section_4_image_2_title_' . $middleware_language} ?? $contents->section_4_image_2_title_en }}</p>
                             </div>
 
-                            <img src="{{ asset('storage/frontend/personal-storage.png') }}" alt="Personal Storage" class="image">
+                            @if($contents->{'section_4_image_2_' . $middleware_language})
+                                <img src="{{ asset('storage/backend/pages/' . $contents->{'section_4_image_2_' . $middleware_language}) }}" alt="Business Storage" class="image">
+                            @elseif($contents->section_4_image_2_en)
+                                <img src="{{ asset('storage/backend/pages/' . $contents->section_4_image_2_en) }}" alt="Business Storage" class="image">
+                            @else
+                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Business Storage" class="image">
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -139,9 +147,13 @@
             <div class="section-5 container section-margin">
                 <div class="row">
                     <div class="col-6 left video-box">
-                        <img src="{{ asset('storage/frontend/video-placeholder.png') }}" alt="Video Coming Soon" class="image">
-
-                        <!-- <video src="" class="video"></video> -->
+                        @if($contents->{'section_5_video_' . $middleware_language})
+                            <video controls src="{{ asset('storage/backend/pages/' . $contents->{'section_5_video_' . $middleware_language}) }}" class="image"></video>
+                        @elseif($contents->section_5_video_en)
+                            <video controls src="{{ asset('storage/backend/pages/' . $contents->section_5_video_en) }}" class="image"></video>
+                        @else
+                            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Video" class="image">
+                        @endif
                     </div>
 
                     <div class="col-6 right">
@@ -212,7 +224,7 @@
         @if($contents->section_6_title_en)
             <div class="section-6 section-margin">
                 <div class="container">
-                    <p class="section-title">{{ $contents->{'section_6_title_' . $middleware_language} ?? $contents->section__image_6_title_en }}</p>
+                    <p class="section-title">{{ $contents->{'section_6_title_' . $middleware_language} ?? $contents->section_6_title_en }}</p>
                     
                     <div class="row">
                         <div class="col-4 single-column">
@@ -254,29 +266,19 @@
                 <div class="row founders-row">
                     <div class="col-6 left">
                         <p class="section-title">{{ $contents->{'section_7_title_' . $middleware_language} ?? $contents->section_7_title_en }}</p>
-                        <div class="section-description">
-                            <p>
-                                {!! $contents->{'section_7_description_' . $middleware_language} ?? $contents->section_7_description_en !!}
-                            </p>
-
-                            <br>
-
-                            <p>
-                               {!! $contents->{'section_7_description_' . $middleware_language} ?? $contents->section_7_description_en !!}
-                            </p>
-                        </div>
+                        <div class="section-description">{!! $contents->{'section_7_description_' . $middleware_language} ?? $contents->section_7_description_en !!}</div>
                         
                         <p class="signature">{{ $contents->{'section_7_signature_' . $middleware_language} ?? $contents->section_7_signature_en }}</p>
                     </div>
 
                     <div class="col-6 right">
                         @if($contents->{'section_7_image_' . $middleware_language})
-                                <img src="{{ asset('storage/backend/pages/' . $contents->{'section_7_image_' . $middleware_language}) }}" alt="Founders" class="image">
-                            @elseif($contents->section_7_image_en)
-                                <img src="{{ asset('storage/backend/pages/' . $contents->section_7_image_en) }}" alt="Founders" class="image">
-                            @else
-                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Founders" class="image">
-                            @endif
+                            <img src="{{ asset('storage/backend/pages/' . $contents->{'section_7_image_' . $middleware_language}) }}" alt="Founders" class="image">
+                        @elseif($contents->section_7_image_en)
+                            <img src="{{ asset('storage/backend/pages/' . $contents->section_7_image_en) }}" alt="Founders" class="image">
+                        @else
+                            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Founders" class="image">
+                        @endif
                     </div>
                 </div>
             </div>
@@ -292,14 +294,12 @@
                         <form action="" method="POST">
                             <div class="mb-4">
                                 <label for="name" class="form-label label">{{ $contents->{'section_8_name_' . $middleware_language} ?? $contents->section_8_name_en }}</label>
-                                <input type="text" class="form-control input-field" id="name" name="name" placeholder="{{ $contents->{'section_8_name_placeholder_' . $middleware_language} ?? $contents->section_8_name_placeholder_en }}"
-                                @if(!empty($contents->section_8_name_required)) required @endif>
+                                <input type="text" class="form-control input-field" id="name" name="name" placeholder="{{ $contents->{'section_8_name_placeholder_' . $middleware_language} ?? $contents->section_8_name_placeholder_en }}">
                             </div>
 
                             <div class="mb-4">
                                 <label for="email" class="form-label label">{{ $contents->{'section_8_email_' . $middleware_language} ?? $contents->section_8_email_en }}</label>
-                                <input type="email" class="form-control input-field" id="email" name="email" placeholder="{{ $contents->{'section_8_email_placeholder_' . $middleware_language} ?? $contents->section_8_email_placeholder_en }}"
-                                @if(!empty($contents->section_8_email_required)) required @endif>
+                                <input type="email" class="form-control input-field" id="email" name="email" placeholder="{{ $contents->{'section_8_email_placeholder_' . $middleware_language} ?? $contents->section_8_email_placeholder_en }}">
                             </div>
 
                             <div class="form-check d-flex align-items-center mb-4">
@@ -307,22 +307,18 @@
                                 <label class="form-check-label terms" for="terms">{{ $contents->{'section_8_check_label_' . $middleware_language} ?? $contents->section_8_check_label_en }}</label>
                             </div>
 
-                            <button type="submit" class="submit-button">Submit Now</button>
+                            <button type="submit" class="submit-button">{{ $contents->{'section_8_button_' . $middleware_language} ?? $contents->section_8_button_en }}</button>
                         </form>
                     </div>
 
                     <div class="col-6">
-                        <img src="{{ asset('storage/frontend/video-placeholder.png') }}" alt="Video Coming Soon" class="image">
-
-                        {{-- @if($contents->{'section_8_video_' . $middleware_language})
-                                <video src="{{ asset('storage/backend/pages/' . $contents->{'section_8_video_' . $middleware_language}) }}" alt="Founders" class="video">
-                            @elseif($contents->section_8_video_en)
-                                <video src="{{ asset('storage/backend/pages/' . $contents->section_8_video_en) }}" alt="Video Coming Soon" class="video">
-                            @else
-                                <video src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_video) }}" alt="Founders" class="video">
-                            @endif --}}
-
-                        <!-- <video src="" class="video">Video Coming Soon</video> -->
+                        @if($contents->{'section_8_video_' . $middleware_language})
+                            <video controls src="{{ asset('storage/backend/pages/' . $contents->{'section_8_video_' . $middleware_language}) }}" alt="Video" class="image"></video>
+                        @elseif($contents->section_8_video_en)
+                            <video controls src="{{ asset('storage/backend/pages/' . $contents->section_8_video_en) }}" alt="Video" class="image"></video>
+                        @else
+                            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Video" class="image">
+                        @endif
                     </div>
                 </div>
             </div>
@@ -331,188 +327,194 @@
         @if($contents->section_9_title_en)
             <div class="section-9 container section-margin">
                 <p class="section-title">{{ $contents->{'section_9_title_' . $middleware_language} ?? $contents->section_9_title_en }}</p>
-                <p class="section-description">
-                    {{ $contents->{'section_9_description_' . $middleware_language} ?? $contents->section_9_description_en }}
-                </p>
+                <p class="section-description">{{ $contents->{'section_9_description_' . $middleware_language} ?? $contents->section_9_description_en }}</p>
 
-                <div class="swiper mySwiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="testimonial-row">
-                                <div class="left">
-                                    <div class="stars">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
+                <!-- In future -->
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="testimonial-row">
+                                    <div class="left">
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+
+                                        <p class="content">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        </p>
+
+                                        <p class="author">
+                                            <span class="name">Danial Mark</span>
+                                            <span class="line">|</span>
+                                            <span class="designation">Marketing Coordinator</span>
+                                        </p>
                                     </div>
 
-                                    <p class="content">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                    </p>
-
-                                    <p class="author">
-                                        <span class="name">Danial Mark</span>
-                                        <span class="line">|</span>
-                                        <span class="designation">Marketing Coordinator</span>
-                                    </p>
-                                </div>
-
-                                <div class="right">
-                                    <img src="{{ asset('storage/frontend/testimonial-1.png') }}" alt="Image" class="image">
+                                    <div class="right">
+                                        <img src="{{ asset('storage/frontend/testimonial-1.png') }}" alt="Image" class="image">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="swiper-slide">
-                            <div class="testimonial-row">
-                                <div class="left">
-                                    <div class="stars">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
+                            <div class="swiper-slide">
+                                <div class="testimonial-row">
+                                    <div class="left">
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+
+                                        <p class="content">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        </p>
+
+                                        <p class="author">
+                                            <span class="name">Danial Mark</span>
+                                            <span class="line">|</span>
+                                            <span class="designation">Marketing Coordinator</span>
+                                        </p>
                                     </div>
 
-                                    <p class="content">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                    </p>
-
-                                    <p class="author">
-                                        <span class="name">Danial Mark</span>
-                                        <span class="line">|</span>
-                                        <span class="designation">Marketing Coordinator</span>
-                                    </p>
-                                </div>
-
-                                <div class="right">
-                                    <img src="{{ asset('storage/frontend/testimonial-2.png') }}" alt="Image" class="image">
+                                    <div class="right">
+                                        <img src="{{ asset('storage/frontend/testimonial-2.png') }}" alt="Image" class="image">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="swiper-slide">
-                            <div class="testimonial-row">
-                                <div class="left">
-                                    <div class="stars">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
+                            <div class="swiper-slide">
+                                <div class="testimonial-row">
+                                    <div class="left">
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+
+                                        <p class="content">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        </p>
+
+                                        <p class="author">
+                                            <span class="name">Danial Mark</span>
+                                            <span class="line">|</span>
+                                            <span class="designation">Marketing Coordinator</span>
+                                        </p>
                                     </div>
 
-                                    <p class="content">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                    </p>
-
-                                    <p class="author">
-                                        <span class="name">Danial Mark</span>
-                                        <span class="line">|</span>
-                                        <span class="designation">Marketing Coordinator</span>
-                                    </p>
-                                </div>
-
-                                <div class="right">
-                                    <img src="{{ asset('storage/frontend/testimonial-1.png') }}" alt="Image" class="image">
+                                    <div class="right">
+                                        <img src="{{ asset('storage/frontend/testimonial-1.png') }}" alt="Image" class="image">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="swiper-slide">
-                            <div class="testimonial-row">
-                                <div class="left">
-                                    <div class="stars">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
+                            <div class="swiper-slide">
+                                <div class="testimonial-row">
+                                    <div class="left">
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+
+                                        <p class="content">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        </p>
+
+                                        <p class="author">
+                                            <span class="name">Danial Mark</span>
+                                            <span class="line">|</span>
+                                            <span class="designation">Marketing Coordinator</span>
+                                        </p>
                                     </div>
 
-                                    <p class="content">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                    </p>
-
-                                    <p class="author">
-                                        <span class="name">Danial Mark</span>
-                                        <span class="line">|</span>
-                                        <span class="designation">Marketing Coordinator</span>
-                                    </p>
-                                </div>
-
-                                <div class="right">
-                                    <img src="{{ asset('storage/frontend/testimonial-2.png') }}" alt="Image" class="image">
+                                    <div class="right">
+                                        <img src="{{ asset('storage/frontend/testimonial-2.png') }}" alt="Image" class="image">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="swiper-slide">
-                            <div class="testimonial-row">
-                                <div class="left">
-                                    <div class="stars">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
+                            <div class="swiper-slide">
+                                <div class="testimonial-row">
+                                    <div class="left">
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+
+                                        <p class="content">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        </p>
+
+                                        <p class="author">
+                                            <span class="name">Danial Mark</span>
+                                            <span class="line">|</span>
+                                            <span class="designation">Marketing Coordinator</span>
+                                        </p>
                                     </div>
 
-                                    <p class="content">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                    </p>
-
-                                    <p class="author">
-                                        <span class="name">Danial Mark</span>
-                                        <span class="line">|</span>
-                                        <span class="designation">Marketing Coordinator</span>
-                                    </p>
-                                </div>
-
-                                <div class="right">
-                                    <img src="{{ asset('storage/frontend/testimonial-1.png') }}" alt="Image" class="image">
+                                    <div class="right">
+                                        <img src="{{ asset('storage/frontend/testimonial-1.png') }}" alt="Image" class="image">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="swiper-slide">
-                            <div class="testimonial-row">
-                                <div class="left">
-                                    <div class="stars">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
+                            <div class="swiper-slide">
+                                <div class="testimonial-row">
+                                    <div class="left">
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+
+                                        <p class="content">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        </p>
+
+                                        <p class="author">
+                                            <span class="name">Danial Mark</span>
+                                            <span class="line">|</span>
+                                            <span class="designation">Marketing Coordinator</span>
+                                        </p>
                                     </div>
 
-                                    <p class="content">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                    </p>
-
-                                    <p class="author">
-                                        <span class="name">Danial Mark</span>
-                                        <span class="line">|</span>
-                                        <span class="designation">Marketing Coordinator</span>
-                                    </p>
-                                </div>
-
-                                <div class="right">
-                                    <img src="{{ asset('storage/frontend/testimonial-2.png') }}" alt="Image" class="image">
+                                    <div class="right">
+                                        <img src="{{ asset('storage/frontend/testimonial-2.png') }}" alt="Image" class="image">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <!-- In future -->
 
                 <div class="swiper-pagination"></div>
             </div>
         @endif
 
         @if($contents->section_10_title_en)
-            <div class="section-10 section-margin">
+            @if($contents->{'section_10_image_' . $middleware_language})
+                <div class="section-10 section-margin" style="background-image: url('{{ asset('storage/backend/pages/' . $contents->{'section_10_image_' . $middleware_language}) }}')">
+            @elseif($contents->section_10_image_en)
+                <div class="section-10 section-margin" style="background-image: url('{{ asset('storage/backend/pages/' . $contents->section_10_image_en) }}')">
+            @else
+                <div class="section-10 section-margin" style="background-image: url('{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}')">
+            @endif
                 <div class="container">
                     <p class="text">{{ $contents->{'section_10_title_' . $middleware_language} ?? $contents->section_10_title_en }}</p>
                 </div>
@@ -527,63 +529,30 @@
                         <p class="section-description">{{ $contents->{'section_11_description_' . $middleware_language} ?? $contents->section_11_description_en }}</p>
                     </div>
 
-                    <div class="col-6">
-                        <div class="accordion" id="faqAccordion">
-                            <div class="accordion-item">
-                                <p class="accordion-header" id="faqOne">
-                                    <button class="accordion-button button-active" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        <span class="symbol">
-                                            <i class="bi bi-dash active"></i>
-                                        </span>
-                                        Lorem ipsum dolor sit amet consectetur?
-                                    </button>
-                                </p>
-                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="faqOne" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        <span class="symbol"></span>
-
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    @if($contents->section_11_faqs_en)
+                        <div class="col-6">
+                            <div class="accordion" id="faqAccordion">
+                                @foreach(json_decode(($contents->{'section_11_faqs_' . $middleware_language} ?? $contents->section_11_faqs_en)) as $key => $section_11_faq)
+                                    <div class="accordion-item">
+                                        <p class="accordion-header" id="faq-{{ $key }}">
+                                            <button class="accordion-button {{ $key == 0 ? 'button-active' : '' }}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $key }}" aria-expanded="true" aria-controls="collapse-{{ $key }}">
+                                                <span class="symbol">
+                                                    <i class="{{ $key == 0 ? 'bi bi-dash' : 'bi bi-plus' }} {{ $key == 0 ? 'active' : '' }}"></i>
+                                                </span>
+                                                {{ $section_11_faq->question }}
+                                            </button>
+                                        </p>
+                                        <div id="collapse-{{ $key }}" class="accordion-collapse collapse {{ $key == 0 ? 'show' : '' }}" aria-labelledby="faq-{{ $key }}" data-bs-parent="#faqAccordion">
+                                            <div class="accordion-body">
+                                                <span class="symbol"></span>
+                                                {{ $section_11_faq->answer }}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="accordion-item">
-                                <p class="accordion-header" id="faqTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <span class="symbol">
-                                            <i class="bi bi-plus"></i>
-                                        </span>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit?
-                                    </button>
-                                </p>
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="faqTwo" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        <span class="symbol"></span>
-
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="accordion-item">
-                                <p class="accordion-header" id="faqThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        <span class="symbol">
-                                            <i class="bi bi-plus"></i>
-                                        </span>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit?
-                                    </button>
-                                </p>
-                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="faqThree" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        <span class="symbol"></span>
-
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         @endif
