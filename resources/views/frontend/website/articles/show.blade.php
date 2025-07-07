@@ -11,7 +11,7 @@
         <div class="section-1 container section-margin">
             <div class="row title-row">
                 <div class="col-10 left">
-                    <h1 class="section-title">Sed ut perspiciatis unde omnis iste natus error sit voluptatem</h1>
+                    <h1 class="section-title">{{ $contents->{'title_' . $middleware_language} ?? $contents->title_en }}</h1>
 
                     <p class="details">
                         <span class="author">Written by John doe</span>

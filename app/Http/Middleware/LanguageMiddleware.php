@@ -16,11 +16,20 @@ class LanguageMiddleware
             'ar' => 'Arabic',
         ];
         $language_name = $languages[$language] ?? 'English';
+        
+        $dbLanguageMap = [
+            'en' => 'english',
+            'ar' => 'arabic'
+        ];
+        $dbLanguage = $dbLanguageMap[$language] ?? 'english';
 
         View::share([
             'middleware_language' => $language,
-            'middleware_language_name' => $language_name
+            'middleware_language_name' => $language_name,
+            'middleware_db_language' => $dbLanguage
         ]);
+
+        session(['db_language' => $dbLanguage]);
 
         // $request->merge([
         //     'middleware_language' => $language,

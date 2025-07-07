@@ -751,32 +751,30 @@
                 </div>
 
                 <div class="row bottom-row">
+                    @php $first = $articles->first(); @endphp
+                    @if($first)
                     <div class="col-8">
-                        <img src="{{ asset('storage/frontend/article-main.png') }}" class="left-image" alt="Image">
+                        {{-- <img src="{{ asset('storage/frontend/article-main.png') }}" class="left-image" alt="Image"> --}}
+                        <img src="{{ $first->image ? asset('storage/backend/articles/' . $first->image) : asset('storage/frontend/article-main.png') }}" class="left-image" alt="Image">
 
                         <div class="content">
-                            <p class="date">April 4th 2025</p>
-                            <p class="title">Sed do eiusmod tempor incididun ut labore et dolore</p>
-                            <p class="description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </p>
-                            <a href="{{ route('frontend.articles.show', 1) }}" class="read-more-button">Read more</a>
+                            <p class="date">{{ \Carbon\Carbon::parse($first->created_at)->format('F jS Y') }}</p>
+                            <p class="title">{{ $first->title }}</p>
+                            <p class="description">{{ Str::limit(strip_tags($first->content), 200) }}</p>
+                            <a href="{{ route('frontend.articles.show', $first->id) }}" class="read-more-button">Read more</a>
                         </div>
                     </div>
+                    @endif
 
                     <div class="col-4">
+                        @foreach($articles->skip(1) as $article)
                         <div class="single-article">
-                            <img src="{{ asset('storage/frontend/article-side.png') }}" class="right-image" alt="Image">
-                            <p class="title">Sed do eiusmod tempor incididun ut labore et dolore</p>
-                            <a href="{{ route('frontend.articles.show', 1) }}" class="read-more-button">Read more</a>
+                            {{-- <img src="{{ asset('storage/frontend/article-side.png') }}" class="right-image" alt="Image"> --}}
+                            <img src="{{ $article->image ? asset('storage/backend/articles/' . $article->image) : asset('storage/frontend/article-side.png') }}" class="right-image" alt="Image">
+                            <p class="title">{{ $article->title }}</p>
+                            <a href="{{ route('frontend.articles.show', $article->id) }}" class="read-more-button">Read more</a>
                         </div>
-
-                        <div class="single-article">
-                            <img src="{{ asset('storage/frontend/article-side.png') }}" class="right-image" alt="Image">
-                            <p class="title">Sed do eiusmod tempor incididun ut labore et dolore</p>
-                            <a href="{{ route('frontend.articles.show', 1) }}" class="read-more-button">Read more</a>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend\Website;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\HomepageContent;
+use App\Models\Article;
 
 class HomepageController extends Controller
 {
@@ -12,8 +13,14 @@ class HomepageController extends Controller
     {
         $contents = HomepageContent::find(1);
 
+        $articles = Article::where('status', 1)
+							->orderBy('created_at', 'desc') 
+                            ->take(3)
+                            ->get();
+
         return view('frontend.website.homepage', [
-            'contents' => $contents
+            'contents' => $contents,
+			'articles' => $articles
         ]);
     }
 }
