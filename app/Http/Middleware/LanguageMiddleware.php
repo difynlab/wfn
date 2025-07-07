@@ -12,20 +12,20 @@ class LanguageMiddleware
     {
         $language = session('language', 'en');
         $languages = [
-            'en' => 'English',
-            'ar' => 'Arabic',
+            'en' => 'english',
+            'ar' => 'arabic',
         ];
-        $language_name = $languages[$language] ?? 'English';
+        $language_name = $languages[$language] ?? 'english';
 
         View::share([
             'middleware_language' => $language,
             'middleware_language_name' => $language_name
         ]);
 
-        // $request->merge([
-        //     'middleware_language' => $language,
-        //     'middleware_language_name' => $language_name,
-        // ]);
+        $request->merge([
+            'middleware_language' => $language,
+            'middleware_language_name' => $language_name,
+        ]);
 
         return $next($request);
     }
