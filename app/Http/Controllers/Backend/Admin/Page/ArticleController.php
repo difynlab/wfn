@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Page;
+namespace App\Http\Controllers\Backend\Admin\Page;
 
 use App\Http\Controllers\Controller;
-use App\Models\AuthenticationContent;
+use App\Models\ArticleContent;
 use Illuminate\Http\Request;
 
-class WarehouseController extends Controller
+class ArticleController extends Controller
 {
     private function shortCode($language) {
         switch($language){
@@ -26,10 +26,10 @@ class WarehouseController extends Controller
 
     public function index($language)
     {
-        $contents = AuthenticationContent::find(1);
+        $contents = ArticleContent::find(1);
         $short_code = $this->shortCode($language);
 
-        return view('backend.admin.pages.authentications', [
+        return view('backend.admin.pages.articles', [
             'contents' => $contents,
             'language' => $language,
             'short_code' => $short_code
@@ -38,7 +38,7 @@ class WarehouseController extends Controller
 
     public function update(Request $request, $language)
     {
-        $contents = AuthenticationContent::find(1);
+        $contents = ArticleContent::find(1);
 
         $data = $request->all();
         $contents->fill($data)->save();

@@ -39,14 +39,14 @@ class AuthenticationController extends Controller
             $user = Auth::user();
 
             if($user->role == 'landlord') {
-                return redirect()->route('frontend.landlord.dashboard');
+                return redirect()->route('landlord.dashboard');
             }
             elseif($user->role == 'tenant') {
-                return redirect()->route('frontend.tenant.dashboard');
+                return redirect()->route('tenant.dashboard');
             }
             else {
                 Auth::logout();
-                return redirect()->route('frontend.login')->withInput()->with(
+                return redirect()->route('login')->withInput()->with(
                     [
                         'error' => 'Unauthorized Access',
                         'message' => 'You cannot access that URL.',
@@ -66,6 +66,6 @@ class AuthenticationController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('frontend.login');
+        return redirect()->route('login');
     }
 }

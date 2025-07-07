@@ -24,7 +24,7 @@
                 <p class="title">{{ $contents->{'login_title_' . $middleware_language} ?? $contents->login_title_en }}</p>
                 <p class="description">{{ $contents->{'login_description_' . $middleware_language} ?? $contents->login_description_en }}</p>
 
-                <form action="{{ route('frontend.login.store') }}" method="POST" class="form">
+                <form action="{{ route('login.store') }}" method="POST" class="form">
                     @csrf
                     <div class="mb-3 mb-md-4">
                         <label for="email" class="form-label label">{{ $contents->{'login_username_' . $middleware_language} ?? $contents->login_username_en }}</label>
@@ -47,7 +47,7 @@
                         </div>
 
                         <div class="col-6 text-end">
-                            <a href="{{ route('frontend.forgot-password') }}" class="forgot-password">{{ $contents->{'login_forgot_password_' . $middleware_language} ?? $contents->login_forgot_password_en }}</a>
+                            <a href="{{ route('forgot-password') }}" class="forgot-password">{{ $contents->{'login_forgot_password_' . $middleware_language} ?? $contents->login_forgot_password_en }}</a>
                         </div>
                     </div>
                     
@@ -55,7 +55,7 @@
                 </form>
 
                 <p class="no-account">{{ $contents->{'login_no_account_' . $middleware_language} ?? $contents->login_no_account_en }}
-                    <a href="{{ route('frontend.register') }}" class="span-link">{{ $contents->{'login_register_' . $middleware_language} ?? $contents->login_register_en }}</a>
+                    <a href="{{ route('register') }}" class="span-link">{{ $contents->{'login_register_' . $middleware_language} ?? $contents->login_register_en }}</a>
                 </p>
             </div>
         </div>

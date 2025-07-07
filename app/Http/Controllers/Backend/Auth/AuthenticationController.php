@@ -34,11 +34,11 @@ class AuthenticationController extends Controller
             $user = Auth::user();
 
             if($user->role == 'admin') {
-                return redirect()->route('backend.dashboard');
+                return redirect()->route('admin.dashboard');
             }
             else {
                 Auth::logout();
-                return redirect()->route('backend.login')->withInput()->with('unauthorized', 'Unauthorized');
+                return redirect()->route('admin.login')->withInput()->with('unauthorized', 'Unauthorized');
             }
         }
 
@@ -53,6 +53,6 @@ class AuthenticationController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('backend.login');
+        return redirect()->route('admin.login');
     }
 }

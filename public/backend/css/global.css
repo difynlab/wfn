@@ -71,13 +71,20 @@
         object-fit: cover;
     }
     .navbar .nav-item {
-        margin-left: 30px;
+        margin-left: 40px;
+    }
+    .navbar .nav-link {
+        font-size: 16px;
+        color: var(--light_black);
     }
     .navbar .nav-item:last-child {
         margin-left: 0px!important;
     }
     .navbar .nav-item .notification-icon {
         font-size: 25px;
+    }
+    .navbar .nav-item .notification-icon.nav-gap {
+        margin-left: 225px;
     }
     .navbar .nav-item .profile-image {
         width: 50px;

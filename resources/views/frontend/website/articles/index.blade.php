@@ -60,7 +60,7 @@
                                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
                         </div>
 
@@ -81,7 +81,7 @@
                                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
                         </div>
 
@@ -102,7 +102,7 @@
                                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
                         </div>
 
@@ -123,7 +123,7 @@
                                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -141,7 +141,7 @@
 
                                 <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscin  elit, exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
 
                             <div class="col-4 single-article">
@@ -155,7 +155,7 @@
 
                                 <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscin  elit, exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
 
                             <div class="col-4 single-article">
@@ -169,7 +169,7 @@
 
                                 <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscin  elit, exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
 
                             <div class="col-4 single-article">
@@ -183,7 +183,7 @@
 
                                 <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscin  elit, exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
 
                             <div class="col-4 single-article">
@@ -197,7 +197,7 @@
 
                                 <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscin  elit, exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -222,7 +222,7 @@
                                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
                         </div>
 
@@ -243,7 +243,7 @@
                                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
                         </div>
 
@@ -264,7 +264,7 @@
                                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
                         </div>
 
@@ -285,7 +285,7 @@
                                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -303,7 +303,7 @@
 
                                 <div class="content">Lorem ipsum dolor sit amet...</div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
 
                             <div class="col-4 single-article">
@@ -317,7 +317,7 @@
 
                                 <div class="content">Lorem ipsum dolor sit amet...</div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
 
                             <div class="col-4 single-article">
@@ -331,7 +331,7 @@
 
                                 <div class="content">Lorem ipsum dolor sit amet...</div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
 
                             <div class="col-4 single-article">
@@ -345,7 +345,7 @@
 
                                 <div class="content">Lorem ipsum dolor sit amet...</div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
 
                             <div class="col-4 single-article">
@@ -359,7 +359,7 @@
 
                                 <div class="content">Lorem ipsum dolor sit amet...</div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -384,7 +384,7 @@
                                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
                         </div>
 
@@ -405,7 +405,7 @@
                                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
                         </div>
 
@@ -426,7 +426,7 @@
                                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
                         </div>
 
@@ -447,7 +447,7 @@
                                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -465,7 +465,7 @@
 
                                 <div class="content">Lorem ipsum dolor sit amet...</div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
 
                             <div class="col-4 single-article">
@@ -479,7 +479,7 @@
 
                                 <div class="content">Lorem ipsum dolor sit amet...</div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
 
                             <div class="col-4 single-article">
@@ -493,7 +493,7 @@
 
                                 <div class="content">Lorem ipsum dolor sit amet...</div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
 
                             <div class="col-4 single-article">
@@ -507,7 +507,7 @@
 
                                 <div class="content">Lorem ipsum dolor sit amet...</div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
 
                             <div class="col-4 single-article">
@@ -521,7 +521,7 @@
 
                                 <div class="content">Lorem ipsum dolor sit amet...</div>
 
-                                <a href="{{ route('frontend.articles.show', 1) }}" class="read-more">Read more</a>
+                                <a href="{{ route('articles.show', 1) }}" class="read-more">Read more</a>
                             </div>
                         </div>
                     </div>

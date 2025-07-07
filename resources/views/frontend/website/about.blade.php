@@ -105,7 +105,7 @@
                         <p class="section-title">{{ $contents->{'section_4_title_' . $middleware_language} ?? $contents->section_4_title_en }}</p>
                         <div class="section-description">{!! $contents->{'section_4_description_' . $middleware_language} ?? $contents->section_4_description_en !!}</div>
 
-                        <a href="{{ route('frontend.warehouses.index') }}" class="learn-more-btn">{!! $contents->{'section_4_button_' . $middleware_language} ?? $contents->section_4_button_en !!}</a>
+                        <a href="{{ route('warehouses.index') }}" class="learn-more-btn">{!! $contents->{'section_4_button_' . $middleware_language} ?? $contents->section_4_button_en !!}</a>
                     </div>
 
                     <div class="col-6 right">

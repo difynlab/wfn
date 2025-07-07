@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Message;
@@ -105,7 +105,7 @@ class MessageController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Sending Failed!',
-                'route' => route('backend.messages.index', 'all')
+                'route' => route('admin.messages.index', 'all')
             ]);
         }
 
@@ -116,9 +116,9 @@ class MessageController extends Controller
         $data['admin_view'] = 1;
         $message = Message::create($data);  
 
-        return redirect()->route('backend.messages.index', 'all')->with([
+        return redirect()->route('admin.messages.index', 'all')->with([
             'success' => "Send Successful!",
-            'route' => route('backend.messages.index', 'all')
+            'route' => route('admin.messages.index', 'all')
         ]);
     }
 
@@ -175,7 +175,7 @@ class MessageController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Sending Failed!',
-                'route' => route('backend.messages.index', 'all')
+                'route' => route('admin.messages.index', 'all')
             ]);
         }
 

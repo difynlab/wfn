@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Landlord;
+namespace App\Http\Controllers\Backend\Landlord;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
@@ -12,7 +12,6 @@ class DashboardController extends Controller
     public function index()
     {
         $auth = Auth::user();
-        dd($auth);
         $current_month = Carbon::now()->month;
         $current_year = Carbon::now()->year;
         $last_year = Carbon::now()->subYear();
@@ -267,10 +266,10 @@ class DashboardController extends Controller
         // Bookings chart
         
         $items = Booking::whereHas('warehouse', function ($query) use ($auth) {
-                $query->where('user_id', $auth->id)
-                    ->where('status', 1);
-                })
-                ->orderBy('id', 'desc')->take(5)->get();
+                    $query->where('user_id', $auth->id)
+                        ->where('status', 1);
+                    })
+                    ->orderBy('id', 'desc')->take(5)->get();
 
         foreach($items as $item) {
             $item->action = '

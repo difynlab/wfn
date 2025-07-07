@@ -14,17 +14,17 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
         then: function () {
-            Route::middleware('web')->name('backend.')->group(base_path('routes/backend.php'));
-            Route::middleware('web')->name('frontend.')->group(base_path('routes/frontend.php'));
+            Route::middleware('web')->group(base_path('routes/backend.php'));
+            Route::middleware('web')->group(base_path('routes/frontend.php'));
         },
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->redirectTo(function ($request) {
             if($request->is('admin') || $request->is('admin/*')) {
-                return route('backend.login');
+                return route('admin.login');
             }
 
-            return route('frontend.login');
+            return route('login');
         });
 
         $middleware->alias([

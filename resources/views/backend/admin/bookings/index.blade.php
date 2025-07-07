@@ -10,7 +10,7 @@
                 <p class="description">Manage booking details here.</p>
             </div>
             <div class="col-4 text-end">
-                <a href="{{ route('backend.bookings.create') }}" class="add-button">
+                <a href="{{ route('admin.bookings.create') }}" class="add-button">
                     <i class="bi bi-plus-lg"></i>
                     Add New Booking
                 </a>
@@ -19,7 +19,7 @@
 
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('backend.bookings.filter') }}" method="GET" class="filter-form">
+                <form action="{{ route('admin.bookings.filter') }}" method="GET" class="filter-form">
                     <select class="form-select input-field js-single w-100" id="selected_tenant" name="selected_tenant">
                         <option value="">Select tenant</option>
                         @foreach($users as $user)
@@ -110,7 +110,7 @@
         $(document).ready(function() {
             $('.page .table .delete-button').on('click', function() {
                 let id = $(this).attr('id');
-                let url = "{{ route('backend.bookings.destroy', [':id']) }}";
+                let url = "{{ route('admin.bookings.destroy', [':id']) }}";
                 destroy_url = url.replace(':id', id);
 
                 $('.page #delete-modal form').attr('action', destroy_url);

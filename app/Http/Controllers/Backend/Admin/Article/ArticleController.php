@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Article;
+namespace App\Http\Controllers\Backend\Admin\Article;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
@@ -17,7 +17,7 @@ class ArticleController extends Controller
     {
         foreach($items as $item) {
             $item->action = '
-            <a href="'. route('backend.articles.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
+            <a href="'. route('admin.articles.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             $item->thumbnail = $item->thumbnail ? '<img src="'. asset('storage/backend/articles/' . $item->thumbnail) .'" class="table-image">' : '<img src="'. asset('storage/backend/global/' . Setting::find(1)->no_image) .'" class="table-image">';
@@ -65,7 +65,7 @@ class ArticleController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Creation Failed!',
-                'route' => route('backend.articles.index')
+                'route' => route('admin.articles.index')
             ]);
         }
 
@@ -85,9 +85,9 @@ class ArticleController extends Controller
         $data['thumbnail'] = $thumbnail_name;
         $article = Article::create($data); 
 
-        return redirect()->route('backend.articles.edit', $article)->with([
+        return redirect()->route('admin.articles.edit', $article)->with([
             'success' => "Update Successful!",
-            'route' => route('backend.articles.index')
+            'route' => route('admin.articles.index')
         ]);
     }
 
@@ -114,7 +114,7 @@ class ArticleController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Update Failed!',
-                'route' => route('backend.articles.index')
+                'route' => route('admin.articles.index')
             ]);
         }
 
@@ -146,7 +146,7 @@ class ArticleController extends Controller
         
         return redirect()->back()->with([
             'success' => "Update Successful!",
-            'route' => route('backend.articles.index')
+            'route' => route('admin.articles.index')
         ]);
     }
 
@@ -160,7 +160,7 @@ class ArticleController extends Controller
     public function filter(Request $request)
     {
         if($request->action == '⟲ Reset Filter') {
-            return redirect()->route('backend.articles.index');
+            return redirect()->route('admin.articles.index');
         }
 
         $title = $request->title;

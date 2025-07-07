@@ -11,7 +11,7 @@
         <p class="title">{{ $contents->{'register_title_' . $middleware_language} ?? $contents->register_title_en }}</p>
         <p class="description">{{ $contents->{'register_description_' . $middleware_language} ?? $contents->register_description_en }}</p>
 
-        <form action="{{ route('frontend.register') }}" method="POST">
+        <form action="{{ route('register') }}" method="POST">
             @csrf
 
             <div class="row mb-3 mb-md-4">
@@ -88,7 +88,7 @@
             <button type="submit" class="btn register-button">{{ $contents->{'register_button_' . $middleware_language} ?? $contents->register_button_en }}</button>
 
             <p class="exist-account">{{ $contents->{'register_have_account_' . $middleware_language} ?? $contents->register_have_account_en }}
-                <a href="{{ route('frontend.login') }}" class="span-link">{{ $contents->{'register_login_' . $middleware_language} ?? $contents->register_login_en }}</a>
+                <a href="{{ route('login') }}" class="span-link">{{ $contents->{'register_login_' . $middleware_language} ?? $contents->register_login_en }}</a>
             </p>
         </form>
 

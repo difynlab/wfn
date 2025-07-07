@@ -10,7 +10,7 @@
                 <p class="description">Manage message and inquiries.</p>
             </div>
             <div class="col-4 text-end">
-                <a href="{{ route('backend.messages.create') }}" class="add-button">
+                <a href="{{ route('admin.messages.create') }}" class="add-button">
                     <i class="bi bi-plus-lg"></i>
                     Write a Message
                 </a>
@@ -32,7 +32,7 @@
             <div class="col-8">
                 <div class="messages">
                     <div class="top-row">
-                        <form action="{{ route('backend.messages.filter', $category) }}" class="form">
+                        <form action="{{ route('admin.messages.filter', $category) }}" class="form">
                             <input type="text" class="form-control input-field" name="text" value="{{ $text ?? '' }}" placeholder="Search mail">
                         </form>
 
@@ -55,7 +55,7 @@
 
                                     <i class="bi star favorite {{ $item->favorite ? 'bi-star-fill gold' : 'bi-star' }}" title="Favorite" data-id="{{ $item->id }}"></i>
 
-                                    <a href="{{ route('backend.messages.edit', $item->id) }}"><p class="name">{{ $item->name }}</p></a>
+                                    <a href="{{ route('admin.messages.edit', $item->id) }}"><p class="name">{{ $item->name }}</p></a>
 
                                     @if($item->category == 'general')
                                         <p class="category general">General Inquiry</p>
@@ -65,9 +65,9 @@
                                         <p class="category tenant">Tenant Inquiry</p>
                                     @endif
 
-                                    <a href="{{ route('backend.messages.edit', $item->id) }}"><p class="message-content">{{ $item->subject }} - {{ $item->initial_message }}</p></a>
+                                    <a href="{{ route('admin.messages.edit', $item->id) }}"><p class="message-content">{{ $item->subject }} - {{ $item->initial_message }}</p></a>
 
-                                    <a href="{{ route('backend.messages.edit', $item->id) }}" class="ms-auto"><p class="date-time">{{ $item->time }}</p></a>
+                                    <a href="{{ route('admin.messages.edit', $item->id) }}" class="ms-auto"><p class="date-time">{{ $item->time }}</p></a>
                                 </div>
                             @endforeach
                         @else

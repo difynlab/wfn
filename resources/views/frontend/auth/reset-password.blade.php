@@ -13,7 +13,7 @@
                 <p class="title">{{ $contents->{'reset_title_' . $middleware_language} ?? $contents->reset_title_en }}</p>
                 <p class="description">{{ $contents->{'reset_description_' . $middleware_language} ?? $contents->reset_description_en }}</p>
 
-                <form action="{{ route('frontend.reset-password.store') }}" method="POST">
+                <form action="{{ route('reset-password.store') }}" method="POST">
                     @csrf
                     <div class="mb-3 mb-md-4 position-relative">
                         <label for="password" class="form-label label">{{ $contents->{'	reset_new_password_' . $middleware_language} ?? $contents->	reset_new_password_en }}</label>

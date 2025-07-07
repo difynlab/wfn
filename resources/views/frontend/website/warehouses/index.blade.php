@@ -75,7 +75,7 @@
             <div class="row warehouse-row">
                 <div class="col-8 left">
                     <div class="single-warehouse">
-                        <a href="{{ route('frontend.warehouses.show', 1) }}">
+                        <a href="{{ route('warehouses.show', 1) }}">
                             <div class="row align-items-center">
                                 <div class="col-4">
                                     <p class="badge">New</p>
@@ -108,7 +108,7 @@
                     </div>
 
                     <div class="single-warehouse">
-                        <a href="{{ route('frontend.warehouses.show', 1) }}">
+                        <a href="{{ route('warehouses.show', 1) }}">
                             <div class="row align-items-center">
                                 <div class="col-4">
                                     <p class="badge">New</p>
@@ -141,7 +141,7 @@
                     </div>
 
                     <div class="single-warehouse">
-                        <a href="{{ route('frontend.warehouses.show', 1) }}">
+                        <a href="{{ route('warehouses.show', 1) }}">
                             <div class="row align-items-center">
                                 <div class="col-4">
                                     <p class="badge">New</p>
@@ -174,7 +174,7 @@
                     </div>
 
                     <div class="single-warehouse">
-                        <a href="{{ route('frontend.warehouses.show', 1) }}">
+                        <a href="{{ route('warehouses.show', 1) }}">
                             <div class="row align-items-center">
                                 <div class="col-4">
                                     <p class="badge">New</p>

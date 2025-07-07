@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
@@ -18,8 +18,8 @@ class UserController extends Controller
     {
         foreach($items as $item) {
             $item->action = '
-            <a href="'. route('backend.users.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
-            <a href="'. route('backend.users.company.index', $item->id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
+            <a href="'. route('admin.users.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
+            <a href="'. route('admin.users.company.index', $item->id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             $item->status = ($item->status == 1) ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
@@ -324,7 +324,7 @@ class UserController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Creation Failed!',
-                'route' => route('backend.users.index')
+                'route' => route('admin.users.index')
             ]);
         }
 
@@ -341,9 +341,9 @@ class UserController extends Controller
         $data['image'] = $image_name;
         $user = User::create($data);  
 
-        return redirect()->route('backend.users.edit', $user)->with([
+        return redirect()->route('admin.users.edit', $user)->with([
             'success' => "Update Successful!",
-            'route' => route('backend.users.index')
+            'route' => route('admin.users.index')
         ]);
     }
 
@@ -628,7 +628,7 @@ class UserController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Update Failed!',
-                'route' => route('backend.users.index')
+                'route' => route('admin.users.index')
             ]);
         }
 
@@ -648,7 +648,7 @@ class UserController extends Controller
             if($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput()->with([
                     'error' => 'Update Failed!',
-                    'route' => route('backend.users.index')
+                    'route' => route('admin.users.index')
                 ]);
             }
 
@@ -680,7 +680,7 @@ class UserController extends Controller
         
         return redirect()->back()->with([
             'success' => "Update Successful!",
-            'route' => route('backend.users.index')
+            'route' => route('admin.users.index')
         ]);
     }
 
@@ -694,7 +694,7 @@ class UserController extends Controller
     public function filter(Request $request)
     {
         if($request->action == '⟲ Reset Filter') {
-            return redirect()->route('backend.users.index');
+            return redirect()->route('admin.users.index');
         }
 
         $name = $request->name;
@@ -781,7 +781,7 @@ class UserController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Update Failed!',
-                'route' => route('backend.users.index')
+                'route' => route('admin.users.index')
             ]);
         }
 
@@ -814,7 +814,7 @@ class UserController extends Controller
         
         return redirect()->back()->with([
             'success' => "Update Successful!",
-            'route' => route('backend.users.index')
+            'route' => route('admin.users.index')
         ]);
     }
 }

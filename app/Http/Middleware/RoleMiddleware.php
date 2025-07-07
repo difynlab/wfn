@@ -19,10 +19,15 @@ class RoleMiddleware
             $request->session()->regenerateToken();
 
             if($role == 'admin') {
-                return redirect()->route('backend.login')->withInput()->with('unauthorized', 'Unauthossssrized');
+                return redirect()->route('admin.login')->withInput()->with(
+                    [
+                        'error' => 'Unauthorized Access',
+                        'message' => 'You cannot access that URL.',
+                    ]
+                );
             }
             else {
-                return redirect()->route('frontend.login')->withInput()->with(
+                return redirect()->route('login')->withInput()->with(
                     [
                         'error' => 'Unauthorized Access',
                         'message' => 'You cannot access that URL.',

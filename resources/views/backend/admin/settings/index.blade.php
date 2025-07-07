@@ -27,7 +27,7 @@
             <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
                 <p class="tab-content-title">Profile Settings</p>
 
-                <form action="{{ route('backend.settings.profile', $user) }}" method="POST" enctype="multipart/form-data" class="form">
+                <form action="{{ route('admin.settings.profile', $user) }}" method="POST" enctype="multipart/form-data" class="form">
                     @csrf
 
                     <div class="row mb-4 mb-lg-5">
@@ -62,7 +62,7 @@
             <div class="tab-pane fade" id="pills-website" role="tabpanel" aria-labelledby="pills-website-tab" tabindex="0">
                 <p class="tab-content-title">Website Settings</p>
                 
-                <form action="{{ route('backend.settings.website', 1) }}" method="POST" enctype="multipart/form-data" class="form">
+                <form action="{{ route('admin.settings.website', 1) }}" method="POST" enctype="multipart/form-data" class="form">
                     @csrf
                     
                     <div class="row mb-5">
@@ -131,7 +131,7 @@
             <div class="tab-pane fade" id="pills-update-password" role="tabpanel" aria-labelledby="pills-update-password-tab" tabindex="0">
                 <p class="tab-content-title">Update Password</p>
 
-                <form action="{{ route('backend.settings.password', $user) }}" method="POST" enctype="multipart/form-data" class="form">
+                <form action="{{ route('admin.settings.password', $user) }}" method="POST" enctype="multipart/form-data" class="form">
                     @csrf
 
                     <div class="row mb-5">

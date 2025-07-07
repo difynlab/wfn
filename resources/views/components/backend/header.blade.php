@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="{{ route('backend.dashboard') }}">
+    <a class="navbar-brand" href="{{ route(auth()->user()->role . '.dashboard') }}">
         <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->logo) }}" alt="Logo" class="logo">
     </a>
 
@@ -10,7 +10,23 @@
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav align-items-center ms-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="bi bi-bell notification-icon"></i></a>
+                <a class="nav-link {{ Request::segment(1) == '' ? 'active' : '' }}" href="{{ route('homepage') }}">Home</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ Request::segment(1) == 'about' ? 'active' : '' }}" href="{{ route('about') }}">About</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ Request::segment(1) == 'warehouses' ? 'active' : '' }}" href="{{ route('warehouses.index') }}">Warehouses</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ Request::segment(1) == 'support' ? 'active' : '' }}" href="{{ route('support') }}">Support</a>
+            </li>
+                
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="bi bi-bell notification-icon {{ auth()->user()->role != 'admin' ? 'nav-gap' : '' }}"></i></a>
             </li>
 
             <li class="nav-item">
@@ -37,12 +53,12 @@
 
                 <ul class="dropdown-menu">
                     <li>
-                        <a class="dropdown-item" href="{{ route('backend.settings.index') }}"><i class="bi bi-person"></i>My Profile</a>
+                        <a class="dropdown-item" href="{{ route(auth()->user()->role . '.settings.index') }}"><i class="bi bi-person"></i>My Profile</a>
                     </li>
 
                     <li>
                         <a class="dropdown-item" href="#">
-                            <form action="{{ route('backend.logout') }}" method="POST">
+                            <form action="{{ auth()->user()->role == 'admin' ? route('admin.logout') : route('logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="log-out"><i class="bi bi-power"></i>Log Out</button>
                             </form>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\StorageType;
@@ -17,9 +17,9 @@ class WarehouseController extends Controller
     {
         foreach($items as $item) {
             $item->action = '
-            <a href="'. route('backend.warehouses.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
-            <a href="'. route('backend.users.company.index', $item->user_id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
-            <a href="'. route('backend.users.edit', $item->user_id) .'" class="action-button" title="User"><i class="bi bi-person-exclamation"></i></a>
+            <a href="'. route('admin.warehouses.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
+            <a href="'. route('admin.users.company.index', $item->user_id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
+            <a href="'. route('admin.users.edit', $item->user_id) .'" class="action-button" title="User"><i class="bi bi-person-exclamation"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             $item->status = ($item->status == 1) ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
@@ -92,7 +92,7 @@ class WarehouseController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Creation Failed!',
-                'route' => route('backend.warehouses.index')
+                'route' => route('admin.warehouses.index')
             ]);
         }
 
@@ -148,9 +148,9 @@ class WarehouseController extends Controller
         $data['licenses'] = $new_licenses ? json_encode($new_licenses) : null;
         $warehouse = Warehouse::create($data);  
 
-        return redirect()->route('backend.warehouses.edit', $warehouse)->with([
+        return redirect()->route('admin.warehouses.edit', $warehouse)->with([
             'success' => "Update Successful!",
-            'route' => route('backend.warehouses.index')
+            'route' => route('admin.warehouses.index')
         ]);
     }
 
@@ -207,7 +207,7 @@ class WarehouseController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Update Failed!',
-                'route' => route('backend.warehouses.index')
+                'route' => route('admin.warehouses.index')
             ]);
         }
 
@@ -306,7 +306,7 @@ class WarehouseController extends Controller
         
         return redirect()->back()->with([
             'success' => "Update Successful!",
-            'route' => route('backend.warehouses.index')
+            'route' => route('admin.warehouses.index')
         ]);
     }
 
@@ -320,7 +320,7 @@ class WarehouseController extends Controller
     public function filter(Request $request)
     {
         if($request->action == '⟲ Reset Filter') {
-            return redirect()->route('backend.warehouses.index');
+            return redirect()->route('admin.warehouses.index');
         }
 
         $name = $request->name;

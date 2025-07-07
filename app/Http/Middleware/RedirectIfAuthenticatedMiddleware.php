@@ -15,13 +15,13 @@ class RedirectIfAuthenticatedMiddleware
             $role = Auth::user()->role;
 
             if($role == 'admin') {
-                return redirect()->route('backend.dashboard');
+                return redirect()->route('admin.dashboard');
             }
             elseif($role == 'landlord') {
-                return redirect()->route('frontend.landlord.dashboard');
+                return redirect()->route('landlord.dashboard');
             }
             else {
-                return redirect()->route('frontend.tenant.dashboard');
+                return redirect()->route('tenant.dashboard');
             }
         }
 

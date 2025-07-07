@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
@@ -274,7 +274,7 @@ class SettingsController extends Controller
             "Zimbabwe"
         ];
 
-        return view('backend.admin.settings.index', [
+        return view('admin.admin.settings.index', [
             'items' => $items,
             'user' => $user,
             'countries' => $countries
@@ -293,7 +293,7 @@ class SettingsController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Update Failed!',
-                'route' => route('backend.settings.index')
+                'route' => route('admin.settings.index')
             ]);
         }
 
@@ -329,7 +329,7 @@ class SettingsController extends Controller
 
         return redirect()->back()->with([
             'success' => "Update Successful!",
-            'route' => route('backend.settings.index')
+            'route' => route('admin.settings.index')
         ]);
     }
 
@@ -346,7 +346,7 @@ class SettingsController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Update Failed!',
-                'route' => route('backend.settings.index')
+                'route' => route('admin.settings.index')
             ]);
         }
 
@@ -465,7 +465,7 @@ class SettingsController extends Controller
 
         return redirect()->back()->with([
             'success' => "Update Successful!",
-            'route' => route('backend.settings.index')
+            'route' => route('admin.settings.index')
         ]);
     }
 
@@ -480,7 +480,7 @@ class SettingsController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Update Failed!',
-                'route' => route('backend.settings.index')
+                'route' => route('admin.settings.index')
             ]);
         }
 
@@ -490,7 +490,7 @@ class SettingsController extends Controller
             ])
             ->withInput()->with([
                 'error' => 'Update Failed!',
-                'route' => route('backend.settings.index')
+                'route' => route('admin.settings.index')
             ]);
         }
 
@@ -503,7 +503,7 @@ class SettingsController extends Controller
 
         return redirect()->back()->with([
             'success' => "Update Successful!",
-            'route' => route('backend.settings.index')
+            'route' => route('admin.settings.index')
         ]);
     }
 }

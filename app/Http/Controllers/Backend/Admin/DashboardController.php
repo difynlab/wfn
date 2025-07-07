@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
@@ -372,14 +372,14 @@ class DashboardController extends Controller
         $items = Booking::orderBy('id', 'desc')->take(5)->get();
         foreach($items as $item) {
             $item->action = '
-            <a href="'. route('backend.bookings.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
-            <a href="'. route('backend.users.company.index', $item->warehouse->user_id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
+            <a href="'. route('admin.bookings.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
+            <a href="'. route('admin.users.company.index', $item->warehouse->user_id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             $tenant_name = $item->user->first_name . ' ' . $item->user->last_name;
-            $item->tenant = '<a href="'. route('backend.users.edit', $item->user_id) .'" class="table-link">' . $tenant_name . '</a>';
+            $item->tenant = '<a href="'. route('admin.users.edit', $item->user_id) .'" class="table-link">' . $tenant_name . '</a>';
 
-            $item->warehouse = '<a href="'. route('backend.warehouses.edit', $item->warehouse_id) .'" class="table-link">' . $item->warehouse->name . '</a>';
+            $item->warehouse = '<a href="'. route('admin.warehouses.edit', $item->warehouse_id) .'" class="table-link">' . $item->warehouse->name . '</a>';
 
             $item->status = ($item->status == 1) ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
         }

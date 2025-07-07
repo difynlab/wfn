@@ -13,7 +13,7 @@
                 <p class="title">{{ $contents->{'forgot_title_' . $middleware_language} ?? $contents->forgot_title_en }}</p>
                 <p class="description">{{ $contents->{'forgot_description_' . $middleware_language} ?? $contents->forgot_description_en }}</p>
 
-                <form action="{{ route('frontend.forgot-password.store') }}" method="POST">
+                <form action="{{ route('forgot-password.store') }}" method="POST">
                     @csrf
                     
                     <div class="mb-4">
@@ -26,7 +26,7 @@
                 </form>
 
                 <p class="remember-password">{{ $contents->{'forgot_remember_' . $middleware_language} ?? $contents->forgot_remember_en }}
-                    <a href="{{ route('frontend.login') }}" class="span-link">{{ $contents->{'forgot_login_' . $middleware_language} ?? $contents->forgot_login_en }}</a>
+                    <a href="{{ route('login') }}" class="span-link">{{ $contents->{'forgot_login_' . $middleware_language} ?? $contents->forgot_login_en }}</a>
                 </p>
             </div>
         </div>

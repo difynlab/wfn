@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Tenant;
+namespace App\Http\Controllers\Backend\Tenant;
 
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
@@ -11,7 +11,6 @@ class DashboardController extends Controller
     public function index()
     {
         $auth = Auth::user();
-        dd($auth);
         $current_month = Carbon::now()->month;
         $current_year = Carbon::now()->year;
         $last_month_date = Carbon::now()->subMonth();

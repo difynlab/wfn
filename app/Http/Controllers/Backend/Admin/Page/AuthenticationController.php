@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Page;
+namespace App\Http\Controllers\Backend\Admin\Page;
 
 use App\Http\Controllers\Controller;
 use App\Models\AuthenticationContent;
@@ -51,7 +51,7 @@ class AuthenticationController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Update Failed!',
-                'route' => route('backend.pages.index')
+                'route' => route('admin.pages.index')
             ]);
         }
 

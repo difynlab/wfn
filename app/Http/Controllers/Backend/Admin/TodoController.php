@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Todo;
@@ -34,7 +34,7 @@ class TodoController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Creation Failed!',
-                'route' => route('backend.todos.index')
+                'route' => route('admin.todos.index')
             ]);
         }
 
@@ -42,7 +42,7 @@ class TodoController extends Controller
         $data['user_id'] = auth()->user()->id;
         $todo = Todo::create($data);  
 
-        return redirect()->route('backend.todos.index');
+        return redirect()->route('admin.todos.index');
     }
 
     public function complete(Request $request, Todo $todo)

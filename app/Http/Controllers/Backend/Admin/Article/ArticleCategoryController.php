@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Admin\Article;
 
 use App\Http\Controllers\Controller;
-use App\Models\StorageType;
+use App\Models\ArticleCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class StorageTypeController extends Controller
+class ArticleCategoryController extends Controller
 {
     private function processData($items)
     {
         foreach($items as $item) {
             $item->action = '
-            <a href="'. route('backend.storage-types.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
+            <a href="'. route('admin.article-categories.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             $item->status = ($item->status == 1) ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
@@ -25,10 +25,10 @@ class StorageTypeController extends Controller
     public function index(Request $request)
     {
         $pagination = $request->pagination ?? 10;
-        $items = StorageType::orderBy('id', 'desc')->paginate($pagination);
+        $items = ArticleCategory::orderBy('id', 'desc')->paginate($pagination);
         $items = $this->processData($items);
 
-        return view('backend.admin.storage-types.index', [
+        return view('backend.admin.article-categories.index', [
             'items' => $items,
             'pagination' => $pagination
         ]);
@@ -36,65 +36,67 @@ class StorageTypeController extends Controller
 
     public function create()
     {
-        return view('backend.admin.storage-types.create');
+        return view('backend.admin.article-categories.create');
     }
     
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:0|max:255',
+            'language' => 'required|in:english,arabic',
             'status' => 'required|in:0,1'
         ]);
         
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Creation Failed!',
-                'route' => route('backend.storage-types.index')
+                'route' => route('admin.article-categories.index')
             ]);
         }
 
         $data = $request->all();
-        $storage_type = StorageType::create($data);  
+        $article_category = ArticleCategory::create($data);  
 
-        return redirect()->route('backend.storage-types.edit', $storage_type)->with([
+        return redirect()->route('admin.article-categories.edit', $article_category)->with([
             'success' => "Update Successful!",
-            'route' => route('backend.storage-types.index')
+            'route' => route('admin.article-categories.index')
         ]);
     }
 
-    public function edit(StorageType $storage_type)
+    public function edit(ArticleCategory $article_category)
     {
-        return view('backend.admin.storage-types.edit', [
-            'storage_type' => $storage_type
+        return view('backend.admin.article-categories.edit', [
+            'article_category' => $article_category
         ]);
     }
 
-    public function update(Request $request, StorageType $storage_type)
+    public function update(Request $request, ArticleCategory $article_category)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:0|max:255',
+            'language' => 'required|in:english,arabic',
             'status' => 'required|in:0,1'
         ]);
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Update Failed!',
-                'route' => route('backend.storage-types.index')
+                'route' => route('admin.article-categories.index')
             ]);
         }
 
         $data = $request->all();
-        $storage_type->fill($data)->save();
+        $article_category->fill($data)->save();
         
         return redirect()->back()->with([
             'success' => "Update Successful!",
-            'route' => route('backend.storage-types.index')
+            'route' => route('admin.article-categories.index')
         ]);
     }
 
-    public function destroy(StorageType $storage_type)
+    public function destroy(ArticleCategory $article_category)
     {
-        $storage_type->delete();
+        $article_category->delete();
 
         return redirect()->back()->with('delete', 'Successfully Deleted!');
     }
@@ -102,24 +104,21 @@ class StorageTypeController extends Controller
     public function filter(Request $request)
     {
         if($request->action == '⟲ Reset Filter') {
-            return redirect()->route('backend.storage-types.index');
+            return redirect()->route('admin.article-categories.index');
         }
 
         $name = $request->name;
-        $order_by = $request->order_by;
+        $language = $request->language;
         $status = $request->status;
 
-        $items = StorageType::query();
+        $items = ArticleCategory::query();
 
         if($name) {
             $items->where('name', 'like', '%' . $name . '%');
         }
 
-        if($order_by == 'a-z') {
-            $items->orderBy('id', 'asc');
-        }
-        else {
-            $items->orderBy('id', 'desc');
+        if($language) {
+            $items->where('language', $language);
         }
 
         if($status != null) {
@@ -130,11 +129,11 @@ class StorageTypeController extends Controller
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 
-        return view('backend.admin.storage-types.index', [
+        return view('backend.admin.article-categories.index', [
             'items' => $items,
             'pagination' => $pagination,
             'name' => $name,
-            'order_by' => $order_by,
+            'language' => $language,
             'status' => $status
         ]);
     }

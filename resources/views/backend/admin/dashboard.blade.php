@@ -531,7 +531,7 @@
         $(document).ready(function() {
             $('.page .table .delete-button').on('click', function() {
                 let id = $(this).attr('id');
-                let url = "{{ route('backend.bookings.destroy', [':id']) }}";
+                let url = "{{ route('admin.bookings.destroy', [':id']) }}";
                 destroy_url = url.replace(':id', id);
 
                 $('.page #delete-modal form').attr('action', destroy_url);

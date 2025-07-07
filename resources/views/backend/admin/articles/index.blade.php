@@ -10,7 +10,7 @@
                 <p class="description">Manage article here.</p>
             </div>
             <div class="col-4 text-end">
-                <a href="{{ route('backend.articles.create') }}" class="add-button">
+                <a href="{{ route('admin.articles.create') }}" class="add-button">
                     <i class="bi bi-plus-lg"></i>
                     Add New Article
                 </a>
@@ -19,7 +19,7 @@
 
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('backend.articles.filter') }}" method="GET" class="filter-form">
+                <form action="{{ route('admin.articles.filter') }}" method="GET" class="filter-form">
                     <div class="input-group">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                         <input type="text" class="form-control input-field" name="title" value="{{ $title ?? '' }}" placeholder="Search by Title">
@@ -96,7 +96,7 @@
         $(document).ready(function() {
             $('.page .table .delete-button').on('click', function() {
                 let id = $(this).attr('id');
-                let url = "{{ route('backend.articles.destroy', [':id']) }}";
+                let url = "{{ route('admin.articles.destroy', [':id']) }}";
                 destroy_url = url.replace(':id', id);
 
                 $('.page #delete-modal form').attr('action', destroy_url);

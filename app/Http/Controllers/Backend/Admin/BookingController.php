@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
@@ -17,14 +17,14 @@ class BookingController extends Controller
     {
         foreach($items as $item) {
             $item->action = '
-            <a href="'. route('backend.bookings.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
-            <a href="'. route('backend.users.company.index', $item->warehouse->user_id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
+            <a href="'. route('admin.bookings.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
+            <a href="'. route('admin.users.company.index', $item->warehouse->user_id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             $tenant_name = $item->user->first_name . ' ' . $item->user->last_name;
-            $item->tenant = '<a href="'. route('backend.users.edit', $item->user_id) .'" class="table-link">' . $tenant_name . '</a>';
+            $item->tenant = '<a href="'. route('admin.users.edit', $item->user_id) .'" class="table-link">' . $tenant_name . '</a>';
 
-            $item->warehouse = '<a href="'. route('backend.warehouses.edit', $item->warehouse_id) .'" class="table-link">' . $item->warehouse->name . '</a>';
+            $item->warehouse = '<a href="'. route('admin.warehouses.edit', $item->warehouse_id) .'" class="table-link">' . $item->warehouse->name . '</a>';
 
             $item->status = ($item->status == 1) ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
         }
@@ -41,7 +41,7 @@ class BookingController extends Controller
         $items = Booking::orderBy('id', 'desc')->paginate($pagination);
         $items = $this->processData($items);
 
-        return view('backend.admin.bookings.index', [
+        return view('admin.admin.bookings.index', [
             'items' => $items,
             'pagination' => $pagination,
             'users' => $users,
@@ -54,7 +54,7 @@ class BookingController extends Controller
         $users = User::where('status', 1)->where('role', 'tenant')->get();
         $warehouses = Warehouse::where('status', 1)->get();
 
-        return view('backend.admin.bookings.create', [
+        return view('admin.admin.bookings.create', [
             'users' => $users,
             'warehouses' => $warehouses
         ]);
@@ -76,7 +76,7 @@ class BookingController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Creation Failed!',
-                'route' => route('backend.bookings.index')
+                'route' => route('admin.bookings.index')
             ]);
         }
 
@@ -96,9 +96,9 @@ class BookingController extends Controller
         $data['documents'] = $new_documents ? json_encode($new_documents) : null;
         $booking = Booking::create($data);  
 
-        return redirect()->route('backend.bookings.edit', $booking)->with([
+        return redirect()->route('admin.bookings.edit', $booking)->with([
             'success' => "Update Successful!",
-            'route' => route('backend.bookings.index')
+            'route' => route('admin.bookings.index')
         ]);
     }
 
@@ -107,7 +107,7 @@ class BookingController extends Controller
         $users = User::where('status', 1)->where('role', 'tenant')->get();
         $warehouses = Warehouse::where('status', 1)->get();
 
-        return view('backend.admin.bookings.edit', [
+        return view('admin.admin.bookings.edit', [
             'booking' => $booking,
             'users' => $users,
             'warehouses' => $warehouses
@@ -130,7 +130,7 @@ class BookingController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Update Failed!',
-                'route' => route('backend.bookings.index')
+                'route' => route('admin.bookings.index')
             ]);
         }
 
@@ -162,7 +162,7 @@ class BookingController extends Controller
         
         return redirect()->back()->with([
             'success' => "Update Successful!",
-            'route' => route('backend.bookings.index')
+            'route' => route('admin.bookings.index')
         ]);
     }
 
@@ -176,7 +176,7 @@ class BookingController extends Controller
     public function filter(Request $request)
     {
         if($request->action == '⟲ Reset Filter') {
-            return redirect()->route('backend.bookings.index');
+            return redirect()->route('admin.bookings.index');
         }
 
         $selected_tenant = $request->selected_tenant;
@@ -212,7 +212,7 @@ class BookingController extends Controller
         $users = User::where('status', 1)->where('role', 'tenant')->get();
         $warehouses = Warehouse::where('status', 1)->get();
 
-        return view('backend.admin.bookings.index', [
+        return view('admin.admin.bookings.index', [
             'items' => $items,
             'pagination' => $pagination,
             'selected_tenant' => $selected_tenant,

@@ -49,7 +49,7 @@ class ResetPasswordController extends Controller
             $user->password = Hash::make($request->password);
             $user->save();
 
-            return redirect()->route('backend.login')->with('success', 'Password has been reset successfully');
+            return redirect()->route('admin.login')->with('success', 'Password has been reset successfully');
         }
 
         return redirect()->back()->with('email', 'Email not found');

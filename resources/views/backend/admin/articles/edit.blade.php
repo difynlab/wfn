@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="inner-page">
-        <form action="{{ route('backend.articles.update', $article) }}" method="POST" enctype="multipart/form-data" class="form">
+        <form action="{{ route('admin.articles.update', $article) }}" method="POST" enctype="multipart/form-data" class="form">
             @csrf
 
             <div class="page-details">
