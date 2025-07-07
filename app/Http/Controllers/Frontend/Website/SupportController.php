@@ -12,8 +12,7 @@ class SupportController extends Controller
     {
         $contents = SupportContent::find(1);
 
-        return view('frontend.website.support',[
-            
+        return view('frontend.website.support', [
             'contents' => $contents
         ]);
     }

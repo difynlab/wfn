@@ -15,8 +15,8 @@
             </div>
         @endif
         
-        @if($contents->title_en)
-            <div class="section-2 container">
+        <div class="section-2 container">
+            <!-- In future (form submission) -->
                 <form action="" method="POST">
                     <div class="row">
                         <div class="col-12">
@@ -50,21 +50,19 @@
 
                             <div class="mb-4">
                                 <label for="subject" class="form-label label">{{ $contents->{'subject_' . $middleware_language} ?? $contents->subject_en }}<span class="asterisk">*</span></label>
-                                <select class="form-select input-field" id="subject" name="subject" required>
-                                    <option value="">{{ $contents->{'subject_placeholder_' . $middleware_language} ?? $contents->subject_placeholder_en }}</option>
-                                </select>
+                                <input type="text" id="name" class="form-control input-field" name="name" placeholder="{{ $contents->{'subject_placeholder_' . $middleware_language} ?? $contents->subject_placeholder_en }}" required>
                             </div>
 
-                            {{-- <div class="mb-5">
+                            <div class="mb-5">
                                 <label for="message" class="form-label label">{{ $contents->{'message_' . $middleware_language} ?? $contents->message_en }}<span class="asterisk">*</span></label>
                                 <textarea id="message" class="form-control" name="message" rows="5" placeholder="{{ $contents->{'message_placeholder_' . $middleware_language} ?? $contents->message_placeholder_en }}" required></textarea>
-                            </div> --}}
+                            </div>
 
                             <button type="submit" class="submit-button">{{ $contents->{'button_' . $middleware_language} ?? $contents->button_en }}</button>
                         </div>
                     </div>
                 </form>
-            </div>
-        @endif
+            <!-- In future (form submission) -->
+        </div>
     </div>
 @endsection

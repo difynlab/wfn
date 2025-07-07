@@ -96,6 +96,16 @@
                         <input type="text" class="form-control input-field" id="subject_placeholder_{{ $short_code }}" name="subject_placeholder_{{ $short_code }}" value="{{ $contents->{'subject_placeholder_' . $short_code} ?? '' }}" placeholder="Subject Placeholder">
                     </div>
 
+                    <div class="col-6 mb-4">
+                        <label for="message_{{ $short_code }}" class="form-label label">Message</label>
+                        <input type="text" class="form-control input-field" id="message_{{ $short_code }}" name="message_{{ $short_code }}" value="{{ $contents->{'message_' . $short_code} ?? '' }}" placeholder="Message">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="message_placeholder_{{ $short_code }}" class="form-label label">Message Placeholder</label>
+                        <input type="text" class="form-control input-field" id="message_placeholder_{{ $short_code }}" name="message_placeholder_{{ $short_code }}" value="{{ $contents->{'message_placeholder_' . $short_code} ?? '' }}" placeholder="Message Placeholder">
+                    </div>
+
                     <div class="col-6">
                         <label for="button_{{ $short_code }}" class="form-label label">Button</label>
                         <input type="text" class="form-control input-field" id="button_{{ $short_code }}" name="button_{{ $short_code }}" value="{{ $contents->{'button_' . $short_code} ?? '' }}" placeholder="Button">

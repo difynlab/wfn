@@ -14,34 +14,43 @@ class ArticleController extends Controller
     {
         $contents = ArticleContent::find(1);
         
-        $dbLanguage = session('db_language', 'english');
-        
-        $categories = ArticleCategory::where('status', 1)
-            ->where('language', $dbLanguage)
+        $article_categories = ArticleCategory::where('status', 1)
+            ->where('language', $request->middleware_language_name)
             ->get();
-            
-        $categoryIds = $categories->pluck('id')->toArray();
+
+        $article_category_ids = [];
+        foreach($article_categories as $key => $article_category) {
+            if($article_category->articles()->exists()) {
+                array_push($article_category_ids, $article_category->id);
+            }
+            else {
+                $article_categories->forget($key);
+            }
+        }
         
-        $articles = Article::with('articleCategory')
-            ->where('status', 1)
-            ->whereIn('article_category_id', $categoryIds)
-            ->orderBy('created_at', 'desc')
-            ->get();
+        $articles = Article::where('status', 1)
+            ->whereIn('article_category_id', $article_category_ids)
+            ->orderBy('created_at', 'desc');
 
         return view('frontend.website.articles.index', [
             'contents' => $contents,
             'articles' => $articles,
-            'categories' => $categories
+            'article_categories' => $article_categories
         ]);
-        
     }
 
-    public function show(Request $request)
+    public function show(Request $request, Article $article)
     {
         $contents = ArticleContent::find(1);
+
+        $article_category = $article->articleCategory;
+
+        $recent_articles = $article_category->articles()->whereNot('id', $article->id)->where('status', 1)->get()->random(3);
         
         return view('frontend.website.articles.show', [
-            'contents' => $contents
+            'contents' => $contents,
+            'article' => $article,
+            'recent_articles' => $recent_articles
         ]);
     }
 }

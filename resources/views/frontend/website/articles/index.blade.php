@@ -21,10 +21,10 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="pills-recent-tab" data-bs-toggle="pill" data-bs-target="#pills-recent" type="button" role="tab" aria-controls="pills-recent" aria-selected="true">{{ $contents->{'recent_' . $middleware_language} ?? $contents->recent_en }}</button>
                         </li>
-                        @if($categories->count() > 0)
-                            @foreach($categories as $category)
+                        @if($article_categories->count() > 0)
+                            @foreach($article_categories as $article_category)
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-{{ $category->id }}-tab" data-bs-toggle="pill" data-bs-target="#pills-{{ $category->id }}" type="button" role="tab" aria-controls="pills-{{ $category->id }}" aria-selected="false">{{ $category->name }}</button>
+                                    <button class="nav-link" id="pills-{{ $article_category->id }}-tab" data-bs-toggle="pill" data-bs-target="#pills-{{ $article_category->id }}" type="button" role="tab" aria-controls="pills-{{ $article_category->id }}" aria-selected="false">{{ $article_category->name }}</button>
                                 </li>
                             @endforeach
                         @endif
@@ -39,127 +39,123 @@
 
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-recent" role="tabpanel" aria-labelledby="pills-recent-tab" tabindex="0">
-                    @if($articles->count() > 0)
-                        <div class="list-view">
-                            @foreach($articles->take(4) as $article)
-                                <div class="row single-article">
-                                    <div class="col-5">
-                                        @if($article->thumbnail)
-                                            <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="image">
-                                        @else
-                                            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="image">
-                                        @endif
+                    <div class="list-view">
+                        @php
+                            $recent_articles = $articles->paginate(5);
+                        @endphp
+
+                        @foreach($recent_articles as $article)
+                            <div class="row single-article">
+                                <div class="col-5">
+                                    @if($article->thumbnail)
+                                        <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="image">
+                                    @else
+                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="image">
+                                    @endif
+                                </div>
+
+                                <div class="col-7">
+                                    <p class="date">{{ \Carbon\Carbon::parse($article->created_at)->format('F jS Y') }}</p>
+                                    <p class="title">{{ $article->title }}</p>
+
+                                    <p class="category">{{ $article->articleCategory ? $article->articleCategory->name : 'Uncategorized' }}</p>
+
+                                    <div class="content">
+                                        {{ Str::limit(strip_tags($article->content), 200) }}
                                     </div>
 
-                                    <div class="col-7">
-                                        <p class="date">{{ \Carbon\Carbon::parse($article->created_at)->format('F jS Y') }}</p>
-                                        <p class="title">{{ $article->title }}</p>
+                                    <a href="{{ route('frontend.articles.show', $article->id) }}" class="read-more">{{ $contents->{'read_more_' . $middleware_language} ?? $contents->read_more_en }}</a>
+                                </div>
+                            </div>
+                        @endforeach
 
-                                        <p class="category">{{ $article->articleCategory ? $article->articleCategory->name : 'Uncategorized' }}</p>
+                        {{ $recent_articles->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
+                    </div>
 
-                                        <div class="content">
-                                            {{ Str::limit(strip_tags($article->content), 200) }}
-                                        </div>
+                    <div class="grid-view d-none">
+                        <div class="row">
+                            @foreach($recent_articles as $article)
+                                <div class="col-4 single-article">
+                                    @if($article->thumbnail)
+                                        <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="image">
+                                    @else
+                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="image">
+                                    @endif
 
-                                        <a href="{{ route('frontend.articles.show', $article->id) }}" class="read-more">{{ $contents->{'read_more_' . $middleware_language} ?? $contents->read_more_en }}</a>
-                                    </div>
+                                    <p class="date">{{ \Carbon\Carbon::parse($article->created_at)->format('M d, Y') }}</p>
+
+                                    <p class="title">{{ Str::limit($article->title, 50) }}</p>
+
+                                    <p class="category">{{ $article->articleCategory ? $article->articleCategory->name : 'Uncategorized' }}</p>
+
+                                    <div class="content">{{ Str::limit(strip_tags($article->content), 100) }}</div>
+
+                                    <a href="{{ route('frontend.articles.show', $article->id) }}" class="read-more">{{ $contents->{'read_more_' . $middleware_language} ?? $contents->read_more_en }}</a>
                                 </div>
                             @endforeach
                         </div>
-
-                        <div class="grid-view d-none">
-                            <div class="row">
-                                @foreach($articles->take(5) as $article)
-                                    <div class="col-4 single-article">
-                                        @if($article->thumbnail)
-                                            <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="image">
-                                        @else
-                                            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="image">
-                                        @endif
-
-                                        <p class="date">{{ \Carbon\Carbon::parse($article->created_at)->format('M d, Y') }}</p>
-
-                                        <p class="title">{{ Str::limit($article->title, 50) }}</p>
-
-                                        <p class="category">{{ $article->articleCategory ? $article->articleCategory->name : 'Uncategorized' }}</p>
-
-                                        <div class="content">{{ Str::limit(strip_tags($article->content), 100) }}</div>
-
-                                        <a href="{{ route('frontend.articles.show', $article->id) }}" class="read-more">{{ $contents->{'read_more_' . $middleware_language} ?? $contents->read_more_en }}</a>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    @else
-                        <div class="text-center py-5">
-                            <p>No articles found.</p>
-                        </div>
-                    @endif
+                    </div>
                 </div>
 
-                @if($categories->count() > 0)
-                    @foreach($categories as $category)
-                        <div class="tab-pane fade" id="pills-{{ $category->id }}" role="tabpanel" aria-labelledby="pills-{{ $category->id }}-tab" tabindex="0">
-                            @php
-                                $categoryArticles = $articles->where('article_category_id', $category->id);
-                            @endphp
-                            
-                            @if($categoryArticles->count() > 0)
-                                <div class="list-view">
-                                    @foreach($categoryArticles->take(4) as $article)
-                                        <div class="row single-article">
-                                            <div class="col-5">
-                                                @if($article->thumbnail)
-                                                    <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="image">
-                                                @else
-                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="image">
-                                                @endif
+                @if($article_categories->count() > 0)
+                    @foreach($article_categories as $article_category)
+                        <div class="tab-pane fade" id="pills-{{ $article_category->id }}" role="tabpanel" aria-labelledby="pills-{{ $article_category->id }}-tab" tabindex="0">
+                            <div class="list-view">
+                                @php
+                                    $filtered_articles = $articles->where('article_category_id', $article_category->id)->paginate(2);
+                                @endphp
+
+                                @foreach($filtered_articles as $article)
+                                    <div class="row single-article">
+                                        <div class="col-5">
+                                            @if($article->thumbnail)
+                                                <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="image">
+                                            @else
+                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="image">
+                                            @endif
+                                        </div>
+
+                                        <div class="col-7">
+                                            <p class="date">{{ \Carbon\Carbon::parse($article->created_at)->format('M d, Y') }}</p>
+                                            <p class="title">{{ $article->title }}</p>
+
+                                            <p class="category">{{ $article->articleCategory ? $article->articleCategory->name : 'categorized' }}</p>
+
+                                            <div class="content">
+                                                {{ Str::limit(strip_tags($article->content), 200) }}
                                             </div>
 
-                                            <div class="col-7">
-                                                <p class="date">{{ \Carbon\Carbon::parse($article->created_at)->format('M d, Y') }}</p>
-                                                <p class="title">{{ $article->title }}</p>
+                                            <a href="{{ route('frontend.articles.show', $article->id) }}" class="read-more">{{ $contents->{'read_more_' . $middleware_language} ?? $contents->read_more_en }}</a>
+                                        </div>
+                                    </div>
+                                @endforeach
 
-                                                <p class="category">{{ $article->articleCategory ? $article->articleCategory->name : 'categorized' }}</p>
+                                {{ $filtered_articles->appends(request()->except('page') + ['tab' => 'pills-' . $article_category->id] )->links("pagination::bootstrap-5") }}
+                            </div>
 
-                                                <div class="content">
-                                                    {{ Str::limit(strip_tags($article->content), 200) }}
-                                                </div>
+                            <div class="grid-view d-none">
+                                <div class="row">
+                                    @foreach($article_category->articles() as $article)
+                                        <div class="col-4 single-article">
+                                            @if($article->thumbnail)
+                                                <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="image">
+                                            @else
+                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="image">
+                                            @endif
 
-                                                <a href="{{ route('frontend.articles.show', $article->id) }}" class="read-more">{{ $contents->{'read_more_' . $middleware_language} ?? $contents->read_more_en }}</a>
-                                            </div>
+                                            <p class="date">{{ \Carbon\Carbon::parse($article->created_at)->format('M d, Y') }}</p>
+
+                                            <p class="title">{{ Str::limit($article->title, 50) }}</p>
+
+                                            <p class="category">{{ $article->articleCategory ? $article->articleCategory->name : 'Uncategorized' }}</p>
+
+                                            <div class="content">{{ Str::limit(strip_tags($article->content), 100) }}</div>
+
+                                            <a href="{{ route('frontend.articles.show', $article->id) }}" class="read-more">{{ $contents->{'read_more_' . $middleware_language} ?? $contents->read_more_en }}</a>
                                         </div>
                                     @endforeach
                                 </div>
-
-                                <div class="grid-view d-none">
-                                    <div class="row">
-                                        @foreach($categoryArticles->take(5) as $article)
-                                            <div class="col-4 single-article">
-                                                @if($article->thumbnail)
-                                                    <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="image">
-                                                @else
-                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="image">
-                                                @endif
-
-                                                <p class="date">{{ \Carbon\Carbon::parse($article->created_at)->format('M d, Y') }}</p>
-
-                                                <p class="title">{{ Str::limit($article->title, 50) }}</p>
-
-                                                <p class="category">{{ $article->articleCategory ? $article->articleCategory->name : 'Uncategorized' }}</p>
-
-                                                <div class="content">{{ Str::limit(strip_tags($article->content), 100) }}</div>
-
-                                                <a href="{{ route('frontend.articles.show', $article->id) }}" class="read-more">{{ $contents->{'read_more_' . $middleware_language} ?? $contents->read_more_en }}</a>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            @else
-                                <div class="text-center py-5">
-                                    <p>No articles found in this category.</p>
-                                </div>
-                            @endif
+                            </div>
                         </div>
                     @endforeach
                 @endif
