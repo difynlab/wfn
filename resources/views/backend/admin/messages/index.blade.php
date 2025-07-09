@@ -53,7 +53,7 @@
                                 <div class="single-message" data-id="{{ $item->id }}">
                                     <input class="form-check-input message-checkbox" type="checkbox" data-id="{{ $item->id }}">
 
-                                    <i class="bi star favorite {{ $item->favorite ? 'bi-star-fill gold' : 'bi-star' }}" title="Favorite" data-id="{{ $item->id }}"></i>
+                                    <i class="bi star favorite {{ $item->admin_favorite ? 'bi-star-fill gold' : 'bi-star' }}" title="Favorite" data-id="{{ $item->id }}"></i>
 
                                     <a href="{{ route('admin.messages.edit', $item->id) }}"><p class="name">{{ $item->name }}</p></a>
 
@@ -67,7 +67,7 @@
 
                                     <a href="{{ route('admin.messages.edit', $item->id) }}"><p class="message-content">{{ $item->subject }} - {{ $item->initial_message }}</p></a>
 
-                                    <a href="{{ route('admin.messages.edit', $item->id) }}" class="ms-auto"><p class="date-time">{{ $item->time }}</p></a>
+                                    <a href="{{ route('admin.messages.edit', $item->id) }}" class="ms-auto"><p class="date-time">{{ $item->time }} | {{ $item->date }}</p></a>
                                 </div>
                             @endforeach
                         @else

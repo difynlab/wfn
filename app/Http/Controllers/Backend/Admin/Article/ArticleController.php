@@ -159,15 +159,24 @@ class ArticleController extends Controller
 
     public function filter(Request $request)
     {
-        if($request->action == '⟲ Reset Filter') {
-            return redirect()->route('admin.articles.index');
-        }
-
         $title = $request->title;
         $category = $request->category;
         $status = $request->status;
+        $column = $request->column ?? 'id';
+        $direction = $request->direction ?? 'desc';
 
-        $items = Article::query();
+        $valid_columns = ['title', 'status', 'id'];
+        $valid_directions = ['asc', 'desc'];
+
+        if(!in_array($column, $valid_columns)) {
+            $column = 'id';
+        }
+
+        if(!in_array($direction, $valid_directions)) {
+            $direction = 'desc';
+        }
+
+        $items = Article::orderBy($column, $direction);
 
         if($title) {
             $items->where('title', 'like', '%' . $title . '%');
@@ -184,6 +193,16 @@ class ArticleController extends Controller
         $pagination = $request->pagination ?? 10;
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
+
+        if($request->ajax()) {
+            $tbodyView = view('backend.admin.articles._tbody', compact('items'))->render();
+            $paginationView = $items->appends($request->except('page'))->links("pagination::bootstrap-5")->render();
+
+            return response()->json([
+                'tbody' => $tbodyView,
+                'pagination' => $paginationView,
+            ]);
+        }
 
         $article_categories = ArticleCategory::where('status', '1')->get();
 

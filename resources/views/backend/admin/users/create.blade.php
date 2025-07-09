@@ -32,8 +32,23 @@
                 </div>
 
                 <div class="col-6 mb-4">
+                    <label class="form-label label">Country<span class="asterisk">*</span></label>
+                    <select class="form-select js-single input-field" id="country" name="country" required>
+                        <option value="">Select country</option>
+                        @foreach($countries as $country)
+                            <option value="{{ $country }}" {{ old('country') == $country ? 'selected' : '' }}>{{ $country }}</option>
+                        @endforeach
+                    </select>
+                    <x-backend.input-error field="country"></x-backend.input-error>
+                </div>
+
+                <div class="col-6 mb-4">
                     <label for="phone" class="form-label label">Phone<span class="asterisk">*</span></label>
-                    <input type="text" class="form-control input-field" id="phone" name="phone" placeholder="Phone" value="{{ old('phone') }}" required>
+                    <div class="phone-div">
+                        <input type="text" class="form-control input-field" id="phone_code" name="phone_code" placeholder="+XXX" value="{{ old('phone_code') }}" readonly required>
+                        
+                        <input type="text" class="form-control input-field" id="phone" name="phone" placeholder="5X XXX XXXX" value="{{ old('phone') }}" required>
+                    </div>
                     <x-backend.input-error field="phone"></x-backend.input-error>
                 </div>
 
@@ -45,19 +60,9 @@
 
                 <div class="col-6 mb-4">
                     <label for="city" class="form-label label">City<span class="asterisk">*</span></label>
-                    <input type="text" class="form-control input-field" id="city" name="city" placeholder="City" value="{{ old('city') }}" required>
-                    <x-backend.input-error field="city"></x-backend.input-error>
-                </div>
-
-                <div class="col-6 mb-4">
-                    <label class="form-label label">Country<span class="asterisk">*</span></label>
-                    <select class="form-select input-field" name="country" required>
-                        <option value="">Select country</option>
-                        @foreach($countries as $country)
-                            <option value="{{ $country }}" {{ old('country') == $country ? 'selected' : '' }}>{{ $country }}</option>
-                        @endforeach
+                    <select class="form-select js-single input-field" name="city" required>
                     </select>
-                    <x-backend.input-error field="country"></x-backend.input-error>
+                    <x-backend.input-error field="city"></x-backend.input-error>
                 </div>
 
                 <div class="col-6 mb-4">
@@ -111,6 +116,97 @@
             else {
                 $(this).prev().attr("type", "password");
             }
+        });
+
+        $('#email').on('blur', function () {
+            const email = $(this).val();
+            const $error = $(this).next('.error-message');
+
+            $error.remove();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if(!emailRegex.test(email)) {
+                $(this).after('<div class="error-message">Please enter a valid email address.</div>');
+            }
+        });
+
+        $('#phone').on('blur', function () {
+            const phone = $(this).val();
+            const $error = $(this).parent().next('.error-message');
+
+            $error.remove();
+            const phoneRegex = /^\d{9}$/;
+
+            if(!phoneRegex.test(phone)) {
+                $(this).parent().after('<div class="error-message">Phone number must be exactly 9 digits.</div>');
+            }
+        });
+    </script>
+
+    <script>
+        function fetchCities(country, selectedCity = '') {
+            if(!country) return;
+
+            $.ajax({
+                url: 'https://countriesnow.space/api/v0.1/countries/cities',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(
+                    { country: country }
+                ),
+                success: function (response) {
+                    if(response.error === false) {
+                        const citySelect = $('select[name="city"]');
+                        citySelect.empty();
+                        citySelect.append('<option value="">Select city</option>');
+
+                        $.each(response.data, function (index, city) {
+                            const selected = city === selectedCity ? 'selected' : '';
+                            citySelect.append(`<option value="${city}" ${selected}>${city}</option>`);
+                        });
+                    }
+                    else {
+                        console.error("No cities found.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error fetching cities:", error);
+                }
+            });
+
+            $.ajax({
+                url: 'https://countriesnow.space/api/v0.1/countries/codes',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(
+                    { country: country }
+                ),
+                success: function (response) {
+                    if(response.error === false) {
+                        $('#phone_code').val(response.data['dial_code']);
+                    }
+                    else {
+                        console.error("No code found.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error fetching code:", error);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            let initialCountry = $('#country').val();
+            let initialCity = '{{ old("city" ?? "") }}';
+
+            if(initialCountry) {
+                fetchCities(initialCountry, initialCity);
+            }
+
+            $('#country').on('change', function () {
+                let selectedCountry = $(this).val();
+                fetchCities(selectedCountry);
+            });
         });
     </script>
 @endpush

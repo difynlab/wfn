@@ -32,8 +32,10 @@ class MessageController extends Controller
         $general_count = Message::where('status', 1)->where('category', 'general')->get()->count();
         $landlord_count = Message::where('status', 1)->where('category', 'landlord')->get()->count();
         $tenant_count = Message::where('status', 1)->where('category', 'tenant')->get()->count();
-        $starred_count = Message::where('status', 1)->where('favorite', 1)->get()->count();
+        $starred_count = Message::where('status', 1)->where('admin_favorite', 1)->get()->count();
         $bin_count = Message::where('status', 0)->get()->count();
+
+        Message::where('admin_view', 0)->update(['admin_view' => 1]);
 
         if($category == 'all') {
             $items = Message::where('status', 1)->orderBy('id', 'desc')->paginate($pagination);
@@ -48,7 +50,7 @@ class MessageController extends Controller
             $items = Message::where('status', 1)->where('category', 'tenant')->orderBy('id', 'desc')->paginate($pagination);
         }
         elseif($category == 'starred') {
-            $items = Message::where('status', 1)->where('favorite', 1)->orderBy('id', 'desc')->paginate($pagination);
+            $items = Message::where('status', 1)->where('admin_favorite', 1)->orderBy('id', 'desc')->paginate($pagination);
         }
         elseif($category == 'bin') {
             $items = Message::where('status', 0)->orderBy('id', 'desc')->paginate($pagination);
@@ -77,7 +79,7 @@ class MessageController extends Controller
         $general_count = Message::where('status', 1)->where('category', 'general')->get()->count();
         $landlord_count = Message::where('status', 1)->where('category', 'landlord')->get()->count();
         $tenant_count = Message::where('status', 1)->where('category', 'tenant')->get()->count();
-        $starred_count = Message::where('status', 1)->where('favorite', 1)->get()->count();
+        $starred_count = Message::where('status', 1)->where('admin_favorite', 1)->get()->count();
         $bin_count = Message::where('status', 0)->get()->count();
 
         return view('backend.admin.messages.create', [
@@ -128,7 +130,7 @@ class MessageController extends Controller
         $general_count = Message::where('status', 1)->where('category', 'general')->get()->count();
         $landlord_count = Message::where('status', 1)->where('category', 'landlord')->get()->count();
         $tenant_count = Message::where('status', 1)->where('category', 'tenant')->get()->count();
-        $starred_count = Message::where('status', 1)->where('favorite', 1)->get()->count();
+        $starred_count = Message::where('status', 1)->where('admin_favorite', 1)->get()->count();
         $bin_count = Message::where('status', 0)->get()->count();
 
         if($message->admin_view == 0) {
@@ -201,7 +203,7 @@ class MessageController extends Controller
         $general_count = Message::where('status', 1)->where('category', 'general')->get()->count();
         $landlord_count = Message::where('status', 1)->where('category', 'landlord')->get()->count();
         $tenant_count = Message::where('status', 1)->where('category', 'tenant')->get()->count();
-        $starred_count = Message::where('status', 1)->where('favorite', 1)->get()->count();
+        $starred_count = Message::where('status', 1)->where('admin_favorite', 1)->get()->count();
         $bin_count = Message::where('status', 0)->get()->count();
 
         if($category == 'all') {
@@ -217,7 +219,7 @@ class MessageController extends Controller
             $items = Message::where('status', 1)->where('category', 'tenant')->orderBy('id', 'desc');
         }
         elseif($category == 'starred') {
-            $items = Message::where('status', 1)->where('favorite', 1)->orderBy('id', 'desc');
+            $items = Message::where('status', 1)->where('admin_favorite', 1)->orderBy('id', 'desc');
         }
         elseif($category == 'bin') {
             $items = Message::where('status', 0)->orderBy('id', 'desc');
@@ -247,7 +249,7 @@ class MessageController extends Controller
 
     public function favorite(Message $message)
     {
-        $message->favorite = !$message->favorite;
+        $message->admin_favorite = !$message->admin_favorite;
         $message->save();
 
         return response()->json(['success' => true, 'favorite' => $message->favorite]);
@@ -257,7 +259,7 @@ class MessageController extends Controller
     {
         foreach($request->selected_ids as $id) {
             $message = Message::find($id);
-            $message->favorite = !$message->favorite;
+            $message->admin_favorite = !$message->admin_favorite;
             $message->save();
         }
 

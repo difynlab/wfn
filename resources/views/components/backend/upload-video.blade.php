@@ -29,7 +29,11 @@
 
     <div class="video-preview">
         @if($old_value)
-            <video src="{{ asset('storage/backend/' . $path . '/' . $old_value) }}" controls></video>
+            <video src="{{ asset('storage/backend/' . $path . '/' . $old_value) }}"></video>
+
+            <a href="{{ asset('storage/backend/' . $path . '/' . $old_value) }}" class="download-icon" title="download" download>
+                <i class="bi bi-arrow-bar-down"></i>
+            </a>
 
             <button type="button" class="close-icon video-close-icon">
                 <i class="bi bi-x small"></i>
@@ -44,5 +48,13 @@
             $(this).parent('.video-preview').prev().val('');
             $(this).parent('.video-preview').remove();
         })
+
+        $('.video-preview video').on('click', function() {
+            let src = $(this).attr('src');
+
+            $(".modal-video-preview").find('video').attr('src', src);
+            $(".modal-video-preview").find('a').attr('href', src);
+            $(".modal-video-preview").modal('show');
+        });
     </script>
 @endpush

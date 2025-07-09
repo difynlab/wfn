@@ -32,7 +32,11 @@
         @if($old_value)
             @foreach(json_decode(htmlspecialchars_decode($old_value)) as $value)
                 <div class="single-video position-relative">
-                    <video src="{{ asset('storage/backend/' . $path . '/' . $value) }}" controls></video>
+                    <video src="{{ asset('storage/backend/' . $path . '/' . $value) }}"></video>
+
+                    <a href="{{ asset('storage/backend/' . $path . '/' . $value) }}" class="download-icon" title="download" download>
+                        <i class="bi bi-arrow-bar-down"></i>
+                    </a>
 
                     <button type="button" class="close-icon close-{{ $old_name }}">
                         <i class="bi bi-x small"></i>
@@ -59,5 +63,13 @@
             oldValueInput.val(JSON.stringify(updatedValue));
             videoDiv.remove();
         })
+
+        $('.videos-preview video').on('click', function() {
+            let src = $(this).attr('src');
+
+            $(".modal-video-preview").find('video').attr('src', src);
+            $(".modal-video-preview").find('a').attr('href', src);
+            $(".modal-video-preview").modal('show');
+        });
     </script>
 @endpush

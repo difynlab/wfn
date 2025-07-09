@@ -61,7 +61,7 @@
 
                 <div class="col-6 mb-4">
                     <label for="total_area" class="form-label label">Total Area (Sq.m)<span class="asterisk">*</span></label>
-                    <input type="text" class="form-control input-field" id="total_area" name="total_area" placeholder="Total Area" value="{{ old('total_area') }}" required>
+                    <input type="number" class="form-control input-field" id="total_area" name="total_area" placeholder="Total Area" value="{{ old('total_area') }}" required>
                     <x-backend.input-error field="total_area"></x-backend.input-error>
                 </div>
 
@@ -78,9 +78,26 @@
                 </div>
 
                 <div class="col-6 mb-4">
-                    <label for="pallet_dimension" class="form-label label">Pallet Dimension (L x W x H)<span class="asterisk">*</span></label>
-                    <input type="text" class="form-control input-field" id="pallet_dimension" name="pallet_dimension" placeholder="Pallet Dimension (L x W x H)" value="{{ old('pallet_dimension') }}" required>
+                    <label for="rent_per_pallet" class="form-label label">Rent Per Pallet<span class="asterisk">*</span></label>
+                    <input type="number" class="form-control input-field" id="rent_per_pallet" name="rent_per_pallet" placeholder="Rent Per Pallet" value="{{ old('rent_per_pallet') }}" required>
+                    <x-backend.input-error field="rent_per_pallet"></x-backend.input-error>
+                </div>
+
+                <div class="col-6 mb-4">
+                    <label for="pallet_dimension" class="form-label label">Pallet Dimension (L x W x H) cm<span class="asterisk">*</span></label>
+                    <select class="form-select input-field js-single" id="pallet_dimension" name="pallet_dimension" required>
+                        <option value="">Select pallet dimension</option>
+                        <option value="120x80x150" {{ old('pallet_dimension') == '120x80x150' ? 'selected' : '' }}>120x80x150</option>
+                        <option value="120x100x150" {{ old('pallet_dimension') == '120x100x150' ? 'selected' : '' }}>120x100x150</option>
+                        <option value="other" {{ old('pallet_dimension') == 'other' ? 'selected' : '' }}>Other</option>
+                    </select>
                     <x-backend.input-error field="pallet_dimension"></x-backend.input-error>
+                </div>
+
+                <div class="col-6 mb-4 d-none pallet-dimension-other-value">
+                    <label for="pallet_dimension_other_value" class="form-label label">Pallet Dimension Other Value (L x W x H) cm<span class="asterisk">*</span></label>
+                    <input type="text" class="form-control input-field" id="pallet_dimension_other_value" name="pallet_dimension_other_value" placeholder="Pallet Dimension Other Value (L x W x H) cm" value="{{ old('pallet_dimension_other_value') }}">
+                    <x-backend.input-error field="pallet_dimension_other_value"></x-backend.input-error>
                 </div>
 
                 <div class="col-6 mb-4">
@@ -226,4 +243,20 @@
     <script src="{{ asset('backend/js/drag-drop-images.js') }}"></script>
     <script src="{{ asset('backend/js/drag-drop-videos.js') }}"></script>
     <script src="{{ asset('backend/js/google-map.js') }}" data-maps-key="{{ config('services.google_maps.key') }}"></script>
+
+    <script>
+        $('#pallet_dimension').on('change', function() {
+            let value = $(this).val();
+
+            if(value == 'other') {
+                $('.pallet-dimension-other-value').removeClass('d-none');
+                $('.pallet-dimension-other-value').find('input').attr('required', true);
+            }
+            else {
+                $('.pallet-dimension-other-value').addClass('d-none');
+                $('.pallet-dimension-other-value').find('input').attr('required', false);
+                $('.pallet-dimension-other-value').find('input').val('');
+            }
+        });
+    </script>
 @endpush

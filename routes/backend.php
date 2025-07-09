@@ -85,6 +85,7 @@ require __DIR__.'/auth/backend.php';
             Route::controller(UserController::class)->prefix('users')->name('users.')->group(function() {
                 Route::get('/', 'index')->name('index');
                 Route::get('filter', 'filter')->name('filter');
+                Route::get('order-by', 'orderBY')->name('order-by');
                 Route::get('create', 'create')->name('create');
                 Route::post('/', 'store')->name('store');
                 Route::get('{user}/edit', 'edit')->name('edit');

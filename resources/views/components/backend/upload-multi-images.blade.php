@@ -34,6 +34,10 @@
                 <div class="single-image position-relative">
                     <img src="{{ asset('storage/backend/' . $path . '/' . $value) }}">
 
+                    <a href="{{ asset('storage/backend/' . $path . '/' . $value) }}" class="download-icon" title="download" download>
+                        <i class="bi bi-arrow-bar-down"></i>
+                    </a>
+
                     <button type="button" class="close-icon close-{{ $old_name }}">
                         <i class="bi bi-x small"></i>
                     </button>
@@ -59,5 +63,13 @@
             oldValueInput.val(JSON.stringify(updatedValue));
             imageDiv.remove();
         })
+
+        $('.images-preview img').on('click', function() {
+            let src = $(this).attr('src');
+
+            $(".modal-image-preview").find('img').attr('src', src);
+            $(".modal-image-preview").find('a').attr('href', src);
+            $(".modal-image-preview").modal('show');
+        });
     </script>
 @endpush

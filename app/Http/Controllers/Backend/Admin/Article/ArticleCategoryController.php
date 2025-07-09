@@ -103,15 +103,24 @@ class ArticleCategoryController extends Controller
 
     public function filter(Request $request)
     {
-        if($request->action == '⟲ Reset Filter') {
-            return redirect()->route('admin.article-categories.index');
-        }
-
         $name = $request->name;
         $language = $request->language;
         $status = $request->status;
+        $column = $request->column ?? 'id';
+        $direction = $request->direction ?? 'desc';
 
-        $items = ArticleCategory::query();
+        $valid_columns = ['name', 'language', 'status', 'id'];
+        $valid_directions = ['asc', 'desc'];
+
+        if(!in_array($column, $valid_columns)) {
+            $column = 'id';
+        }
+
+        if(!in_array($direction, $valid_directions)) {
+            $direction = 'desc';
+        }
+
+        $items = ArticleCategory::orderBy($column, $direction);
 
         if($name) {
             $items->where('name', 'like', '%' . $name . '%');
@@ -128,6 +137,16 @@ class ArticleCategoryController extends Controller
         $pagination = $request->pagination ?? 10;
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
+
+        if($request->ajax()) {
+            $tbodyView = view('backend.admin.article-categories._tbody', compact('items'))->render();
+            $paginationView = $items->appends($request->except('page'))->links("pagination::bootstrap-5")->render();
+
+            return response()->json([
+                'tbody' => $tbodyView,
+                'pagination' => $paginationView,
+            ]);
+        }
 
         return view('backend.admin.article-categories.index', [
             'items' => $items,

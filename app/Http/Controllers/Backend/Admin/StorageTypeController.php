@@ -101,25 +101,26 @@ class StorageTypeController extends Controller
 
     public function filter(Request $request)
     {
-        if($request->action == '⟲ Reset Filter') {
-            return redirect()->route('admin.storage-types.index');
+        $name = $request->name;
+        $status = $request->status;
+        $column = $request->column ?? 'id';
+        $direction = $request->direction ?? 'desc';
+
+        $valid_columns = ['name', 'status', 'id'];
+        $valid_directions = ['asc', 'desc'];
+
+        if(!in_array($column, $valid_columns)) {
+            $column = 'id';
         }
 
-        $name = $request->name;
-        $order_by = $request->order_by;
-        $status = $request->status;
+        if(!in_array($direction, $valid_directions)) {
+            $direction = 'desc';
+        }
 
-        $items = StorageType::query();
+        $items = StorageType::orderBy($column, $direction);
 
         if($name) {
             $items->where('name', 'like', '%' . $name . '%');
-        }
-
-        if($order_by == 'a-z') {
-            $items->orderBy('id', 'asc');
-        }
-        else {
-            $items->orderBy('id', 'desc');
         }
 
         if($status != null) {
@@ -130,11 +131,20 @@ class StorageTypeController extends Controller
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 
+        if($request->ajax()) {
+            $tbodyView = view('backend.admin.storage-types._tbody', compact('items'))->render();
+            $paginationView = $items->appends($request->except('page'))->links("pagination::bootstrap-5")->render();
+
+            return response()->json([
+                'tbody' => $tbodyView,
+                'pagination' => $paginationView,
+            ]);
+        }
+
         return view('backend.admin.storage-types.index', [
             'items' => $items,
             'pagination' => $pagination,
             'name' => $name,
-            'order_by' => $order_by,
             'status' => $status
         ]);
     }

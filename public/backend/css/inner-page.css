@@ -149,6 +149,15 @@
             transition: all 0.3s;
         }
     }
+    .inner-page .form .phone-div {
+        gap: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .inner-page .form .phone-div #phone_code {
+        width: 15%;
+    }
 /* #endregion */
 
 
@@ -222,14 +231,13 @@
             transition: all 0.3s;
         }
     }
-    .inner-page .drop-area .close-icon {
+    .inner-page .drop-area .close-icon, .inner-page .drop-area .download-icon {
         position: absolute;
-        right: 0px;
         top: 0px;
         background-color: var(--red);
         color: var(--white);
         border: none;
-        border-radius: 5px;
+        border-radius: 0;
         width: 25px;
         height: 25px;
         display: flex;
@@ -237,10 +245,16 @@
         align-items: center;
         cursor: pointer;
     }
-    .inner-page .drop-area .close-icon i {
+    .inner-page .drop-area .close-icon i, .inner-page .drop-area .download-icon i {
         font-size: 20px;
         color: var(--white);
         line-height: 15px;
+    }
+    .inner-page .drop-area .close-icon {
+        right: 0px;
+    }
+    .inner-page .drop-area .download-icon {
+        right: 30px;
     }
     .inner-page .drop-area .condition {
         font-size: 14px;
@@ -260,6 +274,7 @@
         width: 200px;
         height: 125px;
         object-fit: cover;
+        cursor: pointer;
     }
     .inner-page .drop-area .images-preview, .inner-page .drop-area .videos-preview {
         display: flex;
@@ -277,6 +292,7 @@
         border-radius: 5px;
         object-fit: cover;
         margin: 0 2px;
+        cursor: pointer;
     }
     .inner-page .drop-area .images-preview .single-image:last-child, .inner-page .drop-area .videos-preview .single-video:last-child {
         margin-right: 0;
@@ -396,7 +412,7 @@
         text-align: end;
     }
     .inner-page .message-form .chat-box::-webkit-scrollbar {
-        width: 5px;
+        width: 8px;
     }
     .inner-page .message-form .chat-box::-webkit-scrollbar-track {
         background: var(--input_border);
@@ -409,6 +425,47 @@
     .inner-page .message-form .chat-box::-webkit-scrollbar-thumb:hover {
         background-color: var(--light_black);
         cursor: pointer;
+    }
+/* #endregion */
+
+
+/* #region: Modal */
+    .modal-image-preview .modal-content, .modal-video-preview .modal-content {
+        border-radius: 0;
+    }
+    .modal-image-preview .modal-body, .modal-video-preview .modal-body {
+        padding: 10px;
+    }
+    .modal-image-preview .modal-body .modal-image, .modal-video-preview .modal-body .modal-video {
+        width: 100%;
+        height: 80vh;
+        object-fit: cover;
+    }
+    .modal-image-preview .close-button, .modal-video-preview .close-button {
+        border: 1px solid var(--light_black);
+        font-size: 15px;
+        font-weight: 600;
+        border-radius: 0;
+        color: var(--light_black);
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--light_black);
+            color: var(--white);
+            transition: all 0.3s;
+        }
+    }
+    .modal-image-preview .download-button, .modal-video-preview .download-button {
+        background-color: var(--red);
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 0;
+        border: none;
+        color: var(--white);
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--light_black);
+            transition: all 0.3s;
+        }
     }
 /* #endregion */
 

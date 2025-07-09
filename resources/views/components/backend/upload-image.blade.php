@@ -31,7 +31,11 @@
         @if($old_value)
             <img src="{{ asset('storage/backend/' . $path . '/' . $old_value) }}">
 
-            <button type="button" class="close-icon image-close-icon">
+            <a href="{{ asset('storage/backend/' . $path . '/' . $old_value) }}" class="download-icon" title="download" download>
+                <i class="bi bi-arrow-bar-down"></i>
+            </a>
+
+            <button type="button" class="close-icon image-close-icon" title="Remove">
                 <i class="bi bi-x small"></i>
             </button>
         @endif
@@ -44,5 +48,13 @@
             $(this).parent('.image-preview').prev().val('');
             $(this).parent('.image-preview').remove();
         })
+
+        $('.image-preview img').on('click', function() {
+            let src = $(this).attr('src');
+
+            $(".modal-image-preview").find('img').attr('src', src);
+            $(".modal-image-preview").find('a').attr('href', src);
+            $(".modal-image-preview").modal('show');
+        });
     </script>
 @endpush

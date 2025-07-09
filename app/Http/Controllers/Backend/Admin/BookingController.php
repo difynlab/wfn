@@ -36,12 +36,14 @@ class BookingController extends Controller
     {
         $users = User::where('status', 1)->where('role', 'tenant')->get();
         $warehouses = Warehouse::where('status', 1)->get();
+
+        Booking::where('is_new', 1)->update(['is_new' => 0]);
         
         $pagination = $request->pagination ?? 10;
         $items = Booking::orderBy('id', 'desc')->paginate($pagination);
         $items = $this->processData($items);
 
-        return view('admin.admin.bookings.index', [
+        return view('backend.admin.bookings.index', [
             'items' => $items,
             'pagination' => $pagination,
             'users' => $users,
@@ -54,7 +56,7 @@ class BookingController extends Controller
         $users = User::where('status', 1)->where('role', 'tenant')->get();
         $warehouses = Warehouse::where('status', 1)->get();
 
-        return view('admin.admin.bookings.create', [
+        return view('backend.admin.bookings.create', [
             'users' => $users,
             'warehouses' => $warehouses
         ]);
@@ -107,7 +109,7 @@ class BookingController extends Controller
         $users = User::where('status', 1)->where('role', 'tenant')->get();
         $warehouses = Warehouse::where('status', 1)->get();
 
-        return view('admin.admin.bookings.edit', [
+        return view('backend.admin.bookings.edit', [
             'booking' => $booking,
             'users' => $users,
             'warehouses' => $warehouses
@@ -175,16 +177,24 @@ class BookingController extends Controller
 
     public function filter(Request $request)
     {
-        if($request->action == '⟲ Reset Filter') {
-            return redirect()->route('admin.bookings.index');
-        }
-
         $selected_tenant = $request->selected_tenant;
         $selected_warehouse = $request->selected_warehouse;
-        $order_by = $request->order_by;
         $status = $request->status;
+        $column = $request->column ?? 'id';
+        $direction = $request->direction ?? 'desc';
 
-        $items = Booking::query();
+        $valid_columns = ['no_of_pallets', 'total_rent', 'tenancy_date', 'renewal_date', 'status', 'id'];
+        $valid_directions = ['asc', 'desc'];
+
+        if(!in_array($column, $valid_columns)) {
+            $column = 'id';
+        }
+
+        if(!in_array($direction, $valid_directions)) {
+            $direction = 'desc';
+        }
+
+        $items = Booking::orderBy($column, $direction);
 
         if($selected_tenant) {
             $items->where('user_id', $selected_tenant);
@@ -192,13 +202,6 @@ class BookingController extends Controller
 
         if($selected_warehouse) {
             $items->where('warehouse_id', $selected_warehouse);
-        }
-
-        if($order_by == 'a-z') {
-            $items->orderBy('id', 'asc');
-        }
-        else {
-            $items->orderBy('id', 'desc');
         }
 
         if($status != null) {
@@ -209,15 +212,24 @@ class BookingController extends Controller
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 
+        if($request->ajax()) {
+            $tbodyView = view('backend.admin.bookings._tbody', compact('items'))->render();
+            $paginationView = $items->appends($request->except('page'))->links("pagination::bootstrap-5")->render();
+
+            return response()->json([
+                'tbody' => $tbodyView,
+                'pagination' => $paginationView,
+            ]);
+        }
+
         $users = User::where('status', 1)->where('role', 'tenant')->get();
         $warehouses = Warehouse::where('status', 1)->get();
 
-        return view('admin.admin.bookings.index', [
+        return view('backend.admin.bookings.index', [
             'items' => $items,
             'pagination' => $pagination,
             'selected_tenant' => $selected_tenant,
             'selected_warehouse' => $selected_warehouse,
-            'order_by' => $order_by,
             'status' => $status,
             'users' => $users,
             'warehouses' => $warehouses

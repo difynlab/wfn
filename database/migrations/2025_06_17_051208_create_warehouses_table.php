@@ -24,7 +24,9 @@ return new class extends Migration
             $table->string('total_area');
             $table->integer('total_pallets');
             $table->integer('available_pallets');
+            $table->decimal('rent_per_pallet', 10, 2);
             $table->string('pallet_dimension');
+            $table->string('pallet_dimension_other_value')->nullable();
             $table->enum('temperature_type', ['dry', 'ambient', 'cold', 'freezer']);
             $table->string('temperature_range');
             $table->enum('wms', ['yes', 'no']);
@@ -36,6 +38,7 @@ return new class extends Migration
             $table->text('videos')->nullable();
             $table->text('licenses')->nullable();
             $table->text('notes')->nullable();
+            $table->boolean('is_new')->default(1);
             $table->boolean('status')->default(1);
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

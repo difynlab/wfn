@@ -30,6 +30,8 @@ class WarehouseController extends Controller
 
     public function index(Request $request)
     {
+        Warehouse::where('is_new', 1)->update(['is_new' => 0]);
+
         $pagination = $request->pagination ?? 10;
         $items = Warehouse::orderBy('id', 'desc')->paginate($pagination);
         $items = $this->processData($items);
@@ -67,7 +69,8 @@ class WarehouseController extends Controller
             'total_area' => 'required',
             'total_pallets' => 'required|integer',
             'available_pallets' => 'required|integer',
-            'pallet_dimension' => 'required',
+            'rent_per_pallet' => 'required|numeric',
+            'pallet_dimension' => 'required|in:120x80x150,120x100x150,other',
             'temperature_type' => 'required|in:dry,ambient,cold,freezer',
             'temperature_range' => 'required',
             'wms' => 'required|in:yes,no',
@@ -181,8 +184,9 @@ class WarehouseController extends Controller
             'storage_type_id' => 'required|integer',
             'total_area' => 'required',
             'total_pallets' => 'required|integer',
+            'rent_per_pallet' => 'required|numeric',
             'available_pallets' => 'required|integer',
-            'pallet_dimension' => 'required',
+            'pallet_dimension' => 'required|in:120x80x150,120x100x150,other',
             'temperature_type' => 'required|in:dry,ambient,cold,freezer',
             'temperature_range' => 'required',
             'wms' => 'required|in:yes,no',
@@ -319,16 +323,24 @@ class WarehouseController extends Controller
 
     public function filter(Request $request)
     {
-        if($request->action == '⟲ Reset Filter') {
-            return redirect()->route('admin.warehouses.index');
-        }
-
         $name = $request->name;
         $address = $request->address;
-        $order_by = $request->order_by;
         $status = $request->status;
+        $column = $request->column ?? 'id';
+        $direction = $request->direction ?? 'desc';
 
-        $items = Warehouse::query();
+        $valid_columns = ['name', 'address', 'total_area', 'total_pallets', 'status', 'id'];
+        $valid_directions = ['asc', 'desc'];
+
+        if(!in_array($column, $valid_columns)) {
+            $column = 'id';
+        }
+
+        if(!in_array($direction, $valid_directions)) {
+            $direction = 'desc';
+        }
+
+        $items = Warehouse::orderBy($column, $direction);
 
         if($name) {
             $items->where('name', 'like', '%' . $name . '%');
@@ -341,13 +353,6 @@ class WarehouseController extends Controller
             });
         }
 
-        if($order_by == 'a-z') {
-            $items->orderBy('id', 'asc');
-        }
-        else {
-            $items->orderBy('id', 'desc');
-        }
-
         if($status != null) {
             $items->where('status', $status);
         }
@@ -356,12 +361,21 @@ class WarehouseController extends Controller
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 
+        if($request->ajax()) {
+            $tbodyView = view('backend.admin.warehouses._tbody', compact('items'))->render();
+            $paginationView = $items->appends($request->except('page'))->links("pagination::bootstrap-5")->render();
+
+            return response()->json([
+                'tbody' => $tbodyView,
+                'pagination' => $paginationView,
+            ]);
+        }
+
         return view('backend.admin.warehouses.index', [
             'items' => $items,
             'pagination' => $pagination,
             'name' => $name,
             'address' => $address,
-            'order_by' => $order_by,
             'status' => $status
         ]);
     }

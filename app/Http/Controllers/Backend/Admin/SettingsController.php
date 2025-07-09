@@ -274,7 +274,7 @@ class SettingsController extends Controller
             "Zimbabwe"
         ];
 
-        return view('admin.admin.settings.index', [
+        return view('backend.admin.settings.index', [
             'items' => $items,
             'user' => $user,
             'countries' => $countries

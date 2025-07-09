@@ -13,6 +13,7 @@
             <link rel="stylesheet" href="{{ asset('backend/css/bootstrap.css') }}">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
             <link rel="stylesheet" href="{{ asset('backend/css/select2.css') }}">
+            <link rel="stylesheet" href="{{ asset('backend/css/date-picker-x.css') }}">
             <link rel="stylesheet" href="{{ asset('backend/css/global.css') }}">
         @stack('after-styles')
     </head>
@@ -36,6 +37,7 @@
                 const uploadUrl = "{{ route('admin.ckeditor.upload') }}?_token={{ csrf_token() }}";
             </script>
             <script src="{{ asset('backend/js/select2.js') }}"></script>
+            <script src="{{ asset('backend/js/date-picker-x.js') }}"></script>
             <script src="{{ asset('backend/js/chart.js') }}"></script>
             <script src="{{ asset('backend/js/global.js') }}"></script>
         @stack('after-scripts')

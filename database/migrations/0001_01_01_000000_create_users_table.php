@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('phone_code')->nullable();
             $table->string('phone')->nullable()->unique();
             $table->string('address')->nullable();
             $table->string('city')->nullable();
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('image')->nullable();
             $table->enum('role', ['admin', 'landlord', 'tenant']);
+            $table->boolean('is_new')->default(1);
             $table->boolean('status')->default(1);
             $table->rememberToken();
             $table->timestamps();

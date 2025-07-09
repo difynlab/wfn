@@ -82,7 +82,10 @@
         padding: 15px;
         display: flex;
         align-items: center;
-        width: 75%;
+        width: 85%;
+    }
+    .wrapper .sidebar .main-menu .link .actual-link .new-count {
+        margin-left: auto;
     }
     .wrapper .sidebar .main-menu .link:last-child {
         margin-bottom: 0;

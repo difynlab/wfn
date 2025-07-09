@@ -33,19 +33,40 @@
 
                 <div class="col-6 mb-4">
                     <label for="phone" class="form-label label">Phone<span class="asterisk">*</span></label>
-                    <input type="text" class="form-control input-field" id="phone" name="phone" placeholder="Phone" value="{{ old('phone', $company->phone) }}" required>
+                    <div class="phone-div">
+                        <input type="text" class="form-control input-field" id="phone_code" name="phone_code" placeholder="+XXX" value="{{ old('phone_code', $company->phone_code) }}" required>
+                        
+                        <input type="text" class="form-control input-field" id="phone" name="phone" placeholder="5X XXX XXXX" value="{{ old('phone', $company->phone) }}" required>
+                    </div>
                     <x-backend.input-error field="phone"></x-backend.input-error>
                 </div>
 
                 <div class="col-6 mb-4">
                     <label for="website" class="form-label label">Website</label>
-                    <input type="url" class="form-control input-field" id="website" name="website" placeholder="Website" value="{{ old('website', $company->website) }}">
+                    <input type="text" class="form-control input-field" id="website" name="website" placeholder="Website" value="{{ old('website', $company->website) }}">
                     <x-backend.input-error field="website"></x-backend.input-error>
                 </div>
 
                 <div class="col-6 mb-4">
                     <label for="industry" class="form-label label">Industry<span class="asterisk">*</span></label>
-                    <input type="text" class="form-control input-field" id="industry" name="industry" placeholder="Industry" value="{{ old('industry', $company->industry) }}" required>
+                    <select class="form-select input-field js-single" id="industry" name="industry" required>
+                        <option value="">Select industry</option>
+                        <option value="retail" {{ old('industry', $company->industry) == 'retail' ? 'selected' : '' }}>Retail</option>
+                        <option value="e-commerce" {{ old('industry', $company->industry) == 'e-commerce' ? 'selected' : '' }}>E-commerce</option>
+                        <option value="manufacturing" {{ old('industry', $company->industry) == 'manufacturing' ? 'selected' : '' }}>Manufacturing</option>
+                        <option value="logistics and transportation" {{ old('industry', $company->industry) == 'logistics and transportation' ? 'selected' : '' }}>Logistics & Transportation</option>
+                        <option value="food and beverage" {{ old('industry', $company->industry) == 'food-and-beverage' ? 'selected' : '' }}>Food & Beverage</option>
+                        <option value="pharmaceuticals" {{ old('industry', $company->industry) == 'pharmaceuticals' ? 'selected' : '' }}>Pharmaceuticals</option>
+                        <option value="automotive" {{ old('industry', $company->industry) == 'automotive' ? 'selected' : '' }}>Automotive</option>
+                        <option value="textiles and apparel" {{ old('industry', $company->industry) == 'textiles and apparel' ? 'selected' : '' }}>Textiles & Apparel</option>
+                        <option value="electronics" {{ old('industry', $company->industry) == 'electronics' ? 'selected' : '' }}>Electronics</option>
+                        <option value="construction" {{ old('industry', $company->industry) == 'construction' ? 'selected' : '' }}>Construction</option>
+                        <option value="consumer goods" {{ old('industry', $company->industry) == 'consumer goods' ? 'selected' : '' }}>Consumer Goods</option>
+                        <option value="chemicals" {{ old('industry', $company->industry) == 'chemicals' ? 'selected' : '' }}>Chemicals</option>
+                        <option value="furniture and home goods" {{ old('industry', $company->industry) == 'furniture and home goods' ? 'selected' : '' }}>Furniture & Home Goods</option>
+                        <option value="aerospace" {{ old('industry', $company->industry) == 'aerospace' ? 'selected' : '' }}>Aerospace</option>
+                        <option value="energy and utilities" {{ old('industry', $company->industry) == 'energy and utilities' ? 'selected' : '' }}>Energy & Utilities</option>
+                    </select>
                     <x-backend.input-error field="industry"></x-backend.input-error>
                 </div>
 
@@ -56,7 +77,7 @@
 
                 <div class="col-6 mb-4">
                     <label for="establishment_date" class="form-label label">Establishment Date</label>
-                    <input type="date" class="form-control input-field" id="establishment_date" name="establishment_date" placeholder="Establishment Date" value="{{ old('establishment_date', $company->establishment_date) }}">
+                    <input type="text" class="form-control input-field date-picker-field" id="establishment_date" name="establishment_date" placeholder="Establishment Date" value="{{ old('establishment_date', $company->establishment_date) }}">
                     <x-backend.input-error field="establishment_date"></x-backend.input-error>
                 </div>
 
@@ -75,4 +96,45 @@
 
 @push('after-scripts')
     <script src="{{ asset('backend/js/drag-drop-images.js') }}"></script>
+
+    <script>
+        $('#email').on('blur', function () {
+            const email = $(this).val();
+            const $error = $(this).next('.error-message');
+
+            $error.remove();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if(!emailRegex.test(email)) {
+                $(this).after('<div class="error-message">Please enter a valid email address.</div>');
+            }
+        });
+
+        $('#phone').on('blur', function () {
+            const phone = $(this).val();
+            const $error = $(this).parent().next('.error-message');
+
+            $error.remove();
+            const phoneRegex = /^\d{9}$/;
+
+            if(!phoneRegex.test(phone)) {
+                $(this).parent().after('<div class="error-message">Phone number must be exactly 9 digits.</div>');
+            }
+        });
+
+        $('#website').on('blur', function () {
+            const website = $(this).val().trim();
+            const $error = $(this).next('.error-message');
+
+            $error.remove();
+
+            if(website !== '') {
+                const websiteRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,}(\/[\w\-._~:/?#[\]@!$&'()*+,;=]*)?$/i;
+
+                if(!websiteRegex.test(website)) {
+                    $(this).after('<div class="error-message">Please enter a valid website URL.</div>');
+                }
+            }
+        });
+    </script>
 @endpush

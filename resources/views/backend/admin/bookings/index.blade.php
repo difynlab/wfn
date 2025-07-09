@@ -19,7 +19,7 @@
 
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('admin.bookings.filter') }}" method="GET" class="filter-form">
+                <form class="filter-form">
                     <select class="form-select input-field js-single w-100" id="selected_tenant" name="selected_tenant">
                         <option value="">Select tenant</option>
                         @foreach($users as $user)
@@ -34,21 +34,13 @@
                         @endforeach
                     </select>
 
-                    <select class="form-select input-field width" name="order_by">
-                        <option value="">Order by: Z-A</option>
-                        <option value="a-z" {{ isset($order_by) && $order_by == 'a-z' ? "selected" : "" }}>A-Z</option>
-                        <option value="z-a" {{ isset($order_by) && $order_by == 'z-a' ? "selected" : "" }}>Z-A</option>
-                    </select>
-
                     <select class="form-select input-field width" name="status">
                         <option value="">Status</option>
                         <option value="1" {{ isset($status) && $status == 1 ? "selected" : "" }}>Active</option>
                         <option value="0" {{ isset($status) && $status == 0 ? "selected" : "" }}>Inactive</option>
                     </select>
 
-                    <input type="submit" class="form-control input-field reset" name="action" value="⟲ Reset Filter">
-
-                    <input type="submit" class="apply-button" name="action" value="Apply Filters">
+                    <button type="button" class="form-control input-field reset">⟲ Reset Filters</button>
                 </form>
             </div>
         </div>
@@ -63,16 +55,16 @@
                             <tr>
                                 <th scope="col">TENANT</th>
                                 <th scope="col">WAREHOUSE</th>
-                                <th scope="col">PALLETS RENTED</th>
-                                <th scope="col">TOTAL RENT</th>
-                                <th scope="col">TENANCY DATE</th>
-                                <th scope="col">RENEWAL DATE</th>
-                                <th scope="col">STATUS</th>
+                                <th scope="col">PALLETS RENTED <i class="bi bi-arrows-vertical sort-icon" data-name="no_of_pallets" data-order="desc"></i></th>
+                                <th scope="col">TOTAL RENT <i class="bi bi-arrows-vertical sort-icon" data-name="total_rent" data-order="desc"></i></th>
+                                <th scope="col">TENANCY DATE <i class="bi bi-arrows-vertical sort-icon" data-name="tenancy_date" data-order="desc"></i></th>
+                                <th scope="col">RENEWAL DATE <i class="bi bi-arrows-vertical sort-icon" data-name="renewal_date" data-order="desc"></i></th>
+                                <th scope="col">STATUS <i class="bi bi-arrows-vertical sort-icon" data-name="status" data-order="desc"></i></th>
                                 <th scope="col">ACTIONS</th>
                             </tr>
                         </thead>
 
-                        <tbody>
+                        <tbody id="tbody">
                             @if(count($items) > 0)
                                 @foreach($items as $item)
                                     <tr>
@@ -95,7 +87,9 @@
                     </table>
                 </div>
 
-                {{ $items->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
+                <div id="pagination">
+                    {{ $items->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
+                </div>
             </div>
         </div>
 
@@ -119,6 +113,51 @@
 
             $(".page .custom-pagination select").change(function () {
                 window.location = "{!! $items->url(1) !!}&pagination=" + this.value; 
+            });
+
+            function fetchFiltered(sortColumn = null, sortDirection = null) {
+                const url = "{{ route('admin.bookings.filter') }}";
+
+                let formObject = {};
+                $('.filter-form').serializeArray().forEach(function (field) {
+                    formObject[field.name] = field.value;
+                });
+
+                if(sortColumn && sortDirection) {
+                    formObject.column = sortColumn;
+                    formObject.direction = sortDirection;
+                }
+
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: formObject,
+                    success: function (response) {
+                        $('#tbody').html(response.tbody);
+                        $('#pagination').html(response.pagination);
+                    },
+                    error: function () {
+                        alert('Something went wrong while loading data.');
+                    }
+                });
+            }
+
+            $('.filter-form input, .filter-form select').on('input change', function () {
+                fetchFiltered();
+            });
+
+            $('.sort-icon').on('click', function () {
+                let name = $(this).data('name');
+                let orderBy = $(this).data('orderby');
+
+                orderBy = orderBy === 'asc' ? 'desc' : 'asc';
+                $(this).data('orderby', orderBy);
+
+                fetchFiltered(name, orderBy);
+            });
+
+            $('.reset').on('click', function () {
+                window.location = "{{ route('admin.bookings.index') }}";
             });
         });
     </script>

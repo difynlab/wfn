@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content')
-@php echo 'ww'; @endphp
+
     <div class="page dashboard">
         <div class="row mb-4">
             <div class="col-12">

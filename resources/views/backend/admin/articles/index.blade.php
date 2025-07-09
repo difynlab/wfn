@@ -19,7 +19,7 @@
 
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('admin.articles.filter') }}" method="GET" class="filter-form">
+                <form class="filter-form">
                     <div class="input-group">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                         <input type="text" class="form-control input-field" name="title" value="{{ $title ?? '' }}" placeholder="Search by Title">
@@ -38,9 +38,7 @@
                         <option value="0" {{ isset($status) && $status == 0 ? "selected" : "" }}>Inactive</option>
                     </select>
 
-                    <input type="submit" class="form-control input-field reset" name="action" value="⟲ Reset Filter">
-
-                    <input type="submit" class="apply-button" name="action" value="Apply Filters">
+                    <button type="button" class="form-control input-field reset">⟲ Reset Filters</button>
                 </form>
             </div>
         </div>
@@ -54,14 +52,14 @@
                         <thead>
                             <tr>
                                 <th scope="col">THUMBNAIL</th>
-                                <th scope="col">TITLE</th>
+                                <th scope="col">TITLE <i class="bi bi-arrows-vertical sort-icon" data-name="title" data-order="desc"></i></th>
                                 <th scope="col">CATEGORY</th>
-                                <th scope="col">STATUS</th>
+                                <th scope="col">STATUS <i class="bi bi-arrows-vertical sort-icon" data-name="status" data-order="desc"></i></th>
                                 <th scope="col">ACTIONS</th>
                             </tr>
                         </thead>
 
-                        <tbody>
+                        <tbody id="tbody">
                             @if(count($items) > 0)
                                 @foreach($items as $item)
                                     <tr>
@@ -81,7 +79,9 @@
                     </table>
                 </div>
 
-                {{ $items->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
+                <div id="pagination">
+                    {{ $items->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
+                </div>
             </div>
         </div>
 
@@ -105,6 +105,51 @@
 
             $(".page .custom-pagination select").change(function () {
                 window.location = "{!! $items->url(1) !!}&pagination=" + this.value; 
+            });
+
+            function fetchFiltered(sortColumn = null, sortDirection = null) {
+                const url = "{{ route('admin.articles.filter') }}";
+
+                let formObject = {};
+                $('.filter-form').serializeArray().forEach(function (field) {
+                    formObject[field.name] = field.value;
+                });
+
+                if(sortColumn && sortDirection) {
+                    formObject.column = sortColumn;
+                    formObject.direction = sortDirection;
+                }
+
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: formObject,
+                    success: function (response) {
+                        $('#tbody').html(response.tbody);
+                        $('#pagination').html(response.pagination);
+                    },
+                    error: function () {
+                        alert('Something went wrong while loading data.');
+                    }
+                });
+            }
+
+            $('.filter-form input, .filter-form select').on('input change', function () {
+                fetchFiltered();
+            });
+
+            $('.sort-icon').on('click', function () {
+                let name = $(this).data('name');
+                let orderBy = $(this).data('orderby');
+
+                orderBy = orderBy === 'asc' ? 'desc' : 'asc';
+                $(this).data('orderby', orderBy);
+
+                fetchFiltered(name, orderBy);
+            });
+
+            $('.reset').on('click', function () {
+                window.location = "{{ route('admin.articles.index') }}";
             });
         });
     </script>

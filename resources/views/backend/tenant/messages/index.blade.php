@@ -50,7 +50,7 @@
                                 <div class="single-message" data-id="{{ $item->id }}">
                                     <input class="form-check-input message-checkbox" type="checkbox" data-id="{{ $item->id }}">
 
-                                    <i class="bi star favorite {{ $item->favorite ? 'bi-star-fill gold' : 'bi-star' }}" title="Favorite" data-id="{{ $item->id }}"></i>
+                                    <i class="bi star favorite {{ $item->user_favorite ? 'bi-star-fill gold' : 'bi-star' }}" title="Favorite" data-id="{{ $item->id }}"></i>
 
                                     <a href="{{ route('tenant.messages.edit', $item->id) }}"><p class="name">{{ $item->name }}</p></a>
 

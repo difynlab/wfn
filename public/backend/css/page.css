@@ -167,7 +167,7 @@
         white-space: nowrap;
     }
     .page .table-container::-webkit-scrollbar {
-        height: 5px;
+        height: 8px;
     }
     .page .table-container::-webkit-scrollbar-track {
         background: #dedede;
@@ -190,9 +190,10 @@
         font-weight: 600;
         border: none;
         padding: 20px 15px;
-        border-bottom: 1px solid var(--input_border);
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border: 1px solid var(--input_border);
+        position: relative;
     }
     .page .table-container .table tr {
         border-bottom: 1px solid var(--input_border);
@@ -250,6 +251,10 @@
         height: 100px;
         object-fit: cover;
         border-radius: 50%;
+    }
+    .page .table-container .table .sort-icon {
+        font-size: 20px;
+        cursor: pointer;
     }
 /* #endregion */
 
@@ -414,7 +419,7 @@
         white-space: nowrap;
     }
     .page .messages .all-messages::-webkit-scrollbar {
-        height: 5px;
+        height: 8px;
     }
     .page .messages .all-messages::-webkit-scrollbar-track {
         background: var(--input_border);

@@ -21,6 +21,7 @@
                     <div class="actual-link">
                         <i class="bi bi-people"></i>
                         Users
+                        <p class="new-count">{{ App\Models\User::where('is_new', 1)->count() != 0 ? App\Models\User::where('is_new', 1)->count() : ''; }}</p>
                     </div>
                 </a>
             </li>
@@ -31,6 +32,7 @@
                     <div class="actual-link">
                         <i class="bi bi-houses"></i>
                         Warehouses
+                        <p class="new-count">{{ App\Models\Warehouse::where('is_new', 1)->count() != 0 ? App\Models\Warehouse::where('is_new', 1)->count() : ''; }}</p>
                     </div>
                 </a>
             </li>
@@ -41,6 +43,7 @@
                     <div class="actual-link">
                         <i class="bi bi-ui-checks"></i>
                         Bookings
+                        <p class="new-count">{{ App\Models\Booking::where('is_new', 1)->count() != 0 ? App\Models\Booking::where('is_new', 1)->count() : ''; }}</p>
                     </div>
                 </a>
             </li>
@@ -61,6 +64,23 @@
                     <div class="actual-link">
                         <i class="bi bi-chat-dots"></i>
                         Inbox
+
+                        @php
+                            $messages = App\Models\Message::where('admin_view', 0)->get();
+                            $message_replies = App\Models\MessageReply::where('admin_view', 0)->get();
+
+                            $message_ids = $messages->pluck('id')->toArray();
+
+                            $filtered_replies = $message_replies->reject(function ($reply) use ($message_ids) {
+                                return in_array($reply->message_id, $message_ids);
+                            });
+
+                            $unique_reply_message_ids = $filtered_replies->pluck('message_id')->unique()->count();
+
+                            $total_new_messages = $messages->count() + $unique_reply_message_ids;
+                        @endphp
+
+                        <p class="new-count">{{ $total_new_messages != 0 ? $total_new_messages : ''; }}</p>
                     </div>
                 </a>
             </li>
@@ -194,6 +214,26 @@
                     <div class="actual-link">
                         <i class="bi bi-chat-dots"></i>
                         Inbox
+
+                        @php
+                            $messages = App\Models\Message::where('user_id', auth()->user()->id)->get();
+                            $message_ids = $messages->pluck('id')->toArray();
+
+                            $unseen_messages = $messages->where('user_view', 0);
+                            $unseen_message_ids = $unseen_messages->pluck('id')->toArray();
+
+                            $message_replies = App\Models\MessageReply::whereIn('message_id', $message_ids)->where('user_view', 0)->get();
+
+                            $filtered_replies = $message_replies->reject(function ($reply) use ($unseen_message_ids) {
+                                return in_array($reply->message_id, $unseen_message_ids);
+                            });
+
+                            $unique_reply_message_ids = $filtered_replies->pluck('message_id')->unique()->count();
+
+                            $total_new_messages = $unseen_messages->count() + $unique_reply_message_ids;
+                        @endphp
+
+                        <p class="new-count">{{ $total_new_messages != 0 ? $total_new_messages : ''; }}</p>
                     </div>
                 </a>
             </li>
@@ -273,6 +313,26 @@
                     <div class="actual-link">
                         <i class="bi bi-chat-dots"></i>
                         Inbox
+
+                        @php
+                            $messages = App\Models\Message::where('user_id', auth()->user()->id)->get();
+                            $message_ids = $messages->pluck('id')->toArray();
+
+                            $unseen_messages = $messages->where('user_view', 0);
+                            $unseen_message_ids = $unseen_messages->pluck('id')->toArray();
+
+                            $message_replies = App\Models\MessageReply::whereIn('message_id', $message_ids)->where('user_view', 0)->get();
+
+                            $filtered_replies = $message_replies->reject(function ($reply) use ($unseen_message_ids) {
+                                return in_array($reply->message_id, $unseen_message_ids);
+                            });
+
+                            $unique_reply_message_ids = $filtered_replies->pluck('message_id')->unique()->count();
+
+                            $total_new_messages = $unseen_messages->count() + $unique_reply_message_ids;
+                        @endphp
+
+                        <p class="new-count">{{ $total_new_messages != 0 ? $total_new_messages : ''; }}</p>
                     </div>
                 </a>
             </li>

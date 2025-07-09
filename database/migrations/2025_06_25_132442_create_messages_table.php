@@ -20,8 +20,10 @@ return new class extends Migration
             $table->date('date');
             $table->time('time');
             $table->enum('category', ['general', 'landlord', 'tenant'])->nullable();
-            $table->boolean('favorite')->default(0);
+            $table->boolean('admin_favorite')->default(0);
+            $table->boolean('user_favorite')->default(0);
             $table->boolean('admin_view')->default(0);
+            $table->boolean('user_view')->default(0);
             $table->boolean('status')->default(1);
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

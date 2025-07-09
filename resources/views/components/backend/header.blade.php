@@ -9,25 +9,27 @@
 
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav align-items-center ms-auto">
-            <li class="nav-item">
-                <a class="nav-link {{ Request::segment(1) == '' ? 'active' : '' }}" href="{{ route('homepage') }}">Home</a>
-            </li>
+            @if(auth()->user()->role != 'admin')
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::segment(1) == '' ? 'active' : '' }}" href="{{ route('homepage') }}">Home</a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link {{ Request::segment(1) == 'about' ? 'active' : '' }}" href="{{ route('about') }}">About</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::segment(1) == 'about' ? 'active' : '' }}" href="{{ route('about') }}">About</a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link {{ Request::segment(1) == 'warehouses' ? 'active' : '' }}" href="{{ route('warehouses.index') }}">Warehouses</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::segment(1) == 'warehouses' ? 'active' : '' }}" href="{{ route('warehouses.index') }}">Warehouses</a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link {{ Request::segment(1) == 'support' ? 'active' : '' }}" href="{{ route('support') }}">Support</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::segment(1) == 'support' ? 'active' : '' }}" href="{{ route('support') }}">Support</a>
+                </li>
+            @endif
                 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="#"><i class="bi bi-bell notification-icon {{ auth()->user()->role != 'admin' ? 'nav-gap' : '' }}"></i></a>
-            </li>
+            </li> -->
 
             <li class="nav-item">
                 <div class="row align-items-center">

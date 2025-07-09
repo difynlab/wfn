@@ -33,6 +33,8 @@ class UserController extends Controller
         $pagination = $request->pagination ?? 10;
         $auth = Auth::user();
 
+        User::where('is_new', 1)->where('id', '!=', $auth->id)->update(['is_new' => 0]);
+
         $items = User::whereNot('id', $auth->id)->orderBy('id', 'desc')->paginate($pagination);
         $items = $this->processData($items);
 
@@ -310,7 +312,8 @@ class UserController extends Controller
             'first_name' => 'required|min:0|max:255',
             'last_name' => 'required|min:0|max:255',
             'email' => 'required|email|min:0|max:255|unique:users,email',
-            'phone' => 'required|min:0|max:255|regex:/^\+?[0-9]+$/|unique:users,phone',
+            'phone_code' => 'required|min:0|max:4',
+            'phone' => 'required|digits:9|numeric|unique:users,phone',
             'address' => 'required|min:0|max:255',
             'city' => 'required|min:0|max:255',
             'country' => 'required|min:0|max:255',
@@ -616,7 +619,8 @@ class UserController extends Controller
             'first_name' => 'required|min:0|max:255',
             'last_name' => 'required|min:0|max:255',
             'email' => 'required|email|min:0|max:255|unique:users,email,'.$user->id,
-            'phone' => 'required|min:0|max:255|regex:/^\+?[0-9]+$/|unique:users,phone,'.$user->id,
+            'phone_code' => 'required|min:0|max:4',
+            'phone' => 'required|digits:9|numeric|unique:users,phone,'.$user->id,
             'address' => 'required|min:0|max:255',
             'city' => 'required|min:0|max:255',
             'country' => 'required|min:0|max:255',
@@ -693,19 +697,32 @@ class UserController extends Controller
 
     public function filter(Request $request)
     {
-        if($request->action == '⟲ Reset Filter') {
-            return redirect()->route('admin.users.index');
-        }
-
         $name = $request->name;
         $role = $request->role;
         $city = $request->city;
-        $order_by = $request->order_by;
         $status = $request->status;
-
+        $column = $request->column ?? 'id';
+        $direction = $request->direction ?? 'desc';
+        
         $admin = Auth::user();
 
-        $items = User::whereNot('id', $admin->id);
+        $valid_columns = ['name', 'city', 'country', 'email', 'role', 'status', 'id'];
+        $valid_directions = ['asc', 'desc'];
+
+        if(!in_array($column, $valid_columns)) {
+            $column = 'id';
+        }
+
+        if(!in_array($direction, $valid_directions)) {
+            $direction = 'desc';
+        }
+
+        if($column === 'name') {
+            $column = 'first_name';
+            // $column = DB::raw("CONCAT(first_name, ' ', last_name)");
+        }
+
+        $items = User::whereNot('id', $admin->id)->orderBy($column, $direction);
 
         if($name) {
             $items->where(function ($query) use ($name) {
@@ -722,13 +739,6 @@ class UserController extends Controller
             $items->where('city', 'like', '%' . $city . '%');
         }
 
-        if($order_by == 'a-z') {
-            $items->orderBy('id', 'asc');
-        }
-        else {
-            $items->orderBy('id', 'desc');
-        }
-
         if($status != null) {
             $items->where('status', $status);
         }
@@ -737,13 +747,22 @@ class UserController extends Controller
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 
+        if($request->ajax()) {
+            $tbodyView = view('backend.admin.users._tbody', compact('items'))->render();
+            $paginationView = $items->appends($request->except('page'))->links("pagination::bootstrap-5")->render();
+
+            return response()->json([
+                'tbody' => $tbodyView,
+                'pagination' => $paginationView,
+            ]);
+        }
+
         return view('backend.admin.users.index', [
             'items' => $items,
             'pagination' => $pagination,
             'name' => $name,
             'role' => $role,
             'city' => $city,
-            'order_by' => $order_by,
             'status' => $status
         ]);
     }
@@ -770,9 +789,10 @@ class UserController extends Controller
             'name' => 'required|min:0|max:255',
             'address' => 'required|min:0|max:255',
             'email' => 'required|email|min:0|max:255|unique:companies,email,'.$company->id,
-            'phone' => 'required|min:0|max:255|regex:/^\+?[0-9]+$/|unique:companies,phone,'.$company->id,
-            'website' => 'nullable|url',
-            'industry' => 'required|min:0|max:255',
+            'phone_code' => 'required|min:0|max:4',
+            'phone' => 'required|digits:9|numeric|unique:companies,phone,'.$company->id,
+            'website' => 'nullable|regex:/^(https?:\/\/)?([\w\-]+\.)+[\w\-]{2,}(\/[\w\-._~:\/?#[\]@!$&\'()*+,;=]*)?$/',
+            'industry' => 'required|in:retail,e-commerce,manufacturing,logistics and transportation,food and beverage,pharmaceuticals,automotive,textiles and apparel,electronics,construction,consumer goods,chemicals,furniture and home goods,aerospace,energy and utilities',
             'date' => 'nullable|date',
             'new_registration_certificates.*' => 'max:30720',
             'status' => 'required|in:0,1'
