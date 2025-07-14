@@ -17,6 +17,7 @@ Element.prototype.attachShadow = function(init) {
             }
             :host {
                 border: 0 !important;
+                color-scheme: none!important;
             }
         `;
         root.append(style);
