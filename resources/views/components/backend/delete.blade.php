@@ -14,7 +14,7 @@
                         @csrf
                         @method('DELETE')
 
-                        <button type="submit" class="btn delete-button" title="Delete"><i class="bi bi-trash delete-icon"></i>Confirm Deletion</button>
+                        <button type="submit" class="btn modal-delete-button" title="Delete"><i class="bi bi-trash delete-icon"></i>Confirm Deletion</button>
                     </form>
                 </div>
             </div>

@@ -89,6 +89,36 @@
                 </div>
 
                 <div class="single-page">
+                    <p class="page-name">Privacy Policy</p>
+                    <div class="links">
+                        <a href="{{ route('admin.pages.privacy-policy.index', 'english') }}" title="Edit" class="link">
+                            <i class="bi bi-pencil-square"></i>
+                            English
+                        </a>
+
+                        <a href="{{ route('admin.pages.privacy-policy.index', 'arabic') }}" title="Edit" class="link">
+                            <i class="bi bi-pencil-square"></i>
+                            Arabic
+                        </a>
+                    </div>
+                </div>
+
+                <div class="single-page">
+                    <p class="page-name">Terms of Use</p>
+                    <div class="links">
+                        <a href="{{ route('admin.pages.terms-of-use.index', 'english') }}" title="Edit" class="link">
+                            <i class="bi bi-pencil-square"></i>
+                            English
+                        </a>
+
+                        <a href="{{ route('admin.pages.terms-of-use.index', 'arabic') }}" title="Edit" class="link">
+                            <i class="bi bi-pencil-square"></i>
+                            Arabic
+                        </a>
+                    </div>
+                </div>
+
+                <div class="single-page">
                     <p class="page-name">Authentications</p>
                     <div class="links">
                         <a href="{{ route('admin.pages.authentications.index', 'english') }}" title="Edit" class="link">

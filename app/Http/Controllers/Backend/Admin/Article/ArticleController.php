@@ -60,6 +60,7 @@ class ArticleController extends Controller
             'author_name' => 'required|min:3|max:250',
             'content' => 'required',
             'new_thumbnail' => 'nullable|max:30720',
+            'status' => 'required|in:0,1',
         ]);
         
         if($validator->fails()) {
@@ -109,8 +110,9 @@ class ArticleController extends Controller
             'author_name' => 'required|min:3|max:250',
             'content' => 'required',
             'new_thumbnail' => 'nullable|max:30720',
+            'status' => 'required|in:0,1',
         ]);
-        
+
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Update Failed!',

@@ -288,7 +288,7 @@
             transition: all 0.3s;
         }
     }
-    .notification-modal .delete-button {
+    .notification-modal .modal-delete-button {
         background-color: var(--red);
         font-size: 16px;
         font-weight: 600;
@@ -303,7 +303,7 @@
             transition: all 0.3s;
         }
     }
-    .notification-modal .delete-button .delete-icon {
+    .notification-modal .modal-delete-button .delete-icon {
         padding-right: 5px;
     }
 /* #endregion */

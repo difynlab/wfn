@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder
             AboutContentSeeder::class,
             ArticleCategorySeeder::class,
             ArticleSeeder::class,
+            ReviewSeeder::class,
+            PrivacyPolicyContentSeeder::class,
+            TermsOfUseContentSeeder::class,
         ]);
     }
 }

@@ -93,64 +93,13 @@
 
 @push('after-scripts')
     <script>
-        $(document).ready(function() {
-            $('.page .table .delete-button').on('click', function() {
-                let id = $(this).attr('id');
-                let url = "{{ route('admin.articles.destroy', [':id']) }}";
-                destroy_url = url.replace(':id', id);
-
-                $('.page #delete-modal form').attr('action', destroy_url);
-                $('.page #delete-modal').modal('show');
-            });
-
-            $(".page .custom-pagination select").change(function () {
-                window.location = "{!! $items->url(1) !!}&pagination=" + this.value; 
-            });
-
-            function fetchFiltered(sortColumn = null, sortDirection = null) {
-                const url = "{{ route('admin.articles.filter') }}";
-
-                let formObject = {};
-                $('.filter-form').serializeArray().forEach(function (field) {
-                    formObject[field.name] = field.value;
-                });
-
-                if(sortColumn && sortDirection) {
-                    formObject.column = sortColumn;
-                    formObject.direction = sortDirection;
-                }
-
-                $.ajax({
-                    url: url,
-                    type: 'GET',
-                    data: formObject,
-                    success: function (response) {
-                        $('#tbody').html(response.tbody);
-                        $('#pagination').html(response.pagination);
-                    },
-                    error: function () {
-                        alert('Something went wrong while loading data.');
-                    }
-                });
-            }
-
-            $('.filter-form input, .filter-form select').on('input change', function () {
-                fetchFiltered();
-            });
-
-            $('.sort-icon').on('click', function () {
-                let name = $(this).data('name');
-                let orderBy = $(this).data('orderby');
-
-                orderBy = orderBy === 'asc' ? 'desc' : 'asc';
-                $(this).data('orderby', orderBy);
-
-                fetchFiltered(name, orderBy);
-            });
-
-            $('.reset').on('click', function () {
-                window.location = "{{ route('admin.articles.index') }}";
-            });
-        });
+        window.moduleRoutes = {
+            destroyRoute: "{{ route('admin.articles.destroy', [':id']) }}",
+            filterRoute: "{{ route('admin.articles.filter') }}",
+            indexRoute: "{{ route('admin.articles.index') }}",
+            pageUrl: "{!! $items->url(1) !!}"
+        };
     </script>
+
+    <script src="{{ asset('backend/js/index-script.js') }}"></script>
 @endpush

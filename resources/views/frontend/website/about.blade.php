@@ -329,179 +329,41 @@
                 <p class="section-title">{{ $contents->{'section_9_title_' . $middleware_language} ?? $contents->section_9_title_en }}</p>
                 <p class="section-description">{{ $contents->{'section_9_description_' . $middleware_language} ?? $contents->section_9_description_en }}</p>
 
-                <!-- In future -->
+                @if(count($reviews) > 0)
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="testimonial-row">
-                                    <div class="left">
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
+                            @foreach($reviews as $review)
+                                <div class="swiper-slide">
+                                    <div class="testimonial-row">
+                                        <div class="left">
+                                            <div class="stars">
+                                                @for($i = 1; $i <= $review->star; $i++ )
+                                                    <i class="bi bi-star-fill"></i>
+                                                @endfor
+                                            </div>
+
+                                            <p class="content">{{ $review->content }}</p>
+
+                                            <p class="author">
+                                                <span class="name">{{ $review->name }}</span>
+                                                <span class="line">|</span>
+                                                <span class="designation">{{ $review->designation }}</span>
+                                            </p>
                                         </div>
 
-                                        <p class="content">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        </p>
-
-                                        <p class="author">
-                                            <span class="name">Danial Mark</span>
-                                            <span class="line">|</span>
-                                            <span class="designation">Marketing Coordinator</span>
-                                        </p>
-                                    </div>
-
-                                    <div class="right">
-                                        <img src="{{ asset('storage/frontend/testimonial-1.png') }}" alt="Image" class="image">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="testimonial-row">
-                                    <div class="left">
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
+                                        <div class="right">
+                                            @if($review->image)
+                                                <img src="{{ asset('storage/backend/reviews/' . $review->image) }}" alt="Image" class="image">
+                                            @else
+                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Image" class="image">
+                                            @endif
                                         </div>
-
-                                        <p class="content">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        </p>
-
-                                        <p class="author">
-                                            <span class="name">Danial Mark</span>
-                                            <span class="line">|</span>
-                                            <span class="designation">Marketing Coordinator</span>
-                                        </p>
-                                    </div>
-
-                                    <div class="right">
-                                        <img src="{{ asset('storage/frontend/testimonial-2.png') }}" alt="Image" class="image">
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="testimonial-row">
-                                    <div class="left">
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                        </div>
-
-                                        <p class="content">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        </p>
-
-                                        <p class="author">
-                                            <span class="name">Danial Mark</span>
-                                            <span class="line">|</span>
-                                            <span class="designation">Marketing Coordinator</span>
-                                        </p>
-                                    </div>
-
-                                    <div class="right">
-                                        <img src="{{ asset('storage/frontend/testimonial-1.png') }}" alt="Image" class="image">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="testimonial-row">
-                                    <div class="left">
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                        </div>
-
-                                        <p class="content">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        </p>
-
-                                        <p class="author">
-                                            <span class="name">Danial Mark</span>
-                                            <span class="line">|</span>
-                                            <span class="designation">Marketing Coordinator</span>
-                                        </p>
-                                    </div>
-
-                                    <div class="right">
-                                        <img src="{{ asset('storage/frontend/testimonial-2.png') }}" alt="Image" class="image">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="testimonial-row">
-                                    <div class="left">
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                        </div>
-
-                                        <p class="content">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        </p>
-
-                                        <p class="author">
-                                            <span class="name">Danial Mark</span>
-                                            <span class="line">|</span>
-                                            <span class="designation">Marketing Coordinator</span>
-                                        </p>
-                                    </div>
-
-                                    <div class="right">
-                                        <img src="{{ asset('storage/frontend/testimonial-1.png') }}" alt="Image" class="image">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="testimonial-row">
-                                    <div class="left">
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                        </div>
-
-                                        <p class="content">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        </p>
-
-                                        <p class="author">
-                                            <span class="name">Danial Mark</span>
-                                            <span class="line">|</span>
-                                            <span class="designation">Marketing Coordinator</span>
-                                        </p>
-                                    </div>
-
-                                    <div class="right">
-                                        <img src="{{ asset('storage/frontend/testimonial-2.png') }}" alt="Image" class="image">
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-                <!-- In future -->
+                @endif
 
                 <div class="swiper-pagination"></div>
             </div>

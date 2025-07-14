@@ -30,7 +30,7 @@
                         </li>
 
                         <li>
-                            <a href="{{ route('support') }}">Support</a>
+                            <a href="{{ route('supports.index') }}">Support</a>
                         </li>
                     </ul>
                 </div>

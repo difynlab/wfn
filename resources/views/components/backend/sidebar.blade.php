@@ -84,6 +84,17 @@
                     </div>
                 </a>
             </li>
+
+            <li class="link">
+                <a href="{{ route('admin.supports.index') }}" class="{{ Request::segment(2) == 'supports' ? 'active' : '' }}">
+                    <div class="box"></div>
+                    <div class="actual-link">
+                        <i class="bi bi-question-square"></i>
+                        Supports
+                        <p class="new-count">{{ App\Models\Support::where('is_new', 1)->count() != 0 ? App\Models\Support::where('is_new', 1)->count() : ''; }}</p>
+                    </div>
+                </a>
+            </li>
         </ul>
 
         <hr>
@@ -139,6 +150,16 @@
                     <div class="actual-link">
                         <i class="bi bi-newspaper"></i>
                         Articles
+                    </div>
+                </a>
+            </li>
+
+            <li class="link">
+                <a href="{{ route('admin.reviews.index') }}" class="{{ Request::segment(2) == 'reviews' ? 'active' : '' }}">
+                    <div class="box"></div>
+                    <div class="actual-link">
+                        <i class="bi bi-calendar2-week"></i>
+                        Reviews
                     </div>
                 </a>
             </li>

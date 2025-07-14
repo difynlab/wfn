@@ -11,10 +11,14 @@ use App\Http\Controllers\Backend\Admin\Page\ArticleController;
 use App\Http\Controllers\Backend\Admin\Page\AuthenticationController;
 use App\Http\Controllers\Backend\Admin\Page\HomepageController;
 use App\Http\Controllers\Backend\Admin\Page\PageController;
+use App\Http\Controllers\Backend\Admin\Page\PrivacyPolicyController;
 use App\Http\Controllers\Backend\Admin\Page\SupportController;
+use App\Http\Controllers\Backend\Admin\Page\TermsOfUseController;
 use App\Http\Controllers\Backend\Admin\Page\WarehouseController;
+use App\Http\Controllers\Backend\Admin\ReviewController;
 use App\Http\Controllers\Backend\Admin\SettingsController;
 use App\Http\Controllers\Backend\Admin\StorageTypeController;
+use App\Http\Controllers\Backend\Admin\SupportController as AdminSupportController;
 use App\Http\Controllers\Backend\Admin\TodoController;
 use App\Http\Controllers\Backend\Admin\UserController;
 use App\Http\Controllers\Backend\Admin\WarehouseController as AdminWarehouseController;
@@ -75,6 +79,16 @@ require __DIR__.'/auth/backend.php';
                 });
 
                 Route::controller(ArticleController::class)->prefix('articles')->name('articles.')->group(function() {
+                    Route::get('{language}', 'index')->name('index');
+                    Route::post('{language}', 'update')->name('update');
+                });
+
+                Route::controller(PrivacyPolicyController::class)->prefix('privacy-policy')->name('privacy-policy.')->group(function() {
+                    Route::get('{language}', 'index')->name('index');
+                    Route::post('{language}', 'update')->name('update');
+                });
+
+                Route::controller(TermsOfUseController::class)->prefix('terms-of-use')->name('terms-of-use.')->group(function() {
                     Route::get('{language}', 'index')->name('index');
                     Route::post('{language}', 'update')->name('update');
                 });
@@ -194,6 +208,26 @@ require __DIR__.'/auth/backend.php';
                 Route::delete('{article}', 'destroy')->name('destroy');
             });
         // Articles routes
+
+        // Reviews routes
+            Route::controller(ReviewController::class)->prefix('reviews')->name('reviews.')->group(function() {
+                Route::get('/', 'index')->name('index');
+                Route::get('filter', 'filter')->name('filter');
+                Route::get('create', 'create')->name('create');
+                Route::post('/', 'store')->name('store');
+                Route::get('{review}/edit', 'edit')->name('edit');
+                Route::post('{review}', 'update')->name('update');
+                Route::delete('{review}', 'destroy')->name('destroy');
+            });
+        // Reviews routes
+
+        // Supports routes
+            Route::controller(AdminSupportController::class)->prefix('supports')->name('supports.')->group(function() {
+                Route::get('/', 'index')->name('index');
+                Route::get('filter', 'filter')->name('filter');
+                Route::delete('{support}', 'destroy')->name('destroy');
+            });
+        // Supports routes
     });
 // Admin
 

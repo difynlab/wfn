@@ -51,6 +51,8 @@
             </div>
         </form>
     </div>
+
+    <x-backend.modal-image-preview></x-backend.modal-image-preview>
 @endsection
 
 @push('after-scripts')

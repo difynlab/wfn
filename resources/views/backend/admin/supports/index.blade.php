@@ -1,19 +1,13 @@
 @extends('backend.layouts.app')
 
-@section('title', 'Warehouses')
+@section('title', 'Supports')
 
 @section('content')
     <div class="page">
         <div class="row align-items-center mb-4">
             <div class="col-8">
-                <p class="title">Warehouses</p>
-                <p class="description">Manage warehouse details here.</p>
-            </div>
-            <div class="col-4 text-end">
-                <a href="{{ route('admin.warehouses.create') }}" class="add-button">
-                    <i class="bi bi-plus-lg"></i>
-                    Add New Warehouse
-                </a>
+                <p class="title">Supports</p>
+                <p class="description">Manage supports here.</p>
             </div>
         </div>
 
@@ -24,14 +18,6 @@
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                         <input type="text" class="form-control input-field" name="name" value="{{ $name ?? '' }}" placeholder="Search by Name">
                     </div>
-
-                    <input type="text" class="form-control input-field width" name="address" value="{{ $address ?? '' }}" placeholder="Address">
-
-                    <select class="form-select input-field width" name="status">
-                        <option value="">Status</option>
-                        <option value="1" {{ isset($status) && $status == 1 ? "selected" : "" }}>Active</option>
-                        <option value="0" {{ isset($status) && $status == 0 ? "selected" : "" }}>Inactive</option>
-                    </select>
 
                     <button type="button" class="form-control input-field reset">⟲ Reset Filters</button>
                 </form>
@@ -47,10 +33,11 @@
                         <thead>
                             <tr>
                                 <th scope="col">NAME <i class="bi bi-arrows-vertical sort-icon" data-name="name" data-order="desc"></i></th>
-                                <th scope="col">ADDRESS <i class="bi bi-arrows-vertical sort-icon" data-name="address" data-order="desc"></i></th>
-                                <th scope="col">TOTAL AREA <i class="bi bi-arrows-vertical sort-icon" data-name="total_area" data-order="desc"></i></th>
-                                <th scope="col">TOTAL PALLETS <i class="bi bi-arrows-vertical sort-icon" data-name="total_pallets" data-order="desc"></i></th>
-                                <th scope="col">STATUS <i class="bi bi-arrows-vertical sort-icon" data-name="status" data-order="desc"></i></th>
+                                <th scope="col">PHONE <i class="bi bi-arrows-vertical sort-icon" data-name="phone" data-order="desc"></i></th>
+                                <th scope="col">EMAIL <i class="bi bi-arrows-vertical sort-icon" data-name="email" data-order="desc"></i></th>
+                                <th scope="col">CATEGORY <i class="bi bi-arrows-vertical sort-icon" data-name="category" data-order="desc"></i></th>
+                                <th scope="col">SUBJECT <i class="bi bi-arrows-vertical sort-icon" data-name="subject" data-order="desc"></i></th>
+                                <th scope="col">MESSAGE <i class="bi bi-arrows-vertical sort-icon" data-name="message" data-order="desc"></i></th>
                                 <th scope="col">ACTIONS</th>
                             </tr>
                         </thead>
@@ -60,16 +47,17 @@
                                 @foreach($items as $item)
                                     <tr>
                                         <td>{{ $item->name }}</td>
-                                        <td>{{ $item->address_en }}</td>
-                                        <td>{{ $item->total_area }}</td>
-                                        <td>{{ $item->total_pallets }}</td>
-                                        <td>{!! $item->status !!}</td>
+                                        <td>{{ $item->phone }}</td>
+                                        <td>{{ $item->email }}</td>
+                                        <td>{{ $item->category }}</td>
+                                        <td>{{ $item->subject }}</td>
+                                        <td>{{ $item->message }}</td>
                                         <td>{!! $item->action !!}</td>
                                     </tr>
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="6" style="text-align: center;">No data available in the table</td>
+                                    <td colspan="7" style="text-align: center;">No data available in the table</td>
                                 </tr>
                             @endif
                         </tbody>
@@ -82,7 +70,7 @@
             </div>
         </div>
 
-        <x-backend.delete data="warehouse"></x-backend.delete>
+        <x-backend.delete data="support"></x-backend.delete>
         <x-backend.notification></x-backend.notification>
     </div>
 @endsection
@@ -91,9 +79,9 @@
 @push('after-scripts')
     <script>
         window.moduleRoutes = {
-            destroyRoute: "{{ route('admin.warehouses.destroy', [':id']) }}",
-            filterRoute: "{{ route('admin.warehouses.filter') }}",
-            indexRoute: "{{ route('admin.warehouses.index') }}",
+            destroyRoute: "{{ route('admin.supports.destroy', [':id']) }}",
+            filterRoute: "{{ route('admin.supports.filter') }}",
+            indexRoute: "{{ route('admin.supports.index') }}",
             pageUrl: "{!! $items->url(1) !!}"
         };
     </script>

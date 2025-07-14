@@ -23,7 +23,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::segment(1) == 'support' ? 'active' : '' }}" href="{{ route('support') }}">Support</a>
+                    <a class="nav-link {{ Request::segment(1) == 'supports' ? 'active' : '' }}" href="{{ route('supports.index') }}">Support</a>
                 </li>
             @endif
                 

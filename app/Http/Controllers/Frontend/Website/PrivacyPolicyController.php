@@ -3,12 +3,17 @@
 namespace App\Http\Controllers\Frontend\Website;
 
 use App\Http\Controllers\Controller;
+use App\Models\PrivacyPolicyContent;
 use Illuminate\Http\Request;
 
 class PrivacyPolicyController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        return view('frontend.website.privacy-policy');
+        $contents = PrivacyPolicyContent::find(1);
+
+        return view('frontend.website.privacy-policy', [
+            'contents' => $contents
+        ]);
     }
 }

@@ -22,10 +22,12 @@ class LanguageMiddleware
             'middleware_language_name' => $language_name
         ]);
 
-        $request->merge([
-            'middleware_language' => $language,
-            'middleware_language_name' => $language_name,
-        ]);
+        session(
+            [
+                'middleware_language' => $language,
+                'middleware_language_name' => $language_name,
+            ]
+        );
 
         return $next($request);
     }
