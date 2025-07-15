@@ -28,32 +28,32 @@ class MessageController extends Controller
     {
         $pagination = $request->pagination ?? 10;
 
-        $all_count = Message::where('status', 1)->get()->count();
-        $general_count = Message::where('status', 1)->where('category', 'general')->get()->count();
-        $landlord_count = Message::where('status', 1)->where('category', 'landlord')->get()->count();
-        $tenant_count = Message::where('status', 1)->where('category', 'tenant')->get()->count();
-        $starred_count = Message::where('status', 1)->where('admin_favorite', 1)->get()->count();
-        $bin_count = Message::where('status', 0)->get()->count();
+        $all_count = Message::where('admin_status', 1)->get()->count();
+        $general_count = Message::where('admin_status', 1)->where('category', 'general')->get()->count();
+        $landlord_count = Message::where('admin_status', 1)->where('category', 'landlord')->get()->count();
+        $tenant_count = Message::where('admin_status', 1)->where('category', 'tenant')->get()->count();
+        $starred_count = Message::where('admin_status', 1)->where('admin_favorite', 1)->get()->count();
+        $bin_count = Message::where('admin_status', 0)->get()->count();
 
         Message::where('admin_view', 0)->update(['admin_view' => 1]);
 
         if($category == 'all') {
-            $items = Message::where('status', 1)->orderBy('id', 'desc')->paginate($pagination);
+            $items = Message::where('admin_status', 1)->orderBy('id', 'desc')->paginate($pagination);
         }
         elseif($category == 'general') {
-            $items = Message::where('status', 1)->where('category', 'general')->orderBy('id', 'desc')->paginate($pagination);
+            $items = Message::where('admin_status', 1)->where('category', 'general')->orderBy('id', 'desc')->paginate($pagination);
         }
         elseif($category == 'landlord') {
-            $items = Message::where('status', 1)->where('category', 'landlord')->orderBy('id', 'desc')->paginate($pagination);
+            $items = Message::where('admin_status', 1)->where('category', 'landlord')->orderBy('id', 'desc')->paginate($pagination);
         }
         elseif($category == 'tenant') {
-            $items = Message::where('status', 1)->where('category', 'tenant')->orderBy('id', 'desc')->paginate($pagination);
+            $items = Message::where('admin_status', 1)->where('category', 'tenant')->orderBy('id', 'desc')->paginate($pagination);
         }
         elseif($category == 'starred') {
-            $items = Message::where('status', 1)->where('admin_favorite', 1)->orderBy('id', 'desc')->paginate($pagination);
+            $items = Message::where('admin_status', 1)->where('admin_favorite', 1)->orderBy('id', 'desc')->paginate($pagination);
         }
         elseif($category == 'bin') {
-            $items = Message::where('status', 0)->orderBy('id', 'desc')->paginate($pagination);
+            $items = Message::where('admin_status', 0)->orderBy('id', 'desc')->paginate($pagination);
         }
         
         $items = $this->processData($items);
@@ -75,12 +75,12 @@ class MessageController extends Controller
     {
         $users = User::where('status', 1)->whereNot('id', auth()->user()->id)->get();
         
-        $all_count = Message::where('status', 1)->get()->count();
-        $general_count = Message::where('status', 1)->where('category', 'general')->get()->count();
-        $landlord_count = Message::where('status', 1)->where('category', 'landlord')->get()->count();
-        $tenant_count = Message::where('status', 1)->where('category', 'tenant')->get()->count();
-        $starred_count = Message::where('status', 1)->where('admin_favorite', 1)->get()->count();
-        $bin_count = Message::where('status', 0)->get()->count();
+        $all_count = Message::where('admin_status', 1)->get()->count();
+        $general_count = Message::where('admin_status', 1)->where('category', 'general')->get()->count();
+        $landlord_count = Message::where('admin_status', 1)->where('category', 'landlord')->get()->count();
+        $tenant_count = Message::where('admin_status', 1)->where('category', 'tenant')->get()->count();
+        $starred_count = Message::where('admin_status', 1)->where('admin_favorite', 1)->get()->count();
+        $bin_count = Message::where('admin_status', 0)->get()->count();
 
         return view('backend.admin.messages.create', [
             'users' => $users,
@@ -126,12 +126,12 @@ class MessageController extends Controller
 
     public function edit(Message $message)
     {
-        $all_count = Message::where('status', 1)->get()->count();
-        $general_count = Message::where('status', 1)->where('category', 'general')->get()->count();
-        $landlord_count = Message::where('status', 1)->where('category', 'landlord')->get()->count();
-        $tenant_count = Message::where('status', 1)->where('category', 'tenant')->get()->count();
-        $starred_count = Message::where('status', 1)->where('admin_favorite', 1)->get()->count();
-        $bin_count = Message::where('status', 0)->get()->count();
+        $all_count = Message::where('admin_status', 1)->get()->count();
+        $general_count = Message::where('admin_status', 1)->where('category', 'general')->get()->count();
+        $landlord_count = Message::where('admin_status', 1)->where('category', 'landlord')->get()->count();
+        $tenant_count = Message::where('admin_status', 1)->where('category', 'tenant')->get()->count();
+        $starred_count = Message::where('admin_status', 1)->where('admin_favorite', 1)->get()->count();
+        $bin_count = Message::where('admin_status', 0)->get()->count();
 
         if($message->admin_view == 0) {
             $message->admin_view = 1;
@@ -189,7 +189,6 @@ class MessageController extends Controller
         $message_reply->time = Carbon::now()->toTimeString();
         $message_reply->admin_view = 1;
         $message_reply->user_view = 0;
-        $message_reply->status = 1;
         $message_reply->save();
         
         return redirect()->back();
@@ -199,30 +198,30 @@ class MessageController extends Controller
     {
         $text = $request->text;
 
-        $all_count = Message::where('status', 1)->get()->count();
-        $general_count = Message::where('status', 1)->where('category', 'general')->get()->count();
-        $landlord_count = Message::where('status', 1)->where('category', 'landlord')->get()->count();
-        $tenant_count = Message::where('status', 1)->where('category', 'tenant')->get()->count();
-        $starred_count = Message::where('status', 1)->where('admin_favorite', 1)->get()->count();
-        $bin_count = Message::where('status', 0)->get()->count();
+        $all_count = Message::where('admin_status', 1)->get()->count();
+        $general_count = Message::where('admin_status', 1)->where('category', 'general')->get()->count();
+        $landlord_count = Message::where('admin_status', 1)->where('category', 'landlord')->get()->count();
+        $tenant_count = Message::where('admin_status', 1)->where('category', 'tenant')->get()->count();
+        $starred_count = Message::where('admin_status', 1)->where('admin_favorite', 1)->get()->count();
+        $bin_count = Message::where('admin_status', 0)->get()->count();
 
         if($category == 'all') {
-            $items = Message::where('status', 1)->orderBy('id', 'desc');
+            $items = Message::where('admin_status', 1)->orderBy('id', 'desc');
         }
         elseif($category == 'general') {
-            $items = Message::where('status', 1)->where('category', 'general')->orderBy('id', 'desc');
+            $items = Message::where('admin_status', 1)->where('category', 'general')->orderBy('id', 'desc');
         }
         elseif($category == 'landlord') {
-            $items = Message::where('status', 1)->where('category', 'landlord')->orderBy('id', 'desc');
+            $items = Message::where('admin_status', 1)->where('category', 'landlord')->orderBy('id', 'desc');
         }
         elseif($category == 'tenant') {
-            $items = Message::where('status', 1)->where('category', 'tenant')->orderBy('id', 'desc');
+            $items = Message::where('admin_status', 1)->where('category', 'tenant')->orderBy('id', 'desc');
         }
         elseif($category == 'starred') {
-            $items = Message::where('status', 1)->where('admin_favorite', 1)->orderBy('id', 'desc');
+            $items = Message::where('admin_status', 1)->where('admin_favorite', 1)->orderBy('id', 'desc');
         }
         elseif($category == 'bin') {
-            $items = Message::where('status', 0)->orderBy('id', 'desc');
+            $items = Message::where('admin_status', 0)->orderBy('id', 'desc');
         }
 
         if($text) {
@@ -270,12 +269,15 @@ class MessageController extends Controller
     {
         foreach($request->selected_ids as $id) {
             $message = Message::find($id);
+            // $message->admin_status = 0;
+            // $message->save();
 
-            if($message->status == 0) {
-                $message->delete();
+            if($message->admin_status == 0) {
+                $message->admin_status = 2;
+                $message->save();
             }
             else {
-                $message->status = 0;
+                $message->admin_status = 0;
                 $message->save();
             }
         }
@@ -287,7 +289,7 @@ class MessageController extends Controller
     {
         foreach($request->selected_ids as $id) {
             $message = Message::find($id);
-            $message->status = 1;
+            $message->admin_status = 1;
             $message->save();
         }
 

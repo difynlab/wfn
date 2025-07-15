@@ -37,20 +37,20 @@ class MessageController extends Controller
         $user = Auth::user();
         $pagination = $request->pagination ?? 10;
 
-        $all_count = $user->messages()->where('status', 1)->get()->count();
-        $starred_count = $user->messages()->where('status', 1)->where('user_favorite', 1)->get()->count();
-        $bin_count = $user->messages()->where('status', 0)->get()->count();
+        $all_count = $user->messages()->where('user_status', 1)->get()->count();
+        $starred_count = $user->messages()->where('user_status', 1)->where('user_favorite', 1)->get()->count();
+        $bin_count = $user->messages()->where('user_status', 0)->get()->count();
 
         Message::where('user_id', auth()->user()->id)->where('user_view', 0)->update(['user_view' => 1]);
 
         if($category == 'all') {
-            $items = $user->messages()->where('status', 1)->orderBy('id', 'desc')->paginate($pagination);
+            $items = $user->messages()->where('user_status', 1)->orderBy('id', 'desc')->paginate($pagination);
         }
         elseif($category == 'starred') {
-            $items = $user->messages()->where('status', 1)->where('user_favorite', 1)->orderBy('id', 'desc')->paginate($pagination);
+            $items = $user->messages()->where('user_status', 1)->where('user_favorite', 1)->orderBy('id', 'desc')->paginate($pagination);
         }
         elseif($category == 'bin') {
-            $items = $user->messages()->where('status', 0)->orderBy('id', 'desc')->paginate($pagination);
+            $items = $user->messages()->where('user_status', 0)->orderBy('id', 'desc')->paginate($pagination);
         }
         
         $items = $this->processData($items);
@@ -68,9 +68,9 @@ class MessageController extends Controller
     public function create()
     {
         $user = Auth::user();
-        $all_count = $user->messages()->where('status', 1)->get()->count();
-        $starred_count = $user->messages()->where('status', 1)->where('user_favorite', 1)->get()->count();
-        $bin_count = $user->messages()->where('status', 0)->get()->count();
+        $all_count = $user->messages()->where('user_status', 1)->get()->count();
+        $starred_count = $user->messages()->where('user_status', 1)->where('user_favorite', 1)->get()->count();
+        $bin_count = $user->messages()->where('user_status', 0)->get()->count();
 
         return view('backend.landlord.messages.create', [
             'all_count' => $all_count,
@@ -113,9 +113,9 @@ class MessageController extends Controller
     public function edit(Message $message)
     {
         $user = Auth::user();
-        $all_count = $user->messages()->where('status', 1)->get()->count();
-        $starred_count = $user->messages()->where('status', 1)->where('user_favorite', 1)->get()->count();
-        $bin_count = $user->messages()->where('status', 0)->get()->count();
+        $all_count = $user->messages()->where('user_status', 1)->get()->count();
+        $starred_count = $user->messages()->where('user_status', 1)->where('user_favorite', 1)->get()->count();
+        $bin_count = $user->messages()->where('user_status', 0)->get()->count();
 
         $message_replies = MessageReply::where('message_id', $message->id)->where('status', 1)->get();
 
@@ -164,7 +164,6 @@ class MessageController extends Controller
         $message_reply->date = Carbon::now()->toDateString();
         $message_reply->time = Carbon::now()->toTimeString();
         $message_reply->user_view = 1;
-        $message_reply->status = 1;
         $message_reply->save();
         
         return redirect()->back();
@@ -175,18 +174,18 @@ class MessageController extends Controller
         $text = $request->text;
 
         $user = Auth::user();
-        $all_count = $user->messages()->where('status', 1)->get()->count();
-        $starred_count = $user->messages()->where('status', 1)->where('user_favorite', 1)->get()->count();
-        $bin_count = $user->messages()->where('status', 0)->get()->count();
+        $all_count = $user->messages()->where('user_status', 1)->get()->count();
+        $starred_count = $user->messages()->where('user_status', 1)->where('user_favorite', 1)->get()->count();
+        $bin_count = $user->messages()->where('user_status', 0)->get()->count();
 
         if($category == 'all') {
-            $items = $user->messages()->where('status', 1)->orderBy('id', 'desc');
+            $items = $user->messages()->where('user_status', 1)->orderBy('id', 'desc');
         }
         elseif($category == 'starred') {
-            $items = $user->messages()->where('status', 1)->where('user_favorite', 1)->orderBy('id', 'desc');
+            $items = $user->messages()->where('user_status', 1)->where('user_favorite', 1)->orderBy('id', 'desc');
         }
         elseif($category == 'bin') {
-            $items = $user->messages()->where('status', 0)->orderBy('id', 'desc');
+            $items = $user->messages()->where('user_status', 0)->orderBy('id', 'desc');
         }
 
         if($text) {
@@ -231,12 +230,15 @@ class MessageController extends Controller
     {
         foreach($request->selected_ids as $id) {
             $message = Message::find($id);
+            // $message->user_status = 0;
+            // $message->save();
 
-            if($message->status == 0) {
-                $message->delete();
+            if($message->user_status == 0) {
+                $message->user_status = 2;
+                $message->save();
             }
             else {
-                $message->status = 0;
+                $message->user_status = 0;
                 $message->save();
             }
         }
@@ -248,7 +250,7 @@ class MessageController extends Controller
     {
         foreach($request->selected_ids as $id) {
             $message = Message::find($id);
-            $message->status = 1;
+            $message->user_status = 1;
             $message->save();
         }
 

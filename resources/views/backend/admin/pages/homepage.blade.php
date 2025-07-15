@@ -3,7 +3,6 @@
 @section('title', 'Home Page')
 
 @section('content')
-
     <div class="inner-page">
         <form action="{{ route('admin.pages.homepage.update', $language) }}" method="POST" enctype="multipart/form-data" class="form">
             @csrf
@@ -216,6 +215,7 @@
         </form>
     </div>
 
+    <x-backend.modal-image-preview></x-backend.modal-image-preview>
 @endsection
 
 
