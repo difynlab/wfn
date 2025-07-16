@@ -14,9 +14,7 @@ class ArticleController extends Controller
     {
         $contents = ArticleContent::find(1);
         
-        $article_categories = ArticleCategory::where('status', 1)
-            ->where('language', $request->middleware_language_name)
-            ->get();
+        $article_categories = ArticleCategory::where('status', 1)->where('language', session('middleware_language_name'))->get();
 
         $article_category_ids = [];
         foreach($article_categories as $key => $article_category) {

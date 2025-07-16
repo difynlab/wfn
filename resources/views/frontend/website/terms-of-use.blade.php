@@ -13,26 +13,28 @@
             <p class="page-description">{{ $contents->{'description_' . $middleware_language} ?? $contents->description_en }}</p>
         </div>
 
-        <div class="section-2 container">
-            <div class="row nav-row">
-                <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                    @foreach(json_decode($contents->{'content_' . $middleware_language} ?? $contents->content_en) as $key => $content)
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link {{ $key == 0 ? 'active' : '' }}" id="pills-{{ $key }}-tab" data-bs-toggle="pill" data-bs-target="#pills-{{ $key }}" type="button" role="tab" aria-controls="pills-{{ $key }}" aria-selected="true">
-                                {{ $content->title }}
-                            </button>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
+        @if($contents->content_en)
+            <div class="section-2 container">
+                <div class="row nav-row">
+                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                        @foreach(json_decode($contents->{'content_' . $middleware_language} ?? $contents->content_en) as $key => $content)
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link {{ $key == 0 ? 'active' : '' }}" id="pills-{{ $key }}-tab" data-bs-toggle="pill" data-bs-target="#pills-{{ $key }}" type="button" role="tab" aria-controls="pills-{{ $key }}" aria-selected="true">
+                                    {{ $content->title }}
+                                </button>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
 
-            <div class="tab-content" id="pills-tabContent">
-                @foreach(json_decode($contents->{'content_' . $middleware_language} ?? $contents->content_en) as $key => $content)
-                    <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }}" id="pills-{{ $key }}" role="tabpanel" aria-labelledby="pills-{{ $key }}-tab" tabindex="0"> 
-                        <div class="content">{!! $content->content !!}</div>
-                    </div>
-                @endforeach
+                <div class="tab-content" id="pills-tabContent">
+                    @foreach(json_decode($contents->{'content_' . $middleware_language} ?? $contents->content_en) as $key => $content)
+                        <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }}" id="pills-{{ $key }}" role="tabpanel" aria-labelledby="pills-{{ $key }}-tab" tabindex="0"> 
+                            <div class="content">{!! $content->content !!}</div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
+        @endif
     </div>
 @endsection
