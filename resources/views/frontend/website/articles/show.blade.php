@@ -21,9 +21,18 @@
                 </div>
 
                 <div class="col-2 right">
-                    <!-- In future -->
-                        <i class="bi bi-share icon"></i>
-                    <!-- In future -->
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" target="_blank" title="Share on Facebook">
+                        <i class="bi bi-facebook icon"></i>
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ urlencode($article->title) }}" target="_blank" title="Share on Twitter">
+                        <i class="bi bi-twitter icon"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(url()->current()) }}" target="_blank" title="Share on LinkedIn">
+                        <i class="bi bi-linkedin icon"></i>
+                    </a>
+                    <a href="https://wa.me/?text={{ urlencode($article->title . ' ' . url()->current()) }}" target="_blank" title="Share on WhatsApp">
+                        <i class="bi bi-whatsapp icon"></i>
+                    </a>
                 </div>
             </div>
 
@@ -36,28 +45,30 @@
             <div class="section-description">{!! $article->content !!}</div>
         </div>
         
-        <div class="section-2 container">
-            <p class="section-title">{{ $contents->{'related_articles_' . $middleware_language} ?? $contents->related_articles_en }}</p>
+        @if($related_articles->count() > 0)
+            <div class="section-2 container">
+                <p class="section-title">{{ $contents->{'related_articles_' . $middleware_language} ?? $contents->related_articles_en }}</p>
 
-            <div class="row">
-                @foreach($recent_articles as $recent_article)
-                    <div class="col-4 single-article">
-                        @if($recent_article->thumbnail)
-                            <img src="{{ asset('storage/backend/articles/' . $recent_article->thumbnail) }}" alt="article-image" class="image">
-                        @else
-                            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="image">
-                        @endif
+                <div class="row">
+                    @foreach($related_articles as $related_article)
+                        <div class="col-4 single-article">
+                            @if($related_article->thumbnail)
+                                <img src="{{ asset('storage/backend/articles/' . $related_article->thumbnail) }}" alt="article-image" class="image">
+                            @else
+                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="image">
+                            @endif
 
-                        <p class="date">{{ \Carbon\Carbon::parse($recent_article->created_at)->format('F d, Y') }}</p>
+                            <p class="date">{{ \Carbon\Carbon::parse($related_article->created_at)->format('F d, Y') }}</p>
 
-                        <p class="title line-clamp-1">{{ $recent_article->title }}</p>
+                            <p class="title line-clamp-1">{{ $related_article->title }}</p>
 
-                        <div class="content line-clamp-2">{!! $recent_article->content !!}</div>
+                            <div class="content line-clamp-2">{!! $related_article->content !!}</div>
 
-                        <a href="{{ route('articles.show', $recent_article) }}" class="read-more">Read more</a>
-                    </div>
-                @endforeach
+                            <a href="{{ route('articles.show', $related_article) }}" class="read-more">Read more</a>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
+        @endif
     </div>
 @endsection

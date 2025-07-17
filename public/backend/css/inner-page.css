@@ -158,6 +158,10 @@
     .inner-page .form .phone-div #phone_code {
         width: 15%;
     }
+    .inner-page .form .sub-page {
+        border: 1px solid var(--input_border);
+        padding: 20px;
+    }
 /* #endregion */
 
 

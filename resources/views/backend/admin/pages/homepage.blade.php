@@ -113,7 +113,7 @@
             <div class="section mb-4">
                 <p class="inner-page-title">Section 3</p>
 
-                <div class="row">
+                <div class="row mb-4">
                     <div class="col-12 mb-4">
                         <label for="section_3_title_{{ $short_code }}" class="form-label label">Title</label>
                         <input type="text" class="form-control input-field" id="section_3_title_{{ $short_code }}" name="section_3_title_{{ $short_code }}" value="{{ $contents->{'section_3_title_' . $short_code} ?? '' }}" placeholder="Title">
@@ -124,9 +124,120 @@
                         <input type="text" class="form-control input-field" id="section_3_description_{{ $short_code }}" name="section_3_description_{{ $short_code }}" value="{{ $contents->{'section_3_description_' . $short_code} ?? '' }}" placeholder="Description">
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-6 mb-4">
                         <label for="section_3_checkout_{{ $short_code }}" class="form-label label">Checkout</label>
                         <input type="text" class="form-control input-field" id="section_3_checkout_{{ $short_code }}" name="section_3_checkout_{{ $short_code }}" value="{{ $contents->{'section_3_checkout_' . $short_code} ?? '' }}" placeholder="Checkout">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="section_3_advertisement_title_{{ $short_code }}" class="form-label label">Advertisement Title</label>
+                        <input type="text" class="form-control input-field" id="section_3_advertisement_title_{{ $short_code }}" name="section_3_advertisement_title_{{ $short_code }}" value="{{ $contents->{'section_3_advertisement_title_' . $short_code} ?? '' }}" placeholder="Advertisement Title">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="section_3_advertisement_sub_title_{{ $short_code }}" class="form-label label">Advertisement Sub Title</label>
+                        <input type="text" class="form-control input-field" id="section_3_advertisement_sub_title_{{ $short_code }}" name="section_3_advertisement_sub_title_{{ $short_code }}" value="{{ $contents->{'section_3_advertisement_sub_title_' . $short_code} ?? '' }}" placeholder="Advertisement Sub Title">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="section_3_advertisement_button_{{ $short_code }}" class="form-label label">Advertisement Button</label>
+                        <input type="text" class="form-control input-field" id="section_3_advertisement_button_{{ $short_code }}" name="section_3_advertisement_button_{{ $short_code }}" value="{{ $contents->{'section_3_advertisement_button_' . $short_code} ?? '' }}" placeholder="Advertisement Button">
+                    </div>
+                </div>
+
+                <div class="sub-page mb-4">
+                    <div class="row">
+                        <div class="col-6 mb-4">
+                            <label for="section_3_page_1_title_{{ $short_code }}" class="form-label label">Page 1 Title</label>
+                            <input type="text" class="form-control input-field" id="section_3_page_1_title_{{ $short_code }}" name="section_3_page_1_title_{{ $short_code }}" value="{{ $contents->{'section_3_page_1_title_' . $short_code} ?? '' }}" placeholder="Page 1 Title">
+                        </div>
+
+                        <div class="col-6 mb-4">
+                            <label for="section_3_page_1_description_{{ $short_code }}" class="form-label label">Page 1 Description</label>
+                            <input type="text" class="form-control input-field" id="section_3_page_1_description_{{ $short_code }}" name="section_3_page_1_description_{{ $short_code }}" value="{{ $contents->{'section_3_page_1_description_' . $short_code} ?? '' }}" placeholder="Page 1 Description">
+                        </div>
+
+                        <div class="col-12 mb-4">
+                            <label for="section_3_page_1_content_{{ $short_code }}" class="form-label label">Page 1 Content</label>
+                            <textarea class="editor" id="section_3_page_1_content_{{ $short_code }}" name="section_3_page_1_content_{{ $short_code }}" value="{{ $contents->{'section_3_page_1_content_' . $short_code} ?? '' }}">{{ $contents->{'section_3_page_1_content_' . $short_code} ?? '' }}</textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <x-backend.upload-image old_name="old_section_3_page_1_thumbnail" old_value="{{ $contents->{'section_3_page_1_thumbnail_' . $short_code} ?? '' }}" new_name="new_section_3_page_1_thumbnail" label="Page 1" path="pages"></x-backend.upload-image>
+                            <x-backend.input-error field="new_section_3_page_1_thumbnail"></x-backend.input-error>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sub-page mb-4">
+                    <div class="row">
+                        <div class="col-6 mb-4">
+                            <label for="section_3_page_2_title_{{ $short_code }}" class="form-label label">Page 2 Title</label>
+                            <input type="text" class="form-control input-field" id="section_3_page_2_title_{{ $short_code }}" name="section_3_page_2_title_{{ $short_code }}" value="{{ $contents->{'section_3_page_2_title_' . $short_code} ?? '' }}" placeholder="Page 2 Title">
+                        </div>
+
+                        <div class="col-6 mb-4">
+                            <label for="section_3_page_2_description_{{ $short_code }}" class="form-label label">Page 2 Description</label>
+                            <input type="text" class="form-control input-field" id="section_3_page_2_description_{{ $short_code }}" name="section_3_page_2_description_{{ $short_code }}" value="{{ $contents->{'section_3_page_2_description_' . $short_code} ?? '' }}" placeholder="Page 2 Description">
+                        </div>
+
+                        <div class="col-12 mb-4">
+                            <label for="section_3_page_2_content_{{ $short_code }}" class="form-label label">Page 2 Content</label>
+                            <textarea class="editor" id="section_3_page_2_content_{{ $short_code }}" name="section_3_page_2_content_{{ $short_code }}" value="{{ $contents->{'section_3_page_2_content_' . $short_code} ?? '' }}">{{ $contents->{'section_3_page_2_content_' . $short_code} ?? '' }}</textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <x-backend.upload-image old_name="old_section_3_page_2_thumbnail" old_value="{{ $contents->{'section_3_page_2_thumbnail_' . $short_code} ?? '' }}" new_name="new_section_3_page_2_thumbnail" label="Page 2" path="pages"></x-backend.upload-image>
+                            <x-backend.input-error field="new_section_3_page_2_thumbnail"></x-backend.input-error>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sub-page mb-4">
+                    <div class="row">
+                        <div class="col-6 mb-4">
+                            <label for="section_3_page_3_title_{{ $short_code }}" class="form-label label">Page 3 Title</label>
+                            <input type="text" class="form-control input-field" id="section_3_page_3_title_{{ $short_code }}" name="section_3_page_3_title_{{ $short_code }}" value="{{ $contents->{'section_3_page_3_title_' . $short_code} ?? '' }}" placeholder="Page 3 Title">
+                        </div>
+
+                        <div class="col-6 mb-4">
+                            <label for="section_3_page_3_description_{{ $short_code }}" class="form-label label">Page 3 Description</label>
+                            <input type="text" class="form-control input-field" id="section_3_page_3_description_{{ $short_code }}" name="section_3_page_3_description_{{ $short_code }}" value="{{ $contents->{'section_3_page_3_description_' . $short_code} ?? '' }}" placeholder="Page 3 Description">
+                        </div>
+
+                        <div class="col-12 mb-4">
+                            <label for="section_3_page_3_content_{{ $short_code }}" class="form-label label">Page 3 Content</label>
+                            <textarea class="editor" id="section_3_page_3_content_{{ $short_code }}" name="section_3_page_3_content_{{ $short_code }}" value="{{ $contents->{'section_3_page_3_content_' . $short_code} ?? '' }}">{{ $contents->{'section_3_page_3_content_' . $short_code} ?? '' }}</textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <x-backend.upload-image old_name="old_section_3_page_3_thumbnail" old_value="{{ $contents->{'section_3_page_3_thumbnail_' . $short_code} ?? '' }}" new_name="new_section_3_page_3_thumbnail" label="Page 3" path="pages"></x-backend.upload-image>
+                            <x-backend.input-error field="new_section_3_page_3_thumbnail"></x-backend.input-error>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sub-page">
+                    <div class="row">
+                        <div class="col-6 mb-4">
+                            <label for="section_3_page_4_title_{{ $short_code }}" class="form-label label">Page 4 Title</label>
+                            <input type="text" class="form-control input-field" id="section_3_page_4_title_{{ $short_code }}" name="section_3_page_4_title_{{ $short_code }}" value="{{ $contents->{'section_3_page_4_title_' . $short_code} ?? '' }}" placeholder="Page 4 Title">
+                        </div>
+
+                        <div class="col-6 mb-4">
+                            <label for="section_3_page_4_description_{{ $short_code }}" class="form-label label">Page 4 Description</label>
+                            <input type="text" class="form-control input-field" id="section_3_page_4_description_{{ $short_code }}" name="section_3_page_4_description_{{ $short_code }}" value="{{ $contents->{'section_3_page_4_description_' . $short_code} ?? '' }}" placeholder="Page 4 Description">
+                        </div>
+
+                        <div class="col-12 mb-4">
+                            <label for="section_3_page_4_content_{{ $short_code }}" class="form-label label">Page 4 Content</label>
+                            <textarea class="editor" id="section_3_page_4_content_{{ $short_code }}" name="section_3_page_4_content_{{ $short_code }}" value="{{ $contents->{'section_3_page_4_content_' . $short_code} ?? '' }}">{{ $contents->{'section_3_page_4_content_' . $short_code} ?? '' }}</textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <x-backend.upload-image old_name="old_section_3_page_4_thumbnail" old_value="{{ $contents->{'section_3_page_4_thumbnail_' . $short_code} ?? '' }}" new_name="new_section_3_page_4_thumbnail" label="Page 4" path="pages"></x-backend.upload-image>
+                            <x-backend.input-error field="new_section_3_page_4_thumbnail"></x-backend.input-error>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -221,4 +332,8 @@
 
 @push('after-scripts')
     <script src="{{ asset('backend/js/drag-drop-image.js') }}"></script>
+
+    <!-- <script type="module">
+        var editor = new FroalaEditor('#example');
+    </script> -->
 @endpush

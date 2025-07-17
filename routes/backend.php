@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\Admin\Page\WarehouseController;
 use App\Http\Controllers\Backend\Admin\ReviewController;
 use App\Http\Controllers\Backend\Admin\SettingsController;
 use App\Http\Controllers\Backend\Admin\StorageTypeController;
+use App\Http\Controllers\Backend\Admin\SubscriptionController;
 use App\Http\Controllers\Backend\Admin\SupportController as AdminSupportController;
 use App\Http\Controllers\Backend\Admin\TodoController;
 use App\Http\Controllers\Backend\Admin\UserController;
@@ -220,6 +221,14 @@ require __DIR__.'/auth/backend.php';
                 Route::delete('{review}', 'destroy')->name('destroy');
             });
         // Reviews routes
+
+        // Supports routes
+            Route::controller(SubscriptionController::class)->prefix('subscriptions')->name('subscriptions.')->group(function() {
+                Route::get('/', 'index')->name('index');
+                Route::get('filter', 'filter')->name('filter');
+                Route::delete('{subscription}', 'destroy')->name('destroy');
+            });
+        // Supports routes
 
         // Supports routes
             Route::controller(AdminSupportController::class)->prefix('supports')->name('supports.')->group(function() {

@@ -22,11 +22,14 @@
         margin: 0 5px;
     }
     .article .section-1 .title-row .right {
-        text-align: end;
+        gap: 10px;
+        display: flex;
+        justify-content: end;
     }
     .article .section-1 .title-row .right .icon {
-        font-size: 30px;
+        font-size: 20px;
         cursor: pointer;
+        color: var(--light_black);
         &:hover {
             color: var(--red);
         }

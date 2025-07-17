@@ -40,4 +40,8 @@ Route::middleware(['language'])->group(function () {
         Route::get('privacy-policy', [PrivacyPolicyController::class, 'index'])->name('privacy-policy');
         Route::get('terms-of-use', [TermsOfUseController::class, 'index'])->name('terms-of-use');
     // Page routes
+
+    // Subscription route
+        Route::post('subscriptions', [HomepageController::class, 'subscriptions'])->name('subscriptions');
+    // Subscription route
 });

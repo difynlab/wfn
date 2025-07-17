@@ -28,7 +28,8 @@ class ArticleController extends Controller
         
         $articles = Article::where('status', 1)
             ->whereIn('article_category_id', $article_category_ids)
-            ->orderBy('created_at', 'desc');
+            ->orderBy('created_at', 'desc')
+            ->paginate(3);
 
         return view('frontend.website.articles.index', [
             'contents' => $contents,
@@ -37,18 +38,16 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function show(Request $request, Article $article)
+    public function show(Article $article)
     {
         $contents = ArticleContent::find(1);
 
-        $article_category = $article->articleCategory;
-
-        $recent_articles = $article_category->articles()->whereNot('id', $article->id)->where('status', 1)->get()->random(3);
+        $related_articles = Article::whereNot('id', $article->id)->where('status', 1)->get()->take(3);
         
         return view('frontend.website.articles.show', [
             'contents' => $contents,
             'article' => $article,
-            'recent_articles' => $recent_articles
+            'related_articles' => $related_articles
         ]);
     }
 }

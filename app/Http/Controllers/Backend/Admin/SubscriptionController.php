@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Support;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 
-class SupportController extends Controller
+class SubscriptionController extends Controller
 {
     private function processData($items)
     {
@@ -21,31 +21,31 @@ class SupportController extends Controller
     public function index(Request $request)
     {
         $pagination = $request->pagination ?? 10;
-        $items = Support::orderBy('id', 'desc')->paginate($pagination);
+        $items = Subscription::orderBy('id', 'desc')->paginate($pagination);
         $items = $this->processData($items);
 
-        Support::where('is_new', 1)->update(['is_new' => 0]);
+        Subscription::where('is_new', 1)->update(['is_new' => 0]);
 
-        return view('backend.admin.supports.index', [
+        return view('backend.admin.subscriptions.index', [
             'items' => $items,
             'pagination' => $pagination
         ]);
     }
 
-    public function destroy(Support $support)
+    public function destroy(Subscription $subscription)
     {
-        $support->delete();
+        $subscription->delete();
 
-        return redirect()->back()->with('delete', 'Successfully Deleted!');
+        return redirect()->back()->with('success', 'Successfully deleted!');
     }
 
     public function filter(Request $request)
     {
-        $name = $request->name;
+        $email = $request->email;
         $column = $request->column ?? 'id';
         $direction = $request->direction ?? 'desc';
 
-        $valid_columns = ['name', 'phone', 'email', 'category', 'subject', 'message', 'id'];
+        $valid_columns = ['email', 'id'];
         $valid_directions = ['asc', 'desc'];
 
         if(!in_array($column, $valid_columns)) {
@@ -56,10 +56,10 @@ class SupportController extends Controller
             $direction = 'desc';
         }
 
-        $items = Support::orderBy($column, $direction);
+        $items = Subscription::orderBy($column, $direction);
 
-        if($name) {
-            $items->where('name', 'like', '%' . $name . '%');
+        if($email) {
+            $items->where('email', 'like', '%' . $email . '%');
         }
 
         $pagination = $request->pagination ?? 10;
@@ -67,7 +67,7 @@ class SupportController extends Controller
         $items = $this->processData($items);
 
         if($request->ajax()) {
-            $tbodyView = view('backend.admin.supports._tbody', compact('items'))->render();
+            $tbodyView = view('backend.admin.subscriptions._tbody', compact('items'))->render();
             $paginationView = $items->appends($request->except('page'))->links("pagination::bootstrap-5")->render();
 
             return response()->json([
@@ -76,10 +76,10 @@ class SupportController extends Controller
             ]);
         }
 
-        return view('backend.admin.supports.index', [
+        return view('backend.admin.subscriptions.index', [
             'items' => $items,
             'pagination' => $pagination,
-            'name' => $name
+            'email' => $email
         ]);
     }
 }

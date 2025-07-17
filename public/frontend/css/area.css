@@ -11,8 +11,8 @@
 /* #endregion */
 
 
-/* #region Section 2 */
-    .area .section-2 .content, .area .section-2 .content p {
+/* #region Section 1 */
+    .area .section-1 .content, .area .section-2 .content p {
         font-size: 16px;
         line-height: 28px;
         color: var(--gray);
@@ -20,22 +20,22 @@
 /* #endregion */
 
 
-/* #region Section 3 */
-    .area .section-3{
+/* #region Section 2 */
+    .area .section-2 {
         background-color: var(--black);
         padding: 30px 0;
     }
-    .area .section-3 .advertise {
+    .area .section-2 .advertise {
         align-items: center;
     }
-    .area .section-3 .advertise .text {
+    .area .section-2 .advertise .text {
         font-size: 32px;
         color: var(--white);
     }
-    .area .section-3 .advertise .text:last-child {
+    .area .section-2 .advertise .text:last-child {
         padding-bottom: 0;
     }
-    .area .section-3 .advertise .advertise-button {
+    .area .section-2 .advertise .advertise-button {
         background-color: var(--red);
         color: var(--white);
         font-size: 18px;

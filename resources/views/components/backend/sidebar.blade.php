@@ -95,6 +95,17 @@
                     </div>
                 </a>
             </li>
+
+            <li class="link">
+                <a href="{{ route('admin.subscriptions.index') }}" class="{{ Request::segment(2) == 'subscriptions' ? 'active' : '' }}">
+                    <div class="box"></div>
+                    <div class="actual-link">
+                        <i class="bi bi-card-text"></i>
+                        Subscriptions
+                        <p class="new-count">{{ App\Models\Subscription::where('is_new', 1)->count() != 0 ? App\Models\Subscription::where('is_new', 1)->count() : ''; }}</p>
+                    </div>
+                </a>
+            </li>
         </ul>
 
         <hr>

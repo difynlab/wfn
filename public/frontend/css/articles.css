@@ -92,6 +92,24 @@
     .articles .section-2 .grid-view .row > .single-article:nth-last-child(-n+3) {
         margin-bottom: 0;
     }
+    .articles .section-2 .pagination .active>.page-link, .articles .section-2 .pagination .page-link.active {
+        color: var(--white);
+        background-color: var(--red);
+        border-color: var(--red);
+    }
+    .articles .section-2 .pagination .page-link {
+        color: var(--light_black);
+    }
+    .articles .section-2 .pagination .page-item:first-child .page-link, .articles .section-2 .pagination .page-item:last-child .page-link {
+        border-radius: 0;
+    }
+    .articles .section-2 .pagination .page-link:focus {
+        box-shadow: none;
+    }
+    .articles .section-2 .pagination .page-link:hover {
+        color: var(--light_black);
+        background-color: var(--input_border);
+    }
 /* #endregion */
 
 

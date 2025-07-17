@@ -493,18 +493,18 @@
         object-fit: cover;
         padding-bottom: 20px;
     }
-    .homepage .section-5 .date {
+    .homepage .section-5 .left .date {
         font-size: 15px;
         color: var(--gray);
         padding-bottom: 5px;
     }
-    .homepage .section-5 .title {
+    .homepage .section-5 .left .title {
         font-size: 24px;
         font-weight: 500;
         color: var(--light_black);
         padding-bottom: 5px;
     }
-    .homepage .section-5 .description {
+    .homepage .section-5 .left .description {
         font-size: 16px;
         color: var(--medium_gray);
         line-height: 30px;
@@ -528,6 +528,18 @@
         width: 100%;
         height: 175px;
         object-fit: cover;
+        padding-bottom: 10px;
+    }
+    .homepage .section-5 .right .title {
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--light_black);
+        padding-bottom: 5px;
+    }
+    .homepage .section-5 .right .description {
+        font-size: 15px;
+        color: var(--medium_gray);
+        line-height: 20px;
         padding-bottom: 10px;
     }
 /* #endregion */
