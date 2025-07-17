@@ -48,7 +48,7 @@ require __DIR__.'/auth/backend.php';
 
         // Froala upload route
             Route::controller(FroalaController::class)->prefix('froala')->name('froala.')->group(function() {
-                Route::get('upload', 'upload')->name('upload');
+                Route::post('upload', 'upload')->name('upload');
                 Route::post('delete', 'delete')->name('delete');
             });
         // Froala upload route
