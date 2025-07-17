@@ -13,25 +13,45 @@
 // Prevent too many clicks
 
 // html editor
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     document.querySelectorAll('.editor').forEach(element => {
-        ClassicEditor
-            .create(element, {
-                ckfinder: {
-                    uploadUrl: uploadUrl,
+        new FroalaEditor(element, {
+            imageUploadURL: '/admin/froala/upload',
+            imageUploadParam: 'upload',
+            imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif'],
+            imageMaxSize: 2 * 1024 * 1024,
+            requestHeaders: {
+                'X-CSRF-TOKEN': csrfToken
+            },
+            events: {
+                'image.uploaded': function (response) {
+                    console.log('Uploaded:', response);
                 },
-                heading: {
-                    options: [
-                        { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-                        { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
-                        { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
-                        { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-                    ]
+                'image.error': function (error, response) {
+                    console.error('Upload failed:', error);
+                },
+                'image.removed': function ($img) {
+                    const imageSrc = $img.attr('src');
+                    if(imageSrc) {
+                        fetch('/admin/froala/delete', {
+                            method: 'POST',
+                            headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken
+                            },
+                            body: JSON.stringify({ src: imageSrc })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log('Image deleted:', data);
+                        })
+                        .catch(err => {
+                            console.error('Failed to delete image:', err);
+                        });
+                    }
                 }
-            })
-            .then(newEditor => {})
-            .catch(error => {
-                console.error(error);
-            });
+            }
+        });
     });
 // html editor
 

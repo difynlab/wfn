@@ -3,7 +3,7 @@
 use App\Http\Controllers\Backend\Admin\Article\ArticleCategoryController;
 use App\Http\Controllers\Backend\Admin\Article\ArticleController as ArticleArticleController;
 use App\Http\Controllers\Backend\Admin\BookingController;
-use App\Http\Controllers\Backend\Admin\CKEditorController;
+use App\Http\Controllers\Backend\Admin\FroalaController;
 use App\Http\Controllers\Backend\Admin\DashboardController;
 use App\Http\Controllers\Backend\Admin\MessageController;
 use App\Http\Controllers\Backend\Admin\Page\AboutController;
@@ -46,9 +46,12 @@ require __DIR__.'/auth/backend.php';
 
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        // CkEditor upload route
-            Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
-        // CkEditor upload route
+        // Froala upload route
+            Route::controller(FroalaController::class)->prefix('froala')->name('froala.')->group(function() {
+                Route::get('upload', 'upload')->name('upload');
+                Route::post('delete', 'delete')->name('delete');
+            });
+        // Froala upload route
 
         // Pages routes
             Route::prefix('pages')->name('pages.')->group(function() {

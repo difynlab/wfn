@@ -12,8 +12,8 @@
 
 
 /* #region Section 1 */
-    .area .section-1 .content, .area .section-2 .content p {
-        font-size: 16px;
+    .area .section-1 .content {
+        /* font-size: 16px; */
         line-height: 28px;
         color: var(--gray);
     }

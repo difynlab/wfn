@@ -53,7 +53,7 @@
                             </div>
 
                             <div class="col-11">
-                                <textarea class="editor ckeditor-initialized" name="tab_contents[]" placeholder="Content" value="{{ $content->content }}">{{ $content->content }}</textarea>
+                                <textarea class="editor froala-initialized" name="tab_contents[]" placeholder="Content" value="{{ $content->content }}">{{ $content->content }}</textarea>
                             </div>
                             
                             <div class="col-1 d-flex align-items-center">
@@ -94,18 +94,49 @@
                                 </div>
                             </div>`;
 
-            const $newRow = $(this).closest('.row').parent().append(html);
+            const newRow = $(this).closest('.row').parent().append(html);
 
-            $newRow.find('.editor').each((index, element) => {
-                if(!element.classList.contains('ckeditor-initialized')) {
-                    ClassicEditor
-                        .create(element)
-                        .then(newEditor => {
-                            element.classList.add('ckeditor-initialized');
-                        })
-                        .catch(error => {
-                            console.error(error);
-                        });
+            newRow.find('.editor').each((index, element) => {
+                if(!element.classList.contains('froala-initialized')) {
+                    new FroalaEditor(element, {
+                        imageUploadURL: '/admin/froala/upload',
+                        imageUploadParam: 'upload',
+                        imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif'],
+                        imageMaxSize: 2 * 1024 * 1024,
+                        requestHeaders: {
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        events: {
+                            'image.uploaded': function (response) {
+                                console.log('Uploaded:', response);
+                            },
+                            'image.error': function (error, response) {
+                                console.error('Upload failed:', error);
+                            },
+                            'image.removed': function ($img) {
+                                const imageSrc = $img.attr('src');
+                                if(imageSrc) {
+                                    fetch('/admin/froala/delete', {
+                                        method: 'POST',
+                                        headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': csrfToken
+                                        },
+                                        body: JSON.stringify({ src: imageSrc })
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        console.log('Image deleted:', data);
+                                    })
+                                    .catch(err => {
+                                        console.error('Failed to delete image:', err);
+                                    });
+                                }
+                            }
+                        }
+                    });
+
+                    element.classList.add('froala-initialized');
                 }
             });
         });
