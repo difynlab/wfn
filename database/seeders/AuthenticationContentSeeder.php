@@ -75,7 +75,7 @@ class AuthenticationContentSeeder extends Seeder
                 'login_no_account_ar' => 'ليس لديك حساب؟',
                 'login_register_ar' => 'سجّل هنا',
 
-                'register_name_ar' => 'سجل الآن',
+                'register_name_ar' => 'يسجل',
                 'register_title_ar' => 'نموذج تسجيل المستخدم',
                 'register_description_ar' => 'املأ هذا النموذج السريع وابدأ تجربتك الكاملة معنا.',
                 'register_agent_ar' => 'سجّل كوكيل',

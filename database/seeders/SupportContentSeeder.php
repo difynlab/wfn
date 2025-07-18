@@ -35,7 +35,7 @@ class SupportContentSeeder extends Seeder
                 'button_en' => 'Submit Now',
 
                 // Arabic fields
-                'page_name_ar' => 'الدعم',
+                'page_name_ar' => 'يدعم',
                 'title_ar' => 'مرحبًا، كيف يُمكننا مساعدتك؟',
                 'description_ar' => 'نحن هنا لنجعل تجربتك سلسة وسهلة. سواءً كانت لديك أسئلة، أو تحتاج إلى دعم، أو ترغب فقط في معرفة المزيد، فلا تتردد في التواصل معنا. فريقنا جاهز لمساعدتك في أي شيء تحتاجه. ما عليك سوى إعلامنا.',
                 'name_ar' => 'الاسم',

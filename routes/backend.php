@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\Admin\MessageController;
 use App\Http\Controllers\Backend\Admin\Page\AboutController;
 use App\Http\Controllers\Backend\Admin\Page\ArticleController;
 use App\Http\Controllers\Backend\Admin\Page\AuthenticationController;
+use App\Http\Controllers\Backend\Admin\Page\CommonController;
 use App\Http\Controllers\Backend\Admin\Page\HomepageController;
 use App\Http\Controllers\Backend\Admin\Page\PageController;
 use App\Http\Controllers\Backend\Admin\Page\PrivacyPolicyController;
@@ -93,6 +94,11 @@ require __DIR__.'/auth/backend.php';
                 });
 
                 Route::controller(TermsOfUseController::class)->prefix('terms-of-use')->name('terms-of-use.')->group(function() {
+                    Route::get('{language}', 'index')->name('index');
+                    Route::post('{language}', 'update')->name('update');
+                });
+
+                Route::controller(CommonController::class)->prefix('common')->name('common.')->group(function() {
                     Route::get('{language}', 'index')->name('index');
                     Route::post('{language}', 'update')->name('update');
                 });

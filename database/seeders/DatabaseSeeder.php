@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             ReviewSeeder::class,
             PrivacyPolicyContentSeeder::class,
             TermsOfUseContentSeeder::class,
+            CommonContentSeeder::class,
         ]);
     }
 }

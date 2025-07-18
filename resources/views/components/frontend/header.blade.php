@@ -1,7 +1,15 @@
+@php
+    $contents = App\Models\CommonContent::find(1);
+    $home = App\Models\HomepageContent::find(1);
+    $about = App\Models\AboutContent::find(1);
+    $support = App\Models\SupportContent::find(1);
+    $authentication = App\Models\AuthenticationContent::find(1);
+@endphp
+
 <div class="container">
     <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="{{ route('homepage') }}">
-            <img src="{{ asset('storage/frontend/logo.png') }}" alt="Logo" class="logo">
+            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->logo) }}" alt="Logo" class="logo">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,19 +19,21 @@
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav align-items-center ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::segment(1) == '' ? 'active' : '' }}" href="{{ route('homepage') }}">Home</a>
+                    <a class="nav-link {{ Request::segment(1) == '' ? 'active' : '' }}" href="{{ route('homepage') }}">{{ $home->{'page_name_' . $middleware_language} ?? $home->page_name_en }}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::segment(1) == 'about' ? 'active' : '' }}" href="{{ route('about') }}">About</a>
+                    <a class="nav-link {{ Request::segment(1) == 'about' ? 'active' : '' }}" href="{{ route('about') }}">{{ $about->{'page_name_' . $middleware_language} ?? $about->page_name_en }}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::segment(1) == 'warehouses' ? 'active' : '' }}" href="{{ route('warehouses.index') }}">Warehouses</a>
+                    <!-- In future -->
+                        <a class="nav-link {{ Request::segment(1) == 'warehouses' ? 'active' : '' }}" href="{{ route('warehouses.index') }}">Warehouses</a>
+                    <!-- In future -->
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::segment(1) == 'supports' ? 'active' : '' }}" href="{{ route('supports.index') }}">Support</a>
+                    <a class="nav-link {{ Request::segment(1) == 'supports' ? 'active' : '' }}" href="{{ route('supports.index') }}">{{ $support->{'page_name_' . $middleware_language} ?? $support->page_name_en }}</a>
                 </li>
 
                 @auth()
@@ -44,14 +54,14 @@
 
                         <ul class="dropdown-menu profile-dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="{{ route(auth()->user()->role . '.dashboard') }}"><i class="bi bi-person"></i>Dashboard</a>
+                                <a class="dropdown-item" href="{{ route(auth()->user()->role . '.dashboard') }}"><i class="bi bi-person"></i>{{ $contents->{'header_dashboard_' . $middleware_language} ?? $contents->header_dashboard_en }}</a>
                             </li>
 
                             <li>
                                 <a class="dropdown-item" href="#">
                                     <form action="{{ auth()->user()->role == 'admin' ? route('admin.logout') : route('logout') }}" method="POST">
                                         @csrf
-                                        <button type="submit" class="log-out"><i class="bi bi-power"></i>Log Out</button>
+                                        <button type="submit" class="log-out"><i class="bi bi-power"></i>{{ $contents->{'header_logout_' . $middleware_language} ?? $contents->header_logout_en }}</button>
                                     </form>
                                 </a>
                             </li>
@@ -59,11 +69,11 @@
                     </li>
                 @else
                     <li class="nav-item m-0">
-                        <a class="nav-link login-button" href="{{ route('login') }}">Log In</a>
+                        <a class="nav-link login-button" href="{{ route('login') }}">{{ $authentication->{'login_name_' . $middleware_language} ?? $authentication->login_name_en }}</a>
                     </li>
 
                     <li class="nav-item m-0">
-                        <a class="nav-link register-button" href="{{ route('register') }}">Register Now</a>
+                        <a class="nav-link register-button" href="{{ route('register') }}">{{ $authentication->{'register_name_' . $middleware_language} ?? $authentication->register_name_en }}</a>
                     </li>
                 @endauth
 

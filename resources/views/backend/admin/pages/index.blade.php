@@ -132,6 +132,21 @@
                         </a>
                     </div>
                 </div>
+
+                <div class="single-page">
+                    <p class="page-name">Common</p>
+                    <div class="links">
+                        <a href="{{ route('admin.pages.common.index', 'english') }}" title="Edit" class="link">
+                            <i class="bi bi-pencil-square"></i>
+                            English
+                        </a>
+
+                        <a href="{{ route('admin.pages.common.index', 'arabic') }}" title="Edit" class="link">
+                            <i class="bi bi-pencil-square"></i>
+                            Arabic
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
