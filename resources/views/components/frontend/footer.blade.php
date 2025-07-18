@@ -5,6 +5,7 @@
     $support = App\Models\SupportContent::find(1);
     $privacy_policy = App\Models\PrivacyPolicyContent::find(1);
     $terms_of_use = App\Models\TermsOfUseContent::find(1);
+    $warehouses = App\Models\WarehouseContent::find(1);
 
     $setting = App\Models\Setting::find(1);
     $facebook_url = $setting->{'fb_' . $middleware_language} ?? $setting->fb_en;
@@ -29,11 +30,9 @@
                             <a href="{{ route('about') }}">{{ $about->{'page_name_' . $middleware_language} ?? $about->page_name_en }}</a>
                         </li>
 
-                        <!-- In future -->
-                            <li>
-                                <a href="{{ route('warehouses.index') }}">Warehouses</a>
-                            </li>
-                        <!-- In future -->
+                        <li>
+                            <a href="{{ route('warehouses.index') }}">{{ $warehouses->{'page_name_' . $middleware_language} ?? $warehouses->page_name_en }}</a>
+                        </li>
                     </ul>
                 </div>
 

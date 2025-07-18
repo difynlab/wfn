@@ -4,6 +4,7 @@
     $about = App\Models\AboutContent::find(1);
     $support = App\Models\SupportContent::find(1);
     $authentication = App\Models\AuthenticationContent::find(1);
+    $warehouses = App\Models\WarehouseContent::find(1);
 @endphp
 
 <div class="container">
@@ -27,9 +28,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <!-- In future -->
-                        <a class="nav-link {{ Request::segment(1) == 'warehouses' ? 'active' : '' }}" href="{{ route('warehouses.index') }}">Warehouses</a>
-                    <!-- In future -->
+                    <a class="nav-link {{ Request::segment(1) == 'warehouses' ? 'active' : '' }}" href="{{ route('warehouses.index') }}">{{ $warehouses->{'page_name_' . $middleware_language} ?? $warehouses->page_name_en }}</a>
                 </li>
 
                 <li class="nav-item">

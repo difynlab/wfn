@@ -81,8 +81,6 @@
 
 @push('after-scripts')
     <script>
-        let csrfToken = $('meta[name="csrf-token"]').attr('content');
-
         $('.form-check-input').on('change', function () {
             const todoItem = $(this).closest('.single-todo');
             const todoId = $(this).closest('.single-todo').data('id');

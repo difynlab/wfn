@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             PrivacyPolicyContentSeeder::class,
             TermsOfUseContentSeeder::class,
             CommonContentSeeder::class,
+            WarehouseContentSeeder::class,
         ]);
     }
 }

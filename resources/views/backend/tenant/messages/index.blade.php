@@ -84,8 +84,6 @@
             });
         });
 
-        let csrfToken = $('meta[name="csrf-token"]').attr('content');
-
         $('.favorite').on('click', function () {
             const messageId = $(this).data('id');
 
