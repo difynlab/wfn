@@ -179,6 +179,24 @@
     .warehouses .section-3 .sidebar .item:last-child {
         padding-bottom: 0;
     }
+    .warehouses .section-3 .pagination .active>.page-link, .warehouses .section-3 .pagination .page-link.active {
+        color: var(--white);
+        background-color: var(--red);
+        border-color: var(--red);
+    }
+    .warehouses .section-3 .pagination .page-link {
+        color: var(--light_black);
+    }
+    .warehouses .section-3 .pagination .page-item:first-child .page-link, .warehouses .section-3 .pagination .page-item:last-child .page-link {
+        border-radius: 0;
+    }
+    .warehouses .section-3 .pagination .page-link:focus {
+        box-shadow: none;
+    }
+    .warehouses .section-3 .pagination .page-link:hover {
+        color: var(--light_black);
+        background-color: var(--input_border);
+    }
 /* #endregion */
 
 
@@ -211,12 +229,18 @@
     .warehouses .section-4 .single-warehouse .details .subtitle {
         font-size: 14px;
         color: var(--gray);
-        padding-bottom: 15px;
+        padding-bottom: 10px;
     }
     .warehouses .section-4 .single-warehouse .details .price {
         font-size: 16px;
-        font-weight: 500;
-        color: var(--light_black);
+        font-weight: 600;
+        color: var(--red);
+    }
+    .warehouses .section-4 .single-warehouse .details .price i {
+        position: relative;
+        font-size: 12px;
+        bottom: 10px;
+        left: 5px;
     }
 /* #endregion */
 

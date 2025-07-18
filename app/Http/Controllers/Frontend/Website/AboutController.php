@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Frontend\Website;
 use App\Http\Controllers\Controller;
 use App\Models\AboutContent;
 use App\Models\Review;
-use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {

@@ -28,7 +28,7 @@
                         <div class="col-8 left">
                             <img src="{{ asset('storage/frontend/wsp-1.png') }}" class="image" alt="Image">
                             <div class="profile">
-                                <p class="name">Ahmed Al-Mansoori</p>
+                                <p class="name">{{ $warehouse->user->first_name }} {{ $warehouse->user->last_name }}</p>
                                 <p class="description">3 years of experience as lender</p>
                             </div>
                         </div>
@@ -42,8 +42,13 @@
 
                     <div class="row title-row">
                         <div class="col-8 left">
-                            <h1 class="title">Al-Falah Distribution Center</h1>
-                            <p class="description">Al Quds Street, Warehouse No. 35, Industrial City, Riyadh, Saudi Arabia</p>
+                            <h1 class="title">{{ $warehouse->name }}</h1>
+
+                            @if($middleware_language == 'en')
+                                <p class="description">{{ $warehouse->address_en }}</p>
+                            @else
+                                <p class="description">{{ $warehouse->address_ar }}</p>
+                            @endif
                         </div>
 
                         <div class="col-4 right">

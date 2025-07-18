@@ -41,6 +41,7 @@ return new class extends Migration
             $table->text('section_3_nearby_en')->nullable();
 
             $table->text('section_4_title_en')->nullable();
+            $table->text('section_4_unlock_en')->nullable();
 
             // Arabic fields
             $table->text('section_1_title_ar')->nullable();
@@ -66,6 +67,7 @@ return new class extends Migration
             $table->text('section_3_nearby_ar')->nullable();
 
             $table->text('section_4_title_ar')->nullable();
+            $table->text('section_4_unlock_ar')->nullable();
 
             $table->timestamps();
         });

@@ -35,6 +35,7 @@ class WarehouseContentSeeder extends Seeder
                 'section_3_popular_en' => 'Popular Warehouses',
                 'section_3_nearby_en' => 'Near by Results',
                 'section_4_title_en' => 'More available warehouses in the same area',
+                'section_4_unlock_en' => 'Unlock Pricing',
 
                 // Arabic fields
                 'page_name_ar' => 'المستودعات',
@@ -58,6 +59,7 @@ class WarehouseContentSeeder extends Seeder
                 'section_3_popular_ar' => 'المستودعات الشعبية',
                 'section_3_nearby_ar' => 'النتائج القريبة',
                 'section_4_title_ar' => 'مزيد من المستودعات المتاحة في نفس المنطقة',
+                'section_4_unlock_ar' => 'فتح التسعير',
             ]
         ];
 

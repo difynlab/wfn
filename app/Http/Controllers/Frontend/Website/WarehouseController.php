@@ -4,18 +4,30 @@ namespace App\Http\Controllers\Frontend\Website;
 
 use App\Http\Controllers\Controller;
 use App\Models\HomepageContent;
+use App\Models\Warehouse;
+use App\Models\WarehouseContent;
 use Illuminate\Http\Request;
 
 class WarehouseController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        return view('frontend.website.warehouses.index');
+        $contents = WarehouseContent::find(1);
+        $warehouses = Warehouse::where('status', 1)->orderBy('id', 'desc')->paginate(3);
+        $more_warehouses = Warehouse::where('status', 1)->inRandomOrder()->take(4)->get();
+
+        return view('frontend.website.warehouses.index', [
+            'contents' => $contents,
+            'warehouses' => $warehouses,
+            'more_warehouses' => $more_warehouses
+        ]);
     }
 
-    public function show(Request $request)
+    public function show(Request $request, Warehouse $warehouse)
     {
-        return view('frontend.website.warehouses.show');
+        return view('frontend.website.warehouses.show', [
+            'warehouse' => $warehouse,
+        ]);
     }
 
     public function book(Request $request)

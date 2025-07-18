@@ -5,14 +5,17 @@ namespace App\Http\Controllers\Backend\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class TodoController extends Controller
 {
     public function index(Request $request)
     {
+        $user = Auth::user();
+        
         $pagination = $request->pagination ?? 10;
-        $items = Todo::orderBy('id', 'desc')->paginate($pagination);
+        $items = $user->todos()->orderBy('id', 'desc')->paginate($pagination);
 
         return view('backend.admin.todos.index', [
             'items' => $items,
