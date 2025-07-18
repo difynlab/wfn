@@ -25,7 +25,19 @@ class BookingController extends Controller
 
             $item->warehouse = $item->warehouse->name;
 
-            $item->status = ($item->status == 1) ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
+            switch ($item->status) {
+                case 1:
+                    $item->status = '<span class="status active-status">Active</span>';
+                    break;
+
+                case 2:
+                    $item->status = '<span class="status pending-status">Pending</span>';
+                    break;
+
+                default:
+                    $item->status = '<span class="status inactive-status">Inactive</span>';
+                    break;
+            }
         }
 
         return $items;

@@ -22,7 +22,19 @@ class ArticleController extends Controller
 
             $item->thumbnail = $item->thumbnail ? '<img src="'. asset('storage/backend/articles/' . $item->thumbnail) .'" class="table-image">' : '<img src="'. asset('storage/backend/global/' . Setting::find(1)->no_image) .'" class="table-image">';
 
-            $item->status = ($item->status == 1) ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
+            switch ($item->status) {
+                case 1:
+                    $item->status = '<span class="status active-status">Active</span>';
+                    break;
+
+                case 2:
+                    $item->status = '<span class="status pending-status">Pending</span>';
+                    break;
+
+                default:
+                    $item->status = '<span class="status inactive-status">Inactive</span>';
+                    break;
+            }
         }
 
         return $items;
@@ -60,7 +72,7 @@ class ArticleController extends Controller
             'author_name' => 'required|min:3|max:250',
             'content' => 'required',
             'new_thumbnail' => 'nullable|max:30720',
-            'status' => 'required|in:0,1',
+            'status' => 'required|in:0,1,2',
         ]);
         
         if($validator->fails()) {
@@ -110,7 +122,7 @@ class ArticleController extends Controller
             'author_name' => 'required|min:3|max:250',
             'content' => 'required',
             'new_thumbnail' => 'nullable|max:30720',
-            'status' => 'required|in:0,1',
+            'status' => 'required|in:0,1,2',
         ]);
 
         if($validator->fails()) {

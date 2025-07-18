@@ -310,35 +310,61 @@
                 <p class="section-title">{{ $contents->{'section_2_title_' . $middleware_language} ?? $contents->section_2_title_en }}</p>
                 <p class="section-description">{{ $contents->{'section_2_description_' . $middleware_language} ?? $contents->section_2_description_en }}</p>
 
-                <!-- In future -->
-                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                    @if($riyadh_warehouses->count() > 0)
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="pills-riyadh-tab" data-bs-toggle="pill" data-bs-target="#pills-riyadh" type="button" role="tab" aria-controls="pills-riyadh" aria-selected="true">Riyadh</button>
                         </li>
+                    @endif
+
+                    @if($jeddah_warehouses->count() > 0)
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-jeddah-tab" data-bs-toggle="pill" data-bs-target="#pills-jeddah" type="button" role="tab" aria-controls="pills-jeddah" aria-selected="false">Jeddah</button>
                         </li>
+                    @endif
+
+                    @if($mecca_warehouses->count() > 0)
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-mecca-tab" data-bs-toggle="pill" data-bs-target="#pills-mecca" type="button" role="tab" aria-controls="pills-mecca" aria-selected="false">Mecca</button>
                         </li>
+                    @endif
+
+                    @if($medina_warehouses->count() > 0)
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-medina-tab" data-bs-toggle="pill" data-bs-target="#pills-medina" type="button" role="tab" aria-controls="pills-medina" aria-selected="false">Medina</button>
                         </li>
-                    </ul>
+                    @endif
+                </ul>
 
-                    <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="pills-riyadh" role="tabpanel" aria-labelledby="pills-riyadh-tab" tabindex="0">
-                            <div class="row">
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-riyadh" role="tabpanel" aria-labelledby="pills-riyadh-tab" tabindex="0">
+                        <div class="row">
+                            @foreach($riyadh_warehouses as $warehouse)
                                 <div class="col-4">
-                                    <a href="{{ route('warehouses.show', 1) }}">
+                                    <a href="{{ route('warehouses.show', $warehouse) }}">
                                         <div class="card">
-                                            <img src="{{ asset('storage/frontend/riyadh-1.png') }}" class="card-image" alt="Warehouse">
+                                            @if($warehouse->thumbnail)
+                                                <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
+                                            @else
+                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image">
+                                            @endif
 
                                             <div class="card-body">
-                                                <p class="type">Warehouse Type</p>
-                                                <p class="title">Lorem ipsum dolor</p>
-                                                <p class="description">Orem ipsum dolor sit amet, consectetur Lorem ipsum dolor consectetur Lorem ipsum dolor sit amt onsectetu.</p>
-                                                <p class="location"><i class="bi bi-geo-alt"></i>Al Olaya, Riyadh 12211</p>
+                                                <p class="type">{{ $warehouse->storageType->name }}</p>
+
+                                                <p class="title">{{ $warehouse->name }}</p>
+
+                                                <p class="description">Welcome to a premium industrial-grade storage facility located in the bustling commercial corridor of Saudi Arabia.</p>
+
+                                                <p class="location">
+                                                    <i class="bi bi-geo-alt"></i>
+                                                    @if($middleware_language == 'en')
+                                                        {{ $warehouse->address_en }}
+                                                    @else
+                                                        {{ $warehouse->address_ar }}
+                                                    @endif
+                                                </p>
+
                                                 <div class="bottom-box">
                                                     <div class="row">
                                                         <div class="col-5">
@@ -354,292 +380,151 @@
                                         </div>
                                     </a>
                                 </div>
-
-                                <div class="col-4">
-                                    <div class="card">
-                                        <img src="{{ asset('storage/frontend/riyadh-2.png') }}" class="card-image" alt="Warehouse">
-
-                                        <div class="card-body">
-                                            <p class="type">Warehouse Type</p>
-                                            <p class="title">Lorem ipsum dolor</p>
-                                            <p class="description">Orem ipsum dolor sit amet, consectetur Lorem ipsum dolor consectetur Lorem ipsum dolor sit amt onsectetu.</p>
-                                            <p class="location"><i class="bi bi-geo-alt"></i>Al Hamra, Riyadh 11493</p>
-                                            <div class="bottom-box">
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <p class="text">Listed 1 day ago</p>
-                                                    </div>
-                                                    <div class="col-7 text-end">
-                                                        <span class="span-text"><i class="bi bi-share"></i>Share</span>
-                                                        <span class="span-text"><i class="bi bi-flag"></i>Report</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="card">
-                                        <img src="{{ asset('storage/frontend/riyadh-3.png') }}" class="card-image" alt="Warehouse">
-
-                                        <div class="card-body">
-                                            <p class="type">Warehouse Type</p>
-                                            <p class="title">Lorem ipsum dolor</p>
-                                            <p class="description">Orem ipsum dolor sit amet, consectetur Lorem ipsum dolor consectetur Lorem ipsum dolor sit amt onsectetu.</p>
-                                            <p class="location"><i class="bi bi-geo-alt"></i>Al Morouj, Riyadh 11564</p>
-                                            <div class="bottom-box">
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <p class="text">Listed 1 day ago</p>
-                                                    </div>
-                                                    <div class="col-7 text-end">
-                                                        <span class="span-text"><i class="bi bi-share"></i>Share</span>
-                                                        <span class="span-text"><i class="bi bi-flag"></i>Report</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="pills-jeddah" role="tabpanel" aria-labelledby="pills-jeddah-tab" tabindex="0">
-                            <div class="row">
-                                <div class="col-4">
-                                    <a href="{{ route('warehouses.show', 1) }}">
-                                        <div class="card">
-                                            <img src="{{ asset('storage/frontend/riyadh-1.png') }}" class="card-image" alt="Warehouse">
-
-                                            <div class="card-body">
-                                                <p class="type">Warehouse Type</p>
-                                                <p class="title">Lorem ipsum dolor</p>
-                                                <p class="description">Orem ipsum dolor sit amet, consectetur Lorem ipsum dolor consectetur Lorem ipsum dolor sit amt onsectetu.</p>
-                                                <p class="location"><i class="bi bi-geo-alt"></i>Al Olaya, Riyadh 12211</p>
-                                                <div class="bottom-box">
-                                                    <div class="row">
-                                                        <div class="col-5">
-                                                            <p class="text">Listed 1 day ago</p>
-                                                        </div>
-                                                        <div class="col-7 text-end">
-                                                            <span class="span-text"><i class="bi bi-share"></i>Share</span>
-                                                            <span class="span-text"><i class="bi bi-flag"></i>Report</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="card">
-                                        <img src="{{ asset('storage/frontend/riyadh-2.png') }}" class="card-image" alt="Warehouse">
-
-                                        <div class="card-body">
-                                            <p class="type">Warehouse Type</p>
-                                            <p class="title">Lorem ipsum dolor</p>
-                                            <p class="description">Orem ipsum dolor sit amet, consectetur Lorem ipsum dolor consectetur Lorem ipsum dolor sit amt onsectetu.</p>
-                                            <p class="location"><i class="bi bi-geo-alt"></i>Al Hamra, Riyadh 11493</p>
-                                            <div class="bottom-box">
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <p class="text">Listed 1 day ago</p>
-                                                    </div>
-                                                    <div class="col-7 text-end">
-                                                        <span class="span-text"><i class="bi bi-share"></i>Share</span>
-                                                        <span class="span-text"><i class="bi bi-flag"></i>Report</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="card">
-                                        <img src="{{ asset('storage/frontend/riyadh-3.png') }}" class="card-image" alt="Warehouse">
-
-                                        <div class="card-body">
-                                            <p class="type">Warehouse Type</p>
-                                            <p class="title">Lorem ipsum dolor</p>
-                                            <p class="description">Orem ipsum dolor sit amet, consectetur Lorem ipsum dolor consectetur Lorem ipsum dolor sit amt onsectetu.</p>
-                                            <p class="location"><i class="bi bi-geo-alt"></i>Al Morouj, Riyadh 11564</p>
-                                            <div class="bottom-box">
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <p class="text">Listed 1 day ago</p>
-                                                    </div>
-                                                    <div class="col-7 text-end">
-                                                        <span class="span-text"><i class="bi bi-share"></i>Share</span>
-                                                        <span class="span-text"><i class="bi bi-flag"></i>Report</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="pills-mecca" role="tabpanel" aria-labelledby="pills-mecca-tab" tabindex="0">
-                            <div class="row">
-                                <div class="col-4">
-                                    <a href="{{ route('warehouses.show', 1) }}">
-                                        <div class="card">
-                                            <img src="{{ asset('storage/frontend/riyadh-1.png') }}" class="card-image" alt="Warehouse">
-
-                                            <div class="card-body">
-                                                <p class="type">Warehouse Type</p>
-                                                <p class="title">Lorem ipsum dolor</p>
-                                                <p class="description">Orem ipsum dolor sit amet, consectetur Lorem ipsum dolor consectetur Lorem ipsum dolor sit amt onsectetu.</p>
-                                                <p class="location"><i class="bi bi-geo-alt"></i>Al Olaya, Riyadh 12211</p>
-                                                <div class="bottom-box">
-                                                    <div class="row">
-                                                        <div class="col-5">
-                                                            <p class="text">Listed 1 day ago</p>
-                                                        </div>
-                                                        <div class="col-7 text-end">
-                                                            <span class="span-text"><i class="bi bi-share"></i>Share</span>
-                                                            <span class="span-text"><i class="bi bi-flag"></i>Report</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="card">
-                                        <img src="{{ asset('storage/frontend/riyadh-2.png') }}" class="card-image" alt="Warehouse">
-
-                                        <div class="card-body">
-                                            <p class="type">Warehouse Type</p>
-                                            <p class="title">Lorem ipsum dolor</p>
-                                            <p class="description">Orem ipsum dolor sit amet, consectetur Lorem ipsum dolor consectetur Lorem ipsum dolor sit amt onsectetu.</p>
-                                            <p class="location"><i class="bi bi-geo-alt"></i>Al Hamra, Riyadh 11493</p>
-                                            <div class="bottom-box">
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <p class="text">Listed 1 day ago</p>
-                                                    </div>
-                                                    <div class="col-7 text-end">
-                                                        <span class="span-text"><i class="bi bi-share"></i>Share</span>
-                                                        <span class="span-text"><i class="bi bi-flag"></i>Report</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="card">
-                                        <img src="{{ asset('storage/frontend/riyadh-3.png') }}" class="card-image" alt="Warehouse">
-
-                                        <div class="card-body">
-                                            <p class="type">Warehouse Type</p>
-                                            <p class="title">Lorem ipsum dolor</p>
-                                            <p class="description">Orem ipsum dolor sit amet, consectetur Lorem ipsum dolor consectetur Lorem ipsum dolor sit amt onsectetu.</p>
-                                            <p class="location"><i class="bi bi-geo-alt"></i>Al Morouj, Riyadh 11564</p>
-                                            <div class="bottom-box">
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <p class="text">Listed 1 day ago</p>
-                                                    </div>
-                                                    <div class="col-7 text-end">
-                                                        <span class="span-text"><i class="bi bi-share"></i>Share</span>
-                                                        <span class="span-text"><i class="bi bi-flag"></i>Report</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="tab-pane fade" id="pills-medina" role="tabpanel" aria-labelledby="pills-medina-tab" tabindex="0">
-                            <div class="row">
-                                <div class="col-4">
-                                    <a href="{{ route('warehouses.show', 1) }}">
-                                        <div class="card">
-                                            <img src="{{ asset('storage/frontend/riyadh-1.png') }}" class="card-image" alt="Warehouse">
-
-                                            <div class="card-body">
-                                                <p class="type">Warehouse Type</p>
-                                                <p class="title">Lorem ipsum dolor</p>
-                                                <p class="description">Orem ipsum dolor sit amet, consectetur Lorem ipsum dolor consectetur Lorem ipsum dolor sit amt onsectetu.</p>
-                                                <p class="location"><i class="bi bi-geo-alt"></i>Al Olaya, Riyadh 12211</p>
-                                                <div class="bottom-box">
-                                                    <div class="row">
-                                                        <div class="col-5">
-                                                            <p class="text">Listed 1 day ago</p>
-                                                        </div>
-                                                        <div class="col-7 text-end">
-                                                            <span class="span-text"><i class="bi bi-share"></i>Share</span>
-                                                            <span class="span-text"><i class="bi bi-flag"></i>Report</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="card">
-                                        <img src="{{ asset('storage/frontend/riyadh-2.png') }}" class="card-image" alt="Warehouse">
-
-                                        <div class="card-body">
-                                            <p class="type">Warehouse Type</p>
-                                            <p class="title">Lorem ipsum dolor</p>
-                                            <p class="description">Orem ipsum dolor sit amet, consectetur Lorem ipsum dolor consectetur Lorem ipsum dolor sit amt onsectetu.</p>
-                                            <p class="location"><i class="bi bi-geo-alt"></i>Al Hamra, Riyadh 11493</p>
-                                            <div class="bottom-box">
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <p class="text">Listed 1 day ago</p>
-                                                    </div>
-                                                    <div class="col-7 text-end">
-                                                        <span class="span-text"><i class="bi bi-share"></i>Share</span>
-                                                        <span class="span-text"><i class="bi bi-flag"></i>Report</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="card">
-                                        <img src="{{ asset('storage/frontend/riyadh-3.png') }}" class="card-image" alt="Warehouse">
-
-                                        <div class="card-body">
-                                            <p class="type">Warehouse Type</p>
-                                            <p class="title">Lorem ipsum dolor</p>
-                                            <p class="description">Orem ipsum dolor sit amet, consectetur Lorem ipsum dolor consectetur Lorem ipsum dolor sit amt onsectetu.</p>
-                                            <p class="location"><i class="bi bi-geo-alt"></i>Al Morouj, Riyadh 11564</p>
-                                            <div class="bottom-box">
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <p class="text">Listed 1 day ago</p>
-                                                    </div>
-                                                    <div class="col-7 text-end">
-                                                        <span class="span-text"><i class="bi bi-share"></i>Share</span>
-                                                        <span class="span-text"><i class="bi bi-flag"></i>Report</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-                <!-- In future -->
+
+                    <div class="tab-pane fade" id="pills-jeddah" role="tabpanel" aria-labelledby="pills-jeddah-tab" tabindex="0">
+                        <div class="row">
+                            @foreach($jeddah_warehouses as $warehouse)
+                                <div class="col-4">
+                                    <a href="{{ route('warehouses.show', $warehouse) }}">
+                                        <div class="card">
+                                            @if($warehouse->thumbnail)
+                                                <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
+                                            @else
+                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image">
+                                            @endif
+
+                                            <div class="card-body">
+                                                <p class="type">{{ $warehouse->storageType->name }}</p>
+
+                                                <p class="title">{{ $warehouse->name }}</p>
+
+                                                <p class="description">Welcome to a premium industrial-grade storage facility located in the bustling commercial corridor of Saudi Arabia.</p>
+
+                                                <p class="location">
+                                                    <i class="bi bi-geo-alt"></i>
+                                                    @if($middleware_language == 'en')
+                                                        {{ $warehouse->address_en }}
+                                                    @else
+                                                        {{ $warehouse->address_ar }}
+                                                    @endif
+                                                </p>
+                                                
+                                                <div class="bottom-box">
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <p class="text">Listed 1 day ago</p>
+                                                        </div>
+                                                        <div class="col-7 text-end">
+                                                            <span class="span-text"><i class="bi bi-share"></i>Share</span>
+                                                            <span class="span-text"><i class="bi bi-flag"></i>Report</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-mecca" role="tabpanel" aria-labelledby="pills-mecca-tab" tabindex="0">
+                        <div class="row">
+                            @foreach($mecca_warehouses as $warehouse)
+                                <div class="col-4">
+                                    <a href="{{ route('warehouses.show', $warehouse) }}">
+                                        <div class="card">
+                                            @if($warehouse->thumbnail)
+                                                <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
+                                            @else
+                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image">
+                                            @endif
+
+                                            <div class="card-body">
+                                                <p class="type">{{ $warehouse->storageType->name }}</p>
+
+                                                <p class="title">{{ $warehouse->name }}</p>
+
+                                                <p class="description">Welcome to a premium industrial-grade storage facility located in the bustling commercial corridor of Saudi Arabia.</p>
+
+                                                <p class="location">
+                                                    <i class="bi bi-geo-alt"></i>
+                                                    @if($middleware_language == 'en')
+                                                        {{ $warehouse->address_en }}
+                                                    @else
+                                                        {{ $warehouse->address_ar }}
+                                                    @endif
+                                                </p>
+                                                
+                                                <div class="bottom-box">
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <p class="text">Listed 1 day ago</p>
+                                                        </div>
+                                                        <div class="col-7 text-end">
+                                                            <span class="span-text"><i class="bi bi-share"></i>Share</span>
+                                                            <span class="span-text"><i class="bi bi-flag"></i>Report</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="pills-medina" role="tabpanel" aria-labelledby="pills-medina-tab" tabindex="0">
+                        <div class="row">
+                            @foreach($medina_warehouses as $warehouse)
+                                <div class="col-4">
+                                    <a href="{{ route('warehouses.show', $warehouse) }}">
+                                        <div class="card">
+                                            @if($warehouse->thumbnail)
+                                                <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
+                                            @else
+                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image">
+                                            @endif
+
+                                            <div class="card-body">
+                                                <p class="type">{{ $warehouse->storageType->name }}</p>
+
+                                                <p class="title">{{ $warehouse->name }}</p>
+
+                                                <p class="description">Welcome to a premium industrial-grade storage facility located in the bustling commercial corridor of Saudi Arabia.</p>
+
+                                                <p class="location">
+                                                    <i class="bi bi-geo-alt"></i>
+                                                    @if($middleware_language == 'en')
+                                                        {{ $warehouse->address_en }}
+                                                    @else
+                                                        {{ $warehouse->address_ar }}
+                                                    @endif
+                                                </p>
+                                                
+                                                <div class="bottom-box">
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <p class="text">Listed 1 day ago</p>
+                                                        </div>
+                                                        <div class="col-7 text-end">
+                                                            <span class="span-text"><i class="bi bi-share"></i>Share</span>
+                                                            <span class="span-text"><i class="bi bi-flag"></i>Report</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
             </div>
         @endif
 

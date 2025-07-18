@@ -66,6 +66,38 @@
     .register .exist-account .span-link {
         color: var(--blue);
     }
+    .register .phone-div {
+        gap: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .register .phone-div #phone_code {
+        width: 15%;
+    }
+/* #endregion */
+
+
+/* #region: Select 2 */
+    .register .select2-container--default .select2-selection--single {
+        border: 1px solid var(--input_border);
+        border-radius: 0;
+        height: 50px;
+        font-size: 14px;
+        color: var(--medium_gray);
+        outline: none;
+        display: flex;
+        align-items: center;
+    }
+    .register .select2-container--default .select2-selection--single .select2-selection__arrow {
+        top: initial!important;
+    }
+    .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+        background-color: var(--red);
+    }
+    .select2-results__option {
+        font-size: 14px;
+    }
 /* #endregion */
 
 

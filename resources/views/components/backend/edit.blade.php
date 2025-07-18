@@ -13,6 +13,11 @@
             <input class="form-check-input" type="radio" name="status" value="0" id="inactive" {{ old('status', $data->status) == 0 ? 'checked' : '' }} required>
             <label class="form-check-label" for="inactive">Inactive</label>
         </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="status" value="2" id="pending" {{ old('status', $data->status) == 2 ? 'checked' : '' }} required>
+            <label class="form-check-label" for="pending">Pending</label>
+        </div>
     </div>
 
     <x-backend.input-error field="status"></x-backend.input-error>

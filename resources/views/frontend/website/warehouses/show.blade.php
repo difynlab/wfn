@@ -66,18 +66,14 @@
                         </div>
                     </div>
 
-                    <p class="warehouse-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia nulla deserunt mollit anim id est laborum.
-                    </p>
+                    <p class="warehouse-description">Welcome to a premium industrial-grade storage facility located in the bustling commercial corridor of Saudi Arabia. Designed for flexibility and scale, this space is perfect for logistics companies, wholesalers, or retailers looking for a secure and convenient warehousing solution in Saudi Arabia. Whether you're expanding your operations or need temporary overflow capacity, our facility offers the infrastructure and access you need to operate efficiently.</p>
 
                     <div class="row features-row">
                         <div class="col-6 single-feature">
                             <i class="bi bi-calendar4"></i>
                             <div class="details">
-                                <p class="title">Free cancellation before 1 week</p>
-                                <p class="description">Get a full refund</p>
+                                <p class="title">Free Cancellation</p>
+                                <p class="description">Cancel up to 7 days before check-in for a full refund</p>
                             </div>
                         </div>
 
@@ -85,7 +81,7 @@
                             <i class="bi bi-people"></i>
                             <div class="details">
                                 <p class="title">Private Washrooms</p>
-                                <p class="description">Private washrooms facilities plus a public toilet.</p>
+                                <p class="description">Dedicated washroom facilities for staff</p>
                             </div>
                         </div>
                     </div>
@@ -100,47 +96,47 @@
                                 <i class="bi bi-box"></i>
                                 <div class="details">
                                     <p class="title">Size</p>
-                                    <p class="description">25,000 sq ft</p>
+                                    <p class="description">25,000 sq ft of open-plan warehouse space</p>
                                 </div>
                             </div>
 
                             <div class="col-6 single-amenity">
                                 <i class="bi bi-box"></i>
                                 <div class="details">
-                                    <p class="title">Lorem ipsum dolor sit amet</p>
-                                    <p class="description">Lorem ipsum dolor</p>
+                                    <p class="title">Ceiling Height</p>
+                                    <p class="description">10 meters - suitable for high stacking and large equipment</p>
                                 </div>
                             </div>
 
                             <div class="col-6 single-amenity">
                                 <i class="bi bi-box"></i>
                                 <div class="details">
-                                    <p class="title">Lorem ipsum dolor sit amet</p>
-                                    <p class="description">Lorem ipsum dolor</p>
+                                    <p class="title">Loading Docks</p>
+                                    <p class="description">Multiple truck-accessible loading bays for easy logistics</p>
                                 </div>
                             </div>
 
                             <div class="col-6 single-amenity">
                                 <i class="bi bi-box"></i>
                                 <div class="details">
-                                    <p class="title">Lorem ipsum dolor sit amet</p>
-                                    <p class="description">Lorem ipsum dolor</p>
+                                    <p class="title">Ventilation & Lighting</p>
+                                    <p class="description">Industrial-grade air circulation system</p>
                                 </div>
                             </div>
 
                             <div class="col-6 single-amenity">
                                 <i class="bi bi-box"></i>
                                 <div class="details">
-                                    <p class="title">Lorem ipsum dolor sit amet</p>
-                                    <p class="description">Lorem ipsum dolor</p>
+                                    <p class="title">Parking</p>
+                                    <p class="description">On-site parking available for staff and delivery trucks</p>
                                 </div>
                             </div>
 
                             <div class="col-6 single-amenity">
                                 <i class="bi bi-box"></i>
                                 <div class="details">
-                                    <p class="title">Lorem ipsum dolor sit amet</p>
-                                    <p class="description">Lorem ipsum dolor</p>
+                                    <p class="title">Fire Safety</p>
+                                    <p class="description">Equipped with smoke detectors and sprinkler systems</p>
                                 </div>
                             </div>
                         </div>
@@ -154,21 +150,21 @@
 
                         <div class="date-picker">
                             <div class="box">
-                                <p class="check">Check in</p>
-                                <p class="date">Add dates</p>
+                                <p class="check">Tenure Start</p>
+                                <p class="date">Add date</p>
                             </div>
 
                             <div class="line"></div>
                             
                             <div class="box">
-                                <p class="check">Check out</p>
-                                <p class="date">Add dates</p>
+                                <p class="check">Tenure End</p>
+                                <p class="date">Add date</p>
                             </div>
                         </div>
 
                         <button class="book-now-button" data-bs-toggle="modal" data-bs-target="#lotModal">Book Now</button>
 
-                        <p class="note">You won’t be charged yet</p>
+                        <p class="note">You won't be charged yet</p>
                     </div>
                     
                     <p class="report-link">
@@ -222,11 +218,7 @@
                         <i class="bi bi-star-fill"></i>
                     </div>
 
-                    <p class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
+                    <p class="content">The facility is spacious, clean, and professionally managed. We had zero issues moving in, and the owner was very responsive throughout. Highly recommend for any business needing reliable storage.</p>
 
                     <p class="author">
                         <span class="name">Danial Mark</span>
@@ -244,16 +236,12 @@
                         <i class="bi bi-star-fill"></i>
                     </div>
 
-                    <p class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
+                    <p class="content">Everything from the booking to the actual use of the space was seamless. Security was tight, and the premises were well-lit at night — perfect for our logistics operations.</p>
 
                     <p class="author">
-                        <span class="name">Danial Mark</span>
+                        <span class="name">Zajjith Ahmath</span>
                         <span class="line">|</span>
-                        <span class="role">Marketing Coordinator</span>
+                        <span class="role">Manager</span>
                     </p>
                 </div>
             </div>
@@ -268,31 +256,23 @@
 
             <div class="row">
                 <div class="col-6 single-policy">
-                    <p class="title">Lorem ipsum dolor sit amet consect</p>
-                    <p class="description">
-                        Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
+                    <p class="title">Strict Access Control</p>
+                    <p class="description">Entry is limited to authorized personnel only, with digital access tracking and visitor log protocols in place.</p>
                 </div>
 
                 <div class="col-6 single-policy">
-                    <p class="title">Lorem ipsum dolor sit amet consect</p>
-                    <p class="description">
-                        Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
+                    <p class="title">Fire & Emergency Compliance</p>
+                    <p class="description">The warehouse is equipped with smoke detectors, sprinkler systems, and accessible fire exits — all maintained per Civil Defense regulations.</p>
                 </div>
 
                  <div class="col-6 single-policy">
-                    <p class="title">Lorem ipsum dolor sit amet consect</p>
-                    <p class="description">
-                        Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
+                    <p class="title">Insurance Compatibility</p>
+                    <p class="description">Our facility supports commercial insurance requirements for both inventory and operations. Documentation can be provided upon request.</p>
                 </div>
 
                 <div class="col-6 single-policy">
-                    <p class="title">Lorem ipsum dolor sit amet consect</p>
-                    <p class="description">
-                        Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
+                    <p class="title">Cleanliness Protocols</p>
+                    <p class="description">Regular pest control and cleaning schedules ensure a hygienic environment suitable for sensitive goods or food-related storage.</p>
                 </div>
             </div>
         </div>

@@ -27,6 +27,7 @@
         --green_opacity: rgba(41, 255, 152, 0.2);
         --dark_green: #095D35;
         --gold: #FFAE4C;
+        --gold_opacity: rgba(255, 198, 29, 0.2);
     }
     body {
         background-color: var(--background);

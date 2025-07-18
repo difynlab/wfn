@@ -104,7 +104,7 @@
                                             <!-- In future -->
 
                                             <!-- In future -->
-                                                <p class="description">Orem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consect tur Lorem ipsum dolor sit amt onsectetu.</p>
+                                                <p class="description">Welcome to a premium industrial-grade storage facility located in the bustling commercial corridor of Saudi Arabia.</p>
                                             <!-- In future -->
 
                                             <p class="location">

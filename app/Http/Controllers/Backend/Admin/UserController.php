@@ -22,7 +22,21 @@ class UserController extends Controller
             <a href="'. route('admin.users.company.index', $item->id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
-            $item->status = ($item->status == 1) ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
+            switch ($item->status) {
+                case 1:
+                    $item->status = '<span class="status active-status">Active</span>';
+                    break;
+
+                case 2:
+                    $item->status = '<span class="status pending-status">Pending</span>';
+                    break;
+
+                default:
+                    $item->status = '<span class="status inactive-status">Inactive</span>';
+                    break;
+            }
+
+            // $item->status = ($item->status == 1) ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
         }
 
         return $items;
@@ -314,14 +328,14 @@ class UserController extends Controller
             'email' => 'required|email|min:0|max:255|unique:users,email',
             'phone_code' => 'required|min:0|max:4',
             'phone' => 'required|digits:9|numeric|unique:users,phone',
-            'address' => 'required|min:0|max:255',
+            'address' => 'nullable|min:0|max:255',
             'city' => 'required|min:0|max:255',
             'country' => 'required|min:0|max:255',
             'role' => 'required|in:admin,landlord,tenant',
             'password' => 'required|min:8',
             'confirm_password' => 'required|same:password',
             'new_image' => 'nullable|max:30720',
-            'status' => 'required|in:0,1'
+            'status' => 'required|in:0,1,2'
         ]);
         
         if($validator->fails()) {
@@ -621,12 +635,12 @@ class UserController extends Controller
             'email' => 'required|email|min:0|max:255|unique:users,email,'.$user->id,
             'phone_code' => 'required|min:0|max:4',
             'phone' => 'required|digits:9|numeric|unique:users,phone,'.$user->id,
-            'address' => 'required|min:0|max:255',
+            'address' => 'nullable|min:0|max:255',
             'city' => 'required|min:0|max:255',
             'country' => 'required|min:0|max:255',
             'role' => 'required|in:admin,landlord,tenant',
             'new_image' => 'nullable|max:30720',
-            'status' => 'required|in:0,1'
+            'status' => 'required|in:0,1,2'
         ]);
 
         if($validator->fails()) {
@@ -795,7 +809,7 @@ class UserController extends Controller
             'industry' => 'required|in:retail,e-commerce,manufacturing,logistics and transportation,food and beverage,pharmaceuticals,automotive,textiles and apparel,electronics,construction,consumer goods,chemicals,furniture and home goods,aerospace,energy and utilities',
             'date' => 'nullable|date',
             'new_registration_certificates.*' => 'max:30720',
-            'status' => 'required|in:0,1'
+            'status' => 'required|in:0,1,2'
         ]);
 
         if($validator->fails()) {

@@ -18,7 +18,19 @@ class ReviewController extends Controller
             <a href="'. route('admin.reviews.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
-            $item->status = ($item->status == 1) ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
+            switch ($item->status) {
+                case 1:
+                    $item->status = '<span class="status active-status">Active</span>';
+                    break;
+
+                case 2:
+                    $item->status = '<span class="status pending-status">Pending</span>';
+                    break;
+
+                default:
+                    $item->status = '<span class="status inactive-status">Inactive</span>';
+                    break;
+            }
         }
 
         return $items;
@@ -50,7 +62,7 @@ class ReviewController extends Controller
             'language' => 'required|in:english,arabic',
             'content' => 'required|min:0|max:255',
             'new_thumbnail' => 'nullable|max:30720',
-            'status' => 'required|in:0,1',
+            'status' => 'required|in:0,1,2',
         ]);
         
         if($validator->fails()) {
@@ -98,7 +110,7 @@ class ReviewController extends Controller
             'language' => 'required|in:english,arabic',
             'content' => 'required|min:0|max:255',
             'new_thumbnail' => 'nullable|max:30720',
-            'status' => 'required|in:0,1',
+            'status' => 'required|in:0,1,2',
         ]);
 
         if($validator->fails()) {

@@ -217,8 +217,28 @@
                 </div>
 
                 <div class="col-12 mb-4">
-                    <x-backend.upload-multi-images image_count="8" old_name="old_images" old_value="{{ $warehouse->images ?? old('images') }}" new_name="new_images[]" path="warehouses"></x-backend.upload-multi-images>
-                    <x-backend.input-error field="new_images.*"></x-backend.input-error>
+                    <x-backend.upload-image old_name="old_outside_image" old_value="{{ $warehouse->outside_image ?? old('outside_image') }}" new_name="new_outside_image" path="warehouses" label="Outside"></x-backend.upload-image>
+                    <x-backend.input-error field="new_outside_image"></x-backend.input-error>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <x-backend.upload-image old_name="old_loading_image" old_value="{{ $warehouse->loading_image ?? old('loading_image') }}" new_name="new_loading_image" path="warehouses" label="Loading"></x-backend.upload-image>
+                    <x-backend.input-error field="new_loading_image"></x-backend.input-error>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <x-backend.upload-image old_name="old_off_loading_image" old_value="{{ $warehouse->off_loading_image ?? old('off_loading_image') }}" new_name="new_off_loading_image" path="warehouses" label="Off Loading"></x-backend.upload-image>
+                    <x-backend.input-error field="new_off_loading_image"></x-backend.input-error>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <x-backend.upload-image old_name="old_handling_equipment_image" old_value="{{ $warehouse->handling_equipment_image ?? old('handling_equipment_image') }}" new_name="new_handling_equipment_image" path="warehouses" label="Handling Equipment"></x-backend.upload-image>
+                    <x-backend.input-error field="new_handling_equipment_image"></x-backend.input-error>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <x-backend.upload-image old_name="old_storage_area_image" old_value="{{ $warehouse->storage_area_image ?? old('storage_area_image') }}" new_name="new_storage_area_image" path="warehouses" label="Storage Area"></x-backend.upload-image>
+                    <x-backend.input-error field="new_storage_area_image"></x-backend.input-error>
                 </div>
 
                 <div class="col-12 mb-4">

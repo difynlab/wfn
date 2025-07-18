@@ -53,8 +53,8 @@
                 </div>
 
                 <div class="col-6 mb-4">
-                    <label for="address" class="form-label label">Address<span class="asterisk">*</span></label>
-                    <input type="text" class="form-control input-field" id="address" name="address" placeholder="Address" value="{{ old('address', $user->address) }}" required>
+                    <label for="address" class="form-label label">Address</label>
+                    <input type="text" class="form-control input-field" id="address" name="address" placeholder="Address" value="{{ old('address', $user->address) }}">
                     <x-backend.input-error field="address"></x-backend.input-error>
                 </div>
 

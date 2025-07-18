@@ -22,7 +22,19 @@ class WarehouseController extends Controller
             <a href="'. route('admin.users.edit', $item->user_id) .'" class="action-button" title="User"><i class="bi bi-person-exclamation"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
-            $item->status = ($item->status == 1) ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
+            switch ($item->status) {
+                case 1:
+                    $item->status = '<span class="status active-status">Active</span>';
+                    break;
+
+                case 2:
+                    $item->status = '<span class="status pending-status">Pending</span>';
+                    break;
+
+                default:
+                    $item->status = '<span class="status inactive-status">Inactive</span>';
+                    break;
+            }
         }
 
         return $items;
@@ -78,10 +90,14 @@ class WarehouseController extends Controller
             'temperature_sensor' => 'required|in:yes,no',
             'humidity_sensor' => 'required|in:yes,no',
             'new_thumbnail' => 'max:30720',
-            'new_images.*' => 'max:30720',
+            'new_outside_image' => 'max:30720',
+            'new_loading_image' => 'max:30720',
+            'new_off_loading_image' => 'max:30720',
+            'new_handling_equipment_image' => 'max:30720',
+            'new_storage_area_image' => 'max:30720',
             'new_videos.*' => 'max:204800',
             'new_licenses.*' => 'max:30720',
-            'status' => 'required|in:0,1'
+            'status' => 'required|in:0,1,2'
         ], [
             'address_name' => 'Address field is required.',
             'address_en' => 'Address field is required.',
@@ -108,13 +124,49 @@ class WarehouseController extends Controller
             $thumbnail_name = $request->old_thumbnail;
         }
 
-        $new_images = [];
-        if($request->file('new_images')) {
-            foreach($request->file('new_images') as $image) {
-                $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-                $image->storeAs('backend/warehouses', $image_name);
-                $new_images[] = $image_name;
-            }
+        if($request->file('new_outside_image')) {
+            $outside_image = $request->file('new_outside_image');
+            $outside_image_name = Str::random(40) . '.' . $outside_image->getClientOriginalExtension();
+            $outside_image->storeAs('backend/warehouses', $outside_image_name);
+        }
+        else {
+            $outside_image_name = $request->old_outside_image;
+        }
+
+        if($request->file('new_loading_image')) {
+            $loading_image = $request->file('new_loading_image');
+            $loading_image_name = Str::random(40) . '.' . $loading_image->getClientOriginalExtension();
+            $loading_image->storeAs('backend/warehouses', $loading_image_name);
+        }
+        else {
+            $loading_image_name = $request->old_loading_image;
+        }
+
+        if($request->file('new_off_loading_image')) {
+            $off_loading_image = $request->file('new_off_loading_image');
+            $off_loading_image_name = Str::random(40) . '.' . $off_loading_image->getClientOriginalExtension();
+            $off_loading_image->storeAs('backend/warehouses', $off_loading_image_name);
+        }
+        else {
+            $off_loading_image_name = $request->old_off_loading_image;
+        }
+
+        if($request->file('new_handling_equipment_image')) {
+            $handling_equipment_image = $request->file('new_handling_equipment_image');
+            $handling_equipment_image_name = Str::random(40) . '.' . $handling_equipment_image->getClientOriginalExtension();
+            $handling_equipment_image->storeAs('backend/warehouses', $handling_equipment_image_name);
+        }
+        else {
+            $handling_equipment_image_name = $request->old_handling_equipment_image;
+        }
+
+        if($request->file('new_storage_area_image')) {
+            $storage_area_image = $request->file('new_storage_area_image');
+            $storage_area_image_name = Str::random(40) . '.' . $storage_area_image->getClientOriginalExtension();
+            $storage_area_image->storeAs('backend/warehouses', $storage_area_image_name);
+        }
+        else {
+            $storage_area_image_name = $request->old_storage_area_image;
         }
 
         $new_videos = [];
@@ -138,15 +190,27 @@ class WarehouseController extends Controller
         $data = $request->except(
             'old_thumbnail',
             'new_thumbnail',
-            'old_images',
-            'new_images',
+            'old_outside_image',
+            'new_outside_image',
+            'old_loading_image',
+            'new_loading_image',
+            'old_off_loading_image',
+            'new_off_loading_image',
+            'old_handling_equipment_image',
+            'new_handling_equipment_image',
+            'old_storage_area_image',
+            'new_storage_area_image',
             'old_videos',
             'new_videos',
             'old_licenses',
             'new_licenses'
         );
         $data['thumbnail'] = $thumbnail_name;
-        $data['images'] = $new_images ? json_encode($new_images) : null;
+        $data['outside_image'] = $outside_image_name;
+        $data['loading_image'] = $loading_image_name;
+        $data['off_loading_image'] = $off_loading_image_name;
+        $data['handling_equipment_image'] = $handling_equipment_image_name;
+        $data['storage_area_image'] = $storage_area_image_name;
         $data['videos'] = $new_videos ? json_encode($new_videos) : null;
         $data['licenses'] = $new_licenses ? json_encode($new_licenses) : null;
         $warehouse = Warehouse::create($data);  
@@ -194,10 +258,14 @@ class WarehouseController extends Controller
             'temperature_sensor' => 'required|in:yes,no',
             'humidity_sensor' => 'required|in:yes,no',
             'new_thumbnail' => 'max:30720',
-            'new_images.*' => 'max:30720',
+            'new_outside_image' => 'max:30720',
+            'new_loading_image' => 'max:30720',
+            'new_off_loading_image' => 'max:30720',
+            'new_handling_equipment_image' => 'max:30720',
+            'new_storage_area_image' => 'max:30720',
             'new_videos.*' => 'max:204800',
             'new_licenses.*' => 'max:30720',
-            'status' => 'required|in:0,1'
+            'status' => 'required|in:0,1,2'
         ], [
             'address_name' => 'Address field is required.',
             'address_en' => 'Address field is required.',
@@ -234,24 +302,100 @@ class WarehouseController extends Controller
             $thumbnail_name = $request->old_thumbnail;
         }
 
-        // Images
-            $existing_images = json_decode($warehouse->images ?? '[]', true);
-            $current_images  = json_decode(htmlspecialchars_decode($request->old_images ?? '[]'), true);
-
-            foreach(array_diff($existing_images, $current_images) as $image) {
-                Storage::delete('backend/warehouses/' . $image);
+        if($request->file('new_outside_image')) {
+            if($request->old_outside_image) {
+                Storage::delete('backend/warehouses/' . $request->old_outside_image);
             }
 
-            if($request->file('new_images')) {
-                foreach($request->file('new_images') as $image) {
-                    $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-                    $image->storeAs('backend/warehouses', $image_name);
-                    $current_images[] = $image_name;
-                }
+            $outside_image = $request->file('new_outside_image');
+            $outside_image_name = Str::random(40) . '.' . $outside_image->getClientOriginalExtension();
+            $outside_image->storeAs('backend/warehouses', $outside_image_name);
+        }
+        else if($request->old_outside_image == null) {
+            if($warehouse->outside_image) {
+                Storage::delete('backend/warehouses/' . $warehouse->outside_image);
             }
-            
-            $images = $current_images ? json_encode($current_images) : null;
-        // Images
+            $outside_image_name = null;
+        }
+        else {
+            $outside_image_name = $request->old_outside_image;
+        }
+
+        if($request->file('new_loading_image')) {
+            if($request->old_loading_image) {
+                Storage::delete('backend/warehouses/' . $request->old_loading_image);
+            }
+
+            $loading_image = $request->file('new_loading_image');
+            $loading_image_name = Str::random(40) . '.' . $loading_image->getClientOriginalExtension();
+            $loading_image->storeAs('backend/warehouses', $loading_image_name);
+        }
+        else if($request->old_loading_image == null) {
+            if($warehouse->loading_image) {
+                Storage::delete('backend/warehouses/' . $warehouse->loading_image);
+            }
+            $loading_image_name = null;
+        }
+        else {
+            $loading_image_name = $request->old_loading_image;
+        }
+
+        if($request->file('new_off_loading_image')) {
+            if($request->old_off_loading_image) {
+                Storage::delete('backend/warehouses/' . $request->old_off_loading_image);
+            }
+
+            $off_loading_image = $request->file('new_off_loading_image');
+            $off_loading_image_name = Str::random(40) . '.' . $off_loading_image->getClientOriginalExtension();
+            $off_loading_image->storeAs('backend/warehouses', $off_loading_image_name);
+        }
+        else if($request->old_off_loading_image == null) {
+            if($warehouse->off_loading_image) {
+                Storage::delete('backend/warehouses/' . $warehouse->off_loading_image);
+            }
+            $off_loading_image_name = null;
+        }
+        else {
+            $off_loading_image_name = $request->old_off_loading_image;
+        }
+
+        if($request->file('new_handling_equipment_image')) {
+            if($request->old_handling_equipment_image) {
+                Storage::delete('backend/warehouses/' . $request->old_handling_equipment_image);
+            }
+
+            $handling_equipment_image = $request->file('new_handling_equipment_image');
+            $handling_equipment_image_name = Str::random(40) . '.' . $handling_equipment_image->getClientOriginalExtension();
+            $handling_equipment_image->storeAs('backend/warehouses', $handling_equipment_image_name);
+        }
+        else if($request->old_handling_equipment_image == null) {
+            if($warehouse->handling_equipment_image) {
+                Storage::delete('backend/warehouses/' . $warehouse->handling_equipment_image);
+            }
+            $handling_equipment_image_name = null;
+        }
+        else {
+            $handling_equipment_image_name = $request->old_handling_equipment_image;
+        }
+
+        if($request->file('new_storage_area_image')) {
+            if($request->old_storage_area_image) {
+                Storage::delete('backend/warehouses/' . $request->old_storage_area_image);
+            }
+
+            $storage_area_image = $request->file('new_storage_area_image');
+            $storage_area_image_name = Str::random(40) . '.' . $storage_area_image->getClientOriginalExtension();
+            $storage_area_image->storeAs('backend/warehouses', $storage_area_image_name);
+        }
+        else if($request->old_storage_area_image == null) {
+            if($warehouse->storage_area_image) {
+                Storage::delete('backend/warehouses/' . $warehouse->storage_area_image);
+            }
+            $storage_area_image_name = null;
+        }
+        else {
+            $storage_area_image_name = $request->old_storage_area_image;
+        }
 
         // Videos
             $existing_videos = json_decode($warehouse->videos ?? '[]', true);
@@ -294,16 +438,28 @@ class WarehouseController extends Controller
         $data = $request->except(
             'old_thumbnail',
             'new_thumbnail',
-            'old_images',
-            'new_images',
+            'old_outside_image',
+            'new_outside_image',
+            'old_loading_image',
+            'new_loading_image',
+            'old_off_loading_image',
+            'new_off_loading_image',
+            'old_handling_equipment_image',
+            'new_handling_equipment_image',
+            'old_storage_area_image',
+            'new_storage_area_image',
             'old_videos',
             'new_videos',
             'old_licenses',
-            'new_licenses',
+            'new_licenses'
         );
 
         $data['thumbnail'] = $thumbnail_name;
-        $data['images'] = $images;
+        $data['outside_image'] = $outside_image_name;
+        $data['loading_image'] = $loading_image_name;
+        $data['off_loading_image'] = $off_loading_image_name;
+        $data['handling_equipment_image'] = $handling_equipment_image_name;
+        $data['storage_area_image'] = $storage_area_image_name;
         $data['videos'] = $videos;
         $data['licenses'] = $licenses;
         $warehouse->fill($data)->save();

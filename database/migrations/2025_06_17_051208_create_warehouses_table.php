@@ -34,7 +34,11 @@ return new class extends Migration
             $table->enum('temperature_sensor', ['yes', 'no']);
             $table->enum('humidity_sensor', ['yes', 'no']);
             $table->string('thumbnail')->nullable();
-            $table->text('images')->nullable();
+            $table->string('outside_image')->nullable();
+            $table->string('loading_image')->nullable();
+            $table->string('off_loading_image')->nullable();
+            $table->string('handling_equipment_image')->nullable();
+            $table->string('storage_area_image')->nullable();
             $table->text('videos')->nullable();
             $table->text('licenses')->nullable();
             $table->text('notes')->nullable();

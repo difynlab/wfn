@@ -239,6 +239,10 @@
         color: var(--gray);
         background: var(--medium_white);
     }
+    .page .table-container .table .status.pending-status {
+        color: var(--gold);
+        background: var(--gold_opacity);
+    }
     .page .table-container .table .table-link {
         font-weight: 600;
         color: var(--blue);

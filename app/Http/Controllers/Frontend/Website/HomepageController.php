@@ -8,6 +8,7 @@ use App\Models\HomepageContent;
 use App\Models\Article;
 use App\Models\ArticleCategory;
 use App\Models\Subscription;
+use App\Models\Warehouse;
 use Illuminate\Support\Facades\Validator;
 
 class HomepageController extends Controller
@@ -15,6 +16,11 @@ class HomepageController extends Controller
     public function index(Request $request)
     {
         $contents = HomepageContent::find(1);
+
+        $riyadh_warehouses = Warehouse::where('city_en', 'Riyadh')->where('status', 1)->inRandomOrder()->take(3)->get();
+        $jeddah_warehouses = Warehouse::where('city_en', 'Jeddah')->where('status', 1)->inRandomOrder()->take(3)->get();
+        $mecca_warehouses = Warehouse::where('city_en', 'Mecca')->where('status', 1)->inRandomOrder()->take(3)->get();
+        $medina_warehouses = Warehouse::where('city_en', 'Medina')->where('status', 1)->inRandomOrder()->take(3)->get();
 
         $article_categories = ArticleCategory::where('status', 1)->where('language', session('middleware_language_name'))->get();
 
@@ -29,6 +35,10 @@ class HomepageController extends Controller
 
         return view('frontend.website.homepage', [
             'contents' => $contents,
+            'riyadh_warehouses' => $riyadh_warehouses,
+            'jeddah_warehouses' => $jeddah_warehouses,
+            'mecca_warehouses' => $mecca_warehouses,
+            'medina_warehouses' => $medina_warehouses,
 			'articles' => $articles
         ]);
     }

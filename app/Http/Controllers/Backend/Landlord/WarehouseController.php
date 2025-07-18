@@ -20,7 +20,19 @@ class WarehouseController extends Controller
             <a href="'. route('landlord.warehouses.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
-            $item->status = ($item->status == 1) ? '<span class="status active-status">Active</span>' : '<span class="status inactive-status">Inactive</span>';
+            switch ($item->status) {
+                case 1:
+                    $item->status = '<span class="status active-status">Active</span>';
+                    break;
+
+                case 2:
+                    $item->status = '<span class="status pending-status">Pending</span>';
+                    break;
+
+                default:
+                    $item->status = '<span class="status inactive-status">Inactive</span>';
+                    break;
+            }
         }
 
         return $items;
@@ -74,7 +86,7 @@ class WarehouseController extends Controller
             'new_images.*' => 'max:30720',
             'new_videos.*' => 'max:204800',
             'new_licenses.*' => 'max:30720',
-            'status' => 'required|in:0,1'
+            'status' => 'required|in:0,1,2'
         ], [
             'address_name' => 'Address field is required.',
             'address_en' => 'Address field is required.',
@@ -189,7 +201,7 @@ class WarehouseController extends Controller
             'new_images.*' => 'max:30720',
             'new_videos.*' => 'max:204800',
             'new_licenses.*' => 'max:30720',
-            'status' => 'required|in:0,1'
+            'status' => 'required|in:0,1,2'
         ], [
             'address_name' => 'Address field is required.',
             'address_en' => 'Address field is required.',

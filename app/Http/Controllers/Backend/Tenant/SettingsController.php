@@ -352,7 +352,7 @@ class SettingsController extends Controller
             'industry' => 'required|min:0|max:255',
             'date' => 'nullable|date',
             'new_registration_certificates.*' => 'max:30720',
-            'status' => 'required|in:0,1'
+            'status' => 'required|in:0,1,2'
         ]);
 
         if($validator->fails()) {
