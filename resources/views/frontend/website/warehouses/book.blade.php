@@ -50,7 +50,7 @@
                             <hr>
 
                             <div class="single-price total">
-                                <p class="text">Total (USD)</p>
+                                <p class="text">Total (SAR)</p>
                                 <p class="price">SAR 16,273.90</p>
                             </div>
                         </div>
