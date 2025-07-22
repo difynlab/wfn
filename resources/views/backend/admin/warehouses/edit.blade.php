@@ -352,6 +352,68 @@
                 </div>
 
                 <div class="col-12 mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-9">
+                            <label class="form-label label add-label">Details (EN)</label>
+                        </div>
+
+                        <div class="col-3 text-end">
+                            <button type="button" class="add-row-button add-detail-en">
+                                <i class="bi bi-plus-lg"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+
+                    @if($warehouse->details_en)
+                        @foreach(json_decode($warehouse->details_en) as $detail)
+                            <div class="row single-item mt-2">
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="detail_titles_en[]" value="{{ $detail->title }}" placeholder="Title" required>
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="detail_descriptions_en[]" value="{{ $detail->description }}" placeholder="Description" required>
+                                </div>
+                                <div class="col-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+
+                <div class="col-12 mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-9">
+                            <label class="form-label label add-label">Details (AR)</label>
+                        </div>
+
+                        <div class="col-3 text-end">
+                            <button type="button" class="add-row-button add-detail-ar">
+                                <i class="bi bi-plus-lg"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+
+                    @if($warehouse->details_ar)
+                        @foreach(json_decode($warehouse->details_ar) as $detail)
+                            <div class="row single-item mt-2">
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="detail_titles_ar[]" value="{{ $detail->title }}" placeholder="Title" required>
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="detail_descriptions_ar[]" value="{{ $detail->description }}" placeholder="Description" required>
+                                </div>
+                                <div class="col-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+
+                <div class="col-12 mb-4">
                     <x-backend.upload-image old_name="old_thumbnail" old_value="{{ $warehouse->thumbnail ?? old('thumbnail')  }}" new_name="new_thumbnail" path="warehouses" label="Thumbnail"></x-backend.upload-image>
                     <x-backend.input-error field="new_thumbnail"></x-backend.input-error>
                 </div>
@@ -491,6 +553,42 @@
 
                                 <div class="col">
                                     <input type="text" class="form-control input-field" name="amenity_descriptions_ar[]" placeholder="Description" required>
+                                </div>
+
+                                <div class="col-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
+        });
+
+        $('.add-detail-en').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="detail_titles_en[]" placeholder="Title" required>
+                                </div>
+
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="detail_descriptions_en[]" placeholder="Description" required>
+                                </div>
+
+                                <div class="col-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
+        });
+
+        $('.add-detail-ar').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="detail_titles_ar[]" placeholder="Title" required>
+                                </div>
+
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="detail_descriptions_ar[]" placeholder="Description" required>
                                 </div>
 
                                 <div class="col-1 d-flex align-items-center">

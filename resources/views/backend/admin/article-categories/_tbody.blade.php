@@ -9,6 +9,6 @@
     @endforeach
 @else
     <tr>
-        <td colspan="3" style="text-align: center;">No data available in the table</td>
+        <td colspan="4" style="text-align: center;">No data available in the table</td>
     </tr>
 @endif

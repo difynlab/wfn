@@ -63,6 +63,7 @@ return new class extends Migration
             $table->text('inner_page_section_5_title_en')->nullable();
             $table->text('inner_page_section_6_title_en')->nullable();
             $table->text('inner_page_section_7_title_en')->nullable();
+            $table->text('inner_page_section_7_unlock_en')->nullable();
 
             $table->text('inner_page_modal_title_en')->nullable();
             $table->text('inner_page_modal_description_en')->nullable();
@@ -119,6 +120,7 @@ return new class extends Migration
             $table->text('inner_page_section_5_title_ar')->nullable();
             $table->text('inner_page_section_6_title_ar')->nullable();
             $table->text('inner_page_section_7_title_ar')->nullable();
+            $table->text('inner_page_section_7_unlock_ar')->nullable();
 
             $table->text('inner_page_modal_title_ar')->nullable();
             $table->text('inner_page_modal_description_ar')->nullable();

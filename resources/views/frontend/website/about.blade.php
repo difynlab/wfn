@@ -363,9 +363,9 @@
                             @endforeach
                         </div>
                     </div>
-                @endif
 
-                <div class="swiper-pagination"></div>
+                    <div class="swiper-pagination"></div>
+                @endif
             </div>
         @endif
 
@@ -426,6 +426,7 @@
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 1,
             spaceBetween: 30,
+            mousewheel: true,
             loop: true,
             pagination: {
                 el: ".swiper-pagination",

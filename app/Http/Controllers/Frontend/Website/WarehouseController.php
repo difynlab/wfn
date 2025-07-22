@@ -8,6 +8,7 @@ use App\Models\HomepageContent;
 use App\Models\StorageType;
 use App\Models\Warehouse;
 use App\Models\WarehouseContent;
+use App\Models\WarehouseReview;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -28,14 +29,37 @@ class WarehouseController extends Controller
         $warehouses = $warehouses->paginate(3);
         $more_warehouses = Warehouse::where('status', 1)->inRandomOrder()->take(4)->get();
 
-        $top_warehouses = Booking::where('status', 1)->get()->groupBy('warehouse_id')
-                            ->map(function ($group) {
-                                return $group->count();
-                            })
-                            ->sortDesc()
-                            ->take(5);
-        $top_warehouse_ids = $top_warehouses->keys();
-        $popular_warehouses = Warehouse::whereIn('id', $top_warehouse_ids)->get();
+        // Top rated warehouses
+            $grouped_reviews = WarehouseReview::where('status', 1)->get()->groupBy('warehouse_id');
+            $warehouse_ratings = $grouped_reviews->map(function ($reviews, $warehouse_id) {
+                $star_count = $reviews->sum('star');
+                $review_count = $reviews->count();
+
+                $rating = $review_count > 0 ? number_format($star_count / $review_count, 2) : 0;
+
+                return [
+                    'warehouse_id' => $warehouse_id,
+                    'total_stars' => $star_count,
+                    'review_count' => $review_count,
+                    'average_rating' => $rating
+                ];
+            });
+            $top_rated_warehouses = $warehouse_ratings->sortByDesc('average_rating')->take(5);
+            $top_ids = $top_rated_warehouses->pluck('warehouse_id')->toArray();
+            $top_rated_warehouses = Warehouse::whereIn('id', $top_ids)->get();
+        // Top rated warehouses
+
+        // Popular warehouses
+            $popular_warehouses = Booking::where('status', 1)->get()->groupBy('warehouse_id')
+                                ->map(function ($group) {
+                                    return $group->count();
+                                })
+                                ->sortDesc()
+                                ->take(5);
+
+            $top_warehouse_ids = $popular_warehouses->keys();
+            $popular_warehouses = Warehouse::whereIn('id', $top_warehouse_ids)->get();
+        // Popular warehouses
 
         $storage_types = StorageType::where('status', 1)->orderBy('id', 'desc')->get();
 
@@ -46,6 +70,7 @@ class WarehouseController extends Controller
             'all_warehouses' => $all_warehouses,
             'storage_types' => $storage_types,
             'popular_warehouses' => $popular_warehouses,
+            'top_rated_warehouses' => $top_rated_warehouses
         ]);
     }
 
@@ -161,24 +186,25 @@ class WarehouseController extends Controller
         shuffle($sliders);
 
         $contents = WarehouseContent::find(1);
-        $all_reviews = $warehouse->reviews()->where('status', 1)->orderBy('id', 'desc')->get();
-        $reviews = $warehouse->reviews()->where('status', 1)->orderBy('id', 'desc')->paginate(2);
-        $star_count = $all_reviews->sum('star');
+        $reviews = $warehouse->reviews()->where('status', 1)->orderBy('id', 'desc')->get();
+        $star_count = $reviews->sum('star');
 
         if($star_count > 0) {
-            $rating = number_format($star_count / $all_reviews->count(), 2);
+            $rating = number_format($star_count / $reviews->count(), 2);
         }
         else {
             $rating = 0;
         }
 
+        $more_warehouses = Warehouse::where('id', '!=', $warehouse->id)->where('city_en', $warehouse->city_en)->where('status', 1)->inRandomOrder()->take(4)->get();
+
         return view('frontend.website.warehouses.show', [
             'contents' => $contents,
             'warehouse' => $warehouse,
             'sliders' => $sliders,
-            'all_reviews' => $all_reviews,
             'reviews' => $reviews,
             'rating' => $rating,
+            'more_warehouses' => $more_warehouses,
         ]);
     }
 

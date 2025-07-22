@@ -201,15 +201,11 @@
                             <hr class="divider">
                         @endif
 
-                        <!-- In future -->
-                            <p class="heading">{{ $contents->{'section_3_top_rated_' . $middleware_language} ?? $contents->section_3_top_rated_en }}</p>
-        
-                            <a href="#" class="item">Lorem ipsum dolor sit amt</a>
-                            <a href="#" class="item">Lorem ipsum dolor sit amt</a>
-                            <a href="#" class="item">Lorem ipsum dolor sit amt</a>
-                            <a href="#" class="item">Lorem ipsum dolor sit amt</a>
-                            <a href="#" class="item">Lorem ipsum dolor sit amt</a>
-                        <!-- In future -->
+                        <p class="heading">{{ $contents->{'section_3_top_rated_' . $middleware_language} ?? $contents->section_3_top_rated_en }}</p>
+    
+                        @foreach($top_rated_warehouses as $key => $warehouse)
+                            <a href="{{ route('warehouses.show', $warehouse) }}" class="item">{{ $warehouse->{'name_' . $middleware_language} ?? $warehouse->name_en }}</a>
+                        @endforeach
                     </div>
                 </div>
             </div>

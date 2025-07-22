@@ -38,6 +38,7 @@
                         <option value="">Status</option>
                         <option value="1" {{ isset($status) && $status == 1 ? "selected" : "" }}>Active</option>
                         <option value="0" {{ isset($status) && $status == 0 ? "selected" : "" }}>Inactive</option>
+                        <option value="2" {{ isset($status) && $status == 2 ? "selected" : "" }}>Pending</option>
                     </select>
 
                     <button type="button" class="form-control input-field reset">⟲ Reset Filters</button>

@@ -364,10 +364,7 @@
         border-radius: 10px;
     }
     .warehouse .section-5 .reviews .single-review {
-        margin-bottom: 25px;
-    }
-    .warehouse .section-5 .reviews .single-review:last-child {
-        margin-bottom: 0;
+        padding-right: 10px;
     }
     .warehouse .section-5 .reviews .single-review .stars {
         font-size: 17px;
@@ -388,16 +385,19 @@
         font-weight: 500;
         color: var(--light_black);
     }
-    .warehouse .section-5 .reviews .single-review .line {
-        font-size: 12px;
-        font-weight: 500;
-        color: var(--input_border);
-        margin: 0 2px;
+    .warehouse .section-5 .mySwiper3 {
+        margin-bottom: 20px;
     }
-    .warehouse .section-5 .reviews .single-review .role {
-        font-size: 12px;
-        font-weight: 500;
-        color: var(--gray);
+    .warehouse .section-5 .swiper-pagination {
+        position: relative;
+    }
+    .warehouse .section-5 .swiper-pagination .swiper-pagination-bullet {
+        background-color: var(--gray);
+        width: 10px;
+        border-radius: 5px;
+    }
+    .warehouse .section-5 .swiper-pagination .swiper-pagination-bullet-active {
+        background-color: var(--red);
     }
 /* #endregion */
 
@@ -417,7 +417,7 @@
     }
     .warehouse .section-6 .single-policy .title {
         font-size: 15px;
-        font-weight: 500;
+        font-weight: 600;
         color: var(--light_black);
         padding-bottom: 5px;
     }
@@ -458,12 +458,18 @@
     .warehouse .section-7 .single-warehouse .details .subtitle {
         font-size: 14px;
         color: var(--gray);
-        padding-bottom: 15px;
+        padding-bottom: 10px;
     }
     .warehouse .section-7 .single-warehouse .details .price {
         font-size: 16px;
-        font-weight: 500;
-        color: var(--light_black);
+        font-weight: 600;
+        color: var(--red);
+    }
+    .warehouse .section-7 .single-warehouse .details .price i {
+        position: relative;
+        font-size: 12px;
+        bottom: 10px;
+        left: 5px;
     }
 /* #endregion */
 

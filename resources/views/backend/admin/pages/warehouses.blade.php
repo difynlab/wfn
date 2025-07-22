@@ -116,8 +116,8 @@
                     </div>
 
                     <div class="col-6 mb-4">
-                        <label for="section_3_listed_{{ $short_code }}" class="form-label label">section_3_listed_en</label>
-                        <input type="text" class="form-control input-field" id="section_3_listed_{{ $short_code }}" name="section_3_listed_{{ $short_code }}" value="{{ $contents->{'section_3_listed_' . $short_code} ?? '' }}" placeholder="section_3_listed_en">
+                        <label for="section_3_listed_{{ $short_code }}" class="form-label label">Listed</label>
+                        <input type="text" class="form-control input-field" id="section_3_listed_{{ $short_code }}" name="section_3_listed_{{ $short_code }}" value="{{ $contents->{'section_3_listed_' . $short_code} ?? '' }}" placeholder="Listed">
                     </div>
 
                     <div class="col-6 mb-4">
@@ -156,14 +156,175 @@
                 <p class="inner-page-title">Section 4</p>
 
                 <div class="row">
-                    <div class="col-12 mb-4">
+                    <div class="col-6">
                         <label for="section_4_title_{{ $short_code }}" class="form-label label">Title</label>
                         <input type="text" class="form-control input-field" id="section_4_title_{{ $short_code }}" name="section_4_title_{{ $short_code }}" value="{{ $contents->{'section_4_title_' . $short_code} ?? '' }}" placeholder="Title">
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-6">
                         <label for="section_4_unlock_{{ $short_code }}" class="form-label label">Unlock Pricing</label>
                         <input type="text" class="form-control input-field" id="section_4_unlock_{{ $short_code }}" name="section_4_unlock_{{ $short_code }}" value="{{ $contents->{'section_4_unlock_' . $short_code} ?? '' }}" placeholder="Unlock Pricing">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section mb-4">
+                <p class="inner-page-title">Inner Page Section 2</p>
+
+                <div class="row">
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_section_2_description_{{ $short_code }}" class="form-label label">Description</label>
+                        <input type="text" class="form-control input-field" id="inner_page_section_2_description_{{ $short_code }}" name="inner_page_section_2_description_{{ $short_code }}" value="{{ $contents->{'inner_page_section_2_description_' . $short_code} ?? '' }}" placeholder="Description">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_section_2_talk_to_expert_{{ $short_code }}" class="form-label label">Talk to Expert</label>
+                        <input type="text" class="form-control input-field" id="inner_page_section_2_talk_to_expert_{{ $short_code }}" name="inner_page_section_2_talk_to_expert_{{ $short_code }}" value="{{ $contents->{'inner_page_section_2_talk_to_expert_' . $short_code} ?? '' }}" placeholder="Talk to Expert">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_section_2_rating_{{ $short_code }}" class="form-label label">Rating</label>
+                        <input type="text" class="form-control input-field" id="inner_page_section_2_rating_{{ $short_code }}" name="inner_page_section_2_rating_{{ $short_code }}" value="{{ $contents->{'inner_page_section_2_rating_' . $short_code} ?? '' }}" placeholder="Rating">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_section_2_reviews_{{ $short_code }}" class="form-label label">Reviews</label>
+                        <input type="text" class="form-control input-field" id="inner_page_section_2_reviews_{{ $short_code }}" name="inner_page_section_2_reviews_{{ $short_code }}" value="{{ $contents->{'inner_page_section_2_reviews_' . $short_code} ?? '' }}" placeholder="Reviews">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_section_2_total_cost_{{ $short_code }}" class="form-label label">Total Cost</label>
+                        <input type="text" class="form-control input-field" id="inner_page_section_2_total_cost_{{ $short_code }}" name="inner_page_section_2_total_cost_{{ $short_code }}" value="{{ $contents->{'inner_page_section_2_total_cost_' . $short_code} ?? '' }}" placeholder="Total Cost">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_section_2_unlock_{{ $short_code }}" class="form-label label">Unlock</label>
+                        <input type="text" class="form-control input-field" id="inner_page_section_2_unlock_{{ $short_code }}" name="inner_page_section_2_unlock_{{ $short_code }}" value="{{ $contents->{'inner_page_section_2_unlock_' . $short_code} ?? '' }}" placeholder="Unlock">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_section_2_tenure_start_{{ $short_code }}" class="form-label label">Tenure Start</label>
+                        <input type="text" class="form-control input-field" id="inner_page_section_2_tenure_start_{{ $short_code }}" name="inner_page_section_2_tenure_start_{{ $short_code }}" value="{{ $contents->{'inner_page_section_2_tenure_start_' . $short_code} ?? '' }}" placeholder="Tenure Start">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_section_2_tenure_end_{{ $short_code }}" class="form-label label">Tenure End</label>
+                        <input type="text" class="form-control input-field" id="inner_page_section_2_tenure_end_{{ $short_code }}" name="inner_page_section_2_tenure_end_{{ $short_code }}" value="{{ $contents->{'inner_page_section_2_tenure_end_' . $short_code} ?? '' }}" placeholder="Tenure End">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_section_2_add_date_{{ $short_code }}" class="form-label label">Add Date</label>
+                        <input type="text" class="form-control input-field" id="inner_page_section_2_add_date_{{ $short_code }}" name="inner_page_section_2_add_date_{{ $short_code }}" value="{{ $contents->{'inner_page_section_2_add_date_' . $short_code} ?? '' }}" placeholder="Add Date">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_section_2_button_{{ $short_code }}" class="form-label label">Button</label>
+                        <input type="text" class="form-control input-field" id="inner_page_section_2_button_{{ $short_code }}" name="inner_page_section_2_button_{{ $short_code }}" value="{{ $contents->{'inner_page_section_2_button_' . $short_code} ?? '' }}" placeholder="Button">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="inner_page_section_2_note_{{ $short_code }}" class="form-label label">Note</label>
+                        <input type="text" class="form-control input-field" id="inner_page_section_2_note_{{ $short_code }}" name="inner_page_section_2_note_{{ $short_code }}" value="{{ $contents->{'inner_page_section_2_note_' . $short_code} ?? '' }}" placeholder="Note">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="inner_page_section_2_report_listing_{{ $short_code }}" class="form-label label">Report Listing</label>
+                        <input type="text" class="form-control input-field" id="inner_page_section_2_report_listing_{{ $short_code }}" name="inner_page_section_2_report_listing_{{ $short_code }}" value="{{ $contents->{'inner_page_section_2_report_listing_' . $short_code} ?? '' }}" placeholder="Report Listing">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section mb-4">
+                <p class="inner-page-title">Inner Page Section 3</p>
+
+                <div class="row">
+                    <div class="col-12">
+                        <label for="inner_page_section_3_title_{{ $short_code }}" class="form-label label">Title</label>
+                        <input type="text" class="form-control input-field" id="inner_page_section_3_title_{{ $short_code }}" name="inner_page_section_3_title_{{ $short_code }}" value="{{ $contents->{'inner_page_section_3_title_' . $short_code} ?? '' }}" placeholder="Title">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section mb-4">
+                <p class="inner-page-title">Inner Page Section 5</p>
+
+                <div class="row">
+                    <div class="col-12">
+                        <label for="inner_page_section_5_title_{{ $short_code }}" class="form-label label">Title</label>
+                        <input type="text" class="form-control input-field" id="inner_page_section_5_title_{{ $short_code }}" name="inner_page_section_5_title_{{ $short_code }}" value="{{ $contents->{'inner_page_section_5_title_' . $short_code} ?? '' }}" placeholder="Title">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section mb-4">
+                <p class="inner-page-title">Inner Page Section 6</p>
+
+                <div class="row">
+                    <div class="col-12">
+                        <label for="inner_page_section_6_title_{{ $short_code }}" class="form-label label">Title</label>
+                        <input type="text" class="form-control input-field" id="inner_page_section_6_title_{{ $short_code }}" name="inner_page_section_6_title_{{ $short_code }}" value="{{ $contents->{'inner_page_section_6_title_' . $short_code} ?? '' }}" placeholder="Title">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section mb-4">
+                <p class="inner-page-title">Inner Page Section 7</p>
+
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <label for="inner_page_section_7_title_{{ $short_code }}" class="form-label label">Title</label>
+                        <input type="text" class="form-control input-field" id="inner_page_section_7_title_{{ $short_code }}" name="inner_page_section_7_title_{{ $short_code }}" value="{{ $contents->{'inner_page_section_7_title_' . $short_code} ?? '' }}" placeholder="Title">
+                    </div>
+
+                    <div class="col-12">
+                        <label for="inner_page_section_7_unlock_{{ $short_code }}" class="form-label label">Unlock</label>
+                        <input type="text" class="form-control input-field" id="inner_page_section_7_unlock_{{ $short_code }}" name="inner_page_section_7_unlock_{{ $short_code }}" value="{{ $contents->{'inner_page_section_7_unlock_' . $short_code} ?? '' }}" placeholder="Unlock">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section mb-4">
+                <p class="inner-page-title">Inner Page Modal</p>
+
+                <div class="row">
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_modal_title_{{ $short_code }}" class="form-label label">Title</label>
+                        <input type="text" class="form-control input-field" id="inner_page_modal_title_{{ $short_code }}" name="inner_page_modal_title_{{ $short_code }}" value="{{ $contents->{'inner_page_modal_title_' . $short_code} ?? '' }}" placeholder="Title">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_modal_description_{{ $short_code }}" class="form-label label">Description</label>
+                        <input type="text" class="form-control input-field" id="inner_page_modal_description_{{ $short_code }}" name="inner_page_modal_description_{{ $short_code }}" value="{{ $contents->{'inner_page_modal_description_' . $short_code} ?? '' }}" placeholder="Description">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_modal_reviews_{{ $short_code }}" class="form-label label">Reviews</label>
+                        <input type="text" class="form-control input-field" id="inner_page_modal_reviews_{{ $short_code }}" name="inner_page_modal_reviews_{{ $short_code }}" value="{{ $contents->{'inner_page_modal_reviews_' . $short_code} ?? '' }}" placeholder="Reviews">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_modal_details_{{ $short_code }}" class="form-label label">Details</label>
+                        <input type="text" class="form-control input-field" id="inner_page_modal_details_{{ $short_code }}" name="inner_page_modal_details_{{ $short_code }}" value="{{ $contents->{'inner_page_modal_details_' . $short_code} ?? '' }}" placeholder="Details">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_modal_tenure_start_date_{{ $short_code }}" class="form-label label">Tenure Start Date</label>
+                        <input type="text" class="form-control input-field" id="inner_page_modal_tenure_start_date_{{ $short_code }}" name="inner_page_modal_tenure_start_date_{{ $short_code }}" value="{{ $contents->{'inner_page_modal_tenure_start_date_' . $short_code} ?? '' }}" placeholder="Tenure Start Date">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_modal_tenure_end_date_{{ $short_code }}" class="form-label label">Tenure End Date</label>
+                        <input type="text" class="form-control input-field" id="inner_page_modal_tenure_end_date_{{ $short_code }}" name="inner_page_modal_tenure_end_date_{{ $short_code }}" value="{{ $contents->{'inner_page_modal_tenure_end_date_' . $short_code} ?? '' }}" placeholder="Tenure End Date">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="inner_page_modal_no_of_pallets_{{ $short_code }}" class="form-label label">No of Pallets</label>
+                        <input type="text" class="form-control input-field" id="inner_page_modal_no_of_pallets_{{ $short_code }}" name="inner_page_modal_no_of_pallets_{{ $short_code }}" value="{{ $contents->{'inner_page_modal_no_of_pallets_' . $short_code} ?? '' }}" placeholder="No of Pallets">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="inner_page_modal_button_{{ $short_code }}" class="form-label label">Button</label>
+                        <input type="text" class="form-control input-field" id="inner_page_modal_button_{{ $short_code }}" name="inner_page_modal_button_{{ $short_code }}" value="{{ $contents->{'inner_page_modal_button_' . $short_code} ?? '' }}" placeholder="Button">
                     </div>
                 </div>
             </div>

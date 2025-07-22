@@ -240,6 +240,32 @@ class WarehouseController extends Controller
             $amenities_ar = $amenities_ar ? json_encode($amenities_ar) : null;
         // Amenities AR
 
+        // Details EN
+            $details_en = [];
+            if($request->detail_titles_en) {
+                foreach($request->detail_titles_en as $key => $title) {
+                    array_push($details_en, [
+                        'title' => $title,
+                        'description' => $request->detail_descriptions_en[$key] ?? null
+                    ]);
+                }
+            }
+            $details_en = $details_en ? json_encode($details_en) : null;
+        // Details EN
+
+        // Details AR
+            $details_ar = [];
+            if($request->detail_titles_ar) {
+                foreach($request->detail_titles_ar as $key => $title) {
+                    array_push($details_ar, [
+                        'title' => $title,
+                        'description' => $request->detail_descriptions_ar[$key] ?? null
+                    ]);
+                }
+            }
+            $details_ar = $details_ar ? json_encode($details_ar) : null;
+        // Details AR
+
         $data = $request->except(
             'old_thumbnail',
             'new_thumbnail',
@@ -265,6 +291,10 @@ class WarehouseController extends Controller
             'amenity_descriptions_en',
             'amenity_titles_ar',
             'amenity_descriptions_ar',
+            'detail_titles_en',
+            'detail_descriptions_en',
+            'detail_titles_ar',
+            'detail_descriptions_ar',
         );
         $data['thumbnail'] = $thumbnail_name;
         $data['outside_image'] = $outside_image_name;
@@ -278,6 +308,8 @@ class WarehouseController extends Controller
         $data['features_ar'] = $features_ar;
         $data['amenities_en'] = $amenities_en;
         $data['amenities_ar'] = $amenities_ar;
+        $data['details_en'] = $details_en;
+        $data['details_ar'] = $details_ar;
         $warehouse = Warehouse::create($data);  
 
         return redirect()->route('admin.warehouses.edit', $warehouse)->with([
@@ -555,6 +587,32 @@ class WarehouseController extends Controller
             $amenities_ar = $amenities_ar ? json_encode($amenities_ar) : null;
         // Amenities AR
 
+        // Details EN
+            $details_en = [];
+            if($request->detail_titles_en) {
+                foreach($request->detail_titles_en as $key => $title) {
+                    array_push($details_en, [
+                        'title' => $title,
+                        'description' => $request->detail_descriptions_en[$key] ?? null
+                    ]);
+                }
+            }
+            $details_en = $details_en ? json_encode($details_en) : null;
+        // Details EN
+
+        // Details AR
+            $details_ar = [];
+            if($request->detail_titles_ar) {
+                foreach($request->detail_titles_ar as $key => $title) {
+                    array_push($details_ar, [
+                        'title' => $title,
+                        'description' => $request->detail_descriptions_ar[$key] ?? null
+                    ]);
+                }
+            }
+            $details_ar = $details_ar ? json_encode($details_ar) : null;
+        // Details AR
+
         $data = $request->except(
             'old_thumbnail',
             'new_thumbnail',
@@ -580,6 +638,10 @@ class WarehouseController extends Controller
             'amenity_descriptions_en',
             'amenity_titles_ar',
             'amenity_descriptions_ar',
+            'detail_titles_en',
+            'detail_descriptions_en',
+            'detail_titles_ar',
+            'detail_descriptions_ar',
         );
 
         $data['thumbnail'] = $thumbnail_name;
@@ -594,6 +656,8 @@ class WarehouseController extends Controller
         $data['features_ar'] = $features_ar;
         $data['amenities_en'] = $amenities_en;
         $data['amenities_ar'] = $amenities_ar;
+        $data['details_en'] = $details_en;
+        $data['details_ar'] = $details_ar;
         $warehouse->fill($data)->save();
         
         return redirect()->back()->with([
@@ -617,7 +681,7 @@ class WarehouseController extends Controller
         $column = $request->column ?? 'id';
         $direction = $request->direction ?? 'desc';
 
-        $valid_columns = ['name', 'address', 'total_area', 'total_pallets', 'status', 'id'];
+        $valid_columns = ['name_en', 'address_en', 'total_area', 'total_pallets', 'status', 'id'];
         $valid_directions = ['asc', 'desc'];
 
         if(!in_array($column, $valid_columns)) {
@@ -631,7 +695,10 @@ class WarehouseController extends Controller
         $items = Warehouse::orderBy($column, $direction);
 
         if($name) {
-            $items->where('name', 'like', '%' . $name . '%');
+            $items->where(function ($query) use ($name) {
+                $query->where('name_en', 'like', '%' . $name . '%')
+                    ->orWhere('name_ar', 'like', '%' . $name . '%');
+            });
         }
 
         if($address) {

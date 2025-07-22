@@ -143,7 +143,7 @@
                             <div class="line"></div>
                             
                             <div class="rating">
-                                <p class="score">{{ $all_reviews->count() }}</p>
+                                <p class="score">{{ $reviews->count() }}</p>
                                 <p class="label">{{ $contents->{'inner_page_section_2_reviews_' . $middleware_language} ?? $contents->inner_page_section_2_reviews_en }}</p>
                             </div>
                         </div>
@@ -192,10 +192,12 @@
                         <p class="note">{{ $contents->{'inner_page_section_2_note_' . $middleware_language} ?? $contents->inner_page_section_2_note_en }}</p>
                     </div>
                     
-                    <p class="report-link" data-bs-toggle="modal" data-bs-target="#report-modal">
-                        <i class="bi bi-flag"></i>
-                        <span>{{ $contents->{'inner_page_section_2_report_listing_' . $middleware_language} ?? $contents->inner_page_section_2_report_listing_en }}</span>
-                    </p>
+                    <!-- In future -->
+                        <p class="report-link" data-bs-toggle="modal" data-bs-target="#report-modal">
+                            <i class="bi bi-flag"></i>
+                            <span>{{ $contents->{'inner_page_section_2_report_listing_' . $middleware_language} ?? $contents->inner_page_section_2_report_listing_en }}</span>
+                        </p>
+                    <!-- In future -->
 
                     <div class="modal fade booking-modal" id="booking-modal">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -222,7 +224,7 @@
                                             <div class="rating">
                                                 <i class="bi bi-star-fill"></i>
                                                 <span class="value">{{ $rating }}</span>
-                                                <span class="count">({{ $all_reviews->count() }} {{ $contents->{'inner_page_modal_reviews_' . $middleware_language} ?? $contents->inner_page_modal_reviews_en }})</span>
+                                                <span class="count">({{ $reviews->count() }} {{ $contents->{'inner_page_modal_reviews_' . $middleware_language} ?? $contents->inner_page_modal_reviews_en }})</span>
                                             </div>
                                         </div>
                                     </div>
@@ -269,23 +271,25 @@
             <hr class="separator">
         </div>
 
-        <div class="section-3 container section-margin">
-            <p class="title">{{ $contents->{'inner_page_section_3_title_' . $middleware_language} ?? $contents->inner_page_section_3_title_en }}</p>
+        @if($contents->inner_page_section_3_title_en)
+            <div class="section-3 container section-margin">
+                <p class="title">{{ $contents->{'inner_page_section_3_title_' . $middleware_language} ?? $contents->inner_page_section_3_title_en }}</p>
 
-            @if($warehouse->amenities_en || $warehouse->amenities_ar)
-                <div class="row amenities-row">
-                    @foreach(json_decode($warehouse->{'amenities_' . $middleware_language} ?? $warehouse->amenities_en) as $amenity)
-                        <div class="col-6 single-amenity">
-                            <i class="bi-stars"></i>
-                            <div class="details">
-                                <p class="detail-title">{{ $amenity->title }}</p>
-                                <p class="detail-description">{{ $amenity->description }}</p>
+                @if($warehouse->amenities_en || $warehouse->amenities_ar)
+                    <div class="row amenities-row">
+                        @foreach(json_decode($warehouse->{'amenities_' . $middleware_language} ?? $warehouse->amenities_en) as $amenity)
+                            <div class="col-6 single-amenity">
+                                <i class="bi-stars"></i>
+                                <div class="details">
+                                    <p class="detail-title">{{ $amenity->title }}</p>
+                                    <p class="detail-description">{{ $amenity->description }}</p>
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
-        </div>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+        @endif
 
         <div class="container section-margin">
             <hr class="separator">
@@ -299,131 +303,99 @@
             <hr class="separator">
         </div>
 
-        <div class="section-5 container section-margin">
-            <p class="title">{{ $contents->{'inner_page_section_5_title_' . $middleware_language} ?? $contents->inner_page_section_5_title_en }}</p>
+        @if($contents->inner_page_section_5_title_en)
+            <div class="section-5 container section-margin">
+                <p class="title">{{ $contents->{'inner_page_section_5_title_' . $middleware_language} ?? $contents->inner_page_section_5_title_en }}</p>
 
-            <div class="reviews">
-                <div class="single-review">
-                    <div class="stars">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
+                @if($reviews->where('language', $middleware_language_name)->count() > 0)
+                    <div class="reviews">
+                        <div class="swiper mySwiper3">
+                            <div class="swiper-wrapper">
+                                @foreach($reviews->where('language', $middleware_language_name) as $review)
+                                    <div class="swiper-slide">
+                                        <div class="single-review">
+                                            <div class="stars">
+                                                @for($i = 1; $i <= $review->star; $i++)
+                                                    <i class="bi bi-star-fill"></i>
+                                                @endfor
+                                            </div>
+
+                                            <p class="content">{{ $review->content }}</p>
+
+                                            <p class="author">
+                                                <span class="name">{{ $review->user->first_name }} {{ $review->user->last_name }}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <div class="swiper-pagination"></div>
                     </div>
-
-                    <p class="content">The facility is spacious, clean, and professionally managed. We had zero issues moving in, and the owner was very responsive throughout. Highly recommend for any business needing reliable storage.</p>
-
-                    <p class="author">
-                        <span class="name">Danial Mark</span>
-                        <span class="line">|</span>
-                        <span class="role">Marketing Coordinator</span>
-                    </p>
-                </div>
-
-                <div class="single-review">
-                    <div class="stars">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-
-                    <p class="content">Everything from the booking to the actual use of the space was seamless. Security was tight, and the premises were well-lit at night — perfect for our logistics operations.</p>
-
-                    <p class="author">
-                        <span class="name">Zajjith Ahmath</span>
-                        <span class="line">|</span>
-                        <span class="role">Manager</span>
-                    </p>
-                </div>
+                @endif
             </div>
-        </div>
+        @endif
 
         <div class="container section-margin">
             <hr class="separator">
         </div>
 
-        <div class="section-6 container section-margin">
-            <p class="policy-title">More Details on Policies & Safety</p>
+        @if($contents->inner_page_section_6_title_en)
+            <div class="section-6 container section-margin">
+                <p class="policy-title">{{ $contents->{'inner_page_section_6_title_' . $middleware_language} ?? $contents->inner_page_section_6_title_en }}</p>
 
-            <div class="row">
-                <div class="col-6 single-policy">
-                    <p class="title">Strict Access Control</p>
-                    <p class="description">Entry is limited to authorized personnel only, with digital access tracking and visitor log protocols in place.</p>
-                </div>
-
-                <div class="col-6 single-policy">
-                    <p class="title">Fire & Emergency Compliance</p>
-                    <p class="description">The warehouse is equipped with smoke detectors, sprinkler systems, and accessible fire exits — all maintained per Civil Defense regulations.</p>
-                </div>
-
-                 <div class="col-6 single-policy">
-                    <p class="title">Insurance Compatibility</p>
-                    <p class="description">Our facility supports commercial insurance requirements for both inventory and operations. Documentation can be provided upon request.</p>
-                </div>
-
-                <div class="col-6 single-policy">
-                    <p class="title">Cleanliness Protocols</p>
-                    <p class="description">Regular pest control and cleaning schedules ensure a hygienic environment suitable for sensitive goods or food-related storage.</p>
-                </div>
+                @if($warehouse->details_en || $warehouse->details_ar)
+                    <div class="row">
+                        @foreach(json_decode($warehouse->{'details_' . $middleware_language} ?? $warehouse->details_en) as $detail)
+                            <div class="col-6 single-policy">
+                                <p class="title">{{ $detail->title }}</p>
+                                <p class="description">{{ $detail->description }}</p>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
-        </div>
+        @endif
 
         <div class="container section-margin">
             <hr class="separator">
         </div>
 
-        <div class="section-7 container">
-            <p class="title">More available warehouses in the same area</p>
+        @if($contents->inner_page_section_7_title_en && $more_warehouses->count() > 0)
+            <div class="section-7 container">
+                <p class="title">{{ $contents->{'inner_page_section_7_title_' . $middleware_language} ?? $contents->inner_page_section_7_title_en }}</p>
 
-            <div class="row">
-                <div class="col-3">
-                    <div class="single-warehouse">
-                        <img src="{{ asset('storage/frontend/warehouse-c-1.png') }}" class="image" alt="Warehouse">
-                        <div class="details">
-                            <p class="title">Lorem ipsum</p>
-                            <p class="subtitle">Lorem ipsum dolor sit amet</p>
-                            <p class="price">SAR 13,250.62</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="row">
+                    @foreach($more_warehouses as $key => $warehouse)
+                        <div class="col-3">
+                            <a href="{{ route('warehouses.show', $warehouse) }}">
+                                <div class="single-warehouse">
+                                    @if($warehouse->thumbnail)
+                                        <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="image">
+                                    @else
+                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image">
+                                    @endif
 
-                <div class="col-3">
-                    <div class="single-warehouse">
-                        <img src="{{ asset('storage/frontend/warehouse-c-2.png') }}" class="image" alt="Warehouse">
-                        <div class="details">
-                            <p class="title">Lorem ipsum</p>
-                            <p class="subtitle">Lorem ipsum dolor sit amet</p>
-                            <p class="price">SAR 13,250.62</p>
+                                    <div class="details">
+                                        <p class="title">
+                                            {{ $warehouse->{'name_' . $middleware_language} ?? $warehouse->name_en }}
+                                        </p>
+                                        <p class="subtitle">
+                                            {{ $warehouse->storageType->{'name_' . $middleware_language} ?? $warehouse->storageType->name_en }}
+                                        </p>
+                                        <p class="price">
+                                            {{ $contents->{'inner_page_section_7_unlock_' . $middleware_language} ?? $contents->inner_page_section_7_unlock_en }}
+                                            <i class="bi bi-lock-fill"></i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-3">
-                    <div class="single-warehouse">
-                        <img src="{{ asset('storage/frontend/warehouse-c-3.png') }}" class="image" alt="Warehouse">
-                        <div class="details">
-                            <p class="title">Lorem ipsum</p>
-                            <p class="subtitle">Lorem ipsum dolor sit amet</p>
-                            <p class="price">SAR 13,250.62</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-3">
-                    <div class="single-warehouse">
-                        <img src="{{ asset('storage/frontend/warehouse-c-4.png') }}" class="image" alt="Warehouse">
-                        <div class="details">
-                            <p class="title">Lorem ipsum</p>
-                            <p class="subtitle">Lorem ipsum dolor sit amet</p>
-                            <p class="price">SAR 13,250.62</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
+        @endif
 
         <x-frontend.notification></x-frontend.notification>
     </div>
@@ -446,6 +418,24 @@
             thumbs: {
                 swiper: swiper,
             },
+        });
+
+         var swiper = new Swiper(".mySwiper3", {
+            // direction: "vertical",
+            mousewheel: true,
+            slidesPerView: 2,
+            spaceBetween: 25,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            // breakpoints: {
+            //     481: {
+            //         slidesPerView: 2,
+            //         spaceBetween: 10,
+            //     }
+            // }
         });
 
         document.addEventListener('DOMContentLoaded', function () {

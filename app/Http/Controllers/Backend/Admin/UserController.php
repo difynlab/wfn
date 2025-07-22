@@ -789,7 +789,7 @@ class UserController extends Controller
             ['user_id' => $user->id],
             [
                 'user_id'   => $user->id,
-                'status' => 1
+                'status' => 2
             ]
         );
 

@@ -42,6 +42,9 @@
         color: rgb(221, 5, 5);
         margin-left: 3px;
     }
+    p[data-f-id="pbf"], p[data-f-id="pbf"] a {
+        display: none !important;
+    }
 /* #endregion */
 
 
