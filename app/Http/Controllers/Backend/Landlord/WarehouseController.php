@@ -63,7 +63,8 @@ class WarehouseController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:0|max:255',
+            'name_en' => 'required|min:0|max:255',
+            'description_en' => 'required',
             'address_name' => 'required|min:0|max:255',
             'address_en' => 'required|min:0|max:255',
             'city_en' => 'required|min:0|max:255',
@@ -75,7 +76,8 @@ class WarehouseController extends Controller
             'total_area' => 'required',
             'total_pallets' => 'required|integer',
             'available_pallets' => 'required|integer',
-            'pallet_dimension' => 'required',
+            'rent_per_pallet' => 'required|numeric',
+            'pallet_dimension' => 'required|in:120x80x150,120x100x150,other',
             'temperature_type' => 'required|in:dry,ambient,cold,freezer',
             'temperature_range' => 'required',
             'wms' => 'required|in:yes,no',
@@ -83,7 +85,11 @@ class WarehouseController extends Controller
             'temperature_sensor' => 'required|in:yes,no',
             'humidity_sensor' => 'required|in:yes,no',
             'new_thumbnail' => 'max:30720',
-            'new_images.*' => 'max:30720',
+            'new_outside_image' => 'max:30720',
+            'new_loading_image' => 'max:30720',
+            'new_off_loading_image' => 'max:30720',
+            'new_handling_equipment_image' => 'max:30720',
+            'new_storage_area_image' => 'max:30720',
             'new_videos.*' => 'max:204800',
             'new_licenses.*' => 'max:30720',
             'status' => 'required|in:0,1,2'
@@ -113,13 +119,49 @@ class WarehouseController extends Controller
             $thumbnail_name = $request->old_thumbnail;
         }
 
-        $new_images = [];
-        if($request->file('new_images')) {
-            foreach($request->file('new_images') as $image) {
-                $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-                $image->storeAs('backend/warehouses', $image_name);
-                $new_images[] = $image_name;
-            }
+        if($request->file('new_outside_image')) {
+            $outside_image = $request->file('new_outside_image');
+            $outside_image_name = Str::random(40) . '.' . $outside_image->getClientOriginalExtension();
+            $outside_image->storeAs('backend/warehouses', $outside_image_name);
+        }
+        else {
+            $outside_image_name = $request->old_outside_image;
+        }
+
+        if($request->file('new_loading_image')) {
+            $loading_image = $request->file('new_loading_image');
+            $loading_image_name = Str::random(40) . '.' . $loading_image->getClientOriginalExtension();
+            $loading_image->storeAs('backend/warehouses', $loading_image_name);
+        }
+        else {
+            $loading_image_name = $request->old_loading_image;
+        }
+
+        if($request->file('new_off_loading_image')) {
+            $off_loading_image = $request->file('new_off_loading_image');
+            $off_loading_image_name = Str::random(40) . '.' . $off_loading_image->getClientOriginalExtension();
+            $off_loading_image->storeAs('backend/warehouses', $off_loading_image_name);
+        }
+        else {
+            $off_loading_image_name = $request->old_off_loading_image;
+        }
+
+        if($request->file('new_handling_equipment_image')) {
+            $handling_equipment_image = $request->file('new_handling_equipment_image');
+            $handling_equipment_image_name = Str::random(40) . '.' . $handling_equipment_image->getClientOriginalExtension();
+            $handling_equipment_image->storeAs('backend/warehouses', $handling_equipment_image_name);
+        }
+        else {
+            $handling_equipment_image_name = $request->old_handling_equipment_image;
+        }
+
+        if($request->file('new_storage_area_image')) {
+            $storage_area_image = $request->file('new_storage_area_image');
+            $storage_area_image_name = Str::random(40) . '.' . $storage_area_image->getClientOriginalExtension();
+            $storage_area_image->storeAs('backend/warehouses', $storage_area_image_name);
+        }
+        else {
+            $storage_area_image_name = $request->old_storage_area_image;
         }
 
         $new_videos = [];
@@ -140,23 +182,131 @@ class WarehouseController extends Controller
             }
         }
 
+        // Features EN
+            $features_en = [];
+            if($request->feature_titles_en) {
+                foreach($request->feature_titles_en as $key => $title) {
+                    array_push($features_en, [
+                        'title' => $title,
+                        'description' => $request->feature_descriptions_en[$key] ?? null
+                    ]);
+                }
+            }
+            $features_en = $features_en ? json_encode($features_en) : null;
+        // Features EN
+
+        // Features AR
+            $features_ar = [];
+            if($request->feature_titles_ar) {
+                foreach($request->feature_titles_ar as $key => $title) {
+                    array_push($features_ar, [
+                        'title' => $title,
+                        'description' => $request->feature_descriptions_ar[$key] ?? null
+                    ]);
+                }
+            }
+            $features_ar = $features_ar ? json_encode($features_ar) : null;
+        // Features AR
+
+        // Amenities EN
+            $amenities_en = [];
+            if($request->amenity_titles_en) {
+                foreach($request->amenity_titles_en as $key => $title) {
+                    array_push($amenities_en, [
+                        'title' => $title,
+                        'description' => $request->amenity_descriptions_en[$key] ?? null
+                    ]);
+                }
+            }
+            $amenities_en = $amenities_en ? json_encode($amenities_en) : null;
+        // Amenities EN
+
+        // Amenities AR
+            $amenities_ar = [];
+            if($request->amenity_titles_ar) {
+                foreach($request->amenity_titles_ar as $key => $title) {
+                    array_push($amenities_ar, [
+                        'title' => $title,
+                        'description' => $request->amenity_descriptions_ar[$key] ?? null
+                    ]);
+                }
+            }
+            $amenities_ar = $amenities_ar ? json_encode($amenities_ar) : null;
+        // Amenities AR
+
+        // Details EN
+            $details_en = [];
+            if($request->detail_titles_en) {
+                foreach($request->detail_titles_en as $key => $title) {
+                    array_push($details_en, [
+                        'title' => $title,
+                        'description' => $request->detail_descriptions_en[$key] ?? null
+                    ]);
+                }
+            }
+            $details_en = $details_en ? json_encode($details_en) : null;
+        // Details EN
+
+        // Details AR
+            $details_ar = [];
+            if($request->detail_titles_ar) {
+                foreach($request->detail_titles_ar as $key => $title) {
+                    array_push($details_ar, [
+                        'title' => $title,
+                        'description' => $request->detail_descriptions_ar[$key] ?? null
+                    ]);
+                }
+            }
+            $details_ar = $details_ar ? json_encode($details_ar) : null;
+        // Details AR
+
         $data = $request->except(
             'old_thumbnail',
             'new_thumbnail',
-            'old_images',
-            'new_images',
+            'old_outside_image',
+            'new_outside_image',
+            'old_loading_image',
+            'new_loading_image',
+            'old_off_loading_image',
+            'new_off_loading_image',
+            'old_handling_equipment_image',
+            'new_handling_equipment_image',
+            'old_storage_area_image',
+            'new_storage_area_image',
             'old_videos',
             'new_videos',
             'old_licenses',
-            'new_licenses'
+            'new_licenses',
+            'feature_titles_en',
+            'feature_descriptions_en',
+            'feature_titles_ar',
+            'feature_descriptions_ar',
+            'amenity_titles_en',
+            'amenity_descriptions_en',
+            'amenity_titles_ar',
+            'amenity_descriptions_ar',
+            'detail_titles_en',
+            'detail_descriptions_en',
+            'detail_titles_ar',
+            'detail_descriptions_ar',
         );
 
         $user = Auth::user();
         $data['thumbnail'] = $thumbnail_name;
         $data['user_id'] = $user->id;
-        $data['images'] = $new_images ? json_encode($new_images) : null;
+        $data['outside_image'] = $outside_image_name;
+        $data['loading_image'] = $loading_image_name;
+        $data['off_loading_image'] = $off_loading_image_name;
+        $data['handling_equipment_image'] = $handling_equipment_image_name;
+        $data['storage_area_image'] = $storage_area_image_name;
         $data['videos'] = $new_videos ? json_encode($new_videos) : null;
         $data['licenses'] = $new_licenses ? json_encode($new_licenses) : null;
+        $data['features_en'] = $features_en;
+        $data['features_ar'] = $features_ar;
+        $data['amenities_en'] = $amenities_en;
+        $data['amenities_ar'] = $amenities_ar;
+        $data['details_en'] = $details_en;
+        $data['details_ar'] = $details_ar;
         $warehouse = Warehouse::create($data);  
 
         return redirect()->route('landlord.warehouses.edit', $warehouse)->with([
@@ -178,7 +328,8 @@ class WarehouseController extends Controller
     public function update(Request $request, Warehouse $warehouse)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:0|max:255',
+            'name_en' => 'required|min:0|max:255',
+            'description_en' => 'required',
             'address_name' => 'required|min:0|max:255',
             'address_en' => 'required|min:0|max:255',
             'city_en' => 'required|min:0|max:255',
@@ -189,8 +340,9 @@ class WarehouseController extends Controller
             'storage_type_id' => 'required|integer',
             'total_area' => 'required',
             'total_pallets' => 'required|integer',
+            'rent_per_pallet' => 'required|numeric',
             'available_pallets' => 'required|integer',
-            'pallet_dimension' => 'required',
+            'pallet_dimension' => 'required|in:120x80x150,120x100x150,other',
             'temperature_type' => 'required|in:dry,ambient,cold,freezer',
             'temperature_range' => 'required',
             'wms' => 'required|in:yes,no',
@@ -198,7 +350,11 @@ class WarehouseController extends Controller
             'temperature_sensor' => 'required|in:yes,no',
             'humidity_sensor' => 'required|in:yes,no',
             'new_thumbnail' => 'max:30720',
-            'new_images.*' => 'max:30720',
+            'new_outside_image' => 'max:30720',
+            'new_loading_image' => 'max:30720',
+            'new_off_loading_image' => 'max:30720',
+            'new_handling_equipment_image' => 'max:30720',
+            'new_storage_area_image' => 'max:30720',
             'new_videos.*' => 'max:204800',
             'new_licenses.*' => 'max:30720',
             'status' => 'required|in:0,1,2'
@@ -238,24 +394,100 @@ class WarehouseController extends Controller
             $thumbnail_name = $request->old_thumbnail;
         }
 
-        // Images
-            $existing_images = json_decode($warehouse->images ?? '[]', true);
-            $current_images  = json_decode(htmlspecialchars_decode($request->old_images ?? '[]'), true);
-
-            foreach(array_diff($existing_images, $current_images) as $image) {
-                Storage::delete('backend/warehouses/' . $image);
+        if($request->file('new_outside_image')) {
+            if($request->old_outside_image) {
+                Storage::delete('backend/warehouses/' . $request->old_outside_image);
             }
 
-            if($request->file('new_images')) {
-                foreach($request->file('new_images') as $image) {
-                    $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-                    $image->storeAs('backend/warehouses', $image_name);
-                    $current_images[] = $image_name;
-                }
+            $outside_image = $request->file('new_outside_image');
+            $outside_image_name = Str::random(40) . '.' . $outside_image->getClientOriginalExtension();
+            $outside_image->storeAs('backend/warehouses', $outside_image_name);
+        }
+        else if($request->old_outside_image == null) {
+            if($warehouse->outside_image) {
+                Storage::delete('backend/warehouses/' . $warehouse->outside_image);
             }
-            
-            $images = $current_images ? json_encode($current_images) : null;
-        // Images
+            $outside_image_name = null;
+        }
+        else {
+            $outside_image_name = $request->old_outside_image;
+        }
+
+        if($request->file('new_loading_image')) {
+            if($request->old_loading_image) {
+                Storage::delete('backend/warehouses/' . $request->old_loading_image);
+            }
+
+            $loading_image = $request->file('new_loading_image');
+            $loading_image_name = Str::random(40) . '.' . $loading_image->getClientOriginalExtension();
+            $loading_image->storeAs('backend/warehouses', $loading_image_name);
+        }
+        else if($request->old_loading_image == null) {
+            if($warehouse->loading_image) {
+                Storage::delete('backend/warehouses/' . $warehouse->loading_image);
+            }
+            $loading_image_name = null;
+        }
+        else {
+            $loading_image_name = $request->old_loading_image;
+        }
+
+        if($request->file('new_off_loading_image')) {
+            if($request->old_off_loading_image) {
+                Storage::delete('backend/warehouses/' . $request->old_off_loading_image);
+            }
+
+            $off_loading_image = $request->file('new_off_loading_image');
+            $off_loading_image_name = Str::random(40) . '.' . $off_loading_image->getClientOriginalExtension();
+            $off_loading_image->storeAs('backend/warehouses', $off_loading_image_name);
+        }
+        else if($request->old_off_loading_image == null) {
+            if($warehouse->off_loading_image) {
+                Storage::delete('backend/warehouses/' . $warehouse->off_loading_image);
+            }
+            $off_loading_image_name = null;
+        }
+        else {
+            $off_loading_image_name = $request->old_off_loading_image;
+        }
+
+        if($request->file('new_handling_equipment_image')) {
+            if($request->old_handling_equipment_image) {
+                Storage::delete('backend/warehouses/' . $request->old_handling_equipment_image);
+            }
+
+            $handling_equipment_image = $request->file('new_handling_equipment_image');
+            $handling_equipment_image_name = Str::random(40) . '.' . $handling_equipment_image->getClientOriginalExtension();
+            $handling_equipment_image->storeAs('backend/warehouses', $handling_equipment_image_name);
+        }
+        else if($request->old_handling_equipment_image == null) {
+            if($warehouse->handling_equipment_image) {
+                Storage::delete('backend/warehouses/' . $warehouse->handling_equipment_image);
+            }
+            $handling_equipment_image_name = null;
+        }
+        else {
+            $handling_equipment_image_name = $request->old_handling_equipment_image;
+        }
+
+        if($request->file('new_storage_area_image')) {
+            if($request->old_storage_area_image) {
+                Storage::delete('backend/warehouses/' . $request->old_storage_area_image);
+            }
+
+            $storage_area_image = $request->file('new_storage_area_image');
+            $storage_area_image_name = Str::random(40) . '.' . $storage_area_image->getClientOriginalExtension();
+            $storage_area_image->storeAs('backend/warehouses', $storage_area_image_name);
+        }
+        else if($request->old_storage_area_image == null) {
+            if($warehouse->storage_area_image) {
+                Storage::delete('backend/warehouses/' . $warehouse->storage_area_image);
+            }
+            $storage_area_image_name = null;
+        }
+        else {
+            $storage_area_image_name = $request->old_storage_area_image;
+        }
 
         // Videos
             $existing_videos = json_decode($warehouse->videos ?? '[]', true);
@@ -295,21 +527,129 @@ class WarehouseController extends Controller
             $licenses = $current_licenses ? json_encode($current_licenses) : null;
         // Licenses
 
+        // Features EN
+            $features_en = [];
+            if($request->feature_titles_en) {
+                foreach($request->feature_titles_en as $key => $title) {
+                    array_push($features_en, [
+                        'title' => $title,
+                        'description' => $request->feature_descriptions_en[$key] ?? null
+                    ]);
+                }
+            }
+            $features_en = $features_en ? json_encode($features_en) : null;
+        // Features EN
+
+        // Features AR
+            $features_ar = [];
+            if($request->feature_titles_ar) {
+                foreach($request->feature_titles_ar as $key => $title) {
+                    array_push($features_ar, [
+                        'title' => $title,
+                        'description' => $request->feature_descriptions_ar[$key] ?? null
+                    ]);
+                }
+            }
+            $features_ar = $features_ar ? json_encode($features_ar) : null;
+        // Features AR
+
+        // Amenities EN
+            $amenities_en = [];
+            if($request->amenity_titles_en) {
+                foreach($request->amenity_titles_en as $key => $title) {
+                    array_push($amenities_en, [
+                        'title' => $title,
+                        'description' => $request->amenity_descriptions_en[$key] ?? null
+                    ]);
+                }
+            }
+            $amenities_en = $amenities_en ? json_encode($amenities_en) : null;
+        // Amenities EN
+
+        // Amenities AR
+            $amenities_ar = [];
+            if($request->amenity_titles_ar) {
+                foreach($request->amenity_titles_ar as $key => $title) {
+                    array_push($amenities_ar, [
+                        'title' => $title,
+                        'description' => $request->amenity_descriptions_ar[$key] ?? null
+                    ]);
+                }
+            }
+            $amenities_ar = $amenities_ar ? json_encode($amenities_ar) : null;
+        // Amenities AR
+
+        // Details EN
+            $details_en = [];
+            if($request->detail_titles_en) {
+                foreach($request->detail_titles_en as $key => $title) {
+                    array_push($details_en, [
+                        'title' => $title,
+                        'description' => $request->detail_descriptions_en[$key] ?? null
+                    ]);
+                }
+            }
+            $details_en = $details_en ? json_encode($details_en) : null;
+        // Details EN
+
+        // Details AR
+            $details_ar = [];
+            if($request->detail_titles_ar) {
+                foreach($request->detail_titles_ar as $key => $title) {
+                    array_push($details_ar, [
+                        'title' => $title,
+                        'description' => $request->detail_descriptions_ar[$key] ?? null
+                    ]);
+                }
+            }
+            $details_ar = $details_ar ? json_encode($details_ar) : null;
+        // Details AR
+
         $data = $request->except(
             'old_thumbnail',
             'new_thumbnail',
-            'old_images',
-            'new_images',
+            'old_outside_image',
+            'new_outside_image',
+            'old_loading_image',
+            'new_loading_image',
+            'old_off_loading_image',
+            'new_off_loading_image',
+            'old_handling_equipment_image',
+            'new_handling_equipment_image',
+            'old_storage_area_image',
+            'new_storage_area_image',
             'old_videos',
             'new_videos',
             'old_licenses',
             'new_licenses',
+            'feature_titles_en',
+            'feature_descriptions_en',
+            'feature_titles_ar',
+            'feature_descriptions_ar',
+            'amenity_titles_en',
+            'amenity_descriptions_en',
+            'amenity_titles_ar',
+            'amenity_descriptions_ar',
+            'detail_titles_en',
+            'detail_descriptions_en',
+            'detail_titles_ar',
+            'detail_descriptions_ar',
         );
 
         $data['thumbnail'] = $thumbnail_name;
-        $data['images'] = $images;
+        $data['outside_image'] = $outside_image_name;
+        $data['loading_image'] = $loading_image_name;
+        $data['off_loading_image'] = $off_loading_image_name;
+        $data['handling_equipment_image'] = $handling_equipment_image_name;
+        $data['storage_area_image'] = $storage_area_image_name;
         $data['videos'] = $videos;
         $data['licenses'] = $licenses;
+        $data['features_en'] = $features_en;
+        $data['features_ar'] = $features_ar;
+        $data['amenities_en'] = $amenities_en;
+        $data['amenities_ar'] = $amenities_ar;
+        $data['details_en'] = $details_en;
+        $data['details_ar'] = $details_ar;
         $warehouse->fill($data)->save();
         
         return redirect()->back()->with([
@@ -327,20 +667,31 @@ class WarehouseController extends Controller
 
     public function filter(Request $request)
     {
-        if($request->action == '⟲ Reset Filter') {
-            return redirect()->route('landlord.warehouses.index');
-        }
-
         $name = $request->name;
         $address = $request->address;
-        $order_by = $request->order_by;
         $status = $request->status;
+        $column = $request->column ?? 'id';
+        $direction = $request->direction ?? 'desc';
+
+        $valid_columns = ['name_en', 'address_en', 'total_area', 'total_pallets', 'status', 'id'];
+        $valid_directions = ['asc', 'desc'];
+
+        if(!in_array($column, $valid_columns)) {
+            $column = 'id';
+        }
+
+        if(!in_array($direction, $valid_directions)) {
+            $direction = 'desc';
+        }
 
         $user = Auth::user();
-        $items = $user->warehouses();
+        $items = $user->warehouses()->orderBy($column, $direction);
 
         if($name) {
-            $items->where('name', 'like', '%' . $name . '%');
+            $items->where(function ($query) use ($name) {
+                $query->where('name_en', 'like', '%' . $name . '%')
+                    ->orWhere('name_ar', 'like', '%' . $name . '%');
+            });
         }
 
         if($address) {
@@ -348,13 +699,6 @@ class WarehouseController extends Controller
                 $data->where('address_en', 'like', "%{$address}%")
                 ->orWhere('address_ar', 'like', "%{$address}%");
             });
-        }
-
-        if($order_by == 'a-z') {
-            $items->orderBy('id', 'asc');
-        }
-        else {
-            $items->orderBy('id', 'desc');
         }
 
         if($status != null) {
@@ -365,12 +709,21 @@ class WarehouseController extends Controller
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 
+        if($request->ajax()) {
+            $tbodyView = view('backend.landlord.warehouses._tbody', compact('items'))->render();
+            $paginationView = $items->appends($request->except('page'))->links("pagination::bootstrap-5")->render();
+
+            return response()->json([
+                'tbody' => $tbodyView,
+                'pagination' => $paginationView,
+            ]);
+        }
+
         return view('backend.landlord.warehouses.index', [
             'items' => $items,
             'pagination' => $pagination,
             'name' => $name,
             'address' => $address,
-            'order_by' => $order_by,
             'status' => $status
         ]);
     }

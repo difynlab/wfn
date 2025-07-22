@@ -22,7 +22,7 @@ class SettingsController extends Controller
             ['user_id' => $user->id],
             [
                 'user_id'   => $user->id,
-                'status' => 1
+                'status' => 2
             ]
         );
 
@@ -333,6 +333,7 @@ class SettingsController extends Controller
         );
 
         $data['image'] = $image_name;
+        $data['status'] = 2;
         $user->fill($data)->save();
 
         return redirect()->back()->with([

@@ -13,7 +13,7 @@
 
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('landlord.bookings.filter') }}" method="GET" class="filter-form">
+                <form class="filter-form">
                     <select class="form-select input-field js-single w-100" id="selected_tenant" name="selected_tenant">
                         <option value="">Select tenant</option>
                         @foreach($users as $user)
@@ -28,12 +28,6 @@
                         @endforeach
                     </select>
 
-                    <select class="form-select input-field width" name="order_by">
-                        <option value="">Order by: Z-A</option>
-                        <option value="a-z" {{ isset($order_by) && $order_by == 'a-z' ? "selected" : "" }}>A-Z</option>
-                        <option value="z-a" {{ isset($order_by) && $order_by == 'z-a' ? "selected" : "" }}>Z-A</option>
-                    </select>
-
                     <select class="form-select input-field width" name="status">
                         <option value="">Status</option>
                         <option value="1" {{ isset($status) && $status == 1 ? "selected" : "" }}>Active</option>
@@ -41,9 +35,7 @@
                         <option value="2" {{ isset($status) && $status == 2 ? "selected" : "" }}>Pending</option>
                     </select>
 
-                    <input type="submit" class="form-control input-field reset" name="action" value="⟲ Reset Filter">
-
-                    <input type="submit" class="apply-button" name="action" value="Apply Filters">
+                    <button type="button" class="form-control input-field reset">⟲ Reset Filters</button>
                 </form>
             </div>
         </div>
@@ -58,23 +50,23 @@
                             <tr>
                                 <th scope="col">TENANT</th>
                                 <th scope="col">WAREHOUSE</th>
-                                <th scope="col">PALLETS RENTED</th>
-                                <th scope="col">TOTAL RENT</th>
-                                <th scope="col">TENANCY DATE</th>
-                                <th scope="col">RENEWAL DATE</th>
-                                <th scope="col">STATUS</th>
+                                <th scope="col">PALLETS RENTED <i class="bi bi-arrows-vertical sort-icon" data-name="no_of_pallets" data-order="desc"></i></th>
+                                <th scope="col">TOTAL RENT <i class="bi bi-arrows-vertical sort-icon" data-name="total_rent" data-order="desc"></i></th>
+                                <th scope="col">TENANCY DATE <i class="bi bi-arrows-vertical sort-icon" data-name="tenancy_date" data-order="desc"></i></th>
+                                <th scope="col">RENEWAL DATE <i class="bi bi-arrows-vertical sort-icon" data-name="renewal_date" data-order="desc"></i></th>
+                                <th scope="col">STATUS <i class="bi bi-arrows-vertical sort-icon" data-name="status" data-order="desc"></i></th>
                                 <th scope="col">ACTIONS</th>
                             </tr>
                         </thead>
 
-                        <tbody>
+                        <tbody id="tbody">
                             @if(count($items) > 0)
                                 @foreach($items as $item)
                                     <tr>
                                         <td>{!! $item->tenant !!}</td>
                                         <td>{!! $item->warehouse !!}</td>
                                         <td>{{ $item->no_of_pallets }}</td>
-                                        <td>{{ $item->total_rent }}</td>
+                                        <td>{{ $item->total_rent }} SAR</td>
                                         <td>{{ $item->tenancy_date }}</td>
                                         <td>{{ $item->renewal_date }}</td>
                                         <td>{!! $item->status !!}</td>
@@ -90,7 +82,9 @@
                     </table>
                 </div>
 
-                {{ $items->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
+                <div id="pagination">
+                    {{ $items->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
+                </div>
             </div>
         </div>
 
@@ -102,19 +96,13 @@
 
 @push('after-scripts')
     <script>
-        $(document).ready(function() {
-            $('.page .table .delete-button').on('click', function() {
-                let id = $(this).attr('id');
-                let url = "{{ route('landlord.bookings.destroy', [':id']) }}";
-                destroy_url = url.replace(':id', id);
-
-                $('.page #delete-modal form').attr('action', destroy_url);
-                $('.page #delete-modal').modal('show');
-            });
-
-            $(".page .custom-pagination select").change(function () {
-                window.location = "{!! $items->url(1) !!}&pagination=" + this.value; 
-            });
-        });
+        window.moduleRoutes = {
+            destroyRoute: "{{ route('landlord.bookings.destroy', [':id']) }}",
+            filterRoute: "{{ route('landlord.bookings.filter') }}",
+            indexRoute: "{{ route('landlord.bookings.index') }}",
+            pageUrl: "{!! $items->url(1) !!}"
+        };
     </script>
+
+    <script src="{{ asset('backend/js/index-script.js') }}"></script>
 @endpush

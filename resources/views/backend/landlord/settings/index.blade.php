@@ -141,27 +141,9 @@
                             <x-backend.input-error field="establishment_date"></x-backend.input-error>
                         </div>
 
-                        <div class="col-12 mb-4">
+                        <div class="col-12">
                             <x-backend.upload-multi-images image_count="3" old_name="old_registration_certificates" old_value="{{ $company->registration_certificates ?? old('registration_certificates') }}" new_name="new_registration_certificates[]" path="warehouses" label="Registration Certificate"></x-backend.upload-multi-images>
                             <x-backend.input-error field="new_registration_certificates.*"></x-backend.input-error>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="status" class="form-label label">Status<span class="asterisk">*</span></label>
-
-                            <div class="radios">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="status" value="1" id="active" {{ old('status', $company->status) == 1 ? 'checked' : '' }} required>
-                                    <label class="form-check-label" for="active">Active</label>
-                                </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="status" value="0" id="inactive" {{ old('status', $company->status) == 0 ? 'checked' : '' }} required>
-                                    <label class="form-check-label" for="inactive">Inactive</label>
-                                </div>
-                            </div>
-
-                            <x-backend.input-error field="status"></x-backend.input-error>
                         </div>
                     </div>
 
@@ -207,6 +189,8 @@
             </div>
         </div>
     </div>
+
+    <x-backend.modal-image-preview></x-backend.modal-image-preview>
 @endsection
 
 @push('after-scripts')

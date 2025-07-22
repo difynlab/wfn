@@ -22,7 +22,7 @@ class SettingsController extends Controller
             ['user_id' => $user->id],
             [
                 'user_id'   => $user->id,
-                'status' => 1
+                'status' => 2
             ]
         );
 
@@ -387,6 +387,7 @@ class SettingsController extends Controller
         );
 
         $data['registration_certificates'] = $registration_certificates;
+        $data['status'] = 2;
         $company->fill($data)->save();
 
         return redirect()->back()->with([

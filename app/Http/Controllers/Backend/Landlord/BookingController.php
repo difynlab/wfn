@@ -118,7 +118,7 @@ class BookingController extends Controller
             'new_documents'
         );
         $data['documents'] = $documents;
-        $data['status'] = 0;
+        $data['status'] = 2;
         $booking->fill($data)->save();
         
         return redirect()->back()->with([
@@ -136,20 +136,28 @@ class BookingController extends Controller
 
     public function filter(Request $request)
     {
-        if($request->action == '⟲ Reset Filter') {
-            return redirect()->route('landlord.bookings.index');
-        }
-
         $selected_tenant = $request->selected_tenant;
         $selected_warehouse = $request->selected_warehouse;
-        $order_by = $request->order_by;
         $status = $request->status;
+        $column = $request->column ?? 'id';
+        $direction = $request->direction ?? 'desc';
+
+        $valid_columns = ['no_of_pallets', 'total_rent', 'tenancy_date', 'renewal_date', 'status', 'id'];
+        $valid_directions = ['asc', 'desc'];
+
+        if(!in_array($column, $valid_columns)) {
+            $column = 'id';
+        }
+
+        if(!in_array($direction, $valid_directions)) {
+            $direction = 'desc';
+        }
 
         $auth = Auth::user();
         $items = Booking::whereHas('warehouse', function ($query) use ($auth) {
             $query->where('user_id', $auth->id)
                 ->where('status', 1);
-        });
+        })->orderBy($column, $direction);
 
         if($selected_tenant) {
             $items->where('user_id', $selected_tenant);
@@ -157,13 +165,6 @@ class BookingController extends Controller
 
         if($selected_warehouse) {
             $items->where('warehouse_id', $selected_warehouse);
-        }
-
-        if($order_by == 'a-z') {
-            $items->orderBy('id', 'asc');
-        }
-        else {
-            $items->orderBy('id', 'desc');
         }
 
         if($status != null) {
@@ -174,6 +175,16 @@ class BookingController extends Controller
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 
+        if($request->ajax()) {
+            $tbodyView = view('backend.landlord.bookings._tbody', compact('items'))->render();
+            $paginationView = $items->appends($request->except('page'))->links("pagination::bootstrap-5")->render();
+
+            return response()->json([
+                'tbody' => $tbodyView,
+                'pagination' => $paginationView,
+            ]);
+        }
+
         $users = User::where('status', 1)->where('role', 'tenant')->get();
         $warehouses = $auth->warehouses()->where('status', 1)->get();
 
@@ -182,7 +193,6 @@ class BookingController extends Controller
             'pagination' => $pagination,
             'selected_tenant' => $selected_tenant,
             'selected_warehouse' => $selected_warehouse,
-            'order_by' => $order_by,
             'status' => $status,
             'users' => $users,
             'warehouses' => $warehouses

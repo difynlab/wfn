@@ -49,13 +49,13 @@
 
                 <div class="col-6 mb-4">
                     <label for="tenancy_date" class="form-label label">Tenancy Date<span class="asterisk">*</span></label>
-                    <input type="date" class="form-control input-field" id="tenancy_date" name="tenancy_date" placeholder="Tenancy Date" value="{{ old('tenancy_date', $booking->tenancy_date) }}" required>
+                    <input type="date" class="form-control input-field date-picker-field" id="tenancy_date" name="tenancy_date" placeholder="Tenancy Date" value="{{ old('tenancy_date', $booking->tenancy_date) }}" required>
                     <x-backend.input-error field="tenancy_date"></x-backend.input-error>
                 </div>
 
                 <div class="col-6 mb-4">
                     <label for="renewal_date" class="form-label label">Renewal Date<span class="asterisk">*</span></label>
-                    <input type="date" class="form-control input-field" id="renewal_date" name="renewal_date" placeholder="Renewal Date" value="{{ old('renewal_date', $booking->renewal_date) }}" required>
+                    <input type="date" class="form-control input-field date-picker-field" id="renewal_date" name="renewal_date" placeholder="Renewal Date" value="{{ old('renewal_date', $booking->renewal_date) }}" required>
                     <x-backend.input-error field="renewal_date"></x-backend.input-error>
                 </div>
 
@@ -72,6 +72,8 @@
             </div>
         </form>
     </div>
+
+    <x-backend.modal-image-preview></x-backend.modal-image-preview>
 
 @endsection
 
