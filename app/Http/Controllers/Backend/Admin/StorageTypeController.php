@@ -54,7 +54,8 @@ class StorageTypeController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:0|max:255',
+            'name_en' => 'required|min:3|max:255',
+            'name_ar' => 'required|min:3|max:255',
             'status' => 'required|in:0,1,2'
         ]);
         
@@ -84,7 +85,8 @@ class StorageTypeController extends Controller
     public function update(Request $request, StorageType $storage_type)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:0|max:255',
+            'name_en' => 'required|min:3|max:255',
+            'name_ar' => 'required|min:3|max:255',
             'status' => 'required|in:0,1,2'
         ]);
 
@@ -118,7 +120,7 @@ class StorageTypeController extends Controller
         $column = $request->column ?? 'id';
         $direction = $request->direction ?? 'desc';
 
-        $valid_columns = ['name', 'status', 'id'];
+        $valid_columns = ['name_en', 'name_ar', 'status', 'id'];
         $valid_directions = ['asc', 'desc'];
 
         if(!in_array($column, $valid_columns)) {
@@ -132,7 +134,10 @@ class StorageTypeController extends Controller
         $items = StorageType::orderBy($column, $direction);
 
         if($name) {
-            $items->where('name', 'like', '%' . $name . '%');
+            $items->where(function ($query) use ($name) {
+                $query->where('name_en', 'like', '%' . $name . '%')
+                    ->orWhere('name_ar', 'like', '%' . $name . '%');
+            });
         }
 
         if($status != null) {

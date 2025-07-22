@@ -13,10 +13,16 @@
             </div>
             
             <div class="row">
-                <div class="col-12 mb-4">
-                    <label for="name" class="form-label label">Name<span class="asterisk">*</span></label>
-                    <input type="text" class="form-control input-field" id="name" name="name" placeholder="Name" value="{{ old('name') }}" required>
-                    <x-backend.input-error field="name"></x-backend.input-error>
+                <div class="col-6 mb-4">
+                    <label for="name_en" class="form-label label">Name (EN)<span class="asterisk">*</span></label>
+                    <input type="text" class="form-control input-field" id="name_en" name="name_en" placeholder="Name (EN)" value="{{ old('name_en') }}" required>
+                    <x-backend.input-error field="name_en"></x-backend.input-error>
+                </div>
+
+                <div class="col-6 mb-4">
+                    <label for="name_ar" class="form-label label">Name (AR)</label>
+                    <input type="text" class="form-control input-field" id="name_ar" name="name_ar" placeholder="Name (AR)" value="{{ old('name_ar') }}">
+                    <x-backend.input-error field="name_ar"></x-backend.input-error>
                 </div>
 
                 <div class="col-12 mb-4">
@@ -38,6 +44,16 @@
                 </div>
 
                 <div class="col-6 mb-4">
+                    <label for="description_en" class="form-label label">Description (EN)<span class="asterisk">*</span></label>
+                    <textarea type="text" class="form-control textarea input-field" id="description_en" name="description_en" rows="5" placeholder="Description (EN)" value="{{ old('description_en') }}" required></textarea>
+                </div>
+
+                <div class="col-6 mb-4">
+                    <label for="description_ar" class="form-label label">Description (AR)</label>
+                    <textarea type="text" class="form-control textarea input-field" id="description_ar" name="description_ar" rows="5" placeholder="Description (AR)" value="{{ old('description_ar') }}"></textarea>
+                </div>
+
+                <div class="col-6 mb-4">
                     <label for="user_id" class="form-label label">Landlord<span class="asterisk">*</span></label>
                     <select class="form-select input-field js-single" id="user_id" name="user_id" required>
                         <option value="">Select landlord</option>
@@ -53,7 +69,7 @@
                     <select class="form-select input-field js-single" id="storage_type_id" name="storage_type_id" required>
                         <option value="">Select storage type</option>
                         @foreach($storage_types as $storage_type)
-                            <option value="{{ $storage_type->id }}" {{ old('storage_type_id') == $storage_type->id ? 'selected' : '' }}>{{ $storage_type->name }}</option>
+                            <option value="{{ $storage_type->id }}" {{ old('storage_type_id') == $storage_type->id ? 'selected' : '' }}>{{ $storage_type->name_en }}</option>
                         @endforeach
                     </select>
                     <x-backend.input-error field="storage_type_id"></x-backend.input-error>
@@ -152,7 +168,7 @@
                     <x-backend.input-error field="wms"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-4 mb-4">
                     <label for="equipment_handling" class="form-label label">Equipment Handling<span class="asterisk">*</span></label>
 
                     <div class="radios">
@@ -170,7 +186,7 @@
                     <x-backend.input-error field="equipment_handling"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-4 mb-4">
                     <label for="temperature_sensor" class="form-label label">Temperature Sensor<span class="asterisk">*</span></label>
 
                     <div class="radios">
@@ -188,7 +204,7 @@
                     <x-backend.input-error field="temperature_sensor"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-4 mb-4">
                     <label for="humidity_sensor" class="form-label label">Humidity Sensor<span class="asterisk">*</span></label>
 
                     <div class="radios">
@@ -204,6 +220,66 @@
                     </div>
 
                     <x-backend.input-error field="humidity_sensor"></x-backend.input-error>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-9">
+                            <label class="form-label label add-label">Features (EN)</label>
+                        </div>
+
+                        <div class="col-3 text-end">
+                            <button type="button" class="add-row-button add-feature-en">
+                                <i class="bi bi-plus-lg"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-9">
+                            <label class="form-label label add-label">Features (AR)</label>
+                        </div>
+
+                        <div class="col-3 text-end">
+                            <button type="button" class="add-row-button add-feature-ar">
+                                <i class="bi bi-plus-lg"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-9">
+                            <label class="form-label label add-label">Amenities (EN)</label>
+                        </div>
+
+                        <div class="col-3 text-end">
+                            <button type="button" class="add-row-button add-amenity-en">
+                                <i class="bi bi-plus-lg"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-9">
+                            <label class="form-label label add-label">Amenities (AR)</label>
+                        </div>
+
+                        <div class="col-3 text-end">
+                            <button type="button" class="add-row-button add-amenity-ar">
+                                <i class="bi bi-plus-lg"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-12 mb-4">
@@ -246,11 +322,6 @@
                     <x-backend.input-error field="new_licenses.*"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 mb-4">
-                    <label for="notes" class="form-label label">Notes</label>
-                    <textarea type="text" class="form-control input-field" id="notes" name="notes" placeholder="Notes" value="{{ old('notes') }}"></textarea>
-                </div>
-
                 <x-backend.create></x-backend.create>
                 <x-backend.notification></x-backend.notification>
             </div>
@@ -277,6 +348,84 @@
                 $('.pallet-dimension-other-value').find('input').attr('required', false);
                 $('.pallet-dimension-other-value').find('input').val('');
             }
+        });
+    </script>
+
+    <script>
+        $(document).on('click', '.delete-button', function() {
+            $(this).closest('.single-item').remove();
+        });
+
+        $('.add-feature-en').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="feature_titles_en[]" placeholder="Title" required>
+                                </div>
+
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="feature_descriptions_en[]" placeholder="Description" required>
+                                </div>
+
+                                <div class="col-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
+        });
+
+        $('.add-feature-ar').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="feature_titles_ar[]" placeholder="Title" required>
+                                </div>
+
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="feature_descriptions_ar[]" placeholder="Description" required>
+                                </div>
+
+                                <div class="col-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
+        });
+
+        $('.add-amenity-en').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="amenity_titles_en[]" placeholder="Title" required>
+                                </div>
+
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="amenity_descriptions_en[]" placeholder="Description" required>
+                                </div>
+
+                                <div class="col-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
+        });
+
+        $('.add-amenity-ar').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="amenity_titles_ar[]" placeholder="Title" required>
+                                </div>
+
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="amenity_descriptions_ar[]" placeholder="Description" required>
+                                </div>
+
+                                <div class="col-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
         });
     </script>
 @endpush

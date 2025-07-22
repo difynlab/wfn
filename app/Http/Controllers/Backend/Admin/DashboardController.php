@@ -379,7 +379,7 @@ class DashboardController extends Controller
             $tenant_name = $item->user->first_name . ' ' . $item->user->last_name;
             $item->tenant = '<a href="'. route('admin.users.edit', $item->user_id) .'" class="table-link">' . $tenant_name . '</a>';
 
-            $item->warehouse = '<a href="'. route('admin.warehouses.edit', $item->warehouse_id) .'" class="table-link">' . $item->warehouse->name . '</a>';
+            $item->warehouse = '<a href="'. route('admin.warehouses.edit', $item->warehouse_id) .'" class="table-link">' . $item->warehouse->name_en . '</a>';
 
             switch ($item->status) {
                 case 1:

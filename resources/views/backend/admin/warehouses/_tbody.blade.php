@@ -1,7 +1,7 @@
 @if(count($items) > 0)
     @foreach($items as $item)
         <tr>
-            <td>{{ $item->name }}</td>
+            <td>{{ $item->name_en }}</td>
             <td>{{ $item->address_en }}</td>
             <td>{{ $item->total_area }}</td>
             <td>{{ $item->total_pallets }}</td>

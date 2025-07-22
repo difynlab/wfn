@@ -13,12 +13,26 @@ return new class extends Migration
     {
         Schema::create('warehouses', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('address_name');
+
+            // English fields
+            $table->string('name_en');
             $table->string('address_en');
             $table->string('city_en');
-            $table->string('address_ar');
-            $table->string('city_ar');
+            $table->text('description_en')->nullable();
+            $table->text('features_en')->nullable();
+            $table->text('amenities_en')->nullable();
+            $table->text('more_details_en')->nullable();
+
+            // Arabic fields
+            $table->string('name_ar')->nullable();
+            $table->string('address_ar')->nullable();
+            $table->string('city_ar')->nullable();
+            $table->text('description_ar')->nullable();
+            $table->text('features_ar')->nullable();
+            $table->text('amenities_ar')->nullable();
+            $table->text('more_details_ar')->nullable();
+
+            $table->string('address_name');
             $table->string('latitude');
             $table->string('longitude');
             $table->string('total_area');
@@ -41,7 +55,6 @@ return new class extends Migration
             $table->string('storage_area_image')->nullable();
             $table->text('videos')->nullable();
             $table->text('licenses')->nullable();
-            $table->text('notes')->nullable();
             $table->boolean('is_new')->default(1);
             $table->boolean('status')->default(1);
 

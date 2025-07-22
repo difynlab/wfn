@@ -11,10 +11,11 @@ class WarehouseSeeder extends Seeder
     {
         $records = [
             [
-                'name' => 'Al-Falah Distribution Center',
+                'name_en' => 'Al-Falah Distribution Center',
                 'address_name' => 'Al Quds',
                 'address_en' => 'Al Quds Street, Warehouse No. 35, Industrial City, Riyadh, Saudi Arabia',
                 'city_en' => 'Industrial City',
+                'description_en' => 'Welcome to a premium industrial-grade storage facility located in the bustling commercial corridor of Saudi Arabia. Designed for flexibility and scale, this space is perfect for logistics companies, wholesalers, or retailers looking for a secure and convenient warehousing solution in Saudi Arabia. Whether you\'re expanding your operations or need temporary overflow capacity, our facility offers the infrastructure and access you need to operate efficiently.',
                 'address_ar' => 'Al Quds Street, Warehouse No. 35, Industrial City, Riyadh, Saudi Arabia',
                 'city_ar' => 'Industrial City',
                 'latitude' => '23.8859',
@@ -37,7 +38,7 @@ class WarehouseSeeder extends Seeder
 
         foreach($records as $record) {
             Warehouse::updateOrCreate(
-                ['name' => $record['name']],
+                ['name_en' => $record['name_en']],
                 $record
             );
         }

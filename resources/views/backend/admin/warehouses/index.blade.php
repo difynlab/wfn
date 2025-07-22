@@ -46,8 +46,8 @@
                     <table class="table w-100">
                         <thead>
                             <tr>
-                                <th scope="col">NAME <i class="bi bi-arrows-vertical sort-icon" data-name="name" data-order="desc"></i></th>
-                                <th scope="col">ADDRESS <i class="bi bi-arrows-vertical sort-icon" data-name="address" data-order="desc"></i></th>
+                                <th scope="col">NAME (EN) <i class="bi bi-arrows-vertical sort-icon" data-name="name_en" data-order="desc"></i></th>
+                                <th scope="col">ADDRESS (EN) <i class="bi bi-arrows-vertical sort-icon" data-name="address_en" data-order="desc"></i></th>
                                 <th scope="col">TOTAL AREA <i class="bi bi-arrows-vertical sort-icon" data-name="total_area" data-order="desc"></i></th>
                                 <th scope="col">TOTAL PALLETS <i class="bi bi-arrows-vertical sort-icon" data-name="total_pallets" data-order="desc"></i></th>
                                 <th scope="col">STATUS <i class="bi bi-arrows-vertical sort-icon" data-name="status" data-order="desc"></i></th>
@@ -59,7 +59,7 @@
                             @if(count($items) > 0)
                                 @foreach($items as $item)
                                     <tr>
-                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->name_en }}</td>
                                         <td>{{ $item->address_en }}</td>
                                         <td>{{ $item->total_area }}</td>
                                         <td>{{ $item->total_pallets }}</td>

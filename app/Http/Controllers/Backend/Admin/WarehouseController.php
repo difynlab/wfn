@@ -68,7 +68,8 @@ class WarehouseController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:0|max:255',
+            'name_en' => 'required|min:0|max:255',
+            'description_en' => 'required',
             'address_name' => 'required|min:0|max:255',
             'address_en' => 'required|min:0|max:255',
             'city_en' => 'required|min:0|max:255',
@@ -187,6 +188,58 @@ class WarehouseController extends Controller
             }
         }
 
+        // Features EN
+            $features_en = [];
+            if($request->feature_titles_en) {
+                foreach($request->feature_titles_en as $key => $title) {
+                    array_push($features_en, [
+                        'title' => $title,
+                        'description' => $request->feature_descriptions_en[$key] ?? null
+                    ]);
+                }
+            }
+            $features_en = $features_en ? json_encode($features_en) : null;
+        // Features EN
+
+        // Features AR
+            $features_ar = [];
+            if($request->feature_titles_ar) {
+                foreach($request->feature_titles_ar as $key => $title) {
+                    array_push($features_ar, [
+                        'title' => $title,
+                        'description' => $request->feature_descriptions_ar[$key] ?? null
+                    ]);
+                }
+            }
+            $features_ar = $features_ar ? json_encode($features_ar) : null;
+        // Features AR
+
+        // Amenities EN
+            $amenities_en = [];
+            if($request->amenity_titles_en) {
+                foreach($request->amenity_titles_en as $key => $title) {
+                    array_push($amenities_en, [
+                        'title' => $title,
+                        'description' => $request->amenity_descriptions_en[$key] ?? null
+                    ]);
+                }
+            }
+            $amenities_en = $amenities_en ? json_encode($amenities_en) : null;
+        // Amenities EN
+
+        // Amenities AR
+            $amenities_ar = [];
+            if($request->amenity_titles_ar) {
+                foreach($request->amenity_titles_ar as $key => $title) {
+                    array_push($amenities_ar, [
+                        'title' => $title,
+                        'description' => $request->amenity_descriptions_ar[$key] ?? null
+                    ]);
+                }
+            }
+            $amenities_ar = $amenities_ar ? json_encode($amenities_ar) : null;
+        // Amenities AR
+
         $data = $request->except(
             'old_thumbnail',
             'new_thumbnail',
@@ -203,7 +256,15 @@ class WarehouseController extends Controller
             'old_videos',
             'new_videos',
             'old_licenses',
-            'new_licenses'
+            'new_licenses',
+            'feature_titles_en',
+            'feature_descriptions_en',
+            'feature_titles_ar',
+            'feature_descriptions_ar',
+            'amenity_titles_en',
+            'amenity_descriptions_en',
+            'amenity_titles_ar',
+            'amenity_descriptions_ar',
         );
         $data['thumbnail'] = $thumbnail_name;
         $data['outside_image'] = $outside_image_name;
@@ -213,6 +274,10 @@ class WarehouseController extends Controller
         $data['storage_area_image'] = $storage_area_image_name;
         $data['videos'] = $new_videos ? json_encode($new_videos) : null;
         $data['licenses'] = $new_licenses ? json_encode($new_licenses) : null;
+        $data['features_en'] = $features_en;
+        $data['features_ar'] = $features_ar;
+        $data['amenities_en'] = $amenities_en;
+        $data['amenities_ar'] = $amenities_ar;
         $warehouse = Warehouse::create($data);  
 
         return redirect()->route('admin.warehouses.edit', $warehouse)->with([
@@ -236,7 +301,8 @@ class WarehouseController extends Controller
     public function update(Request $request, Warehouse $warehouse)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:0|max:255',
+            'name_en' => 'required|min:0|max:255',
+            'description_en' => 'required',
             'address_name' => 'required|min:0|max:255',
             'address_en' => 'required|min:0|max:255',
             'city_en' => 'required|min:0|max:255',
@@ -277,6 +343,8 @@ class WarehouseController extends Controller
         ]);
 
         if($validator->fails()) {
+            dd($validator);
+
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Update Failed!',
                 'route' => route('admin.warehouses.index')
@@ -435,6 +503,58 @@ class WarehouseController extends Controller
             $licenses = $current_licenses ? json_encode($current_licenses) : null;
         // Licenses
 
+        // Features EN
+            $features_en = [];
+            if($request->feature_titles_en) {
+                foreach($request->feature_titles_en as $key => $title) {
+                    array_push($features_en, [
+                        'title' => $title,
+                        'description' => $request->feature_descriptions_en[$key] ?? null
+                    ]);
+                }
+            }
+            $features_en = $features_en ? json_encode($features_en) : null;
+        // Features EN
+
+        // Features AR
+            $features_ar = [];
+            if($request->feature_titles_ar) {
+                foreach($request->feature_titles_ar as $key => $title) {
+                    array_push($features_ar, [
+                        'title' => $title,
+                        'description' => $request->feature_descriptions_ar[$key] ?? null
+                    ]);
+                }
+            }
+            $features_ar = $features_ar ? json_encode($features_ar) : null;
+        // Features AR
+
+        // Amenities EN
+            $amenities_en = [];
+            if($request->amenity_titles_en) {
+                foreach($request->amenity_titles_en as $key => $title) {
+                    array_push($amenities_en, [
+                        'title' => $title,
+                        'description' => $request->amenity_descriptions_en[$key] ?? null
+                    ]);
+                }
+            }
+            $amenities_en = $amenities_en ? json_encode($amenities_en) : null;
+        // Amenities EN
+
+        // Amenities AR
+            $amenities_ar = [];
+            if($request->amenity_titles_ar) {
+                foreach($request->amenity_titles_ar as $key => $title) {
+                    array_push($amenities_ar, [
+                        'title' => $title,
+                        'description' => $request->amenity_descriptions_ar[$key] ?? null
+                    ]);
+                }
+            }
+            $amenities_ar = $amenities_ar ? json_encode($amenities_ar) : null;
+        // Amenities AR
+
         $data = $request->except(
             'old_thumbnail',
             'new_thumbnail',
@@ -451,7 +571,15 @@ class WarehouseController extends Controller
             'old_videos',
             'new_videos',
             'old_licenses',
-            'new_licenses'
+            'new_licenses',
+            'feature_titles_en',
+            'feature_descriptions_en',
+            'feature_titles_ar',
+            'feature_descriptions_ar',
+            'amenity_titles_en',
+            'amenity_descriptions_en',
+            'amenity_titles_ar',
+            'amenity_descriptions_ar',
         );
 
         $data['thumbnail'] = $thumbnail_name;
@@ -462,6 +590,10 @@ class WarehouseController extends Controller
         $data['storage_area_image'] = $storage_area_image_name;
         $data['videos'] = $videos;
         $data['licenses'] = $licenses;
+        $data['features_en'] = $features_en;
+        $data['features_ar'] = $features_ar;
+        $data['amenities_en'] = $amenities_en;
+        $data['amenities_ar'] = $amenities_ar;
         $warehouse->fill($data)->save();
         
         return redirect()->back()->with([

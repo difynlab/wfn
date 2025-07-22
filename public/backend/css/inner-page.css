@@ -43,6 +43,9 @@
         color: var(--light_black);
         margin-bottom: 10px!important;
     }
+    .inner-page .form .add-label {
+        margin-bottom: 0px!important;
+    }
     .inner-page .form .input-field {
         border: 1px solid var(--input_border);
         border-radius: 0;
@@ -120,7 +123,7 @@
         box-shadow: none!important;
         outline: none;
     }
-    .inner-page .form .section .add-row-button {
+    .inner-page .form .section .add-row-button, .inner-page .form .add-row-button {
         font-size: 14px;
         background-color: var(--red);
         color: var(--white);
@@ -133,11 +136,11 @@
             transition: all 0.3s;
         }
     }
-    .inner-page .form .section .add-row-button i {
+    .inner-page .form .section .add-row-button i, .inner-page .form .add-row-button i {
         font-size: 14px;
         margin-right: 5px;
     }
-    .inner-page .form .section .delete-button {
+    .inner-page .form .section .delete-button, .inner-page .form .delete-button {
         margin: auto;
         font-size: 20px;
         -webkit-text-stroke: 0.5px;

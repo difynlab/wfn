@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Mail\BackendResetPasswordMail;
+use App\Mail\ResetPasswordMail;
 use App\Models\PasswordResetToken;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -53,7 +53,7 @@ class ForgotPasswordController extends Controller
             'token' => $token,
         ];
 
-        Mail::to([$request->email])->send(new BackendResetPasswordMail($mail_data));
+        Mail::to([$request->email])->send(new ResetPasswordMail($mail_data));
 
         return redirect()->back()->with('forgot-password', "Email sent successfully");
     }

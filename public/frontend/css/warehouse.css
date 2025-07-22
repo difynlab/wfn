@@ -3,16 +3,46 @@
         border: 1px solid var(--separator);
         margin: 30px 0;
     }
+    .modal .btn-close {
+        box-shadow: none;
+        font-size: 20px;
+    }
+    .modal .modal-content {
+        border-radius: 0;
+    }
 /* #endregion */
 
 
 /* #region Section 1 */
+    .warehouse .section-1 .left {
+        position: relative;
+    }
     .warehouse .section-1 .left .main-image {
         width: 100%;
         height: 475px;
         object-fit: cover;
-        cursor: pointer;
         border-radius: 5px;
+    }
+    .warehouse .section-1 .left .slider-toggle {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background-color: var(--white);
+        color: var(--dark_red);
+        font-size: 30px;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--dark_red);
+            color: var(--white);
+            transition: all 0.3s;
+        }
     }
     .warehouse .section-1 .right {
         display: flex;
@@ -23,28 +53,49 @@
         width: 100%;
         height: 225px;
         object-fit: cover;
-        cursor: pointer;
         border-radius: 5px;
     }
 /* #endregion */
 
 
 /* #region Slider modal */
-    .slider-modal .mySwiper2 .swiper-slide img {
+    .slider-modal .mySwiper .swiper-slide {
+        position: relative;
+    }
+    .slider-modal .mySwiper2 .swiper-slide img , .slider-modal .mySwiper2 .swiper-slide video {
         width: 100%;
         height: 550px;
         object-fit: cover;
-        border-radius: 5px;
+        /* border-radius: 5px; */
     }
     .slider-modal .mySwiper2 {
-        margin-bottom: 25px;
+        margin-bottom: 10px;
     }
-    .slider-modal .mySwiper .swiper-slide img {
+    .slider-modal .mySwiper .swiper-slide img, .slider-modal .mySwiper .swiper-slide video {
         width: 100%;
         height: 90px;
         object-fit: cover;
         cursor: pointer;
-        border-radius: 5px;
+        /* border-radius: 5px; */
+    }
+    .slider-modal .mySwiper .swiper-slide .video-play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: var(--white);
+        color: var(--dark_red);
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        cursor: pointer;
+        &:hover {
+            background-color: var(--dark_red);
+            color: var(--white);
+            transition: all 0.3s;
+        }
     }
 /* #endregion */
 
@@ -135,6 +186,10 @@
         display: flex;
         align-items: center;
         gap: 15px;
+        margin-bottom: 20px;
+    }
+    .warehouse .section-2 .features-row .single-feature:nth-last-child(-n+2) {
+        margin-bottom: 0;
     }
     .warehouse .section-2 .features-row .single-feature .details .title {
         font-size: 14px;
@@ -148,34 +203,6 @@
     .warehouse .section-2 .features-row .single-feature i {
         font-size: 25px;
         -webkit-text-stroke: 0.3px;
-    }
-    .warehouse .section-2 .amenities .amenity-title {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--light_black);
-        padding-bottom: 15px;
-    }
-    .warehouse .section-2 .amenities .amenities-row .single-amenity {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        margin-bottom: 20px;
-    }
-    .warehouse .section-2 .amenities .amenities-row .single-amenity:nth-last-child(-n+2) {
-        margin-bottom: 0;
-    }
-    .warehouse .section-2 .amenities .amenities-row .single-amenity i {
-        font-size: 25px;
-        -webkit-text-stroke: 0.3px;
-    }
-    .warehouse .section-2 .amenities .amenities-row .single-amenity .details .title {
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--light_black);
-    }
-    .warehouse .section-2 .amenities .amenities-row .single-amenity .details .description {
-        font-size: 14px;
-        color: var(--gray);
     }
     .warehouse .section-2 .booking-box {
         border: 1px solid var(--input_border);
@@ -228,6 +255,12 @@
         font-size: 13px;
         color: var(--gray);
         text-align: center;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        &:focus-visible {
+            outline: none;
+        }
     }
     .warehouse .section-2 .booking-box .book-now-button {
         width: 100%;
@@ -255,7 +288,7 @@
         text-align: center;
         color: var(--gray);
         cursor: pointer;
-        margin-bottom: 30px!important;
+        /* margin-bottom: 30px!important; */
         &:hover {
             font-weight: 600;
         }
@@ -268,112 +301,127 @@
         border-bottom: 1px solid var(--input_border);
         padding-bottom: 2px;
     }
-    .warehouse .section-2 .lender {
-        border: 1px solid var(--input_border);
-        border-radius: 12px;
-        padding: 20px;
-    }
-    .warehouse .section-2 .lender .heading {
-        font-style: 16px;
-        font-weight: 500;
-        color: var(--light_black);
-        padding-bottom: 15px;
-    }
-    .warehouse .section-2 .lender .details .single {
-        font-size: 15px;
-        color: var(--gray);
-        padding-bottom: 10px;
-    }
-    .warehouse .section-2 .lender .details .single:last-child {
-        padding-bottom: 0;
-    }
-    .warehouse .section-2 .lender .details .single i {
-        padding-right: 10px;
-    }
 /* #endregion */
 
 
 /* #region Section 3 */
-    .warehouse .section-3 .image {
-        width: 100%;
-        height: 600px;
-        object-fit: cover;
-        border-radius: 4px;
+    .warehouse .section-3 .title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--light_black);
+        padding-bottom: 20px;
+    }
+    .warehouse .section-3 .amenities-row .single-amenity {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .warehouse .section-3 .amenities-row .single-amenity:nth-last-child(-n+2) {
+        margin-bottom: 0;
+    }
+    .warehouse .section-3 .amenities-row .single-amenity i {
+        font-size: 25px;
+        -webkit-text-stroke: 0.3px;
+    }
+    .warehouse .section-3 .amenities-row .single-amenity .details .detail-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--light_black);
+    }
+    .warehouse .section-3 .amenities-row .single-amenity .details .detail-description {
+        font-size: 14px;
+        color: var(--gray);
     }
 /* #endregion */
 
 
 /* #region Section 4 */
-    .warehouse .section-4 .title {
-        font-size: 18px;
-        font-weight: 600;
-        color: var(--light_black);
-        padding-bottom: 20px;
+    .warehouse .section-4 .image {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+        border-radius: 4px;
     }
-    .warehouse .section-4 .reviews {
-        background-color: var(--dark_white);
-        padding: 20px;
-        border-radius: 10px;
-    }
-    .warehouse .section-4 .reviews .single-review {
-        margin-bottom: 25px;
-    }
-    .warehouse .section-4 .reviews .single-review:last-child {
-        margin-bottom: 0;
-    }
-    .warehouse .section-4 .reviews .single-review .stars {
-        font-size: 17px;
-        color: var(--red);
-        margin-bottom: 5px;
-    }
-    .warehouse .section-4 .reviews .single-review .stars i {
-        margin-right: 3px;
-    }
-    .warehouse .section-4 .reviews .single-review .content {
-        font-size: 15px;
-        line-height: 24px;
-        color: var(--gray);
-        margin-bottom: 5px!important;
-    }
-    .warehouse .section-4 .reviews .single-review .name {
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--light_black);
-    }
-    .warehouse .section-4 .reviews .single-review .line {
-        font-size: 12px;
-        font-weight: 500;
-        color: var(--input_border);
-        margin: 0 2px;
-    }
-    .warehouse .section-4 .reviews .single-review .role {
-        font-size: 12px;
-        font-weight: 500;
-        color: var(--gray);
+
+    .warehouse .section-4 #map {
+        width: 100%;
+        height: 600px;
     }
 /* #endregion */
 
 
 /* #region Section 5 */
-    .warehouse .section-5 .policy-title {
+    .warehouse .section-5 .title {
         font-size: 18px;
         font-weight: 600;
         color: var(--light_black);
         padding-bottom: 20px;
     }
-    .warehouse .section-5 .single-policy {
-        margin-bottom: 30px;
+    .warehouse .section-5 .reviews {
+        background-color: var(--dark_white);
+        padding: 20px;
+        border-radius: 10px;
     }
-    .warehouse .section-5 .single-policy:nth-last-child(-n+2) {
+    .warehouse .section-5 .reviews .single-review {
+        margin-bottom: 25px;
+    }
+    .warehouse .section-5 .reviews .single-review:last-child {
         margin-bottom: 0;
     }
-    .warehouse .section-5 .single-policy .title {
+    .warehouse .section-5 .reviews .single-review .stars {
+        font-size: 17px;
+        color: var(--red);
+        margin-bottom: 5px;
+    }
+    .warehouse .section-5 .reviews .single-review .stars i {
+        margin-right: 3px;
+    }
+    .warehouse .section-5 .reviews .single-review .content {
+        font-size: 15px;
+        line-height: 24px;
+        color: var(--gray);
+        margin-bottom: 5px!important;
+    }
+    .warehouse .section-5 .reviews .single-review .name {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--light_black);
+    }
+    .warehouse .section-5 .reviews .single-review .line {
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--input_border);
+        margin: 0 2px;
+    }
+    .warehouse .section-5 .reviews .single-review .role {
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--gray);
+    }
+/* #endregion */
+
+
+/* #region Section 6 */
+    .warehouse .section-6 .policy-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--light_black);
+        padding-bottom: 20px;
+    }
+    .warehouse .section-6 .single-policy {
+        margin-bottom: 30px;
+    }
+    .warehouse .section-6 .single-policy:nth-last-child(-n+2) {
+        margin-bottom: 0;
+    }
+    .warehouse .section-6 .single-policy .title {
         font-size: 15px;
         font-weight: 500;
         color: var(--light_black);
         padding-bottom: 5px;
     }
-    .warehouse .section-5 .single-policy .description {
+    .warehouse .section-6 .single-policy .description {
         font-size: 14px;
         color: var(--gray);
         line-height: 24px;
@@ -381,38 +429,38 @@
 /* #endregion */
 
 
-/* #region Section 6 */
-    .warehouse .section-6 .title {
+/* #region Section 7 */
+    .warehouse .section-7 .title {
         font-size: 18px;
         font-weight: 600;
         color: var(--light_black);
         padding-bottom: 20px;
     }
-    .warehouse .section-6 .single-warehouse {
+    .warehouse .section-7 .single-warehouse {
         border: 1px solid var(--input_border);
         border-radius: 8px;
     }
-    .warehouse .section-6 .single-warehouse .image {
+    .warehouse .section-7 .single-warehouse .image {
         width: 100%;
         height: 250px;
         object-fit: cover;
         border-top-right-radius: 8px;
         border-top-left-radius: 8px;
     }
-    .warehouse .section-6 .single-warehouse .details {
+    .warehouse .section-7 .single-warehouse .details {
         padding: 20px 25px;
     }
-    .warehouse .section-6 .single-warehouse .details .title {
+    .warehouse .section-7 .single-warehouse .details .title {
         font-size: 16px;
         color: var(--light_black);
         padding-bottom: 5px;
     }
-    .warehouse .section-6 .single-warehouse .details .subtitle {
+    .warehouse .section-7 .single-warehouse .details .subtitle {
         font-size: 14px;
         color: var(--gray);
         padding-bottom: 15px;
     }
-    .warehouse .section-6 .single-warehouse .details .price {
+    .warehouse .section-7 .single-warehouse .details .price {
         font-size: 16px;
         font-weight: 500;
         color: var(--light_black);
@@ -420,93 +468,98 @@
 /* #endregion */
 
 
-/* #region Lot modal */
-    .warehouse .lot-modal .modal-body {
-        margin: auto;
-        padding-top: 30px;
-        padding-bottom: 30px;
-        /* width: 80%; */
-    }
-    .warehouse .lot-modal .title {
+/* #region Booking modal */
+    .warehouse .booking-modal .modal-title {
         font-size: 24px;
         font-weight: 600;
         text-align: center;
         margin-bottom: 5px!important;
         color: var(--light_black);
     }
-    .warehouse .lot-modal .description {
+    .warehouse .booking-modal .modal-description {
         font-size: 16px;
         text-align: center;
-        margin-bottom: 40px!important;
+        margin-bottom: 25px!important;
         color: var(--gray);
     }
-    .warehouse .lot-modal .top-row {
+    .warehouse .booking-modal .property {
         display: flex;
-        justify-content: space-between;
+        gap: 30px;
         align-items: center;
         margin-bottom: 30px;
     }
-    .warehouse .lot-modal .top-row .top-row-title {
-        font-size: 16px;
-        font-weight: 600;
-    }
-    .warehouse .lot-modal .top-row .legends {
-        display: flex;
-        align-items: center;
-        gap: 30px;
-    }
-    .warehouse .lot-modal .top-row .legends .legend {
-        font-size: 14px;
-        color: var(--light_black);
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    .warehouse .lot-modal .top-row .legends .legend .box {
-        display: inline-block;
-        width: 15px;
-        height: 15px;
+    .warehouse .booking-modal .property .image {
+        width: 200px;
+        height: 130px;
         border-radius: 4px;
+        object-fit: cover;
     }
-    .warehouse .lot-modal .top-row .legends .legend.available .box {
-        background-color: var(--input_border);
-    }
-    .warehouse .lot-modal .top-row .legends .legend.reserved .box {
-        background-color: var(--medium_red);
-    }
-    .warehouse .lot-modal .top-row .legends .legend.selected .box {
-        background-color: var(--red);
-    }
-    .warehouse .lot-modal .lots .row {
-        margin-bottom: 20px;
-    }
-    .warehouse .lot-modal .lots .row:last-child {
-        margin-bottom: 0;
-    }
-    .warehouse .lot-modal .lots .lot-box {
+    .warehouse .booking-modal .property .type {
         font-size: 15px;
-        font-weight: 600;
-        text-align: center;
-        border-radius: 4px;
-        height: 35px;
-        width: 35px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .warehouse .lot-modal .lots .available .lot-box {
-        background-color: var(--medium_white);
         color: var(--gray);
     }
-    .warehouse .lot-modal .lots .reserved .lot-box {
-        background-color: var(--medium_red);
+    .warehouse .booking-modal .property .title {
+        font-size: 25px;
+        font-weight: 600;
+        color: var(--light_black);
+        padding-bottom: 3px;
+    }
+    .warehouse .booking-modal .property .subtitle {
+        font-size: 15px;
+        color: var(--gray);
+        padding-bottom: 5px;
+    }
+    .warehouse .booking-modal .property i {
+        font-size: 15px;
         color: var(--red);
     }
-    .warehouse .lot-modal .lots .selected .lot-box {
-        background-color: var(--red);
-        color: var(--white);
+    .warehouse .booking-modal .property .rating {
+        display: flex;
+        gap: 5px;
     }
-    .warehouse .lot-modal .confirm-button {
+    .warehouse .booking-modal .property .rating .value {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--gray);
+    }
+    .warehouse .booking-modal .property .rating .count {
+        font-size: 13px;
+        color: var(--medium_gray);
+    }
+    .warehouse .booking-modal .booking-details .title {
+        font-size: 19px;
+        font-weight: 600;
+        color: var(--light_black);
+        padding-bottom: 15px;
+    }
+    .warehouse .booking-modal .booking-details .single-detail {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+    .warehouse .booking-modal .booking-details .single-detail:last-child {
+        margin-bottom: 0;
+    }
+    .warehouse .booking-modal .booking-details .single-detail .text {
+        font-size: 16px;
+        color: var(--light_black);
+    }
+    .warehouse .booking-modal .booking-details .single-detail .value {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--light_black);
+        border: 1px solid var(--input_border);
+        border-radius: 0;
+        height: 40px;
+        width: 150px;
+        text-align: center;
+        cursor: pointer;
+        &:focus-visible {
+            outline: none;
+        }
+    }
+    .warehouse .booking-modal .confirm-button {
         width: 200px;
         height: 50px;
         display: flex;
@@ -516,13 +569,13 @@
         border: none;
         color: var(--white);
         font-size: 18px;
-        font-family: 500;
+        font-weight: 500;
         border-radius: 4px;
         margin: auto;
-        margin-top: 40px;
         transition: all 0.3s;
         &:hover {
             background-color: var(--light_black);
+            transition: all 0.3s;
         }
     }
 /* #endregion */

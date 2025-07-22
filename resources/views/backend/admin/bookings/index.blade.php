@@ -30,7 +30,7 @@
                     <select class="form-select input-field js-single" id="selected_warehouse" name="selected_warehouse">
                         <option value="">Select warehouse</option>
                         @foreach($warehouses as $warehouse)
-                            <option value="{{ $warehouse->id }}" {{ isset($selected_warehouse) && $selected_warehouse == $warehouse->id ? "selected" : "" }}>{{ $warehouse->name }}</option>
+                            <option value="{{ $warehouse->id }}" {{ isset($selected_warehouse) && $selected_warehouse == $warehouse->id ? "selected" : "" }}>{{ $warehouse->name_en }}</option>
                         @endforeach
                     </select>
 
