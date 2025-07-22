@@ -32,8 +32,9 @@ Route::middleware(['language'])->group(function () {
 
         Route::prefix('warehouses')->name('warehouses.')->group(function() {
             Route::get('/', [WarehouseController::class, 'index'])->name('index');
+            Route::post('/', [WarehouseController::class, 'store'])->name('store');
+            Route::get('filter', [WarehouseController::class, 'filter'])->name('filter');
             Route::get('show/{warehouse}', [WarehouseController::class, 'show'])->name('show');
-            Route::get('book/{warehouse}', [WarehouseController::class, 'book'])->name('book');
             Route::get('areas/{area}', [WarehouseController::class, 'area'])->name('area');
         });
 

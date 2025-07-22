@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend\Tenant;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
-use App\Models\User;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +22,7 @@ class BookingController extends Controller
 
             $item->tenant = $item->user->first_name . ' ' . $item->user->last_name;
 
-            $item->warehouse = $item->warehouse->name;
+            $item->warehouse = $item->warehouse->name_en;
 
             switch ($item->status) {
                 case 1:

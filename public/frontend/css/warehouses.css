@@ -65,6 +65,33 @@
             transition: all 0.3s
         }
     }
+    .map-modal .btn-close {
+        box-shadow: none;
+        font-size: 20px;
+    }
+    .map-modal #map {
+        height: 100%;
+    }
+    .map-modal .custom-info-window {
+        padding: 8px 12px;
+        border-radius: 0px!important;
+        background-color: white;
+        color: var(--red);
+    }
+    .map-modal .custom-info-window .info-title {
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 4px;
+    }
+    .map-modal .custom-info-window .info-subtitle {
+        font-size: 14px;
+        text-align: center;
+        color: var(--gray);
+    }
+    .map-modal .gm-ui-hover-effect {
+        display: none !important;
+    }
 /* #endregion */
 
 
@@ -123,17 +150,26 @@
         font-size: 16px;
         font-weight: 500;
         color: var(--light_black);
-        padding-bottom: 5px;
+        padding-bottom: 10px;
     }
     .warehouses .section-3 .warehouse-row .single-warehouse .description {
         font-size: 14px;
         color: var(--gray);
         line-height: 22px;
-        padding-bottom: 30px;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+        max-height: calc(22px * 2);
     }
     .warehouses .section-3 .warehouse-row .single-warehouse .location {
         font-size: 14px;
         color: var(--gray);
+        padding-top: 20px;
     }
     .warehouses .section-3 .warehouse-row .single-warehouse .location i {
         font-size: 16px;
@@ -152,6 +188,12 @@
     }
     .warehouses .section-3 .warehouse-row .single-warehouse .box .action i {
         margin-right: 5px;
+    }
+    .warehouses .section-3 .warehouse-row .no-data {
+        text-align: center;
+        font-size: 40px;
+        font-weight: 600;
+        color: var(--dark_red);
     }
     .warehouses .section-3 .sidebar {
         background-color: var(--white);

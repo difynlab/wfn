@@ -11,12 +11,90 @@
         <div class="section-1 container section-margin">
             <div class="row">
                 <div class="col-7 left">
-                    <img src="{{ asset('storage/frontend/sw-1.png') }}" class="main-image" alt="Warehouse" data-bs-toggle="modal" data-bs-target="#sliderModal">
+                    @if($warehouse->thumbnail)
+                        <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="main-image">
+                    @else
+                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="main-image">
+                    @endif
+
+                    <i class="bi bi-images slider-toggle" data-bs-toggle="modal" data-bs-target="#slide-modal"></i>
                 </div>
 
                 <div class="col-5 right">
-                    <img src="{{ asset('storage/frontend/sw-2.png') }}" class="side-image" alt="Warehouse" data-bs-toggle="modal" data-bs-target="#sliderModal">
-                    <img src="{{ asset('storage/frontend/sw-3.png') }}" class="side-image" alt="Warehouse" data-bs-toggle="modal" data-bs-target="#sliderModal">
+                    @if($warehouse->outside_image)
+                        <img src="{{ asset('storage/backend/warehouses/' . $warehouse->outside_image) }}" alt="Warehouse" class="side-image">
+                    @else
+                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="side-image">
+                    @endif
+
+                    @if($warehouse->loading_image)
+                        <img src="{{ asset('storage/backend/warehouses/' . $warehouse->loading_image) }}" alt="Warehouse" class="side-image">
+                    @else
+                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="side-image">
+                    @endif
+                </div>
+            </div>
+
+            <div class="modal fade slider-modal" id="slide-modal">
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="swiper mySwiper2">
+                                <div class="swiper-wrapper">
+                                    @foreach($sliders as $slider)
+                                        <div class="swiper-slide">
+                                            @if($slider['type'] === 'image')
+                                                @if($slider['name'])
+                                                    <img src="{{ asset('storage/backend/warehouses/' . $slider['name']) }}" alt="Warehouse">
+                                                @else
+                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse">
+                                                @endif
+                                            @elseif($slider['type'] === 'video')
+                                                @if($slider['name'])
+                                                    <video controls>
+                                                        <source src="{{ asset('storage/backend/warehouses/' . $slider['name']) }}" type="video/mp4" alt="Warehouse">
+                                                        Your browser does not support the video tag.
+                                                    </video>
+                                                @else
+                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse">
+                                                @endif
+                                            @endif
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            <div thumbsSlider="" class="swiper mySwiper">
+                                <div class="swiper-wrapper">
+                                    @foreach($sliders as $slider)
+                                        <div class="swiper-slide">
+                                            @if($slider['type'] === 'image')
+                                                @if($slider['name'])
+                                                    <img src="{{ asset('storage/backend/warehouses/' . $slider['name']) }}" alt="Warehouse">
+                                                @else
+                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse">
+                                                @endif
+                                            @elseif($slider['type'] === 'video')
+                                                @if($slider['name'])
+                                                    <video>
+                                                        <source src="{{ asset('storage/backend/warehouses/' . $slider['name']) }}" type="video/mp4" alt="Warehouse">
+                                                        Your browser does not support the video tag.
+                                                    </video>
+
+                                                    <i class="bi bi-play-circle-fill video-play"></i>
+                                                @else
+                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse">
+                                                @endif
+                                            @endif
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -26,167 +104,161 @@
                 <div class="col-8">
                     <div class="row profile-row">
                         <div class="col-8 left">
-                            <img src="{{ asset('storage/frontend/wsp-1.png') }}" class="image" alt="Image">
+                            @if($warehouse->user->image)
+                                <img src="{{ asset('storage/backend/users/' . $warehouse->user->image) }}" alt="User" class="image">
+                            @else
+                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_profile_image) }}" alt="User" class="image">
+                            @endif
+
                             <div class="profile">
                                 <p class="name">{{ $warehouse->user->first_name }} {{ $warehouse->user->last_name }}</p>
-                                <p class="description">3 years of experience as lender</p>
+
+                                @if($warehouse->user->landlord_experience)
+                                    <p class="description">{{ $warehouse->user->landlord_experience }} {{ $contents->{'inner_page_section_2_description_' . $middleware_language} ?? $contents->inner_page_section_2_description_en }}</p>
+                                @endif
                             </div>
                         </div>
 
-                        <div class="col-4 right">
-                            <i class="bi bi-heart"></i>
-                            <i class="bi bi-chat-left"></i>
-                            <p class="expert">Talk to an Expert</p>
-                        </div>
+                        <!-- In future -->
+                            <div class="col-4 right">
+                                <i class="bi bi-heart"></i>
+                                <i class="bi bi-chat-left"></i>
+                                <p class="expert">{{ $contents->{'inner_page_section_2_talk_to_expert_' . $middleware_language} ?? $contents->inner_page_section_2_talk_to_expert_en }}</p>
+                            </div>
+                        <!-- In future -->
                     </div>
 
                     <div class="row title-row">
                         <div class="col-8 left">
-                            <h1 class="title">{{ $warehouse->name }}</h1>
-
-                            @if($middleware_language == 'en')
-                                <p class="description">{{ $warehouse->address_en }}</p>
-                            @else
-                                <p class="description">{{ $warehouse->address_ar }}</p>
-                            @endif
+                            <h1 class="title">{{ $warehouse->{'name_' . $middleware_language} ?? $warehouse->name_en }}</h1>
+                            <p class="description">{{ $warehouse->{'city_' . $middleware_language} ?? $warehouse->city_en }}</p>
                         </div>
 
                         <div class="col-4 right">
                             <div class="rating">
-                                <p class="score">4.84</p>
-                                <p class="label">Rating</p>
+                                <p class="score">{{ $rating }}</p>
+                                <p class="label">{{ $contents->{'inner_page_section_2_rating_' . $middleware_language} ?? $contents->inner_page_section_2_rating_en }}</p>
                             </div>
 
                             <div class="line"></div>
                             
                             <div class="rating">
-                                <p class="score">120</p>
-                                <p class="label">Reviews</p>
+                                <p class="score">{{ $all_reviews->count() }}</p>
+                                <p class="label">{{ $contents->{'inner_page_section_2_reviews_' . $middleware_language} ?? $contents->inner_page_section_2_reviews_en }}</p>
                             </div>
                         </div>
                     </div>
 
-                    <p class="warehouse-description">Welcome to a premium industrial-grade storage facility located in the bustling commercial corridor of Saudi Arabia. Designed for flexibility and scale, this space is perfect for logistics companies, wholesalers, or retailers looking for a secure and convenient warehousing solution in Saudi Arabia. Whether you're expanding your operations or need temporary overflow capacity, our facility offers the infrastructure and access you need to operate efficiently.</p>
+                    <p class="warehouse-description">
+                        {{ $warehouse->{'description_' . $middleware_language} ?? $warehouse->description_en }}
+                    </p>
 
-                    <div class="row features-row">
-                        <div class="col-6 single-feature">
-                            <i class="bi bi-calendar4"></i>
-                            <div class="details">
-                                <p class="title">Free Cancellation</p>
-                                <p class="description">Cancel up to 7 days before check-in for a full refund</p>
-                            </div>
+                    @if($warehouse->features_en || $warehouse->features_ar)
+                        <div class="row features-row">
+                            @foreach(json_decode($warehouse->{'features_' . $middleware_language} ?? $warehouse->features_en) as $feature)
+                                <div class="col-6 single-feature">
+                                    <i class="bi-box-seam"></i>
+                                    <div class="details">
+                                        <p class="title">{{ $feature->title }}</p>
+                                        <p class="description">{{ $feature->description }}</p>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
-
-                        <div class="col-6 single-feature">
-                            <i class="bi bi-people"></i>
-                            <div class="details">
-                                <p class="title">Private Washrooms</p>
-                                <p class="description">Dedicated washroom facilities for staff</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr class="separator">
-
-                    <div class="amenities">
-                        <p class="amenity-title">Other Amenities</p>
-
-                        <div class="row amenities-row">
-                            <div class="col-6 single-amenity">
-                                <i class="bi bi-box"></i>
-                                <div class="details">
-                                    <p class="title">Size</p>
-                                    <p class="description">25,000 sq ft of open-plan warehouse space</p>
-                                </div>
-                            </div>
-
-                            <div class="col-6 single-amenity">
-                                <i class="bi bi-box"></i>
-                                <div class="details">
-                                    <p class="title">Ceiling Height</p>
-                                    <p class="description">10 meters - suitable for high stacking and large equipment</p>
-                                </div>
-                            </div>
-
-                            <div class="col-6 single-amenity">
-                                <i class="bi bi-box"></i>
-                                <div class="details">
-                                    <p class="title">Loading Docks</p>
-                                    <p class="description">Multiple truck-accessible loading bays for easy logistics</p>
-                                </div>
-                            </div>
-
-                            <div class="col-6 single-amenity">
-                                <i class="bi bi-box"></i>
-                                <div class="details">
-                                    <p class="title">Ventilation & Lighting</p>
-                                    <p class="description">Industrial-grade air circulation system</p>
-                                </div>
-                            </div>
-
-                            <div class="col-6 single-amenity">
-                                <i class="bi bi-box"></i>
-                                <div class="details">
-                                    <p class="title">Parking</p>
-                                    <p class="description">On-site parking available for staff and delivery trucks</p>
-                                </div>
-                            </div>
-
-                            <div class="col-6 single-amenity">
-                                <i class="bi bi-box"></i>
-                                <div class="details">
-                                    <p class="title">Fire Safety</p>
-                                    <p class="description">Equipped with smoke detectors and sprinkler systems</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endif
                 </div>
 
                 <div class="col-4">
                     <div class="booking-box">
-                        <p class="cost">Total Cost</p>
-                        <p class="price">Unlock Pricing<i class="bi bi-lock"></i></p>
+                        <p class="cost">{{ $contents->{'inner_page_section_2_total_cost_' . $middleware_language} ?? $contents->inner_page_section_2_total_cost_en }}</p>
+                        <p class="price">{{ $contents->{'inner_page_section_2_unlock_' . $middleware_language} ?? $contents->inner_page_section_2_unlock_en }}<i class="bi bi-lock"></i></p>
 
                         <div class="date-picker">
                             <div class="box">
-                                <p class="check">Tenure Start</p>
-                                <p class="date">Add date</p>
+                                <p class="check">{{ $contents->{'inner_page_section_2_tenure_start_' . $middleware_language} ?? $contents->inner_page_section_2_tenure_start_en }}</p>
+                                <input type="text" class="date date-picker-field" id="tenure_start" name="tenure_start" placeholder="{{ $contents->{'inner_page_section_2_add_date_' . $middleware_language} ?? $contents->inner_page_section_2_add_date_en }}" value="{{ old('tenancy_date') }}" required>
                             </div>
 
                             <div class="line"></div>
                             
                             <div class="box">
-                                <p class="check">Tenure End</p>
-                                <p class="date">Add date</p>
+                                <p class="check">{{ $contents->{'inner_page_section_2_tenure_end_' . $middleware_language} ?? $contents->inner_page_section_2_tenure_end_en }}</p>
+                                <input type="text" class="date date-picker-field" id="tenure_end" name="tenure_end" placeholder="{{ $contents->{'inner_page_section_2_add_date_' . $middleware_language} ?? $contents->inner_page_section_2_add_date_en }}" value="{{ old('renewal_date') }}" required>
                             </div>
                         </div>
 
-                        <button class="book-now-button" data-bs-toggle="modal" data-bs-target="#lotModal">Book Now</button>
+                        <button class="book-now-button" data-bs-toggle="modal" data-bs-target="#booking-modal">{{ $contents->{'inner_page_section_2_button_' . $middleware_language} ?? $contents->inner_page_section_2_button_en }}</button>
 
-                        <p class="note">You won't be charged yet</p>
+                        <p class="note">{{ $contents->{'inner_page_section_2_note_' . $middleware_language} ?? $contents->inner_page_section_2_note_en }}</p>
                     </div>
                     
-                    <p class="report-link">
+                    <p class="report-link" data-bs-toggle="modal" data-bs-target="#report-modal">
                         <i class="bi bi-flag"></i>
-                        <span>Report this listing</span>
+                        <span>{{ $contents->{'inner_page_section_2_report_listing_' . $middleware_language} ?? $contents->inner_page_section_2_report_listing_en }}</span>
                     </p>
 
-                    <div class="lender">
-                        <p class="heading">More about Lender</p>
-                        <div class="details">
-                            <p class="single">
-                                <i class="bi bi-flag"></i>
-                                Speaks in English & Arabic
-                            </p>
-                            <p class="single">
-                                <i class="bi bi-flag"></i>
-                                Usually replies within an hour
-                            </p>
-                            <p class="single">
-                                <i class="bi bi-flag"></i>
-                                Lives in Saudi Arabia
-                            </p>
+                    <div class="modal fade booking-modal" id="booking-modal">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="modal-title">{{ $contents->{'inner_page_modal_title_' . $middleware_language} ?? $contents->inner_page_modal_title_en }}</p>
+                                    <p class="modal-description">{{ $contents->{'inner_page_modal_description_' . $middleware_language} ?? $contents->inner_page_modal_description_en }}</p>
+
+                                    <div class="property">
+                                        @if($warehouse->thumbnail)
+                                            <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="image">
+                                        @else
+                                            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image">
+                                        @endif
+
+                                        <div class="details">
+                                            <p class="type">{{ $warehouse->storageType->{'name_' . $middleware_language} ?? $warehouse->storageType->name_en }}</p>
+                                            <p class="title">{{ $warehouse->{'name_' . $middleware_language} ?? $warehouse->name_en }}</p>
+                                            <p class="subtitle">{{ $warehouse->{'city_' . $middleware_language} ?? $warehouse->city_en }}</p>
+
+                                            <div class="rating">
+                                                <i class="bi bi-star-fill"></i>
+                                                <span class="value">{{ $rating }}</span>
+                                                <span class="count">({{ $all_reviews->count() }} {{ $contents->{'inner_page_modal_reviews_' . $middleware_language} ?? $contents->inner_page_modal_reviews_en }})</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <form action="{{ route('warehouses.store') }}" method="POST" id="booking-form">
+                                        @csrf
+                                        <div class="booking-details">
+                                            <p class="title">{{ $contents->{'inner_page_modal_details_' . $middleware_language} ?? $contents->inner_page_modal_details_en }}</p>
+                                        
+                                            <div class="single-detail">
+                                                <span class="text">{{ $contents->{'inner_page_modal_tenure_start_date_' . $middleware_language} ?? $contents->inner_page_modal_tenure_start_date_en }}</span>
+                                                <div>
+                                                    <input type="text" class="value date-picker-field" id="tenancy_date" name="tenancy_date" value="{{ old('tenancy_date') }}" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="single-detail">
+                                                <p class="text">{{ $contents->{'inner_page_modal_tenure_end_date_' . $middleware_language} ?? $contents->inner_page_modal_tenure_end_date_en }}</p>
+                                                <div>
+                                                    <input type="text" class="value date-picker-field" id="renewal_date" name="renewal_date" value="{{ old('renewal_date') }}" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="single-detail">
+                                                <p class="text">{{ $contents->{'inner_page_modal_no_of_pallets_' . $middleware_language} ?? $contents->inner_page_modal_no_of_pallets_en }}</p>
+                                                <input type="number" class="value" id="no_of_pallets" name="no_of_pallets" min="1" value="{{ old('no_of_pallets') }}" required>
+                                            </div>
+                                        </div>
+
+                                        <hr>
+
+                                        <input type="hidden" name="warehouse_id" value="{{ $warehouse->id }}">
+                                        <button type="submit" class="confirm-button">{{ $contents->{'inner_page_modal_button_' . $middleware_language} ?? $contents->inner_page_modal_button_en }}</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -196,17 +268,39 @@
         <div class="container section-margin">
             <hr class="separator">
         </div>
-        
+
         <div class="section-3 container section-margin">
-            <img src="{{ asset('storage/frontend/single-warehouse-map.png') }}" class="image" alt="Map">
+            <p class="title">{{ $contents->{'inner_page_section_3_title_' . $middleware_language} ?? $contents->inner_page_section_3_title_en }}</p>
+
+            @if($warehouse->amenities_en || $warehouse->amenities_ar)
+                <div class="row amenities-row">
+                    @foreach(json_decode($warehouse->{'amenities_' . $middleware_language} ?? $warehouse->amenities_en) as $amenity)
+                        <div class="col-6 single-amenity">
+                            <i class="bi-stars"></i>
+                            <div class="details">
+                                <p class="detail-title">{{ $amenity->title }}</p>
+                                <p class="detail-description">{{ $amenity->description }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+        </div>
+
+        <div class="container section-margin">
+            <hr class="separator">
+        </div>
+        
+        <div class="section-4 container section-margin">
+            <div id="map"></div>
         </div>
 
         <div class="container section-margin">
             <hr class="separator">
         </div>
 
-        <div class="section-4 container section-margin">
-            <p class="title">Client Reviews</p>
+        <div class="section-5 container section-margin">
+            <p class="title">{{ $contents->{'inner_page_section_5_title_' . $middleware_language} ?? $contents->inner_page_section_5_title_en }}</p>
 
             <div class="reviews">
                 <div class="single-review">
@@ -251,7 +345,7 @@
             <hr class="separator">
         </div>
 
-        <div class="section-5 container section-margin">
+        <div class="section-6 container section-margin">
             <p class="policy-title">More Details on Policies & Safety</p>
 
             <div class="row">
@@ -281,7 +375,7 @@
             <hr class="separator">
         </div>
 
-        <div class="section-6 container">
+        <div class="section-7 container">
             <p class="title">More available warehouses in the same area</p>
 
             <div class="row">
@@ -331,468 +425,7 @@
             </div>
         </div>
 
-        <div class="modal fade slider-modal" id="sliderModal">
-            <div class="modal-dialog modal-xl modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="swiper mySwiper2">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img src="{{ asset('storage/frontend/warehouse-c-1.png') }}"/>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{ asset('storage/frontend/warehouse-c-2.png') }}"/>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{ asset('storage/frontend/warehouse-c-3.png') }}"/>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{ asset('storage/frontend/warehouse-c-4.png') }}"/>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{ asset('storage/frontend/warehouses-1.png') }}"/>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{ asset('storage/frontend/warehouses-2.png') }}"/>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{ asset('storage/frontend/warehouses-3.png') }}"/>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div thumbsSlider="" class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img src="{{ asset('storage/frontend/warehouse-c-1.png') }}"/>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{ asset('storage/frontend/warehouse-c-2.png') }}"/>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{ asset('storage/frontend/warehouse-c-3.png') }}"/>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{ asset('storage/frontend/warehouse-c-4.png') }}"/>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{ asset('storage/frontend/warehouses-1.png') }}"/>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{ asset('storage/frontend/warehouses-2.png') }}"/>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{ asset('storage/frontend/warehouses-3.png') }}"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade lot-modal" id="lotModal">
-            <div class="modal-dialog modal-xl modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p class="title">Choose Your Warehouse Spaces</p>
-                        <p class="description">Select the warehouse lots that meet your storage requirements</p>
-
-                        <div class="top-row">
-                            <p class="top-row-title">Lot Reservation</p>
-
-                            <div class="legends">
-                                <p class="legend available"><span class="box"></span>Available</p>
-                                <p class="legend reserved"><span class="box"></span>Reserved</p>
-                                <p class="legend selected"><span class="box"></span>Selected</p>
-                            </div>
-                        </div>
-
-                        <div class="lots">
-                            <div class="row">
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        A1
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        A2
-                                    </div>
-                                </div>
-                                <div class="col reserved">
-                                    <div class="lot-box">
-                                        A3
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        A4
-                                    </div>
-                                </div>
-                                <div class="col reserved">
-                                    <div class="lot-box">
-                                        A5
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        A6
-                                    </div>
-                                </div>
-                                <div class="col reserved">
-                                    <div class="lot-box">
-                                        A7
-                                    </div>
-                                </div>
-                                <div class="col reserved">
-                                    <div class="lot-box">
-                                        A8
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        A9
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        A10
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        A11
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        A12
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        A13
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        A14
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        A15
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        A16
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        A17
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        A18
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        B1
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        B2
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        B3
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        B4
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        B5
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        B6
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        B7
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        B8
-                                    </div>
-                                </div>
-                                <div class="col selected">
-                                    <div class="lot-box">
-                                        B9
-                                    </div>
-                                </div>
-                                <div class="col selected">
-                                    <div class="lot-box">
-                                        B10
-                                    </div>
-                                </div>
-                                <div class="col selected">
-                                    <div class="lot-box">
-                                        B11
-                                    </div>
-                                </div>
-                                <div class="col selected">
-                                    <div class="lot-box">
-                                        B12
-                                    </div>
-                                </div>
-                                <div class="col selected">
-                                    <div class="lot-box">
-                                        B13
-                                    </div>
-                                </div>
-                                <div class="col selected">
-                                    <div class="lot-box">
-                                        B14
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        B15
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        B16
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        B17
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        B18
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C1
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C2
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C3
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C4
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C5
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C6
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C7
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C8
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C9
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C10
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C11
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C12
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C13
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C14
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C15
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C16
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C17
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        C18
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D1
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D2
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D3
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D4
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D5
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D6
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D7
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D8
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D9
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D10
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D11
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D12
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D13
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D14
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D15
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D16
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D17
-                                    </div>
-                                </div>
-                                <div class="col available">
-                                    <div class="lot-box">
-                                        D18
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <a href="{{ route('warehouses.book', 1) }}" class="confirm-button">Confirm Booking</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <x-frontend.notification></x-frontend.notification>
     </div>
 @endsection
 
@@ -814,5 +447,74 @@
                 swiper: swiper,
             },
         });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const tenancyInput = document.getElementById('tenancy_date');
+            const renewalInput = document.getElementById('renewal_date');
+
+            setTimeout(() => {
+                tenancyInput.removeAttribute('readonly');
+                renewalInput.removeAttribute('readonly');
+            }, 100);
+
+            tenancyInput.addEventListener('keydown', function (e) {
+                e.preventDefault();
+            });
+            renewalInput.addEventListener('keydown', function (e) {
+                e.preventDefault();
+            });
+        });
+
+        $('#tenure_start').on('change', function() {
+            let value = $(this).val()
+            $('#tenancy_date').val(value);
+        });
+
+        $('#tenure_end').on('change', function() {
+            let value = $(this).val()
+            $('#renewal_date').val(value);
+        });
+    </script>
+
+    <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
+        ({key: "{{ config('services.google_maps.key') }}", v: "weekly"});</script>
+
+    <script>
+        async function initMap() {
+            const warehouse = @json($warehouse);
+            const language = @json($middleware_language ?? 'en');
+
+            const lat = parseFloat(warehouse.latitude);
+            const lng = parseFloat(warehouse.longitude);
+
+            const position = { lat: lat, lng: lng };
+            const { Map } = await google.maps.importLibrary("maps");
+            const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
+
+            const infoTitle = warehouse[`name_${language}`] || warehouse.name_en;
+
+            let map = new Map(document.getElementById("map"), {
+                zoom: 8,
+                center: position,
+                mapId: "DEMO_MAP_ID",
+                scrollwheel: false,
+                zoomControl: false,
+            });
+
+            const icon = document.createElement('i');
+            icon.className = 'bi bi-cursor-fill';
+            icon.style.fontSize = '100px';
+            icon.style.color = '#E31D1D';
+            icon.style.cursor = 'pointer';
+
+            const marker = new AdvancedMarkerElement({
+                map,
+                position,
+                title: infoTitle,
+                content: icon,
+            });
+        }
+
+        initMap();
     </script>
 @endpush

@@ -43,8 +43,8 @@ class TermsOfUseController extends Controller
         $short_code = $this->shortCode($language);
 
         // Tabs
+            $tabs = [];
             if($request->tab_titles) {
-                $tabs = [];
                 foreach($request->tab_titles as $key => $tab_title) {
                     array_push($tabs, [
                         'title' => $tab_title,

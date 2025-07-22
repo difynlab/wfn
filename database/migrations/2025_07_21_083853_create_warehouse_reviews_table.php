@@ -11,11 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('storage_types', function (Blueprint $table) {
+        Schema::create('warehouse_reviews', function (Blueprint $table) {
             $table->id();
-            $table->string('name_en');
-            $table->string('name_ar');
+
+            $table->text('content');
+            $table->integer('star');
+            $table->enum('language', ['english', 'arabic']);
             $table->boolean('status')->default(1);
+
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('warehouse_id')->constrained()->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -25,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('storage_types');
+        Schema::dropIfExists('warehouse_reviews');
     }
 };

@@ -11,7 +11,8 @@ use Illuminate\Support\Str;
 
 class AboutController extends Controller
 {
-    private function shortCode($language) {
+    private function shortCode($language)
+    {
         switch($language){
             case 'english':
                 $short_code = 'en';
@@ -224,8 +225,8 @@ class AboutController extends Controller
         // Section 10 image
 
         // FAQs
+            $faqs = [];
             if($request->questions) {
-                $faqs = [];
                 foreach($request->questions as $key => $question) {
                     array_push($faqs, [
                         'question' => $question,

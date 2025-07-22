@@ -277,7 +277,7 @@ class DashboardController extends Controller
 
             $item->tenant = $item->user->first_name . ' ' . $item->user->last_name;
 
-            $item->warehouse = '<a href="'. route('landlord.warehouses.edit', $item->warehouse_id) .'" class="table-link">' . $item->warehouse->name . '</a>';
+            $item->warehouse = '<a href="'. route('landlord.warehouses.edit', $item->warehouse_id) .'" class="table-link">' . $item->warehouse->name_en . '</a>';
 
             switch ($item->status) {
                 case 1:

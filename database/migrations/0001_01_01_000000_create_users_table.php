@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();
+            $table->integer('landlord_experience')->nullable();
             $table->string('password');
             $table->string('image')->nullable();
             $table->enum('role', ['admin', 'landlord', 'tenant']);

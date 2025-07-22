@@ -45,6 +45,11 @@ class User extends Authenticatable
         return $this->hasMany(Todo::class);
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(WarehouseReview::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

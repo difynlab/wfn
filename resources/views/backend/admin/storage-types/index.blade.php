@@ -44,7 +44,8 @@
                     <table class="table w-100">
                         <thead>
                             <tr>
-                                <th scope="col">NAME <i class="bi bi-arrows-vertical sort-icon" data-name="name" data-order="desc"></i></th>
+                                <th scope="col">NAME (EN) <i class="bi bi-arrows-vertical sort-icon" data-name="name_en" data-order="desc"></i></th>
+                                <th scope="col">NAME (AR) <i class="bi bi-arrows-vertical sort-icon" data-name="name_ar" data-order="desc"></i></th>
                                 <th scope="col">STATUS <i class="bi bi-arrows-vertical sort-icon" data-name="status" data-order="desc"></i></th>
                                 <th scope="col">ACTIONS</th>
                             </tr>
@@ -54,14 +55,15 @@
                             @if(count($items) > 0)
                                 @foreach($items as $item)
                                     <tr>
-                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->name_en }}</td>
+                                        <td>{{ $item->name_ar }}</td>
                                         <td>{!! $item->status !!}</td>
                                         <td>{!! $item->action !!}</td>
                                     </tr>
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="3" style="text-align: center;">No data available in the table</td>
+                                    <td colspan="4" style="text-align: center;">No data available in the table</td>
                                 </tr>
                             @endif
                         </tbody>

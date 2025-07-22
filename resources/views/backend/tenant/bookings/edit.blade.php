@@ -18,7 +18,7 @@
                     <select class="form-select input-field js-single" id="warehouse_id" name="warehouse_id" required>
                         <option value="">Select warehouse</option>
                         @foreach($warehouses as $warehouse)
-                            <option value="{{ $warehouse->id }}" {{ old('warehouse_id', $booking->warehouse_id) == $warehouse->id ? 'selected' : '' }}>{{ $warehouse->name }}</option>
+                            <option value="{{ $warehouse->id }}" {{ old('warehouse_id', $booking->warehouse_id) == $warehouse->id ? 'selected' : '' }}>{{ $warehouse->name_en }}</option>
                         @endforeach
                     </select>
                     <x-backend.input-error field="warehouse_id"></x-backend.input-error>

@@ -43,20 +43,20 @@
                     </div>
                 </div>
 
-                <!-- <div class="single-page">
+                <div class="single-page">
                     <p class="page-name">Warehouses</p>
                     <div class="links">
-                        <a href="#" title="Edit" class="link">
+                        <a href="{{ route('admin.pages.warehouses.index', 'english') }}" title="Edit" class="link">
                             <i class="bi bi-pencil-square"></i>
                             English
                         </a>
 
-                        <a href="#" title="Edit" class="link">
+                        <a href="{{ route('admin.pages.warehouses.index', 'arabic') }}" title="Edit" class="link">
                             <i class="bi bi-pencil-square"></i>
                             Arabic
                         </a>
                     </div>
-                </div> -->
+                </div>
 
                 <div class="single-page">
                     <p class="page-name">Support</p>

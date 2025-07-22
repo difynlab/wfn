@@ -25,13 +25,19 @@
                     <x-backend.input-error field="last_name"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-4 mb-4">
                     <label for="email" class="form-label label">Email<span class="asterisk">*</span></label>
                     <input type="email" class="form-control input-field" id="email" name="email" placeholder="Email" value="{{ old('email', $user->email) }}" required>
                     <x-backend.input-error field="email"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-4 mb-4">
+                    <label for="landlord_experience" class="form-label label">Landlord Experience (Years)</label>
+                    <input type="number" class="form-control input-field" id="landlord_experience" name="landlord_experience" placeholder="Landlord Experience (Years)" value="{{ old('landlord_experience', $user->landlord_experience) }}" min="0">
+                    <x-backend.input-error field="landlord_experience"></x-backend.input-error>
+                </div>
+
+                <div class="col-4 mb-4">
                     <label class="form-label label">Country<span class="asterisk">*</span></label>
                     <select class="form-select js-single input-field" id="country" name="country" required>
                         <option value="">Select country</option>
