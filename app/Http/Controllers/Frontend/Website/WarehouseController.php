@@ -272,4 +272,18 @@ class WarehouseController extends Controller
             'area' => $area
         ]);
     }
+
+    public function toggleFavorite(Request $request)
+    {
+        if (!auth()->check()) {
+            return response()->json(['status' => 'not_logged_in']);
+        }
+
+        $userId = auth()->id();
+        $warehouseId = $request->warehouse_id;
+
+        $favorited = toggle_favorite($userId, $warehouseId);
+
+        return response()->json(['favorited' => $favorited]);
+    }
 }

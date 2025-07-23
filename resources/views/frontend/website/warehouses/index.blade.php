@@ -157,16 +157,48 @@
                                                 {{ $contents->{'section_3_day_ago_' . $middleware_language} ?? $contents->section_3_day_ago_en }}
                                             </p>
                                         </div>
-
-                                        <!-- In future -->
+                                      
                                             <div class="col-6 text-end">
-                                                <span class="action">
-                                                    <i class="bi bi-heart"></i>
+                                                <span class="action favorite-toggle" data-warehouse-id="{{ $warehouse->id }}">
+                                                    @php
+                                                        $isFavorited = auth()->check() ? is_favorited(auth()->id(), $warehouse->id) : false;
+                                                    @endphp
+                                                    @if($isFavorited)
+                                                        <i class="bi bi-heart-fill text-danger"></i>
+                                                    @else
+                                                        <i class="bi bi-heart"></i>
+                                                    @endif
                                                     {{ $contents->{'section_3_like_' . $middleware_language} ?? $contents->section_3_like_en }}
                                                 </span>
 
                                                 <span class="action">
-                                                    <i class="bi bi-share"></i>
+                                                    <div class="dropdown d-inline-block">
+                                                        <button class="btn btn-link p-0" type="button" id="shareDropdown{{ $warehouse->id }}" data-bs-toggle="dropdown" aria-expanded="false" title="Share">
+                                                            <i class="bi bi-share"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu" aria-labelledby="shareDropdown{{ $warehouse->id }}">
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on Facebook">
+                                                                    <i class="bi bi-facebook icon"></i> Facebook
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://twitter.com/intent/tweet?url={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on Twitter">
+                                                                    <i class="bi bi-twitter icon"></i> Twitter
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on LinkedIn">
+                                                                    <i class="bi bi-linkedin icon"></i> LinkedIn
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://wa.me/?text={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on WhatsApp">
+                                                                    <i class="bi bi-whatsapp icon"></i> WhatsApp
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                     {{ $contents->{'section_3_share_' . $middleware_language} ?? $contents->section_3_share_en }}
                                                 </span>
 
@@ -175,7 +207,6 @@
                                                     {{ $contents->{'section_3_report_' . $middleware_language} ?? $contents->section_3_report_en }}
                                                 </span>
                                             </div>
-                                        <!-- In future -->
                                     </div>
                                 </div>
                             </div>
@@ -319,5 +350,42 @@
         }
 
         initMap();
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.favorite-toggle').forEach(function (el) {
+                el.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var warehouseId = this.getAttribute('data-warehouse-id');
+                    var span = this;
+                    fetch('/favorite/toggle', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                            'Accept': 'application/json',
+                        },
+                        body: JSON.stringify({ warehouse_id: warehouseId })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'not_logged_in') {
+                            window.location.href = '/login';
+                            return;
+                        }
+                        var icon = span.querySelector('i');
+                        if (data.favorited) {
+                            icon.className = 'bi bi-heart-fill text-danger';
+                        } else {
+                            icon.className = 'bi bi-heart';
+                        }
+                    })
+                    .catch(error => {
+                        alert('An error occurred. Please try again.');
+                    });
+                });
+            });
+        });
     </script>
 @endpush

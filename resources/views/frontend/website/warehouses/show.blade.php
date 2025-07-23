@@ -118,14 +118,40 @@
                                 @endif
                             </div>
                         </div>
-
-                        <!-- In future -->
+         
                             <div class="col-4 right">
                                 <i class="bi bi-heart"></i>
                                 <i class="bi bi-chat-left"></i>
+
+                                <div class="dropdown d-inline-block">
+                                    <button class="btn btn-link p-0" type="button" id="shareDropdown" data-bs-toggle="dropdown" aria-expanded="false" title="Share">
+                                        <i class="bi bi-share icon"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="shareDropdown">
+                                        <li>
+                                            <a class="dropdown-item" href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->fullUrl()) }}" target="_blank" title="Share on Facebook">
+                                                <i class="bi bi-facebook icon"></i> Facebook
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="https://twitter.com/intent/tweet?url={{ urlencode(request()->fullUrl()) }}" target="_blank" title="Share on Twitter">
+                                                <i class="bi bi-twitter icon"></i> Twitter
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(request()->fullUrl()) }}" target="_blank" title="Share on LinkedIn">
+                                                <i class="bi bi-linkedin icon"></i> LinkedIn
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="https://wa.me/?text={{ urlencode(request()->fullUrl()) }}" target="_blank" title="Share on WhatsApp">
+                                                <i class="bi bi-whatsapp icon"></i> WhatsApp
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                                 <p class="expert">{{ $contents->{'inner_page_section_2_talk_to_expert_' . $middleware_language} ?? $contents->inner_page_section_2_talk_to_expert_en }}</p>
-                            </div>
-                        <!-- In future -->
+                            </div>   
                     </div>
 
                     <div class="row title-row">
