@@ -42,7 +42,7 @@ class ArticleController extends Controller
     {
         $contents = ArticleContent::find(1);
 
-        $related_articles = Article::whereNot('id', $article->id)->where('status', 1)->get()->take(3);
+        $related_articles = Article::whereNot('id', $article->id)->where('language', session('middleware_language_name'))->where('status', 1)->get()->take(3);
         
         return view('frontend.website.articles.show', [
             'contents' => $contents,
