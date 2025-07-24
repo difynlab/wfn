@@ -64,7 +64,7 @@
 
                             <div class="content line-clamp-2">{!! $related_article->content !!}</div>
 
-                            <a href="{{ route('articles.show', $related_article) }}" class="read-more">Read more</a>
+                            <a href="{{ route('articles.show', $related_article) }}" class="read-more">{{ $contents->{'read_more_' . $middleware_language} ?? $contents->read_more_en }}</a>
                         </div>
                     @endforeach
                 </div>
