@@ -137,6 +137,16 @@
                     </div>
 
                     <div class="col-6 mb-4">
+                        <label for="register_country_{{ $short_code }}" class="form-label label">Country</label>
+                        <input type="text" class="form-control input-field" id="register_country_{{ $short_code }}" name="register_country_{{ $short_code }}" value="{{ $contents->{'register_country_' . $short_code} ?? '' }}" placeholder="Country">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="register_country_placeholder_{{ $short_code }}" class="form-label label">Country Placeholder</label>
+                        <input type="text" class="form-control input-field" id="register_country_placeholder_{{ $short_code }}" name="register_country_placeholder_{{ $short_code }}" value="{{ $contents->{'register_country_placeholder_' . $short_code} ?? '' }}" placeholder="Country Placeholder">
+                    </div>
+
+                    <div class="col-6 mb-4">
                         <label for="register_phone_{{ $short_code }}" class="form-label label">Phone</label>
                         <input type="text" class="form-control input-field" id="register_phone_{{ $short_code }}" name="register_phone_{{ $short_code }}" value="{{ $contents->{'register_phone_' . $short_code} ?? '' }}" placeholder="Phone">
                     </div>
