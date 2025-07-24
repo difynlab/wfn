@@ -36,6 +36,7 @@ Route::middleware(['language'])->group(function () {
             Route::get('filter', [WarehouseController::class, 'filter'])->name('filter');
             Route::get('show/{warehouse}', [WarehouseController::class, 'show'])->name('show');
             Route::get('areas/{area}', [WarehouseController::class, 'area'])->name('area');
+            Route::post('favorite', [WarehouseController::class, 'favorite'])->name('favorite');
         });
 
         Route::get('privacy-policy', [PrivacyPolicyController::class, 'index'])->name('privacy-policy');

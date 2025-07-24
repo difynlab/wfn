@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\Website;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\Favorite;
 use App\Models\HomepageContent;
 use App\Models\StorageType;
 use App\Models\Warehouse;
@@ -273,17 +274,24 @@ class WarehouseController extends Controller
         ]);
     }
 
-    public function toggleFavorite(Request $request)
+    public function favorite(Request $request)
     {
-        if (!auth()->check()) {
-            return response()->json(['status' => 'not_logged_in']);
+        $check = Favorite::where('user_id', $request->user_id)->where('warehouse_id', $request->data_id)->first();
+
+        if($check) {
+            $check->delete();
+            $status = false;
+        }
+        else {
+            $favorite = Favorite::create(
+                [
+                    'user_id' => $request->user_id,
+                    'warehouse_id' => $request->data_id,
+                ]
+            );
+            $status = true;
         }
 
-        $userId = auth()->id();
-        $warehouseId = $request->warehouse_id;
-
-        $favorited = toggle_favorite($userId, $warehouseId);
-
-        return response()->json(['favorited' => $favorited]);
+        return response($status);
     }
 }

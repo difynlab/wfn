@@ -134,6 +134,7 @@
         font-size: 20px;
         color: var(--red);
         -webkit-text-stroke: 1px;
+        cursor: pointer;
     }
     .warehouse .section-2 .profile-row .right .expert {
         font-size: 20px;
