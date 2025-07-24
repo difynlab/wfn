@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Favorite;
 use App\Models\HomepageContent;
+use App\Models\Message;
+use App\Models\Report;
 use App\Models\StorageType;
 use App\Models\Warehouse;
 use App\Models\WarehouseContent;
 use App\Models\WarehouseReview;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -78,9 +81,9 @@ class WarehouseController extends Controller
     public function filter(Request $request)
     {
         $location = $request->location;
-        $warehouse_size = $request->warehouse_size;
-        $storage_type = $request->storage_type;
-        $price = $request->price;
+        $warehouse_size = $request->warehouse_size ?? 'all';
+        $storage_type = $request->storage_type ?? 'all';
+        $price = $request->price ?? 'all';
 
         $warehouses = Warehouse::where('status', 1)->orderBy('id', 'desc');
 
@@ -293,5 +296,72 @@ class WarehouseController extends Controller
         }
 
         return response($status);
+    }
+
+    public function expert(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'subject' => 'required|min:3|max:255',
+            'warehouse' => 'required',
+            'message' => 'required',
+        ]);
+        
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput()->with(
+                [
+                    'error' => 'Sending Failed',
+                    'message' => 'Please recheck and submit again.',
+                ]
+            );
+        }
+
+        $data = $request->except(['message']);
+        $data['creator'] = auth()->user()->id;
+        $data['date'] = Carbon::now()->toDateString();
+        $data['time'] = Carbon::now()->toTimeString();
+        $data['category'] = 'general';
+        $data['warehouse'] = $request->warehouse;
+        $data['admin_view'] = 0;
+        $data['user_view'] = 1;
+        $data['user_id'] = auth()->user()->id;
+        $data['initial_message'] = $request->message;
+        $message = Message::create($data);  
+
+        return redirect()->route('warehouses.show', $request->warehouse)->with(
+            [
+                'success' => 'Message Sent Successfully',
+                'message' => 'Our expert will get back to you as soon as possible.',
+            ]
+        );
+    }
+
+    public function report(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'warehouse' => 'required',
+            'reason' => 'required|min:3|max:255',
+        ]);
+        
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput()->with(
+                [
+                    'error' => 'Reporting Failed',
+                    'message' => 'Please recheck and submit again.',
+                ]
+            );
+        }
+
+        $report = Report::create([
+            'reason' => $request->reason,
+            'user_id' => auth()->user()->id,
+            'warehouse_id' => $request->warehouse,
+        ]);  
+
+        return redirect()->route('warehouses.show', $request->warehouse)->with(
+            [
+                'success' => 'Report Sent Successfully',
+                'message' => 'Our team will review this report.',
+            ]
+        );
     }
 }

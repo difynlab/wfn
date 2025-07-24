@@ -36,6 +36,8 @@ Route::middleware(['language'])->group(function () {
                 Route::post('/', [WarehouseController::class, 'store'])->name('store');
                 Route::get('filter', [WarehouseController::class, 'filter'])->name('filter');
                 Route::get('show/{warehouse}', [WarehouseController::class, 'show'])->name('show');
+                Route::post('expert', [WarehouseController::class, 'expert'])->name('expert');
+                Route::post('report', [WarehouseController::class, 'report'])->name('report');
             });
         // Auth routes
 

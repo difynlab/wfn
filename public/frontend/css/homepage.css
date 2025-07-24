@@ -93,206 +93,46 @@
     .homepage .section-1 .overlay .search-bar .search-inputs .search-button i {
         margin-right: 5px;
     }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown {
-        position: initial!important;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .dropdown-menu {
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .filters {
+        position: absolute;
         width: 100%;
-        transform: none!important;
-        top: 100%!important;
-        border: none;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .dropdown-menu {
-        border-radius: 32px;
-        box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
-        padding: 20px;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .dropdown-menu .dropdown-inner {
-        padding: 25px 100px;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .dropdown-inner {
-        padding: 25px 50px;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .top-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .top-row .legends {
-        display: flex;
-        align-items: center;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .top-row .legends .pick-by {
-        font-size: 16px;
-        font-weight: 500;
-        color: var(--light_black);
-        margin-right: 10px;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .top-row .legends .pick-mode {
+        left: 0;
+        top: 75px;
         background-color: var(--white);
-        color: var(--light_black);
-        border: 1px solid var(--input_border);
-        border-radius: 4px;
-        font-size: 13px;
-        font-weight: 500;
-        margin-right: 15px;
-        transition: all 0.3s;
-        &:hover {
-            background-color: var(--light_black);
-            color: var(--white);
-            transition: all 0.3s;
-        }
+        padding: 40px;
+        border-radius: 32px;
+        box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.1);
     }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .top-row .monthly-reservations {
-        background-color: transparent;
-        color: var(--light_black);
-        padding: 0;
-        border: none;
-        font-size: 16px;
-        font-weight: 500;
-        transition: all 0.3s;
-        &:hover {
-            font-weight: 700;
-            transition: all 0.3s;
-        }
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .dropdown-divider {
-        border-top: 1px solid var(--input_border);
-        margin: 20px 0 30px 0;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars {
-        display: flex;
-        justify-content: space-between;
-        /* align-items: center; */
-        gap: 50px;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar {
-        width: 50%;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker.-inline- {
-        width: 100%;
-        border: none;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-nav {
-        border: none;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-nav--title {
-        font-size: 17px;
-        font-weight: 500;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-body--day-names {
-        margin: 8px 0 5px;
-        gap: 20px;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-body--day-name {
-        font-size: 15px;
-        font-weight: 500;
-        color: var(--light_black);
-        width: 40px;
-        height: 40px;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-body--cells {
-        gap: 10px;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-cell.-day- {
-        font-size: 15px;
-        color: var(--light_black);
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-cell.-focus- {
-        background: var(--red);
-        color: var(--white);
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-cell.-disabled- {
-        color: #A5A3A4;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-cell.-disabled-.-focus- {
-        background: none;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-cell.-selected- {
-        color: var(--white);
-        border: none;
-        background: var(--red);
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-cell.-selected-.-current- {
-        color: var(--white);
-        border: none;
-        background: var(--red);
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-cell.-current-.-focus- {
-        color: var(--white);
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .calendars .calendar .air-datepicker-cell.-selected-.-focus- {
-        background: var(--red);
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .warehouse-dropdown .dropdown-title {
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .filters .dropdown-title {
         font-size: 14px;
+        font-weight: 600;
         color: var(--gray);
         padding-bottom: 10px;
     }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .warehouse-dropdown .radios {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .warehouse-dropdown .label {
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .filters .label {
         font-size: 14px;
         color: var(--medium_gray);
     }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .warehouse-dropdown .dropdown-divider {
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .filters .dropdown-divider {
         border-top: 1px solid var(--input_border);
-        margin: 20px 0 30px 0;
+        margin: 25px 0;
     }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .warehouse-dropdown .checkboxes .single-check {
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .filters .single-radio {
         margin-bottom: 15px;
     }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .warehouse-dropdown .checkboxes .single-check:nth-last-child(-n+3) {
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .filters .single-radio:nth-last-child(-n+4) {
         margin-bottom: 0;
     }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .warehouse-dropdown .clear-button {
-        background: none;
-        border: none;
-        color: var(--red);
-        font-size: 15px;
+    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .date {
+        font-size: 14px;
         font-weight: 500;
-        margin: auto;
-        display: block;
-        margin-top: 25px;
-        transition: all 0.3s;
-        &:hover {
-            color: var(--light_black);
-            transition: all 0.3s;
+        color: var(--gray);
+        border: none;
+        border-radius: 0;
+        cursor: pointer;
+        &:focus-visible {
+            outline: none;
         }
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .monthly-calendar-view .monthly-calendar-view-title {
-        font-size: 16px;
-        text-align: center;
-        font-weight: 600;
-        padding-bottom: 25px;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .monthly-calendar-view .months-row .single-month {
-        margin-bottom: 40px;
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .monthly-calendar-view .months-row .single-month .single-month-button {
-        width: 100%;
-        height: 60px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--white);
-        border: 1px solid var(--input_border);
-        transition: all 0.3s;
-        &:hover {
-            background-color: var(--red);
-            border: none;
-            color: var(--white);
-            transition: all 0.3s;
-        }
-    }
-    .homepage .section-1 .overlay .search-bar .search-inputs .search-item .dropdown .calendar-dropdown .monthly-calendar-view .months-row .single-month:nth-last-child(-n+4) {
-        margin-bottom: 0;
     }
 /* #endregion */
 
@@ -342,30 +182,69 @@
         color: var(--light_black);
     }
     .homepage .section-2 .tab-content .card .card-body .description {
-        font-size: 16px;
-        color: var(--medium_gray);
-        padding-bottom: 10px;
+        font-size: 14px;
+        color: var(--gray);
+        line-height: 22px;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+        max-height: calc(22px * 2);
     }
     .homepage .section-2 .tab-content .card .card-body .location {
         font-size: 14px;
         color: var(--medium_gray);
-        padding-bottom: 15px;
+        padding-top: 20px;
     }
     .homepage .section-2 .tab-content .card .card-body .location i {
         margin-right: 5px;
     }
     .homepage .section-2 .tab-content .card .card-body .bottom-box {
-        background-color: var(--low_gray);
+        background-color: var(--medium_white);
         font-size: 13px;
-        color: var(--medium_gray);
-        padding: 8px 13px;
-        border-radius: 7px;
+        color: var(--gray);
+        padding: 10px 15px;
+        border-radius: 8px;
+        margin-top: 15px;
     }
     .homepage .section-2 .tab-content .card .card-body .bottom-box .span-text {
         margin: 0 10px;
+        cursor: pointer;
     }
     .homepage .section-2 .tab-content .card .card-body .bottom-box i {
         margin-right: 5px;
+    }
+    .homepage .section-2 .tab-content .card .card-body .bottom-box .dropdown-menu {
+        border: none;
+        font-size: 15px;
+        color: black;
+        left: -5%!important;
+        top: 2%!important;
+        border-radius: 0;
+        padding: 0;
+        margin: 0;
+        background-color: #f3f3f3;
+    }
+    .homepage .section-2 .tab-content .card .card-body .bottom-box .dropdown-menu .dropdown-item {
+        font-size: 13px;
+        color: var(--light_black);
+        padding: 10px;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        &:hover {
+            background-color: #DC291E;
+            color: var(--white);
+            transition: all 0.3s;
+        };
+    }
+    .homepage .section-2 .tab-content .card .card-body .bottom-box .dropdown-menu i {
+        font-size: 16px;
+        padding-right: 8px;
     }
 /* #endregion */
 

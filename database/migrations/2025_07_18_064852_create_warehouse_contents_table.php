@@ -40,7 +40,7 @@ return new class extends Migration
             $table->text('section_3_day_ago_en')->nullable();
             $table->text('section_3_like_en')->nullable();
             $table->text('section_3_share_en')->nullable();
-            $table->text('section_3_report_en')->nullable();
+            // $table->text('section_3_report_en')->nullable();
             $table->text('section_3_popular_en')->nullable();
             $table->text('section_3_top_rated_en')->nullable();
 
@@ -74,6 +74,20 @@ return new class extends Migration
             $table->text('inner_page_modal_no_of_pallets_en')->nullable();
             $table->text('inner_page_modal_button_en')->nullable();
 
+            $table->text('inner_page_expert_modal_title_en')->nullable();
+            $table->text('inner_page_expert_modal_description_en')->nullable();
+            $table->text('inner_page_expert_modal_subject_en')->nullable();
+            $table->text('inner_page_expert_modal_subject_placeholder_en')->nullable();
+            $table->text('inner_page_expert_modal_message_en')->nullable();
+            $table->text('inner_page_expert_modal_message_placeholder_en')->nullable();
+            $table->text('inner_page_expert_modal_button_en')->nullable();
+
+            $table->text('inner_page_report_modal_title_en')->nullable();
+            $table->text('inner_page_report_modal_description_en')->nullable();
+            $table->text('inner_page_report_modal_reason_en')->nullable();
+            $table->text('inner_page_report_modal_reason_placeholder_en')->nullable();
+            $table->text('inner_page_report_modal_button_en')->nullable();
+
             // Arabic fields
             $table->text('section_1_title_ar')->nullable();
             $table->text('section_1_description_ar')->nullable();
@@ -97,7 +111,7 @@ return new class extends Migration
             $table->text('section_3_day_ago_ar')->nullable();
             $table->text('section_3_like_ar')->nullable();
             $table->text('section_3_share_ar')->nullable();
-            $table->text('section_3_report_ar')->nullable();
+            // $table->text('section_3_report_ar')->nullable();
             $table->text('section_3_popular_ar')->nullable();
             $table->text('section_3_top_rated_ar')->nullable();
 
@@ -130,6 +144,20 @@ return new class extends Migration
             $table->text('inner_page_modal_tenure_end_date_ar')->nullable();
             $table->text('inner_page_modal_no_of_pallets_ar')->nullable();
             $table->text('inner_page_modal_button_ar')->nullable();
+
+            $table->text('inner_page_expert_modal_title_ar')->nullable();
+            $table->text('inner_page_expert_modal_description_ar')->nullable();
+            $table->text('inner_page_expert_modal_subject_ar')->nullable();
+            $table->text('inner_page_expert_modal_subject_placeholder_ar')->nullable();
+            $table->text('inner_page_expert_modal_message_ar')->nullable();
+            $table->text('inner_page_expert_modal_message_placeholder_ar')->nullable();
+            $table->text('inner_page_expert_modal_button_ar')->nullable();
+
+            $table->text('inner_page_report_modal_title_ar')->nullable();
+            $table->text('inner_page_report_modal_description_ar')->nullable();
+            $table->text('inner_page_report_modal_reason_ar')->nullable();
+            $table->text('inner_page_report_modal_reason_placeholder_ar')->nullable();
+            $table->text('inner_page_report_modal_button_ar')->nullable();
 
             $table->timestamps();
         });

@@ -159,8 +159,8 @@
                                         </div>
                                       
                                         <div class="col-6 text-end">
-                                            <span onClick="favoriteToggle({{ auth()->user()->id }}, {{ $warehouse->id }}, '{{ route('warehouses.favorite') }}', {{ isFavorite(auth()->user()->id, $warehouse->id) ? 1 : 0 }}, this)">
-                                                <i class="bi {{ isFavorite(auth()->user()->id, $warehouse->id) ? 'bi-heart-fill text-danger' : 'bi-heart' }}"></i>
+                                            <span class="action" onClick="favoriteToggle({{ auth()->user()->id }}, {{ $warehouse->id }}, '{{ route('warehouses.favorite') }}', {{ isFavorite(auth()->user()->id, $warehouse->id) ? 1 : 0 }}, this)">
+                                                <i class="bi {{ isFavorite(auth()->user()->id, $warehouse->id) ? 'bi-heart-fill' : 'bi-heart' }}"></i>
                                                 {{ $contents->{'section_3_like_' . $middleware_language} ?? $contents->section_3_like_en }}
                                             </span>
 
@@ -194,10 +194,10 @@
                                                 </ul>
                                             </span>
 
-                                            <span class="action">
+                                            <!-- <span class="action">
                                                 <i class="bi bi-flag"></i>
                                                 {{ $contents->{'section_3_report_' . $middleware_language} ?? $contents->section_3_report_en }}
-                                            </span>
+                                            </span> -->
                                         </div>
                                     </div>
                                 </div>

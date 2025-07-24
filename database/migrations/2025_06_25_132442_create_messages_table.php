@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('date');
             $table->time('time');
             $table->enum('category', ['general', 'landlord', 'tenant'])->nullable();
+            $table->integer('warehouse')->nullable();
             $table->boolean('admin_favorite')->default(0);
             $table->boolean('user_favorite')->default(0);
             $table->boolean('admin_view')->default(0);

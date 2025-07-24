@@ -24,22 +24,22 @@ class AboutContentSeeder extends Seeder
 
                 // Section 2
                     'section_2_title_en' => 'Our Story',
-                    'section_2_description_en' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p>&nbsp;</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
+                    'section_2_description_en' => '<p>Since our company was founded, we\'ve been committed to providing reliable and efficient logistics solutions to our clients across the region. With our specialized team and modern infrastructure, we have built long-term relationships based on trust and quality. Our vision is to be the preferred partner in warehousing and logistics by focusing on innovation, dedication, and continuous growth.</p>',
                     'section_2_number_1_en' => '2100+',
-                    'section_2_text_1_en' => 'Lorem ipsum',
+                    'section_2_text_1_en' => 'Warehouse',
                     'section_2_number_2_en' => '17+',
                     'section_2_text_2_en' => 'Years of Experience',
                     'section_2_number_3_en' => '2100+',
-                    'section_2_text_3_en' => 'Lorem ipsum',
+                    'section_2_text_3_en' => 'Clients',
 
                     'section_2_title_ar' => 'قصتنا',
-                    'section_2_description_ar' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p>&nbsp;</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
+                    'section_2_description_ar' => '<p>منذ تأسيس شركتنا، التزمنا بتقديم حلول لوجستية موثوقة وفعّالة لعملائنا في جميع أنحاء المنطقة. بفضل فريقنا المتخصص وبنيتنا التحتية الحديثة، بنينا علاقات طويلة الأمد قائمة على الثقة والجودة. رؤيتنا هي أن نكون الشريك الأمثل في مجال التخزين والخدمات اللوجستية، من خلال التركيز على الابتكار والتفاني والنمو المستمر.</p>',
                     'section_2_number_1_ar' => '2100+',
-                    'section_2_text_1_ar' => 'لوريم إيبسوم',
+                    'section_2_text_1_ar' => 'مستودع',
                     'section_2_number_2_ar' => '17+',
                     'section_2_text_2_ar' => 'سنوات الخبرة',
                     'section_2_number_3_ar' => '2100+',
-                    'section_2_text_3_ar' => 'لوريم إيبسوم',
+                    'section_2_text_3_ar' => 'العملاء',
                 // Section 2
 
                 // Section 3
@@ -72,7 +72,7 @@ class AboutContentSeeder extends Seeder
 
                 // Section 4
                     'section_4_title_en' => 'Who Can Use Warehouse Exchange?',
-                    'section_4_description_en' => '<p>Our Warehouse Exchange lets you easily access a variety of spaces, whether you’re a business in need of inventory storage or someone seeking a safe place for personal belongings. With options to rent, exchange, or share warehouse spaces, you can quickly find the perfect match that meets your specific needs.</p><p>&nbsp;</p><p>Whether it’s for short-term business storage, long-term personal use, or anything in between, our platform is designed to make warehouse exchanges seamless and hassle-free.</p>',
+                    'section_4_description_en' => '<p>Our Warehouse Exchange lets you easily access a variety of spaces, whether you\'re a business in need of inventory storage or someone seeking a safe place for personal belongings. With options to rent, exchange, or share warehouse spaces, you can quickly find the perfect match that meets your specific needs.</p><p>&nbsp;</p><p>Whether it\'s for short-term business storage, long-term personal use, or anything in between, our platform is designed to make warehouse exchanges seamless and hassle-free.</p>',
                     'section_4_button_en' => 'Learn More',
                     'section_4_image_1_title_en' => 'Business Storages',
                     'section_4_image_2_title_en' => 'Personal Storages',
@@ -86,17 +86,17 @@ class AboutContentSeeder extends Seeder
 
                 // Section 5
                     'section_5_title_en' => 'How does the procedure work?',
-                    'section_5_description_en' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                    'section_5_description_en' => 'You send us your requirements, and our team creates a customized logistics or storage plan.',
                     'section_5_point_1_en' => 'Register',
-                    'section_5_point_1_description_en' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    'section_5_point_1_description_en' => 'Create your account in just a few steps.',
                     'section_5_point_2_en' => 'Search for Space',
-                    'section_5_point_2_description_en' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    'section_5_point_2_description_en' => 'Find the perfect storage or warehouse space.',
                     'section_5_point_3_en' => 'Receive Quotes',
-                    'section_5_point_3_description_en' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    'section_5_point_3_description_en' => 'Get price offers from trusted providers.',
                     'section_5_point_4_en' => 'Make Payment',
-                    'section_5_point_4_description_en' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    'section_5_point_4_description_en' => 'Pay securely through our platform.',
                     'section_5_point_5_en' => 'Space is Yours',
-                    'section_5_point_5_description_en' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    'section_5_point_5_description_en' => 'Your space is now reserved and ready.',
 
                     'section_5_title_ar' => 'كيف تتم هذه العملية؟',
                     'section_5_description_ar' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -144,7 +144,7 @@ class AboutContentSeeder extends Seeder
 
                 // Section 7
                     'section_7_title_en' => 'A Note from the Founders',
-                    'section_7_description_en' => '<p>“We started with a simple idea – to provide businesses of all sizes with flexible, scalable warehouse solutions that grow with them. We know firsthand the challenges of finding the right space, and our mission is to make that process seamless, efficient, and tailored to your needs.”</p><p>&nbsp;</p><p>We believe every business, whether it’s just starting or scaling, deserves a space where it can thrive. Our team is committed to your success, and we’re excited to be part of your journey. Let’s build something great together.”</p>',
+                    'section_7_description_en' => '<p>“We started with a simple idea - to provide businesses of all sizes with flexible, scalable warehouse solutions that grow with them. We know firsthand the challenges of finding the right space, and our mission is to make that process seamless, efficient, and tailored to your needs.”</p><p>&nbsp;</p><p>We believe every business, whether it\'s just starting or scaling, deserves a space where it can thrive. Our team is committed to your success, and we\'re excited to be part of your journey. Let\'s build something great together.”</p>',
                     'section_7_signature_en' => 'The Founders Team',
 
                     'section_7_title_ar' => 'ملاحظة من المؤسسين',
@@ -153,7 +153,7 @@ class AboutContentSeeder extends Seeder
                 // Section 7
 
                 // Section 8
-                    'section_8_title_en' => 'Instant Access to Transparent Storage Pricing – Right in Your Inbox Now!',
+                    'section_8_title_en' => 'Instant Access to Transparent Storage Pricing - Right in Your Inbox Now!',
                     'section_8_description_en' => 'Enter your details to receive a straightforward storage price list sent straight to you!',
                     'section_8_name_en' => 'Name',
                     'section_8_name_placeholder_en' => 'Please enter your name',

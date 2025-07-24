@@ -61,7 +61,7 @@
 
                         <div class="mb-5">
                             <label for="message" class="form-label label">{{ $contents->{'message_' . $middleware_language} ?? $contents->message_en }}<span class="asterisk">*</span></label>
-                            <textarea id="message" class="form-control" name="message" rows="5" placeholder="{{ $contents->{'message_placeholder_' . $middleware_language} ?? $contents->message_placeholder_en }}" value="{{ old('message') }}" required>{{ old('message') }}</textarea>
+                            <textarea id="message" class="form-control input-field textarea" name="message" rows="5" placeholder="{{ $contents->{'message_placeholder_' . $middleware_language} ?? $contents->message_placeholder_en }}" value="{{ old('message') }}" required>{{ old('message') }}</textarea>
                             <x-frontend.input-error field="message"></x-frontend.input-error>
                         </div>
 

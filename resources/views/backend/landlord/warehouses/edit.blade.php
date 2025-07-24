@@ -458,4 +458,118 @@
     <script src="{{ asset('backend/js/drag-drop-images.js') }}"></script>
     <script src="{{ asset('backend/js/drag-drop-videos.js') }}"></script>
     <script src="{{ asset('backend/js/google-map.js') }}" data-maps-key="{{ config('services.google_maps.key') }}"></script>
+
+    <script>
+        $(document).on('click', '.delete-button', function() {
+            $(this).closest('.single-item').remove();
+        });
+
+        $('.add-feature-en').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="feature_titles_en[]" placeholder="Title" required>
+                                </div>
+
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="feature_descriptions_en[]" placeholder="Description" required>
+                                </div>
+
+                                <div class="col-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
+        });
+
+        $('.add-feature-ar').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="feature_titles_ar[]" placeholder="Title" required>
+                                </div>
+
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="feature_descriptions_ar[]" placeholder="Description" required>
+                                </div>
+
+                                <div class="col-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
+        });
+
+        $('.add-amenity-en').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="amenity_titles_en[]" placeholder="Title" required>
+                                </div>
+
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="amenity_descriptions_en[]" placeholder="Description" required>
+                                </div>
+
+                                <div class="col-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
+        });
+
+        $('.add-amenity-ar').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="amenity_titles_ar[]" placeholder="Title" required>
+                                </div>
+
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="amenity_descriptions_ar[]" placeholder="Description" required>
+                                </div>
+
+                                <div class="col-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
+        });
+
+        $('.add-detail-en').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="detail_titles_en[]" placeholder="Title" required>
+                                </div>
+
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="detail_descriptions_en[]" placeholder="Description" required>
+                                </div>
+
+                                <div class="col-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
+        });
+
+        $('.add-detail-ar').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="detail_titles_ar[]" placeholder="Title" required>
+                                </div>
+
+                                <div class="col">
+                                    <input type="text" class="form-control input-field" name="detail_descriptions_ar[]" placeholder="Description" required>
+                                </div>
+
+                                <div class="col-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
+        });
+    </script>
 @endpush

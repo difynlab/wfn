@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\HomepageContent;
 use App\Models\Article;
 use App\Models\ArticleCategory;
+use App\Models\StorageType;
 use App\Models\Subscription;
 use App\Models\Warehouse;
 use Illuminate\Support\Facades\Validator;
@@ -33,13 +34,16 @@ class HomepageController extends Controller
         
         $articles = Article::where('status', 1)->whereIn('article_category_id', $article_category_ids)->orderBy('created_at', 'desc')->get()->take(3);
 
+        $storage_types = StorageType::where('status', 1)->orderBy('id', 'desc')->get();
+
         return view('frontend.website.homepage', [
             'contents' => $contents,
             'riyadh_warehouses' => $riyadh_warehouses,
             'jeddah_warehouses' => $jeddah_warehouses,
             'mecca_warehouses' => $mecca_warehouses,
             'medina_warehouses' => $medina_warehouses,
-			'articles' => $articles
+			'articles' => $articles,
+			'storage_types' => $storage_types,
         ]);
     }
 

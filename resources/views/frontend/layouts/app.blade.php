@@ -12,7 +12,6 @@
         @stack('before-styles')
             <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css') }}">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/air-datepicker@3.6.0/air-datepicker.css">
             <link rel="stylesheet" href="{{ asset('frontend/css/select2.css') }}">
             <link rel="stylesheet" href="{{ asset('frontend/css/date-picker-x.css') }}">
             <link rel="stylesheet" href="{{ asset('frontend/css/swiper.css') }}">
@@ -33,8 +32,6 @@
             <script src="{{ asset('frontend/js/swiper.js') }}"></script>
             <script src="{{ asset('frontend/js/select2.js') }}"></script>
             <script src="{{ asset('frontend/js/date-picker-x.js') }}"></script>
-            <script defer src="https://cdn.jsdelivr.net/npm/air-datepicker@3.6.0/air-datepicker.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/air-datepicker@3.6.0/locale/en.js"></script>
             <script src="{{ asset('frontend/js/global.js') }}"></script>
         @stack('after-scripts')
     </body>

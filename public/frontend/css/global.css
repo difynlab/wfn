@@ -45,6 +45,9 @@
     p[data-f-id="pbf"], p[data-f-id="pbf"] a {
         display: none !important;
     }
+    .textarea {
+        height: initial!important;
+    }
 /* #endregion */
 
 

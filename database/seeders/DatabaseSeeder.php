@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             TermsOfUseContentSeeder::class,
             CommonContentSeeder::class,
             WarehouseContentSeeder::class,
+            CompanySeeder::class,
         ]);
     }
 }

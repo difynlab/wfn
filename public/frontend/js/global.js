@@ -66,10 +66,10 @@
             success: function (response) {
                 if(response == true) {
                     $(el).find('i').removeClass('bi-heart');
-                    $(el).find('i').addClass('bi-heart-fill text-danger');
+                    $(el).find('i').addClass('bi-heart-fill');
                 }
                 else {
-                    $(el).find('i').removeClass('bi-heart-fill text-danger');
+                    $(el).find('i').removeClass('bi-heart-fill');
                     $(el).find('i').addClass('bi-heart');
                 }
             },

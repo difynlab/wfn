@@ -190,6 +190,9 @@
     .warehouses .section-3 .warehouse-row .single-warehouse .box .action i {
         margin-right: 5px;
     }
+    .warehouses .section-3 .warehouse-row .single-warehouse .box .action i.bi-heart-fill {
+        color: var(--red);
+    }
     .warehouses .section-3 .warehouse-row .single-warehouse .box .action .dropdown-menu {
         border: none;
         font-size: 15px;

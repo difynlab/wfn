@@ -38,6 +38,8 @@ return new class extends Migration
             $table->text('register_last_name_placeholder_en')->nullable();
             $table->text('register_email_en')->nullable();
             $table->text('register_email_placeholder_en')->nullable();
+            $table->text('register_country_en')->nullable();
+            $table->text('register_country_placeholder_en')->nullable();
             $table->text('register_phone_en')->nullable();
             $table->text('register_phone_placeholder_en')->nullable();
             $table->text('register_city_en')->nullable();
@@ -89,6 +91,8 @@ return new class extends Migration
             $table->text('register_last_name_placeholder_ar')->nullable();
             $table->text('register_email_ar')->nullable();
             $table->text('register_email_placeholder_ar')->nullable();
+            $table->text('register_country_ar')->nullable();
+            $table->text('register_country_placeholder_ar')->nullable();
             $table->text('register_phone_ar')->nullable();
             $table->text('register_phone_placeholder_ar')->nullable();
             $table->text('register_city_ar')->nullable();

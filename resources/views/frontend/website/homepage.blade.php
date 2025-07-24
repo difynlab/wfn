@@ -23,284 +23,90 @@
 
                     <p class="description">{{ $contents->{'section_1_description_' . $middleware_language} ?? $contents->section_1_description_en }}</p>
 
-                    <!-- In future -->
-                        <div class="search-bar" id="searchBar">
+                    <div class="search-bar" id="searchBar">
+                        <form action="{{ route('warehouses.filter') }}" method="GET">
                             <div class="search-inputs">
                                 <div class="search-item">
                                     <p class="search-label">{{ $contents->{'section_1_label_1_' . $middleware_language} ?? $contents->section_1_label_1_en }}</p>
-                                    <input type="text" class="search-input" placeholder="{{ $contents->{'section_1_placeholder_1_' . $middleware_language} ?? $contents->section_1_placeholder_1_en }}">
+                                    <input type="text" class="search-input" placeholder="{{ $contents->{'section_1_placeholder_1_' . $middleware_language} ?? $contents->section_1_placeholder_1_en }}" name="location">
                                 </div>
                                 <div class="divider"></div>
                                 
                                 <div class="search-item">
                                     <p class="search-label">{{ $contents->{'section_1_label_2_' . $middleware_language} ?? $contents->section_1_label_2_en }}</p>
-
-                                    <div class="dropdown">
-                                        <input type="text" class="search-input" placeholder="{{ $contents->{'section_1_placeholder_2_' . $middleware_language} ?? $contents->section_1_placeholder_2_en }}" id="startDateDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-
-                                        <div class="dropdown-menu calendar-dropdown">
-                                            <div class="dropdown-inner">
-                                                <div class="top-row">
-                                                    <div class="legends">
-                                                        <p class="pick-by">Pick by:</p>
-
-                                                        <button class="btn pick-mode">Exact Date</button>
-
-                                                        <button class="btn pick-mode">±1 Day</button>
-
-                                                        <button class="btn pick-mode">±2 Days</button>
-                                                    </div>
-
-                                                    <button class="monthly-reservations">For Monthly Reservations</button>
-                                                </div>
-
-                                                <hr class="dropdown-divider">
-
-                                                <div class="calendars">
-                                                    <div id="start-calendar" class="calendar"></div>
-
-                                                    <div id="end-calendar" class="calendar"></div>
-                                                </div>
-
-                                                <div class="monthly-calendar-view d-none">
-                                                    <p class="monthly-calendar-view-title">Thu, March 1 - Thu, May 1</p>
-
-                                                    <div class="row months-row">
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">January</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">February</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">March</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">April</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">May</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">June</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">July</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">August</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">September</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">October</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">November</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">December</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <input type="text" class="date date-picker-field" id="tenancy_date" name="tenancy_start" placeholder="{{ $contents->{'section_1_placeholder_2_' . $middleware_language} ?? $contents->section_2_placeholder_1_en }}">
                                 </div>
+
                                 <div class="divider"></div>
-                                
-                                <!-- <div class="search-item">
-                                    <p class="search-label">End Date</p>
-                                    <div class="dropdown">
-                                        <input type="text" class="search-input" placeholder="Add dates" id="endDateDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                        
-                                        <div class="dropdown-menu calendar-dropdown">
-                                            <div class="dropdown-inner">
-                                                <div class="top-row">
-                                                    <div class="legends">
-                                                        <p class="pick-by">Pick by:</p>
-
-                                                        <button class="btn pick-mode">Exact Date</button>
-
-                                                        <button class="btn pick-mode">±1 Day</button>
-
-                                                        <button class="btn pick-mode">±2 Days</button>
-                                                    </div>
-
-                                                    <button class="monthly-reservations">For Monthly Reservations</button>
-                                                </div>
-
-                                                <hr class="dropdown-divider">
-
-                                                <div class="calendars">
-                                                    <div id="start-calendar" class="calendar"></div>
-
-                                                    <div id="end-calendar" class="calendar"></div>
-                                                </div>
-
-                                                <div class="monthly-calendar-view">
-                                                    <p class="monthly-calendar-view-title">Thu, March 1 - Thu, May 1</p>
-
-                                                    <div class="row months-row">
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">January</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">February</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">March</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">April</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">May</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">June</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">July</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">August</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">September</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">October</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">November</button>
-                                                        </div>
-
-                                                        <div class="col-3 single-month">
-                                                            <button class="single-month-button">December</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="divider"></div> -->
                                 
                                 <div class="search-item">
                                     <p class="search-label">{{ $contents->{'section_1_label_3_' . $middleware_language} ?? $contents->section_1_label_3_en }}</p>
-                                    <div class="dropdown">
-                                        <a class="search-input dropdown-toggle " id="storageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                            {{ $contents->{'section_1_placeholder_3_' . $middleware_language} ?? $contents->section_1_placeholder_3_en }}
-                                        </a>
+                                    <input type="text" class="date date-picker-field" id="tenancy_date" name="tenancy_end" placeholder="{{ $contents->{'section_1_placeholder_3_' . $middleware_language} ?? $contents->section_1_placeholder_3_en }}">
+                                </div>
 
-                                        <ul class="dropdown-menu warehouse-dropdown">
-                                            <div class="dropdown-inner">
-                                                <p class="dropdown-title">Warehouse Size</p>
+                                <div class="divider"></div>
+                                
+                                <div class="search-item">
+                                    <p class="search-label">{{ $contents->{'section_1_label_4_' . $middleware_language} ?? $contents->section_1_label_4_en }}</p>
 
-                                                <div class="radios">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input check" type="radio">
-                                                        <label class="form-check-label label">Up to 50 Pallets</label>
-                                                    </div>
+                                    <p class="search-input dropdown-toggle" id="filter">
+                                        {{ $contents->{'section_1_placeholder_4_' . $middleware_language} ?? $contents->section_1_placeholder_4_en }}
+                                    </p>
 
-                                                    <div class="form-check">
-                                                        <input class="form-check-input check" type="radio">
-                                                        <label class="form-check-label label">Up to 100 Pallets</label>
-                                                    </div>
+                                    <div class="filters d-none">
+                                        <p class="dropdown-title">{{ $contents->{'section_1_size_' . $middleware_language} ?? $contents->section_1_size_en }}</p>
 
-                                                    <div class="form-check">
-                                                        <input class="form-check-input check" type="radio">
-                                                        <label class="form-check-label label">Up to 200 Pallets</label>
-                                                    </div>
-
-                                                    <div class="form-check">
-                                                        <input class="form-check-input check" type="radio">
-                                                        <label class="form-check-label label">200+ Pallets</label>
-                                                    </div>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input id="50" class="form-check-input check" type="radio" value="50" name="warehouse_size">
+                                                    <label for="50" class="form-check-label label">{{ $contents->{'section_1_size_1_' . $middleware_language} ?? $contents->section_1_size_1_en }}</label>
                                                 </div>
-                                                <hr class="dropdown-divider">
-
-                                                <p class="dropdown-title">Warehouse Storage Type</p>
-
-                                                <div class="checkboxes">
-                                                    <div class="row">
-                                                        <div class="col-4 single-check">
-                                                            <div class="form-check mb-0">
-                                                                <input class="form-check-input check" type="checkbox">
-                                                                <label class="form-check-label label">Dry Storage</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4 single-check">
-                                                            <div class="form-check mb-0">
-                                                                <input class="form-check-input check" type="checkbox">
-                                                                <label class="form-check-label label">Chilled Storage (2°C - 8°C)</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4 single-check">
-                                                            <div class="form-check mb-0">
-                                                                <input class="form-check-input check" type="checkbox">
-                                                                <label class="form-check-label label">Frozen Storage (-18°C or below)</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4 single-check">
-                                                            <div class="form-check mb-0">
-                                                                <input class="form-check-input check" type="checkbox">
-                                                                <label class="form-check-label label">Humidity Controlled</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4 single-check">
-                                                            <div class="form-check mb-0">
-                                                                <input class="form-check-input check" type="checkbox">
-                                                                <label class="form-check-label label">Hazardous Materials Storage</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4 single-check">
-                                                            <div class="form-check mb-0">
-                                                                <input class="form-check-input check" type="checkbox">
-                                                                <label class="form-check-label label">Climate-Controlled Storage</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <button type="button" class="clear-button">Clear All Filters</button>
                                             </div>
-                                        </ul>
+
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input id="50" class="form-check-input check" type="radio" value="50" name="warehouse_size">
+                                                    <label for="50" class="form-check-label label">{{ $contents->{'section_1_size_2_' . $middleware_language} ?? $contents->section_1_size_2_en }}</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input id="50" class="form-check-input check" type="radio" value="50" name="warehouse_size">
+                                                    <label for="50" class="form-check-label label">{{ $contents->{'section_1_size_3_' . $middleware_language} ?? $contents->section_1_size_3_en }}</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input id="50" class="form-check-input check" type="radio" value="50" name="warehouse_size">
+                                                    <label for="50" class="form-check-label label">{{ $contents->{'section_1_size_4_' . $middleware_language} ?? $contents->section_1_size_4_en }}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <hr class="dropdown-divider">
+
+                                        <p class="dropdown-title">{{ $contents->{'section_1_type_' . $middleware_language} ?? $contents->section_1_type_en }}</p>
+
+                                        <div class="row">
+                                            @foreach($storage_types as $storage_type)
+                                                <div class="col-3 single-radio">
+                                                    <div class="form-check">
+                                                        <input id="{{ $storage_type->id }}" class="form-check-input check" type="radio" value="{{ $storage_type->id }}" name="storage_type">
+                                                        <label for="{{ $storage_type->id }}" class="form-check-label label">{{ $storage_type->{'name_' . $middleware_language} ?? $storage_type->name_en }}</label>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
 
                                 <button type="submit" class="search-button"><i class="bi bi-search"></i>{{ $contents->{'section_1_button_' . $middleware_language} ?? $contents->section_1_button_en }}</button>
                             </div>
-                        </div>
-                    <!-- In future -->
+                        </form>
+                    </div>
                 </div>
             </div>
         @endif
@@ -313,25 +119,25 @@
                 <ul class="nav nav-pills" id="pills-tab" role="tablist">
                     @if($riyadh_warehouses->count() > 0)
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="pills-riyadh-tab" data-bs-toggle="pill" data-bs-target="#pills-riyadh" type="button" role="tab" aria-controls="pills-riyadh" aria-selected="true">Riyadh</button>
+                            <button class="nav-link active" id="pills-riyadh-tab" data-bs-toggle="pill" data-bs-target="#pills-riyadh" type="button" role="tab" aria-controls="pills-riyadh" aria-selected="true">{{ $contents->{'section_2_city_1_' . $middleware_language} ?? $contents->section_2_city_1_en }}</button>
                         </li>
                     @endif
 
                     @if($jeddah_warehouses->count() > 0)
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-jeddah-tab" data-bs-toggle="pill" data-bs-target="#pills-jeddah" type="button" role="tab" aria-controls="pills-jeddah" aria-selected="false">Jeddah</button>
+                            <button class="nav-link" id="pills-jeddah-tab" data-bs-toggle="pill" data-bs-target="#pills-jeddah" type="button" role="tab" aria-controls="pills-jeddah" aria-selected="false">{{ $contents->{'section_2_city_2_' . $middleware_language} ?? $contents->section_2_city_2_en }}</button>
                         </li>
                     @endif
 
                     @if($mecca_warehouses->count() > 0)
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-mecca-tab" data-bs-toggle="pill" data-bs-target="#pills-mecca" type="button" role="tab" aria-controls="pills-mecca" aria-selected="false">Mecca</button>
+                            <button class="nav-link" id="pills-mecca-tab" data-bs-toggle="pill" data-bs-target="#pills-mecca" type="button" role="tab" aria-controls="pills-mecca" aria-selected="false">{{ $contents->{'section_2_city_3_' . $middleware_language} ?? $contents->section_2_city_3_en }}</button>
                         </li>
                     @endif
 
                     @if($medina_warehouses->count() > 0)
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-medina-tab" data-bs-toggle="pill" data-bs-target="#pills-medina" type="button" role="tab" aria-controls="pills-medina" aria-selected="false">Medina</button>
+                            <button class="nav-link" id="pills-medina-tab" data-bs-toggle="pill" data-bs-target="#pills-medina" type="button" role="tab" aria-controls="pills-medina" aria-selected="false">{{ $contents->{'section_2_city_4_' . $middleware_language} ?? $contents->section_2_city_4_en }}</button>
                         </li>
                     @endif
                 </ul>
@@ -341,44 +147,79 @@
                         <div class="row">
                             @foreach($riyadh_warehouses as $warehouse)
                                 <div class="col-4">
-                                    <a href="{{ route('warehouses.show', $warehouse) }}">
-                                        <div class="card">
-                                            @if($warehouse->thumbnail)
-                                                <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
-                                            @else
-                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image">
-                                            @endif
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <a href="{{ route('warehouses.show', $warehouse) }}">
+                                                <div class="top">
+                                                    @php
+                                                        $listed_date = $warehouse->created_at->copy()->startOfDay();
+                                                        $today = now()->startOfDay();
+                                                        $date_difference = $listed_date->diffInDays($today, false);
+                                                    @endphp
 
-                                            <div class="card-body">
-                                                <p class="type">{{ $warehouse->storageType->name }}</p>
-
-                                                <p class="title">{{ $warehouse->name }}</p>
-
-                                                <p class="description">Welcome to a premium industrial-grade storage facility located in the bustling commercial corridor of Saudi Arabia.</p>
-
-                                                <p class="location">
-                                                    <i class="bi bi-geo-alt"></i>
-                                                    @if($middleware_language == 'en')
-                                                        {{ $warehouse->address_en }}
+                                                    @if($warehouse->thumbnail)
+                                                        <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
                                                     @else
-                                                        {{ $warehouse->address_ar }}
+                                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image">
                                                     @endif
-                                                </p>
 
-                                                <div class="bottom-box">
-                                                    <div class="row">
-                                                        <div class="col-5">
-                                                            <p class="text">Listed 1 day ago</p>
-                                                        </div>
-                                                        <div class="col-7 text-end">
-                                                            <span class="span-text"><i class="bi bi-share"></i>Share</span>
-                                                            <span class="span-text"><i class="bi bi-flag"></i>Report</span>
-                                                        </div>
+                                                    <p class="type">
+                                                        {{ $warehouse->storageType->{'name_' . $middleware_language} ?? $warehouse->storageType->name_en }}
+                                                    </p>
+
+                                                    <p class="title">
+                                                        {{ $warehouse->{'name_' . $middleware_language} ?? $warehouse->name_en }}
+                                                    </p>
+
+                                                    <p class="description">
+                                                        {{ $warehouse->{'description_' . $middleware_language} ?? $warehouse->description_en }}
+                                                    </p>
+
+                                                    <p class="location">
+                                                        <i class="bi bi-geo-alt"></i>
+                                                        {{ $warehouse->{'city_' . $middleware_language} ?? $warehouse->city_en }}
+                                                    </p>
+                                                </div>
+                                            </a>
+                                            
+                                            <div class="bottom-box">
+                                                <div class="row">
+                                                    <div class="col-5">
+                                                        <p class="text">{{ $contents->{'section_2_listed_' . $middleware_language} ?? $contents->section_2_listed_en }} {{ $date_difference }} {{ $contents->{'section_2_day_ago_' . $middleware_language} ?? $contents->section_2_day_ago_en }}</p>
+                                                    </div>
+                                                    <div class="col-7 text-end">
+                                                        <span class="span-text" data-bs-toggle="dropdown">
+                                                            <i class="bi bi-share"></i>
+                                                            {{ $contents->{'section_2_share_' . $middleware_language} ?? $contents->section_2_share_en }}
+                                                        </span>
+
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on Facebook">
+                                                                    <i class="bi bi-facebook icon"></i> Facebook
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://twitter.com/intent/tweet?url={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on Twitter">
+                                                                    <i class="bi bi-twitter icon"></i> Twitter
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on LinkedIn">
+                                                                    <i class="bi bi-linkedin icon"></i> LinkedIn
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://wa.me/?text={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on WhatsApp">
+                                                                    <i class="bi bi-whatsapp icon"></i> WhatsApp
+                                                                </a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
@@ -388,44 +229,79 @@
                         <div class="row">
                             @foreach($jeddah_warehouses as $warehouse)
                                 <div class="col-4">
-                                    <a href="{{ route('warehouses.show', $warehouse) }}">
-                                        <div class="card">
-                                            @if($warehouse->thumbnail)
-                                                <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
-                                            @else
-                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image">
-                                            @endif
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <a href="{{ route('warehouses.show', $warehouse) }}">
+                                                <div class="top">
+                                                    @php
+                                                        $listed_date = $warehouse->created_at->copy()->startOfDay();
+                                                        $today = now()->startOfDay();
+                                                        $date_difference = $listed_date->diffInDays($today, false);
+                                                    @endphp
 
-                                            <div class="card-body">
-                                                <p class="type">{{ $warehouse->storageType->name }}</p>
-
-                                                <p class="title">{{ $warehouse->name }}</p>
-
-                                                <p class="description">Welcome to a premium industrial-grade storage facility located in the bustling commercial corridor of Saudi Arabia.</p>
-
-                                                <p class="location">
-                                                    <i class="bi bi-geo-alt"></i>
-                                                    @if($middleware_language == 'en')
-                                                        {{ $warehouse->address_en }}
+                                                    @if($warehouse->thumbnail)
+                                                        <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
                                                     @else
-                                                        {{ $warehouse->address_ar }}
+                                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image">
                                                     @endif
-                                                </p>
-                                                
-                                                <div class="bottom-box">
-                                                    <div class="row">
-                                                        <div class="col-5">
-                                                            <p class="text">Listed 1 day ago</p>
-                                                        </div>
-                                                        <div class="col-7 text-end">
-                                                            <span class="span-text"><i class="bi bi-share"></i>Share</span>
-                                                            <span class="span-text"><i class="bi bi-flag"></i>Report</span>
-                                                        </div>
+
+                                                    <p class="type">
+                                                        {{ $warehouse->storageType->{'name_' . $middleware_language} ?? $warehouse->storageType->name_en }}
+                                                    </p>
+
+                                                    <p class="title">
+                                                        {{ $warehouse->{'name_' . $middleware_language} ?? $warehouse->name_en }}
+                                                    </p>
+
+                                                    <p class="description">
+                                                        {{ $warehouse->{'description_' . $middleware_language} ?? $warehouse->description_en }}
+                                                    </p>
+
+                                                    <p class="location">
+                                                        <i class="bi bi-geo-alt"></i>
+                                                        {{ $warehouse->{'city_' . $middleware_language} ?? $warehouse->city_en }}
+                                                    </p>
+                                                </div>
+                                            </a>
+                                            
+                                            <div class="bottom-box">
+                                                <div class="row">
+                                                    <div class="col-5">
+                                                        <p class="text">{{ $contents->{'section_2_listed_' . $middleware_language} ?? $contents->section_2_listed_en }} {{ $date_difference }} {{ $contents->{'section_2_day_ago_' . $middleware_language} ?? $contents->section_2_day_ago_en }}</p>
+                                                    </div>
+                                                    <div class="col-7 text-end">
+                                                        <span class="span-text" data-bs-toggle="dropdown">
+                                                            <i class="bi bi-share"></i>
+                                                            {{ $contents->{'section_2_share_' . $middleware_language} ?? $contents->section_2_share_en }}
+                                                        </span>
+
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on Facebook">
+                                                                    <i class="bi bi-facebook icon"></i> Facebook
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://twitter.com/intent/tweet?url={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on Twitter">
+                                                                    <i class="bi bi-twitter icon"></i> Twitter
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on LinkedIn">
+                                                                    <i class="bi bi-linkedin icon"></i> LinkedIn
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://wa.me/?text={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on WhatsApp">
+                                                                    <i class="bi bi-whatsapp icon"></i> WhatsApp
+                                                                </a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
@@ -435,44 +311,79 @@
                         <div class="row">
                             @foreach($mecca_warehouses as $warehouse)
                                 <div class="col-4">
-                                    <a href="{{ route('warehouses.show', $warehouse) }}">
-                                        <div class="card">
-                                            @if($warehouse->thumbnail)
-                                                <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
-                                            @else
-                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image">
-                                            @endif
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <a href="{{ route('warehouses.show', $warehouse) }}">
+                                                <div class="top">
+                                                    @php
+                                                        $listed_date = $warehouse->created_at->copy()->startOfDay();
+                                                        $today = now()->startOfDay();
+                                                        $date_difference = $listed_date->diffInDays($today, false);
+                                                    @endphp
 
-                                            <div class="card-body">
-                                                <p class="type">{{ $warehouse->storageType->name }}</p>
-
-                                                <p class="title">{{ $warehouse->name }}</p>
-
-                                                <p class="description">Welcome to a premium industrial-grade storage facility located in the bustling commercial corridor of Saudi Arabia.</p>
-
-                                                <p class="location">
-                                                    <i class="bi bi-geo-alt"></i>
-                                                    @if($middleware_language == 'en')
-                                                        {{ $warehouse->address_en }}
+                                                    @if($warehouse->thumbnail)
+                                                        <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
                                                     @else
-                                                        {{ $warehouse->address_ar }}
+                                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image">
                                                     @endif
-                                                </p>
-                                                
-                                                <div class="bottom-box">
-                                                    <div class="row">
-                                                        <div class="col-5">
-                                                            <p class="text">Listed 1 day ago</p>
-                                                        </div>
-                                                        <div class="col-7 text-end">
-                                                            <span class="span-text"><i class="bi bi-share"></i>Share</span>
-                                                            <span class="span-text"><i class="bi bi-flag"></i>Report</span>
-                                                        </div>
+
+                                                    <p class="type">
+                                                        {{ $warehouse->storageType->{'name_' . $middleware_language} ?? $warehouse->storageType->name_en }}
+                                                    </p>
+
+                                                    <p class="title">
+                                                        {{ $warehouse->{'name_' . $middleware_language} ?? $warehouse->name_en }}
+                                                    </p>
+
+                                                    <p class="description">
+                                                        {{ $warehouse->{'description_' . $middleware_language} ?? $warehouse->description_en }}
+                                                    </p>
+
+                                                    <p class="location">
+                                                        <i class="bi bi-geo-alt"></i>
+                                                        {{ $warehouse->{'city_' . $middleware_language} ?? $warehouse->city_en }}
+                                                    </p>
+                                                </div>
+                                            </a>
+                                            
+                                            <div class="bottom-box">
+                                                <div class="row">
+                                                    <div class="col-5">
+                                                        <p class="text">{{ $contents->{'section_2_listed_' . $middleware_language} ?? $contents->section_2_listed_en }} {{ $date_difference }} {{ $contents->{'section_2_day_ago_' . $middleware_language} ?? $contents->section_2_day_ago_en }}</p>
+                                                    </div>
+                                                    <div class="col-7 text-end">
+                                                        <span class="span-text" data-bs-toggle="dropdown">
+                                                            <i class="bi bi-share"></i>
+                                                            {{ $contents->{'section_2_share_' . $middleware_language} ?? $contents->section_2_share_en }}
+                                                        </span>
+
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on Facebook">
+                                                                    <i class="bi bi-facebook icon"></i> Facebook
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://twitter.com/intent/tweet?url={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on Twitter">
+                                                                    <i class="bi bi-twitter icon"></i> Twitter
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on LinkedIn">
+                                                                    <i class="bi bi-linkedin icon"></i> LinkedIn
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://wa.me/?text={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on WhatsApp">
+                                                                    <i class="bi bi-whatsapp icon"></i> WhatsApp
+                                                                </a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
@@ -482,44 +393,79 @@
                         <div class="row">
                             @foreach($medina_warehouses as $warehouse)
                                 <div class="col-4">
-                                    <a href="{{ route('warehouses.show', $warehouse) }}">
-                                        <div class="card">
-                                            @if($warehouse->thumbnail)
-                                                <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
-                                            @else
-                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image">
-                                            @endif
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <a href="{{ route('warehouses.show', $warehouse) }}">
+                                                <div class="top">
+                                                    @php
+                                                        $listed_date = $warehouse->created_at->copy()->startOfDay();
+                                                        $today = now()->startOfDay();
+                                                        $date_difference = $listed_date->diffInDays($today, false);
+                                                    @endphp
 
-                                            <div class="card-body">
-                                                <p class="type">{{ $warehouse->storageType->name }}</p>
-
-                                                <p class="title">{{ $warehouse->name }}</p>
-
-                                                <p class="description">Welcome to a premium industrial-grade storage facility located in the bustling commercial corridor of Saudi Arabia.</p>
-
-                                                <p class="location">
-                                                    <i class="bi bi-geo-alt"></i>
-                                                    @if($middleware_language == 'en')
-                                                        {{ $warehouse->address_en }}
+                                                    @if($warehouse->thumbnail)
+                                                        <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
                                                     @else
-                                                        {{ $warehouse->address_ar }}
+                                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image">
                                                     @endif
-                                                </p>
-                                                
-                                                <div class="bottom-box">
-                                                    <div class="row">
-                                                        <div class="col-5">
-                                                            <p class="text">Listed 1 day ago</p>
-                                                        </div>
-                                                        <div class="col-7 text-end">
-                                                            <span class="span-text"><i class="bi bi-share"></i>Share</span>
-                                                            <span class="span-text"><i class="bi bi-flag"></i>Report</span>
-                                                        </div>
+
+                                                    <p class="type">
+                                                        {{ $warehouse->storageType->{'name_' . $middleware_language} ?? $warehouse->storageType->name_en }}
+                                                    </p>
+
+                                                    <p class="title">
+                                                        {{ $warehouse->{'name_' . $middleware_language} ?? $warehouse->name_en }}
+                                                    </p>
+
+                                                    <p class="description">
+                                                        {{ $warehouse->{'description_' . $middleware_language} ?? $warehouse->description_en }}
+                                                    </p>
+
+                                                    <p class="location">
+                                                        <i class="bi bi-geo-alt"></i>
+                                                        {{ $warehouse->{'city_' . $middleware_language} ?? $warehouse->city_en }}
+                                                    </p>
+                                                </div>
+                                            </a>
+                                            
+                                            <div class="bottom-box">
+                                                <div class="row">
+                                                    <div class="col-5">
+                                                        <p class="text">{{ $contents->{'section_2_listed_' . $middleware_language} ?? $contents->section_2_listed_en }} {{ $date_difference }} {{ $contents->{'section_2_day_ago_' . $middleware_language} ?? $contents->section_2_day_ago_en }}</p>
+                                                    </div>
+                                                    <div class="col-7 text-end">
+                                                        <span class="span-text" data-bs-toggle="dropdown">
+                                                            <i class="bi bi-share"></i>
+                                                            {{ $contents->{'section_2_share_' . $middleware_language} ?? $contents->section_2_share_en }}
+                                                        </span>
+
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on Facebook">
+                                                                    <i class="bi bi-facebook icon"></i> Facebook
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://twitter.com/intent/tweet?url={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on Twitter">
+                                                                    <i class="bi bi-twitter icon"></i> Twitter
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on LinkedIn">
+                                                                    <i class="bi bi-linkedin icon"></i> LinkedIn
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="https://wa.me/?text={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on WhatsApp">
+                                                                    <i class="bi bi-whatsapp icon"></i> WhatsApp
+                                                                </a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
@@ -733,61 +679,8 @@
 
 @push('after-scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const dropdownToggle = document.getElementById('startDateDropdown');
-            new bootstrap.Dropdown(dropdownToggle, { autoClose: 'outside' });
-
-            const today = new Date();
-            const nextMonthFirst = new Date(today.getFullYear(), today.getMonth() + 1, 1);
-
-
-            const localeEn = {
-                days:['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
-                daysShort:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-                daysMin:['Mo','Tu','We','Th','Fr','Sa','Su'],
-                months:['January','February','March','April','May','June',
-                        'July','August','September','October','November','December'],
-                monthsShort:['Jan','Feb','Mar','Apr','May','Jun','Jul',
-                            'Aug','Sep','Oct','Nov','Dec'],
-                today:'Today', clear:'Clear', dateFormat:'yyyy-MM-dd', firstDay:0
-            };
-
-
-            new AirDatepicker('#start-calendar', {
-                inline    : true,
-                startDate : today,
-                minDate   : today,
-                showOtherMonths: false,
-                dateFormat: 'yyyy-MM-dd',
-                locale    : localeEn,
-                onSelect({ date, formattedDate }) {
-                    console.log('Selected date:', formattedDate);
-                    // You can also send this to a hidden input, an AJAX call, etc.
-                }
-            });
-
-            new AirDatepicker('#end-calendar', {
-                inline    : true,
-                startDate : nextMonthFirst,
-                minDate   : nextMonthFirst,
-                showOtherMonths: false,
-                dateFormat: 'yyyy-MM-dd',
-                locale    : localeEn,
-                onSelect({ date, formattedDate }) {
-                    console.log('Selected date:', formattedDate);
-                    // You can also send this to a hidden input, an AJAX call, etc.
-                }
-            });
-        });
-
-        $('.monthly-reservations').on('click', function() {
-            $('.monthly-calendar-view').removeClass('d-none');
-            $('.calendars').addClass('d-none');
-        });
-
-        $('.pick-mode').on('click', function() {
-            $('.monthly-calendar-view').addClass('d-none');
-            $('.calendars').removeClass('d-none');
+        $('#filter').on('click', function() {
+            $('.filters').toggleClass('d-none');
         });
     </script>
 @endpush

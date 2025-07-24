@@ -58,9 +58,9 @@
                 </div>
 
                 <div class="col-12 mb-3 mb-md-0 col-md-6">
-                    <label class="form-label label">Country<span class="asterisk">*</span></label>
+                    <label class="form-label label">{{ $contents->{'register_country_' . $middleware_language} ?? $contents->register_country_en }}<span class="asterisk">*</span></label>
                     <select class="form-select js-single input-field" id="country" name="country" required>
-                        <option value="">Select country</option>
+                        <option value="">{{ $contents->{'register_country_placeholder_' . $middleware_language} ?? $contents->register_country_placeholder_en }}</option>
                         @foreach($countries as $country)
                             <option value="{{ $country }}" {{ old('country') == $country ? 'selected' : '' }}>{{ $country }}</option>
                         @endforeach

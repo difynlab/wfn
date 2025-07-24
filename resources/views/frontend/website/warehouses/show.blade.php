@@ -119,16 +119,49 @@
                             </div>
                         </div>
          
-                        <!-- In future -->
-                            <div class="col-4 right">
-                                <!-- <i class="bi bi-heart" ></i> -->
-                                <!-- <i class="bi bi-chat-left"></i> -->
-                                <span class="action" onClick="favoriteToggle({{ auth()->user()->id }}, {{ $warehouse->id }}, '{{ route('warehouses.favorite') }}', {{ isFavorite(auth()->user()->id, $warehouse->id) ? 1 : 0 }}, this)">
-                                    <i class="bi {{ isFavorite(auth()->user()->id, $warehouse->id) ? 'bi-heart-fill text-danger' : 'bi-heart' }}"></i>
-                                </span>
-                                <p class="expert">{{ $contents->{'inner_page_section_2_talk_to_expert_' . $middleware_language} ?? $contents->inner_page_section_2_talk_to_expert_en }}</p>
+                        <div class="col-4 right">
+                            <span onClick="favoriteToggle({{ auth()->user()->id }}, {{ $warehouse->id }}, '{{ route('warehouses.favorite') }}', {{ isFavorite(auth()->user()->id, $warehouse->id) ? 1 : 0 }}, this)">
+                                <i class="bi {{ isFavorite(auth()->user()->id, $warehouse->id) ? 'bi-heart-fill' : 'bi-heart' }}"></i>
+                            </span>
+                            
+                            <p class="expert" data-bs-toggle="modal" data-bs-target="#expert-modal">{{ $contents->{'inner_page_section_2_talk_to_expert_' . $middleware_language} ?? $contents->inner_page_section_2_talk_to_expert_en }}</p>
+
+                            <div class="modal fade expert-modal" id="expert-modal">
+                                <div class="modal-dialog modal-lg modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="modal-title">{{ $contents->{'inner_page_expert_modal_title_' . $middleware_language} ?? $contents->inner_page_expert_modal_title_en }}</p>
+                                            <p class="modal-description">{{ $contents->{'inner_page_expert_modal_description_' . $middleware_language} ?? $contents->inner_page_expert_modal_description_en }}</p>
+
+                                            <form action="{{ route('warehouses.expert') }}" method="POST">
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-12 mb-4">
+                                                        <label for="subject" class="form-label label">{{ $contents->{'inner_page_expert_modal_subject_' . $middleware_language} ?? $contents->inner_page_expert_modal_subject_en }}<span class="asterisk">*</span></label>
+                                                        <input type="text" id="subject" class="form-control input-field" name="subject" placeholder="{{ $contents->{'inner_page_expert_modal_subject_placeholder_' . $middleware_language} ?? $contents->inner_page_expert_modal_subject_placeholder_en }}" value="{{ old('subject') }}" required>
+                                                        <x-frontend.input-error field="subject"></x-frontend.input-error>
+                                                    </div>
+
+                                                    <div class="col-12 mb-4">
+                                                        <label for="message" class="form-label label">{{ $contents->{'inner_page_expert_modal_message_' . $middleware_language} ?? $contents->inner_page_expert_modal_message_en }}<span class="asterisk">*</span></label>
+                                                        <textarea id="message" class="form-control input-field textarea" name="message" rows="5" placeholder="{{ $contents->{'inner_page_expert_modal_message_placeholder_' . $middleware_language} ?? $contents->inner_page_expert_modal_message_placeholder_en }}" value="{{ old('message') }}" required>{{ old('message') }}</textarea>
+                                                        <x-frontend.input-error field="message"></x-frontend.input-error>
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <input type="hidden" name="warehouse" value="{{ $warehouse->id }}">
+                                                        <button type="submit" class="confirm-button">{{ $contents->{'inner_page_expert_modal_button_' . $middleware_language} ?? $contents->inner_page_expert_modal_button_en }}</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        <!-- In future -->
+                        </div>
                     </div>
 
                     <div class="row title-row">
@@ -194,13 +227,6 @@
 
                         <p class="note">{{ $contents->{'inner_page_section_2_note_' . $middleware_language} ?? $contents->inner_page_section_2_note_en }}</p>
                     </div>
-                    
-                    <!-- In future -->
-                        <p class="report-link" data-bs-toggle="modal" data-bs-target="#report-modal">
-                            <i class="bi bi-flag"></i>
-                            <span>{{ $contents->{'inner_page_section_2_report_listing_' . $middleware_language} ?? $contents->inner_page_section_2_report_listing_en }}</span>
-                        </p>
-                    <!-- In future -->
 
                     <div class="modal fade booking-modal" id="booking-modal">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -261,6 +287,41 @@
 
                                         <input type="hidden" name="warehouse_id" value="{{ $warehouse->id }}">
                                         <button type="submit" class="confirm-button">{{ $contents->{'inner_page_modal_button_' . $middleware_language} ?? $contents->inner_page_modal_button_en }}</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="report-link" data-bs-toggle="modal" data-bs-target="#report-modal">
+                        <i class="bi bi-flag"></i>
+                        <span>{{ $contents->{'inner_page_section_2_report_listing_' . $middleware_language} ?? $contents->inner_page_section_2_report_listing_en }}</span>
+                    </p>
+
+                    <div class="modal fade report-modal" id="report-modal">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="modal-title">{{ $contents->{'inner_page_report_modal_title_' . $middleware_language} ?? $contents->inner_page_report_modal_title_en }}</p>
+                                    <p class="modal-description">{{ $contents->{'inner_page_report_modal_description_' . $middleware_language} ?? $contents->inner_page_report_modal_description_en }}</p>
+
+                                    <form action="{{ route('warehouses.report') }}" method="POST">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-12 mb-4">
+                                                <label for="reason" class="form-label label">{{ $contents->{'inner_page_report_modal_reason_' . $middleware_language} ?? $contents->inner_page_report_modal_reason_en }}<span class="asterisk">*</span></label>
+                                                <textarea id="reason" class="form-control input-field textarea" name="reason" rows="5" placeholder="{{ $contents->{'inner_page_report_modal_reason_placeholder_' . $middleware_language} ?? $contents->inner_page_report_modal_reason_placeholder_en }}" value="{{ old('reason') }}" required>{{ old('reason') }}</textarea>
+                                                <x-frontend.input-error field="reason"></x-frontend.input-error>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <input type="hidden" name="warehouse" value="{{ $warehouse->id }}">
+                                                <button type="submit" class="confirm-button">{{ $contents->{'inner_page_report_modal_button_' . $middleware_language} ?? $contents->inner_page_report_modal_button_en }}</button>
+                                            </div>
+                                        </div>
                                     </form>
                                 </div>
                             </div>

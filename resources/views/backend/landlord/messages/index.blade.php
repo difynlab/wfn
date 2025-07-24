@@ -54,7 +54,12 @@
 
                                     <a href="{{ route('landlord.messages.edit', $item->id) }}"><p class="name">{{ $item->name }}</p></a>
 
-                                    <a href="{{ route('landlord.messages.edit', $item->id) }}"><p class="message-content">{{ $item->subject }} - {{ $item->initial_message }}</p></a>
+                                    <a href="{{ route('landlord.messages.edit', $item->id) }}"><p class="message-content">
+                                        {{ $item->subject }}
+                                        @if($item->warehouse)
+                                            ({{ App\Models\Warehouse::find($item->warehouse)->name_en }})
+                                        @endif
+                                        - {{ $item->initial_message }}</p></a>
 
                                     <a href="{{ route('landlord.messages.edit', $item->id) }}" class="ms-auto"><p class="date-time">{{ $item->time }}</p></a>
                                 </div>

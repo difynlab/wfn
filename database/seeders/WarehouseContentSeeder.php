@@ -35,7 +35,7 @@ class WarehouseContentSeeder extends Seeder
                 'section_3_day_ago_en' => 'day ago',
                 'section_3_like_en' => 'Like',
                 'section_3_share_en' => 'Share',
-                'section_3_report_en' => 'Report',
+                // 'section_3_report_en' => 'Report',
                 'section_3_popular_en' => 'Popular Warehouses',
                 'section_3_top_rated_en' => 'Top-Rated Warehouses',
                 'section_4_title_en' => 'More available warehouses in the same area',
@@ -67,6 +67,20 @@ class WarehouseContentSeeder extends Seeder
                 'inner_page_modal_no_of_pallets_en' => 'No of Pallets',
                 'inner_page_modal_button_en' => 'Confirm',
 
+                'inner_page_expert_modal_title_en' => 'Talk to an Expert',
+                'inner_page_expert_modal_description_en' => 'Our expert is ready to help with anything you need. Just let us know.',
+                'inner_page_expert_modal_subject_en' => 'Subject',
+                'inner_page_expert_modal_subject_placeholder_en' => 'Please enter your subject',
+                'inner_page_expert_modal_message_en' => 'Message',
+                'inner_page_expert_modal_message_placeholder_en' => 'Please enter your message',
+                'inner_page_expert_modal_button_en' => 'Send Now',
+
+                'inner_page_report_modal_title_en' => 'Report this Warehouse',
+                'inner_page_report_modal_description_en' => 'Let us know the reason for your reporting.',
+                'inner_page_report_modal_reason_en' => 'Reason',
+                'inner_page_report_modal_reason_placeholder_en' => 'Please enter your reason',
+                'inner_page_report_modal_button_en' => 'Submit',
+
                 // Arabic fields
                 'page_name_ar' => 'المستودعات',
                 'section_1_title_ar' => 'ابدأ بحثك هنا',
@@ -89,7 +103,7 @@ class WarehouseContentSeeder extends Seeder
                 'section_3_day_ago_ar' => 'منذ يوم',
                 'section_3_like_ar' => 'يحب',
                 'section_3_share_ar' => 'يشارك',
-                'section_3_report_ar' => 'تقرير',
+                // 'section_3_report_ar' => 'تقرير',
                 'section_3_popular_ar' => 'المستودعات الشعبية',
                 'section_3_top_rated_ar' => 'أفضل المستودعات تقييمًا',
                 'section_4_title_ar' => 'مزيد من المستودعات المتاحة في نفس المنطقة',
@@ -120,6 +134,20 @@ class WarehouseContentSeeder extends Seeder
                 'inner_page_modal_tenure_end_date_ar' => 'تاريخ انتهاء المدة',
                 'inner_page_modal_no_of_pallets_ar' => 'عدد المنصات',
                 'inner_page_modal_button_ar' => 'يتأكد',
+
+                'inner_page_expert_modal_title_ar' => 'تحدث إلى خبير',
+                'inner_page_expert_modal_description_ar' => 'خبيرنا جاهز لمساعدتك في أي شيء تحتاجه. فقط أخبرنا.',
+                'inner_page_expert_modal_subject_ar' => 'موضوع',
+                'inner_page_expert_modal_subject_placeholder_ar' => 'الرجاء إدخال موضوعك',
+                'inner_page_expert_modal_message_ar' => 'رسالة',
+                'inner_page_expert_modal_message_placeholder_ar' => 'الرجاء إدخال رسالتك',
+                'inner_page_expert_modal_button_ar' => 'أرسل الآن',
+
+                'inner_page_report_modal_title_ar' => 'الإبلاغ عن هذا المستودع',
+                'inner_page_report_modal_description_ar' => 'أخبرنا عن سبب إبلاغك.',
+                'inner_page_report_modal_reason_ar' => 'سبب',
+                'inner_page_report_modal_reason_placeholder_ar' => 'الرجاء إدخال السبب الخاص بك',
+                'inner_page_report_modal_button_ar' => 'يُقدِّم',
             ]
         ];
 

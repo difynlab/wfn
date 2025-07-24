@@ -135,10 +135,10 @@
                         <input type="text" class="form-control input-field" id="section_3_share_{{ $short_code }}" name="section_3_share_{{ $short_code }}" value="{{ $contents->{'section_3_share_' . $short_code} ?? '' }}" placeholder="Share">
                     </div>
 
-                    <div class="col-6 mb-4">
+                    <!-- <div class="col-6 mb-4">
                         <label for="section_3_report_{{ $short_code }}" class="form-label label">Report</label>
                         <input type="text" class="form-control input-field" id="section_3_report_{{ $short_code }}" name="section_3_report_{{ $short_code }}" value="{{ $contents->{'section_3_report_' . $short_code} ?? '' }}" placeholder="Report">
-                    </div>
+                    </div> -->
 
                     <div class="col-6">
                         <label for="section_3_popular_{{ $short_code }}" class="form-label label">Popular</label>
@@ -284,7 +284,7 @@
             </div>
 
             <div class="section mb-4">
-                <p class="inner-page-title">Inner Page Modal</p>
+                <p class="inner-page-title">Inner Page Booking Modal</p>
 
                 <div class="row">
                     <div class="col-6 mb-4">
@@ -325,6 +325,78 @@
                     <div class="col-6">
                         <label for="inner_page_modal_button_{{ $short_code }}" class="form-label label">Button</label>
                         <input type="text" class="form-control input-field" id="inner_page_modal_button_{{ $short_code }}" name="inner_page_modal_button_{{ $short_code }}" value="{{ $contents->{'inner_page_modal_button_' . $short_code} ?? '' }}" placeholder="Button">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section mb-4">
+                <p class="inner-page-title">Inner Page Expert Modal</p>
+
+                <div class="row">
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_expert_modal_title_{{ $short_code }}" class="form-label label">Title</label>
+                        <input type="text" class="form-control input-field" id="inner_page_expert_modal_title_{{ $short_code }}" name="inner_page_expert_modal_title_{{ $short_code }}" value="{{ $contents->{'inner_page_expert_modal_title_' . $short_code} ?? '' }}" placeholder="Title">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_expert_modal_description_{{ $short_code }}" class="form-label label">Description</label>
+                        <input type="text" class="form-control input-field" id="inner_page_expert_modal_description_{{ $short_code }}" name="inner_page_expert_modal_description_{{ $short_code }}" value="{{ $contents->{'inner_page_expert_modal_description_' . $short_code} ?? '' }}" placeholder="Description">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_expert_modal_subject_{{ $short_code }}" class="form-label label">Subject</label>
+                        <input type="text" class="form-control input-field" id="inner_page_expert_modal_subject_{{ $short_code }}" name="inner_page_expert_modal_subject_{{ $short_code }}" value="{{ $contents->{'inner_page_expert_modal_subject_' . $short_code} ?? '' }}" placeholder="Subject">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_expert_modal_subject_placeholder_{{ $short_code }}" class="form-label label">Subject Placeholder</label>
+                        <input type="text" class="form-control input-field" id="inner_page_expert_modal_subject_placeholder_{{ $short_code }}" name="inner_page_expert_modal_subject_placeholder_{{ $short_code }}" value="{{ $contents->{'inner_page_expert_modal_subject_placeholder_' . $short_code} ?? '' }}" placeholder="Subject Placeholder">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_expert_modal_message_{{ $short_code }}" class="form-label label">Message</label>
+                        <input type="text" class="form-control input-field" id="inner_page_expert_modal_message_{{ $short_code }}" name="inner_page_expert_modal_message_{{ $short_code }}" value="{{ $contents->{'inner_page_expert_modal_message_' . $short_code} ?? '' }}" placeholder="Message">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_expert_modal_message_placeholder_{{ $short_code }}" class="form-label label">Message Placeholder</label>
+                        <input type="text" class="form-control input-field" id="inner_page_expert_modal_message_placeholder_{{ $short_code }}" name="inner_page_expert_modal_message_placeholder_{{ $short_code }}" value="{{ $contents->{'inner_page_expert_modal_message_placeholder_' . $short_code} ?? '' }}" placeholder="Message Placeholder">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="inner_page_expert_modal_button_{{ $short_code }}" class="form-label label">Button</label>
+                        <input type="text" class="form-control input-field" id="inner_page_expert_modal_button_{{ $short_code }}" name="inner_page_expert_modal_button_{{ $short_code }}" value="{{ $contents->{'inner_page_expert_modal_button_' . $short_code} ?? '' }}" placeholder="Button">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section mb-4">
+                <p class="inner-page-title">Inner Page Report Modal</p>
+
+                <div class="row">
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_report_modal_title_{{ $short_code }}" class="form-label label">Title</label>
+                        <input type="text" class="form-control input-field" id="inner_page_report_modal_title_{{ $short_code }}" name="inner_page_report_modal_title_{{ $short_code }}" value="{{ $contents->{'inner_page_report_modal_title_' . $short_code} ?? '' }}" placeholder="Title">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_report_modal_description_{{ $short_code }}" class="form-label label">Description</label>
+                        <input type="text" class="form-control input-field" id="inner_page_report_modal_description_{{ $short_code }}" name="inner_page_report_modal_description_{{ $short_code }}" value="{{ $contents->{'inner_page_report_modal_description_' . $short_code} ?? '' }}" placeholder="Description">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_report_modal_reason_{{ $short_code }}" class="form-label label">Reason</label>
+                        <input type="text" class="form-control input-field" id="inner_page_report_modal_reason_{{ $short_code }}" name="inner_page_report_modal_reason_{{ $short_code }}" value="{{ $contents->{'inner_page_report_modal_reason_' . $short_code} ?? '' }}" placeholder="Reason">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="inner_page_report_modal_reason_placeholder_{{ $short_code }}" class="form-label label">Reason Placeholder</label>
+                        <input type="text" class="form-control input-field" id="inner_page_report_modal_reason_placeholder_{{ $short_code }}" name="inner_page_report_modal_reason_placeholder_{{ $short_code }}" value="{{ $contents->{'inner_page_report_modal_reason_placeholder_' . $short_code} ?? '' }}" placeholder="Reason Placeholder">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="inner_page_report_modal_button_{{ $short_code }}" class="form-label label">Button</label>
+                        <input type="text" class="form-control input-field" id="inner_page_report_modal_button_{{ $short_code }}" name="inner_page_report_modal_button_{{ $short_code }}" value="{{ $contents->{'inner_page_report_modal_button_' . $short_code} ?? '' }}" placeholder="Button">
                     </div>
                 </div>
             </div>

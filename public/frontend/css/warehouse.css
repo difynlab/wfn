@@ -140,6 +140,10 @@
         font-size: 20px;
         color: var(--red);
         font-weight: 500;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
     }
     .warehouse .section-2 .title-row {
         margin-bottom: 25px;
@@ -475,19 +479,32 @@
 /* #endregion */
 
 
-/* #region Booking modal */
-    .warehouse .booking-modal .modal-title {
+/* #region Modal */
+    .warehouse .booking-modal .modal-title, .warehouse .expert-modal .modal-title, .warehouse .report-modal .modal-title {
         font-size: 24px;
         font-weight: 600;
         text-align: center;
         margin-bottom: 5px!important;
         color: var(--light_black);
     }
-    .warehouse .booking-modal .modal-description {
+    .warehouse .booking-modal .modal-description, .warehouse .expert-modal .modal-description, .warehouse .report-modal .modal-description {
         font-size: 16px;
         text-align: center;
         margin-bottom: 25px!important;
         color: var(--gray);
+    }
+    .warehouse .expert-modal .input-field, .warehouse .report-modal .input-field {
+        border: 1px solid var(--input_border);
+        border-radius: 4px;
+        height: 50px;
+        font-size: 14px;
+        color: var(--medium_gray);
+    }
+    .warehouse .expert-modal .label, .warehouse .report-modal .label {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--light_black);
+        margin-bottom: 10px !important;
     }
     .warehouse .booking-modal .property {
         display: flex;
@@ -566,7 +583,7 @@
             outline: none;
         }
     }
-    .warehouse .booking-modal .confirm-button {
+    .warehouse .booking-modal .confirm-button, .warehouse .expert-modal .confirm-button, .warehouse .report-modal .confirm-button {
         width: 200px;
         height: 50px;
         display: flex;
