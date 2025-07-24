@@ -41,6 +41,7 @@ Route::middleware(['language'])->group(function () {
 
         Route::prefix('warehouses')->name('warehouses.')->group(function() {
             Route::get('areas/{area}', [WarehouseController::class, 'area'])->name('area');
+            Route::post('favorite', [WarehouseController::class, 'favorite'])->name('favorite');
         });
 
         Route::get('privacy-policy', [PrivacyPolicyController::class, 'index'])->name('privacy-policy');

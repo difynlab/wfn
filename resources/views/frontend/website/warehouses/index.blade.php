@@ -157,25 +157,48 @@
                                                 {{ $contents->{'section_3_day_ago_' . $middleware_language} ?? $contents->section_3_day_ago_en }}
                                             </p>
                                         </div>
+                                      
+                                        <div class="col-6 text-end">
+                                            <span onClick="favoriteToggle({{ auth()->user()->id }}, {{ $warehouse->id }}, '{{ route('warehouses.favorite') }}', {{ isFavorite(auth()->user()->id, $warehouse->id) ? 1 : 0 }}, this)">
+                                                <i class="bi {{ isFavorite(auth()->user()->id, $warehouse->id) ? 'bi-heart-fill text-danger' : 'bi-heart' }}"></i>
+                                                {{ $contents->{'section_3_like_' . $middleware_language} ?? $contents->section_3_like_en }}
+                                            </span>
 
-                                        <!-- In future -->
-                                            <div class="col-6 text-end">
-                                                <span class="action">
-                                                    <i class="bi bi-heart"></i>
-                                                    {{ $contents->{'section_3_like_' . $middleware_language} ?? $contents->section_3_like_en }}
-                                                </span>
-
-                                                <span class="action">
+                                            <span class="action">
+                                                <span data-bs-toggle="dropdown">
                                                     <i class="bi bi-share"></i>
                                                     {{ $contents->{'section_3_share_' . $middleware_language} ?? $contents->section_3_share_en }}
                                                 </span>
 
-                                                <span class="action">
-                                                    <i class="bi bi-flag"></i>
-                                                    {{ $contents->{'section_3_report_' . $middleware_language} ?? $contents->section_3_report_en }}
-                                                </span>
-                                            </div>
-                                        <!-- In future -->
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a class="dropdown-item" href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on Facebook">
+                                                            <i class="bi bi-facebook icon"></i> Facebook
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="https://twitter.com/intent/tweet?url={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on Twitter">
+                                                            <i class="bi bi-twitter icon"></i> Twitter
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on LinkedIn">
+                                                            <i class="bi bi-linkedin icon"></i> LinkedIn
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="https://wa.me/?text={{ urlencode(route('warehouses.show', $warehouse)) }}" target="_blank" title="Share on WhatsApp">
+                                                            <i class="bi bi-whatsapp icon"></i> WhatsApp
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </span>
+
+                                            <span class="action">
+                                                <i class="bi bi-flag"></i>
+                                                {{ $contents->{'section_3_report_' . $middleware_language} ?? $contents->section_3_report_en }}
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

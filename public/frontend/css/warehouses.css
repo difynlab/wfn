@@ -185,9 +185,38 @@
     }
     .warehouses .section-3 .warehouse-row .single-warehouse .box .action {
         margin-left: 15px;
+        cursor: pointer;
     }
     .warehouses .section-3 .warehouse-row .single-warehouse .box .action i {
         margin-right: 5px;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .box .action .dropdown-menu {
+        border: none;
+        font-size: 15px;
+        color: black;
+        left: -3%!important;
+        top: 2%!important;
+        border-radius: 0;
+        padding: 0;
+        margin: 0;
+        background-color: #f3f3f3;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .box .action .dropdown-menu .dropdown-item {
+        font-size: 13px;
+        color: var(--light_black);
+        padding: 10px;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        &:hover {
+            background-color: #DC291E;
+            color: var(--white);
+            transition: all 0.3s;
+        };
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .box .action .dropdown-menu i {
+        font-size: 16px;
+        padding-right: 8px;
     }
     .warehouses .section-3 .warehouse-row .no-data {
         text-align: center;

@@ -118,11 +118,14 @@
                                 @endif
                             </div>
                         </div>
-
+         
                         <!-- In future -->
                             <div class="col-4 right">
-                                <i class="bi bi-heart"></i>
-                                <i class="bi bi-chat-left"></i>
+                                <!-- <i class="bi bi-heart" ></i> -->
+                                <!-- <i class="bi bi-chat-left"></i> -->
+                                <span class="action" onClick="favoriteToggle({{ auth()->user()->id }}, {{ $warehouse->id }}, '{{ route('warehouses.favorite') }}', {{ isFavorite(auth()->user()->id, $warehouse->id) ? 1 : 0 }}, this)">
+                                    <i class="bi {{ isFavorite(auth()->user()->id, $warehouse->id) ? 'bi-heart-fill text-danger' : 'bi-heart' }}"></i>
+                                </span>
                                 <p class="expert">{{ $contents->{'inner_page_section_2_talk_to_expert_' . $middleware_language} ?? $contents->inner_page_section_2_talk_to_expert_en }}</p>
                             </div>
                         <!-- In future -->

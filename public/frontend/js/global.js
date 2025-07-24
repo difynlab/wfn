@@ -42,3 +42,40 @@
         });
     });
 // Date picker X
+
+
+// Favorite toggle
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    function favoriteToggle(user_id, data_id, route, status, el) {
+        $.ajax({
+            url: route,
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(
+                {
+                    user_id: user_id,
+                    data_id: data_id,
+                    status: status
+                }
+            ),
+            success: function (response) {
+                if(response == true) {
+                    $(el).find('i').removeClass('bi-heart');
+                    $(el).find('i').addClass('bi-heart-fill text-danger');
+                }
+                else {
+                    $(el).find('i').removeClass('bi-heart-fill text-danger');
+                    $(el).find('i').addClass('bi-heart');
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error:", error);
+            }
+        });
+    }
+// Favorite toggle

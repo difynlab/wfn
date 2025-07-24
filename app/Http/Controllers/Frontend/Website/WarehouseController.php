@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\Website;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\Favorite;
 use App\Models\HomepageContent;
 use App\Models\StorageType;
 use App\Models\Warehouse;
@@ -271,5 +272,26 @@ class WarehouseController extends Controller
             'contents' => $contents,
             'area' => $area
         ]);
+    }
+
+    public function favorite(Request $request)
+    {
+        $check = Favorite::where('user_id', $request->user_id)->where('warehouse_id', $request->data_id)->first();
+
+        if($check) {
+            $check->delete();
+            $status = false;
+        }
+        else {
+            $favorite = Favorite::create(
+                [
+                    'user_id' => $request->user_id,
+                    'warehouse_id' => $request->data_id,
+                ]
+            );
+            $status = true;
+        }
+
+        return response($status);
     }
 }
