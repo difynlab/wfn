@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\CompanyStatusMiddleware;
 use App\Http\Middleware\RedirectIfAuthenticatedMiddleware;
 use App\Http\Middleware\RoleMiddleware;
 use App\Http\Middleware\LanguageMiddleware;
@@ -31,6 +32,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'language' => LanguageMiddleware::class,
             'role' => RoleMiddleware::class,
             'redirect' => RedirectIfAuthenticatedMiddleware::class,
+            'company' => CompanyStatusMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

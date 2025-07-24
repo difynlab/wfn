@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Backend\Tenant;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AdminCompanyUpdateMail;
+use App\Mail\CompanyUpdateMail;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -17,14 +20,6 @@ class SettingsController extends Controller
     public function index()
     {
         $user = Auth::user();
-        
-        $company = Company::firstOrCreate(
-            ['user_id' => $user->id],
-            [
-                'user_id'   => $user->id,
-                'status' => 2
-            ]
-        );
 
         $countries = [
             "Afghanistan",
@@ -282,7 +277,7 @@ class SettingsController extends Controller
         ];
 
         return view('backend.tenant.settings.index', [
-            'company' => $company,
+            'company' => $user->company,
             'user' => $user,
             'countries' => $countries
         ]);
@@ -348,11 +343,10 @@ class SettingsController extends Controller
             'address' => 'required|min:0|max:255',
             'email' => 'required|email|min:0|max:255|unique:companies,email,'.$company->id,
             'phone' => 'required|min:0|max:255|regex:/^\+?[0-9]+$/|unique:companies,phone,'.$company->id,
-            'website' => 'nullable|url',
+            'website' => 'nullable|regex:/^(https?:\/\/)?([\w\-]+\.)+[\w\-]{2,}(\/[\w\-._~:\/?#[\]@!$&\'()*+,;=]*)?$/',
             'industry' => 'required|min:0|max:255',
             'date' => 'nullable|date',
-            'new_registration_certificates.*' => 'max:30720',
-            'status' => 'required|in:0,1,2'
+            'new_registration_certificates.*' => 'max:30720'
         ]);
 
         if($validator->fails()) {
@@ -389,6 +383,15 @@ class SettingsController extends Controller
         $data['registration_certificates'] = $registration_certificates;
         $data['status'] = 2;
         $company->fill($data)->save();
+
+        $mail_data = [
+            'id' => $user->id,
+            'name' => $user->first_name . ' ' . $user->last_name,
+            'email' => $user->email
+        ];
+
+        Mail::to([$request->email])->send(new CompanyUpdateMail($mail_data));
+        Mail::to(config('app.admin_email'))->send(new AdminCompanyUpdateMail($mail_data));
 
         return redirect()->back()->with([
             'success' => "Update Successful!",

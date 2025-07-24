@@ -182,11 +182,14 @@
     .inner-page .select2-container--default .select2-selection--single .select2-selection__arrow {
         top: initial!important;
     }
-    .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+    .inner-page .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
         background-color: var(--red);
     }
-    .select2-results__option {
+    .inner-page .select2-results__option {
         font-size: 15px;
+    }
+    .inner-page .select2-container {
+        display: block;
     }
 /* #endregion */
 

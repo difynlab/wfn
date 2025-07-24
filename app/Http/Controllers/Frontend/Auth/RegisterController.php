@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AccountRegisterMail;
+use App\Mail\AdminAccountRegisterMail;
 use App\Models\AuthenticationContent;
+use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -302,11 +305,22 @@ class RegisterController extends Controller
         $data['status'] = 2;
         $user = User::create($data);
 
-        // $mail_data = [
-        //     'name' => $request->first_name . ' ' . $request->last_name
-        // ];
+        $company = Company::create(
+            [
+                'user_id'   => $user->id,
+                'status' => 2
+            ]
+        );
 
-        // Mail::to([$request->email])->send(new RegisterMail($mail_data));
+        $mail_data = [
+            'name' => $user->first_name . ' ' . $user->last_name,
+            'email' => $user->email,
+            'role' => $user->role,
+            'created_at' => $user->created_at,
+        ];
+
+        Mail::to([$request->email])->send(new AccountRegisterMail($mail_data));
+        Mail::to(config('app.admin_email'))->send(new AdminAccountRegisterMail($mail_data));
 
         // Auth::login($user);
         // $request->session()->regenerate();
@@ -320,7 +334,7 @@ class RegisterController extends Controller
 
         return redirect()->route('homepage')->with([
             'success' => 'Account Created',
-            'message' => 'We will review and approve your account as soon as possible',
+            'message' => 'We will review and approve your account as soon as possible.',
         ]);
     }
 }

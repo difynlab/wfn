@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AccountApprovalMail;
+use App\Mail\CompanyApprovalMail;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -357,7 +360,16 @@ class UserController extends Controller
 
         $data = $request->except('old_image', 'new_image', 'confirm_password');
         $data['image'] = $image_name;
-        $user = User::create($data);  
+        $user = User::create($data);
+
+        if($user->role != 'admin') {
+            $company = Company::create(
+                [
+                    'user_id'   => $user->id,
+                    'status' => 2
+                ]
+            );
+        }
 
         return redirect()->route('admin.users.edit', $user)->with([
             'success' => "Update Successful!",
@@ -695,9 +707,18 @@ class UserController extends Controller
             $image_name = $request->old_image;
         }
 
+        if($user->status != $request->status && $request->status == 1) {
+            $mail_data = [
+                'name' => $user->first_name . ' ' . $user->last_name,
+                'role' => $user->role,
+            ];
+
+            Mail::to([$request->email])->send(new AccountApprovalMail($mail_data));
+        }
+
         $data['image'] = $image_name;
         $user->fill($data)->save();
-        
+
         return redirect()->back()->with([
             'success' => "Update Successful!",
             'route' => route('admin.users.index')
@@ -785,17 +806,9 @@ class UserController extends Controller
 
     public function company(User $user)
     {
-        $company = Company::firstOrCreate(
-            ['user_id' => $user->id],
-            [
-                'user_id'   => $user->id,
-                'status' => 2
-            ]
-        );
-
         return view('backend.admin.users.company', [
             'user' => $user,
-            'company' => $company
+            'company' => $user->company
         ]);
     }
 
@@ -844,6 +857,15 @@ class UserController extends Controller
             'old_registration_certificates',
             'new_registration_certificates'
         );
+
+        if($company->status != $request->status && $request->status == 1) {
+            $mail_data = [
+                'name' => $user->first_name . ' ' . $user->last_name,
+                'role' => $user->role,
+            ];
+
+            Mail::to([$user->email])->send(new CompanyApprovalMail($mail_data));
+        }
 
         $data['registration_certificates'] = $registration_certificates;
         $company->fill($data)->save();

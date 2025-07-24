@@ -36,7 +36,6 @@
         @stack('before-scripts')
             <script src="{{ asset('backend/js/jquery.js') }}"></script>
             <script src="{{ asset('backend/js/bootstrap.js') }}"></script>
-            <script src="{{ asset('backend/js/select2.js') }}"></script>
             <script src="{{ asset('backend/js/global.js') }}"></script>
         @stack('after-scripts')
     </body>

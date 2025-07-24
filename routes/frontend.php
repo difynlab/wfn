@@ -30,11 +30,16 @@ Route::middleware(['language'])->group(function () {
             Route::post('/', [SupportController::class, 'store'])->name('store');
         });
 
+        // Auth routes
+            Route::middleware(['auth', 'company'])->prefix('warehouses')->name('warehouses.')->group(function () {
+                Route::get('/', [WarehouseController::class, 'index'])->name('index');
+                Route::post('/', [WarehouseController::class, 'store'])->name('store');
+                Route::get('filter', [WarehouseController::class, 'filter'])->name('filter');
+                Route::get('show/{warehouse}', [WarehouseController::class, 'show'])->name('show');
+            });
+        // Auth routes
+
         Route::prefix('warehouses')->name('warehouses.')->group(function() {
-            Route::get('/', [WarehouseController::class, 'index'])->name('index');
-            Route::post('/', [WarehouseController::class, 'store'])->name('store');
-            Route::get('filter', [WarehouseController::class, 'filter'])->name('filter');
-            Route::get('show/{warehouse}', [WarehouseController::class, 'show'])->name('show');
             Route::get('areas/{area}', [WarehouseController::class, 'area'])->name('area');
         });
 
