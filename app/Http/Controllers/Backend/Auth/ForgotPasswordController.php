@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Mail\ResetPasswordMail;
+use App\Mail\AccountForgotPasswordMail;
 use App\Models\PasswordResetToken;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -33,7 +33,7 @@ class ForgotPasswordController extends Controller
             return redirect()->back()->withErrors(['email' => 'Email not found.'])->withInput();
         }
 
-        if(!in_array($user->role, ['admin', 'landlord'])) {
+        if($user->role != 'admin') {
             return redirect()->back()->withErrors(['email' => 'Unauthorized email.'])->withInput();
         }
 
@@ -47,13 +47,12 @@ class ForgotPasswordController extends Controller
         $password_reset->save();
 
         $mail_data = [
-            'first_name' => $user->first_name,
-            'last_name' => $user->last_name,
+            'name' => $user->first_name . ' ' . $user->last_name,
             'email' => $user->email,
             'token' => $token,
         ];
 
-        Mail::to([$request->email])->send(new ResetPasswordMail($mail_data));
+        Mail::to([$request->email])->send(new AccountForgotPasswordMail($mail_data));
 
         return redirect()->back()->with('forgot-password', "Email sent successfully");
     }

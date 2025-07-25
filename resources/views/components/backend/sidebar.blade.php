@@ -106,6 +106,17 @@
                     </div>
                 </a>
             </li>
+
+            <li class="link">
+                <a href="{{ route('admin.reports.index') }}" class="{{ Request::segment(2) == 'reports' ? 'active' : '' }}">
+                    <div class="box"></div>
+                    <div class="actual-link">
+                        <i class="bi bi-flag"></i>
+                        Reports
+                        <p class="new-count">{{ App\Models\Report::where('is_new', 1)->count() != 0 ? App\Models\Report::where('is_new', 1)->count() : ''; }}</p>
+                    </div>
+                </a>
+            </li>
         </ul>
 
         <hr>
@@ -283,6 +294,16 @@
                     </div>
                 </a>
             </li>
+
+            <li class="link">
+                <a href="{{ route('landlord.favorites.index') }}" class="{{ Request::segment(2) == 'favorites' ? 'active' : '' }}">
+                    <div class="box"></div>
+                    <div class="actual-link">
+                        <i class="bi bi-heart"></i>
+                        Favorites
+                    </div>
+                </a>
+            </li>
         </ul>
 
         <hr>
@@ -379,6 +400,16 @@
                     <div class="actual-link">
                         <i class="bi bi-list-check"></i>
                         To-Do
+                    </div>
+                </a>
+            </li>
+
+            <li class="link">
+                <a href="{{ route('tenant.favorites.index') }}" class="{{ Request::segment(2) == 'favorites' ? 'active' : '' }}">
+                    <div class="box"></div>
+                    <div class="actual-link">
+                        <i class="bi bi-heart"></i>
+                        Favorites
                     </div>
                 </a>
             </li>
