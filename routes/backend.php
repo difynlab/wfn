@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\Admin\Page\PrivacyPolicyController;
 use App\Http\Controllers\Backend\Admin\Page\SupportController;
 use App\Http\Controllers\Backend\Admin\Page\TermsOfUseController;
 use App\Http\Controllers\Backend\Admin\Page\WarehouseController;
+use App\Http\Controllers\Backend\Admin\ReportController;
 use App\Http\Controllers\Backend\Admin\ReviewController;
 use App\Http\Controllers\Backend\Admin\SettingsController;
 use App\Http\Controllers\Backend\Admin\StorageTypeController;
@@ -26,12 +27,14 @@ use App\Http\Controllers\Backend\Admin\UserController;
 use App\Http\Controllers\Backend\Admin\WarehouseController as AdminWarehouseController;
 use App\Http\Controllers\Backend\Landlord\BookingController as LandlordBookingController;
 use App\Http\Controllers\Backend\Landlord\DashboardController as LandlordDashboardController;
+use App\Http\Controllers\Backend\Landlord\FavoriteController;
 use App\Http\Controllers\Backend\Landlord\MessageController as LandlordMessageController;
 use App\Http\Controllers\Backend\Landlord\SettingsController as LandlordSettingsController;
 use App\Http\Controllers\Backend\Landlord\TodoController as LandlordTodoController;
 use App\Http\Controllers\Backend\Landlord\WarehouseController as LandlordWarehouseController;
 use App\Http\Controllers\Backend\Tenant\BookingController as TenantBookingController;
 use App\Http\Controllers\Backend\Tenant\DashboardController as TenantDashboardController;
+use App\Http\Controllers\Backend\Tenant\FavoriteController as TenantFavoriteController;
 use App\Http\Controllers\Backend\Tenant\MessageController as TenantMessageController;
 use App\Http\Controllers\Backend\Tenant\SettingsController as TenantSettingsController;
 use App\Http\Controllers\Backend\Tenant\TodoController as TenantTodoController;
@@ -246,6 +249,16 @@ require __DIR__.'/auth/backend.php';
                 Route::delete('{support}', 'destroy')->name('destroy');
             });
         // Supports routes
+
+        // Reports routes
+            Route::controller(ReportController::class)->prefix('reports')->name('reports.')->group(function() {
+                Route::get('/', 'index')->name('index');
+                Route::get('filter', 'filter')->name('filter');
+                Route::get('{report}/edit', 'edit')->name('edit');
+                Route::post('{report}', 'update')->name('update');
+                Route::delete('{report}', 'destroy')->name('destroy');
+            });
+        // Reports routes
     });
 // Admin
 
@@ -275,6 +288,14 @@ require __DIR__.'/auth/backend.php';
                 Route::delete('{booking}', 'destroy')->name('destroy');
             });
         // Bookings routes
+
+        // Favorite routes
+            Route::controller(FavoriteController::class)->prefix('favorites')->name('favorites.')->group(function() {
+                Route::get('/', 'index')->name('index');
+                Route::get('filter', 'filter')->name('filter');
+                Route::delete('{favorite}', 'destroy')->name('destroy');
+            });
+        // Favorite routes
 
         // Todos routes
             Route::controller(LandlordTodoController::class)->prefix('todos')->name('todos.')->group(function() {
@@ -328,6 +349,14 @@ require __DIR__.'/auth/backend.php';
                 Route::delete('{booking}', 'destroy')->name('destroy');
             });
         // Bookings routes
+
+        // Favorite routes
+            Route::controller(TenantFavoriteController::class)->prefix('favorites')->name('favorites.')->group(function() {
+                Route::get('/', 'index')->name('index');
+                Route::get('filter', 'filter')->name('filter');
+                Route::delete('{favorite}', 'destroy')->name('destroy');
+            });
+        // Favorite routes
 
         // Todos routes
             Route::controller(TenantTodoController::class)->prefix('todos')->name('todos.')->group(function() {

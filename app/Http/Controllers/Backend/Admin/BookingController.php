@@ -46,7 +46,7 @@ class BookingController extends Controller
 
     public function index(Request $request)
     {
-        $users = User::where('status', 1)->where('role', 'tenant')->get();
+        $users = User::where('status', 1)->whereNot('role', 'admin')->get();
         $warehouses = Warehouse::where('status', 1)->get();
 
         Booking::where('is_new', 1)->update(['is_new' => 0]);
@@ -65,7 +65,7 @@ class BookingController extends Controller
 
     public function create()
     {
-        $users = User::where('status', 1)->where('role', 'tenant')->get();
+        $users = User::where('status', 1)->whereNot('role', 'admin')->get();
         $warehouses = Warehouse::where('status', 1)->get();
 
         return view('backend.admin.bookings.create', [
@@ -118,7 +118,7 @@ class BookingController extends Controller
 
     public function edit(Booking $booking)
     {
-        $users = User::where('status', 1)->where('role', 'tenant')->get();
+        $users = User::where('status', 1)->whereNot('role', 'admin')->get();
         $warehouses = Warehouse::where('status', 1)->get();
 
         return view('backend.admin.bookings.edit', [
@@ -234,7 +234,7 @@ class BookingController extends Controller
             ]);
         }
 
-        $users = User::where('status', 1)->where('role', 'tenant')->get();
+        $users = User::where('status', 1)->whereNot('role', 'admin')->get();
         $warehouses = Warehouse::where('status', 1)->get();
 
         return view('backend.admin.bookings.index', [
