@@ -73,8 +73,8 @@
 
                                             <div class="col-3">
                                                 <div class="form-check">
-                                                    <input id="150" class="form-check-input check" type="radio" value="150" name="warehouse_size">
-                                                    <label for="150" class="form-check-label label">{{ $contents->{'section_1_size_3_' . $middleware_language} ?? $contents->section_1_size_3_en }}</label>
+                                                    <input id="200" class="form-check-input check" type="radio" value="200" name="warehouse_size">
+                                                    <label for="200" class="form-check-label label">{{ $contents->{'section_1_size_3_' . $middleware_language} ?? $contents->section_1_size_3_en }}</label>
                                                 </div>
                                             </div>
 
