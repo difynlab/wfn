@@ -3,18 +3,27 @@
 namespace App\Http\Controllers\Frontend\Website;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AdminBookingMail;
+use App\Mail\AdminReportMail;
+use App\Mail\AdminExpertMail;
+use App\Mail\BookingMail;
+use App\Mail\LandlordBookingMail;
+use App\Mail\ReportMail;
+use App\Mail\ExpertMail;
 use App\Models\Booking;
 use App\Models\Favorite;
 use App\Models\HomepageContent;
 use App\Models\Message;
 use App\Models\Report;
 use App\Models\StorageType;
+use App\Models\User;
 use App\Models\Warehouse;
 use App\Models\WarehouseContent;
 use App\Models\WarehouseReview;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class WarehouseController extends Controller
@@ -254,10 +263,30 @@ class WarehouseController extends Controller
             );
         }
 
+        $tenant = Auth::user();
+        $warehouse = Warehouse::find($request->warehouse_id);
+        $landlord = User::find($warehouse->user_id);
+
         $data = $request->all();
-        $data['user_id'] = Auth::user()->id;
+        $data['user_id'] = $tenant->id;
         $data['status'] = 2;
-        $booking = Booking::create($data); 
+        $booking = Booking::create($data);
+
+        $mail_data = [
+            'tenant_name' => $tenant->first_name . ' ' . $tenant->last_name,
+            'tenant_email' => $tenant->email,
+            'landlord_name' => $landlord->first_name . ' ' . $landlord->last_name,
+            'landlord_email' => $landlord->email,
+            'warehouse_name' => $warehouse->name_en,
+            'tenancy_date' => $booking->tenancy_date,
+            'renewal_date' => $booking->renewal_date,
+            'no_of_pallets' => $booking->no_of_pallets,
+            'booking_id' => $booking->id,
+        ];
+
+        Mail::to([$tenant->email])->send(new BookingMail($mail_data));
+        Mail::to([$landlord->email])->send(new LandlordBookingMail($mail_data));
+        Mail::to(config('app.admin_email'))->send(new AdminBookingMail($mail_data));
 
         return redirect()->route('warehouses.show', $request->warehouse_id)->with(
             [
@@ -315,17 +344,33 @@ class WarehouseController extends Controller
             );
         }
 
+        $user = Auth::user();
+        $warehouse = Warehouse::find($request->warehouse);
+
         $data = $request->except(['message']);
-        $data['creator'] = auth()->user()->id;
+        $data['creator'] = $user->id;
         $data['date'] = Carbon::now()->toDateString();
         $data['time'] = Carbon::now()->toTimeString();
         $data['category'] = 'general';
-        $data['warehouse'] = $request->warehouse;
+        $data['warehouse'] = $warehouse->id;
         $data['admin_view'] = 0;
         $data['user_view'] = 1;
-        $data['user_id'] = auth()->user()->id;
+        $data['user_id'] = $user->id;
         $data['initial_message'] = $request->message;
-        $message = Message::create($data);  
+        $message = Message::create($data);
+
+        $mail_data = [
+            'subject'   => $request->subject,
+            'warehouse' => $warehouse->name_en,
+            'message'   => $request->message,
+            'date'      => Carbon::now()->toFormattedDateString(),
+            'time'      => Carbon::now()->format('h:i A'),
+            'user'      => $user->first_name . ' ' . $user->last_name,
+            'message_id' => $message->id,
+        ];
+
+        Mail::to($user->email)->send(new ExpertMail($mail_data));
+        Mail::to(config('app.admin_email'))->send(new AdminExpertMail($mail_data));
 
         return redirect()->route('warehouses.show', $request->warehouse)->with(
             [
@@ -351,11 +396,25 @@ class WarehouseController extends Controller
             );
         }
 
+        $user = Auth::user();
+        $warehouse = Warehouse::find($request->warehouse);
+
         $report = Report::create([
             'reason' => $request->reason,
-            'user_id' => auth()->user()->id,
-            'warehouse_id' => $request->warehouse,
-        ]);  
+            'user_id' => $user->id,
+            'warehouse_id' => $warehouse->id,
+        ]);
+
+        $mail_data = [
+            'reason'   => $request->reason,
+            'warehouse' => $warehouse->name_en,
+            'user'      => $user->first_name . ' ' . $user->last_name,
+            'user_email' => $user->email,
+            'report_id' => $report->id,
+        ];
+
+        Mail::to($user->email)->send(new ReportMail($mail_data));
+        Mail::to(config('app.admin_email'))->send(new AdminReportMail($mail_data));
 
         return redirect()->route('warehouses.show', $request->warehouse)->with(
             [

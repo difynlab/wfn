@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend\Website;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AdminSubscriptionMail;
+use App\Mail\SubscriptionMail;
 use Illuminate\Http\Request;
 use App\Models\HomepageContent;
 use App\Models\Article;
@@ -10,6 +12,7 @@ use App\Models\ArticleCategory;
 use App\Models\StorageType;
 use App\Models\Subscription;
 use App\Models\Warehouse;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class HomepageController extends Controller
@@ -73,6 +76,13 @@ class HomepageController extends Controller
         $subscription = new Subscription();
         $subscription->email = $request->email;
         $subscription->save();
+
+        $mail_data = [
+            'email'    => $request->email,
+        ];
+
+        Mail::to($request->email)->send(new SubscriptionMail($mail_data));
+        Mail::to(config('app.admin_email'))->send(new AdminSubscriptionMail($mail_data));
 
         return redirect()->route('homepage')->with(
             [

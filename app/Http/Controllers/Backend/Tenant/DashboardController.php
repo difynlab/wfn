@@ -144,7 +144,7 @@ class DashboardController extends Controller
             $item->action = '
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
-            $item->warehouse = $item->warehouse->name;
+            $item->warehouse = $item->warehouse->name_en;
 
             switch ($item->status) {
                 case 1:

@@ -25,7 +25,6 @@
                 <p style="font-size: 16px; color: #555555;">
                     We'll notify you via email once your account is approved. After that, you can log in and start listing your warehouses.
                 </p>
-
             @else
                 <h2 style="color: #333333;">Welcome to {{ config('app.name') }}</h2>
                 <p style="font-size: 16px; color: #555555;">Hi {{ $mail_data['name'] ?? 'there' }},</p>

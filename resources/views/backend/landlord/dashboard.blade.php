@@ -131,7 +131,7 @@
                                         <td>{!! $item->tenant !!}</td>
                                         <td>{!! $item->warehouse !!}</td>
                                         <td>{{ $item->no_of_pallets }}</td>
-                                        <td>{{ $item->total_rent }}</td>
+                                        <td>{{ $item->total_rent ?? '-' }}</td>
                                         <td>{{ $item->tenancy_date }}</td>
                                         <td>{{ $item->renewal_date }}</td>
                                         <td>{!! $item->status !!}</td>

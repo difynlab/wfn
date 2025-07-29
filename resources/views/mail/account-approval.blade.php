@@ -56,7 +56,7 @@
             </p>
 
             <p style="font-size: 14px; color: #888888; margin-top: 10px;">
-                Welcome aboard,<br>
+                Best regards,<br>
                 <strong>{{ config('app.name') }} Team</strong>
             </p>
         </div>

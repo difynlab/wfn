@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Frontend\Website;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AdminSupportMail;
+use App\Mail\SupportMail;
 use App\Models\Support;
 use Illuminate\Http\Request;
 use App\Models\SupportContent;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class SupportController extends Controller
@@ -40,7 +43,19 @@ class SupportController extends Controller
         }
 
         $data = $request->all();
-        $support = Support::create($data);  
+        $support = Support::create($data);
+
+        $mail_data = [
+            'name'     => $request->name,
+            'phone'    => $request->phone,
+            'email'    => $request->email,
+            'category' => $request->category,
+            'subject'  => $request->subject,
+            'message'  => $request->message,
+        ];
+
+        Mail::to($request->email)->send(new SupportMail($mail_data));
+        Mail::to(config('app.admin_email'))->send(new AdminSupportMail($mail_data));
 
         return redirect()->route('supports.index')->with(
             [
