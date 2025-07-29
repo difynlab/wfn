@@ -118,8 +118,6 @@ class WarehouseController extends Controller
             }
         }
 
-        dd($warehouse_size);
-
         if($storage_type != 'all') {
             $warehouses->where('storage_type_id', $storage_type);
         }
