@@ -86,7 +86,7 @@ class BookingController extends Controller
         $validator = Validator::make($request->all(), [
             'warehouse_id' => 'required|integer',
             'no_of_pallets' => 'required|integer',
-            'total_rent' => 'required|numeric|min:0',
+            'total_rent' => 'required|numeric|min:1',
             'tenancy_date' => 'required|date',
             'renewal_date' => 'required|date',
             'new_documents.*' => 'max:30720'

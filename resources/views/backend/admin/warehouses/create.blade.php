@@ -95,7 +95,7 @@
 
                 <div class="col-6 mb-4">
                     <label for="rent_per_pallet" class="form-label label">Rent Per Pallet<span class="asterisk">*</span></label>
-                    <input type="number" class="form-control input-field" id="rent_per_pallet" name="rent_per_pallet" placeholder="Rent Per Pallet" value="{{ old('rent_per_pallet') }}" required>
+                    <input type="text" class="form-control input-field" id="rent_per_pallet" name="rent_per_pallet" placeholder="Rent Per Pallet" value="{{ old('rent_per_pallet') }}" required>
                     <x-backend.input-error field="rent_per_pallet"></x-backend.input-error>
                 </div>
 

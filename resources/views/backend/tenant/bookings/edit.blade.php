@@ -32,7 +32,7 @@
 
                 <div class="col-6 mb-4">
                     <label for="total_rent" class="form-label label">Total Rent<span class="asterisk">*</span></label>
-                    <input type="number" class="form-control input-field" id="total_rent" name="total_rent" placeholder="Total Rent" value="{{ old('total_rent', $booking->total_rent) }}" disabled>
+                    <input type="text" class="form-control input-field" id="total_rent" name="total_rent" placeholder="Total Rent" value="{{ old('total_rent', $booking->total_rent) }}" disabled>
                     <x-backend.input-error field="total_rent"></x-backend.input-error>
                 </div>
 
