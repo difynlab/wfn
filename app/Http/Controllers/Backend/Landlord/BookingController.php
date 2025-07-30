@@ -52,6 +52,8 @@ class BookingController extends Controller
         $auth = Auth::user();
         $users = User::where('status', 1)->where('role', 'tenant')->get();
         $warehouses = $auth->warehouses()->where('status', 1)->get();
+
+        Booking::where('is_landlord_new', 1)->update(['is_landlord_new' => 0]);
         
         $pagination = $request->pagination ?? 10;
         $items = Booking::whereHas('warehouse', function ($query) use ($auth) {

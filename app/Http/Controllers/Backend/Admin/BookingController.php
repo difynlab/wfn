@@ -53,7 +53,7 @@ class BookingController extends Controller
         $users = User::where('status', 1)->whereNot('role', 'admin')->get();
         $warehouses = Warehouse::where('status', 1)->get();
 
-        Booking::where('is_new', 1)->update(['is_new' => 0]);
+        Booking::where('is_admin_new', 1)->update(['is_admin_new' => 0]);
         
         $pagination = $request->pagination ?? 10;
         $items = Booking::orderBy('id', 'desc')->paginate($pagination);

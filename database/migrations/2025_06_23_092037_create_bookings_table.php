@@ -19,7 +19,8 @@ return new class extends Migration
             $table->date('tenancy_date');
             $table->date('renewal_date');
             $table->text('documents')->nullable();
-            $table->boolean('is_new')->default(1);
+            $table->boolean('is_admin_new')->default(1);
+            $table->boolean('is_landlord_new')->default(1);
             $table->boolean('status')->default(1);
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

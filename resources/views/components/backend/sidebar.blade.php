@@ -43,7 +43,7 @@
                     <div class="actual-link">
                         <i class="bi bi-ui-checks"></i>
                         Bookings
-                        <p class="new-count">{{ App\Models\Booking::where('is_new', 1)->count() != 0 ? App\Models\Booking::where('is_new', 1)->count() : ''; }}</p>
+                        <p class="new-count">{{ App\Models\Booking::where('is_admin_new', 1)->count() != 0 ? App\Models\Booking::where('is_admin_new', 1)->count() : ''; }}</p>
                     </div>
                 </a>
             </li>
@@ -247,6 +247,7 @@
                     <div class="actual-link">
                         <i class="bi bi-ui-checks"></i>
                         Bookings
+                        <p class="new-count">{{ App\Models\Booking::where('is_landlord_new', 1)->count() != 0 ? App\Models\Booking::where('is_landlord_new', 1)->count() : ''; }}</p>
                     </div>
                 </a>
             </li>
