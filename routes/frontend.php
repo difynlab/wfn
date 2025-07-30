@@ -52,5 +52,6 @@ Route::middleware(['language'])->group(function () {
 
     // Subscription route
         Route::post('subscriptions', [HomepageController::class, 'subscriptions'])->name('subscriptions');
+        Route::post('subscriptions', [AboutController::class, 'subscriptions'])->name('subscriptions');
     // Subscription route
 });

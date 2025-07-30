@@ -291,26 +291,27 @@
                         <p class="section-title">{{ $contents->{'section_8_title_' . $middleware_language} ?? $contents->section_8_title_en }}</p>
                         <p class="section-description">{{ $contents->{'section_8_description_' . $middleware_language} ?? $contents->section_8_description_en }}</p>
 
-                        <!-- In future -->
-                            <form action="" method="POST">
-                                <div class="mb-4">
-                                    <label for="name" class="form-label label">{{ $contents->{'section_8_name_' . $middleware_language} ?? $contents->section_8_name_en }}</label>
-                                    <input type="text" class="form-control input-field" id="name" name="name" placeholder="{{ $contents->{'section_8_name_placeholder_' . $middleware_language} ?? $contents->section_8_name_placeholder_en }}">
-                                </div>
+                        <form action="{{ route('subscriptions') }}" method="POST">
+                            @csrf
+                            <div class="mb-4">
+                                <label for="name" class="form-label label">{{ $contents->{'section_8_name_' . $middleware_language} ?? $contents->section_8_name_en }}</label>
+                                <input type="text" class="form-control input-field" id="name" name="name" placeholder="{{ $contents->{'section_8_name_placeholder_' . $middleware_language} ?? $contents->section_8_name_placeholder_en }}" value="{{ old('name') }}" required>
+                                <x-frontend.input-error field="name"></x-frontend.input-error>
+                            </div>
 
-                                <div class="mb-4">
-                                    <label for="email" class="form-label label">{{ $contents->{'section_8_email_' . $middleware_language} ?? $contents->section_8_email_en }}</label>
-                                    <input type="email" class="form-control input-field" id="email" name="email" placeholder="{{ $contents->{'section_8_email_placeholder_' . $middleware_language} ?? $contents->section_8_email_placeholder_en }}">
-                                </div>
+                            <div class="mb-4">
+                                <label for="email" class="form-label label">{{ $contents->{'section_8_email_' . $middleware_language} ?? $contents->section_8_email_en }}</label>
+                                <input type="email" class="form-control input-field" id="email" name="email" placeholder="{{ $contents->{'section_8_email_placeholder_' . $middleware_language} ?? $contents->section_8_email_placeholder_en }}" value="{{ old('email') }}" required>
+                                <x-frontend.input-error field="email"></x-frontend.input-error>
+                            </div>
 
-                                <div class="form-check d-flex align-items-center mb-4">
-                                    <input type="checkbox" class="form-check-input checkbox" id="terms">
-                                    <label class="form-check-label terms" for="terms">{{ $contents->{'section_8_check_label_' . $middleware_language} ?? $contents->section_8_check_label_en }}</label>
-                                </div>
+                            <div class="form-check d-flex align-items-center mb-4">
+                                <input type="checkbox" class="form-check-input checkbox" id="terms" required>
+                                <label class="form-check-label terms" for="terms">{{ $contents->{'section_8_check_label_' . $middleware_language} ?? $contents->section_8_check_label_en }}</label>
+                            </div>
 
-                                <button type="submit" class="submit-button">{{ $contents->{'section_8_button_' . $middleware_language} ?? $contents->section_8_button_en }}</button>
-                            </form>
-                        <!-- In future -->
+                            <button type="submit" class="submit-button">{{ $contents->{'section_8_button_' . $middleware_language} ?? $contents->section_8_button_en }}</button>
+                        </form>
                     </div>
 
                     <div class="col-6">
@@ -420,6 +421,8 @@
                 </div>
             </div>
         @endif
+
+        <x-frontend.notification></x-frontend.notification>
     </div>
 @endsection
 

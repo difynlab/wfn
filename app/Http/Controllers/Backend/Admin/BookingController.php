@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AdminBookingUpdateMail;
+use App\Mail\BookingUpdateMail;
+use App\Mail\LandlordBookingUpdateMail;
 use App\Models\Booking;
 use App\Models\User;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -167,12 +171,48 @@ class BookingController extends Controller
             $documents = $current_documents ? json_encode($current_documents) : null;
         // Documents
 
+        $tenant = User::find($request->user_id);
+        $warehouse = Warehouse::find($request->warehouse_id);
+        $landlord = User::find($warehouse->user_id);
+
         $data = $request->except(
             'old_documents',
             'new_documents'
         );
         $data['documents'] = $documents;
         $booking->fill($data)->save();
+
+        switch($booking->status) {
+            case 1:
+                $booking->status = 'Active';
+                break;
+
+            case 2:
+                $booking->status = 'Pending';
+                break;
+
+            default:
+                $booking->status = 'Inactive';
+                break;
+        }
+
+        $mail_data = [
+            'warehouse'     => $warehouse->name_en,
+            'tenant_name'   => $tenant->first_name . ' ' . $tenant->last_name,
+            'tenant_email' => $tenant->email,
+            'landlord_name' => $landlord->first_name . ' ' . $landlord->last_name,
+            'landlord_email' => $landlord->email,
+            'pallets'       => $booking->no_of_pallets,
+            'tenancy_date'  => $booking->tenancy_date,
+            'renewal_date'  => $booking->renewal_date,
+            'total_rent'    => $booking->total_rent,
+            'status'        => $booking->status,
+            'booking_id'        => $booking->id,
+        ];
+
+        Mail::to($tenant->email)->send(new BookingUpdateMail($mail_data));
+        Mail::to($landlord->email)->send(new LandlordBookingUpdateMail($mail_data));
+        Mail::to(config('app.admin_email'))->send(new AdminBookingUpdateMail($mail_data));
         
         return redirect()->back()->with([
             'success' => "Update Successful!",

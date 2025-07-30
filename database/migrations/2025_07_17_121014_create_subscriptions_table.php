@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
             $table->string('email');
             $table->boolean('is_new')->default(1);
             $table->boolean('status')->default(1);
