@@ -3,14 +3,26 @@
         margin-bottom: 25px;
     }
     .terms-of-use .section-2 .nav-row .nav-pills {
-        justify-content: space-between;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
     }
-    .terms-of-use .section-2 .nav-pills .nav-item .nav-link {
+    .terms-of-use .section-2 .nav-row .nav-pills::-webkit-scrollbar {
+        display: none;
+    }
+    .terms-of-use .section-2 .nav-row .nav-pills .nav-item {
+        flex: 0 0 auto;
+        margin-right: 40px;
+        margin-left: 12px;
+    }
+    .terms-of-use .section-2 .nav-row .nav-pills .nav-item .nav-link {
         font-size: 17px;
         padding: 0;
         padding-bottom: 10px;
         color: var(--gray);
         border-radius: 0;
+        white-space: nowrap;
     }
     .terms-of-use .section-2 .nav-pills .nav-item .nav-link.active {
         background-color: transparent;
@@ -35,77 +47,42 @@
     @media (width <= 1601px) {}
     @media (width <= 1537px) {}
     @media (width <= 1441px) {}
-    @media (width <= 1367px) {
-        .terms-of-use .section-2 .nav-pills .nav-item .nav-link {
-            font-size: 14px;
-        }
-        .terms-of-use .section-2 .content, 
-        .terms-of-use .section-2 .content p {
-            font-size: 14px;
-        }
-    }
+    @media (width <= 1367px) {}
     @media (width <= 1301px) {}
-    @media (width <= 1281px) {
+    @media (width <= 1281px) {}
+    @media (width <= 1201px) {}
+    @media (width <= 1151px) {}
+    @media (width <= 1076px) {}
+    @media (width <= 1025px) {
         .terms-of-use .section-2 .nav-row {
             margin-bottom: 20px;
         }
-        .terms-of-use .section-2 .nav-pills {
-            flex-wrap: wrap;
-            justify-content: flex-start;
+        .terms-of-use .section-2 .nav-row .nav-pills .nav-item .nav-link {
+            font-size: 16px;
         }
-        .terms-of-use .section-2 .nav-pills .nav-item {
-            margin-right: 20px;
-            margin-bottom: 10px;
-        }
-        .terms-of-use .section-2 .nav-pills .nav-item:last-child {
-            margin-right: 0;
-        }
-        .terms-of-use .section-2 .nav-pills .nav-item .nav-link {
-            padding-bottom: 8px;
+        .terms-of-use .section-2 .content, .terms-of-use .section-2 .content p {
+            font-size: 15px;
         }
     }
-    @media (width <= 1151px) {}
-    @media (width <= 1076px) {}
-    @media (width <= 1025px) {}
     @media (width <= 991px) {}
     @media (width <= 845px) {}
-    @media (width <= 768px) {
-        .terms-of-use .section-2 .nav-pills .nav-item {
-            margin-right: 15px;
-        }
-        .terms-of-use .section-2 .nav-row {
-            margin-bottom: 15px;
-        }
-    }
+    @media (width <= 768px) {}
     @media (width <= 721px) {}
     @media (width <= 651px) {}
-    @media (width <= 576px) {
-        .terms-of-use .section-2 .nav-pills .nav-item {
-            margin: 12px;
-            margin-bottom: 8px;
+    @media (width <= 576px) {}
+    @media (width <= 481px) {}
+    @media (width <= 429px) {
+        .terms-of-use .section-2 .nav-row {
+            margin-bottom: 10px;
         }
-        .terms-of-use .section-2 .nav-pills .nav-item .nav-link {
-            font-size: 13px;
-            padding-bottom: 6px;
+        .terms-of-use .section-2 .nav-row .nav-pills .nav-item .nav-link {
+            font-size: 15px;
+            padding-bottom: 0px;
         }
-        .terms-of-use .section-2 .content, 
-        .terms-of-use .section-2 .content p {
-            font-size: 13px;
-        }
-    }
-    @media (width <= 481px) {
-        .terms-of-use .section-2 .nav-pills .nav-item {
-            margin: 10px;
-        }
-        .terms-of-use .section-2 .nav-pills .nav-item .nav-link {
-            font-size: 12px;
-        }
-        .terms-of-use .section-2 .content, 
-        .terms-of-use .section-2 .content p {
-            font-size: 12px;
+        .terms-of-use .section-2 .content, .terms-of-use .section-2 .content p {
+            font-size: 14px;
         }
     }
-    @media (width <= 429px) {}
     @media (width <= 415px) {}
     @media (width <= 396px) {}
     @media (width <= 377px) {}

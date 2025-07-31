@@ -13,7 +13,7 @@
 @endphp
 
 <div class="container-fluid footer">
-    <div class="container">
+    <div class="container-lg">
         <div class="top">
             <p class="text">{{ $contents->{'footer_title_' . $middleware_language} ?? $contents->footer_title_en }}</p>
             <p class="text">{{ $contents->{'footer_sub_title_' . $middleware_language} ?? $contents->footer_sub_title_en }}</p>
@@ -23,7 +23,7 @@
 
         <div class="bottom">
             <div class="row">
-                <div class="col-3">
+                <div class="col-6 col-sm-3 mb-4 mb-sm-0">
                     <p class="title">{{ $contents->{'footer_first_menu_' . $middleware_language} ?? $contents->footer_first_menu_en }}</p>
                     <ul>
                         <li>
@@ -36,7 +36,7 @@
                     </ul>
                 </div>
 
-                <div class="col-3">
+                <div class="col-6 col-sm-3 mb-4 mb-sm-0">
                     <p class="title">{{ $contents->{'footer_second_menu_' . $middleware_language} ?? $contents->footer_second_menu_en }}</p>
                     <ul>
                         <li>
@@ -49,7 +49,7 @@
                     </ul>
                 </div>
 
-                <div class="col-3">
+                <div class="col-6 col-sm-3">
                     <p class="title">{{ $contents->{'footer_third_menu_' . $middleware_language} ?? $contents->footer_third_menu_en }}</p>
                     <ul>
                         <li>
@@ -62,7 +62,7 @@
                     </ul>
                 </div>
 
-                <div class="col-3">
+                <div class="col-6 col-sm-3">
                     <p class="title">{{ $contents->{'footer_fourth_menu_' . $middleware_language} ?? $contents->footer_fourth_menu_en }}</p>
                     <ul>
                         <li>
@@ -81,11 +81,11 @@
 
         <div class="copyright">
             <div class="row align-items-center">
-                <div class="col-6">
+                <div class="d-none d-sm-block col-sm-3 col-md-6">
                     <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->footer_logo) }}" alt="Logo" class="logo">
                 </div>
 
-                <div class="col-6 text-end">
+                <div class="col-12 col-sm-9 col-md-6 text-center text-sm-end">
                     <p class="text">&#169; {{ $contents->{'footer_copyright_' . $middleware_language} ?? $contents->footer_copyright_en }}</p>
                 </div>
             </div>

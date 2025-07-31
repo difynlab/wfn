@@ -1,5 +1,5 @@
 /* #region Section 2 */
-    .support .section-2 form {
+    .support .section-2 .form {
         margin: auto;
         width: 85%;
     }
@@ -51,75 +51,40 @@
     @media (width <= 1367px) {}
     @media (width <= 1301px) {}
     @media (width <= 1281px) {}
+    @media (width <= 1201px) {}
     @media (width <= 1151px) {}
     @media (width <= 1076px) {}
     @media (width <= 1025px) {}
-    @media (width <= 991px) {}
+    @media (width <= 992px) {
+        .support .section-2 .form {
+            width: 100%;
+        }
+    }
     @media (width <= 845px) {}
     @media (width <= 768px) {
-        .support .section-2 form {
-            width: 100%;
-        }
-        .support .section-2 .form-row .col-md-6 {
-            width: 100%;
-            padding: 0;
-            margin-bottom: 15px;
-        }
-        .support .section-2 .form-row .col-md-6:last-child {
-            margin-bottom: 0;
+        .support .section-2 .label {
+            font-size: 15px;
+            margin-bottom: 5px!important;
         }
         .support .section-2 .input-field {
             height: 45px;
-            padding: 10px 15px;
-            font-size: 13px;
         }
         .support .section-2 .submit-button {
-            width: 100%;
+            width: 35%;
             font-size: 16px;
-            padding: 12px 0;
-            margin-top: 10px;
-        }
-        .support .section-2 .label {
-            font-size: 14px;
-            margin-bottom: 8px!important;
         }
     }
     @media (width <= 721px) {}
     @media (width <= 651px) {}
     @media (width <= 576px) {
-        .support .section-2 .contact-row {
-            display: flex;
-            flex-direction: column;
-        }
-        .support .section-2 .contact-row .contact-field {
-            width: 100%;
-            margin-bottom: 15px;
-        }
-        .support .section-2 .contact-row .contact-field:last-child {
-            margin-bottom: 0;
-        }
-        .support .section-2 .input-field {
-            height: 42px;
-            padding: 8px 12px;
-            font-size: 12px;
-        }
-        .support .section-2 .submit-button {
-            font-size: 15px;
-            padding: 10px 0;
-        }
         .support .section-2 .label {
-            font-size: 13px;
+            font-size: 14px;
         }
     }
     @media (width <= 481px) {}
     @media (width <= 429px) {
-        .support .section-2 .input-field {
-            height: 40px;
-            padding: 7px 10px;
-        }
         .support .section-2 .submit-button {
-            font-size: 14px;
-            padding: 9px 0;
+            width: 50%;
         }
     }
     @media (width <= 415px) {}

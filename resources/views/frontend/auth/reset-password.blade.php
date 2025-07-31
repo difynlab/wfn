@@ -3,17 +3,17 @@
 @section('title', 'Reset Password')
 
 @push('after-styles')
-    <link rel="stylesheet" href="{{ asset('frontend/css/reset-password.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/auth.css') }}">
 @endpush
 
 @section('content')
-    <div class="container page-global reset-password">
+    <div class="container page-global page-auth reset-password">
         <div class="row justify-content-center">
             <div class="col-12 col-md-9 col-lg-7 col-xl-5">
                 <p class="title">{{ $contents->{'reset_title_' . $middleware_language} ?? $contents->reset_title_en }}</p>
                 <p class="description">{{ $contents->{'reset_description_' . $middleware_language} ?? $contents->reset_description_en }}</p>
 
-                <form action="{{ route('reset-password.store') }}" method="POST">
+                <form action="{{ route('reset-password.store') }}" method="POST" class="form">
                     @csrf
                     <div class="mb-3 mb-md-4 position-relative">
                         <label for="password" class="form-label label">{{ $contents->{'	reset_new_password_' . $middleware_language} ?? $contents->	reset_new_password_en }}</label>
@@ -31,7 +31,7 @@
 
                     <input type="hidden" name="email" value="{{ $email }}">
                     <input type="hidden" name="token" value="{{ $token }}">
-                    <button type="submit" class="btn reset-password-button">{{ $contents->{'reset_button_' . $middleware_language} ?? $contents->reset_button_en }}</button>
+                    <button type="submit" class="submit-button">{{ $contents->{'reset_button_' . $middleware_language} ?? $contents->reset_button_en }}</button>
                 </form>
             </div>
         </div>

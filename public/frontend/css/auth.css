@@ -1,0 +1,233 @@
+/* #region: Global */
+    .page-auth .title {
+        font-size: 32px;
+        font-weight: 500;
+        color: var(--black);
+        margin-bottom: 5px!important;
+        text-align: center;
+    }
+    .page-auth .description {
+        font-size: 16px;
+        color: var(--gray);
+        margin-bottom: 30px!important;
+        text-align: center;
+    }
+    .page-auth .label {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--light_black);
+        margin-bottom: 10px!important;
+    }
+    .page-auth .input-field {
+        border: 1px solid var(--input_border);
+        border-radius: 0;
+        height: 50px;
+        font-size: 14px;
+        color: var(--gray);
+    }
+    .page-auth .submit-button {
+        background-color: var(--red);
+        width: 100%;
+        border-radius: 4px;
+        border: none;
+        padding: 15px 0;
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--white);
+        margin-bottom: 30px;
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--light_black);
+            transition: all 0.3s;
+        }
+    }
+    .page-auth .toggle-password {
+        color: var(--medium_gray);
+        cursor: pointer;
+        position: absolute;
+        top: 43px;
+        font-size: 20px;
+        right: 15px;
+    }
+    .page-auth .text {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--medium_gray);
+        text-align: center;
+    }
+    .page-auth .text .span-link {
+        color: var(--blue);
+    }
+/* #endregion */
+
+
+/* #region: Login */
+    .login .right {
+        padding-left: 8%;
+    }
+    .login .image {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+    }
+    .login .title {
+        text-align: start;
+    }
+    .login .description {
+        text-align: start;
+    }
+    .login .remember {
+        font-size: 14px;
+        color: var(--medium_gray);
+    }
+    .login .checkbox {
+        border-radius: 0!important;
+        width: 13px;
+        height: 13px;
+        margin-right: 6px;
+        margin-top: 0px;
+    }
+    .login .forgot-password {
+        font-size: 14px;
+        color: var(--medium_gray);
+    }
+/* #endregion */
+
+
+/* #region: Register */
+    .register .title {
+        text-align: start;
+    }
+    .register .description {
+        text-align: start;
+    }
+    .register .radio-label {
+        font-size: 16px;
+        color: var(--gray);
+        cursor: pointer;
+    }
+    .register .radio {
+        border: 2px solid var(--input_border);
+        width: 25px;
+        height: 25px;
+        margin-right: 6px;
+        margin-top: 0px;
+        cursor: pointer;
+    }
+    .register .phone-div {
+        gap: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .register .phone-div #phone_code {
+        width: 15%;
+    }
+    .register .select2-container--default .select2-selection--single {
+        border: 1px solid var(--input_border);
+        border-radius: 0;
+        height: 50px;
+        font-size: 14px;
+        color: var(--medium_gray);
+        outline: none;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    .register .select2-container--default .select2-selection--single .select2-selection__arrow {
+        top: initial!important;
+    }
+    .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+        background-color: var(--red);
+    }
+    .select2-results__option {
+        font-size: 14px;
+    }
+/* #endregion */
+
+
+/* #region Responsive */
+    @media (width <= 1921px) {}
+    @media (width <= 1901px) {}
+    @media (width <= 1851px) {}
+    @media (width <= 1801px) {}
+    @media (width <= 1751px) {}
+    @media (width <= 1681px) {}
+    @media (width <= 1601px) {}
+    @media (width <= 1537px) {}
+    @media (width <= 1441px) {}
+    @media (width <= 1367px) {}
+    @media (width <= 1301px) {}
+    @media (width <= 1281px) {}
+    @media (width <= 1201px) {}
+    @media (width <= 1151px) {}
+    @media (width <= 1076px) {}
+    @media (width <= 1025px) {}
+    @media (width <= 992px) {
+        .login .left {
+            display: none;
+        }
+        .login .right {
+            padding-left: 12px;
+        }
+    }
+    @media (width <= 845px) {}
+    @media (width <= 768px) {
+        .page-auth .title {
+            font-size: 20px;
+        }
+        .page-auth .description {
+            font-size: 14px;
+            margin-bottom: 15px!important;
+        }
+        .page-auth .label {
+            font-size: 15px;
+            margin-bottom: 5px!important;
+        }
+        .page-auth .input-field {
+            height: 45px;
+        }
+        .page-auth .toggle-password {
+            top: 39px;
+            font-size: 18px;
+        }
+        .page-auth .submit-button {
+            margin-bottom: 10px;
+        }
+
+        .register .radio {
+            width: 23px;
+            height: 23px;
+        }
+        .register .radio-label {
+            font-size: 15px;
+        }
+    }
+    @media (width <= 721px) {}
+    @media (width <= 576px) {}
+    @media (width <= 481px) {}
+    @media (width <= 429px) {
+        .page-auth .title {
+            margin-bottom: 3px!important;
+        }
+        .page-auth .label {
+            font-size: 14px;
+            margin-bottom: 2px!important;
+        }
+        .page-auth .toggle-password {
+            top: 35px;
+        }
+        .page-auth .text {
+            font-size: 13px;
+        }
+
+        .register .radio-label {
+            font-size: 14px;
+        }
+    }
+    @media (width <= 415px) {}
+    @media (width <= 396px) {}
+    @media (width <= 377px) {}
+    @media (width <= 361px) {}
+    @media (width <= 331px) {}
+/* #endregion */

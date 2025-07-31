@@ -3,11 +3,11 @@
 @section('title', 'Register')
 
 @push('after-styles')
-    <link rel="stylesheet" href="{{ asset('frontend/css/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/auth.css') }}">
 @endpush
 
 @section('content')
-    <div class="container page-global register">
+    <div class="container page-global page-auth register">
         <p class="title">{{ $contents->{'register_title_' . $middleware_language} ?? $contents->register_title_en }}</p>
         <p class="description">{{ $contents->{'register_description_' . $middleware_language} ?? $contents->register_description_en }}</p>
 
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="col-12 mb-3 mb-md-0 col-md-6">
-                    <label class="form-label label">{{ $contents->{'register_country_' . $middleware_language} ?? $contents->register_country_en }}<span class="asterisk">*</span></label>
+                    <label class="form-label label">{{ $contents->{'register_country_' . $middleware_language} ?? $contents->register_country_en }}</label>
                     <select class="form-select js-single input-field" id="country" name="country" required>
                         <option value="">{{ $contents->{'register_country_placeholder_' . $middleware_language} ?? $contents->register_country_placeholder_en }}</option>
                         @foreach($countries as $country)
@@ -89,24 +89,28 @@
             </div>
 
             <div class="row mb-0 mb-md-4">
-                <div class="col-12 mb-3 mb-md-0 col-md-6 position-relative">
-                    <label for="password" class="form-label label">{{ $contents->{'register_password_' . $middleware_language} ?? $contents->register_password_en }}</label>
-                    <input type="password" class="form-control input-field" id="password" name="password" placeholder="* * * * * * *" required>
-                    <span class="bi bi-eye-slash-fill toggle-password"></span>
-                    <x-backend.input-error field="password"></x-backend.input-error>
+                <div class="col-12 mb-3 mb-md-0 col-md-6">
+                    <div class="position-relative">
+                        <label for="password" class="form-label label">{{ $contents->{'register_password_' . $middleware_language} ?? $contents->register_password_en }}</label>
+                        <input type="password" class="form-control input-field" id="password" name="password" placeholder="* * * * * * *" required>
+                        <span class="bi bi-eye-slash-fill toggle-password"></span>
+                        <x-backend.input-error field="password"></x-backend.input-error>
+                    </div>
                 </div>
 
-                <div class="col-12 mb-4 mb-md-0 col-md-6 position-relative">
-                    <label for="passwordConfirmation" class="form-label label">{{ $contents->{'register_confirm_password_' . $middleware_language} ?? $contents->register_confirm_password_en }}</label>
-                    <input type="password" class="form-control input-field" id="passwordConfirmation" name="password_confirmation" placeholder="* * * * * * *" required/>
-                    <span class="bi bi-eye-slash-fill toggle-password"></span>
-                    <x-backend.input-error field="password_confirmation"></x-backend.input-error>
+                <div class="col-12 mb-4 mb-md-0 col-md-6">
+                    <div class="position-relative">
+                        <label for="passwordConfirmation" class="form-label label">{{ $contents->{'register_confirm_password_' . $middleware_language} ?? $contents->register_confirm_password_en }}</label>
+                        <input type="password" class="form-control input-field" id="passwordConfirmation" name="password_confirmation" placeholder="* * * * * * *" required/>
+                        <span class="bi bi-eye-slash-fill toggle-password"></span>
+                        <x-backend.input-error field="password_confirmation"></x-backend.input-error>
+                    </div>
                 </div>
             </div>
 
-            <button type="submit" class="btn register-button">{{ $contents->{'register_button_' . $middleware_language} ?? $contents->register_button_en }}</button>
+            <button type="submit" class="submit-button">{{ $contents->{'register_button_' . $middleware_language} ?? $contents->register_button_en }}</button>
 
-            <p class="exist-account">{{ $contents->{'register_have_account_' . $middleware_language} ?? $contents->register_have_account_en }}
+            <p class="text">{{ $contents->{'register_have_account_' . $middleware_language} ?? $contents->register_have_account_en }}
                 <a href="{{ route('login') }}" class="span-link">{{ $contents->{'register_login_' . $middleware_language} ?? $contents->register_login_en }}</a>
             </p>
         </form>

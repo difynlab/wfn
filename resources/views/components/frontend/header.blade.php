@@ -7,18 +7,18 @@
     $warehouses = App\Models\WarehouseContent::find(1);
 @endphp
 
-<div class="container">
+<div class="container-lg">
     <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="{{ route('homepage') }}">
             <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->logo) }}" alt="Logo" class="logo">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <i class="bi bi-text-paragraph icon"></i>
         </button>
 
         <div class="collapse navbar-collapse" id="navbar">
-            <ul class="navbar-nav align-items-center ms-auto">
+            <ul class="navbar-nav align-items-center ms-lg-auto">
                 <li class="nav-item">
                     <a class="nav-link {{ Request::segment(1) == '' ? 'active' : '' }}" href="{{ route('homepage') }}">{{ $home->{'page_name_' . $middleware_language} ?? $home->page_name_en }}</a>
                 </li>
@@ -77,7 +77,7 @@
                 @endauth
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-globe2"></i></a>
+                    <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-globe2 globe"></i></a>
 
                     <ul class="dropdown-menu language-dropdown-menu">
                         <li>

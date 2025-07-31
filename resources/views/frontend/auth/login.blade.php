@@ -3,12 +3,12 @@
 @section('title', 'Log In')
 
 @push('after-styles')
-    <link rel="stylesheet" href="{{ asset('frontend/css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/auth.css') }}">
 @endpush
 
 @section('content')
 
-    <div class="container page-global login">
+    <div class="container page-global page-auth login">
         <div class="row">
             <div class="col-12 col-lg-5 col-xl-4 left">
                 @if($contents->{'login_image_' . $middleware_language})
@@ -51,10 +51,10 @@
                         </div>
                     </div>
                     
-                    <button type="submit" class="btn login-button">{{ $contents->{'login_button_' . $middleware_language} ?? $contents->login_button_en }}</button>
+                    <button type="submit" class="submit-button">{{ $contents->{'login_button_' . $middleware_language} ?? $contents->login_button_en }}</button>
                 </form>
 
-                <p class="no-account">{{ $contents->{'login_no_account_' . $middleware_language} ?? $contents->login_no_account_en }}
+                <p class="text">{{ $contents->{'login_no_account_' . $middleware_language} ?? $contents->login_no_account_en }}
                     <a href="{{ route('register') }}" class="span-link">{{ $contents->{'login_register_' . $middleware_language} ?? $contents->login_register_en }}</a>
                 </p>
             </div>
