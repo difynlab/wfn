@@ -280,7 +280,7 @@ require __DIR__.'/auth/backend.php';
         // Warehouses routes
 
         // Bookings routes
-            Route::controller(LandlordBookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
+            Route::middleware(['company'])->controller(LandlordBookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
                 Route::get('/', 'index')->name('index');
                 Route::get('filter', 'filter')->name('filter');
                 Route::get('{booking}/edit', 'edit')->name('edit');
@@ -341,7 +341,7 @@ require __DIR__.'/auth/backend.php';
         Route::get('dashboard', [TenantDashboardController::class, 'index'])->name('dashboard');
 
         // Bookings routes
-            Route::controller(TenantBookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
+            Route::middleware(['company'])->controller(TenantBookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
                 Route::get('/', 'index')->name('index');
                 Route::get('filter', 'filter')->name('filter');
                 Route::get('{booking}/edit', 'edit')->name('edit');

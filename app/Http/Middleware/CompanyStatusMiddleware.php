@@ -24,6 +24,15 @@ class CompanyStatusMiddleware
         }
 
         if($company->status != 1) {
+            if($request->is('*/bookings*')) {
+                if($role == 'landlord') {
+                    return redirect()->route('landlord.dashboard')->with('company_bookings', 'Company Details');
+                }
+                else {
+                    return redirect()->route('tenant.dashboard')->with('company_bookings', 'Company Details');
+                }
+            }
+            
             if($role == 'landlord') {
                 return redirect()->route('landlord.dashboard')->with('company', 'Company Details');
             }

@@ -99,6 +99,22 @@
     </div>
 </div>
 
+<div class="modal fade notification-modal" id="company-bookings-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <i class="bi bi-x-circle-fill close-icon"></i>
+                <p class="title">{{ session('company_bookings') }}</p>
+                <p class="description">Please update your company details before accessing the bookings section.</p>
+
+                <div class="buttons">
+                    <button type="button" class="btn close-button" data-bs-dismiss="modal" title="Close">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @push('after-scripts')
     @if(session('success'))
         <script>
@@ -144,6 +160,14 @@
         <script>
             $(document).ready(function() {
                 $('#company-modal').modal('show');
+            });
+        </script>
+    @endif
+
+    @if(session('company_bookings'))
+        <script>
+            $(document).ready(function() {
+                $('#company-bookings-modal').modal('show');
             });
         </script>
     @endif
