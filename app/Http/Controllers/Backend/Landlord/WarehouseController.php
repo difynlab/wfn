@@ -91,8 +91,7 @@ class WarehouseController extends Controller
             'new_handling_equipment_image' => 'max:30720',
             'new_storage_area_image' => 'max:30720',
             'new_videos.*' => 'max:204800',
-            'new_licenses.*' => 'max:30720',
-            'status' => 'required|in:0,1,2'
+            'new_licenses.*' => 'max:30720'
         ], [
             'address_name' => 'Address field is required.',
             'address_en' => 'Address field is required.',
@@ -307,6 +306,7 @@ class WarehouseController extends Controller
         $data['amenities_ar'] = $amenities_ar;
         $data['details_en'] = $details_en;
         $data['details_ar'] = $details_ar;
+        $data['status'] = 2;
         $warehouse = Warehouse::create($data);  
 
         return redirect()->route('landlord.warehouses.edit', $warehouse)->with([
@@ -356,8 +356,7 @@ class WarehouseController extends Controller
             'new_handling_equipment_image' => 'max:30720',
             'new_storage_area_image' => 'max:30720',
             'new_videos.*' => 'max:204800',
-            'new_licenses.*' => 'max:30720',
-            'status' => 'required|in:0,1,2'
+            'new_licenses.*' => 'max:30720'
         ], [
             'address_name' => 'Address field is required.',
             'address_en' => 'Address field is required.',

@@ -42,6 +42,7 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/auth/backend.php';
 
+
 // Admin
     Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
         Route::get('/', function () {
@@ -268,7 +269,7 @@ require __DIR__.'/auth/backend.php';
         Route::get('dashboard', [LandlordDashboardController::class, 'index'])->name('dashboard');
 
         // Warehouses routes
-            Route::middleware(['company'])->controller(LandlordWarehouseController::class)->prefix('warehouses')->name('warehouses.')->group(function() {
+            Route::middleware('company')->controller(LandlordWarehouseController::class)->prefix('warehouses')->name('warehouses.')->group(function() {
                 Route::get('/', 'index')->name('index');
                 Route::get('filter', 'filter')->name('filter');
                 Route::get('create', 'create')->name('create');
@@ -280,7 +281,7 @@ require __DIR__.'/auth/backend.php';
         // Warehouses routes
 
         // Bookings routes
-            Route::middleware(['company'])->controller(LandlordBookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
+            Route::middleware('company')->controller(LandlordBookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
                 Route::get('/', 'index')->name('index');
                 Route::get('filter', 'filter')->name('filter');
                 Route::get('{booking}/edit', 'edit')->name('edit');
@@ -341,7 +342,7 @@ require __DIR__.'/auth/backend.php';
         Route::get('dashboard', [TenantDashboardController::class, 'index'])->name('dashboard');
 
         // Bookings routes
-            Route::controller(TenantBookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
+            Route::middleware('company')->controller(TenantBookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
                 Route::get('/', 'index')->name('index');
                 Route::get('filter', 'filter')->name('filter');
                 Route::get('{booking}/edit', 'edit')->name('edit');

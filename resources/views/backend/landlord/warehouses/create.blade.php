@@ -341,7 +341,10 @@
                     <x-backend.input-error field="new_licenses.*"></x-backend.input-error>
                 </div>
 
-                <x-backend.create></x-backend.create>
+                <div class="col-12">
+                    <button type="submit" class="submit-button">Save Changes</button>
+                </div>
+
                 <x-backend.notification></x-backend.notification>
             </div>
         </form>
