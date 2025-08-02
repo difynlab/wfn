@@ -442,7 +442,11 @@
                     <x-backend.input-error field="new_licenses.*"></x-backend.input-error>
                 </div>
 
-                <x-backend.edit :data="$warehouse"></x-backend.edit>
+                <!-- <x-backend.edit :data="$warehouse"></x-backend.edit> -->
+                <div class="col-12">
+                    <button type="submit" class="submit-button">Save Changes</button>
+                </div>
+
                 <x-backend.notification></x-backend.notification>
             </div>
         </form>

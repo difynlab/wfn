@@ -25,10 +25,23 @@ class CompanyStatusMiddleware
 
         if($company->status != 1) {
             if($role == 'landlord') {
-                return redirect()->route('landlord.dashboard')->with('company', 'Company Details');
+                if($request->segment(1) == 'landlord') {
+                    return redirect()->back()->with([
+                        'company' => 'Company Details',
+                        'message' => 'Please update your company details before manage warehouses and bookings.'
+                    ]);
+                }
+
+                return redirect()->route('landlord.dashboard')->with([
+                    'company' => 'Company Details',
+                    'message' => 'Please update your company details before checking our warehouses.'
+                ]);
             }
             else {
-                return redirect()->route('tenant.dashboard')->with('company', 'Company Details');
+                return redirect()->route('tenant.dashboard')->with([
+                    'company' => 'Company Details',
+                    'message' => 'Please update your company details before checking our warehouses.'
+                ]);
             }
         }
 

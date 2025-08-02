@@ -89,7 +89,7 @@
             <div class="modal-body">
                 <i class="bi bi-x-circle-fill close-icon"></i>
                 <p class="title">{{ session('company') }}</p>
-                <p class="description">Please update your company details before checking our warehouses.</p>
+                <p class="description">{{ session('message') }}</p>
 
                 <div class="buttons">
                     <button type="button" class="btn close-button" data-bs-dismiss="modal" title="Close">Close</button>
