@@ -92,7 +92,7 @@
 
                                         <div class="row">
                                             @foreach($storage_types as $storage_type)
-                                                <div class="col-3 single-radio">
+                                                <div class="col-4 col-xl-3 single-radio">
                                                     <div class="form-check">
                                                         <input id="{{ $storage_type->id }}" class="form-check-input check" type="radio" value="{{ $storage_type->id }}" name="storage_type">
                                                         <label for="{{ $storage_type->id }}" class="form-check-label label">{{ $storage_type->{'name_' . $middleware_language} ?? $storage_type->name_en }}</label>

@@ -1,4 +1,4 @@
-/* #region Global */
+/* #region: Global */
     .article .section-description {
         padding-bottom: 0;
     }
@@ -10,7 +10,7 @@
 /* #endregion */
 
 
-/* #region Section 1 */
+/* #region: Section 1 */
     .article .section-1 .title-row {
         margin-bottom: 30px;
     }
@@ -44,7 +44,7 @@
 /* #endregion */
 
 
-/* #region Section 2 */
+/* #region: Section 2 */
     .article .section-2 .section-title {
         font-size: 25px;
         padding-bottom: 20px;
@@ -104,7 +104,7 @@
 /* #endregion */
 
 
-/* #region Responsive */
+/* #region: Responsive */
     @media (width <= 1921px) {}
     @media (width <= 1901px) {}
     @media (width <= 1851px) {}
@@ -116,17 +116,60 @@
     @media (width <= 1441px) {}
     @media (width <= 1367px) {}
     @media (width <= 1301px) {}
-    @media (width <= 1281px) {}
+    @media (width <= 1281px) {
+        .article .section-1 .title-row {
+            margin-bottom: 20px;
+        }
+        .article .section-1 .title-row .left .details {
+            font-size: 14px;
+        }
+        .article .section-1 .thumbnail-image {
+            margin-bottom: 20px;
+        }
+    }
     @media (width <= 1151px) {}
     @media (width <= 1076px) {}
     @media (width <= 1025px) {}
-    @media (width <= 991px) {}
+    @media (width <= 992px) {
+        .article .section-1 .thumbnail-image {
+            height: 350px;
+        }
+        .article .section-2 .single-article:last-child {
+            margin-bottom: 0!important;
+        }
+        .article .section-2 .single-article .date {
+            font-size: 13px;
+            padding-bottom: 2px;
+        }
+        .article .section-2 .single-article .title {
+            font-size: 20px;
+            padding-bottom: 5px;
+        }
+        .article .section-2 .single-article .content {
+            font-size: 15px;
+        }
+    }
     @media (width <= 845px) {}
-    @media (width <= 768px) {}
+    @media (width <= 768px) {
+        .article .section-1 .thumbnail-image {
+            height: 300px;
+        }
+        .article .section-2 .section-title {
+            font-size: 22px;
+            padding-bottom: 15px;
+        }
+    }
     @media (width <= 721px) {}
     @media (width <= 651px) {}
     @media (width <= 576px) {}
-    @media (width <= 481px) {}
+    @media (width <= 481px) {
+        .article .section-1 .thumbnail-image {
+            height: 250px;
+        }
+        .article .section-2 .single-article .image {
+            height: 225px;
+        }
+    }
     @media (width <= 429px) {}
     @media (width <= 415px) {}
     @media (width <= 396px) {}

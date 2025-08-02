@@ -399,7 +399,15 @@
             margin-left: 90px;
         }
     }
-    @media (width <= 1281px) {}
+    @media (width <= 1281px) {
+        .section-title {
+            font-size: 25px;
+            padding-bottom: 3px;
+        }
+        .section-description {
+            font-size: 16px;
+        }
+    }
     @media (width <= 1201px) {}
     @media (width <= 1151px) {
         .navbar .logo {
@@ -537,12 +545,15 @@
         .section-margin {
             margin-bottom: 25px;
         }
+        .section-description {
+            font-size: 15px;
+        }
 
         .navbar .navbar-collapse {
             padding: 10px 0;
         }
         .footer {
-            padding-top: 2%;
+            padding-top: 3%;
             margin-top: 7%;
         }
         .footer .top .button {

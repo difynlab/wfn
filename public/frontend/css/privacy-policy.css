@@ -1,4 +1,4 @@
-/* #region Section 2 */
+/* #region: Section 2 */
     .privacy-policy .section-2 .content, .privacy-policy .section-2 .content p {
         font-size: 17px;
         color: var(--gray);
@@ -6,7 +6,7 @@
 /* #endregion */
 
 
-/* #region Responsive */
+/* #region: Responsive */
     @media (width <= 1921px) {}
     @media (width <= 1901px) {}
     @media (width <= 1851px) {}

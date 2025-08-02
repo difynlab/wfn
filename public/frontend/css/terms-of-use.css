@@ -1,4 +1,4 @@
-/* #region Section 2 */
+/* #region: Section 2 */
     .terms-of-use .section-2 .nav-row {
         margin-bottom: 25px;
     }
@@ -37,7 +37,7 @@
 /* #endregion */
 
 
-/* #region Responsive */
+/* #region: Responsive */
     @media (width <= 1921px) {}
     @media (width <= 1901px) {}
     @media (width <= 1851px) {}
@@ -64,7 +64,7 @@
             font-size: 15px;
         }
     }
-    @media (width <= 991px) {}
+    @media (width <= 992px) {}
     @media (width <= 845px) {}
     @media (width <= 768px) {}
     @media (width <= 721px) {}

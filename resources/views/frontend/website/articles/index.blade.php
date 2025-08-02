@@ -7,7 +7,6 @@
 @endpush
  
 @section('content')
-
     <div class="articles page-global">
         <div class="section-1 container section-margin">
             <h1 class="page-title">{{ $contents->{'title_' . $middleware_language} ?? $contents->title_en }}</h1>
@@ -17,7 +16,7 @@
         @if($article_categories->count() > 0)
             <div class="section-2 container">
                 <div class="row nav-row">
-                    <div class="col-10 left">
+                    <div class="col-12 col-md-10 left">
                         <ul class="nav nav-pills" id="pills-tab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" onclick="redirectToTab('recent')" id="pills-recent-tab" data-bs-toggle="pill" data-bs-target="#pills-recent" type="button" role="tab" aria-controls="pills-recent" aria-selected="true">{{ $contents->{'recent_' . $middleware_language} ?? $contents->recent_en }}</button>
@@ -43,7 +42,7 @@
                         <div class="list-view">
                             @foreach($articles as $article)
                                 <div class="row single-article">
-                                    <div class="col-5">
+                                    <div class="col-12 mb-2 mb-sm-4 mb-lg-0 col-lg-5">
                                         @if($article->thumbnail)
                                             <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="image">
                                         @else
@@ -51,11 +50,11 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-7">
+                                    <div class="col-12 col-lg-7">
                                         <p class="date">{{ \Carbon\Carbon::parse($article->created_at)->format('F jS Y') }}</p>
                                         <p class="title">{{ $article->title }}</p>
 
-                                        <p class="category">{{ $article->articleCategory ? $article->articleCategory->name : 'Uncategorized' }}</p>
+                                        <p class="category">{{ $article->articleCategory ? $article->articleCategory->name : 'Un Categorized' }}</p>
 
                                         <div class="content">
                                             {{ Str::limit(strip_tags($article->content), 200) }}
@@ -72,7 +71,7 @@
                         <div class="grid-view d-none">
                             <div class="row">
                                 @foreach($articles as $article)
-                                    <div class="col-4 single-article">
+                                    <div class="col-6 mb-2 mb-sm-4 mb-lg-0 col-lg-4 single-article">
                                         @if($article->thumbnail)
                                             <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="image">
                                         @else
@@ -83,7 +82,7 @@
 
                                         <p class="title">{{ Str::limit($article->title, 50) }}</p>
 
-                                        <p class="category">{{ $article->articleCategory ? $article->articleCategory->name : 'Uncategorized' }}</p>
+                                        <p class="category">{{ $article->articleCategory ? $article->articleCategory->name : 'Un Categorized' }}</p>
 
                                         <div class="content">{{ Str::limit(strip_tags($article->content), 100) }}</div>
 
@@ -106,7 +105,7 @@
                                 <div class="list-view">
                                     @foreach($filtered_articles as $article)
                                         <div class="row single-article">
-                                            <div class="col-5">
+                                            <div class="col-12 mb-2 mb-sm-4 mb-lg-0 col-lg-5">
                                                 @if($article->thumbnail)
                                                     <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="image">
                                                 @else
@@ -114,7 +113,7 @@
                                                 @endif
                                             </div>
 
-                                            <div class="col-7">
+                                            <div class="col-12 col-lg-7">
                                                 <p class="date">{{ \Carbon\Carbon::parse($article->created_at)->format('M d, Y') }}</p>
                                                 <p class="title">{{ $article->title }}</p>
 
@@ -135,7 +134,7 @@
                                 <div class="grid-view d-none">
                                     <div class="row">
                                         @foreach($filtered_articles as $article)
-                                            <div class="col-4 single-article">
+                                            <div class="col-6 mb-2 mb-sm-4 mb-lg-0 col-lg-4 single-article">
                                                 @if($article->thumbnail)
                                                     <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="image">
                                                 @else
@@ -146,7 +145,7 @@
 
                                                 <p class="title">{{ Str::limit($article->title, 50) }}</p>
 
-                                                <p class="category">{{ $article->articleCategory ? $article->articleCategory->name : 'Uncategorized' }}</p>
+                                                <p class="category">{{ $article->articleCategory ? $article->articleCategory->name : 'Un Categorized' }}</p>
 
                                                 <div class="content">{{ Str::limit(strip_tags($article->content), 100) }}</div>
 
@@ -164,7 +163,6 @@
             </div>
         @endif
     </div>
-
 @endsection
 
 @push('after-scripts')

@@ -585,7 +585,6 @@
         font-size: 15px;
         color: var(--medium_gray);
         font-weight: 500;
-        margin-right: 5px;
         padding-bottom: 15px;
     }
     .dashboard .box .box-description i {

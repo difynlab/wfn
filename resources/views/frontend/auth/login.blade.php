@@ -7,7 +7,6 @@
 @endpush
 
 @section('content')
-
     <div class="container page-global page-auth login">
         <div class="row">
             <div class="col-12 col-lg-5 col-xl-4 left">
@@ -40,7 +39,7 @@
 
                     <div class="row align-items-center mb-4">
                         <div class="col-6">
-                            <div class="form-check d-flex align-items-center">
+                            <div class="form-check d-flex align-items-center mb-0">
                                 <input type="checkbox" class="form-check-input checkbox" id="remember">
                                 <label class="form-check-label remember" for="remember">{{ $contents->{'login_remember_' . $middleware_language} ?? $contents->login_remember_en }}</label>
                             </div>
@@ -62,7 +61,6 @@
 
         <x-frontend.notification></x-frontend.notification>
     </div>
-
 @endsection
 
 @push('after-scripts')

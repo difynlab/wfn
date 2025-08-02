@@ -10,7 +10,7 @@
     <div class="article page-global">
         <div class="section-1 container section-margin">
             <div class="row title-row">
-                <div class="col-10 left">
+                <div class="col-12 col-md-10 left">
                     <h1 class="section-title">{{ $article->title }}</h1>
 
                     <p class="details">
@@ -20,7 +20,7 @@
                     </p>
                 </div>
 
-                <div class="col-2 right">
+                <div class="col-12 col-md-2 right">
                     <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" target="_blank" title="Share on Facebook">
                         <i class="bi bi-facebook icon"></i>
                     </a>
@@ -51,7 +51,7 @@
 
                 <div class="row">
                     @foreach($related_articles as $related_article)
-                        <div class="col-4 single-article">
+                        <div class="col-12 mb-4 mb-lg-0 col-lg-4 single-article">
                             @if($related_article->thumbnail)
                                 <img src="{{ asset('storage/backend/articles/' . $related_article->thumbnail) }}" alt="article-image" class="image">
                             @else
