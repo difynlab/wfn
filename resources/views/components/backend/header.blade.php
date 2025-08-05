@@ -11,11 +11,11 @@
         <ul class="navbar-nav align-items-center ms-auto">
             @if(auth()->user()->role != 'admin')
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::segment(1) == '' ? 'active' : '' }}" href="{{ route('homepage') }}">Home</a>
+                    <a class="nav-link {{ Request::segment(1) == '' ? 'active' : '' }}" href="{{ route('homepage.index') }}">Home</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::segment(1) == 'about' ? 'active' : '' }}" href="{{ route('about') }}">About</a>
+                    <a class="nav-link {{ Request::segment(1) == 'about' ? 'active' : '' }}" href="{{ route('about.index') }}">About</a>
                 </li>
 
                 <li class="nav-item">

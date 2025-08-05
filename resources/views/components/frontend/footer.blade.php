@@ -27,7 +27,7 @@
                     <p class="title">{{ $contents->{'footer_first_menu_' . $middleware_language} ?? $contents->footer_first_menu_en }}</p>
                     <ul>
                         <li>
-                            <a href="{{ route('about') }}">{{ $about->{'page_name_' . $middleware_language} ?? $about->page_name_en }}</a>
+                            <a href="{{ route('about.index') }}">{{ $about->{'page_name_' . $middleware_language} ?? $about->page_name_en }}</a>
                         </li>
 
                         <li>

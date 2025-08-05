@@ -713,7 +713,7 @@ class UserController extends Controller
                 'role' => $user->role,
             ];
 
-            Mail::to([$request->email])->send(new AccountApprovalMail($mail_data));
+            send_email(new AccountApprovalMail($mail_data), $request->email);
         }
 
         $data['image'] = $image_name;
@@ -864,7 +864,7 @@ class UserController extends Controller
                 'role' => $user->role,
             ];
 
-            Mail::to([$user->email])->send(new CompanyApprovalMail($mail_data));
+            send_email(new CompanyApprovalMail($mail_data), $user->email);
         }
 
         $data['registration_certificates'] = $registration_certificates;

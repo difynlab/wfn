@@ -147,9 +147,9 @@ class BookingController extends Controller
             'booking_id'        => $booking->id,
         ];
 
-        Mail::to($tenant->email)->send(new BookingUpdateMail($mail_data));
-        Mail::to($landlord->email)->send(new LandlordBookingUpdateMail($mail_data));
-        Mail::to(config('app.admin_email'))->send(new AdminBookingUpdateMail($mail_data));
+        send_email(new BookingUpdateMail($mail_data), $tenant->email);
+        send_email(new LandlordBookingUpdateMail($mail_data), $landlord->email);
+        send_email(new AdminBookingUpdateMail($mail_data), config('app.admin_email'));
 
         return redirect()->back()->with([
             'success' => "Update Successful!",

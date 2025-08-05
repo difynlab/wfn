@@ -57,10 +57,10 @@ class AboutController extends Controller
             'email'    => $request->email,
         ];
 
-        Mail::to($request->email)->send(new SubscriptionMail($mail_data));
-        Mail::to(config('app.admin_email'))->send(new AdminSubscriptionMail($mail_data));
+        send_email(new SubscriptionMail($mail_data), $request->email);
+        send_email(new AdminSubscriptionMail($mail_data), config('app.admin_email'));
 
-        return redirect()->route('about')->with(
+        return redirect()->route('about.index')->with(
             [
                 'success' => 'Successfully Subscribed',
                 'message' => 'You will receive our newsletters regularly.',

@@ -9,7 +9,7 @@
 
 <div class="container-lg">
     <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="{{ route('homepage') }}">
+        <a class="navbar-brand" href="{{ route('homepage.index') }}">
             <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->logo) }}" alt="Logo" class="logo">
         </a>
 
@@ -20,11 +20,11 @@
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav align-items-center ms-lg-auto">
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::segment(1) == '' ? 'active' : '' }}" href="{{ route('homepage') }}">{{ $home->{'page_name_' . $middleware_language} ?? $home->page_name_en }}</a>
+                    <a class="nav-link {{ Request::segment(1) == '' ? 'active' : '' }}" href="{{ route('homepage.index') }}">{{ $home->{'page_name_' . $middleware_language} ?? $home->page_name_en }}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::segment(1) == 'about' ? 'active' : '' }}" href="{{ route('about') }}">{{ $about->{'page_name_' . $middleware_language} ?? $about->page_name_en }}</a>
+                    <a class="nav-link {{ Request::segment(1) == 'about' ? 'active' : '' }}" href="{{ route('about.index') }}">{{ $about->{'page_name_' . $middleware_language} ?? $about->page_name_en }}</a>
                 </li>
 
                 <li class="nav-item">

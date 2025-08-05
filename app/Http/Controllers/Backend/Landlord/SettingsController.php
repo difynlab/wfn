@@ -404,8 +404,8 @@ class SettingsController extends Controller
             'email' => $user->email
         ];
 
-        Mail::to([$user->email])->send(new CompanyUpdateMail($mail_data));
-        Mail::to(config('app.admin_email'))->send(new AdminCompanyUpdateMail($mail_data));
+        send_email(new CompanyUpdateMail($mail_data), $user->email);
+        send_email(new AdminCompanyUpdateMail($mail_data), config('app.admin_email'));
 
         return redirect()->back()->with([
             'success' => "Update Successful!",

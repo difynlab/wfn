@@ -57,7 +57,7 @@ class ForgotPasswordController extends Controller
             'token' => $token,
         ];
 
-        Mail::to([$request->email])->send(new AccountForgotPasswordMail($mail_data));
+        send_email(new AccountForgotPasswordMail($mail_data), $request->email);
 
         return redirect()->back()->with([
             'success' => "Email sent successfully",

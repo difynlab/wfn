@@ -54,8 +54,8 @@ class SupportController extends Controller
             'message'  => $request->message,
         ];
 
-        Mail::to($request->email)->send(new SupportMail($mail_data));
-        Mail::to(config('app.admin_email'))->send(new AdminSupportMail($mail_data));
+        send_email(new SupportMail($mail_data), $request->email);
+        send_email(new AdminSupportMail($mail_data), config('app.admin_email'));
 
         return redirect()->route('supports.index')->with(
             [

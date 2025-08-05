@@ -291,7 +291,7 @@
                         <p class="section-title">{{ $contents->{'section_8_title_' . $middleware_language} ?? $contents->section_8_title_en }}</p>
                         <p class="section-description">{{ $contents->{'section_8_description_' . $middleware_language} ?? $contents->section_8_description_en }}</p>
 
-                        <form action="{{ route('subscriptions') }}" method="POST">
+                        <form action="{{ route('about.subscription') }}" method="POST">
                             @csrf
                             <div class="mb-4">
                                 <label for="name" class="form-label label">{{ $contents->{'section_8_name_' . $middleware_language} ?? $contents->section_8_name_en }}</label>

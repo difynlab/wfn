@@ -295,9 +295,9 @@ class WarehouseController extends Controller
             'booking_id' => $booking->id,
         ];
 
-        Mail::to([$tenant->email])->send(new BookingMail($mail_data));
-        Mail::to([$landlord->email])->send(new LandlordBookingMail($mail_data));
-        Mail::to(config('app.admin_email'))->send(new AdminBookingMail($mail_data));
+        send_email(new BookingMail($mail_data), $tenant->email);
+        send_email(new LandlordBookingMail($mail_data), $landlord->email);
+        send_email(new AdminBookingMail($mail_data), config('app.admin_email'));
 
         return redirect()->route('warehouses.show', $request->warehouse_id)->with(
             [
@@ -380,8 +380,8 @@ class WarehouseController extends Controller
             'message_id' => $message->id,
         ];
 
-        Mail::to($user->email)->send(new ExpertMail($mail_data));
-        Mail::to(config('app.admin_email'))->send(new AdminExpertMail($mail_data));
+        send_email(new ExpertMail($mail_data), $user->email);
+        send_email(new AdminExpertMail($mail_data), config('app.admin_email'));
 
         return redirect()->route('warehouses.show', $request->warehouse)->with(
             [
@@ -424,8 +424,8 @@ class WarehouseController extends Controller
             'report_id' => $report->id,
         ];
 
-        Mail::to($user->email)->send(new ReportMail($mail_data));
-        Mail::to(config('app.admin_email'))->send(new AdminReportMail($mail_data));
+        send_email(new ReportMail($mail_data), $user->email);
+        send_email(new AdminReportMail($mail_data), config('app.admin_email'));
 
         return redirect()->route('warehouses.show', $request->warehouse)->with(
             [

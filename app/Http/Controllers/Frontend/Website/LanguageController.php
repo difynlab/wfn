@@ -18,7 +18,7 @@ class LanguageController extends Controller
 
         return response()->json([
             'success' => true,
-            'redirect_url' => route('homepage')
+            'redirect_url' => route('homepage.index')
         ]);
     }
 }

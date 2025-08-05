@@ -320,8 +320,8 @@ class RegisterController extends Controller
             'created_at' => $user->created_at,
         ];
 
-        Mail::to([$request->email])->send(new AccountRegisterMail($mail_data));
-        // Mail::to(config('app.admin_email'))->send(new AdminAccountRegisterMail($mail_data));
+        send_email(new AccountRegisterMail($mail_data), $request->email);
+        // send_email(new AdminAccountRegisterMail($mail_data), config('app.admin_email'));
 
         Auth::login($user);
         $request->session()->regenerate();
@@ -333,12 +333,12 @@ class RegisterController extends Controller
         //     return redirect()->route('tenant.dashboard');
         // }
 
-        return redirect()->route('homepage')->with([
+        return redirect()->route('homepage.index')->with([
             'success' => 'Account Created',
             'message' => 'Welcome to WFN',
         ]);
 
-        // return redirect()->route('homepage')->with([
+        // return redirect()->route('homepage.index')->with([
         //     'success' => 'Account Created',
         //     'message' => 'We will review and approve your account as soon as possible.',
         // ]);

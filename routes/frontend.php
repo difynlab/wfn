@@ -16,9 +16,15 @@ Route::post('language', [LanguageController::class, 'language'])->name('language
 
 Route::middleware(['language'])->group(function () {
     // Page routes
-        Route::get('/', [HomepageController::class, 'index'])->name('homepage');
+        Route::name('homepage.')->group(function() {
+            Route::get('/', [HomepageController::class, 'index'])->name('index');
+            Route::post('subscription', [HomepageController::class, 'subscription'])->name('subscription');
+        });
 
-        Route::get('about', [AboutController::class, 'index'])->name('about');
+        Route::prefix('about')->name('about.')->group(function() {
+            Route::get('/', [AboutController::class, 'index'])->name('index');
+            Route::post('subscription', [AboutController::class, 'subscription'])->name('subscription');
+        });
 
         Route::prefix('articles')->name('articles.')->group(function() {
             Route::get('/', [ArticleController::class, 'index'])->name('index');
@@ -52,9 +58,4 @@ Route::middleware(['language'])->group(function () {
         Route::get('privacy-policy', [PrivacyPolicyController::class, 'index'])->name('privacy-policy');
         Route::get('terms-of-use', [TermsOfUseController::class, 'index'])->name('terms-of-use');
     // Page routes
-
-    // Subscription route
-        Route::post('subscriptions', [HomepageController::class, 'subscriptions'])->name('subscriptions');
-        Route::post('subscriptions', [AboutController::class, 'subscriptions'])->name('subscriptions');
-    // Subscription route
 });

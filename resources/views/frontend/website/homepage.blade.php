@@ -581,7 +581,7 @@
                             <p class="title">{{ $contents->{'section_4_title_' . $middleware_language} ?? $contents->section_4_title_en }}</p>
                             <p class="description">{{ $contents->{'section_4_description_' . $middleware_language} ?? $contents->section_4_description_en }}</p>
 
-                            <form action="{{ route('subscriptions') }}" method="POST" class="form">
+                            <form action="{{ route('homepage.subscription') }}" method="POST" class="form">
                                 @csrf
                                 <div class="row form-row">
                                     <div class="col-9">

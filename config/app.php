@@ -124,5 +124,4 @@ return [
     ],
 
     'admin_email' => array_map('trim', explode(',', env('ADMIN_EMAIL', 'zajjith@epirco.net'))),
-
 ];
