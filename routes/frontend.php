@@ -31,14 +31,17 @@ Route::middleware(['language'])->group(function () {
         });
 
         // Auth routes
-            Route::middleware(['auth', 'company'])->prefix('warehouses')->name('warehouses.')->group(function () {
+            Route::middleware(['auth'])->prefix('warehouses')->name('warehouses.')->group(function () {
                 Route::get('/', [WarehouseController::class, 'index'])->name('index');
                 Route::post('/', [WarehouseController::class, 'store'])->name('store');
                 Route::get('filter', [WarehouseController::class, 'filter'])->name('filter');
-                Route::get('show/{warehouse}', [WarehouseController::class, 'show'])->name('show');
                 Route::post('expert', [WarehouseController::class, 'expert'])->name('expert');
                 Route::post('report', [WarehouseController::class, 'report'])->name('report');
                 Route::post('favorite', [WarehouseController::class, 'favorite'])->name('favorite');
+            });
+            
+            Route::middleware(['auth', 'company'])->prefix('warehouses')->name('warehouses.')->group(function () {
+                Route::get('show/{warehouse}', [WarehouseController::class, 'show'])->name('show');
             });
         // Auth routes
 

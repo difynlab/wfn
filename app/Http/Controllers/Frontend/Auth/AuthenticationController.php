@@ -38,11 +38,8 @@ class AuthenticationController extends Controller
 
             $user = Auth::user();
 
-            if($user->role == 'landlord') {
-                return redirect()->route('landlord.dashboard');
-            }
-            elseif($user->role == 'tenant') {
-                return redirect()->route('tenant.dashboard');
+            if($user->role == 'landlord' || $user->role == 'tenant') {
+                return redirect()->route('homepage');
             }
             else {
                 Auth::logout();

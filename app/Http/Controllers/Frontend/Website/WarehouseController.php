@@ -76,6 +76,8 @@ class WarehouseController extends Controller
 
         $storage_types = StorageType::where('status', 1)->orderBy('id', 'desc')->get();
 
+        $cities = Warehouse::get()->pluck('city_en')->unique()->toArray();
+
         return view('frontend.website.warehouses.index', [
             'contents' => $contents,
             'warehouses' => $warehouses,
@@ -83,7 +85,8 @@ class WarehouseController extends Controller
             'all_warehouses' => $all_warehouses,
             'storage_types' => $storage_types,
             'popular_warehouses' => $popular_warehouses,
-            'top_rated_warehouses' => $top_rated_warehouses
+            'top_rated_warehouses' => $top_rated_warehouses,
+            'cities' => $cities
         ]);
     }
 
@@ -92,7 +95,12 @@ class WarehouseController extends Controller
         $location = $request->location;
         $warehouse_size = $request->warehouse_size ?? 'all';
         $storage_type = $request->storage_type ?? 'all';
-        $price = $request->price ?? 'all';
+        // $price = $request->price ?? 'all';
+
+        session([
+            'tenancy_date' => $request->tenancy_date ?? null,
+            'renewal_date' => $request->renewal_date ?? null,
+        ]);
 
         $warehouses = Warehouse::where('status', 1)->orderBy('id', 'desc');
 
@@ -122,23 +130,23 @@ class WarehouseController extends Controller
             $warehouses->where('storage_type_id', $storage_type);
         }
 
-        if($price != 'all') {
-            if($price == 50) {
-                $warehouses->where('rent_per_pallet', '<=', 50);
-            }
-            else if($price == 100) {
-                $warehouses->where('rent_per_pallet', '>=', 50)->where('rent_per_pallet', '<=', 100);
-            }
-            else if($price == 150) {
-                $warehouses->where('rent_per_pallet', '>=', 100)->where('rent_per_pallet', '<=', 150);
-            }
-            else if($price == 200) {
-                $warehouses->where('rent_per_pallet', '>=', 150)->where('rent_per_pallet', '<=', 200);
-            }
-            else {
-                $warehouses->where('rent_per_pallet', '>', 200);
-            }
-        }
+        // if($price != 'all') {
+        //     if($price == 50) {
+        //         $warehouses->where('rent_per_pallet', '<=', 50);
+        //     }
+        //     else if($price == 100) {
+        //         $warehouses->where('rent_per_pallet', '>=', 50)->where('rent_per_pallet', '<=', 100);
+        //     }
+        //     else if($price == 150) {
+        //         $warehouses->where('rent_per_pallet', '>=', 100)->where('rent_per_pallet', '<=', 150);
+        //     }
+        //     else if($price == 200) {
+        //         $warehouses->where('rent_per_pallet', '>=', 150)->where('rent_per_pallet', '<=', 200);
+        //     }
+        //     else {
+        //         $warehouses->where('rent_per_pallet', '>', 200);
+        //     }
+        // }
 
         $contents = WarehouseContent::find(1);
         $all_warehouses = $warehouses->get();
@@ -185,6 +193,8 @@ class WarehouseController extends Controller
 
         $storage_types = StorageType::where('status', 1)->orderBy('id', 'desc')->get();
 
+        $cities = Warehouse::get()->pluck('city_en')->unique()->toArray();
+
         return view('frontend.website.warehouses.index', [
             'contents' => $contents,
             'warehouses' => $warehouses,
@@ -196,7 +206,8 @@ class WarehouseController extends Controller
             'location' => $location,
             'warehouse_size' => $warehouse_size,
             'selected_storage_type' => $storage_type,
-            'price' => $price
+            // 'price' => $price,
+            'cities' => $cities
         ]);
     }
 
@@ -241,7 +252,7 @@ class WarehouseController extends Controller
             'sliders' => $sliders,
             'reviews' => $reviews,
             'rating' => $rating,
-            'more_warehouses' => $more_warehouses,
+            'more_warehouses' => $more_warehouses
         ]);
     }
 

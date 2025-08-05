@@ -15,7 +15,8 @@
 
         dateInputs.forEach(input => {
             input.DatePickerX.init({
-                format: 'yyyy-mm-dd' // Ensure correct display and parsing format
+                format: 'yyyy-mm-dd',
+                minDate: new Date(),
             });
 
             if(input.value) {

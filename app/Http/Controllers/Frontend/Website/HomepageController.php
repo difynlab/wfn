@@ -39,6 +39,8 @@ class HomepageController extends Controller
 
         $storage_types = StorageType::where('status', 1)->orderBy('id', 'desc')->get();
 
+        $cities = Warehouse::get()->pluck('city_en')->unique()->toArray();
+
         return view('frontend.website.homepage', [
             'contents' => $contents,
             'riyadh_warehouses' => $riyadh_warehouses,
@@ -47,6 +49,7 @@ class HomepageController extends Controller
             'medina_warehouses' => $medina_warehouses,
 			'articles' => $articles,
 			'storage_types' => $storage_types,
+			'cities' => $cities
         ]);
     }
 

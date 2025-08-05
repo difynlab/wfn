@@ -31,13 +31,13 @@ return new class extends Migration
             $table->text('section_2_size_3_en')->nullable();
             $table->text('section_2_size_4_en')->nullable();
             $table->text('section_2_type_en')->nullable();
-            $table->text('section_2_price_en')->nullable();
+            // $table->text('section_2_price_en')->nullable();
             $table->text('section_2_button_en')->nullable();
 
-            $table->text('section_3_new_en')->nullable();
+            // $table->text('section_3_new_en')->nullable();
             $table->text('section_3_unlock_en')->nullable();
-            $table->text('section_3_listed_en')->nullable();
-            $table->text('section_3_day_ago_en')->nullable();
+            // $table->text('section_3_listed_en')->nullable();
+            // $table->text('section_3_day_ago_en')->nullable();
             $table->text('section_3_like_en')->nullable();
             $table->text('section_3_share_en')->nullable();
             // $table->text('section_3_report_en')->nullable();
@@ -102,13 +102,13 @@ return new class extends Migration
             $table->text('section_2_size_3_ar')->nullable();
             $table->text('section_2_size_4_ar')->nullable();
             $table->text('section_2_type_ar')->nullable();
-            $table->text('section_2_price_ar')->nullable();
+            // $table->text('section_2_price_ar')->nullable();
             $table->text('section_2_button_ar')->nullable();
 
-            $table->text('section_3_new_ar')->nullable();
+            // $table->text('section_3_new_ar')->nullable();
             $table->text('section_3_unlock_ar')->nullable();
-            $table->text('section_3_listed_ar')->nullable();
-            $table->text('section_3_day_ago_ar')->nullable();
+            // $table->text('section_3_listed_ar')->nullable();
+            // $table->text('section_3_day_ago_ar')->nullable();
             $table->text('section_3_like_ar')->nullable();
             $table->text('section_3_share_ar')->nullable();
             // $table->text('section_3_report_ar')->nullable();

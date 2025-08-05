@@ -341,16 +341,29 @@ class SettingsController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:0|max:255',
             'address' => 'required|min:0|max:255',
+            'cr_number' => 'required|integer|min:10|max:10',
             'email' => 'required|email|min:0|max:255|unique:companies,email,'.$company->id,
             'phone' => 'required|min:0|max:255|regex:/^\+?[0-9]+$/|unique:companies,phone,'.$company->id,
             'website' => 'nullable|regex:/^(https?:\/\/)?([\w\-]+\.)+[\w\-]{2,}(\/[\w\-._~:\/?#[\]@!$&\'()*+,;=]*)?$/',
             'industry' => 'required|min:0|max:255',
             'date' => 'nullable|date',
             'new_registration_certificates.*' => 'max:30720'
+        ], [
+            'cr_number' => 'The CR number field must not be greater than 10 digits.',
         ]);
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
+                'error' => 'Update Failed!',
+                'route' => route('tenant.settings.index')
+            ]);
+        }
+
+        if($company->registration_certificates == null && $request->new_registration_certificates == null) {
+            return redirect()->back()->withErrors([
+                'new_registration_certificates.*' => 'Registration certificate is required.'
+            ])
+            ->withInput()->with([
                 'error' => 'Update Failed!',
                 'route' => route('tenant.settings.index')
             ]);
@@ -390,7 +403,7 @@ class SettingsController extends Controller
             'email' => $user->email
         ];
 
-        Mail::to([$request->email])->send(new CompanyUpdateMail($mail_data));
+        Mail::to([$user->email])->send(new CompanyUpdateMail($mail_data));
         Mail::to(config('app.admin_email'))->send(new AdminCompanyUpdateMail($mail_data));
 
         return redirect()->back()->with([

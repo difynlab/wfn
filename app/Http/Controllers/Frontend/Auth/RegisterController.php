@@ -9,6 +9,7 @@ use App\Models\AuthenticationContent;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -302,7 +303,7 @@ class RegisterController extends Controller
 
         $data = $request->except('password', 'password_confirmation');
         $data['password'] = Hash::make($request->password);
-        $data['status'] = 2;
+        $data['status'] = 1;
         $user = User::create($data);
 
         $company = Company::create(
@@ -320,10 +321,10 @@ class RegisterController extends Controller
         ];
 
         Mail::to([$request->email])->send(new AccountRegisterMail($mail_data));
-        Mail::to(config('app.admin_email'))->send(new AdminAccountRegisterMail($mail_data));
+        // Mail::to(config('app.admin_email'))->send(new AdminAccountRegisterMail($mail_data));
 
-        // Auth::login($user);
-        // $request->session()->regenerate();
+        Auth::login($user);
+        $request->session()->regenerate();
 
         // if($user->role == 'landlord') {
         //     return redirect()->route('landlord.dashboard');
@@ -334,7 +335,12 @@ class RegisterController extends Controller
 
         return redirect()->route('homepage')->with([
             'success' => 'Account Created',
-            'message' => 'We will review and approve your account as soon as possible.',
+            'message' => 'Welcome to WFN',
         ]);
+
+        // return redirect()->route('homepage')->with([
+        //     'success' => 'Account Created',
+        //     'message' => 'We will review and approve your account as soon as possible.',
+        // ]);
     }
 }

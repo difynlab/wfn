@@ -26,22 +26,28 @@
                     <div class="search-bar" id="searchBar">
                         <form action="{{ route('warehouses.filter') }}" method="GET">
                             <div class="search-inputs">
-                                <div class="search-item">
+                                <div class="search-item dropdown-search">
                                     <p class="search-label">{{ $contents->{'section_1_label_1_' . $middleware_language} ?? $contents->section_1_label_1_en }}</p>
-                                    <input type="text" class="search-input" placeholder="{{ $contents->{'section_1_placeholder_1_' . $middleware_language} ?? $contents->section_1_placeholder_1_en }}" name="location">
+                                    <!-- <input type="text" class="search-input" placeholder="{{ $contents->{'section_1_placeholder_1_' . $middleware_language} ?? $contents->section_1_placeholder_1_en }}" name="location"> -->
+                                    <select class="form-control js-single search-input" name="location" id="location">
+                                        <option value="">{{ $contents->{'section_1_placeholder_1_' . $middleware_language} ?? $contents->section_1_placeholder_1_en }}</option>
+                                        @foreach($cities as $city)
+                                            <option value="{{ $city }}">{{ $city }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="divider"></div>
                                 
                                 <div class="search-item">
                                     <p class="search-label">{{ $contents->{'section_1_label_2_' . $middleware_language} ?? $contents->section_1_label_2_en }}</p>
-                                    <input type="text" class="date date-picker-field" id="tenancy_date" name="tenancy_start" placeholder="{{ $contents->{'section_1_placeholder_2_' . $middleware_language} ?? $contents->section_2_placeholder_1_en }}">
+                                    <input type="text" class="date date-picker-field" id="tenancy_date" name="tenancy_date" placeholder="{{ $contents->{'section_1_placeholder_2_' . $middleware_language} ?? $contents->section_2_placeholder_1_en }}" value="{{ session('tenancy_date') }}">
                                 </div>
 
                                 <div class="divider"></div>
                                 
                                 <div class="search-item">
                                     <p class="search-label">{{ $contents->{'section_1_label_3_' . $middleware_language} ?? $contents->section_1_label_3_en }}</p>
-                                    <input type="text" class="date date-picker-field" id="tenancy_date" name="tenancy_end" placeholder="{{ $contents->{'section_1_placeholder_3_' . $middleware_language} ?? $contents->section_1_placeholder_3_en }}">
+                                    <input type="text" class="date date-picker-field" id="renewal_date" name="renewal_date" placeholder="{{ $contents->{'section_1_placeholder_3_' . $middleware_language} ?? $contents->section_1_placeholder_3_en }}" value="{{ session('renewal_date') }}">
                                 </div>
 
                                 <div class="divider"></div>
@@ -682,5 +688,41 @@
         $('#filter').on('click', function() {
             $('.filters').toggleClass('d-none');
         });
+
+        $(document).ready(function() {
+            $('.js-single').select2();
+            setMinRenewalDate();
+        });
+
+        $('#tenancy_date').on('change', function() {
+            setMinRenewalDate();
+        });
+
+        function setMinRenewalDate() {
+            const tenancyDate = document.getElementById('tenancy_date').value;
+            
+            if(tenancyDate) {
+                const dateParts = tenancyDate.split('-');
+                if(dateParts.length === 3) {
+                    const year = parseInt(dateParts[0], 10);
+                    const month = parseInt(dateParts[1], 10) - 1;
+                    const day = parseInt(dateParts[2], 10);
+                    const tenancyDateObj = new Date(year, month, day);
+                    
+                    tenancyDateObj.setMonth(tenancyDateObj.getMonth() + 1);
+                    const renewalDateInput = document.getElementById('renewal_date');
+                    var datePicker = renewalDateInput.DatePickerX;
+                    datePicker.remove();
+
+                    renewalDateInput.DatePickerX.init({
+                        format: 'yyyy-mm-dd',
+                        minDate: tenancyDateObj,
+                    });
+
+                    renewalDateInput.DatePickerX.setValue(tenancyDateObj);
+                    renewalDateInput.setAttribute('min', tenancyDateObj.toISOString().split('T')[0]);
+                }
+            }
+        }
     </script>
 @endpush

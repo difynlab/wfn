@@ -44,7 +44,14 @@
                 <form action="{{ route('warehouses.filter') }}" method="GET">
                     <div class="row bottom-row">
                         <div class="col">
-                            <input type="text" class="form-control input-field" name="location" placeholder="{{ $contents->{'section_2_search_' . $middleware_language} ?? $contents->section_2_search_en }}" value="{{ $location ?? '' }}">
+                            <!-- <input type="text" class="form-control input-field" name="location" placeholder="{{ $contents->{'section_2_search_' . $middleware_language} ?? $contents->section_2_search_en }}" value="{{ $location ?? '' }}"> -->
+
+                            <select class="form-control js-single search-field" name="location">
+                                <option value="">{{ $contents->{'section_2_search_' . $middleware_language} ?? $contents->section_2_search_en }}</option>
+                                @foreach($cities as $city)
+                                    <option value="{{ $city }}" {{ isset($location) && $location == $city ? 'selected' : '' }}>{{ $city }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="col">
@@ -68,7 +75,7 @@
                             </select>
                         </div>
 
-                        <div class="col">
+                        <!-- <div class="col">
                             <select class="form-select input-field" name="price">
                                 <option value="all">{{ $contents->{'section_2_price_' . $middleware_language} ?? $contents->section_2_price_en }}</option>
                                 <option value="50" {{ isset($price) && $price == '50' ? "selected" : "" }}>0 SAR - 50 SAR</option>
@@ -77,7 +84,7 @@
                                 <option value="200" {{ isset($price) && $price == '200' ? "selected" : "" }}>150 SAR - 200 SAR</option>
                                 <option value="200+" {{ isset($price) && $price == '200+' ? "selected" : "" }}>200+ SAR</option>
                             </select>
-                        </div>
+                        </div> -->
 
                         <!-- <div class="col-2">
                             <select class="form-select input-field">
@@ -104,15 +111,15 @@
                                 <a href="{{ route('warehouses.show', $warehouse) }}">
                                     <div class="row align-items-center">
                                         <div class="col-4">
-                                            @php
+                                            <!-- @php
                                                 $listed_date = $warehouse->created_at->copy()->startOfDay();
                                                 $today = now()->startOfDay();
                                                 $date_difference = $listed_date->diffInDays($today, false);
-                                            @endphp
+                                            @endphp -->
 
-                                            @if($date_difference <= 30)
+                                            <!-- @if($date_difference <= 30)
                                                 <p class="badge">{{ $contents->{'section_3_new_' . $middleware_language} ?? $contents->section_3_new_en }}</p>
-                                            @endif
+                                            @endif -->
                                             
                                             @if($warehouse->thumbnail)
                                                 <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="image">
@@ -148,7 +155,7 @@
 
                                 <div class="box">
                                     <div class="row">
-                                        <div class="col-6">
+                                        <!-- <div class="col-6">
                                             <p class="posted-time">
                                                 {{ $contents->{'section_3_listed_' . $middleware_language} ?? $contents->section_3_listed_en }}
 
@@ -156,9 +163,9 @@
 
                                                 {{ $contents->{'section_3_day_ago_' . $middleware_language} ?? $contents->section_3_day_ago_en }}
                                             </p>
-                                        </div>
+                                        </div> -->
                                       
-                                        <div class="col-6 text-end">
+                                        <div class="col-12 text-end">
                                             <span class="action" onClick="favoriteToggle({{ auth()->user()->id }}, {{ $warehouse->id }}, '{{ route('warehouses.favorite') }}', {{ isFavorite(auth()->user()->id, $warehouse->id) ? 1 : 0 }}, this)">
                                                 <i class="bi {{ isFavorite(auth()->user()->id, $warehouse->id) ? 'bi-heart-fill' : 'bi-heart' }}"></i>
                                                 {{ $contents->{'section_3_like_' . $middleware_language} ?? $contents->section_3_like_en }}
@@ -342,5 +349,11 @@
         }
 
         initMap();
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.js-single').select2();
+        });
     </script>
 @endpush

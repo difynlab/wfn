@@ -84,15 +84,15 @@
                         <input type="text" class="form-control input-field" id="section_2_size_4_{{ $short_code }}" name="section_2_size_4_{{ $short_code }}" value="{{ $contents->{'section_2_size_4_' . $short_code} ?? '' }}" placeholder="Size 4">
                     </div>
 
-                    <div class="col-6 mb-4">
+                    <div class="col-6">
                         <label for="section_2_type_{{ $short_code }}" class="form-label label">Type</label>
                         <input type="text" class="form-control input-field" id="section_2_type_{{ $short_code }}" name="section_2_type_{{ $short_code }}" value="{{ $contents->{'section_2_type_' . $short_code} ?? '' }}" placeholder="Type">
                     </div>
 
-                    <div class="col-6 mb-4">
+                    <!-- <div class="col-6 mb-4">
                         <label for="section_2_price_{{ $short_code }}" class="form-label label">Price</label>
                         <input type="text" class="form-control input-field" id="section_2_price_{{ $short_code }}" name="section_2_price_{{ $short_code }}" value="{{ $contents->{'section_2_price_' . $short_code} ?? '' }}" placeholder="Price">
-                    </div>
+                    </div> -->
 
                     <div class="col-6">
                         <label for="section_2_button_{{ $short_code }}" class="form-label label">Button</label>
@@ -105,17 +105,17 @@
                 <p class="inner-page-title">Section 3</p>
 
                 <div class="row">
-                    <div class="col-12 mb-4">
+                    <!-- <div class="col-12 mb-4">
                         <label for="section_3_new_{{ $short_code }}" class="form-label label">New</label>
                         <input type="text" class="form-control input-field" id="section_3_new_{{ $short_code }}" name="section_3_new_{{ $short_code }}" value="{{ $contents->{'section_3_new_' . $short_code} ?? '' }}" placeholder="New">
-                    </div>
+                    </div> -->
 
                     <div class="col-6 mb-4">
                         <label for="section_3_unlock_{{ $short_code }}" class="form-label label">Unlock Pricing</label>
                         <input type="text" class="form-control input-field" id="section_3_unlock_{{ $short_code }}" name="section_3_unlock_{{ $short_code }}" value="{{ $contents->{'section_3_unlock_' . $short_code} ?? '' }}" placeholder="Unlock Pricing">
                     </div>
 
-                    <div class="col-6 mb-4">
+                    <!-- <div class="col-6 mb-4">
                         <label for="section_3_listed_{{ $short_code }}" class="form-label label">Listed</label>
                         <input type="text" class="form-control input-field" id="section_3_listed_{{ $short_code }}" name="section_3_listed_{{ $short_code }}" value="{{ $contents->{'section_3_listed_' . $short_code} ?? '' }}" placeholder="Listed">
                     </div>
@@ -123,7 +123,7 @@
                     <div class="col-6 mb-4">
                         <label for="section_3_day_ago_{{ $short_code }}" class="form-label label">Day Ago</label>
                         <input type="text" class="form-control input-field" id="section_3_day_ago_{{ $short_code }}" name="section_3_day_ago_{{ $short_code }}" value="{{ $contents->{'section_3_day_ago_' . $short_code} ?? '' }}" placeholder="Day Ago">
-                    </div>
+                    </div> -->
 
                     <div class="col-6 mb-4">
                         <label for="section_3_like_{{ $short_code }}" class="form-label label">Like</label>
@@ -140,7 +140,7 @@
                         <input type="text" class="form-control input-field" id="section_3_report_{{ $short_code }}" name="section_3_report_{{ $short_code }}" value="{{ $contents->{'section_3_report_' . $short_code} ?? '' }}" placeholder="Report">
                     </div> -->
 
-                    <div class="col-6">
+                    <div class="col-6 mb-4">
                         <label for="section_3_popular_{{ $short_code }}" class="form-label label">Popular</label>
                         <input type="text" class="form-control input-field" id="section_3_popular_{{ $short_code }}" name="section_3_popular_{{ $short_code }}" value="{{ $contents->{'section_3_popular_' . $short_code} ?? '' }}" placeholder="Popular">
                     </div>

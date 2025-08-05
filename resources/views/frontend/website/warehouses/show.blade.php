@@ -212,14 +212,14 @@
                         <div class="date-picker">
                             <div class="box">
                                 <p class="check">{{ $contents->{'inner_page_section_2_tenure_start_' . $middleware_language} ?? $contents->inner_page_section_2_tenure_start_en }}</p>
-                                <input type="text" class="date date-picker-field" id="tenure_start" name="tenure_start" placeholder="{{ $contents->{'inner_page_section_2_add_date_' . $middleware_language} ?? $contents->inner_page_section_2_add_date_en }}" value="{{ old('tenancy_date') }}" required>
+                                <input type="text" class="date date-picker-field" id="tenure_start" placeholder="{{ $contents->{'inner_page_section_2_add_date_' . $middleware_language} ?? $contents->inner_page_section_2_add_date_en }}" value="{{ session('tenancy_date') }}">
                             </div>
 
                             <div class="line"></div>
                             
                             <div class="box">
                                 <p class="check">{{ $contents->{'inner_page_section_2_tenure_end_' . $middleware_language} ?? $contents->inner_page_section_2_tenure_end_en }}</p>
-                                <input type="text" class="date date-picker-field" id="tenure_end" name="tenure_end" placeholder="{{ $contents->{'inner_page_section_2_add_date_' . $middleware_language} ?? $contents->inner_page_section_2_add_date_en }}" value="{{ old('renewal_date') }}" required>
+                                <input type="text" class="date date-picker-field" id="tenure_end" placeholder="{{ $contents->{'inner_page_section_2_add_date_' . $middleware_language} ?? $contents->inner_page_section_2_add_date_en }}" value="{{ session('renewal_date') }}">
                             </div>
                         </div>
 
@@ -570,5 +570,74 @@
         }
 
         initMap();
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            setMinRenewalDate();
+            setMinBookingRenewalDate();
+        });
+
+        $('#tenure_start').on('change', function() {
+            setMinRenewalDate();
+        });
+
+        function setMinRenewalDate() {
+            const tenancyDate = document.getElementById('tenure_start').value;
+            
+            if(tenancyDate) {
+                const dateParts = tenancyDate.split('-');
+                if(dateParts.length === 3) {
+                    const year = parseInt(dateParts[0], 10);
+                    const month = parseInt(dateParts[1], 10) - 1;
+                    const day = parseInt(dateParts[2], 10);
+                    const tenancyDateObj = new Date(year, month, day);
+                    
+                    tenancyDateObj.setMonth(tenancyDateObj.getMonth() + 1);
+                    const renewalDateInput = document.getElementById('tenure_end');
+                    var datePicker = renewalDateInput.DatePickerX;
+                    datePicker.remove();
+
+                    renewalDateInput.DatePickerX.init({
+                        format: 'yyyy-mm-dd',
+                        minDate: tenancyDateObj,
+                    });
+
+                    renewalDateInput.DatePickerX.setValue(tenancyDateObj);
+                    renewalDateInput.setAttribute('min', tenancyDateObj.toISOString().split('T')[0]);
+                }
+            }
+        }
+
+        $('#tenancy_date').on('change', function() {
+            setMinBookingRenewalDate();
+        });
+
+        function setMinBookingRenewalDate() {
+            const tenancyDate = document.getElementById('tenancy_date').value;
+            
+            if(tenancyDate) {
+                const dateParts = tenancyDate.split('-');
+                if(dateParts.length === 3) {
+                    const year = parseInt(dateParts[0], 10);
+                    const month = parseInt(dateParts[1], 10) - 1;
+                    const day = parseInt(dateParts[2], 10);
+                    const tenancyDateObj = new Date(year, month, day);
+                    
+                    tenancyDateObj.setMonth(tenancyDateObj.getMonth() + 1);
+                    const renewalDateInput = document.getElementById('renewal_date');
+                    var datePicker = renewalDateInput.DatePickerX;
+                    datePicker.remove();
+
+                    renewalDateInput.DatePickerX.init({
+                        format: 'yyyy-mm-dd',
+                        minDate: tenancyDateObj,
+                    });
+
+                    renewalDateInput.DatePickerX.setValue(tenancyDateObj);
+                    renewalDateInput.setAttribute('min', tenancyDateObj.toISOString().split('T')[0]);
+                }
+            }
+        }
     </script>
 @endpush

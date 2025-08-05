@@ -98,10 +98,16 @@
                             <x-backend.input-error field="name"></x-backend.input-error>
                         </div>
 
-                        <div class="col-12 mb-4">
+                        <div class="col-6 mb-4">
                             <label for="address" class="form-label label">Address<span class="asterisk">*</span></label>
-                            <input type="text" class="form-control input-field" id="company_address" name="address" placeholder="Address" value="{{ old('address', $company->address) }}" required>
+                            <input type="text" class="form-control input-field" id="address" name="address" placeholder="Address" value="{{ old('address', $company->address) }}" required>
                             <x-backend.input-error field="address"></x-backend.input-error>
+                        </div>
+
+                        <div class="col-6 mb-4">
+                            <label for="cr_number" class="form-label label">CR Number (10 Digits)<span class="asterisk">*</span></label>
+                            <input type="number" class="form-control input-field" id="cr_number" name="cr_number" placeholder="CR Number" value="{{ old('cr_number', $company->cr_number) }}" required>
+                            <x-backend.input-error field="cr_number"></x-backend.input-error>
                         </div>
 
                         <div class="col-6 mb-4">
