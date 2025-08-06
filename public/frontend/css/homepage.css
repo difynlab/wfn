@@ -536,9 +536,7 @@
             padding-bottom: 0px;
         }
     }
-    @media (width <= 992px) {
-        
-    }
+    @media (width <= 992px) {}
     @media (width <= 845px) {}
     @media (width <= 768px) {}
     @media (width <= 721px) {}

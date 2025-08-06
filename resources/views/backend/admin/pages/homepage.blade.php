@@ -148,7 +148,7 @@
                         <input type="text" class="form-control input-field" id="section_2_city_4_{{ $short_code }}" name="section_2_city_4_{{ $short_code }}" value="{{ $contents->{'section_2_city_4_' . $short_code} ?? '' }}" placeholder="Medina">
                     </div>
 
-                    <div class="col-6 mb-4">
+                    <!-- <div class="col-6 mb-4">
                         <label for="section_2_listed_{{ $short_code }}" class="form-label label">Listed</label>
                         <input type="text" class="form-control input-field" id="section_2_listed_{{ $short_code }}" name="section_2_listed_{{ $short_code }}" value="{{ $contents->{'section_2_listed_' . $short_code} ?? '' }}" placeholder="Listed">
                     </div>
@@ -156,7 +156,7 @@
                     <div class="col-6 mb-4">
                         <label for="section_2_day_ago_{{ $short_code }}" class="form-label label">Day Ago</label>
                         <input type="text" class="form-control input-field" id="section_2_day_ago_{{ $short_code }}" name="section_2_day_ago_{{ $short_code }}" value="{{ $contents->{'section_2_day_ago_' . $short_code} ?? '' }}" placeholder="Day Ago">
-                    </div>
+                    </div> -->
 
                     <div class="col-12">
                         <label for="section_2_share_{{ $short_code }}" class="form-label label">Share</label>

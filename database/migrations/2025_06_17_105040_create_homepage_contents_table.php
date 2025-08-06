@@ -41,8 +41,8 @@ return new class extends Migration
             $table->text('section_2_city_2_en')->nullable();
             $table->text('section_2_city_3_en')->nullable();
             $table->text('section_2_city_4_en')->nullable();
-            $table->text('section_2_listed_en')->nullable();
-            $table->text('section_2_day_ago_en')->nullable();
+            // $table->text('section_2_listed_en')->nullable();
+            // $table->text('section_2_day_ago_en')->nullable();
             $table->text('section_2_share_en')->nullable();
             // $table->text('section_2_report_en')->nullable();
             $table->text('section_3_title_en')->nullable();
@@ -104,8 +104,8 @@ return new class extends Migration
             $table->text('section_2_city_2_ar')->nullable();
             $table->text('section_2_city_3_ar')->nullable();
             $table->text('section_2_city_4_ar')->nullable();
-            $table->text('section_2_listed_ar')->nullable();
-            $table->text('section_2_day_ago_ar')->nullable();
+            // $table->text('section_2_listed_ar')->nullable();
+            // $table->text('section_2_day_ago_ar')->nullable();
             $table->text('section_2_share_ar')->nullable();
             // $table->text('section_2_report_ar')->nullable();
             $table->text('section_3_title_ar')->nullable();

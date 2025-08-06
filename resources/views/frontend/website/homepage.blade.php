@@ -152,16 +152,16 @@
                     <div class="tab-pane fade show active" id="pills-riyadh" role="tabpanel" aria-labelledby="pills-riyadh-tab" tabindex="0">
                         <div class="row">
                             @foreach($riyadh_warehouses as $warehouse)
-                                <div class="col-4">
+                                <div class="col-12 mb-3 mb-md-0 col-md-4">
                                     <div class="card">
                                         <div class="card-body">
                                             <a href="{{ route('warehouses.show', $warehouse) }}">
                                                 <div class="top">
-                                                    @php
+                                                    <!-- @php
                                                         $listed_date = $warehouse->created_at->copy()->startOfDay();
                                                         $today = now()->startOfDay();
                                                         $date_difference = $listed_date->diffInDays($today, false);
-                                                    @endphp
+                                                    @endphp -->
 
                                                     @if($warehouse->thumbnail)
                                                         <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
@@ -190,10 +190,10 @@
                                             
                                             <div class="bottom-box">
                                                 <div class="row">
-                                                    <div class="col-5">
+                                                    <!-- <div class="col-5">
                                                         <p class="text">{{ $contents->{'section_2_listed_' . $middleware_language} ?? $contents->section_2_listed_en }} {{ $date_difference }} {{ $contents->{'section_2_day_ago_' . $middleware_language} ?? $contents->section_2_day_ago_en }}</p>
-                                                    </div>
-                                                    <div class="col-7 text-end">
+                                                    </div> -->
+                                                    <div class="col-12 text-end">
                                                         <span class="span-text" data-bs-toggle="dropdown">
                                                             <i class="bi bi-share"></i>
                                                             {{ $contents->{'section_2_share_' . $middleware_language} ?? $contents->section_2_share_en }}
@@ -239,11 +239,11 @@
                                         <div class="card-body">
                                             <a href="{{ route('warehouses.show', $warehouse) }}">
                                                 <div class="top">
-                                                    @php
+                                                    <!-- @php
                                                         $listed_date = $warehouse->created_at->copy()->startOfDay();
                                                         $today = now()->startOfDay();
                                                         $date_difference = $listed_date->diffInDays($today, false);
-                                                    @endphp
+                                                    @endphp -->
 
                                                     @if($warehouse->thumbnail)
                                                         <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
@@ -272,10 +272,10 @@
                                             
                                             <div class="bottom-box">
                                                 <div class="row">
-                                                    <div class="col-5">
+                                                    <!-- <div class="col-5">
                                                         <p class="text">{{ $contents->{'section_2_listed_' . $middleware_language} ?? $contents->section_2_listed_en }} {{ $date_difference }} {{ $contents->{'section_2_day_ago_' . $middleware_language} ?? $contents->section_2_day_ago_en }}</p>
-                                                    </div>
-                                                    <div class="col-7 text-end">
+                                                    </div> -->
+                                                    <div class="col-12 text-end">
                                                         <span class="span-text" data-bs-toggle="dropdown">
                                                             <i class="bi bi-share"></i>
                                                             {{ $contents->{'section_2_share_' . $middleware_language} ?? $contents->section_2_share_en }}
@@ -321,11 +321,11 @@
                                         <div class="card-body">
                                             <a href="{{ route('warehouses.show', $warehouse) }}">
                                                 <div class="top">
-                                                    @php
+                                                    <!-- @php
                                                         $listed_date = $warehouse->created_at->copy()->startOfDay();
                                                         $today = now()->startOfDay();
                                                         $date_difference = $listed_date->diffInDays($today, false);
-                                                    @endphp
+                                                    @endphp -->
 
                                                     @if($warehouse->thumbnail)
                                                         <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
@@ -354,10 +354,10 @@
                                             
                                             <div class="bottom-box">
                                                 <div class="row">
-                                                    <div class="col-5">
+                                                    <!-- <div class="col-5">
                                                         <p class="text">{{ $contents->{'section_2_listed_' . $middleware_language} ?? $contents->section_2_listed_en }} {{ $date_difference }} {{ $contents->{'section_2_day_ago_' . $middleware_language} ?? $contents->section_2_day_ago_en }}</p>
-                                                    </div>
-                                                    <div class="col-7 text-end">
+                                                    </div> -->
+                                                    <div class="col-12 text-end">
                                                         <span class="span-text" data-bs-toggle="dropdown">
                                                             <i class="bi bi-share"></i>
                                                             {{ $contents->{'section_2_share_' . $middleware_language} ?? $contents->section_2_share_en }}
@@ -403,11 +403,11 @@
                                         <div class="card-body">
                                             <a href="{{ route('warehouses.show', $warehouse) }}">
                                                 <div class="top">
-                                                    @php
+                                                    <!-- @php
                                                         $listed_date = $warehouse->created_at->copy()->startOfDay();
                                                         $today = now()->startOfDay();
                                                         $date_difference = $listed_date->diffInDays($today, false);
-                                                    @endphp
+                                                    @endphp -->
 
                                                     @if($warehouse->thumbnail)
                                                         <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
@@ -436,10 +436,10 @@
                                             
                                             <div class="bottom-box">
                                                 <div class="row">
-                                                    <div class="col-5">
+                                                    <!-- <div class="col-5">
                                                         <p class="text">{{ $contents->{'section_2_listed_' . $middleware_language} ?? $contents->section_2_listed_en }} {{ $date_difference }} {{ $contents->{'section_2_day_ago_' . $middleware_language} ?? $contents->section_2_day_ago_en }}</p>
-                                                    </div>
-                                                    <div class="col-7 text-end">
+                                                    </div> -->
+                                                    <div class="col-12 text-end">
                                                         <span class="span-text" data-bs-toggle="dropdown">
                                                             <i class="bi bi-share"></i>
                                                             {{ $contents->{'section_2_share_' . $middleware_language} ?? $contents->section_2_share_en }}
@@ -486,10 +486,10 @@
                 <p class="section-description">{{ $contents->{'section_3_description_' . $middleware_language} ?? $contents->section_3_description_en }}</p>
 
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-12 col-lg-6">
                         <div class="card">
                             <div class="row card-row">
-                                <div class="col-3">
+                                <div class="col-4 col-md-3">
                                     @if($contents->{'section_3_page_1_thumbnail_' . $middleware_language})
                                         <img src="{{ asset('storage/backend/pages/' . $contents->{'section_3_page_1_thumbnail_' . $middleware_language}) }}" alt="Image" class="image">
                                     @elseif($contents->section_3_page_1_thumbnail_en)
@@ -498,7 +498,7 @@
                                         <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Image" class="image">
                                     @endif
                                 </div>
-                                <div class="col-9">
+                                <div class="col-8 col-md-9">
                                     <p class="title">{{ $contents->{'section_3_page_1_title_' . $middleware_language} ?? $contents->section_3_page_1_title_en }}</p>
                                     <p class="description">{{ $contents->{'section_3_page_1_description_' . $middleware_language} ?? $contents->section_3_page_1_description_en }}</p>
                                     <a href="{{ route('warehouses.area', 1) }}" class="checkout">{{ $contents->{'section_3_checkout_' . $middleware_language} ?? $contents->section_3_checkout_en }}</a>
@@ -507,7 +507,7 @@
                         </div>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-12 col-lg-6">
                         <div class="card">
                             <div class="row card-row">
                                 <div class="col-3">
@@ -528,7 +528,7 @@
                         </div>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-12 col-lg-6">
                         <div class="card">
                             <div class="row card-row">
                                 <div class="col-3">
@@ -549,7 +549,7 @@
                         </div>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-12 col-lg-6">
                         <div class="card">
                             <div class="row card-row">
                                 <div class="col-3">
@@ -615,7 +615,7 @@
                 <div class="row">
                     <div class="col-8">
                         <p class="section-title">{{ $contents->{'section_5_title_' . $middleware_language} ?? $contents->section_5_title_en }}</p>
-                        <p class="section-description">{{ $contents->{'section_5_title_' . $middleware_language} ?? $contents->section_5_title_en }}</p>
+                        <p class="section-description">{{ $contents->{'section_5_description_' . $middleware_language} ?? $contents->section_5_description_en }}</p>
                     </div>
 
                     <div class="col-4 text-end">
@@ -626,7 +626,7 @@
                 <div class="row bottom-row">
                     @foreach($articles as $key => $article)
                         @if($key == 0)
-                            <div class="col-8 left">
+                            <div class="col-12 col-md-8 left">
                                 @if($article->thumbnail)
                                     <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="left-image">
                                 @else
@@ -643,7 +643,7 @@
                         @endif
                     @endforeach
 
-                    <div class="col-4 right">
+                    <div class="d-none d-md-block col-4 right">
                         @foreach($articles as $key => $article)
                             @if($key != 0)
                                 <div class="single-article">

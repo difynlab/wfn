@@ -22,7 +22,7 @@
         text-align: end;
     }
     .warehouses .section-2 .top-row .right .map-view-button {
-        font-style: 14px;
+        font-size: 14px;
         border-radius: 8px;
         padding: 10px 20px;
         border: 1px solid var(--input_border);
@@ -297,9 +297,9 @@
 
 /* #region Section 4 */
     .warehouses .section-4 .section-title {
-        font-size: 25px;
+        /* font-size: 25px;
         font-weight: 500;
-        color: var(--light_black);
+        color: var(--light_black); */
         padding-bottom: 20px;
     }
     .warehouses .section-4 .single-warehouse {
