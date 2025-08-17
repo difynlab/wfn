@@ -521,8 +521,19 @@
         }
     }
     @media (width <= 1025px) {
+        .about .section-9 .swiper .swiper-slide .testimonial-row .right .image {
+            width: 101%;
+            height: 150px;
+    
+}
+        .about .section-9 .swiper .swiper-slide .testimonial-row .left .stars {
+            margin-bottom: 6px;
+}
+.about .section-9 .swiper {
+    margin-top: 10px;
+}
         /* Tablet landscape adjustments */
-        .about .section-2 .our-story-row,
+        /* .about .section-2 .our-story-row,
         .about .section-4 .exchange-row,
         .about .section-5 .row,
         .about .section-7 .founders-row {
@@ -596,7 +607,7 @@
         }
         .about .section-11 .row .col-6:first-child {
             margin-bottom: 30px;
-        }
+        } */
     }
     @media (width <= 991px) {
         /* Tablet portrait adjustments */
@@ -609,6 +620,7 @@
         .about .section-10 {
             height: 450px;
         }
+        
     }
     @media (width <= 845px) {
         .about .section-5 .left .video-box .image {

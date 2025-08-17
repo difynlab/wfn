@@ -2,14 +2,18 @@
     .footer {
         margin-top: 0;
     }
-/* #endregion */
-
+    .mobile-only {
+        display: none;
+    }
 
 /* #region: Section 1 */
     .homepage .section-1 {
         position: relative;
         margin-bottom: 50px;
         z-index: 1;
+    }
+    .homepage .section-1 .overlay .mobile-search-dropdown {
+        display: none;
     }
     .homepage .section-1 .banner {
         width: 100%;
@@ -536,17 +540,740 @@
             padding-bottom: 0px;
         }
     }
-    @media (width <= 992px) {}
-    @media (width <= 845px) {}
-    @media (width <= 768px) {}
+    @media (width <= 992px) {
+        .homepage .section-1 .overlay .search-bar {
+            padding: 10px;
+        }
+        .homepage .section-4 {
+            padding-bottom: 30px;
+            padding-top: 30px;
+        }
+        .homepage .section-5 .view-more-button {
+            font-size: 16px;
+            width: 200px;
+            height: 48px;
+        }
+        .homepage .section-5 .left-image {
+            height: 400px;
+        }
+        .homepage .section-5 .left .title {
+            font-size: 20px;
+        }
+        .homepage .section-6 .advertise .text {
+            font-size: 30px;
+        }
+        .homepage .section-6 .advertise .advertise-button {
+            font-size: 16px;
+        }
+    }
+    @media (width <= 845px) {
+
+    }
+    @media (width <= 768px) {
+        .homepage .section-1 .overlay .search-bar {
+            display: none;
+        }
+        .homepage .section-1 .overlay .title {
+            font-size: 45px;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            position: relative;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
+            margin-left: -6px;
+            margin-top: 8px;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-toggle {
+            background-color: var(--white);
+            border-radius: 32px;
+            padding: 15px 20px;
+            box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-toggle:hover {
+            box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.15);
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-toggle .toggle-text {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--light_black);
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-toggle .toggle-icon {
+            font-size: 18px;
+            color: var(--gray);
+            transition: transform 0.3s;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-toggle.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content {
+            background-color: var(--white);
+            border-radius: 32px;
+            padding: 20px;
+            margin-top: 10px;
+            box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.1);
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content.show {
+            display: block;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .search-item {
+            margin-bottom: 20px;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .search-item:last-child {
+            margin-bottom: 0;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .search-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--light_black);
+            padding-bottom: 8px;
+            display: block;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .search-input {
+            width: 100%;
+            font-size: 14px;
+            color: var(--gray);
+            padding: 12px 15px;
+            border: 1px solid var(--input_border);
+            border-radius: 8px;
+            outline: none;
+            background-color: var(--white);
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .search-input:focus {
+            border-color: var(--red);
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .date {
+            width: 100%;
+            font-size: 14px;
+            color: var(--gray);
+            padding: 12px 15px;
+            border: 1px solid var(--input_border);
+            border-radius: 8px;
+            outline: none;
+            background-color: var(--white);
+            cursor: pointer;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .date:focus {
+            border-color: var(--red);
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .select2-container--default {
+            width: 100% !important;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .select2-container--default .select2-selection--single {
+            border: 1px solid var(--input_border);
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--gray);
+            outline: none;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 45px;
+            padding: 0 15px;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .select2-container--default .select2-selection--single:focus {
+            border-color: var(--red);
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .filters {
+            position: static;
+            width: 100%;
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 15px;
+            border: 1px solid var(--input_border);
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .filters .dropdown-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray);
+            padding-bottom: 15px;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .filters .label {
+            font-size: 14px;
+            color: var(--medium_gray);
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .filters .dropdown-divider {
+            border-top: 1px solid var(--input_border);
+            margin: 20px 0;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .filters .single-radio {
+            margin-bottom: 0px;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .filters .single-radio:nth-last-child(-n+4) {
+            margin-bottom: 0;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .search-button {
+            width: 100%;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            border-radius: 16px;
+            color: var(--white);
+            background-color: var(--light_black);
+            padding: 15px 20px;
+            margin-top: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .search-button:hover {
+            background-color: var(--red);
+            transition: all 0.3s;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .search-button i {
+            margin-right: 8px;
+        }
+    
+        .homepage .section-4 .title {
+            text-align: center;
+        }    
+        .homepage .section-4 .description {
+            text-align: center;
+        }
+        .homepage .section-4 .image {
+            display: none;
+        }
+        .homepage .section-5 .view-more-button {
+            font-size: 15px;
+            width: 169px;
+            height: 46px;
+        }
+        .homepage .section-5 .left-image {
+            height: 300px;
+        }
+        .homepage .section-6 .advertise .text {
+            font-size: 24px;
+        }
+        .homepage .section-6 .advertise .advertise-button {
+            font-size: 15px;
+        }
+        .homepage .section-6 .advertise .advertise-button {
+            width: 150px;
+            height: 48px;
+        }
+    
+
+    
+}
     @media (width <= 721px) {}
     @media (width <= 651px) {}
-    @media (width <= 576px) {}
-    @media (width <= 481px) {}
-    @media (width <= 429px) {}
-    @media (width <= 415px) {}
-    @media (width <= 396px) {}
+    @media (width <= 576px) {
+        .homepage .section-1 .overlay .title {
+            font-size: 35px;
+        }
+        .homepage .section-1 .overlay .description {
+            font-size: 16px;
+            padding-bottom: 15px;
+        }
+        .homepage .section-1 {
+            margin-bottom: 25px;
+        }
+        .homepage .section-2 .nav-pills .nav-item .nav-link {
+            font-size: 16px;
+        }
+        .homepage .section-2 .tab-content .card .card-body .title {
+            font-size: 22px;
+        }
+        .homepage .section-4 .title {
+            font-size: 30px;
+        }
+        .homepage .section-6 .advertise .text {
+            font-size: 22px;
+        }
+        .homepage .section-6 .advertise .advertise-button {
+            width: 100px;
+            height: 40px;
+        }
+        .homepage .section-6 .advertise .advertise-button {
+            font-size: 14px;
+        }
+    }
+    @media (width <= 481px) {
+        .mobile-only {
+            display: block;
+        }
+        .homepage .section-1 {
+            margin-bottom: 30px;
+        }
+        .homepage .section-1 .banner {
+            height: 55vh;
+        }
+        .homepage .section-1 .overlay {
+            width: 95%;
+        }
+        .homepage .section-1 .overlay .title {
+            font-size: 32px;
+            line-height: 40px;
+            padding-bottom: 20px;
+        }
+        .homepage .section-1 .overlay .description {
+            font-size: 15px;
+            padding-bottom: 20px;
+            width: 100%;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .select2-container--default .select2-selection--single {
+            font-size: 13px;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-toggle {
+            padding: 10px 18px;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-toggle .toggle-text {
+            font-size: 13px;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content {
+            padding: 16px;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .search-input,
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .date {
+            padding: 10px 12px;
+            font-size: 13px;
+        }
+        .homepage .section-1 .overlay .mobile-search-dropdown .mobile-search-content .search-button {
+            font-size: 14px;
+            padding: 12px 16px;
+        }
+        .homepage .section-2 .nav-pills {
+            margin-bottom: 15px;
+        }
+        .homepage .section-2 .nav-pills .nav-item {
+            margin-right: 25px;
+        }
+        .homepage .section-2 .nav-pills .nav-item .nav-link {
+            font-size: 15px;
+            padding-bottom: 8px;
+        }
+        .homepage .section-2 .tab-content .card {
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+        .homepage .section-2 .tab-content .card .card-image {
+            height: 180px;
+            margin-bottom: 10px;
+        }
+        .homepage .section-2 .tab-content .card .card-body .type {
+            font-size: 12px;
+        }
+        .homepage .section-2 .tab-content .card .card-body .title {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        .homepage .section-2 .tab-content .card .card-body .description {
+            font-size: 13px;
+            line-height: 18px;
+            margin-bottom: 10px;
+        }
+        .homepage .section-2 .tab-content .card .card-body .location {
+            font-size: 12px;
+            padding-top: 15px;
+        }
+        .homepage .section-2 .tab-content .card .card-body .bottom-box {
+            font-size: 12px;
+            padding: 8px 12px;
+            margin-top: 12px;
+        }
+        .homepage .section-3 .card {
+            margin-bottom: 15px;
+            padding: 12px;
+        }
+        .homepage .section-3 .card .image {
+            width: 100%;
+            height: 120px;
+        }
+        .homepage .section-3 .card .title {
+            font-size: 16px;
+            padding-bottom: 8px;
+        }
+        .homepage .section-3 .card .description {
+            font-size: 14px;
+            line-height: 20px;
+            padding-bottom: 8px;
+        }
+        .homepage .section-3 .card .checkout {
+            font-size: 13px;
+        }
+        
+        .homepage .section-4 {
+            padding: 30px 0;
+        }
+        .homepage .section-4 .title {
+            font-size: 24px;
+            text-align: center;
+            padding-bottom: 12px;
+        }
+        .homepage .section-4 .description {
+            font-size: 14px;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .homepage .section-4 .form {
+            padding: 8px 12px;
+        }
+        .homepage .section-4 .form .input {
+            font-size: 13px;
+            padding: 10px 12px;
+        }
+        .homepage .section-4 .form .submit-button {
+            font-size: 13px;
+            padding: 10px 12px;
+            height: 45px;
+        }
+        .homepage .section-5 {
+            margin-bottom: 30px;
+        }
+        .homepage .section-5 .row .col-8 {
+            width: 100%;
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+        .homepage .section-5 .row .col-4 {
+            display: none;
+        }
+        .homepage .section-6 .advertise .col-9 {
+            width: 100%;
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+        .homepage .section-6 .advertise .col-3 {
+            display: none;
+        }
+        .homepage .section-5 .left-image {
+            height: 250px;
+            padding-bottom: 15px;
+        }
+        .homepage .section-5 .left .date {
+            font-size: 13px;
+            padding-bottom: 5px;
+        }
+        .homepage .section-5 .left .title {
+            font-size: 20px;
+            padding-bottom: 8px;
+        }
+        .homepage .section-5 .left .description {
+            font-size: 14px;
+            line-height: 22px;
+            padding-bottom: 12px;
+        }
+        .homepage .section-5 .read-more-button {
+            font-size: 13px;
+        }
+        .homepage .section-5 .right-image {
+            height: 140px;
+            padding-bottom: 8px;
+        }
+        .homepage .section-5 .right .title {
+            font-size: 16px;
+            padding-bottom: 5px;
+        }
+        .homepage .section-5 .right .description {
+            font-size: 13px;
+            line-height: 18px;
+            padding-bottom: 8px;
+        }
+        
+        .homepage .section-5 .view-more-button {
+            display: none;
+        }
+        
+        .homepage .section-5 .mobile-only .read-more-button {
+            border: 1px solid var(--red);
+            color: var(--red);
+            font-size: 13px;
+            font-weight: 500;
+            padding: 10px 22px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        
+        .homepage .section-5 .mobile-only .read-more-button:hover {
+            background-color: var(--red);
+            color: var(--white);
+            font-weight: 600;
+        }
+        
+        .homepage .section-6 {
+            padding: 25px 0;
+        }
+        .homepage .section-6 .advertise .text {
+            font-size: 22px;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .homepage .section-6 .advertise .text:last-child {
+            margin-bottom: 0;
+        }
+        
+        .homepage .section-6 .advertise .advertise-button {
+            display: none;
+        }
+        
+        .homepage .section-6 .mobile-only .advertise-button-mobile {
+            display: block;
+            background-color: var(--red);
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 500;
+            width: 140px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto 0;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .homepage .section-6 .mobile-only .advertise-button-mobile:hover {
+            background-color: var(--light_black);
+            transition: all 0.3s;
+        }
+        
+        /* Global Section Styles */
+        /* .section-title {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        .section-description {
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 20px;
+        } */
+        
+        .container {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .row {
+            margin-left: -7.5px;
+            margin-right: -7.5px;
+        }
+        .row > [class*="col-"] {
+            padding-left: 7.5px;
+            padding-right: 7.5px;
+        }
+    }
+    @media (width <= 429px) {
+        .homepage .section-1 .banner {
+            height: 60vh;
+        }
+        .homepage .section-5 .view-more-button {
+            font-size: 12px;
+            width: 110px;
+            height: 36px;
+            margin: 0 auto;
+        }
+        
+        .homepage .section-6 .advertise .advertise-button {
+            font-size: 12px;
+            width: 90px;
+            height: 36px;
+            margin: 0 auto;
+        }
+    }
+     @media (width <= 415px) {}
+    @media (width <= 396px) {
+        .homepage .section-1 {
+            margin-bottom: 25px;
+        }
+        .homepage .section-1 .banner {
+            height: 50vh;
+        }
+        .homepage .section-1 .overlay {
+            width: 95%;
+        }
+        .homepage .section-1 .overlay .title {
+            font-size: 28px;
+            line-height: 35px;
+            padding-bottom: 10px;
+        }
+        .homepage .section-1 .overlay .description {
+            font-size: 14px;
+            padding-bottom: 5px;
+            width: 100%;
+        }
+        .homepage .section-1 .overlay .search-bar {
+            padding: 8px;
+        }
+        .homepage .section-1 .overlay .search-bar .search-inputs .search-item {
+            padding: 0 3px;
+        }
+        .homepage .section-1 .overlay .search-bar .search-inputs .search-item .search-label {
+            font-size: 11px;
+        }
+        .homepage .section-1 .overlay .search-bar .search-inputs .search-item .search-input {
+            font-size: 12px;
+        }
+        .homepage .section-1 .overlay .search-bar .search-inputs .search-button {
+            font-size: 12px;
+            padding: 8px 12px;
+        }
+        .homepage .section-2 .nav-pills {
+            margin-bottom: 8px;
+        }
+        .homepage .section-2 .nav-pills .nav-item {
+            margin-right: 20px;
+        }
+        .homepage .section-2 .nav-pills .nav-item .nav-link {
+            font-size: 14px;
+            padding-bottom: 8px;
+        }
+        .homepage .section-2 .tab-content .card {
+            padding: 10px;
+        }
+        .homepage .section-2 .tab-content .card .card-image {
+            height: 120px;
+        }
+        .homepage .section-2 .tab-content .card .type {
+            font-size: 12px;
+        }
+        .homepage .section-2 .tab-content .card .title {
+            font-size: 14px;
+        }
+        .homepage .section-2 .tab-content .card .description {
+            font-size: 12px;
+        }
+        .homepage .section-2 .tab-content .card .location {
+            font-size: 11px;
+        }
+        
+        .homepage .section-3 .card {
+            margin-bottom: 15px;
+        }
+        .homepage .section-3 .card .image {
+            width: 100%;
+            height: 80px;
+        }
+        .homepage .section-3 .card .title {
+            font-size: 13px;
+            padding-bottom: 3px;
+        }
+        .homepage .section-3 .card .description {
+            font-size: 11px;
+            padding-bottom: 3px;
+        }
+        .homepage .section-3 .card .checkout {
+            font-size: 11px;
+        }
+        .homepage .section-4 {
+            padding: 20px 0;
+        }
+        .homepage .section-4 .title {
+            font-size: 20px;
+            text-align: center;
+        }
+        .homepage .section-4 .description {
+            font-size: 12px;
+            text-align: center;
+        }
+        .homepage .section-4 .form .form-row {
+            flex-direction: column;
+        }
+        .homepage .section-4 .form .col-8,
+        .homepage .section-4 .form .col-4 {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .homepage .section-4 .form .input {
+            font-size: 12px;
+            padding: 8px 12px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .homepage .section-4 .form .submit-button {
+            font-size: 11px;
+            padding: 6px 16px;
+            width: auto;
+            min-width: 120px;
+            height: 32px;
+            margin: 0 auto;
+        }
+        .homepage .section-5 .view-more-button {
+            font-size: 11px;
+            width: 100px;
+            height: 32px;
+            margin: 0 auto;
+        }
+        .homepage .section-5 .left-image {
+            height: 200px;
+        }
+        .homepage .section-5 .left .date {
+            font-size: 12px;
+        }
+        .homepage .section-5 .left .title {
+            font-size: 16px;
+        }
+        .homepage .section-5 .left .description {
+            font-size: 13px;
+            line-height: 20px;
+        }
+        .homepage .section-5 .read-more-button {
+            font-size: 12px;
+        }
+        .homepage .section-5 .right-image {
+            height: 120px;
+        }
+        .homepage .section-5 .right .title {
+            font-size: 14px;
+        }
+        .homepage .section-5 .right .description {
+            font-size: 12px;
+            line-height: 16px;
+        }
+        .homepage .section-6 {
+            padding: 20px 0;
+        }
+        .homepage .section-6 .advertise .text {
+            font-size: 18px;
+        }
+        .homepage .section-6 .advertise .advertise-button {
+            font-size: 11px;
+            width: 80px;
+            height: 32px;
+            margin: 0 auto;
+        }
+        
+        /* Global Section Styles */
+        /* .section-title {
+            text-align: center;
+            font-size: 14px;
+        }
+        .section-description {
+            font-size: 12px;
+            text-align: center;
+        } */
+    }
     @media (width <= 377px) {}
     @media (width <= 361px) {}
-    @media (width <= 331px) {}
+    @media (width <= 331px) {
+        .homepage .section-1 .overlay .title {
+            font-size: 22px;
+        }
+        .homepage .section-2 .tab-content .card .card-image {
+            height: 200px;
+        }
+        .homepage .section-5 .mobile-only .read-more-button {
+            font-size: 12px;
+            padding: 10px 10px;
+        }
+        .homepage .section-6 .mobile-only .advertise-button-mobile {
+            font-size: 12px;
+            width: 100px;
+            height: 32px;
+        }
+    }
 /* #endregion */

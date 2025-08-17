@@ -113,6 +113,96 @@
                             </div>
                         </form>
                     </div>
+
+                    <!-- Mobile Search Dropdown -->
+                    <div class="mobile-search-dropdown">
+                        <div class="mobile-search-toggle" id="mobileSearchToggle">
+                            <span class="toggle-text">{{ $contents->{'section_1_button_' . $middleware_language} ?? $contents->section_1_button_en }}</span>
+                            <i class="bi bi-chevron-down toggle-icon"></i>
+                        </div>
+                        
+                        <div class="mobile-search-content" id="mobileSearchContent">
+                            <form action="{{ route('warehouses.filter') }}" method="GET">
+                                <div class="search-item">
+                                    <label class="search-label">{{ $contents->{'section_1_label_1_' . $middleware_language} ?? $contents->section_1_label_1_en }}</label>
+                                    <select class="form-control js-single-mobile search-input" name="location" id="location-mobile">
+                                        <option value="">{{ $contents->{'section_1_placeholder_1_' . $middleware_language} ?? $contents->section_1_placeholder_1_en }}</option>
+                                        @foreach($cities as $city)
+                                            <option value="{{ $city }}">{{ $city }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                
+                                <div class="search-item">
+                                    <label class="search-label">{{ $contents->{'section_1_label_2_' . $middleware_language} ?? $contents->section_1_label_2_en }}</label>
+                                    <input type="text" class="date date-picker-field-mobile" id="tenancy_date_mobile" name="tenancy_date" placeholder="{{ $contents->{'section_1_placeholder_2_' . $middleware_language} ?? $contents->section_2_placeholder_1_en }}" value="{{ session('tenancy_date') }}">
+                                </div>
+                                
+                                <div class="search-item">
+                                    <label class="search-label">{{ $contents->{'section_1_label_3_' . $middleware_language} ?? $contents->section_1_label_3_en }}</label>
+                                    <input type="text" class="date date-picker-field-mobile" id="renewal_date_mobile" name="renewal_date" placeholder="{{ $contents->{'section_1_placeholder_3_' . $middleware_language} ?? $contents->section_1_placeholder_3_en }}" value="{{ session('renewal_date') }}">
+                                </div>
+                                
+                                <div class="search-item">
+                                    <label class="search-label">{{ $contents->{'section_1_label_4_' . $middleware_language} ?? $contents->section_1_label_4_en }}</label>
+                                    <p class="search-input dropdown-toggle" id="filter-mobile">
+                                        {{ $contents->{'section_1_placeholder_4_' . $middleware_language} ?? $contents->section_1_placeholder_4_en }}
+                                    </p>
+
+                                    <div class="filters d-none">
+                                        <p class="dropdown-title">{{ $contents->{'section_1_size_' . $middleware_language} ?? $contents->section_1_size_en }}</p>
+
+                                        <div class="row">
+                                            <div class="col-12 col-md-6">
+                                                <div class="form-check">
+                                                    <input id="50-mobile" class="form-check-input check" type="radio" value="50" name="warehouse_size">
+                                                    <label for="50-mobile" class="form-check-label label">{{ $contents->{'section_1_size_1_' . $middleware_language} ?? $contents->section_1_size_1_en }}</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-md-6">
+                                                <div class="form-check">
+                                                    <input id="100-mobile" class="form-check-input check" type="radio" value="100" name="warehouse_size">
+                                                    <label for="100-mobile" class="form-check-label label">{{ $contents->{'section_1_size_2_' . $middleware_language} ?? $contents->section_1_size_2_en }}</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-md-6">
+                                                <div class="form-check">
+                                                    <input id="200-mobile" class="form-check-input check" type="radio" value="200" name="warehouse_size">
+                                                    <label for="200-mobile" class="form-check-label label">{{ $contents->{'section_1_size_3_' . $middleware_language} ?? $contents->section_1_size_3_en }}</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-md-6">
+                                                <div class="form-check">
+                                                    <input id="200+-mobile" class="form-check-input check" type="radio" value="200+" name="warehouse_size">
+                                                    <label for="200+-mobile" class="form-check-label label">{{ $contents->{'section_1_size_4_' . $middleware_language} ?? $contents->section_1_size_4_en }}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <hr class="dropdown-divider">
+
+                                        <p class="dropdown-title">{{ $contents->{'section_1_type_' . $middleware_language} ?? $contents->section_1_type_en }}</p>
+
+                                        <div class="row">
+                                            @foreach($storage_types as $storage_type)
+                                                <div class="col-12 col-md-6 single-radio">
+                                                    <div class="form-check">
+                                                        <input id="{{ $storage_type->id }}-mobile" class="form-check-input check" type="radio" value="{{ $storage_type->id }}" name="storage_type">
+                                                        <label for="{{ $storage_type->id }}-mobile" class="form-check-label label">{{ $storage_type->{'name_' . $middleware_language} ?? $storage_type->name_en }}</label>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="search-button"><i class="bi bi-search"></i>{{ $contents->{'section_1_button_' . $middleware_language} ?? $contents->section_1_button_en }}</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         @endif
@@ -510,7 +600,7 @@
                     <div class="col-12 col-lg-6">
                         <div class="card">
                             <div class="row card-row">
-                                <div class="col-3">
+                                <div class="col-4 col-md-3">
                                     @if($contents->{'section_3_page_2_thumbnail_' . $middleware_language})
                                         <img src="{{ asset('storage/backend/pages/' . $contents->{'section_3_page_2_thumbnail_' . $middleware_language}) }}" alt="Image" class="image">
                                     @elseif($contents->section_3_page_2_thumbnail_en)
@@ -519,7 +609,7 @@
                                         <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Image" class="image">
                                     @endif
                                 </div>
-                                <div class="col-9">
+                                <div class="col-8 col-md-9">
                                     <p class="title">{{ $contents->{'section_3_page_2_title_' . $middleware_language} ?? $contents->section_3_page_2_title_en }}</p>
                                     <p class="description">{{ $contents->{'section_3_page_2_description_' . $middleware_language} ?? $contents->section_3_page_2_description_en }}</p>
                                     <a href="{{ route('warehouses.area', 2) }}" class="checkout">{{ $contents->{'section_3_checkout_' . $middleware_language} ?? $contents->section_3_checkout_en }}</a>
@@ -531,7 +621,7 @@
                     <div class="col-12 col-lg-6">
                         <div class="card">
                             <div class="row card-row">
-                                <div class="col-3">
+                                <div class="col-4 col-md-3">
                                     @if($contents->{'section_3_page_3_thumbnail_' . $middleware_language})
                                         <img src="{{ asset('storage/backend/pages/' . $contents->{'section_3_page_3_thumbnail_' . $middleware_language}) }}" alt="Image" class="image">
                                     @elseif($contents->section_3_page_3_thumbnail_en)
@@ -540,7 +630,7 @@
                                         <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Image" class="image">
                                     @endif
                                 </div>
-                                <div class="col-9">
+                                <div class="col-8 col-md-9">
                                     <p class="title">{{ $contents->{'section_3_page_3_title_' . $middleware_language} ?? $contents->section_3_page_3_title_en }}</p>
                                     <p class="description">{{ $contents->{'section_3_page_3_description_' . $middleware_language} ?? $contents->section_3_page_3_description_en }}</p>
                                     <a href="{{ route('warehouses.area', 3) }}" class="checkout">{{ $contents->{'section_3_checkout_' . $middleware_language} ?? $contents->section_3_checkout_en }}</a>
@@ -552,7 +642,7 @@
                     <div class="col-12 col-lg-6">
                         <div class="card">
                             <div class="row card-row">
-                                <div class="col-3">
+                                <div class="col-4 col-md-3">
                                     @if($contents->{'section_3_page_4_thumbnail_' . $middleware_language})
                                         <img src="{{ asset('storage/backend/pages/' . $contents->{'section_3_page_4_thumbnail_' . $middleware_language}) }}" alt="Image" class="image">
                                     @elseif($contents->section_3_page_4_thumbnail_en)
@@ -561,7 +651,7 @@
                                         <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Image" class="image">
                                     @endif
                                 </div>
-                                <div class="col-9">
+                                <div class="col-8 col-md-9">
                                     <p class="title">{{ $contents->{'section_3_page_4_title_' . $middleware_language} ?? $contents->section_3_page_4_title_en }}</p>
                                     <p class="description">{{ $contents->{'section_3_page_4_description_' . $middleware_language} ?? $contents->section_3_page_4_description_en }}</p>
                                     <a href="{{ route('warehouses.area', 4) }}" class="checkout">{{ $contents->{'section_3_checkout_' . $middleware_language} ?? $contents->section_3_checkout_en }}</a>
@@ -577,26 +667,26 @@
             <div class="section-4 section-margin">
                 <div class="container">
                     <div class="row section-4-row">
-                        <div class="col-6">
+                        <div class="col-12 col-lg-6">
                             <p class="title">{{ $contents->{'section_4_title_' . $middleware_language} ?? $contents->section_4_title_en }}</p>
                             <p class="description">{{ $contents->{'section_4_description_' . $middleware_language} ?? $contents->section_4_description_en }}</p>
 
                             <form action="{{ route('homepage.subscription') }}" method="POST" class="form">
                                 @csrf
                                 <div class="row form-row">
-                                    <div class="col-9">
+                                    <div class="col-8">
                                         <input type="email" class="input" placeholder="{{ $contents->{'section_4_placeholder_' . $middleware_language} ?? $contents->section_4_placeholder_en }}" name="email" required>
                                         <x-frontend.input-error field="email"></x-frontend.input-error>
                                     </div>
 
-                                    <div class="col-3">
+                                    <div class="col-4">
                                         <button type="submit" class="submit-button">{{ $contents->{'section_4_button_' . $middleware_language} ?? $contents->section_4_button_en }}</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
 
-                        <div class="col-6">
+                        <div class="col-12 col-lg-6">
                             @if($contents->{'section_4_image_' . $middleware_language})
                                 <img src="{{ asset('storage/backend/pages/' . $contents->{'section_4_image_' . $middleware_language}) }}" alt="Coming Soon App" class="image">
                             @elseif($contents->section_4_image_en)
@@ -660,6 +750,13 @@
                         @endforeach
                     </div>
                 </div>
+                
+                <!-- Mobile Read More button for articles section -->
+                <div class="row mobile-only">
+                    <div class="col-12 text-center">
+                        <a href="{{ route('articles.index') }}" class="read-more-button">{{ $contents->{'section_5_button_' . $middleware_language} ?? $contents->section_5_button_en }}</a>
+                    </div>
+                </div>
             </div>
         @endif
 
@@ -672,11 +769,18 @@
                             <p class="text">{{ $contents->{'section_6_sub_title_' . $middleware_language} ?? $contents->section_6_sub_title_en }}</p>
                         </div>
 
-                    <div class="col-3">
-                        <a href="{{ route('register') }}" class="advertise-button">{{ $contents->{'section_6_button_' . $middleware_language} ?? $contents->section_6_button_en }}</a>
+                        <div class="col-3">
+                            <a href="{{ route('register') }}" class="advertise-button">{{ $contents->{'section_6_button_' . $middleware_language} ?? $contents->section_6_button_en }}</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Advertise button -->
+                    <div class="row mobile-only">
+                        <div class="col-12 text-center">
+                            <a href="{{ route('register') }}" class="advertise-button-mobile">{{ $contents->{'section_6_button_' . $middleware_language} ?? $contents->section_6_button_en }}</a>
+                        </div>
                     </div>
                 </div>
-            </div>
         @endif
 
         <x-frontend.notification></x-frontend.notification>
@@ -685,17 +789,37 @@
 
 @push('after-scripts')
     <script>
+        
         $('#filter').on('click', function() {
             $('.filters').toggleClass('d-none');
         });
+ 
+        $('#mobileSearchToggle').on('click', function() {
+            $(this).toggleClass('active');
+            $('#mobileSearchContent').toggleClass('show');
+        });
+ 
+        $('#filter-mobile').on('click', function() {
+            $(this).siblings('.filters').toggleClass('d-none');
+        });
 
         $(document).ready(function() {
+            
             $('.js-single').select2();
+            
+            $('.js-single-mobile').select2();
+            
             setMinRenewalDate();
+            
+            setMinRenewalDateMobile();
         });
 
         $('#tenancy_date').on('change', function() {
             setMinRenewalDate();
+        });
+
+        $('#tenancy_date_mobile').on('change', function() {
+            setMinRenewalDateMobile();
         });
 
         function setMinRenewalDate() {
@@ -724,5 +848,39 @@
                 }
             }
         }
+
+        function setMinRenewalDateMobile() {
+            const tenancyDate = document.getElementById('tenancy_date_mobile').value;
+            
+            if(tenancyDate) {
+                const dateParts = tenancyDate.split('-');
+                if(dateParts.length === 3) {
+                    const year = parseInt(dateParts[0], 10);
+                    const month = parseInt(dateParts[1], 10) - 1;
+                    const day = parseInt(dateParts[2], 10);
+                    const tenancyDateObj = new Date(year, month, day);
+                    
+                    tenancyDateObj.setMonth(tenancyDateObj.getMonth() + 1);
+                    const renewalDateInput = document.getElementById('renewal_date_mobile');
+                    var datePicker = renewalDateInput.DatePickerX;
+                    datePicker.remove();
+
+                    renewalDateInput.DatePickerX.init({
+                        format: 'yyyy-mm-dd',
+                        minDate: tenancyDateObj,
+                    });
+
+                    renewalDateInput.DatePickerX.setValue(tenancyDateObj);
+                    renewalDateInput.setAttribute('min', tenancyDateObj.toISOString().split('T')[0]);
+                }
+            }
+        }
+
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.mobile-search-dropdown').length) {
+                $('#mobileSearchToggle').removeClass('active');
+                $('#mobileSearchContent').removeClass('show');
+            }
+        });
     </script>
 @endpush
