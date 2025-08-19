@@ -324,7 +324,7 @@
                     <div class="tab-pane fade" id="pills-jeddah" role="tabpanel" aria-labelledby="pills-jeddah-tab" tabindex="0">
                         <div class="row">
                             @foreach($jeddah_warehouses as $warehouse)
-                                <div class="col-4">
+                                <div class="col-12 mb-3 mb-md-0 col-md-4">
                                     <div class="card">
                                         <div class="card-body">
                                             <a href="{{ route('warehouses.show', $warehouse) }}">
@@ -406,7 +406,7 @@
                     <div class="tab-pane fade" id="pills-mecca" role="tabpanel" aria-labelledby="pills-mecca-tab" tabindex="0">
                         <div class="row">
                             @foreach($mecca_warehouses as $warehouse)
-                                <div class="col-4">
+                                <div class="col-12 mb-3 mb-md-0 col-md-4">
                                     <div class="card">
                                         <div class="card-body">
                                             <a href="{{ route('warehouses.show', $warehouse) }}">
@@ -488,7 +488,7 @@
                     <div class="tab-pane fade" id="pills-medina" role="tabpanel" aria-labelledby="pills-medina-tab" tabindex="0">
                         <div class="row">
                             @foreach($medina_warehouses as $warehouse)
-                                <div class="col-4">
+                                <div class="col-12 mb-3 mb-md-0 col-md-4">
                                     <div class="card">
                                         <div class="card-body">
                                             <a href="{{ route('warehouses.show', $warehouse) }}">

@@ -1085,7 +1085,7 @@
             margin: 0 auto;
         }
     }
-     @media (width <= 415px) {}
+    @media (width <= 415px) {}
     @media (width <= 396px) {
         .homepage .section-1 {
             margin-bottom: 25px;
@@ -1248,14 +1248,14 @@
         }
         
         /* Global Section Styles */
-        /* .section-title {
+        .section-title {
             text-align: center;
             font-size: 14px;
         }
         .section-description {
             font-size: 12px;
             text-align: center;
-        } */
+        }
     }
     @media (width <= 377px) {}
     @media (width <= 361px) {}
