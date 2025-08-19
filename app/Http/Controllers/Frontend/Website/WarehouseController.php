@@ -301,8 +301,8 @@ class WarehouseController extends Controller
 
         return redirect()->route('warehouses.show', $request->warehouse_id)->with(
             [
-                'success' => 'Booking Confirmed',
-                'message' => 'We will get back to you as soon as possible.',
+                'success' => 'Your warehouse is now ready',
+                'message' => 'Thanks for your time. An expert will be reaching out to you soon to finalize your agreement.',
             ]
         );
     }

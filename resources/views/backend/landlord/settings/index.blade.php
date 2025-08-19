@@ -13,18 +13,18 @@
 
         <ul class="nav nav-pills" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Profile</button>
+                <button class="nav-link {{ !session('active_tab') ? 'active' : '' }}" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Profile</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-company-tab" data-bs-toggle="pill" data-bs-target="#pills-company" type="button" role="tab" aria-controls="pills-company" aria-selected="false">Company</button>
+                <button class="nav-link {{ session('active_tab') == 'company' ? 'active' : '' }}" id="pills-company-tab" data-bs-toggle="pill" data-bs-target="#pills-company" type="button" role="tab" aria-controls="pills-company" aria-selected="false">Company</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-update-password-tab" data-bs-toggle="pill" data-bs-target="#pills-update-password" type="button" role="tab" aria-controls="pills-update-password" aria-selected="false">Update Password</button>
+                <button class="nav-link {{ session('active_tab') == 'password' ? 'active' : '' }}" id="pills-update-password-tab" data-bs-toggle="pill" data-bs-target="#pills-update-password" type="button" role="tab" aria-controls="pills-update-password" aria-selected="false">Update Password</button>
             </li>
         </ul>
 
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+            <div class="tab-pane fade {{ !session('active_tab') ? 'show active' : '' }}" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
                 <p class="tab-content-title">Profile Settings</p>
 
                 <form action="{{ route('landlord.settings.profile', $user) }}" method="POST" enctype="multipart/form-data" class="form">
@@ -85,7 +85,7 @@
                 </form>
             </div>
 
-            <div class="tab-pane fade" id="pills-company" role="tabpanel" aria-labelledby="pills-company-tab" tabindex="0">
+            <div class="tab-pane fade {{ session('active_tab') == 'company' ? 'show active' : '' }}" id="pills-company" role="tabpanel" aria-labelledby="pills-company-tab" tabindex="0">
                 <p class="tab-content-title">Company Details</p>
                 
                 <form action="{{ route('landlord.settings.company', [$user, $company]) }}" method="POST" enctype="multipart/form-data" class="form">
@@ -176,7 +176,7 @@
                 </form>
             </div>
 
-            <div class="tab-pane fade" id="pills-update-password" role="tabpanel" aria-labelledby="pills-update-password-tab" tabindex="0">
+            <div class="tab-pane fade {{ session('active_tab') == 'password' ? 'show active' : '' }}" id="pills-update-password" role="tabpanel" aria-labelledby="pills-update-password-tab" tabindex="0">
                 <p class="tab-content-title">Update Password</p>
 
                 <form action="{{ route('landlord.settings.password', $user) }}" method="POST" enctype="multipart/form-data" class="form">
@@ -293,6 +293,18 @@
                 if(!websiteRegex.test(website)) {
                     $(this).after('<div class="error-message">Please enter a valid website URL.</div>');
                 }
+            }
+        });
+
+        $('#cr_number').on('blur', function () {
+            const cr_number = $(this).val();
+            const $error = $(this).next('.error-message');
+
+            $error.remove();
+            const crNumberRegex = /^\d{10}$/;
+
+            if(!crNumberRegex.test(cr_number)) {
+                $(this).after('<div class="error-message">CR number must be exactly 10 digits.</div>');
             }
         });
     </script>

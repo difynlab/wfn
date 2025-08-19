@@ -12,11 +12,11 @@ class CompanySeeder extends Seeder
         $records = [
             [
                 'user_id' => 2,
-                'status' => 2
+                'status' => 3
             ],
             [
                 'user_id' => 3,
-                'status' => 2
+                'status' => 3
             ]
         ];
 

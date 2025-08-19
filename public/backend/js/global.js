@@ -89,3 +89,11 @@ $(document).ready(function() {
         });
     });
 // Date picker X
+
+
+// #region: Sidebar collapse //
+    $('.collapse-icon').on('click', function() {
+        $('.sidebar').toggleClass('active');
+        $('.backend-content').toggleClass('full-width');
+    });
+// #endregion //

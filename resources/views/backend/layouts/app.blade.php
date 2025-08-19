@@ -21,11 +21,10 @@
 
     <body>
         <x-backend.header></x-backend.header>
+        <x-backend.sidebar></x-backend.sidebar>
 
-        <div class="wrapper">
-            <x-backend.sidebar></x-backend.sidebar>
-
-            <div class="content">
+        <div class="container-fluid">
+            <div class="backend-content">
                 @yield('content')
             </div>
         </div>

@@ -114,6 +114,10 @@
         margin-top: 0px;
         cursor: pointer;
     }
+    .register .radio:checked {
+        background-color: var(--red);
+        border-color: var(--red);
+    }
     .register .phone-div {
         gap: 5px;
         display: flex;

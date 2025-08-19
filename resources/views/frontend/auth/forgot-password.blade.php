@@ -16,7 +16,7 @@
                 <form action="{{ route('forgot-password.store') }}" method="POST" class="form">
                     @csrf
                     <div class="mb-4">
-                        <label for="email" class="form-label label">{{ $contents->{'forgot_email_' . $middleware_language} ?? $contents->forgot_email_en }}</label>
+                        <label for="email" class="form-label label">{{ $contents->{'forgot_email_' . $middleware_language} ?? $contents->forgot_email_en }}<span class="asterisk">*</span></label>
                         <input type="email" class="form-control input-field" id="email" name="email" placeholder="{{ $contents->{'forgot_email_placeholder_' . $middleware_language} ?? $contents->forgot_email_placeholder_en }}" required>
                         <x-backend.input-error field="email"></x-backend.input-error>
                     </div>

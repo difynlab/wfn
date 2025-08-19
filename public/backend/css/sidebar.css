@@ -1,48 +1,55 @@
 /* #region: Sidebar */
-    .wrapper .sidebar {
+    .sidebar {
         position: fixed;
+        margin-top: 75px;
         /* z-index: 9999; */
         background-color: var(--white);
         height: 90vh;
-        width: 270px;
+        width: 0;
         overflow-y: auto;
         white-space: nowrap;
+        z-index: 9;
+        transition: all 0.3s;
     }
-    .wrapper .sidebar::-webkit-scrollbar {
+    .sidebar.active {
+        width: 300px;
+        transition: all 0.3s;
+    }
+    .sidebar::-webkit-scrollbar {
         width: 5px;
     }
-    .wrapper .sidebar::-webkit-scrollbar-track {
+    .sidebar::-webkit-scrollbar-track {
         background: #dedede;
         border-radius: 5px;
     }
-    .wrapper .sidebar::-webkit-scrollbar-thumb {
+    .sidebar::-webkit-scrollbar-thumb {
         background-color: var(--red);
         border-radius: 5px;
     }
-    .wrapper .sidebar::-webkit-scrollbar-thumb:hover {
+    .sidebar::-webkit-scrollbar-thumb:hover {
         background-color: var(--light_black);;
         cursor: pointer;
     }
-    .wrapper .sidebar .main-menu {
+    .sidebar .main-menu {
         padding: 0;
         margin: 10px 0;
         list-style-type: none;
     }
-    .wrapper .sidebar .main-menu .link {
+    .sidebar .main-menu .link {
         display: flex;
         align-items: center;
     }
-    .wrapper .sidebar .main-menu .link .box {
+    .sidebar .main-menu .link .box {
         width: 10px;
         background-color: var(--white);
         height: 60px;
         margin-right: 25px;
     }
-    .wrapper .sidebar hr {
+    .sidebar hr {
         margin: 0;
         border: 1px solid #cccccc;
     }
-    .wrapper .sidebar .main-menu .link a {
+    .sidebar .main-menu .link a {
         color: var(--black);
         font-size: 16px;
         font-weight: 500;
@@ -68,33 +75,33 @@
             transition: all 0.3s;
         };
     }
-    .wrapper .sidebar .main-menu .link a.active {
+    .sidebar .main-menu .link a.active {
         color: var(--white);
     }
-    .wrapper .sidebar .main-menu .link a.active .box {
+    .sidebar .main-menu .link a.active .box {
         background-color: #DC291E;
     }
-    .wrapper .sidebar .main-menu .link a.active .actual-link {
+    .sidebar .main-menu .link a.active .actual-link {
         background-color: #DC291E;
         border-radius: 4px;
     }
-    .wrapper .sidebar .main-menu .link .actual-link  {
+    .sidebar .main-menu .link .actual-link  {
         padding: 15px;
         display: flex;
         align-items: center;
         width: 85%;
     }
-    .wrapper .sidebar .main-menu .link .actual-link .new-count {
+    .sidebar .main-menu .link .actual-link .new-count {
         margin-left: auto;
     }
-    .wrapper .sidebar .main-menu .link:last-child {
+    .sidebar .main-menu .link:last-child {
         margin-bottom: 0;
     }
-    .wrapper .sidebar .main-menu .link a i {
+    .sidebar .main-menu .link a i {
         font-size: 20px;
         padding-right: 15px;
     }
-    .wrapper .sidebar .main-menu .link .log-out {
+    .sidebar .main-menu .link .log-out {
         border: none;
         background-color: transparent;
         font-weight: 500;
@@ -115,16 +122,62 @@
     @media (width <= 1441px) {}
     @media (width <= 1367px) {}
     @media (width <= 1301px) {}
-    @media (width <= 1281px) {}
+    @media (width <= 1281px) {
+        .sidebar .main-menu .link a {
+            font-size: 14px;
+        }
+        .sidebar .main-menu .link a i {
+            font-size: 15px;
+            padding-right: 10px;
+        }
+        .sidebar.active {
+            width: 230px;
+        }
+        .sidebar .main-menu .link .box {
+            height: 52px;
+            margin-right: 10px;
+        }
+        .sidebar .main-menu .link .actual-link {
+            width: 90%;
+        }
+    }
     @media (width <= 1151px) {}
     @media (width <= 1076px) {}
     @media (width <= 1025px) {}
     @media (width <= 992px) {}
     @media (width <= 845px) {}
-    @media (width <= 768px) {}
+    @media (width <= 768px) {
+        .sidebar {
+            margin-top: 60px;
+        }
+        .sidebar .main-menu {
+            margin: 5px 0;
+        }
+        .sidebar .main-menu .link a {
+            font-size: 13px;
+        }
+        .sidebar .main-menu .link .box {
+            height: 43px;
+            margin-right: 8px;
+        }
+        .sidebar.active {
+            width: 200px;
+        }
+        .sidebar .main-menu .link .actual-link {
+            width: 87%;
+            padding: 10px;
+        }
+    }
     @media (width <= 721px) {}
     @media (width <= 651px) {}
-    @media (width <= 576px) {}
+    @media (width <= 576px) {
+        .sidebar.active {
+            width: 0;
+        }
+        .sidebar {
+            width: 200px;
+        }
+    }
     @media (width <= 481px) {}
     @media (width <= 429px) {}
     @media (width <= 415px) {}

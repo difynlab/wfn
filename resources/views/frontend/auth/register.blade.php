@@ -17,7 +17,7 @@
             <div class="row mb-3 mb-md-4">
                 <div class="col-6 col-lg-3">
                     <div class="form-check d-flex align-items-center">
-                        <input class="form-check-input radio" type="radio" name="role" id="flexRadioDefault1" value="tenant" {{ old('role') == 'tenant' ? 'checked' : '' }} required>
+                        <input class="form-check-input radio" type="radio" name="role" id="flexRadioDefault1" value="tenant" checked required>
                         <label class="form-check-label radio-label" for="flexRadioDefault1">
                             {{ $contents->{'register_agent_' . $middleware_language} ?? $contents->register_agent_en }}
                         </label>
@@ -38,13 +38,13 @@
 
             <div class="row mb-0 mb-md-4">
                 <div class="col-12 mb-3 mb-md-0 col-md-6">
-                    <label for="firstName" class="form-label label">{{ $contents->{'register_first_name_' . $middleware_language} ?? $contents->register_first_name_en }}</label>
+                    <label for="firstName" class="form-label label">{{ $contents->{'register_first_name_' . $middleware_language} ?? $contents->register_first_name_en }}<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="firstName" name="first_name" value="{{ old('first_name') }}" placeholder="{{ $contents->{'register_first_name_placeholder_' . $middleware_language} ?? $contents->register_first_name_placeholder_en }}" required>
                     <x-frontend.input-error field="first_name"></x-frontend.input-error>
                 </div>
 
                 <div class="col-12 mb-3 mb-md-0 col-md-6">
-                    <label for="lastName" class="form-label label">{{ $contents->{'register_last_name_' . $middleware_language} ?? $contents->register_last_name_en }}</label>
+                    <label for="lastName" class="form-label label">{{ $contents->{'register_last_name_' . $middleware_language} ?? $contents->register_last_name_en }}<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="lastName" name="last_name" value="{{ old('last_name') }}" placeholder="{{ $contents->{'register_last_name_placeholder_' . $middleware_language} ?? $contents->register_last_name_placeholder_en }}" required>
                     <x-frontend.input-error field="last_name"></x-frontend.input-error>
                 </div>
@@ -52,13 +52,13 @@
 
             <div class="row mb-0 mb-md-4">
                 <div class="col-12 mb-3 mb-md-0 col-md-6">
-                    <label for="email" class="form-label label">{{ $contents->{'register_email_' . $middleware_language} ?? $contents->register_email_en }}</label>
+                    <label for="email" class="form-label label">{{ $contents->{'register_email_' . $middleware_language} ?? $contents->register_email_en }}<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="email" name="email" value="{{ old('email') }}" placeholder="{{ $contents->{'register_email_placeholder_' . $middleware_language} ?? $contents->register_email_placeholder_en }}" required>
                     <x-frontend.input-error field="email"></x-frontend.input-error>
                 </div>
 
                 <div class="col-12 mb-3 mb-md-0 col-md-6">
-                    <label class="form-label label">{{ $contents->{'register_country_' . $middleware_language} ?? $contents->register_country_en }}</label>
+                    <label class="form-label label">{{ $contents->{'register_country_' . $middleware_language} ?? $contents->register_country_en }}<span class="asterisk">*</span></label>
                     <select class="form-select js-single input-field" id="country" name="country" required>
                         <option value="">{{ $contents->{'register_country_placeholder_' . $middleware_language} ?? $contents->register_country_placeholder_en }}</option>
                         @foreach($countries as $country)
@@ -71,7 +71,7 @@
 
             <div class="row mb-0 mb-md-4">
                 <div class="col-12 mb-3 mb-md-0 col-md-6">
-                    <label for="phone" class="form-label label">{{ $contents->{'register_phone_' . $middleware_language} ?? $contents->register_phone_en }}</label>
+                    <label for="phone" class="form-label label">{{ $contents->{'register_phone_' . $middleware_language} ?? $contents->register_phone_en }}<span class="asterisk">*</span></label>
                     <div class="phone-div">
                         <input type="text" class="form-control input-field" id="phone_code" name="phone_code" placeholder="+XXX" value="{{ old('phone_code') }}" readonly required>
                         
@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="col-12 mb-3 mb-md-0 col-md-6">
-                    <label for="city" class="form-label label">{{ $contents->{'register_city_' . $middleware_language} ?? $contents->register_city_en }}</label>
+                    <label for="city" class="form-label label">{{ $contents->{'register_city_' . $middleware_language} ?? $contents->register_city_en }}<span class="asterisk">*</span></label>
                     <select class="form-select js-single input-field" name="city" placeholder="{{ $contents->{'register_city_placeholder_' . $middleware_language} ?? $contents->register_city_placeholder_en }}" required>
                     </select>
                     <x-backend.input-error field="city"></x-backend.input-error>
@@ -91,7 +91,7 @@
             <div class="row mb-0 mb-md-4">
                 <div class="col-12 mb-3 mb-md-0 col-md-6">
                     <div class="position-relative">
-                        <label for="password" class="form-label label">{{ $contents->{'register_password_' . $middleware_language} ?? $contents->register_password_en }}</label>
+                        <label for="password" class="form-label label">{{ $contents->{'register_password_' . $middleware_language} ?? $contents->register_password_en }}<span class="asterisk">*</span></label>
                         <input type="password" class="form-control input-field" id="password" name="password" placeholder="* * * * * * *" required>
                         <span class="bi bi-eye-slash-fill toggle-password"></span>
                         <x-backend.input-error field="password"></x-backend.input-error>
@@ -100,7 +100,7 @@
 
                 <div class="col-12 mb-4 mb-md-0 col-md-6">
                     <div class="position-relative">
-                        <label for="passwordConfirmation" class="form-label label">{{ $contents->{'register_confirm_password_' . $middleware_language} ?? $contents->register_confirm_password_en }}</label>
+                        <label for="passwordConfirmation" class="form-label label">{{ $contents->{'register_confirm_password_' . $middleware_language} ?? $contents->register_confirm_password_en }}<span class="asterisk">*</span></label>
                         <input type="password" class="form-control input-field" id="passwordConfirmation" name="password_confirmation" placeholder="* * * * * * *" required/>
                         <span class="bi bi-eye-slash-fill toggle-password"></span>
                         <x-backend.input-error field="password_confirmation"></x-backend.input-error>

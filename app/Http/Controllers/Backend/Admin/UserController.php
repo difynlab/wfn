@@ -366,7 +366,7 @@ class UserController extends Controller
             $company = Company::create(
                 [
                     'user_id'   => $user->id,
-                    'status' => 2
+                    'status' => 3
                 ]
             );
         }
@@ -817,6 +817,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:0|max:255',
             'address' => 'required|min:0|max:255',
+            'cr_number' => 'required|string|digits:10',
             'email' => 'required|email|min:0|max:255|unique:companies,email,'.$company->id,
             'phone_code' => 'required|min:0|max:4',
             'phone' => 'required|digits:9|numeric|unique:companies,phone,'.$company->id,

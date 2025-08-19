@@ -288,6 +288,11 @@
             font-size: 15px;
             margin-bottom: 15px!important;
         }
+        .guest .form .toggle-password {
+            top: 43px;
+            right: 10px;
+            font-size: 16px;
+        }
         .guest .form .remember {
             font-size: 14px;
         }

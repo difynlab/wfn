@@ -632,17 +632,121 @@
     @media (width <= 1441px) {}
     @media (width <= 1367px) {}
     @media (width <= 1301px) {}
-    @media (width <= 1281px) {}
+    @media (width <= 1281px) {
+        .page .title {
+            font-size: 21px;
+        }
+        .page .description {
+            font-size: 16px;
+        }
+        .page .add-button {
+            font-size: 14px;
+            padding: 10px;
+        }
+        .page .filter-form {
+            height: 60px;
+        }
+        .page .filter-form .input-field {
+            font-size: 13px;
+        }
+        .page .filter-form .input-field::placeholder {
+            font-size: 13px;
+        }
+        .page .custom-pagination {
+            font-size: 11px;
+        }
+        .page .custom-pagination select {
+            font-size: 11px;
+        }
+        .page .table-container .table th {
+            font-size: 13px;
+            padding: 10px;
+        }
+        .page .table-container .table tr {
+            font-size: 13px;
+        }
+        .page .table-container .table tr td {
+            padding: 15px 10px;
+        }
+        .page .table-container .table .action-button {
+            font-size: 15px;
+            margin: 0 5px;
+        }
+        .page .table-container .table .status {
+            font-size: 11px;
+            width: 75px;
+            height: 25px;
+        }
+        .page nav .small {
+            font-size: 12px;
+        }
+        .page nav .page-link {
+            font-size: 10px;
+        }
+    }
     @media (width <= 1151px) {}
     @media (width <= 1076px) {}
     @media (width <= 1025px) {}
     @media (width <= 992px) {}
-    @media (width <= 845px) {}
-    @media (width <= 768px) {}
+    @media (width <= 845px) {
+        .page .filter-form {
+            height: auto;
+            flex-wrap: wrap;
+            border: none;
+            gap: 5px;
+            justify-content: space-between;
+        }
+        .page .filter-form .input-group {
+            width: 49%;
+        }
+        .page .filter-form .input-field.width {
+            width: 49%;
+        }
+        .page .filter-form .input-field {
+            border-right: none;
+            border: 1px solid var(--input_border);
+            height: 50px;
+        }
+        .page .filter-form .input-group-text {
+            display: none;
+        }
+        .page .d-sm-flex {
+            flex-direction: column;
+        }
+        .page nav .small {
+            margin-bottom: 10px!important;
+        }
+        .page nav .pagination {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+    @media (width <= 768px) {
+        .page .title {
+            font-size: 18px;
+        }
+        .page .description {
+            font-size: 13px;
+        }
+        .page .add-button {
+            font-size: 11px;
+        }
+    }
     @media (width <= 721px) {}
     @media (width <= 651px) {}
-    @media (width <= 576px) {}
-    @media (width <= 481px) {}
+    @media (width <= 576px) {
+        .page nav .pagination {
+            margin: auto;
+        }
+    }
+    @media (width <= 481px) {
+        .page .filter-form .input-group {
+            width: 100%;
+        }
+        .page .filter-form .input-field.width {
+            width: 100%;
+        }
+    }
     @media (width <= 429px) {}
     @media (width <= 415px) {}
     @media (width <= 396px) {}

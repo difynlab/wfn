@@ -19,10 +19,16 @@
                     <x-backend.input-error field="name"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-6 mb-4">
                     <label for="address" class="form-label label">Address<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="address" name="address" placeholder="Address" value="{{ old('address', $company->address) }}" required>
                     <x-backend.input-error field="address"></x-backend.input-error>
+                </div>
+
+                <div class="col-6 mb-4">
+                    <label for="cr_number" class="form-label label">CR Number (10 Digits)<span class="asterisk">*</span></label>
+                    <input type="number" class="form-control input-field" id="cr_number" name="cr_number" placeholder="CR Number" value="{{ old('cr_number', $company->cr_number) }}" required>
+                    <x-backend.input-error field="cr_number"></x-backend.input-error>
                 </div>
 
                 <div class="col-6 mb-4">
@@ -82,7 +88,7 @@
                 </div>
 
                 <div class="col-12 mb-4">
-                    <x-backend.upload-multi-images image_count="3" old_name="old_registration_certificates" old_value="{{ $company->registration_certificates ?? old('registration_certificates') }}" new_name="new_registration_certificates[]" path="warehouses" label="Registration Certificate"></x-backend.upload-multi-images>
+                    <x-backend.upload-multi-images image_count="3" old_name="old_registration_certificates" old_value="{{ $company->registration_certificates ?? old('registration_certificates') }}" new_name="new_registration_certificates[]" path="warehouses" label="Commercial Register (CR)"></x-backend.upload-multi-images>
                     <x-backend.input-error field="new_registration_certificates.*"></x-backend.input-error>
                 </div>
 
@@ -135,6 +141,18 @@
                 if(!websiteRegex.test(website)) {
                     $(this).after('<div class="error-message">Please enter a valid website URL.</div>');
                 }
+            }
+        });
+
+        $('#cr_number').on('blur', function () {
+            const cr_number = $(this).val();
+            const $error = $(this).next('.error-message');
+
+            $error.remove();
+            const crNumberRegex = /^\d{10}$/;
+
+            if(!crNumberRegex.test(cr_number)) {
+                $(this).after('<div class="error-message">CR number must be exactly 10 digits.</div>');
             }
         });
     </script>

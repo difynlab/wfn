@@ -309,7 +309,7 @@ class RegisterController extends Controller
         $company = Company::create(
             [
                 'user_id'   => $user->id,
-                'status' => 2
+                'status' => 3
             ]
         );
 

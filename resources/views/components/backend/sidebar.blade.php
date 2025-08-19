@@ -1,5 +1,5 @@
 @if(auth()->user()->role == 'admin')
-    <div class="sidebar">
+    <div class="sidebar active">
         <ul class="main-menu">
             <li class="link">
                 <a href="{{ route('admin.dashboard') }}" class="{{ Request::segment(2) == 'dashboard' ? 'active' : '' }}">
@@ -215,7 +215,7 @@
         </ul>
     </div>
 @elseif(auth()->user()->role == 'landlord')
-    <div class="sidebar">
+    <div class="sidebar active">
         <ul class="main-menu">
             <li class="link">
                 <a href="{{ route('landlord.dashboard') }}" class="{{ Request::segment(2) == 'dashboard' ? 'active' : '' }}">
@@ -335,7 +335,7 @@
         </ul>
     </div>
 @else
-    <div class="sidebar">
+    <div class="sidebar active">
         <ul class="main-menu">
             <li class="link">
                 <a href="{{ route('tenant.dashboard') }}" class="{{ Request::segment(2) == 'dashboard' ? 'active' : '' }}">

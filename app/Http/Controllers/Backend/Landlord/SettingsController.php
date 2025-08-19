@@ -10,7 +10,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -342,19 +341,18 @@ class SettingsController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:0|max:255',
             'address' => 'required|min:0|max:255',
-            'cr_number' => 'required|integer|min:10|max:10',
+            'cr_number' => 'required|string|digits:10',
             'email' => 'required|email|min:0|max:255|unique:companies,email,'.$company->id,
             'phone' => 'required|min:0|max:255|regex:/^\+?[0-9]+$/|unique:companies,phone,'.$company->id,
             'website' => 'nullable|regex:/^(https?:\/\/)?([\w\-]+\.)+[\w\-]{2,}(\/[\w\-._~:\/?#[\]@!$&\'()*+,;=]*)?$/',
             'industry' => 'required|min:0|max:255',
             'date' => 'nullable|date',
             'new_registration_certificates.*' => 'max:30720'
-        ], [
-            'cr_number' => 'The CR number field must not be greater than 10 digits.',
         ]);
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
+                'active_tab' => 'company',
                 'error' => 'Update Failed!',
                 'route' => route('landlord.settings.index')
             ]);
@@ -365,6 +363,7 @@ class SettingsController extends Controller
                 'new_registration_certificates.*' => 'Registration certificate is required.'
             ])
             ->withInput()->with([
+                'active_tab' => 'company',
                 'error' => 'Update Failed!',
                 'route' => route('tenant.settings.index')
             ]);
@@ -423,6 +422,7 @@ class SettingsController extends Controller
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
+                'active_tab' => 'password',
                 'error' => 'Update Failed!',
                 'route' => route('landlord.settings.index')
             ]);
@@ -433,6 +433,7 @@ class SettingsController extends Controller
                 'old_password' => 'Incorrect current password'
             ])
             ->withInput()->with([
+                'active_tab' => 'password',
                 'error' => 'Update Failed!',
                 'route' => route('landlord.settings.index')
             ]);

@@ -26,13 +26,13 @@
                 <form action="{{ route('login.store') }}" method="POST" class="form">
                     @csrf
                     <div class="mb-3 mb-md-4">
-                        <label for="email" class="form-label label">{{ $contents->{'login_username_' . $middleware_language} ?? $contents->login_username_en }}</label>
+                        <label for="email" class="form-label label">{{ $contents->{'login_username_' . $middleware_language} ?? $contents->login_username_en }}<span class="asterisk">*</span></label>
                         <input type="email" class="form-control input-field" id="email" name="email" value="{{ old('email') }}" placeholder="{{ $contents->{'login_username_placeholder_' . $middleware_language} ?? $contents->login_username_placeholder_en }}" required>
                         <x-backend.input-error field="email"></x-backend.input-error>
                     </div>
 
                     <div class="mb-3 mb-md-4 position-relative">
-                        <label for="password" class="form-label label">{{ $contents->{'login_password_' . $middleware_language} ?? $contents->login_password_en }}</label>
+                        <label for="password" class="form-label label">{{ $contents->{'login_password_' . $middleware_language} ?? $contents->login_password_en }}<span class="asterisk">*</span></label>
                         <input type="password" class="form-control input-field" id="password" name="password" placeholder="* * * * * * *" required>
                         <span class="bi bi-eye-slash-fill toggle-password"></span>
                     </div>

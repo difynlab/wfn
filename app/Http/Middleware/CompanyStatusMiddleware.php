@@ -26,22 +26,42 @@ class CompanyStatusMiddleware
         if($company->status != 1) {
             if($role == 'landlord') {
                 if($request->segment(1) == 'landlord') {
-                    return redirect()->back()->with([
-                        'company' => 'Company Details',
-                        'message' => 'Please update your company details before manage warehouses and bookings.'
-                    ]);
+                    $message = 'Please update your company details before manage warehouses and bookings.';
+                }
+                else {
+                    $message = 'Please update your company details before checking our warehouses.';
                 }
 
-                return redirect()->route('landlord.dashboard')->with([
-                    'company' => 'Company Details',
-                    'message' => 'Please update your company details before checking our warehouses.'
-                ]);
+                if($company->status == 3) {
+                    return redirect()->route('landlord.settings.index')->with([
+                        'active_tab' => 'company',
+                        'company' => 'Company Details',
+                        'message' => $message
+                    ]);
+                }
+                elseif($company->status == 2) {
+                    return redirect()->route('landlord.settings.index')->with([
+                        'active_tab' => 'company',
+                        'company' => 'Company Details',
+                        'message' => 'The company details is under review by WFN management.'
+                    ]);
+                }
             }
             else {
-                return redirect()->route('tenant.dashboard')->with([
-                    'company' => 'Company Details',
-                    'message' => 'Please update your company details before checking our warehouses.'
-                ]);
+                if($company->status == 3) {
+                    return redirect()->route('tenant.settings.index')->with([
+                        'active_tab' => 'company',
+                        'company' => 'Company Details',
+                        'message' => 'Please update your company details before checking our warehouses.'
+                    ]);
+                }
+                elseif($company->status == 2) {
+                    return redirect()->route('tenant.settings.index')->with([
+                        'active_tab' => 'company',
+                        'company' => 'Company Details',
+                        'message' => 'The company details is under review by WFN management.'
+                    ]);
+                }
             }
         }
 
