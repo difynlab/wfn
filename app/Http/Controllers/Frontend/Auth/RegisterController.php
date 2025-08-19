@@ -8,14 +8,66 @@ use App\Mail\AdminAccountRegisterMail;
 use App\Models\AuthenticationContent;
 use App\Models\Company;
 use App\Models\User;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
+    // public function testOdoo()
+    // {
+    //     $url = config('services.odoo.url');
+    //     $db = config('services.odoo.db');
+    //     $username = config('services.odoo.username');
+    //     $password = config('services.odoo.password');
+
+    //     $client = new Client();
+
+    //     $auth = $client->post($url, [
+    //         'json' => [
+    //             'jsonrpc' => '2.0',
+    //             'method'  => 'call',
+    //             'params'  => [
+    //                 'service' => 'common',
+    //                 'method'  => 'authenticate',
+    //                 'args'    => [$db, $username, $password, []],
+    //             ],
+    //             'id' => 1,
+    //         ],
+    //     ])->getBody()->getContents();
+
+    //     $uid = data_get(json_decode($auth, true), 'result');
+
+    //     $create = $client->post($url, [
+    //         'json' => [
+    //             'jsonrpc' => '2.0',
+    //             'method'  => 'call',
+    //             'params'  => [
+    //                 'service' => 'object',
+    //                 'method'  => 'execute_kw',
+    //                 'args'    => [
+    //                     $db, $uid, $password,
+    //                     'res.partner', 'create',
+    //                     [[
+    //                         'name'  => 'Yaarah Zajjel',
+    //                         'email' => 'yaarahzajjel@yosdsapmail.com',
+    //                         'city' => 'Pottuvil',
+    //                         'city' => 'Pottuvil',
+    //                     ]],
+    //                 ],
+    //             ],
+    //             'id' => 2,
+    //         ],
+    //     ])->getBody()->getContents();
+
+    //     $partnerId = data_get(json_decode($create, true), 'result');
+    //     dd($partnerId);
+    // }
+
     public function register()
     {
         $contents = AuthenticationContent::find(1);
@@ -285,11 +337,11 @@ class RegisterController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'role' => 'required|in:tenant,landlord',
-            'first_name' => 'required|min:0|max:255',
-            'last_name' => 'required|min:0|max:255',
-            'email' => 'required|email|min:0|max:255|unique:users,email',
-            'phone' => 'required|min:0|max:255|regex:/^\+?[0-9]+$/|unique:users,phone',
-            'city' => 'required|min:0|max:255',
+            'first_name' => 'required|min:3|max:255',
+            'last_name' => 'required|min:3|max:255',
+            'email' => 'required|email|min:3|max:255|unique:users,email',
+            'phone' => 'required|min:3|max:255|regex:/^\+?[0-9]+$/|unique:users,phone',
+            'city' => 'required|min:3|max:255',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password'
         ]);
@@ -312,6 +364,56 @@ class RegisterController extends Controller
                 'status' => 3
             ]
         );
+
+        // ODOO INTEGRATION
+            try {
+                $url = config('services.odoo.url');
+                $db = config('services.odoo.db');
+                $username = config('services.odoo.username');
+                $password = config('services.odoo.password');
+
+                $client = new Client();
+
+                $auth = $client->post($url, [
+                    'json' => [
+                        'jsonrpc' => '2.0',
+                        'method'  => 'call',
+                        'params'  => [
+                            'service' => 'common',
+                            'method'  => 'authenticate',
+                            'args'    => [$db, $username, $password, []],
+                        ],
+                        'id' => 1,
+                    ],
+                ])->getBody()->getContents();
+
+                $uid = data_get(json_decode($auth, true), 'result');
+
+                $create = $client->post($url, [
+                    'json' => [
+                        'jsonrpc' => '2.0',
+                        'method'  => 'call',
+                        'params'  => [
+                            'service' => 'object',
+                            'method'  => 'execute_kw',
+                            'args'    => [
+                                $db, $uid, $password,
+                                'res.partner', 'create',
+                                [[
+                                    'name'  => $request->first_name . ' ' . $request->last_name,
+                                    'email' => $request->email,
+                                    'phone' => $request->phone_code . '' . $request->phone
+                                ]],
+                            ],
+                        ],
+                        'id' => 2,
+                    ],
+                ])->getBody()->getContents();
+            }
+            catch (\Throwable $e) {
+                Log::warning('Failed to sync contact to Odoo: '.$e->getMessage());
+            }
+        // ODOO INTEGRATION
 
         $mail_data = [
             'name' => $user->first_name . ' ' . $user->last_name,
