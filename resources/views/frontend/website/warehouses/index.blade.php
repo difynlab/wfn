@@ -43,7 +43,7 @@
 
                 <form action="{{ route('warehouses.filter') }}" method="GET">
                     <div class="row bottom-row">
-                        <div class="col">
+                        <div class="col-6 mb-3 mb-lg-0 col-lg">
                             <!-- <input type="text" class="form-control input-field" name="location" placeholder="{{ $contents->{'section_2_search_' . $middleware_language} ?? $contents->section_2_search_en }}" value="{{ $location ?? '' }}"> -->
 
                             <select class="form-control js-single search-field" name="location">
@@ -54,7 +54,7 @@
                             </select>
                         </div>
 
-                        <div class="col">
+                        <div class="col-6 mb-3 mb-lg-0 col-lg">
                             <select class="form-select input-field" name="warehouse_size">
                                 <option value="all">{{ $contents->{'section_2_size_' . $middleware_language} ?? $contents->section_2_size_en }}</option>
                                 <option value="50" {{ isset($warehouse_size) && $warehouse_size == '50' ? "selected" : "" }}>{{ $contents->{'section_2_size_1_' . $middleware_language} ?? $contents->section_2_size_1_en }}</option>
@@ -64,7 +64,7 @@
                             </select>
                         </div>
 
-                        <div class="col">
+                        <div class="col-6 col-lg">
                             <select class="form-select input-field" name="storage_type">
                                 <option value="all">{{ $contents->{'section_2_type_' . $middleware_language} ?? $contents->section_2_type_en }}</option>
                                 @foreach($storage_types as $storage_type)
@@ -94,7 +94,7 @@
                             </select>
                         </div> -->
 
-                        <div class="col">
+                        <div class="col-6 col-lg">
                             <button type="submit" class="apply-filters-button">{{ $contents->{'section_2_button_' . $middleware_language} ?? $contents->section_2_button_en }}</button>
                         </div>
                     </div>
@@ -105,12 +105,12 @@
         <div class="section-3 container section-margin">
             <div class="row warehouse-row">
                 @if($warehouses->count() > 0)
-                    <div class="col-8 left">
+                    <div class="col-12 mb-4 mb-md-0 col-md-8 left">
                         @foreach($warehouses as $key => $warehouse)
                             <div class="single-warehouse">
                                 <a href="{{ route('warehouses.show', $warehouse) }}">
                                     <div class="row align-items-center">
-                                        <div class="col-4">
+                                        <div class="col-5 col-md-4">
                                             <!-- @php
                                                 $listed_date = $warehouse->created_at->copy()->startOfDay();
                                                 $today = now()->startOfDay();
@@ -128,7 +128,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-8">
+                                        <div class="col-7 col-md-8">
                                             <p class="type">
                                                 {{ $warehouse->storageType->{'name_' . $middleware_language} ?? $warehouse->storageType->name_en }}
                                             </p>
@@ -219,7 +219,7 @@
                     </div>
                 @endif
 
-                <div class="col-4 right">
+                <div class="col-12 col-md-4 right">
                     <div class="sidebar">
                         @if($popular_warehouses->count() > 0)
                             <p class="heading">{{ $contents->{'section_3_popular_' . $middleware_language} ?? $contents->section_3_popular_en }}</p>

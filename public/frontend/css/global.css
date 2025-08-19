@@ -469,6 +469,15 @@
             width: 100%;
         }
 
+        .section-title {
+            font-size: 20px;
+            padding-bottom: 0px;
+        }
+        .section-description {
+            font-size: 15px;
+            padding-bottom: 10px;
+        }
+
         .navbar {
             align-items: center;
         }
@@ -599,6 +608,14 @@
         }
     }
     @media (width <= 429px) {
+        .section-title {
+            font-size: 17px;
+        }
+        .section-description {
+            font-size: 14px;
+            padding-bottom: 5px;
+        }
+
         .navbar .navbar-collapse {
             width: 250px;
         }
@@ -608,6 +625,10 @@
     }
     @media (width <= 415px) {}
     @media (width <= 396px) {
+        .section-title {
+            font-size: 16px;
+        }
+
         .footer .top .text {
             font-size: 18px;
         }

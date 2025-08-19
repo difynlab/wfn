@@ -22,7 +22,7 @@
         text-align: end;
     }
     .warehouses .section-2 .top-row .right .map-view-button {
-        font-style: 14px;
+        font-size: 14px;
         border-radius: 8px;
         padding: 10px 20px;
         border: 1px solid var(--input_border);
@@ -297,9 +297,9 @@
 
 /* #region Section 4 */
     .warehouses .section-4 .section-title {
-        font-size: 25px;
+        /* font-size: 25px;
         font-weight: 500;
-        color: var(--light_black);
+        color: var(--light_black); */
         padding-bottom: 20px;
     }
     .warehouses .section-4 .single-warehouse {
@@ -363,18 +363,659 @@
     @media (width <= 1281px) {}
     @media (width <= 1151px) {}
     @media (width <= 1076px) {}
-    @media (width <= 1025px) {}
-    @media (width <= 991px) {}
-    @media (width <= 845px) {}
-    @media (width <= 768px) {}
-    @media (width <= 721px) {}
-    @media (width <= 651px) {}
-    @media (width <= 576px) {}
-    @media (width <= 481px) {}
-    @media (width <= 429px) {}
-    @media (width <= 415px) {}
-    @media (width <= 396px) {}
-    @media (width <= 377px) {}
-    @media (width <= 361px) {}
-    @media (width <= 331px) {}
+    @media (width <= 1025px) {
+        .warehouses .section-2 {
+            padding: 25px 20px;
+        }
+        .warehouses .section-2 .top-row .title {
+            font-size: 18px;
+        }
+        .warehouses .section-2 .top-row .description {
+            font-size: 14px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .image {
+            height: 220px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .price {
+            font-size: 22px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .name {
+            font-size: 15px;
+        }
+        .warehouses .section-4 .single-warehouse .image {
+            height: 220px;
+        }
+    }
+    @media (width <= 991px) {
+        .warehouses .section-2 .top-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .warehouses .section-2 .top-row .left {
+            width: 100%;
+        }
+        .warehouses .section-2 .top-row .right {
+            width: 100%;
+            text-align: start;
+        }
+        .warehouses .section-2 .bottom-row .col-lg {
+            margin-bottom: 15px;
+        }
+        .warehouses .section-3 .warehouse-row .left {
+            padding-right: 0;
+            margin-bottom: 30px;
+        }
+        .warehouses .section-3 .warehouse-row .right {
+            padding-left: 0;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .image {
+            height: 200px;
+        }
+        .warehouses .section-4 .row .col-3 {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+    }
+    @media (width <= 845px) {
+        .warehouses .section-2 {
+            padding: 20px 15px;
+        }
+        .warehouses .section-2 .top-row .title {
+            font-size: 17px;
+        }
+        .warehouses .section-2 .top-row .map-view-button {
+            font-size: 13px;
+            padding: 8px 16px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse {
+            padding: 12px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .image {
+            height: 180px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .price {
+            font-size: 20px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .name {
+            font-size: 14px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .description {
+            font-size: 13px;
+            line-height: 20px;
+        }
+    }
+    @media (width <= 768px) {
+        .warehouses .section-2 .bottom-row .col-6 {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .warehouses .section-2 .bottom-row .input-field,
+        .warehouses .section-2 .bottom-row .apply-filters-button {
+            height: 45px;
+            font-size: 13px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+           right: 10px;
+            
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .row {
+            flex-direction: column;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .col-5,
+        .warehouses .section-3 .warehouse-row .single-warehouse .col-7 {
+            width: 100%;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .col-5 {
+            margin-bottom: 15px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .image {
+            height: 300px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box .row {
+            flex-direction: column;
+            gap: 10px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box .col-12 {
+            text-align: center;
+        }
+        .warehouses .section-3 .sidebar {
+            padding: 20px 15px;
+        }
+        .warehouses .section-4 .row .col-3 {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .warehouses .section-4 .single-warehouse .image {
+            height: 300px;
+        }
+    }
+    @media (width <= 721px) {
+        .warehouses .section-2 {
+            padding: 18px 12px;
+        }
+        .warehouses .section-2 .top-row .title {
+            font-size: 16px;
+        }
+        .warehouses .section-2 .top-row .description {
+            font-size: 13px;
+        }
+        /* Ensure image left and content (type and price) right */
+        .warehouses .section-3 .warehouse-row .single-warehouse .row {
+            flex-direction: row;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .col-5 {
+            width: 41.66666667%;
+            margin-bottom: 0;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .col-7 {
+            width: 58.33333333%;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse {
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .image {
+            height: 170px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .price {
+            font-size: 18px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .name {
+            font-size: 13px;
+            padding-bottom: 8px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .description {
+            font-size: 12px;
+            line-height: 18px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .location {
+            font-size: 12px;
+            padding-top: 15px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box {
+            font-size: 12px;
+            padding: 8px 12px;
+            margin-top: 12px;
+        }
+        .warehouses .section-3 .sidebar {
+            padding: 18px 12px;
+        }
+        .warehouses .section-3 .sidebar .heading {
+            font-size: 14px;
+            padding-bottom: 12px;
+        }
+        .warehouses .section-3 .sidebar .item {
+            font-size: 12px;
+            padding-bottom: 12px;
+        }
+        /* Section 4: make card horizontal with image left and details (type/price) right */
+        .warehouses .section-4 .single-warehouse {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .warehouses .section-4 .single-warehouse .image {
+            width: 40%;
+            height: 150px;
+            border-radius: 0;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .warehouses .section-4 .single-warehouse .details {
+            width: 60%;
+            padding: 0 15px;
+        }
+    }
+    @media (width <= 651px) {
+        .warehouses .section-2 .top-row .map-view-button {
+            font-size: 12px;
+            padding: 7px 14px;
+        }
+        .warehouses .section-2 .top-row .map-view-button i {
+            font-size: 14px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .image {
+            height: 150px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .price {
+            font-size: 16px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .price i {
+            font-size: 14px;
+            bottom: 8px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box .action {
+            margin-left: 10px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box .action i {
+            font-size: 14px;
+        }
+        .warehouses .section-4 .single-warehouse .image {
+            height: 150px;
+        }
+        .warehouses .section-4 .single-warehouse .details {
+            padding: 15px 18px;
+        }
+        .warehouses .section-4 .single-warehouse .details .title {
+            font-size: 14px;
+        }
+        .warehouses .section-4 .single-warehouse .details .subtitle {
+            font-size: 12px;
+        }
+        .warehouses .section-4 .single-warehouse .details .price {
+            font-size: 14px;
+        }
+    }
+    @media (width <= 576px) {
+        .warehouses .section-2 {
+            padding: 15px 10px;
+        }
+        .warehouses .section-2 .top-row .title {
+            font-size: 15px;
+        }
+        .warehouses .section-2 .top-row .description {
+            font-size: 12px;
+        }
+        .warehouses .section-2 .top-row .right .map-view-button {
+            font-size: 10px;
+            padding: 6px 14px;
+        }
+        .warehouses .section-2 .bottom-row .input-field,
+        .warehouses .section-2 .bottom-row .apply-filters-button {
+            height: 40px;
+            font-size: 12px;
+        }
+        .warehouses .section-2 .bottom-row .select2-container--default .select2-selection--single {
+            height: 40px;
+            font-size: 12px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse {
+            padding: 8px;
+            margin-bottom: 15px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .image {
+            height: 180px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .type {
+            font-size: 12px;
+            padding-bottom: 6px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .price {
+            font-size: 15px;
+            padding-bottom: 1px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .price i {
+            font-size: 12px;
+            bottom: 6px;
+            left: 3px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .name {
+            font-size: 12px;
+            padding-bottom: 6px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .description {
+            font-size: 11px;
+            line-height: 16px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .location {
+            font-size: 11px;
+            padding-top: 12px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .location i {
+            font-size: 14px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box {
+            font-size: 11px;
+            padding: 6px 10px;
+            margin-top: 10px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box .action {
+            margin-left: 8px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box .action i {
+            font-size: 12px;
+        }
+        .warehouses .section-3 .warehouse-row .no-data {
+            font-size: 24px;
+        }
+        .warehouses .section-3 .sidebar {
+            padding: 15px 10px;
+        }
+        .warehouses .section-3 .sidebar .heading {
+            font-size: 13px;
+            padding-bottom: 10px;
+        }
+        .warehouses .section-3 .sidebar .item {
+            font-size: 11px;
+            padding-bottom: 10px;
+        }
+        .warehouses .section-4 .single-warehouse .image {
+            height: 180px;
+        }
+        .warehouses .section-4 .single-warehouse .details {
+            padding: 12px 15px;
+        }
+        .warehouses .section-4 .single-warehouse .details .title {
+            font-size: 13px;
+        }
+        .warehouses .section-4 .single-warehouse .details .subtitle {
+            font-size: 11px;
+        }
+        .warehouses .section-4 .single-warehouse .details .price {
+            font-size: 13px;
+        }
+        .warehouses .section-4 .single-warehouse .details .price i {
+            font-size: 10px;
+            bottom: 8px;
+        }
+        
+        /* Global responsive adjustments */
+        .container {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .row {
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+        .row > [class*="col-"] {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    }
+    @media (width <= 481px) {
+        .warehouses .section-2 .top-row .map-view-button {
+            font-size: 11px;
+            padding: 6px 12px;
+        }
+        .warehouses .section-2 .top-row .map-view-button i {
+            font-size: 13px;
+            margin-right: 4px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .image {
+            height: 120px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box .row {
+            gap: 8px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box .action {
+            margin-left: 6px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box .action .dropdown-menu {
+            font-size: 12px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box .action .dropdown-menu .dropdown-item {
+            font-size: 11px;
+            padding: 8px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box .action .dropdown-menu i {
+            font-size: 14px;
+            padding-right: 6px;
+        }
+        .warehouses .section-4 .single-warehouse .image {
+            height: 120px;
+        }
+    }
+    @media (width <= 429px) {
+        .warehouses .section-2 {
+            padding: 12px 8px;
+        }
+        .warehouses .section-2 .top-row .title {
+            font-size: 14px;
+        }
+        .warehouses .section-2 .top-row .description {
+            font-size: 11px;
+        }
+        .warehouses .section-2 .bottom-row .input-field,
+        .warehouses .section-2 .bottom-row .apply-filters-button {
+            height: 38px;
+            font-size: 11px;
+        }
+        .warehouses .section-2 .bottom-row .select2-container--default .select2-selection--single {
+            height: 38px;
+            font-size: 11px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse {
+            padding: 6px;
+            margin-bottom: 12px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .image {
+            height: 110px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .price {
+            font-size: 14px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .name {
+            font-size: 11px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .description {
+            font-size: 10px;
+            line-height: 14px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .location {
+            font-size: 10px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box {
+            font-size: 10px;
+            padding: 5px 8px;
+        }
+        .warehouses .section-3 .sidebar {
+            padding: 12px 8px;
+        }
+        .warehouses .section-3 .sidebar .heading {
+            font-size: 12px;
+        }
+        .warehouses .section-3 .sidebar .item {
+            font-size: 10px;
+        }
+        .warehouses .section-4 .single-warehouse .image {
+            height: 110px;
+        }
+        .warehouses .section-4 .single-warehouse .details {
+            padding: 10px 12px;
+        }
+        .warehouses .section-4 .single-warehouse .details .title {
+            font-size: 12px;
+        }
+        .warehouses .section-4 .single-warehouse .details .subtitle {
+            font-size: 10px;
+        }
+        .warehouses .section-4 .single-warehouse .details .price {
+            font-size: 12px;
+        }
+    }
+    @media (width <= 415px) {
+        .warehouses .section-2 .top-row .map-view-button {
+            font-size: 10px;
+            padding: 5px 10px;
+        }
+        .warehouses .section-2 .top-row .map-view-button i {
+            font-size: 12px;
+            margin-right: 3px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .image {
+            height: 100px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box .action {
+            margin-left: 4px;
+        }
+        .warehouses .section-4 .single-warehouse .image {
+            height: 100px;
+        }
+    }
+    @media (width <= 396px) {
+        .warehouses .section-2 {
+            padding: 10px 6px;
+        }
+        .warehouses .section-2 .top-row .title {
+            font-size: 13px;
+        }
+        .warehouses .section-2 .top-row .description {
+            font-size: 10px;
+        }
+        .warehouses .section-2 .bottom-row .input-field,
+        .warehouses .section-2 .bottom-row .apply-filters-button {
+            height: 35px;
+            font-size: 10px;
+        }
+        .warehouses .section-2 .bottom-row .select2-container--default .select2-selection--single {
+            height: 35px;
+            font-size: 10px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse {
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .image {
+            height: 90px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .price {
+            font-size: 13px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .name {
+            font-size: 10px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .description {
+            font-size: 10px;
+            line-height: 12px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .location {
+            font-size: 9px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box {
+            font-size: 9px;
+            padding: 4px 6px;
+        }
+        .warehouses .section-3 .sidebar {
+            padding: 10px 6px;
+        }
+        .warehouses .section-3 .sidebar .heading {
+            font-size: 11px;
+        }
+        .warehouses .section-3 .sidebar .item {
+            font-size: 9px;
+        }
+        .warehouses .section-4 .single-warehouse .image {
+            height: 90px;
+        }
+        .warehouses .section-4 .single-warehouse .details {
+            padding: 8px 10px;
+        }
+        .warehouses .section-4 .single-warehouse .details .title {
+            font-size: 11px;
+        }
+        .warehouses .section-4 .single-warehouse .details .subtitle {
+            font-size: 10px;
+        }
+        .warehouses .section-4 .single-warehouse .details .price {
+            font-size: 11px;
+        }
+    }
+    @media (width <= 377px) {
+        .warehouses .section-2 .top-row .map-view-button {
+            font-size: 9px;
+            padding: 4px 8px;
+        }
+        .warehouses .section-2 .top-row .map-view-button i {
+            font-size: 11px;
+            margin-right: 2px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .image {
+            height: 80px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box .action {
+            margin-left: 2px;
+        }
+        .warehouses .section-4 .single-warehouse .image {
+            height: 80px;
+        }
+    }
+    @media (width <= 361px) {
+        .warehouses .section-2 {
+            padding: 8px 4px;
+        }
+        .warehouses .section-2 .top-row .title {
+            font-size: 12px;
+        }
+        .warehouses .section-2 .top-row .description {
+            font-size: 9px;
+        }
+        .warehouses .section-2 .bottom-row .input-field,
+        .warehouses .section-2 .bottom-row .apply-filters-button {
+            height: 32px;
+            font-size: 9px;
+        }
+        .warehouses .section-2 .bottom-row .select2-container--default .select2-selection--single {
+            height: 32px;
+            font-size: 9px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse {
+            padding: 4px;
+            margin-bottom: 8px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .image {
+            height: 70px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .price {
+            font-size: 12px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .name {
+            font-size: 9px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .description {
+            font-size: 8px;
+            line-height: 10px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .location {
+            font-size: 8px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box {
+            font-size: 8px;
+            padding: 3px 5px;
+        }
+        .warehouses .section-3 .sidebar {
+            padding: 8px 4px;
+        }
+        .warehouses .section-3 .sidebar .heading {
+            font-size: 10px;
+        }
+        .warehouses .section-3 .sidebar .item {
+            font-size: 8px;
+        }
+        .warehouses .section-4 .single-warehouse .image {
+            height: 70px;
+        }
+        .warehouses .section-4 .single-warehouse .details {
+            padding: 6px 8px;
+        }
+        .warehouses .section-4 .single-warehouse .details .title {
+            font-size: 10px;
+        }
+        .warehouses .section-4 .single-warehouse .details .subtitle {
+            font-size: 8px;
+        }
+        .warehouses .section-4 .single-warehouse .details .price {
+            font-size: 10px;
+        }
+    }
+    @media (width <= 331px) {
+        .warehouses .section-2 .top-row .map-view-button {
+            font-size: 8px;
+            padding: 3px 6px;
+        }
+        .warehouses .section-2 .top-row .map-view-button i {
+            font-size: 10px;
+            margin-right: 1px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .image {
+            height: 100px;
+        }
+        .warehouses .section-3 .warehouse-row .single-warehouse .box .action {
+            margin-left: 1px;
+        }
+        .warehouses .section-4 .single-warehouse .image {
+            height: 100px;
+        }
+    }
 /* #endregion */
