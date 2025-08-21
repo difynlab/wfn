@@ -44,11 +44,13 @@ Route::middleware(['language'])->group(function () {
                 Route::post('expert', [WarehouseController::class, 'expert'])->name('expert');
                 Route::post('report', [WarehouseController::class, 'report'])->name('report');
                 Route::post('favorite', [WarehouseController::class, 'favorite'])->name('favorite');
-            });
-            
-            Route::middleware(['auth', 'company'])->prefix('warehouses')->name('warehouses.')->group(function () {
+
                 Route::get('show/{warehouse}', [WarehouseController::class, 'show'])->name('show');
             });
+            
+            // Route::middleware(['auth', 'company'])->prefix('warehouses')->name('warehouses.')->group(function () {
+            //     Route::get('show/{warehouse}', [WarehouseController::class, 'show'])->name('show');
+            // });
         // Auth routes
 
         Route::prefix('warehouses')->name('warehouses.')->group(function() {
