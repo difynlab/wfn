@@ -13,12 +13,19 @@ if(!function_exists('isFavorite')) {
 }
 
 if(!function_exists('send_email')) {
-    function send_email($mailable, $email){
-        try {
-            Mail::to($email)->send($mailable);
+    function send_email($mailable, $emails){
+        if(!is_array($emails)) {
+            $emails = explode(", ", trim($emails, "[]"));
         }
-        catch(\Exception $e) {
-            Log::error("Failed to send email to {$email}: " . $e->getMessage());
+
+        foreach($emails as $email) {
+            try {
+                Mail::to($email)->send(clone $mailable);
+            }
+            catch (\Throwable $e) {
+                Log::error("Failed to send email to {$email}: " . $e->getMessage());
+                continue;
+            }
         }
     }
 }
