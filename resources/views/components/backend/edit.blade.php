@@ -1,6 +1,6 @@
 @props(['data'])
 
-<div class="col-12 mb-5">
+<div class="col-12 mb-4 mb-md-5">
     <label for="status" class="form-label label">Status<span class="asterisk">*</span></label>
 
     <div class="radios">

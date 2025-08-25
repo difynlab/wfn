@@ -4,15 +4,15 @@
 
 @section('content')
     <div class="page dashboard">
-        <div class="row mb-4">
+        <div class="row mb-3 mb-md-4">
             <div class="col-12">
                 <p class="title">Dashboard</p>
                 <p class="description">Manage and track operations seamlessly here.</p>
             </div>
         </div>
 
-        <div class="row mb-4">
-            <div class="col-3">
+        <div class="row mb-3 mb-md-4">
+            <div class="col-12 col-md-6 col-xl-3 mb-3 mb-md-4 mb-xl-0">
                 <div class="single-box">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-12 col-md-6 col-xl-3 mb-3 mb-md-4 mb-xl-0">
                 <div class="single-box">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
@@ -50,7 +50,7 @@
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-12 col-md-6 col-xl-3 mb-3 mb-md-0">
                 <div class="single-box">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
@@ -69,7 +69,7 @@
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-12 col-md-6 col-xl-3">
                 <div class="single-box">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
@@ -89,7 +89,7 @@
             </div>
         </div>
 
-        <div class="row mb-4">
+        <div class="row mb-3 mb-md-4">
             <div class="col-12">
                 <div class="box">
                     <p class="box-title">Revenue</p>
@@ -99,8 +99,8 @@
             </div>
         </div>
 
-        <div class="row mb-4">
-            <div class="col-6">
+        <div class="row mb-3 mb-md-4">
+            <div class="col-12 col-xl-6 mb-3 mb-md-4 mb-xl-0">
                 <div class="box">
                     <p class="box-title">Monthly Registered Users</p>
                     <p class="box-description">{!! $user_month_percentage !!}</p>
@@ -108,7 +108,7 @@
                 </div>
             </div>
 
-            <div class="col-6">
+            <div class="col-12 col-xl-6">
                 <div class="box">
                     <p class="box-title">Monthly Bookings</p>
                     <p class="box-description">{!! $booking_month_percentage !!}</p>
@@ -117,10 +117,10 @@
             </div>
         </div>
 
-        <div class="row mb-4">
-            <div class="col-3">
+        <div class="row mb-3 mb-md-4">
+            <div class="col-12 col-md-6 col-xl-3 mb-3 mb-xl-0">
                 <div class="single-box">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div class="d-flex align-items-center justify-content-between">
                         <div class="left">
                             <p class="text">Total Pallets</p>
                             <p class="value">{{ $total_pallets }}</p>
@@ -135,9 +135,9 @@
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-12 col-md-6 col-xl-3 mb-3 mb-xl-0">
                 <div class="single-box">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div class="d-flex align-items-center justify-content-between">
                         <div class="left">
                             <p class="text">Available Pallets</p>
                             <p class="value">{{ $available_pallets }}</p>
@@ -152,9 +152,9 @@
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-12 col-md-6 col-xl-3 mb-3 mb-md-0">
                 <div class="single-box">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div class="d-flex align-items-center justify-content-between">
                         <div class="left">
                             <p class="text">Rented Pallets</p>
                             <p class="value">{{ $rented_pallets }}</p>
@@ -169,9 +169,9 @@
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-12 col-md-6 col-xl-3">
                 <div class="single-box">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div class="d-flex align-items-center justify-content-between">
                         <div class="left">
                             <p class="text">Occupancy Rate</p>
                             <p class="value">{{ $occupancy_rate }}%</p>
@@ -187,8 +187,8 @@
             </div>
         </div>
 
-        <div class="row mb-4">
-            <div class="col-6">
+        <div class="row mb-3 mb-md-4">
+            <div class="col-12 col-xl-6 mb-3 mb-md-4 mb-xl-0">
                 <div class="box">
                     <p class="box-title">Pallet Distribution</p>
                     <p class="box-description">{!! $pallet_month_percentage !!}</p>
@@ -196,7 +196,7 @@
                 </div>
             </div>
 
-            <div class="col-6">
+            <div class="col-12 col-xl-6">
                 <div class="box">
                     <p class="box-title">Occupancy Rate</p>
                     <p class="box-description">{!! $pallet_month_percentage !!}</p>

@@ -13,19 +13,19 @@
             </div>
 
             <div class="row">
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="name_en" class="form-label label">Name (EN)<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="name_en" name="name_en" placeholder="Name (EN)" value="{{ old('name_en', $warehouse->name_en) }}" required>
                     <x-backend.input-error field="name_en"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="name_ar" class="form-label label">Name (AR)</label>
                     <input type="text" class="form-control input-field" id="name_ar" name="name_ar" placeholder="Name (AR)" value="{{ old('name_ar', $warehouse->name_ar) }}">
                     <x-backend.input-error field="name_ar"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <label for="address" class="form-label label">Address<span class="asterisk">*</span></label>
 
                     <p class="map-address">English: {{ $warehouse->address_en }}</p>
@@ -48,17 +48,17 @@
                     <x-backend.input-error field="address_en"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="description_en" class="form-label label">Description (EN)<span class="asterisk">*</span></label>
                     <textarea type="text" class="form-control textarea input-field" id="description_en" name="description_en" rows="5" placeholder="Description (EN)" value="{{ old('description_en', $warehouse->description_en) }}" required>{{ old('description_en', $warehouse->description_en) }}</textarea>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="description_ar" class="form-label label">Description (AR)</label>
                     <textarea type="text" class="form-control textarea input-field" id="description_ar" name="description_ar" rows="5" placeholder="Description (AR)" value="{{ old('description_ar', $warehouse->description_ar) }}">{{ old('description_ar', $warehouse->description_ar) }}</textarea>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="user_id" class="form-label label">Landlord<span class="asterisk">*</span></label>
                     <select class="form-select input-field js-single" id="user_id" name="user_id" required>
                         <option value="">Select landlord</option>
@@ -69,7 +69,7 @@
                     <x-backend.input-error field="user_id"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="storage_type_id" class="form-label label">Storage Type<span class="asterisk">*</span></label>
                     <select class="form-select input-field js-single" id="storage_type_id" name="storage_type_id" required>
                         <option value="">Select storage type</option>
@@ -80,31 +80,31 @@
                     <x-backend.input-error field="storage_type_id"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="total_area" class="form-label label">Total Area (Sq.m)<span class="asterisk">*</span></label>
                     <input type="number" class="form-control input-field" id="total_area" name="total_area" placeholder="Total Area" value="{{ old('total_area', $warehouse->total_area) }}" required>
                     <x-backend.input-error field="total_area"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="total_pallets" class="form-label label">Total Pallets<span class="asterisk">*</span></label>
                     <input type="number" class="form-control input-field" id="total_pallets" name="total_pallets" placeholder="Total Pallets" value="{{ old('total_pallets', $warehouse->total_pallets) }}" required>
                     <x-backend.input-error field="total_pallets"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="available_pallets" class="form-label label">Available Pallets<span class="asterisk">*</span></label>
                     <input type="number" class="form-control input-field" id="available_pallets" name="available_pallets" placeholder="Available Pallets" value="{{ old('available_pallets', $warehouse->available_pallets) }}" required>
                     <x-backend.input-error field="available_pallets"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="rent_per_pallet" class="form-label label">Rent Per Pallet<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="rent_per_pallet" name="rent_per_pallet" placeholder="Rent Per Pallet" value="{{ old('rent_per_pallet', $warehouse->rent_per_pallet) }}" required>
                     <x-backend.input-error field="rent_per_pallet"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="pallet_dimension" class="form-label label">Pallet Dimension (L x W x H) cm<span class="asterisk">*</span></label>
                     <select class="form-select input-field js-single" id="pallet_dimension" name="pallet_dimension" required>
                         <option value="">Select pallet dimension</option>
@@ -115,13 +115,13 @@
                     <x-backend.input-error field="pallet_dimension"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4 pallet-dimension-other-value {{ $warehouse->pallet_dimension_other_value == null ? 'd-none' : '' }}">
+                <div class="col-12 col-md-6 mb-3 mb-md-4 pallet-dimension-other-value {{ $warehouse->pallet_dimension_other_value == null ? 'd-none' : '' }}">
                     <label for="pallet_dimension_other_value" class="form-label label">Pallet Dimension Other Value (L x W x H) cm<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="pallet_dimension_other_value" name="pallet_dimension_other_value" placeholder="Pallet Dimension Other Value (L x W x H) cm" value="{{ old('pallet_dimension_other_value', $warehouse->pallet_dimension_other_value) }}" {{ $warehouse->pallet_dimension_other_value != null ? 'required' : '' }}>
                     <x-backend.input-error field="pallet_dimension_other_value"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="temperature_type" class="form-label label">Temperature Type<span class="asterisk">*</span></label>
 
                     <div class="radios">
@@ -149,13 +149,13 @@
                     <x-backend.input-error field="temperature_type"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="temperature_range" class="form-label label">Temperature Range<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="temperature_range" name="temperature_range" placeholder="Temperature Range" value="{{ old('temperature_range', $warehouse->temperature_range) }}" required>
                     <x-backend.input-error field="temperature_range"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="wms" class="form-label label">Warehouse Management System<span class="asterisk">*</span></label>
 
                     <div class="radios">
@@ -173,7 +173,7 @@
                     <x-backend.input-error field="wms"></x-backend.input-error>
                 </div>
 
-                <div class="col-4 mb-4">
+                <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
                     <label for="equipment_handling" class="form-label label">Equipment Handling<span class="asterisk">*</span></label>
 
                     <div class="radios">
@@ -191,7 +191,7 @@
                     <x-backend.input-error field="equipment_handling"></x-backend.input-error>
                 </div>
 
-                <div class="col-4 mb-4">
+                <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
                     <label for="temperature_sensor" class="form-label label">Temperature Sensor<span class="asterisk">*</span></label>
 
                     <div class="radios">
@@ -209,7 +209,7 @@
                     <x-backend.input-error field="temperature_sensor"></x-backend.input-error>
                 </div>
 
-                <div class="col-4 mb-4">
+                <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
                     <label for="humidity_sensor" class="form-label label">Humidity Sensor<span class="asterisk">*</span></label>
 
                     <div class="radios">
@@ -227,13 +227,13 @@
                     <x-backend.input-error field="humidity_sensor"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <div class="row align-items-center">
-                        <div class="col-9">
+                        <div class="col-6 col-md-9">
                             <label class="form-label label add-label">Features (EN)</label>
                         </div>
 
-                        <div class="col-3 text-end">
+                        <div class="col-6 col-md-3 text-end">
                             <button type="button" class="add-row-button add-feature-en">
                                 <i class="bi bi-plus-lg"></i>
                                 Add
@@ -258,13 +258,13 @@
                     @endif
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <div class="row align-items-center">
-                        <div class="col-9">
+                        <div class="col-6 col-md-9">
                             <label class="form-label label add-label">Features (AR)</label>
                         </div>
 
-                        <div class="col-3 text-end">
+                        <div class="col-6 col-md-3 text-end">
                             <button type="button" class="add-row-button add-feature-ar">
                                 <i class="bi bi-plus-lg"></i>
                                 Add
@@ -289,13 +289,13 @@
                     @endif
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <div class="row align-items-center">
-                        <div class="col-9">
+                        <div class="col-6 col-md-9">
                             <label class="form-label label add-label">Amenities (EN)</label>
                         </div>
 
-                        <div class="col-3 text-end">
+                        <div class="col-6 col-md-3 text-end">
                             <button type="button" class="add-row-button add-amenity-en">
                                 <i class="bi bi-plus-lg"></i>
                                 Add
@@ -320,13 +320,13 @@
                     @endif
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <div class="row align-items-center">
-                        <div class="col-9">
+                        <div class="col-6 col-md-9">
                             <label class="form-label label add-label">Amenities (AR)</label>
                         </div>
 
-                        <div class="col-3 text-end">
+                        <div class="col-6 col-md-3 text-end">
                             <button type="button" class="add-row-button add-amenity-ar">
                                 <i class="bi bi-plus-lg"></i>
                                 Add
@@ -351,13 +351,13 @@
                     @endif
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <div class="row align-items-center">
-                        <div class="col-9">
+                        <div class="col-6 col-md-9">
                             <label class="form-label label add-label">Details (EN)</label>
                         </div>
 
-                        <div class="col-3 text-end">
+                        <div class="col-6 col-md-3 text-end">
                             <button type="button" class="add-row-button add-detail-en">
                                 <i class="bi bi-plus-lg"></i>
                                 Add
@@ -382,13 +382,13 @@
                     @endif
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <div class="row align-items-center">
-                        <div class="col-9">
+                        <div class="col-6 col-md-9">
                             <label class="form-label label add-label">Details (AR)</label>
                         </div>
 
-                        <div class="col-3 text-end">
+                        <div class="col-6 col-md-3 text-end">
                             <button type="button" class="add-row-button add-detail-ar">
                                 <i class="bi bi-plus-lg"></i>
                                 Add
@@ -413,42 +413,42 @@
                     @endif
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <x-backend.upload-image old_name="old_thumbnail" old_value="{{ $warehouse->thumbnail ?? old('thumbnail')  }}" new_name="new_thumbnail" path="warehouses" label="Thumbnail"></x-backend.upload-image>
                     <x-backend.input-error field="new_thumbnail"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <x-backend.upload-image old_name="old_outside_image" old_value="{{ $warehouse->outside_image ?? old('outside_image') }}" new_name="new_outside_image" path="warehouses" label="Outside"></x-backend.upload-image>
                     <x-backend.input-error field="new_outside_image"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <x-backend.upload-image old_name="old_loading_image" old_value="{{ $warehouse->loading_image ?? old('loading_image') }}" new_name="new_loading_image" path="warehouses" label="Loading"></x-backend.upload-image>
                     <x-backend.input-error field="new_loading_image"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <x-backend.upload-image old_name="old_off_loading_image" old_value="{{ $warehouse->off_loading_image ?? old('off_loading_image') }}" new_name="new_off_loading_image" path="warehouses" label="Off Loading"></x-backend.upload-image>
                     <x-backend.input-error field="new_off_loading_image"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <x-backend.upload-image old_name="old_handling_equipment_image" old_value="{{ $warehouse->handling_equipment_image ?? old('handling_equipment_image') }}" new_name="new_handling_equipment_image" path="warehouses" label="Handling Equipment"></x-backend.upload-image>
                     <x-backend.input-error field="new_handling_equipment_image"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <x-backend.upload-image old_name="old_storage_area_image" old_value="{{ $warehouse->storage_area_image ?? old('storage_area_image') }}" new_name="new_storage_area_image" path="warehouses" label="Storage Area"></x-backend.upload-image>
                     <x-backend.input-error field="new_storage_area_image"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <x-backend.upload-multi-videos video_count="8" old_name="old_videos" old_value="{{ $warehouse->videos ?? old('videos') }}" new_name="new_videos[]" path="warehouses"></x-backend.upload-multi-videos>
                     <x-backend.input-error field="new_videos.*"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <x-backend.upload-multi-images image_count="4" old_name="old_licenses" old_value="{{ $warehouse->licenses ?? old('licenses') }}" new_name="new_licenses[]" path="warehouses" label="License"></x-backend.upload-multi-images>
                     <x-backend.input-error field="new_licenses.*"></x-backend.input-error>
                 </div>

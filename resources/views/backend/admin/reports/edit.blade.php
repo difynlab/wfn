@@ -13,7 +13,7 @@
             </div>
 
             <div class="row">
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="user_id" class="form-label label">User<span class="asterisk">*</span></label>
                     <select class="form-select input-field js-single" id="user_id" name="user_id" required>
                         <option value="">Select user</option>
@@ -24,7 +24,7 @@
                     <x-backend.input-error field="user_id"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="warehouse_id" class="form-label label">Warehouse<span class="asterisk">*</span></label>
                     <select class="form-select input-field js-single" id="warehouse_id" name="warehouse_id" required>
                         <option value="">Select warehouse</option>
@@ -35,7 +35,7 @@
                     <x-backend.input-error field="warehouse_id"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <label for="reason" class="form-label label">Reason<span class="asterisk">*</span></label>
                     <textarea class="form-control input-field textarea" name="reason" id="reason" value="{{ old('reason', $report->reason) }}" placeholder="Reason" rows="5" required>{{ old('reason', $report->reason) }}</textarea>
                     <x-backend.input-error field="reason"></x-backend.input-error>
