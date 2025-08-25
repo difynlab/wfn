@@ -300,6 +300,8 @@
         margin-bottom: 15px;
         background-color: var(--white);
         padding: 30px;
+        display: flex;
+        flex-direction: row;
     }
     .page .single-todo:last-child {
         margin-bottom: 0;
@@ -308,6 +310,7 @@
         display: flex;
         align-items: center;
         gap: 20px;
+        width: 75%;
     }
     .page .single-todo .todo-name {
         font-size: 17px;
@@ -327,6 +330,7 @@
         display: flex;
         align-items: center;
         gap: 30px;
+        width: 25%;
     }
     .page .single-todo .links .link {
         font-size: 25px;
@@ -628,10 +632,25 @@
     @media (width <= 1751px) {}
     @media (width <= 1681px) {}
     @media (width <= 1601px) {}
-    @media (width <= 1537px) {}
-    @media (width <= 1441px) {}
+    @media (width <= 1537px) {
+        .dashboard .single-box .text {
+            font-size: 14px;
+        }
+    }
+    @media (width <= 1441px) {
+        .dashboard .single-box .value {
+            font-size: 19px;
+        }
+        .dashboard .single-box .text {
+            font-size: 13px;
+        }
+    }
     @media (width <= 1367px) {}
-    @media (width <= 1301px) {}
+    @media (width <= 1301px) {
+        .dashboard .single-box {
+            padding: 5px;
+        }
+    }
     @media (width <= 1281px) {
         .page .title {
             font-size: 21px;
@@ -647,6 +666,9 @@
             height: 60px;
         }
         .page .filter-form .input-field {
+            font-size: 13px;
+        }
+        .page .filter-form .select2-container--default .select2-selection--single .select2-selection__rendered {
             font-size: 13px;
         }
         .page .filter-form .input-field::placeholder {
@@ -683,11 +705,63 @@
         .page nav .page-link {
             font-size: 10px;
         }
+        .select2-results__option {
+            font-size: 12px;
+        }
+
+        .dashboard .box .box-title {
+            font-size: 16px;
+        }
+        .dashboard .box .box-description {
+            font-size: 13px;
+        }
+
+        .page .single-todo {
+            padding: 15px;
+        }
+        .page .single-todo .todo-name {
+            font-size: 15px;
+            margin-bottom: 2px!important;
+        }
+        .page .single-todo .todo-description {
+            font-size: 14px;
+        }
+        .page .single-todo .links {
+            gap: 15px;
+        }
+        .page .single-todo .form-check-input {
+            font-size: 20px;
+        }
+        .page .single-todo .details {
+            gap: 15px;
+        }
+        .page .single-todo .links .link {
+            font-size: 20px;
+        }
+    }
+    @media (width < 1200px) {
+        .dashboard .single-box {
+            padding: 15px;
+        }
+        .dashboard .single-box .text {
+            font-size: 15px;
+        }
+        .dashboard .single-box .value {
+            font-size: 19px;
+        }
     }
     @media (width <= 1151px) {}
-    @media (width <= 1076px) {}
+    @media (width <= 1076px) {
+        .page .filter-form .select2-container--default .select2-selection--single {
+            width: 200px;
+        }
+    }
     @media (width <= 1025px) {}
-    @media (width <= 992px) {}
+    @media (width <= 992px) {
+        .page .filter-form .select2-container--default .select2-selection--single {
+            width: 170px;
+        }
+    }
     @media (width <= 845px) {
         .page .filter-form {
             height: auto;
@@ -706,6 +780,15 @@
             border-right: none;
             border: 1px solid var(--input_border);
             height: 50px;
+        }
+        .page .filter-form .select2-container {
+            border: 1px solid var(--input_border);
+            height: 50px;
+            width: 49% !important;
+        }
+        .page .filter-form .select2-container--default .select2-selection--single {
+            border-right: none;
+            width: 100%!important;
         }
         .page .filter-form .input-group-text {
             display: none;
@@ -731,6 +814,32 @@
         .page .add-button {
             font-size: 11px;
         }
+        .page .table-container .table .table-image {
+            width: 60px;
+            height: 60px;
+        }
+
+        .page .single-todo {
+            padding: 10px;
+        }
+        .page .single-todo .details {
+            width: 80%;
+        }
+        .page .single-todo .todo-name {
+            font-size: 14px;
+        }
+        .page .single-todo .todo-description {
+            font-size: 13px;
+        }
+        .page .single-todo .links {
+            width: 20%;
+        }
+        .page .single-todo .links .link {
+            font-size: 18px;
+        }
+        .page .single-todo .links .link {
+            font-size: 18px;
+        }
     }
     @media (width <= 721px) {}
     @media (width <= 651px) {}
@@ -745,6 +854,9 @@
         }
         .page .filter-form .input-field.width {
             width: 100%;
+        }
+        .page .filter-form .select2-container {
+            width: 100%!important;
         }
     }
     @media (width <= 429px) {}

@@ -360,6 +360,25 @@
         .backend-content.full-width {
             padding-left: 10px;
         }
+        .notification-modal .title {
+            font-size: 20px;
+            padding-bottom: 5px;
+        }
+        .notification-modal .description {
+            font-size: 14px;
+        }
+        .notification-modal .buttons {
+            margin-top: 15px;
+            gap: 10px;
+        }
+        .notification-modal .modal-delete-button {
+            font-size: 14px;
+            width: 160px;
+            height: 45px;
+        }
+        .notification-modal .cancel-button {
+            font-size: 14px;
+        }
     }
     @media (width <= 1151px) {}
     @media (width <= 1076px) {}

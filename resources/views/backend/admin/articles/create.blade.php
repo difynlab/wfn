@@ -13,13 +13,13 @@
             </div>
 
             <div class="row">
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <label for="title" class="form-label label">Title<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="title" name="title" value="{{ old('title') }}" placeholder="Title" required>
                     <x-backend.input-error field="title"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="article_category_id" class="form-label label">Article Category<span class="asterisk">*</span></label>
                     <select class="form-control form-select input-field js-single" id="article_category_id" name="article_category_id" required>
                         <option value="">Select article category</option>
@@ -29,19 +29,19 @@
                     </select>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="author_name" class="form-label label">Author Name<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="author_name" name="author_name" value="{{ old('author_name') }}" placeholder="Author Name" required>
                     <x-backend.input-error field="author_name"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 mb-4">
-                    <label for="content" class="form-label">Content<span class="asterisk">*</span></label>
+                <div class="col-12 mb-3 mb-md-4">
+                    <label for="content" class="form-label label">Content<span class="asterisk">*</span></label>
                     <textarea class="editor" id="content" name="content" value="{{ old('content') }}">{{ old('content') }}</textarea>
                     <x-backend.input-error field="content"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <x-backend.upload-image old_name="old_thumbnail" old_value="{{ old('thumbnail') }}" new_name="new_thumbnail" path="articles" label="Thumbnail"></x-backend.upload-image>
                     <x-backend.input-error field="new_thumbnail"></x-backend.input-error>
                 </div>

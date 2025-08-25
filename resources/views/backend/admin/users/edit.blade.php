@@ -13,31 +13,31 @@
             </div>
 
             <div class="row">
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="first_name" class="form-label label">First Name<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="first_name" name="first_name" placeholder="First Name" value="{{ old('first_name', $user->first_name) }}" required>
                     <x-backend.input-error field="first_name"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="last_name" class="form-label label">Last Name<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="last_name" name="last_name" placeholder="Last Name" value="{{ old('last_name', $user->last_name) }}" required>
                     <x-backend.input-error field="last_name"></x-backend.input-error>
                 </div>
 
-                <div class="col-4 mb-4">
+                <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
                     <label for="email" class="form-label label">Email<span class="asterisk">*</span></label>
                     <input type="email" class="form-control input-field" id="email" name="email" placeholder="Email" value="{{ old('email', $user->email) }}" required>
                     <x-backend.input-error field="email"></x-backend.input-error>
                 </div>
 
-                <div class="col-4 mb-4">
+                <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
                     <label for="landlord_experience" class="form-label label">Landlord Experience (Years)</label>
                     <input type="number" class="form-control input-field" id="landlord_experience" name="landlord_experience" placeholder="Landlord Experience (Years)" value="{{ old('landlord_experience', $user->landlord_experience) }}" min="0">
                     <x-backend.input-error field="landlord_experience"></x-backend.input-error>
                 </div>
 
-                <div class="col-4 mb-4">
+                <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
                     <label class="form-label label">Country<span class="asterisk">*</span></label>
                     <select class="form-select js-single input-field" id="country" name="country" required>
                         <option value="">Select country</option>
@@ -48,7 +48,7 @@
                     <x-backend.input-error field="country"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="phone" class="form-label label">Phone<span class="asterisk">*</span></label>
                     <div class="phone-div">
                         <input type="text" class="form-control input-field" id="phone_code" name="phone_code" placeholder="+XXX" value="{{ old('phone_code', $user->phone_code) }}" readonly required>
@@ -58,20 +58,20 @@
                     <x-backend.input-error field="phone"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="address" class="form-label label">Address</label>
                     <input type="text" class="form-control input-field" id="address" name="address" placeholder="Address" value="{{ old('address', $user->address) }}">
                     <x-backend.input-error field="address"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="city" class="form-label label">City<span class="asterisk">*</span></label>
                     <select class="form-select js-single input-field" name="city" required>
                     </select>
                     <x-backend.input-error field="city"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label class="form-label label">Role<span class="asterisk">*</span></label>
                     <select class="form-select input-field" id="role" name="role" required>
                         <option value="">Select role</option>
@@ -82,21 +82,21 @@
                     <x-backend.input-error field="role"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4 position-relative">
+                <div class="col-12 col-md-6 mb-3 mb-md-4 position-relative">
                     <label for="password" class="form-label label">Password</label>
                     <input type="password" class="form-control input-field" id="password" name="password" placeholder="* * * * * * * *">
                     <span class="bi bi-eye-slash-fill toggle-password"></span>
                     <x-backend.input-error field="password"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4 position-relative">
+                <div class="col-12 col-md-6 mb-3 mb-md-4 position-relative">
                     <label for="confirm_password" class="form-label label">Confirm Password</label>
                     <input type="password" class="form-control input-field" id="confirm_password" name="confirm_password" placeholder="* * * * * * * *">
                     <span class="bi bi-eye-slash-fill toggle-password"></span>
                     <x-backend.input-error field="confirm_password"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <x-backend.upload-image old_name="old_image" old_value="{{ $user->image ?? old('image') }}" new_name="new_image" path="users" label="User"></x-backend.upload-image>
                     <x-backend.input-error field="new_image"></x-backend.input-error>
                 </div>

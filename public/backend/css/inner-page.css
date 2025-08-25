@@ -190,6 +190,7 @@
     }
     .inner-page .select2-container {
         display: block;
+        width: 100%!important;
     }
 /* #endregion */
 
@@ -492,67 +493,221 @@
     @media (width <= 1441px) {}
     @media (width <= 1367px) {}
     @media (width <= 1301px) {}
-    @media (width <= 1281px) {}
-    @media (width <= 1151px) {}
-    @media (width <= 1076px) {}
-    @media (width <= 1025px) {}
-    @media (width <= 992px) {
+    @media (width <= 1281px) {
         .inner-page .inner-page-top-title {
-            font-size: 24px;
+            font-size: 21px;
         }
         .inner-page .inner-page-top-description {
-            font-size: 17px;
-        }
-        .inner-page .form .submit-button {
             font-size: 16px;
-            width: 180px;
-            height: 50px;
+        }
+        .inner-page .nav-pills {
+            margin-bottom: 15px;
+        }
+        .inner-page .nav-pills .nav-item .nav-link {
+            font-size: 15px;
+            padding-bottom: 5px;
+        }
+        .inner-page .tab-content {
+            padding: 15px;
+        }
+        .inner-page .tab-content .tab-content-title {
+            font-size: 16px;
+            padding-bottom: 5px;
+        }
+        .inner-page .page-details .title {
+            font-size: 21px;
+            padding-bottom: 0px;
         }
         .inner-page .form .label {
             font-size: 15px;
-            margin-bottom: 5px!important;
+            margin-bottom: 3px!important;
+        }
+        .inner-page .map-address {
+            font-size: 13px;
+            margin-bottom: 5px !important;
         }
         .inner-page .form .input-field {
             height: 50px;
-            font-size: 15px;
+            font-size: 14px;
+        }
+        .inner-page .form .textarea {
+            height: initial;
+        }
+        .inner-page .form .input-field::placeholder {
+            font-size: 13px;
+        }
+        .inner-page .select2-container--default .select2-selection--single {
+            height: 50px;
+            font-size: 14px;
+        }
+        .inner-page .form .textarea {
+            height: initial;
+        }
+        .inner-page .form .toggle-password {
+            top: 37px;
+            font-size: 18px;
+            right: 23px;
         }
         .inner-page .drop-area {
-            height: 325px;
+            /* height: 275px; */
+            padding: 0 10%;
+        }
+        .inner-page .drop-area i {
+            font-size: 35px;
+        }
+        .inner-page .drop-area .drag-drop {
+            font-size: 18px;
+        }
+        .inner-page .drop-area .line-or {
+            margin-top: 5px;
+        }
+        .inner-page .drop-area .button {
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+        .inner-page .drop-area .condition {
+            font-size: 13px;
+        }
+        .inner-page .drop-area .image-preview, .inner-page .drop-area .video-preview {
+            width: 150px;
+            height: 100px;
+        }
+        .inner-page .drop-area .image-preview img, .inner-page .drop-area .video-preview video {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .inner-page .form .radios {
+            gap: 25px;
+        }
+        .inner-page .form .form-check {
+            gap: 5px;
+        }
+        .inner-page .form .form-check .form-check-input {
+            width: 20px;
+            height: 20px;
+        }
+        .inner-page .form .form-check .form-check-label {
+            font-size: 14px;
+        }
+        .inner-page .form .submit-button {
+            font-size: 15px;
+            width: 180px;
+            height: 50px;
+        }
+    }
+    @media (width <= 1151px) {}
+    @media (width <= 1076px) {
+        .inner-page .form .phone-div #phone_code {
+            width: 20%;
+        }
+    }
+    @media (width <= 1025px) {
+        .inner-page .form .radios {
+            flex-wrap: wrap;
+        }
+        .inner-page .form .section .add-row-button, .inner-page .form .add-row-button {
+            font-size: 12px;
+        }
+        .inner-page .form .section .add-row-button i, .inner-page .form .add-row-button i {
+            font-size: 12px;
+        }
+    }
+    @media (width <= 992px) {
+        .modal-image-preview .modal-body .modal-image, .modal-video-preview .modal-body .modal-video {
+            height: 50vh;
+            object-fit: contain;
+        }
+        .modal-image-preview .download-button, .modal-video-preview .download-button {
+            font-size: 13px;
+        }
+        .modal-image-preview .close-button, .modal-video-preview .close-button {
+            font-size: 12px;
+        }
+    }
+    @media (width <= 845px) {
+        .inner-page .form .phone-div #phone_code {
+            width: 30%;
+        }
+    }
+    @media (width <= 768px) {
+        .inner-page .inner-page-top-title {
+            font-size: 18px;
+        }
+        .inner-page .inner-page-top-description {
+            font-size: 13px;
+        }
+        .inner-page .nav-pills .nav-item {
+            margin-right: 25px;
+        }
+        .inner-page .nav-pills .nav-item .nav-link {
+            font-size: 14px;
+        }
+        .inner-page .page-details .title {
+            font-size: 18px;
+        }
+        .inner-page .page-details .description {
+            font-size: 13px;
+            padding-bottom: 5px;
+        }
+        .inner-page .form .label {
+            font-size: 13px;
+        }
+        .inner-page .form .input-field {
+            height: 45px;
+            font-size: 13px;
+        }
+        .inner-page .form .textarea {
+            height: initial;
+        }
+        .inner-page .form .input-field::placeholder {
+            font-size: 12px;
+        }
+        .inner-page .drop-area {
+            height: 360px;
         }
         .inner-page .drop-area i {
             font-size: 30px;
         }
         .inner-page .drop-area .drag-drop {
-            font-size: 15px;
-        }
-        .inner-page .drop-area .line-or {
-            margin-top: 0px;
-        }
-        .inner-page .drop-area .button {
-            width: 100px;
-            height: 30px;
-            margin-top: 2px;
-            margin-bottom: 15px;
+            font-size: 16px;
         }
         .inner-page .drop-area .image-preview, .inner-page .drop-area .video-preview {
-            width: 150px;
-            height: 90px;
+            width: 125px;
+            height: 80px;
         }
         .inner-page .drop-area .image-preview img, .inner-page .drop-area .video-preview video {
+            width: 125px;
+            height: 80px;
+        }
+        .inner-page .form .form-check .form-check-label {
+            font-size: 14px;
+        }
+        .inner-page .form .submit-button {
             width: 150px;
-            height: 90px;
+            height: 40px;
         }
     }
-    @media (width <= 845px) {}
-    @media (width <= 768px) {}
     @media (width <= 721px) {}
     @media (width <= 651px) {}
     @media (width <= 576px) {}
     @media (width <= 481px) {}
-    @media (width <= 429px) {}
+    @media (width <= 429px) {
+        .inner-page .nav-pills {
+            overflow-x: auto;
+            flex-wrap: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+    }
     @media (width <= 415px) {}
     @media (width <= 396px) {}
-    @media (width <= 377px) {}
+    @media (width <= 377px) {
+        .inner-page .form .radios {
+            gap: 20px;
+        }
+    }
     @media (width <= 361px) {}
     @media (width <= 331px) {}
 /* #endregion */

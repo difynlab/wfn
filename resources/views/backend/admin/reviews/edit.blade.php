@@ -13,19 +13,19 @@
             </div>
 
             <div class="row">
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="name" class="form-label label">Name<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="name" name="name" placeholder="Name" value="{{ old('name', $review->name) }}" required>
                     <x-backend.input-error field="name"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="designation" class="form-label label">Designation<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="designation" name="designation" placeholder="Designation" value="{{ old('designation', $review->designation) }}" required>
                     <x-backend.input-error field="designation"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="star" class="form-label label">Star<span class="asterisk">*</span></label>
                     <select class="form-select input-field" id="star" name="star" required>
                         <option value="">Select star</option>
@@ -38,7 +38,7 @@
                     <x-backend.input-error field="star"></x-backend.input-error>
                 </div>
 
-                <div class="col-6 mb-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="language" class="form-label label">Language<span class="asterisk">*</span></label>
                     <select class="form-select input-field" id="language" name="language" required>
                         <option value="">Select language</option>
@@ -48,13 +48,13 @@
                     <x-backend.input-error field="language"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <label for="content" class="form-label label">Content<span class="asterisk">*</span></label>
                     <textarea class="form-control input-field textarea" rows="5" id="content" name="content" placeholder="Content" value="{{ old('content', $review->content) }}" required>{{ old('content', $review->content) }}</textarea>
                     <x-backend.input-error field="content"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-3 mb-md-4">
                     <x-backend.upload-image old_name="old_image" old_value="{{ $review->image ?? old('image')  }}" new_name="new_image" path="reviews"></x-backend.upload-image>
                     <x-backend.input-error field="new_image"></x-backend.input-error>
                 </div>
