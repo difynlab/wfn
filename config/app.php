@@ -123,5 +123,5 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
-    'admin_email' => array_map('trim', explode(',', env('ADMIN_EMAIL', 'zajjith@epirco.net'))),
+    'admin_email' => env('ADMIN_EMAIL', 'zajjith@epirco.net'),
 ];
