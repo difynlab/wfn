@@ -379,11 +379,33 @@
         .notification-modal .cancel-button {
             font-size: 14px;
         }
+
+        .message-sidebar, .inner-page .message-form {
+            padding: 10px;
+        }
+        .message-sidebar .title {
+            font-size: 16px;
+            padding-bottom: 0px;
+        }
+        .message-sidebar .link .actual-link {
+            font-size: 14px;
+        }
+        .message-sidebar .link .actual-link i {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        .message-sidebar .link .actual-link .number {
+            font-size: 13px;
+        }
     }
     @media (width <= 1151px) {}
     @media (width <= 1076px) {}
     @media (width <= 1025px) {}
-    @media (width <= 992px) {}
+    @media (width <= 992px) {
+        .message-sidebar, .inner-page .message-form {
+            padding: 15px;
+        }
+    }
     @media (width <= 845px) {}
     @media (width <= 768px) {
         .navbar-fluid {
@@ -396,6 +418,18 @@
         }
         .backend-content.full-width {
             padding-left: 0;
+        }
+
+        .message-sidebar .title {
+            font-size: 14px;
+            padding-bottom: 0px;
+        }
+        .message-sidebar .link .actual-link {
+            font-size: 13px;
+            padding: 10px 5px;
+        }
+        .message-sidebar .link .actual-link i {
+            font-size: 14px;
         }
     }
     @media (width <= 721px) {}

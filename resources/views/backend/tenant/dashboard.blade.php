@@ -4,15 +4,15 @@
 
 @section('content')
     <div class="page dashboard">
-        <div class="row mb-4">
+        <div class="row mb-3 mb-md-4">
             <div class="col-12">
                 <p class="title">Dashboard</p>
                 <p class="description">Manage and track operations seamlessly here.</p>
             </div>
         </div>
 
-        <div class="row mb-4">
-            <div class="col-4">
+        <div class="row mb-3 mb-md-4">
+            <div class="col-12 col-lg-4 mb-3 mb-lg-0">
                 <div class="single-box">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="col-4">
+            <div class="col-12 col-lg-4 mb-3 mb-lg-0">
                 <div class="single-box">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
@@ -50,7 +50,7 @@
                 </div>
             </div>
 
-            <div class="col-4">
+            <div class="col-12 col-lg-4">
                 <div class="single-box">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
@@ -70,68 +70,72 @@
             </div>
         </div>
 
-        <div class="row mb-4">
+        <div class="row mb-3 mb-md-4">
             <div class="col-12">
                 <div class="box todos">
                     <p class="box-title mb-2">To-Do Overview</p>
 
-                    @if(count($todos) > 0)
-                        @foreach($todos as $todo)
-                            @if($todo->complete == null)
-                                <div class="row single-todo" data-id="{{ $todo->id }}">
-                                    <div class="col-9 details">
-                                        <input class="form-check-input" type="checkbox">
+                    <div class="row">
+                        <div class="col-12">
+                            @if(count($todos) > 0)
+                                @foreach($todos as $todo)
+                                    @if($todo->complete == null)
+                                        <div class="single-todo" data-id="{{ $todo->id }}">
+                                            <div class="details">
+                                                <input class="form-check-input" type="checkbox">
 
-                                        <div class="text">
-                                            <p class="todo-name">{{ $todo->title }}</p>
-                                            <p class="todo-description">{{ $todo->description }}</p>
+                                                <div class="text">
+                                                    <p class="todo-name">{{ $todo->title }}</p>
+                                                    <p class="todo-description">{{ $todo->description }}</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="links">
+                                                @if($todo->favorite)
+                                                    <i class="bi bi-star-fill link favorite gold" title="Favorite"></i>
+                                                @else
+                                                    <i class="bi bi-star link favorite" title="Favorite"></i>
+                                                @endif
+
+                                                <i class="bi bi-x-lg link delete" title="Delete"></i>
+                                            </div>
                                         </div>
-                                    </div>
-                                    
-                                    <div class="col-3 links">
-                                        @if($todo->favorite)
-                                            <i class="bi bi-star-fill link favorite gold" title="Favorite"></i>
-                                        @else
-                                            <i class="bi bi-star link favorite" title="Favorite"></i>
-                                        @endif
+                                    @endif
+                                @endforeach
 
-                                        <i class="bi bi-x-lg link delete" title="Delete"></i>
+                                @foreach($todos as $todo)
+                                    @if($todo->complete)
+                                        <div class="single-todo" data-id="{{ $todo->id }}">
+                                            <div class="details">
+                                                <input class="form-check-input" type="checkbox" checked>
+
+                                                <div class="text">
+                                                    <p class="todo-name cross-line">{{ $todo->title }}</p>
+                                                    <p class="todo-description cross-line">{{ $todo->description }}</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="links">
+                                                @if($todo->favorite)
+                                                    <i class="bi bi-star-fill link favorite gold" title="Favorite"></i>
+                                                @else
+                                                    <i class="bi bi-star link favorite" title="Favorite"></i>
+                                                @endif
+
+                                                <i class="bi bi-x-lg link delete" title="Delete"></i>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            @else
+                                <div class="row single-todo">
+                                    <div class="col-12">
+                                        <p class="no-data">No data available in the todo list</p>
                                     </div>
                                 </div>
                             @endif
-                        @endforeach
-
-                        @foreach($todos as $todo)
-                            @if($todo->complete)
-                                <div class="row single-todo" data-id="{{ $todo->id }}">
-                                    <div class="col-9 details">
-                                        <input class="form-check-input" type="checkbox" checked>
-
-                                        <div class="text">
-                                            <p class="todo-name cross-line">{{ $todo->title }}</p>
-                                            <p class="todo-description cross-line">{{ $todo->description }}</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-3 links">
-                                        @if($todo->favorite)
-                                            <i class="bi bi-star-fill link favorite gold" title="Favorite"></i>
-                                        @else
-                                            <i class="bi bi-star link favorite" title="Favorite"></i>
-                                        @endif
-
-                                        <i class="bi bi-x-lg link delete" title="Delete"></i>
-                                    </div>
-                                </div>
-                            @endif
-                        @endforeach
-                    @else
-                        <div class="row single-todo">
-                            <div class="col-12">
-                                <p class="no-data">No data available in the todo list</p>
-                            </div>
                         </div>
-                    @endif
+                    </div>
                 </div>
             </div>
         </div>

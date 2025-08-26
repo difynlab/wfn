@@ -508,6 +508,9 @@
         .navbar .nav-item {
             margin-left: 0!important;
         }
+        .navbar .nav-item .name {
+            color: var(--white);
+        }
         .navbar .nav-link {
             color: var(--white);
             font-size: 16px;
@@ -531,6 +534,10 @@
         }
         .navbar .nav-link.show {
             text-align: center;
+        }
+        .navbar .dropdown .profile-dropdown-menu {
+            left: 15%;
+            position: absolute;
         }
         .footer .bottom {
             width: 60%;

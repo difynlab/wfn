@@ -4,24 +4,24 @@
 
 @section('content')
     <div class="page">
-        <div class="row align-items-center mb-4">
-            <div class="col-8">
+        <div class="row align-items-center mb-3 mb-md-4">
+            <div class="col-12 mb-3 mb-md-0 col-md-8">
                 <p class="title">Bookings</p>
                 <p class="description">Manage booking details here.</p>
             </div>
         </div>
 
-        <div class="row mb-4">
+        <div class="row mb-3 mb-md-4">
             <div class="col-12">
                 <form class="filter-form">
-                    <select class="form-select input-field js-single w-100" id="selected_tenant" name="selected_tenant">
+                    <select class="form-select input-field js-single width" id="selected_tenant" name="selected_tenant">
                         <option value="">Select tenant</option>
                         @foreach($users as $user)
                             <option value="{{ $user->id }}" {{ isset($selected_tenant) && $selected_tenant == $user->id ? "selected" : "" }}>{{ $user->first_name }} {{ $user->last_name }}</option>
                         @endforeach
                     </select>
 
-                    <select class="form-select input-field js-single" id="selected_warehouse" name="selected_warehouse">
+                    <select class="form-select input-field js-single width" id="selected_warehouse" name="selected_warehouse">
                         <option value="">Select warehouse</option>
                         @foreach($warehouses as $warehouse)
                             <option value="{{ $warehouse->id }}" {{ isset($selected_warehouse) && $selected_warehouse == $warehouse->id ? "selected" : "" }}>{{ $warehouse->name_en }}</option>

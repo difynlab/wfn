@@ -388,15 +388,15 @@
 
         $('.add-feature-en').on('click', function() {
             let html = `<div class="row single-item mt-2">
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="feature_titles_en[]" placeholder="Title" required>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="feature_descriptions_en[]" placeholder="Description" required>
                                 </div>
 
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>`;
@@ -406,15 +406,15 @@
 
         $('.add-feature-ar').on('click', function() {
             let html = `<div class="row single-item mt-2">
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="feature_titles_ar[]" placeholder="Title" required>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="feature_descriptions_ar[]" placeholder="Description" required>
                                 </div>
 
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>`;
@@ -424,15 +424,15 @@
 
         $('.add-amenity-en').on('click', function() {
             let html = `<div class="row single-item mt-2">
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="amenity_titles_en[]" placeholder="Title" required>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="amenity_descriptions_en[]" placeholder="Description" required>
                                 </div>
 
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>`;
@@ -442,15 +442,15 @@
 
         $('.add-amenity-ar').on('click', function() {
             let html = `<div class="row single-item mt-2">
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="amenity_titles_ar[]" placeholder="Title" required>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="amenity_descriptions_ar[]" placeholder="Description" required>
                                 </div>
 
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>`;
@@ -460,15 +460,15 @@
 
         $('.add-detail-en').on('click', function() {
             let html = `<div class="row single-item mt-2">
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="detail_titles_en[]" placeholder="Title" required>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="detail_descriptions_en[]" placeholder="Description" required>
                                 </div>
 
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>`;
@@ -478,15 +478,15 @@
 
         $('.add-detail-ar').on('click', function() {
             let html = `<div class="row single-item mt-2">
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="detail_titles_ar[]" placeholder="Title" required>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="detail_descriptions_ar[]" placeholder="Description" required>
                                 </div>
 
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>`;

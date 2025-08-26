@@ -13,18 +13,18 @@
 
         <ul class="nav nav-pills" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Profile</button>
+                <button class="nav-link {{ !session('active_tab') ? 'active' : '' }}" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Profile</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-website-tab" data-bs-toggle="pill" data-bs-target="#pills-website" type="button" role="tab" aria-controls="pills-website" aria-selected="false">Website</button>
+                <button class="nav-link {{ session('active_tab') == 'website' ? 'active' : '' }}" id="pills-website-tab" data-bs-toggle="pill" data-bs-target="#pills-website" type="button" role="tab" aria-controls="pills-website" aria-selected="false">Website</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-update-password-tab" data-bs-toggle="pill" data-bs-target="#pills-update-password" type="button" role="tab" aria-controls="pills-update-password" aria-selected="false">Update Password</button>
+                <button class="nav-link {{ session('active_tab') == 'password' ? 'active' : '' }}" id="pills-update-password-tab" data-bs-toggle="pill" data-bs-target="#pills-update-password" type="button" role="tab" aria-controls="pills-update-password" aria-selected="false">Update Password</button>
             </li>
         </ul>
 
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+            <div class="tab-pane fade {{ !session('active_tab') ? 'show active' : '' }}" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
                 <p class="tab-content-title">Profile Settings</p>
 
                 <form action="{{ route('admin.settings.profile', $user) }}" method="POST" enctype="multipart/form-data" class="form">
@@ -59,7 +59,7 @@
                 </form>
             </div>
 
-            <div class="tab-pane fade" id="pills-website" role="tabpanel" aria-labelledby="pills-website-tab" tabindex="0">
+            <div class="tab-pane fade {{ session('active_tab') == 'website' ? 'show active' : '' }}" id="pills-website" role="tabpanel" aria-labelledby="pills-website-tab" tabindex="0">
                 <p class="tab-content-title">Website Settings</p>
                 
                 <form action="{{ route('admin.settings.website', 1) }}" method="POST" enctype="multipart/form-data" class="form">
@@ -128,7 +128,7 @@
                 </form>
             </div>
 
-            <div class="tab-pane fade" id="pills-update-password" role="tabpanel" aria-labelledby="pills-update-password-tab" tabindex="0">
+            <div class="tab-pane fade {{ session('active_tab') == 'password' ? 'show active' : '' }}" id="pills-update-password" role="tabpanel" aria-labelledby="pills-update-password-tab" tabindex="0">
                 <p class="tab-content-title">Update Password</p>
 
                 <form action="{{ route('admin.settings.password', $user) }}" method="POST" enctype="multipart/form-data" class="form">

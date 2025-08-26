@@ -4,12 +4,12 @@
 
 @section('content')
     <div class="page">
-        <div class="row align-items-center mb-4">
-            <div class="col-8">
+        <div class="row align-items-center mb-3 mb-md-4">
+            <div class="col-12 mb-3 mb-md-0 col-md-8">
                 <p class="title">My Inbox</p>
                 <p class="description">Manage message and inquiries.</p>
             </div>
-            <div class="col-4 text-end">
+            <div class="col-12 col-md-4 text-end">
                 <a href="{{ route('landlord.messages.create') }}" class="add-button">
                     <i class="bi bi-plus-lg"></i>
                     Write a Message
@@ -18,7 +18,7 @@
         </div>
 
         <div class="row">
-            <div class="col-4">
+            <div class="col-12 col-lg-4 mb-3 mb-lg-0">
                 <x-backend.common-message-sidebar
                     :all_count="$all_count"
                     :starred_count="$starred_count"
@@ -26,7 +26,7 @@
                 />
             </div>
 
-            <div class="col-8">
+            <div class="col-12 col-lg-8">
                 <div class="messages">
                     <div class="top-row">
                         <form action="{{ route('landlord.messages.filter', $category) }}" class="form">

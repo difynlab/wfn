@@ -596,6 +596,28 @@
             width: 180px;
             height: 50px;
         }
+
+        .inner-page .inner-page-title {
+            font-size: 16px;
+            padding-bottom: 5px;
+        }
+        .inner-page .section {
+            padding: 15px;
+        }
+        .inner-page .form .sub-page {
+            padding: 15px;
+        }
+
+        .inner-page .message-form .chat-box .left-single-message .left-message, .inner-page .message-form .chat-box .right-single-message .right-message {
+            padding: 10px;
+        }
+        .inner-page .message-form .chat-box .profile-image {
+            height: 30px;
+            width: 30px;
+        }
+        .inner-page .message-form .chat-box .left-single-message .time, .inner-page .message-form .chat-box .right-single-message .time {
+            font-size: 11px;
+        }
     }
     @media (width <= 1151px) {}
     @media (width <= 1076px) {
@@ -682,11 +704,25 @@
             height: 80px;
         }
         .inner-page .form .form-check .form-check-label {
-            font-size: 14px;
+            font-size: 13px;
         }
         .inner-page .form .submit-button {
             width: 150px;
             height: 40px;
+        }
+
+        .inner-page .inner-page-title {
+            font-size: 14px;
+            padding-bottom: 2px;
+        }
+
+        .inner-page .message-form .chat-box .left-single-message .left-message, .inner-page .message-form .chat-box .right-single-message .right-message {
+            padding: 5px;
+            font-size: 12px;
+        }
+        .inner-page .message-form .chat-box .left-single-message, .inner-page .message-form .chat-box .right-single-message {
+            width: 100%;
+            gap: 10px;
         }
     }
     @media (width <= 721px) {}

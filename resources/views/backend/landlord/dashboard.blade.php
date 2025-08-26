@@ -4,15 +4,15 @@
 
 @section('content')
     <div class="page dashboard">
-        <div class="row mb-4">
+        <div class="row mb-3 mb-md-4">
             <div class="col-12">
                 <p class="title">Dashboard</p>
                 <p class="description">Manage and track operations seamlessly here.</p>
             </div>
         </div>
 
-        <div class="row mb-4">
-            <div class="col-3">
+        <div class="row mb-3 mb-md-4">
+            <div class="col-12 col-md-6 col-xl-3 mb-3 mb-md-4 mb-xl-0">
                 <div class="single-box">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-12 col-md-6 col-xl-3 mb-3 mb-md-4 mb-xl-0">
                 <div class="single-box">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
@@ -50,7 +50,7 @@
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-12 col-md-6 col-xl-3 mb-3 mb-md-0">
                 <div class="single-box">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
@@ -69,7 +69,7 @@
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-12 col-md-6 col-xl-3">
                 <div class="single-box">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="left">
@@ -89,8 +89,8 @@
             </div>
         </div>
 
-        <div class="row mb-4">
-            <div class="col-6">
+        <div class="row mb-3 mb-md-4">
+            <div class="col-12 col-xl-6 mb-3 mb-md-4 mb-xl-0">
                 <div class="box">
                     <p class="box-title">Revenue</p>
                     <p class="box-description">{!! $income_month_percentage !!}</p>
@@ -98,7 +98,7 @@
                 </div>
             </div>
 
-            <div class="col-6">
+            <div class="col-12 col-xl-6">
                 <div class="box">
                     <p class="box-title">Monthly Bookings</p>
                     <p class="box-description">{!! $booking_month_percentage !!}</p>

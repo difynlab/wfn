@@ -345,6 +345,7 @@ class SettingsController extends Controller
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
+                'active_tab' => 'website',
                 'error' => 'Update Failed!',
                 'route' => route('admin.settings.index')
             ]);
@@ -479,6 +480,7 @@ class SettingsController extends Controller
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
+                'active_tab' => 'password',
                 'error' => 'Update Failed!',
                 'route' => route('admin.settings.index')
             ]);

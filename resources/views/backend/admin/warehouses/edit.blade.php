@@ -243,14 +243,14 @@
 
                     @if($warehouse->features_en)
                         @foreach(json_decode($warehouse->features_en) as $feature)
-                            <div class="row single-item mt-2">
-                                <div class="col">
+                            <div class="row single-item mt-3 mt-md-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="feature_titles_en[]" value="{{ $feature->title }}" placeholder="Title" required>
                                 </div>
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="feature_descriptions_en[]" value="{{ $feature->description }}" placeholder="Description" required>
                                 </div>
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>
@@ -274,14 +274,14 @@
 
                     @if($warehouse->features_ar)
                         @foreach(json_decode($warehouse->features_ar) as $feature)
-                            <div class="row single-item mt-2">
-                                <div class="col">
+                            <div class="row single-item mt-3 mt-md-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="feature_titles_ar[]" value="{{ $feature->title }}" placeholder="Title" required>
                                 </div>
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="feature_descriptions_ar[]" value="{{ $feature->description }}" placeholder="Description" required>
                                 </div>
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>
@@ -305,14 +305,14 @@
 
                     @if($warehouse->amenities_en)
                         @foreach(json_decode($warehouse->amenities_en) as $amenity)
-                            <div class="row single-item mt-2">
-                                <div class="col">
+                            <div class="row single-item mt-3 mt-md-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="amenity_titles_en[]" value="{{ $amenity->title }}" placeholder="Title" required>
                                 </div>
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="amenity_descriptions_en[]" value="{{ $amenity->description }}" placeholder="Description" required>
                                 </div>
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>
@@ -336,14 +336,14 @@
 
                     @if($warehouse->amenities_ar)
                         @foreach(json_decode($warehouse->amenities_ar) as $amenity)
-                            <div class="row single-item mt-2">
-                                <div class="col">
+                            <div class="row single-item mt-3 mt-md-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="amenity_titles_ar[]" value="{{ $amenity->title }}" placeholder="Title" required>
                                 </div>
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="amenity_descriptions_ar[]" value="{{ $amenity->description }}" placeholder="Description" required>
                                 </div>
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>
@@ -367,14 +367,14 @@
 
                     @if($warehouse->details_en)
                         @foreach(json_decode($warehouse->details_en) as $detail)
-                            <div class="row single-item mt-2">
-                                <div class="col">
+                            <div class="row single-item mt-3 mt-md-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="detail_titles_en[]" value="{{ $detail->title }}" placeholder="Title" required>
                                 </div>
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="detail_descriptions_en[]" value="{{ $detail->description }}" placeholder="Description" required>
                                 </div>
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>
@@ -398,14 +398,14 @@
 
                     @if($warehouse->details_ar)
                         @foreach(json_decode($warehouse->details_ar) as $detail)
-                            <div class="row single-item mt-2">
-                                <div class="col">
+                            <div class="row single-item mt-3 mt-md-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="detail_titles_ar[]" value="{{ $detail->title }}" placeholder="Title" required>
                                 </div>
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="detail_descriptions_ar[]" value="{{ $detail->description }}" placeholder="Description" required>
                                 </div>
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>
@@ -492,16 +492,16 @@
         });
 
         $('.add-feature-en').on('click', function() {
-            let html = `<div class="row single-item mt-2">
-                                <div class="col">
+            let html = `<div class="row single-item mt-3 mt-md-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="feature_titles_en[]" placeholder="Title" required>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="feature_descriptions_en[]" placeholder="Description" required>
                                 </div>
 
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>`;
@@ -510,16 +510,16 @@
         });
 
         $('.add-feature-ar').on('click', function() {
-            let html = `<div class="row single-item mt-2">
-                                <div class="col">
+            let html = `<div class="row single-item mt-3 mt-md-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="feature_titles_ar[]" placeholder="Title" required>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="feature_descriptions_ar[]" placeholder="Description" required>
                                 </div>
 
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>`;
@@ -528,16 +528,16 @@
         });
 
         $('.add-amenity-en').on('click', function() {
-            let html = `<div class="row single-item mt-2">
-                                <div class="col">
+            let html = `<div class="row single-item mt-3 mt-md-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="amenity_titles_en[]" placeholder="Title" required>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="amenity_descriptions_en[]" placeholder="Description" required>
                                 </div>
 
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>`;
@@ -546,16 +546,16 @@
         });
 
         $('.add-amenity-ar').on('click', function() {
-            let html = `<div class="row single-item mt-2">
-                                <div class="col">
+            let html = `<div class="row single-item mt-3 mt-md-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="amenity_titles_ar[]" placeholder="Title" required>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="amenity_descriptions_ar[]" placeholder="Description" required>
                                 </div>
 
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>`;
@@ -564,16 +564,16 @@
         });
 
         $('.add-detail-en').on('click', function() {
-            let html = `<div class="row single-item mt-2">
-                                <div class="col">
+            let html = `<div class="row single-item mt-3 mt-md-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="detail_titles_en[]" placeholder="Title" required>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="detail_descriptions_en[]" placeholder="Description" required>
                                 </div>
 
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>`;
@@ -582,16 +582,16 @@
         });
 
         $('.add-detail-ar').on('click', function() {
-            let html = `<div class="row single-item mt-2">
-                                <div class="col">
+            let html = `<div class="row single-item mt-3 mt-md-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="detail_titles_ar[]" placeholder="Title" required>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="detail_descriptions_ar[]" placeholder="Description" required>
                                 </div>
 
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>`;

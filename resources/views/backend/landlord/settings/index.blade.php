@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="inner-page">
-        <div class="row align-items-center mb-4">
+        <div class="row align-items-center mb-3 mb-md-4">
             <div class="col-12">
                 <p class="inner-page-top-title">Settings</p>
                 <p class="inner-page-top-description">Manage your account and adjust settings to optimize your workflow.</p>
@@ -30,42 +30,42 @@
                 <form action="{{ route('landlord.settings.profile', $user) }}" method="POST" enctype="multipart/form-data" class="form">
                     @csrf
 
-                    <div class="row mb-5">
-                        <div class="col-6 mb-4">
+                    <div class="row mb-3 mb-md-4">
+                        <div class="col-12 col-md-6 mb-3 mb-md-4">
                             <label for="first_name" class="form-label label">First Name<span class="asterisk">*</span></label>
                             <input type="text" class="form-control input-field" id="first_name" name="first_name" placeholder="First Name" value="{{ old('first_name', $user->first_name) }}" required>
                         </div>
 
-                        <div class="col-6 mb-4">
+                        <div class="col-12 col-md-6 mb-3 mb-md-4">
                             <label for="last_name" class="form-label label">Last Name<span class="asterisk">*</span></label>
                             <input type="text" class="form-control input-field" id="last_name" name="last_name" placeholder="Last Name" value="{{ old('last_name', $user->last_name) }}" required>
                         </div>
 
-                        <div class="col-6 mb-4">
+                        <div class="col-12 col-md-6 mb-3 mb-md-4">
                             <label for="email" class="form-label label">Email<span class="asterisk">*</span></label>
                             <input type="email" class="form-control input-field" id="email" name="email" placeholder="Email" value="{{ old('email', $user->email) }}" required>
                             <x-backend.input-error field="email"></x-backend.input-error>
                         </div>
 
-                        <div class="col-6 mb-4">
+                        <div class="col-12 col-md-6 mb-3 mb-md-4">
                             <label for="phone" class="form-label label">Phone</label>
                             <input type="text" class="form-control input-field" id="phone" name="phone" placeholder="Phone" value="{{ old('phone', $user->phone) }}">
                             <x-backend.input-error field="phone"></x-backend.input-error>
                         </div>
 
-                        <div class="col-6 mb-4">
+                        <div class="col-12 col-md-6 mb-3 mb-md-4">
                             <label for="address" class="form-label label">Address</label>
                             <input type="text" class="form-control input-field" id="address" name="address" placeholder="Address" value="{{ old('address', $user->address) }}">
                             <x-backend.input-error field="address"></x-backend.input-error>
                         </div>
 
-                        <div class="col-6 mb-4">
+                        <div class="col-12 col-md-6 mb-3 mb-md-4">
                             <label for="city" class="form-label label">City</label>
                             <input type="text" class="form-control input-field" id="city" name="city" placeholder="City" value="{{ old('city', $user->city) }}">
                             <x-backend.input-error field="city"></x-backend.input-error>
                         </div>
 
-                        <div class="col-12 mb-4">
+                        <div class="col-12 mb-3 mb-md-4">
                             <label for="country" class="form-label label">Country</label>
                             <select class="form-control form-select input-field" name="country">
                                 <option value="">Select Country</option>
@@ -91,32 +91,32 @@
                 <form action="{{ route('landlord.settings.company', [$user, $company]) }}" method="POST" enctype="multipart/form-data" class="form">
                     @csrf
                     
-                    <div class="row mb-5">
-                        <div class="col-12 mb-4">
+                    <div class="row mb-3 mb-md-4">
+                        <div class="col-12 mb-3 mb-md-4">
                             <label for="name" class="form-label label">Name<span class="asterisk">*</span></label>
                             <input type="text" class="form-control input-field" id="name" name="name" placeholder="Name" value="{{ old('name', $company->name) }}" required>
                             <x-backend.input-error field="name"></x-backend.input-error>
                         </div>
 
-                        <div class="col-6 mb-4">
+                        <div class="col-12 col-xl-6 mb-3 mb-md-4">
                             <label for="address" class="form-label label">Address<span class="asterisk">*</span></label>
                             <input type="text" class="form-control input-field" id="address" name="address" placeholder="Address" value="{{ old('address', $company->address) }}" required>
                             <x-backend.input-error field="address"></x-backend.input-error>
                         </div>
 
-                        <div class="col-6 mb-4">
+                        <div class="col-12 col-xl-6 mb-3 mb-md-4">
                             <label for="cr_number" class="form-label label">CR Number (10 Digits)<span class="asterisk">*</span></label>
                             <input type="number" class="form-control input-field" id="cr_number" name="cr_number" placeholder="CR Number" value="{{ old('cr_number', $company->cr_number) }}" required>
                             <x-backend.input-error field="cr_number"></x-backend.input-error>
                         </div>
 
-                        <div class="col-6 mb-4">
+                        <div class="col-12 col-xl-6 mb-3 mb-md-4">
                             <label for="email" class="form-label label">Email<span class="asterisk">*</span></label>
                             <input type="email" class="form-control input-field" id="company_email" name="email" placeholder="Email" value="{{ old('email', $company->email) }}" required>
                             <x-backend.input-error field="email"></x-backend.input-error>
                         </div>
 
-                        <div class="col-6 mb-4">
+                        <div class="col-12 col-xl-6 mb-3 mb-md-4">
                             <label for="phone" class="form-label label">Phone<span class="asterisk">*</span></label>
                             <div class="phone-div">
                                 <input type="text" class="form-control input-field" id="phone_code" name="phone_code" placeholder="+XXX" value="{{ old('phone_code', $company->phone_code) }}" required>
@@ -126,13 +126,13 @@
                             <x-backend.input-error field="phone"></x-backend.input-error>
                         </div>
 
-                        <div class="col-6 mb-4">
+                        <div class="col-12 col-xl-6 mb-3 mb-md-4">
                             <label for="website" class="form-label label">Website</label>
                             <input type="text" class="form-control input-field" id="website" name="website" placeholder="Website" value="{{ old('website', $company->website) }}">
                             <x-backend.input-error field="website"></x-backend.input-error>
                         </div>
 
-                        <div class="col-6 mb-4">
+                        <div class="col-12 col-xl-6 mb-3 mb-md-4">
                             <label for="industry" class="form-label label">Industry<span class="asterisk">*</span></label>
                             <select class="form-select input-field js-single" id="industry" name="industry" required>
                                 <option value="">Select industry</option>
@@ -155,12 +155,12 @@
                             <x-backend.input-error field="industry"></x-backend.input-error>
                         </div>
 
-                        <div class="col-6 mb-4">
+                        <div class="col-12 col-xl-6 mb-3 mb-md-4">
                             <label for="company_size" class="form-label label">Company Size</label>
                             <input type="text" class="form-control input-field" id="company_size" name="company_size" placeholder="Company Size" value="{{ old('company_size', $company->company_size) }}">
                         </div>
 
-                        <div class="col-6 mb-4">
+                        <div class="col-12 col-xl-6 mb-3 mb-md-4">
                             <label for="establishment_date" class="form-label label">Establishment Date</label>
                             <input type="text" class="form-control input-field date-picker-field" id="establishment_date" name="establishment_date" placeholder="Establishment Date" value="{{ old('establishment_date', $company->establishment_date) }}">
                             <x-backend.input-error field="establishment_date"></x-backend.input-error>
@@ -182,15 +182,15 @@
                 <form action="{{ route('landlord.settings.password', $user) }}" method="POST" enctype="multipart/form-data" class="form">
                     @csrf
 
-                    <div class="row mb-5">
-                        <div class="col-12 mb-4 position-relative">
+                    <div class="row mb-3 mb-md-4">
+                        <div class="col-12 mb-3 mb-md-4 position-relative">
                             <label for="old_password" class="form-label label">Old Password<span class="asterisk">*</span></label>
                             <input type="password" class="form-control input-field" id="old_password" name="old_password" placeholder="* * * * * * * *" required>
                             <span class="bi bi-eye-slash-fill toggle-password"></span>
                             <x-backend.input-error field="old_password"></x-backend.input-error>
                         </div>
 
-                        <div class="col-12 mb-4 position-relative">
+                        <div class="col-12 mb-3 mb-md-4 position-relative">
                             <label for="password" class="form-label label">Password<span class="asterisk">*</span></label>
                             <input type="password" class="form-control input-field" id="password" name="password" placeholder="* * * * * * * *" required>
                             <span class="bi bi-eye-slash-fill toggle-password"></span>

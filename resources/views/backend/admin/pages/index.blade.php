@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="page">
-        <div class="row align-items-center mb-4">
+        <div class="row align-items-center mb-3 mb-md-4">
             <div class="col-12">
                 <p class="title">Pages</p>
                 <p class="description">Manage page contents here.</p>

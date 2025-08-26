@@ -12,16 +12,16 @@
                 <p class="description">View or update page content here.</p>
             </div>
 
-            <div class="row mb-4">
+            <div class="row mb-3 mb-md-4">
                 <div class="col-12">
                     <label for="page_name_{{ $short_code }}" class="form-label label">Page Name<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="page_name_{{ $short_code }}" name="page_name_{{ $short_code }}" value="{{ $contents->{'page_name_' . $short_code} ?? '' }}" placeholder="Page Name" required>
                 </div>
             </div>
 
-            <div class="section mb-4">
-                <div class="row mb-4">
-                    <div class="col-12 mb-4">
+            <div class="section mb-3 mb-md-4">
+                <div class="row mb-3 mb-md-4">
+                    <div class="col-12 mb-3 mb-md-4">
                         <label for="title_{{ $short_code }}" class="form-label label">Title</label>
                         <input type="text" class="form-control input-field" id="title_{{ $short_code }}" name="title_{{ $short_code }}" value="{{ $contents->{'title_' . $short_code} ?? '' }}" placeholder="Title">
                     </div>
@@ -33,11 +33,11 @@
                 </div>
 
                 <div class="row align-items-center">
-                    <div class="col-9">
+                    <div class="col-12 col-md-9 mb-0">
                         <label class="form-label label">Contents</label>
                     </div>
 
-                    <div class="col-3 text-end">
+                    <div class="col-12 col-md-3 mb-0 text-end">
                         <button type="button" class="add-row-button">
                             <i class="bi bi-plus-lg"></i>
                             Add Content
@@ -48,15 +48,15 @@
                 @if($contents->{'content_' . $short_code})
                     @foreach(json_decode($contents->{'content_' . $short_code}) as $content)
                         <div class="row single-item mt-4">
-                            <div class="col-12 mb-4">
+                            <div class="col-12 mb-2">
                                 <input type="text" class="form-control input-field" name="tab_titles[]" value="{{ $content->title }}" placeholder="Title" required>
                             </div>
 
-                            <div class="col-11">
+                            <div class="col-12 col-md-11 mb-2 mb-md-0">
                                 <textarea class="editor froala-initialized" name="tab_contents[]" placeholder="Content" value="{{ $content->content }}">{{ $content->content }}</textarea>
                             </div>
                             
-                            <div class="col-1 d-flex align-items-center">
+                            <div class="col-12 col-md-1 d-flex align-items-center">
                                 <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                             </div>
                         </div>
@@ -80,16 +80,16 @@
         });
 
         $('.add-row-button').on('click', function() {
-            let html = `<div class="row single-item mt-3">
+            let html = `<div class="row single-item mt-4">
                                 <div class="col-12 mb-2">
                                     <input type="text" class="form-control input-field" name="tab_titles[]" placeholder="Title" required>
                                 </div>
 
-                                <div class="col-11">
+                                <div class="col-12 col-md-11 mb-2 mb-md-0">
                                     <textarea class="editor" name="tab_contents[]" placeholder="Content"></textarea>
                                 </div>
 
-                                <div class="col-1 d-flex align-items-center">
+                                <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>`;
