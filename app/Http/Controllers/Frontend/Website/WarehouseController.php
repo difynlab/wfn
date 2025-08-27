@@ -296,7 +296,7 @@ class WarehouseController extends Controller
         $warehouse = Warehouse::find($request->warehouse_id);
         $landlord = User::find($warehouse->user_id);
 
-        $data = $request->all();
+        $data = $request->except('recaptcha_token');
         $data['user_id'] = $tenant->id;
         $data['status'] = 2;
         $booking = Booking::create($data);

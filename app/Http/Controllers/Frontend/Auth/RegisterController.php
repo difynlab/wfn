@@ -370,7 +370,7 @@ class RegisterController extends Controller
             ]);
         }
 
-        $data = $request->except('password', 'password_confirmation');
+        $data = $request->except('password', 'password_confirmation', 'recaptcha_token');
         $data['password'] = Hash::make($request->password);
         $data['status'] = 1;
         $user = User::create($data);
