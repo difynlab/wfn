@@ -8,7 +8,9 @@ use App\Mail\SubscriptionMail;
 use App\Models\AboutContent;
 use App\Models\Review;
 use App\Models\Subscription;
+use App\Services\Recaptcha;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
@@ -25,7 +27,7 @@ class AboutController extends Controller
         ]);
     }
 
-    public function subscriptions(Request $request)
+    public function subscription(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:3|max:255',
@@ -38,7 +40,23 @@ class AboutController extends Controller
                     }
                 },
             ],
+            'recaptcha_token' => 'required|string',
         ]);
+
+        $validator->after(function ($validator) use ($request) {
+            $check = Recaptcha::verify($request->input('recaptcha_token'), 'subscription');
+
+            if(!$check['passes']) {
+                $validator->errors()->add('name', 'reCAPTCHA verification failed.');
+
+                Log::warning('Captcha verification failed', [
+                    'ip' => $request->ip(),
+                    'score' => $check['score'],
+                    'activity' => 'subscription',
+                    'user_agent' => $request->userAgent(),
+                ]);
+            }
+        });
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with(

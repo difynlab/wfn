@@ -23,7 +23,7 @@
                 <p class="title">{{ $contents->{'login_title_' . $middleware_language} ?? $contents->login_title_en }}</p>
                 <p class="description">{{ $contents->{'login_description_' . $middleware_language} ?? $contents->login_description_en }}</p>
 
-                <form action="{{ route('login.store') }}" method="POST" class="form">
+                <form action="{{ route('login.store') }}" method="POST" class="form" id="form">
                     @csrf
                     <div class="mb-3 mb-md-4">
                         <label for="email" class="form-label label">{{ $contents->{'login_username_' . $middleware_language} ?? $contents->login_username_en }}<span class="asterisk">*</span></label>
@@ -50,6 +50,8 @@
                         </div>
                     </div>
                     
+                    <input type="hidden" name="recaptcha_token" id="recaptcha_token">
+                    
                     <button type="submit" class="submit-button">{{ $contents->{'login_button_' . $middleware_language} ?? $contents->login_button_en }}</button>
                 </form>
 
@@ -64,6 +66,12 @@
 @endsection
 
 @push('after-scripts')
+    <script src="{{ asset('frontend/js/recaptcha.js') }}" async defer></script>
+
+    <script>
+        window.recaptchaAction = 'login';
+    </script>
+
     <script>
         $(".toggle-password").click(function () {
             $(this).toggleClass("bi-eye-slash-fill bi-eye-fill");

@@ -8,6 +8,8 @@ use App\Mail\SupportMail;
 use App\Models\Support;
 use Illuminate\Http\Request;
 use App\Models\SupportContent;
+use App\Services\Recaptcha;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
@@ -30,8 +32,24 @@ class SupportController extends Controller
             'email' => 'required|email|min:3|max:255',
             'category' => 'required|in:general,accounts,billings',
             'subject' => 'required|min:3|max:255',
-            'message' => 'required|min:10|max:255'
+            'message' => 'required|min:10|max:255',
+            'recaptcha_token' => 'required|string',
         ]);
+
+        $validator->after(function ($validator) use ($request) {
+            $check = Recaptcha::verify($request->input('recaptcha_token'), 'support');
+
+            if(!$check['passes']) {
+                $validator->errors()->add('name', 'reCAPTCHA verification failed.');
+
+                Log::warning('Captcha verification failed', [
+                    'ip' => $request->ip(),
+                    'score' => $check['score'],
+                    'activity' => 'subscription',
+                    'user_agent' => $request->userAgent(),
+                ]);
+            }
+        });
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with(

@@ -45,4 +45,10 @@ return [
         'password' => env('ODOO_PASSWORD'),
     ],
 
+    'recaptcha' => [
+        'site_key'   => env('RECAPTCHA_SITE_KEY'),
+        'secret_key' => env('RECAPTCHA_SECRET_KEY'),
+        'score'      => env('RECAPTCHA_SCORE', 0.5),
+    ],
+
 ];

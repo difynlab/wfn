@@ -27,6 +27,10 @@
         <x-frontend.footer></x-frontend.footer>
 
         @stack('before-scripts')
+            <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}" async defer></script>
+            <script>
+                window.siteKey = '{{ config('services.recaptcha.site_key') }}';
+            </script>
             <script src="{{ asset('frontend/js/jquery.js') }}"></script>
             <script src="{{ asset('frontend/js/bootstrap.js') }}"></script>
             <script src="{{ asset('frontend/js/swiper.js') }}"></script>

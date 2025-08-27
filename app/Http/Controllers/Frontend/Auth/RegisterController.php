@@ -8,6 +8,7 @@ use App\Mail\AdminAccountRegisterMail;
 use App\Models\AuthenticationContent;
 use App\Models\Company;
 use App\Models\User;
+use App\Services\Recaptcha;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -343,8 +344,24 @@ class RegisterController extends Controller
             'phone' => 'required|min:3|max:255|regex:/^\+?[0-9]+$/|unique:users,phone',
             'city' => 'required|min:3|max:255',
             'password' => 'required|min:8',
-            'password_confirmation' => 'required|same:password'
+            'password_confirmation' => 'required|same:password',
+            'recaptcha_token' => 'required|string',
         ]);
+
+        $validator->after(function ($validator) use ($request) {
+            $check = Recaptcha::verify($request->input('recaptcha_token'), 'register');
+
+            if(!$check['passes']) {
+                $validator->errors()->add('role', 'reCAPTCHA verification failed.');
+
+                Log::warning('Captcha verification failed', [
+                    'ip' => $request->ip(),
+                    'score' => $check['score'],
+                    'activity' => 'register',
+                    'user_agent' => $request->userAgent(),
+                ]);
+            }
+        });
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([

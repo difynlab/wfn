@@ -291,7 +291,7 @@
                         <p class="section-title">{{ $contents->{'section_8_title_' . $middleware_language} ?? $contents->section_8_title_en }}</p>
                         <p class="section-description">{{ $contents->{'section_8_description_' . $middleware_language} ?? $contents->section_8_description_en }}</p>
 
-                        <form action="{{ route('about.subscription') }}" method="POST">
+                        <form action="{{ route('about.subscription') }}" method="POST" id="form">
                             @csrf
                             <div class="mb-4">
                                 <label for="name" class="form-label label">{{ $contents->{'section_8_name_' . $middleware_language} ?? $contents->section_8_name_en }}</label>
@@ -310,6 +310,7 @@
                                 <label class="form-check-label terms" for="terms">{{ $contents->{'section_8_check_label_' . $middleware_language} ?? $contents->section_8_check_label_en }}</label>
                             </div>
 
+                            <input type="hidden" name="recaptcha_token" id="recaptcha_token">
                             <button type="submit" class="submit-button">{{ $contents->{'section_8_button_' . $middleware_language} ?? $contents->section_8_button_en }}</button>
                         </form>
                     </div>
@@ -427,6 +428,12 @@
 @endsection
 
 @push('after-scripts')
+    <script src="{{ asset('frontend/js/recaptcha.js') }}" async defer></script>
+
+    <script>
+        window.recaptchaAction = 'subscription';
+    </script>
+
     <script>
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 1,

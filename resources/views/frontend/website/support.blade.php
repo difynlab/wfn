@@ -16,7 +16,7 @@
         @endif
         
         <div class="section-2 container">
-            <form action="{{ route('supports.store') }}" method="POST" class="form">
+            <form action="{{ route('supports.store') }}" method="POST" class="form" id="form">
                 @csrf
                 <div class="row">
                     <div class="col-12">
@@ -65,6 +65,8 @@
                             <x-frontend.input-error field="message"></x-frontend.input-error>
                         </div>
 
+                        <input type="hidden" name="recaptcha_token" id="recaptcha_token">
+
                         <button type="submit" class="submit-button">{{ $contents->{'button_' . $middleware_language} ?? $contents->button_en }}</button>
                     </div>
                 </div>
@@ -74,3 +76,11 @@
         <x-frontend.notification></x-frontend.notification>
     </div>
 @endsection
+
+@push('after-scripts')
+    <script src="{{ asset('frontend/js/recaptcha.js') }}" async defer></script>
+
+    <script>
+        window.recaptchaAction = 'support';
+    </script>
+@endpush

@@ -671,13 +671,15 @@
                             <p class="title">{{ $contents->{'section_4_title_' . $middleware_language} ?? $contents->section_4_title_en }}</p>
                             <p class="description">{{ $contents->{'section_4_description_' . $middleware_language} ?? $contents->section_4_description_en }}</p>
 
-                            <form action="{{ route('homepage.subscription') }}" method="POST" class="form">
+                            <form action="{{ route('homepage.subscription') }}" method="POST" class="form" id="form">
                                 @csrf
                                 <div class="row form-row">
                                     <div class="col-8">
                                         <input type="email" class="input" placeholder="{{ $contents->{'section_4_placeholder_' . $middleware_language} ?? $contents->section_4_placeholder_en }}" name="email" required>
                                         <x-frontend.input-error field="email"></x-frontend.input-error>
                                     </div>
+
+                                    <input type="hidden" name="recaptcha_token" id="recaptcha_token">
 
                                     <div class="col-4">
                                         <button type="submit" class="submit-button">{{ $contents->{'section_4_button_' . $middleware_language} ?? $contents->section_4_button_en }}</button>
@@ -788,8 +790,13 @@
 @endsection
 
 @push('after-scripts')
+    <script src="{{ asset('frontend/js/recaptcha.js') }}" async defer></script>
+
     <script>
-        
+        window.recaptchaAction = 'subscription';
+    </script>
+
+    <script>
         $('#filter').on('click', function() {
             $('.filters').toggleClass('d-none');
         });

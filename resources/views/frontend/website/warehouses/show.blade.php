@@ -258,7 +258,7 @@
                                         </div>
                                     </div>
 
-                                    <form action="{{ route('warehouses.store') }}" method="POST" id="booking-form">
+                                    <form action="{{ route('warehouses.store') }}" method="POST" id="form">
                                         @csrf
                                         <div class="booking-details">
                                             <p class="title">{{ $contents->{'inner_page_modal_details_' . $middleware_language} ?? $contents->inner_page_modal_details_en }}</p>
@@ -286,6 +286,8 @@
                                         <hr>
 
                                         <input type="hidden" name="warehouse_id" value="{{ $warehouse->id }}">
+                                        <input type="hidden" name="recaptcha_token" id="recaptcha_token">
+                                        <x-backend.input-error field="recaptcha_token"></x-backend.input-error>
                                         <button type="submit" class="confirm-button">{{ $contents->{'inner_page_modal_button_' . $middleware_language} ?? $contents->inner_page_modal_button_en }}</button>
                                     </form>
                                 </div>
@@ -466,6 +468,12 @@
 @endsection
 
 @push('after-scripts')
+    <script src="{{ asset('frontend/js/recaptcha.js') }}" async defer></script>
+
+    <script>
+        window.recaptchaAction = 'booking';
+    </script>
+
     <script>
         var swiper = new Swiper(".mySwiper", {
             loop: true,

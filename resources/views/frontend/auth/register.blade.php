@@ -11,7 +11,7 @@
         <p class="title">{{ $contents->{'register_title_' . $middleware_language} ?? $contents->register_title_en }}</p>
         <p class="description">{{ $contents->{'register_description_' . $middleware_language} ?? $contents->register_description_en }}</p>
 
-        <form action="{{ route('register') }}" method="POST">
+        <form action="{{ route('register') }}" method="POST" id="form">
             @csrf
 
             <div class="row mb-3 mb-md-4">
@@ -108,6 +108,8 @@
                 </div>
             </div>
 
+            <input type="hidden" name="recaptcha_token" id="recaptcha_token">
+            
             <button type="submit" class="submit-button">{{ $contents->{'register_button_' . $middleware_language} ?? $contents->register_button_en }}</button>
 
             <p class="text">{{ $contents->{'register_have_account_' . $middleware_language} ?? $contents->register_have_account_en }}
@@ -120,6 +122,12 @@
 @endsection
 
 @push('after-scripts')
+    <script src="{{ asset('frontend/js/recaptcha.js') }}" async defer></script>
+
+    <script>
+        window.recaptchaAction = 'register';
+    </script>
+
     <script>
         $(document).ready(function() {
             $('.js-single').select2();

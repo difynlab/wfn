@@ -20,9 +20,11 @@ use App\Models\User;
 use App\Models\Warehouse;
 use App\Models\WarehouseContent;
 use App\Models\WarehouseReview;
+use App\Services\Recaptcha;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
@@ -262,8 +264,24 @@ class WarehouseController extends Controller
             'warehouse_id' => 'required|integer',
             'no_of_pallets' => 'required|integer',
             'tenancy_date' => 'required|date',
-            'renewal_date' => 'required|date'
+            'renewal_date' => 'required|date',
+            'recaptcha_token' => 'required|string',
         ]);
+
+        $validator->after(function ($validator) use ($request) {
+            $check = Recaptcha::verify($request->input('recaptcha_token'), 'booking');
+
+            if(!$check['passes']) {
+                $validator->errors()->add('recaptcha_token', 'reCAPTCHA verification failed.');
+
+                Log::warning('Captcha verification failed', [
+                    'ip' => $request->ip(),
+                    'score' => $check['score'],
+                    'activity' => 'subscription',
+                    'user_agent' => $request->userAgent(),
+                ]);
+            }
+        });
         
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with(

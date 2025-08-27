@@ -12,7 +12,8 @@ use App\Models\ArticleCategory;
 use App\Models\StorageType;
 use App\Models\Subscription;
 use App\Models\Warehouse;
-use Illuminate\Support\Facades\Mail;
+use App\Services\Recaptcha;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class HomepageController extends Controller
@@ -65,7 +66,23 @@ class HomepageController extends Controller
                     }
                 },
             ],
+            'recaptcha_token' => 'required|string',
         ]);
+
+        $validator->after(function ($validator) use ($request) {
+            $check = Recaptcha::verify($request->input('recaptcha_token'), 'subscription');
+
+            if(!$check['passes']) {
+                $validator->errors()->add('email', 'reCAPTCHA verification failed.');
+
+                Log::warning('Captcha verification failed', [
+                    'ip' => $request->ip(),
+                    'score' => $check['score'],
+                    'activity' => 'subscription',
+                    'user_agent' => $request->userAgent(),
+                ]);
+            }
+        });
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with(
