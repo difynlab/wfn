@@ -260,6 +260,18 @@ class WarehouseController extends Controller
 
     public function store(Request $request)
     {
+        $recaptcha_token = $request->input('recaptcha_token');
+
+        if(empty($recaptcha_token)) {
+            Log::warning('reCAPTCHA token missing or empty', [
+                'ip' => $request->ip(),
+                'user_agent' => $request->userAgent(),
+                'activity' => 'booking',
+            ]);
+            
+            return redirect()->back()->withErrors(['email' => 'reCAPTCHA token missing'])->withInput();
+        }
+
         $validator = Validator::make($request->all(), [
             'warehouse_id' => 'required|integer',
             'no_of_pallets' => 'required|integer',
@@ -268,8 +280,8 @@ class WarehouseController extends Controller
             'recaptcha_token' => 'required|string',
         ]);
 
-        $validator->after(function ($validator) use ($request) {
-            $check = Recaptcha::verify($request->input('recaptcha_token'), 'booking');
+        $validator->after(function ($validator) use ($request, $recaptcha_token) {
+            $check = Recaptcha::verify($recaptcha_token, 'booking');
 
             if(!$check['passes']) {
                 $validator->errors()->add('recaptcha_token', 'reCAPTCHA verification failed.');

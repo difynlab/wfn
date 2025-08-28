@@ -26,6 +26,18 @@ class SupportController extends Controller
 
     public function store(Request $request)
     {
+        $recaptcha_token = $request->input('recaptcha_token');
+
+        if(empty($recaptcha_token)) {
+            Log::warning('reCAPTCHA token missing or empty', [
+                'ip' => $request->ip(),
+                'user_agent' => $request->userAgent(),
+                'activity' => 'support',
+            ]);
+            
+            return redirect()->back()->withErrors(['email' => 'reCAPTCHA token missing'])->withInput();
+        }
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:3|max:250',
             'phone' => 'nullable|min:0|max:255',
@@ -36,8 +48,8 @@ class SupportController extends Controller
             'recaptcha_token' => 'required|string',
         ]);
 
-        $validator->after(function ($validator) use ($request) {
-            $check = Recaptcha::verify($request->input('recaptcha_token'), 'support');
+        $validator->after(function ($validator) use ($request, $recaptcha_token) {
+            $check = Recaptcha::verify($recaptcha_token, 'support');
 
             if(!$check['passes']) {
                 $validator->errors()->add('name', 'reCAPTCHA verification failed.');

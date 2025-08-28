@@ -336,6 +336,18 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        $recaptcha_token = $request->input('recaptcha_token');
+
+        if(empty($recaptcha_token)) {
+            Log::warning('reCAPTCHA token missing or empty', [
+                'ip' => $request->ip(),
+                'user_agent' => $request->userAgent(),
+                'activity' => 'register',
+            ]);
+            
+            return redirect()->back()->withErrors(['email' => 'reCAPTCHA token missing'])->withInput();
+        }
+
         $validator = Validator::make($request->all(), [
             'role' => 'required|in:tenant,landlord',
             'first_name' => 'required|min:3|max:255',
@@ -348,8 +360,8 @@ class RegisterController extends Controller
             'recaptcha_token' => 'required|string',
         ]);
 
-        $validator->after(function ($validator) use ($request) {
-            $check = Recaptcha::verify($request->input('recaptcha_token'), 'register');
+        $validator->after(function ($validator) use ($request, $recaptcha_token) {
+            $check = Recaptcha::verify($recaptcha_token, 'register');
 
             if(!$check['passes']) {
                 $validator->errors()->add('role', 'reCAPTCHA verification failed.');

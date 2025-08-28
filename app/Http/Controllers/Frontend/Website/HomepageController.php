@@ -56,6 +56,18 @@ class HomepageController extends Controller
 
     public function subscription(Request $request)
     {
+        $recaptcha_token = $request->input('recaptcha_token');
+
+        if(empty($recaptcha_token)) {
+            Log::warning('reCAPTCHA token missing or empty', [
+                'ip' => $request->ip(),
+                'user_agent' => $request->userAgent(),
+                'activity' => 'subscription',
+            ]);
+            
+            return redirect()->back()->withErrors(['email' => 'reCAPTCHA token missing'])->withInput();
+        }
+
         $validator = Validator::make($request->all(), [
             'email' => [
                 'required',
@@ -69,8 +81,8 @@ class HomepageController extends Controller
             'recaptcha_token' => 'required|string',
         ]);
 
-        $validator->after(function ($validator) use ($request) {
-            $check = Recaptcha::verify($request->input('recaptcha_token'), 'subscription');
+        $validator->after(function ($validator) use ($request, $recaptcha_token) {
+            $check = Recaptcha::verify($recaptcha_token, 'subscription');
 
             if(!$check['passes']) {
                 $validator->errors()->add('email', 'reCAPTCHA verification failed.');

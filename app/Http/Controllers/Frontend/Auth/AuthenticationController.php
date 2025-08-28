@@ -23,14 +23,26 @@ class AuthenticationController extends Controller
 
     public function store(Request $request)
     {
+        $recaptcha_token = $request->input('recaptcha_token');
+
+        if(empty($recaptcha_token)) {
+            Log::warning('reCAPTCHA token missing or empty', [
+                'ip' => $request->ip(),
+                'user_agent' => $request->userAgent(),
+                'activity' => 'login',
+            ]);
+            
+            return redirect()->back()->withErrors(['email' => 'reCAPTCHA token missing'])->withInput();
+        }
+
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required',
             'recaptcha_token' => 'required|string',
         ]);
 
-        $validator->after(function ($validator) use ($request) {
-            $check = Recaptcha::verify($request->input('recaptcha_token'), 'login');
+        $validator->after(function ($validator) use ($request, $recaptcha_token) {
+            $check = Recaptcha::verify($recaptcha_token, 'login');
 
             if(!$check['passes']) {
                 $validator->errors()->add('email', 'reCAPTCHA verification failed.');
