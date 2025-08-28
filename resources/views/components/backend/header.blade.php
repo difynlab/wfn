@@ -75,5 +75,9 @@
                 </ul>
             </div>
         </nav>
+
+        @if(auth()->user()->role != 'admin')
+            <a class="mobile-home {{ Request::segment(1) == '' ? 'active' : '' }}" href="{{ route('homepage.index') }}">Home</a>
+        @endif
     </div>
 </div>

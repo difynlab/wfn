@@ -102,6 +102,7 @@
         padding-right: 15px;
     }
     .sidebar .main-menu .link .log-out {
+        color: var(--black)!important;
         border: none;
         background-color: transparent;
         font-weight: 500;

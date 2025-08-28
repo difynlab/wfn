@@ -260,6 +260,7 @@
         padding-right: 8px;
     }
     .navbar .dropdown .dropdown-menu .log-out {
+        color: var(--light_black)!important;
         border: none;
         background-color: transparent;
         padding: 0;
@@ -507,6 +508,7 @@
         }
         .navbar .nav-item {
             margin-left: 0!important;
+            margin-right: 0!important;
         }
         .navbar .nav-item .name {
             color: var(--white);
@@ -536,7 +538,7 @@
             text-align: center;
         }
         .navbar .dropdown .profile-dropdown-menu {
-            left: 15%;
+            left: 5%;
             position: absolute;
         }
         .footer .bottom {
