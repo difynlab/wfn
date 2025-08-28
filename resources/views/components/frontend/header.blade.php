@@ -38,7 +38,7 @@
                 @auth()
                     <li class="nav-item nav-gap dropdown">
                         <div class="row align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
-                            <div class="col-4">
+                            <div class="col-12 col-lg-4">
                                 @if(auth()->user()->image)
                                     <img src="{{ asset('storage/backend/users/' . auth()->user()->image) }}" alt="Image" class="profile-image">
                                 @else
@@ -46,7 +46,7 @@
                                 @endif
                             </div>
 
-                            <div class="col-8">
+                            <div class="col-8 d-none d-lg-block">
                                 <p class="name">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</p>
                             </div>
                         </div>
