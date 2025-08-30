@@ -20,6 +20,7 @@ class WarehouseController extends Controller
             <a href="'. route('admin.warehouses.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
             <a href="'. route('admin.users.company.index', $item->user_id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
             <a href="'. route('admin.users.edit', $item->user_id) .'" class="action-button" title="User"><i class="bi bi-person-exclamation"></i></a>
+            <a href="'. route('admin.warehouse-reviews.index', $item->id) .'" class="action-button" title="Reviews"><i class="bi bi-chat-square-text"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             switch ($item->status) {

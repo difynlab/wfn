@@ -7,9 +7,7 @@ use App\Models\Report;
 use App\Models\User;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
 class ReportController extends Controller
 {

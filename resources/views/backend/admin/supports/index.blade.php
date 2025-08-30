@@ -49,7 +49,7 @@
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->phone }}</td>
                                         <td>{{ $item->email }}</td>
-                                        <td>{{ $item->category }}</td>
+                                        <td>{{ ucfirst($item->category) }}</td>
                                         <td>{{ $item->subject }}</td>
                                         <td>{{ $item->message }}</td>
                                         <td>{!! $item->action !!}</td>

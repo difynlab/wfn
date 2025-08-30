@@ -25,6 +25,7 @@ use App\Http\Controllers\Backend\Admin\SupportController as AdminSupportControll
 use App\Http\Controllers\Backend\Admin\TodoController;
 use App\Http\Controllers\Backend\Admin\UserController;
 use App\Http\Controllers\Backend\Admin\WarehouseController as AdminWarehouseController;
+use App\Http\Controllers\Backend\Admin\WarehouseReviewController;
 use App\Http\Controllers\Backend\Landlord\BookingController as LandlordBookingController;
 use App\Http\Controllers\Backend\Landlord\DashboardController as LandlordDashboardController;
 use App\Http\Controllers\Backend\Landlord\FavoriteController;
@@ -138,6 +139,17 @@ require __DIR__.'/auth/backend.php';
                 Route::delete('{warehouse}', 'destroy')->name('destroy');
             });
         // Warehouses routes
+
+        // Warehouse reviews routes
+            Route::controller(WarehouseReviewController::class)->prefix('warehouse-reviews')->name('warehouse-reviews.')->group(function() {
+                Route::get('{warehouse}', 'index')->name('index');
+                Route::get('{warehouse}/create', 'create')->name('create');
+                Route::post('{warehouse}', 'store')->name('store');
+                Route::get('{warehouse}/{warehouse_review}/edit', 'edit')->name('edit');
+                Route::post('{warehouse}/{warehouse_review}', 'update')->name('update');
+                Route::delete('{warehouse}/{warehouse_review}', 'destroy')->name('destroy');
+            });
+        // Warehouse reviews routes
 
         // Storage types routes
             Route::controller(StorageTypeController::class)->prefix('storage-types')->name('storage-types.')->group(function() {
