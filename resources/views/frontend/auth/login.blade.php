@@ -66,7 +66,7 @@
 @endsection
 
 @push('after-scripts')
-    <script src="{{ asset('frontend/js/recaptcha.js') }}" async defer></script>
+    <script src="{{ asset('frontend/js/recaptcha.js') }}"></script>
 
     <script>
         window.recaptchaAction = 'login';

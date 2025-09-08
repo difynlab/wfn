@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="inner-page">
-        <div class="page-details">
+        <div class="page-details mb-3 mb-md-4">
             <p class="title">Write Message</p>
             <p class="description">Send a message to any user in here.</p>
         </div>
