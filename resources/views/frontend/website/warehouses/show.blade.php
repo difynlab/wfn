@@ -185,9 +185,9 @@
                         </div>
                     </div>
 
-                    <p class="warehouse-description">
-                        {{ $warehouse->{'description_' . $middleware_language} ?? $warehouse->description_en }}
-                    </p>
+                    <div class="warehouse-description">
+                        {!! $warehouse->{'description_' . $middleware_language} ?? $warehouse->description_en !!}
+                    </div>
 
                     @if($warehouse->features_en || $warehouse->features_ar)
                         <div class="row features-row">

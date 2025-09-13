@@ -185,7 +185,7 @@
         font-size: 16px;
         color: var(--gray);
         line-height: 26px;
-        padding-bottom: 25px;
+        padding-bottom: 10px;
     }
     .warehouse .section-2 .features-row .single-feature {
         display: flex;

@@ -54,7 +54,7 @@ class ArticleCategoryController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:0|max:255',
+            'name' => 'required|min:3|max:255',
             'language' => 'required|in:english,arabic',
             'status' => 'required|in:0,1,2'
         ]);
@@ -85,7 +85,7 @@ class ArticleCategoryController extends Controller
     public function update(Request $request, ArticleCategory $article_category)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:0|max:255',
+            'name' => 'required|min:3|max:255',
             'language' => 'required|in:english,arabic',
             'status' => 'required|in:0,1,2'
         ]);

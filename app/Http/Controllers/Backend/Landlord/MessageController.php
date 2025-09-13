@@ -82,7 +82,7 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'subject' => 'required|min:0|max:255',
+            'subject' => 'required|min:3|max:255',
             'initial_message' => 'required'
         ], [
             'initial_message' => 'The message field is required.'

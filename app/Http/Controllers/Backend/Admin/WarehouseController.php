@@ -69,15 +69,16 @@ class WarehouseController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name_en' => 'required|min:0|max:255',
+            'name_en' => 'required|min:3|max:255',
+            'short_description_en' => 'required',
             'description_en' => 'required',
-            'address_name' => 'required|min:0|max:255',
-            'address_en' => 'required|min:0|max:255',
-            'city_en' => 'required|min:0|max:255',
-            'address_ar' => 'required|min:0|max:255',
-            'city_ar' => 'required|min:0|max:255',
-            'latitude' => 'required|min:0|max:255',
-            'longitude' => 'required|min:0|max:255',
+            'address_name' => 'required|min:3|max:255',
+            'address_en' => 'required|min:3|max:255',
+            'city_en' => 'required|min:3|max:255',
+            'address_ar' => 'required|min:3|max:255',
+            'city_ar' => 'required|min:3|max:255',
+            'latitude' => 'required|min:3|max:255',
+            'longitude' => 'required|min:3|max:255',
             'user_id' => 'required|integer',
             'storage_type_id' => 'required|integer',
             'total_area' => 'required',
@@ -334,15 +335,16 @@ class WarehouseController extends Controller
     public function update(Request $request, Warehouse $warehouse)
     {
         $validator = Validator::make($request->all(), [
-            'name_en' => 'required|min:0|max:255',
+            'name_en' => 'required|min:3|max:255',
+            'short_description_en' => 'required',
             'description_en' => 'required',
-            'address_name' => 'required|min:0|max:255',
-            'address_en' => 'required|min:0|max:255',
-            'city_en' => 'required|min:0|max:255',
-            'address_ar' => 'required|min:0|max:255',
-            'city_ar' => 'required|min:0|max:255',
-            'latitude' => 'required|min:0|max:255',
-            'longitude' => 'required|min:0|max:255',
+            'address_name' => 'required|min:3|max:255',
+            'address_en' => 'required|min:3|max:255',
+            'city_en' => 'required|min:3|max:255',
+            'address_ar' => 'required|min:3|max:255',
+            'city_ar' => 'required|min:3|max:255',
+            'latitude' => 'required|min:3|max:255',
+            'longitude' => 'required|min:3|max:255',
             'user_id' => 'required|integer',
             'storage_type_id' => 'required|integer',
             'total_area' => 'required',
@@ -376,8 +378,6 @@ class WarehouseController extends Controller
         ]);
 
         if($validator->fails()) {
-            dd($validator);
-
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Update Failed!',
                 'route' => route('admin.warehouses.index')

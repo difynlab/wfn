@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name_en');
             $table->string('address_en');
             $table->string('city_en');
+            $table->text('short_description_en')->nullable();
             $table->text('description_en')->nullable();
             $table->text('features_en')->nullable();
             $table->text('amenities_en')->nullable();
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->string('name_ar')->nullable();
             $table->string('address_ar')->nullable();
             $table->string('city_ar')->nullable();
+            $table->text('short_description_ar')->nullable();
             $table->text('description_ar')->nullable();
             $table->text('features_ar')->nullable();
             $table->text('amenities_ar')->nullable();

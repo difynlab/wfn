@@ -326,15 +326,15 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required|min:0|max:255',
-            'last_name' => 'required|min:0|max:255',
+            'first_name' => 'required|min:3|max:255',
+            'last_name' => 'required|min:3|max:255',
             'email' => 'required|email|min:0|max:255|unique:users,email',
             'landlord_experience' => 'nullable|min:0|integer',
-            'phone_code' => 'required|min:0|max:4',
+            'phone_code' => 'required|min:3|max:4',
             'phone' => 'required|digits:9|numeric|unique:users,phone',
             'address' => 'nullable|min:0|max:255',
-            'city' => 'required|min:0|max:255',
-            'country' => 'required|min:0|max:255',
+            'city' => 'required|min:3|max:255',
+            'country' => 'required|min:3|max:255',
             'role' => 'required|in:admin,landlord,tenant',
             'password' => 'required|min:8',
             'confirm_password' => 'required|same:password',
@@ -643,15 +643,15 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required|min:0|max:255',
-            'last_name' => 'required|min:0|max:255',
+            'first_name' => 'required|min:3|max:255',
+            'last_name' => 'required|min:3|max:255',
             'email' => 'required|email|min:0|max:255|unique:users,email,'.$user->id,
             'landlord_experience' => 'nullable|min:0|integer',
-            'phone_code' => 'required|min:0|max:4',
+            'phone_code' => 'required|min:3|max:4',
             'phone' => 'required|digits:9|numeric|unique:users,phone,'.$user->id,
             'address' => 'nullable|min:0|max:255',
-            'city' => 'required|min:0|max:255',
-            'country' => 'required|min:0|max:255',
+            'city' => 'required|min:3|max:255',
+            'country' => 'required|min:3|max:255',
             'role' => 'required|in:admin,landlord,tenant',
             'new_image' => 'nullable|max:30720',
             'status' => 'required|in:0,1,2'
@@ -815,11 +815,11 @@ class UserController extends Controller
     public function companyUpdate(Request $request, User $user, Company $company)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:0|max:255',
-            'address' => 'required|min:0|max:255',
+            'name' => 'required|min:3|max:255',
+            'address' => 'required|min:3|max:255',
             'cr_number' => 'required|string|digits:10',
             'email' => 'required|email|min:0|max:255|unique:companies,email,'.$company->id,
-            'phone_code' => 'required|min:0|max:4',
+            'phone_code' => 'required|min:3|max:4',
             'phone' => 'required|digits:9|numeric|unique:companies,phone,'.$company->id,
             'website' => 'nullable|regex:/^(https?:\/\/)?([\w\-]+\.)+[\w\-]{2,}(\/[\w\-._~:\/?#[\]@!$&\'()*+,;=]*)?$/',
             'industry' => 'required|in:retail,e-commerce,manufacturing,logistics and transportation,food and beverage,pharmaceuticals,automotive,textiles and apparel,electronics,construction,consumer goods,chemicals,furniture and home goods,aerospace,energy and utilities',

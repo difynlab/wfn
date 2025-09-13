@@ -285,8 +285,8 @@ class SettingsController extends Controller
     public function profile(Request $request, User $user)
     {
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required|min:0|max:255',
-            'last_name' => 'required|min:0|max:255',
+            'first_name' => 'required|min:3|max:255',
+            'last_name' => 'required|min:3|max:255',
             'email' => 'required|email|min:0|max:255|unique:users,email,'.$user->id,
             'phone' => 'nullable|regex:/^\+?[0-9]+$/|unique:users,phone,'.$user->id,
             'new_image' => 'nullable|max:30720'
@@ -339,13 +339,13 @@ class SettingsController extends Controller
     public function company(Request $request, User $user, Company $company)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:0|max:255',
-            'address' => 'required|min:0|max:255',
+            'name' => 'required|min:3|max:255',
+            'address' => 'required|min:3|max:255',
             'cr_number' => 'required|string|digits:10',
             'email' => 'required|email|min:0|max:255|unique:companies,email,'.$company->id,
-            'phone' => 'required|min:0|max:255|regex:/^\+?[0-9]+$/|unique:companies,phone,'.$company->id,
+            'phone' => 'required|min:3|max:255|regex:/^\+?[0-9]+$/|unique:companies,phone,'.$company->id,
             'website' => 'nullable|regex:/^(https?:\/\/)?([\w\-]+\.)+[\w\-]{2,}(\/[\w\-._~:\/?#[\]@!$&\'()*+,;=]*)?$/',
-            'industry' => 'required|min:0|max:255',
+            'industry' => 'required|min:3|max:255',
             'date' => 'nullable|date',
             'new_registration_certificates.*' => 'max:30720'
         ]);

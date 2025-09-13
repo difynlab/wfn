@@ -56,11 +56,11 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:0|max:255',
-            'designation' => 'required|min:0|max:255',
+            'name' => 'required|min:3|max:255',
+            'designation' => 'required|min:3|max:255',
             'star' => 'required|in:1,2,3,4,5',
             'language' => 'required|in:english,arabic',
-            'content' => 'required|min:0|max:255',
+            'content' => 'required|min:3|max:255',
             'new_thumbnail' => 'nullable|max:30720',
             'status' => 'required|in:0,1,2',
         ]);
@@ -104,11 +104,11 @@ class ReviewController extends Controller
     public function update(Request $request, Review $review)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:0|max:255',
-            'designation' => 'required|min:0|max:255',
+            'name' => 'required|min:3|max:255',
+            'designation' => 'required|min:3|max:255',
             'star' => 'required|in:1,2,3,4,5',
             'language' => 'required|in:english,arabic',
-            'content' => 'required|min:0|max:255',
+            'content' => 'required|min:3|max:255',
             'new_thumbnail' => 'nullable|max:30720',
             'status' => 'required|in:0,1,2',
         ]);

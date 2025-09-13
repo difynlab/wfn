@@ -44,13 +44,25 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="description_en" class="form-label label">Description (EN)<span class="asterisk">*</span></label>
-                    <textarea type="text" class="form-control textarea input-field" id="description_en" name="description_en" rows="5" placeholder="Description (EN)" value="{{ old('description_en') }}" required></textarea>
+                    <label for="short_description_en" class="form-label label">Short Description (EN)<span class="asterisk">*</span></label>
+                    <textarea type="text" class="form-control textarea input-field" id="short_description_en" name="short_description_en" rows="5" placeholder="Short Description (EN)" value="{{ old('short_description_en') }}" required></textarea>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
+                    <label for="short_description_ar" class="form-label label">Short Description (AR)</label>
+                    <textarea type="text" class="form-control textarea input-field" id="short_description_ar" name="short_description_ar" rows="5" placeholder="Short Description (AR)" value="{{ old('short_description_ar') }}"></textarea>
+                </div>
+
+                <div class="col-12 mb-3 mb-md-4">
+                    <label for="description_en" class="form-label label">Description (EN)<span class="asterisk">*</span></label>
+                    <textarea class="editor" id="description_en" name="description_en" value="{{ old('description_en') }}">{{ old('description_en') }}</textarea>
+                    <x-backend.input-error field="description_en"></x-backend.input-error>
+                </div>
+
+                <div class="col-12 mb-3 mb-md-4">
                     <label for="description_ar" class="form-label label">Description (AR)</label>
-                    <textarea type="text" class="form-control textarea input-field" id="description_ar" name="description_ar" rows="5" placeholder="Description (AR)" value="{{ old('description_ar') }}"></textarea>
+                    <textarea class="editor" id="description_ar" name="description_ar" value="{{ old('description_ar') }}">{{ old('description_ar') }}</textarea>
+                    <x-backend.input-error field="description_ar"></x-backend.input-error>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">

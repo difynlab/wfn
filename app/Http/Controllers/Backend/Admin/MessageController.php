@@ -98,7 +98,7 @@ class MessageController extends Controller
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
             'category' => 'required',
-            'subject' => 'required|min:0|max:255',
+            'subject' => 'required|min:3|max:255',
             'initial_message' => 'required'
         ], [
             'initial_message' => 'The message field is required.'

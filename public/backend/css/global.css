@@ -51,9 +51,12 @@
         color: var(--red);
         margin-left: 3px;
     }
-    /* .fr-wrapper > div:first-of-type {
+    .fr-wrapper {
+        height: 250px;
+    }
+    .fr-wrapper > div:first-of-type {
         display: none !important;
-    } */
+    }
 /* #endregion */
 
 

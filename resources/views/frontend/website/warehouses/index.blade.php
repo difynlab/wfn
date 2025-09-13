@@ -142,7 +142,7 @@
                                             </p>
 
                                             <p class="description">
-                                                {{ $warehouse->{'description_' . $middleware_language} ?? $warehouse->description_en }}
+                                                {{ $warehouse->{'short_description_' . $middleware_language} ?? $warehouse->short_description_en }}
                                             </p>
 
                                             <p class="location">
