@@ -51,9 +51,6 @@
         color: var(--red);
         margin-left: 3px;
     }
-    .fr-wrapper {
-        height: 250px;
-    }
     .fr-wrapper > div:first-of-type {
         display: none !important;
     }
