@@ -69,6 +69,7 @@
                     <label for="user_id" class="form-label label">Landlord<span class="asterisk">*</span></label>
                     <select class="form-select input-field js-single" id="user_id" name="user_id" required>
                         <option value="">Select landlord</option>
+                        <option value="1">Admin</option>
                         @foreach($users as $user)
                             <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>{{ $user->first_name }} {{ $user->last_name }}</option>
                         @endforeach
