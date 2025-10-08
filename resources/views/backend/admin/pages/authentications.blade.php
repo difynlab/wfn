@@ -81,6 +81,11 @@
                 <p class="inner-page-title">Register</p>
 
                 <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <x-backend.upload-image old_name="old_login_image" old_value="{{ $contents->{'login_image_' . $short_code} ?? '' }}" new_name="new_login_image" path="pages"></x-backend.upload-image>
+                        <x-backend.input-error field="new_login_image"></x-backend.input-error>
+                    </div>
+                    
                     <div class="col-12 mb-3 mb-md-4">
                         <label for="register_name_{{ $short_code }}" class="form-label label">Page Name<span class="asterisk">*</span></label>
                         <input type="text" class="form-control input-field" id="register_name_{{ $short_code }}" name="register_name_{{ $short_code }}" value="{{ $contents->{'register_name_' . $short_code} ?? '' }}" placeholder="Page Name" required>

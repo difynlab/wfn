@@ -353,6 +353,15 @@ require __DIR__.'/auth/backend.php';
     Route::middleware(['auth', 'role:tenant'])->prefix('tenant')->name('tenant.')->group(function () {
         Route::get('dashboard', [TenantDashboardController::class, 'index'])->name('dashboard');
 
+        // Warehouses routes
+            Route::controller(\App\Http\Controllers\Backend\Tenant\WarehouseController::class)->prefix('warehouses')->name('warehouses.')->group(function() {
+                Route::get('/', 'index')->name('index');
+                Route::get('filter', 'filter')->name('filter');
+                Route::post('filterwarehouses', 'filterWarehouses')->name('filterwarehouses');
+                Route::get('approve-quote', 'approveQuote')->name('approve-quote');
+            });
+        // Warehouses routes
+
         // Bookings routes
             Route::middleware('company')->controller(TenantBookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
                 Route::get('/', 'index')->name('index');

@@ -361,6 +361,17 @@
                 </a>
             </li>
 
+        <ul class="main-menu">
+            <li class="link">
+                <a href="{{ route('tenant.warehouses.index') }}" class="{{ Request::segment(2) == 'warehouses' ? 'active' : '' }}">
+                    <div class="box"></div>
+                    <div class="actual-link">
+                        <i class="bi bi-houses"></i>
+                        Warehouses
+                    </div>
+                </a>
+            </li>
+
             <li class="link">
                 <a href="{{ route('tenant.messages.index', 'all') }}" class="{{ Request::segment(2) == 'messages' ? 'active' : '' }}">
                     <div class="box"></div>
