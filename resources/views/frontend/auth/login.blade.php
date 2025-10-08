@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     
-                    {{-- <input type="hidden" name="recaptcha_token" id="recaptcha_token"> --}}
+                    <input type="hidden" name="recaptcha_token" id="recaptcha_token">
                     
                     <button type="submit" class="submit-button">{{ $contents->{'login_button_' . $middleware_language} ?? $contents->login_button_en }}</button>
                 </form>
@@ -66,11 +66,11 @@
 @endsection
 
 @push('after-scripts')
-    {{-- <script src="{{ asset('frontend/js/recaptcha.js') }}"></script>
+    <script src="{{ asset('frontend/js/recaptcha.js') }}"></script>
 
     <script>
         window.recaptchaAction = 'login';
-    </script> --}}
+    </script>
 
     <script>
         $(".toggle-password").click(function () {

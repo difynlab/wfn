@@ -624,6 +624,237 @@
 /* #endregion */
 
 
+/* #region: Tenant warehouse nav */
+    .page .add-button {
+        cursor: pointer;
+    }
+    .page .nav-tabs {
+        width: 100%;
+        justify-content: space-between;
+        border: 1px solid var(--input_border);
+        height: 70px;
+        display: flex;
+        align-items: center;
+        border-radius: 8px;
+        margin-bottom: 50px;
+    }
+    .page .nav-tabs .nav-item {
+        width: 50%;
+    }
+    .page .nav-tabs .nav-item .nav-link {
+        width: 100%;
+        height: 70px;
+        border: none;
+        background-color: transparent;
+        color: var(--black);
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        border-radius: 8px;
+        &.active {
+            background-color: var(--red);
+            color: var(--white);
+        }
+    }
+    .page .nav-tabs .nav-item .nav-link i {
+        font-size: 20px;
+        margin-right: 10px;
+    }
+    .page .tab-content .box {
+        width: 40%;
+        padding: 40px;
+        margin: auto;
+        background-color: var(--white);
+        border: 1px solid var(--input_border);
+        text-align: center;
+    }
+    .page .tab-content .box .box-image {
+        width: 265px;
+        height: 140px;
+    }
+    .page .tab-content .box .box-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 10px!important;
+    }
+    .page .tab-content .box .box-description {
+        font-size: 16px;
+        margin-bottom: 25px!important;
+    }
+    .page .tab-content .box .box-button {
+        font-size: 14px;
+        font-weight: 600;
+        border: 1px solid var(--light_black);
+        color: var(--light_black);
+        padding: 10px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40%;
+        margin: auto;
+        gap: 10px;
+        transition: all 0.3s;
+        cursor: pointer;
+        &:hover {
+            background-color: var(--light_black);
+            color: var(--white);
+            transition: all 0.3s;
+        }
+    }
+    .page .tab-content .box .box-button i {
+        font-size: 18px;
+    }
+
+    /* Warehouse popup */
+        .warehouse-popup {
+            background-color: var(--white);
+            position: fixed;
+            right: 0;
+            top: 75px;
+            width: 0%;
+            overflow-y: auto;
+            height: 90vh;
+            transition: all 0.3s;
+        }
+        .warehouse-popup.active {
+            width: 60%;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+        .warehouse-popup .warehouse-popup-header {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .warehouse-popup .warehouse-popup-header .popup-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--black);
+            padding-bottom: 5px;
+        }
+        .warehouse-popup .warehouse-popup-header .popup-description {
+            font-size: 16px;
+            color: var(--light_black);
+        }
+        .warehouse-popup .warehouse-popup-header .popup-close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 25px;
+            border: none;
+            background: transparent;
+        }
+        .warehouse-popup .warehouse-popup-body .form-group {
+            margin-bottom: 30px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        .warehouse-popup .warehouse-popup-body .form-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--light_black);
+        }
+        .warehouse-popup .warehouse-popup-body .input-field {
+            font-size: 15px;
+            height: 50px;
+            border-radius: 8px;
+            background-color: #E2E8F0;
+            color: var(--medium_gray);
+        }
+        .warehouse-popup .select2-container--default .select2-selection--single {
+            border: none;
+            border-radius: 8px;
+            height: 50px;
+            font-size: 15px;
+            background-color: #E2E8F0;
+            color: var(--medium_gray);
+            outline: none;
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+        }
+        .warehouse-popup .select2-container--default .select2-selection--single .select2-selection__arrow {
+            top: initial!important;
+        }
+        .warehouse-popup .storage-option {
+            border: 1px solid var(--input_border);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            &.active {
+                border-color: var(--red);
+                background-color: #FFF7F7;
+            }
+            &:hover {
+                border-color: var(--red);
+                background-color: #FFF7F7;
+            }
+        }
+        .warehouse-popup .storage-option .type-title {
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--light_black);
+            padding-bottom: 5px;
+        }
+        .warehouse-popup .storage-option .type-points {
+            font-size: 16px;
+            color: var(--light_black);
+        }
+        .warehouse-popup .storage-option .type-points li {
+            margin-bottom: 8px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        .warehouse-popup .storage-option .type-image {
+            width: 100%;
+            height: 175px;
+        }
+        .warehouse-popup .buttons {
+            font-size: 16px;
+            font-weight: 500;
+            display: flex;
+            gap: 10px;
+            justify-content: end;
+        }
+        .warehouse-popup .buttons .cancel-button {
+            border: 1px solid var(--light_black);
+            color: var(--light_black);
+            background-color: transparent;
+            width: 120px;
+            height: 50px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            &:hover {
+                background-color: var(--light_black);
+                color: var(--white);
+                transition: all 0.3s;
+            }
+        }
+        .warehouse-popup .buttons .search-button {
+            color: var(--white);
+            border: none;
+            background-color: var(--red);
+            width: 120px;
+            height: 50px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            &:hover {
+                background-color: var(--light_black);
+                color: var(--white);
+                transition: all 0.3s;
+            }
+        }
+    /* Warehouse popup */
+
+/* #region: Tenant warehouse nav */
+
+
 /* #region: Responsive */
     @media (width <= 1921px) {}
     @media (width <= 1901px) {}

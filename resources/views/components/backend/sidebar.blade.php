@@ -360,8 +360,7 @@
                     </div>
                 </a>
             </li>
-
-        <ul class="main-menu">
+            
             <li class="link">
                 <a href="{{ route('tenant.warehouses.index') }}" class="{{ Request::segment(2) == 'warehouses' ? 'active' : '' }}">
                     <div class="box"></div>

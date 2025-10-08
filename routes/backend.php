@@ -39,6 +39,7 @@ use App\Http\Controllers\Backend\Tenant\FavoriteController as TenantFavoriteCont
 use App\Http\Controllers\Backend\Tenant\MessageController as TenantMessageController;
 use App\Http\Controllers\Backend\Tenant\SettingsController as TenantSettingsController;
 use App\Http\Controllers\Backend\Tenant\TodoController as TenantTodoController;
+use App\Http\Controllers\Backend\Tenant\WarehouseController as TenantWarehouseController;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/auth/backend.php';
@@ -354,9 +355,8 @@ require __DIR__.'/auth/backend.php';
         Route::get('dashboard', [TenantDashboardController::class, 'index'])->name('dashboard');
 
         // Warehouses routes
-            Route::controller(\App\Http\Controllers\Backend\Tenant\WarehouseController::class)->prefix('warehouses')->name('warehouses.')->group(function() {
+            Route::controller(TenantWarehouseController::class)->prefix('warehouses')->name('warehouses.')->group(function() {
                 Route::get('/', 'index')->name('index');
-                Route::get('filter', 'filter')->name('filter');
                 Route::post('filterwarehouses', 'filterWarehouses')->name('filterwarehouses');
                 Route::get('approve-quote', 'approveQuote')->name('approve-quote');
             });
