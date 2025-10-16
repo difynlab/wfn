@@ -104,8 +104,7 @@
 		</div>
 			
 		<div class="warehouse-popup-body">
-			<form action="{{ route('tenant.warehouses.filterwarehouses') }}" method="POST" class="form">
-				@csrf
+			<form action="{{ route('tenant.warehouses.filter') }}" method="GET" class="form">
 				<div class="form-group">
 					<label class="form-label" for="location">City</label>
 
@@ -134,15 +133,27 @@
 					<label class="form-label" for="licensing">Licensing <span class="optional">(Optional)</span></label>
 					<select class="form-control input-field" id="licensing" name="licensing" >
 						<option value="">Choose</option>
-						<option value="">A</option>
-						<option value="">B</option>
-						<option value="">C</option>
+						<option value="retail">Retail</option>
+						<option value="ecommerce">E-commerce</option>
+						<option value="manufacturing">Manufacturing</option>
+						<option value="logistics_transportation">Logistics & Transportation</option>
+						<option value="food_beverage">Food & Beverage</option>
+						<option value="pharmaceuticals">Pharmaceuticals</option>
+						<option value="automotive">Automotive</option>
+						<option value="textiles_apparel">Textiles & Apparel</option>
+						<option value="electronics">Electronics</option>
+						<option value="construction">Construction</option>
+						<option value="consumer_goods">Consumer Goods</option>
+						<option value="chemicals">Chemicals</option>
+						<option value="furniture_home_goods">Furniture & Home Goods</option>
+						<option value="aerospace">Aerospace</option>
+						<option value="energy_utilities">Energy & Utilities</option>
 					</select>
 				</div>
 				
 				<div class="form-group">
 					<label class="form-label">Warehouse Type</label>
-					<div class="storage-option active">
+					<div class="storage-option active" value="pallet">
 						<div class="row">
 							<div class="col-9">
 								<p class="type-title">Pallets</p>
@@ -159,7 +170,7 @@
 						</div>
 					</div>
 
-					<div class="storage-option">
+					<div class="storage-option" value="free-space">
 						<div class="row">
 							<div class="col-9">
 								<p class="type-title">Free Space</p>
@@ -175,9 +186,14 @@
 					</div>
 				</div>
 				
-				<div class="form-group">
+				<div class="form-group number-of-pallets">
 					<label class="form-label" for="number_of_pallets">How many pallet positions do you expect to reserve?</label>
-					<input type="number" class="form-control input-field" id="number_of_pallets" name="number_of_pallets" placeholder="Number of pallets" min="1" value="1">
+					<input type="number" class="form-control input-field" id="number_of_pallets" name="number_of_pallets" placeholder="Number of pallets" min="0">
+				</div>
+
+				<div class="form-group square-meters d-none">
+					<label class="form-label" for="square_meters">How much sq.m do you expect to reserve?</label>
+					<input type="number" class="form-control input-field" id="square_meters" name="square_meters" placeholder="Sq.m" min="0">
 				</div>
 
 				<div class="row form-group">
@@ -216,6 +232,21 @@
 		$('.storage-option').on('click', function() {
 			$(this).toggleClass('active');
 			$(this).siblings().toggleClass('active');
+
+			let value = $(this).attr('value');
+
+			if(value == 'pallet') {
+				$('.number-of-pallets').removeClass('d-none');
+				$('.square-meters').addClass('d-none');
+
+				$('.square-meters').find('input').val('');
+			}
+			else {
+				$('.number-of-pallets').addClass('d-none');
+				$('.square-meters').removeClass('d-none');
+
+				$('.number-of-pallets').find('input').val('');
+			}
 		})
 	</script>
 @endpush

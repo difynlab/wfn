@@ -93,6 +93,29 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
+                    <label for="license" class="form-label label">License</label>
+                    <select class="form-select input-field js-single" id="license" name="license">
+                        <option value="">Select license</option>
+                        <option value="retail" {{ old('license', $warehouse->license) == 'retail' ? 'selected' : '' }}>Retail</option>
+						<option value="ecommerce" {{ old('license', $warehouse->license) == 'ecommerce' ? 'selected' : '' }}>E-commerce</option>
+						<option value="manufacturing" {{ old('license', $warehouse->license) == 'manufacturing' ? 'selected' : '' }}>Manufacturing</option>
+						<option value="logistics_transportation" {{ old('license', $warehouse->license) == 'logistics_transportation' ? 'selected' : '' }}>Logistics & Transportation</option>
+						<option value="food_beverage" {{ old('license', $warehouse->license) == 'food_beverage' ? 'selected' : '' }}>Food & Beverage</option>
+						<option value="pharmaceuticals" {{ old('license', $warehouse->license) == 'pharmaceuticals' ? 'selected' : '' }}>Pharmaceuticals</option>
+						<option value="automotive" {{ old('license', $warehouse->license) == 'automotive' ? 'selected' : '' }}>Automotive</option>
+						<option value="textiles_apparel" {{ old('license', $warehouse->license) == 'textiles_apparel' ? 'selected' : '' }}>Textiles & Apparel</option>
+						<option value="electronics" {{ old('license', $warehouse->license) == 'electronics' ? 'selected' : '' }}>Electronics</option>
+						<option value="construction" {{ old('license', $warehouse->license) == 'construction' ? 'selected' : '' }}>Construction</option>
+						<option value="consumer_goods" {{ old('license', $warehouse->license) == 'consumer_goods' ? 'selected' : '' }}>Consumer Goods</option>
+						<option value="chemicals" {{ old('license', $warehouse->license) == 'chemicals' ? 'selected' : '' }}>Chemicals</option>
+						<option value="furniture_home_goods" {{ old('license', $warehouse->license) == 'furniture_home_goods' ? 'selected' : '' }}>Furniture & Home Goods</option>
+						<option value="aerospace" {{ old('license', $warehouse->license) == 'aerospace' ? 'selected' : '' }}>Aerospace</option>
+						<option value="energy_utilities" {{ old('license', $warehouse->license) == 'energy_utilities' ? 'selected' : '' }}>Energy & Utilities</option>
+                    </select>
+                    <x-backend.input-error field="license"></x-backend.input-error>
+                </div>
+
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="total_area" class="form-label label">Total Area (Sq.m)<span class="asterisk">*</span></label>
                     <input type="number" class="form-control input-field" id="total_area" name="total_area" placeholder="Total Area" value="{{ old('total_area', $warehouse->total_area) }}" required>
                     <x-backend.input-error field="total_area"></x-backend.input-error>

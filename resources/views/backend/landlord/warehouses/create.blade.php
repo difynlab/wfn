@@ -65,6 +65,29 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
+                    <label for="license" class="form-label label">License</label>
+                    <select class="form-select input-field js-single" id="license" name="license">
+                        <option value="">Select license</option>
+                        <option value="retail">Retail</option>
+						<option value="ecommerce">E-commerce</option>
+						<option value="manufacturing">Manufacturing</option>
+						<option value="logistics_transportation">Logistics & Transportation</option>
+						<option value="food_beverage">Food & Beverage</option>
+						<option value="pharmaceuticals">Pharmaceuticals</option>
+						<option value="automotive">Automotive</option>
+						<option value="textiles_apparel">Textiles & Apparel</option>
+						<option value="electronics">Electronics</option>
+						<option value="construction">Construction</option>
+						<option value="consumer_goods">Consumer Goods</option>
+						<option value="chemicals">Chemicals</option>
+						<option value="furniture_home_goods">Furniture & Home Goods</option>
+						<option value="aerospace">Aerospace</option>
+						<option value="energy_utilities">Energy & Utilities</option>
+                    </select>
+                    <x-backend.input-error field="license"></x-backend.input-error>
+                </div>
+
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="total_area" class="form-label label">Total Area (Sq.m)<span class="asterisk">*</span></label>
                     <input type="number" class="form-control input-field" id="total_area" name="total_area" placeholder="Total Area" value="{{ old('total_area') }}" required>
                     <x-backend.input-error field="total_area"></x-backend.input-error>
@@ -106,6 +129,12 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
+                    <label for="temperature_range" class="form-label label">Temperature Range<span class="asterisk">*</span></label>
+                    <input type="text" class="form-control input-field" id="temperature_range" name="temperature_range" placeholder="Temperature Range" value="{{ old('temperature_range') }}" required>
+                    <x-backend.input-error field="temperature_range"></x-backend.input-error>
+                </div>
+
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="temperature_type" class="form-label label">Temperature Type<span class="asterisk">*</span></label>
 
                     <div class="radios">
@@ -134,12 +163,6 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="temperature_range" class="form-label label">Temperature Range<span class="asterisk">*</span></label>
-                    <input type="text" class="form-control input-field" id="temperature_range" name="temperature_range" placeholder="Temperature Range" value="{{ old('temperature_range') }}" required>
-                    <x-backend.input-error field="temperature_range"></x-backend.input-error>
-                </div>
-
-                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="wms" class="form-label label">Warehouse Management System<span class="asterisk">*</span></label>
 
                     <div class="radios">
@@ -157,7 +180,7 @@
                     <x-backend.input-error field="wms"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 col-md-6 mb-3 mb-md-4">
+                <div class="col-12 col-md-4 mb-3 mb-md-4">
                     <label for="equipment_handling" class="form-label label">Equipment Handling<span class="asterisk">*</span></label>
 
                     <div class="radios">
@@ -175,7 +198,7 @@
                     <x-backend.input-error field="equipment_handling"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 col-md-6 mb-3 mb-md-4">
+                <div class="col-12 col-md-4 mb-3 mb-md-4">
                     <label for="temperature_sensor" class="form-label label">Temperature Sensor<span class="asterisk">*</span></label>
 
                     <div class="radios">
@@ -193,7 +216,7 @@
                     <x-backend.input-error field="temperature_sensor"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 col-md-6 mb-3 mb-md-4">
+                <div class="col-12 col-md-4 mb-3 mb-md-4">
                     <label for="humidity_sensor" class="form-label label">Humidity Sensor<span class="asterisk">*</span></label>
 
                     <div class="radios">

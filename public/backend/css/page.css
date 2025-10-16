@@ -759,7 +759,7 @@
             font-size: 15px;
             height: 50px;
             border-radius: 8px;
-            background-color: #E2E8F0;
+            /* background-color: #E2E8F0; */
             color: var(--medium_gray);
         }
         .warehouse-popup .select2-container--default .select2-selection--single {

@@ -60,6 +60,8 @@ return new class extends Migration
             $table->boolean('is_new')->default(1);
             $table->boolean('status')->default(1);
 
+            $table->string('license')->nullable();
+
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('storage_type_id')->constrained()->onDelete('cascade');
             $table->timestamps();

@@ -1,41 +1,18 @@
-/* Exact Design from Reference Image */
-
-/* Main Layout - Two Column */
-.warehouse-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 20px;
-}
-
-/* Left Column - Warehouse Listings */
-.warehouse-listings {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.warehouse-item {
-    background: white;
+.single-warehouse {
+    background: var(--white);
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     border: 1px solid #e9ecef;
 }
-
-.warehouse-content {
-    width: 100%;
-}
-
-.warehouse-name {
+.single-warehouse .name {
     font-size: 18px;
     font-weight: 600;
     color: #212529;
     margin-bottom: 10px;
     line-height: 1.3;
 }
-
-.warehouse-description {
+.single-warehouse .description {
     color: #6c757d;
     font-size: 14px;
     line-height: 1.5;
