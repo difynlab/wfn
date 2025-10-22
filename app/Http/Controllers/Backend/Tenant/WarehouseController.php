@@ -95,9 +95,10 @@ class WarehouseController extends Controller
         ]);
     }
 
-    public function approveQuote(Request $request)
+    public function review(Request $request, Warehouse $warehouse)
     {
-        // For now, we'll return hardcoded data for the approve quote page
-        return view('backend.tenant.warehouses.approve-quote');
+        return view('backend.tenant.warehouses.review', [
+            'warehouse' => $warehouse
+        ]);
     }
 }

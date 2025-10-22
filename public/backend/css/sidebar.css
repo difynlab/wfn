@@ -5,14 +5,15 @@
         /* z-index: 9999; */
         background-color: var(--white);
         height: 90vh;
-        width: 0;
-        overflow-y: auto;
+        width: 50px;
+        overflow: hidden;
         white-space: nowrap;
         z-index: 9;
         transition: all 0.3s;
     }
     .sidebar.active {
         width: 300px;
+        overflow-y: auto;
         transition: all 0.3s;
     }
     .sidebar::-webkit-scrollbar {
@@ -40,10 +41,16 @@
         align-items: center;
     }
     .sidebar .main-menu .link .box {
-        width: 10px;
+        width: 0;
         background-color: var(--white);
         height: 60px;
+        margin-right: 0;
+        transition: all 0.3s;
+    }
+    .sidebar.active .main-menu .link .box {
+        width: 10px;
         margin-right: 25px;
+        transition: all 0.3s;
     }
     .sidebar hr {
         margin: 0;
@@ -89,6 +96,9 @@
         padding: 15px;
         display: flex;
         align-items: center;
+        width: 100%;
+    }
+    .sidebar.active .main-menu .link .actual-link  {
         width: 85%;
     }
     .sidebar .main-menu .link .actual-link .new-count {
@@ -128,7 +138,9 @@
             font-size: 14px;
         }
         .sidebar .main-menu .link a i {
-            font-size: 15px;
+            padding-right: 25px;
+        }
+        .sidebar.active .main-menu .link a i {
             padding-right: 10px;
         }
         .sidebar.active {
@@ -136,9 +148,15 @@
         }
         .sidebar .main-menu .link .box {
             height: 52px;
+            margin-right: 0;
+        }
+        .sidebar.active .main-menu .link .box {
             margin-right: 10px;
         }
         .sidebar .main-menu .link .actual-link {
+            width: 100%;
+        }
+        .sidebar.active .main-menu .link .actual-link {
             width: 90%;
         }
     }
@@ -157,14 +175,23 @@
         .sidebar .main-menu .link a {
             font-size: 13px;
         }
+        .sidebar .main-menu .link a i {
+            font-size: 16px;
+        }
         .sidebar .main-menu .link .box {
             height: 43px;
+            margin-right: 0;
+        }
+        .sidebar.active .main-menu .link .box {
             margin-right: 8px;
         }
         .sidebar.active {
             width: 200px;
         }
         .sidebar .main-menu .link .actual-link {
+            width: 100%;
+        }
+        .sidebar.active .main-menu .link .actual-link {
             width: 87%;
             padding: 10px;
         }
@@ -172,10 +199,10 @@
     @media (width <= 721px) {}
     @media (width <= 651px) {}
     @media (width <= 576px) {
-        .sidebar.active {
+        /* .sidebar.active {
             width: 0;
-        }
-        .sidebar {
+        } */
+        .sidebar.active {
             width: 200px;
         }
     }

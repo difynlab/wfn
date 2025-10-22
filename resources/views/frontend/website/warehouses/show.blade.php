@@ -433,22 +433,22 @@
                 <p class="title">{{ $contents->{'inner_page_section_7_title_' . $middleware_language} ?? $contents->inner_page_section_7_title_en }}</p>
 
                 <div class="row">
-                    @foreach($more_warehouses as $key => $warehouse)
+                    @foreach($more_warehouses as $key => $more_warehouse)
                         <div class="col-3">
-                            <a href="{{ route('warehouses.show', $warehouse) }}">
+                            <a href="{{ route('warehouses.show', $more_warehouse) }}">
                                 <div class="single-warehouse">
-                                    @if($warehouse->thumbnail)
-                                        <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="image">
+                                    @if($more_warehouse->thumbnail)
+                                        <img src="{{ asset('storage/backend/warehouses/' . $more_warehouse->thumbnail) }}" alt="Warehouse" class="image">
                                     @else
                                         <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image">
                                     @endif
 
                                     <div class="details">
                                         <p class="title">
-                                            {{ $warehouse->{'name_' . $middleware_language} ?? $warehouse->name_en }}
+                                            {{ $more_warehouse->{'name_' . $middleware_language} ?? $more_warehouse->name_en }}
                                         </p>
                                         <p class="subtitle">
-                                            {{ $warehouse->storageType->{'name_' . $middleware_language} ?? $warehouse->storageType->name_en }}
+                                            {{ $more_warehouse->storageType->{'name_' . $middleware_language} ?? $more_warehouse->storageType->name_en }}
                                         </p>
                                         <p class="price">
                                             {{ $contents->{'inner_page_section_7_unlock_' . $middleware_language} ?? $contents->inner_page_section_7_unlock_en }}
@@ -564,10 +564,13 @@
             });
 
             const icon = document.createElement('i');
-            icon.className = 'bi bi-cursor-fill';
-            icon.style.fontSize = '100px';
+            icon.className = 'bi bi-geo-alt-fill';
+            icon.style.fontSize = '70px';
             icon.style.color = '#E31D1D';
             icon.style.cursor = 'pointer';
+            icon.style.border = '1px solid #F4A2A2';
+            icon.style.padding = '200px';
+            icon.style.borderRadius = '50%';
 
             const marker = new AdvancedMarkerElement({
                 map,

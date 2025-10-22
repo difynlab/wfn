@@ -51,9 +51,9 @@
         color: var(--red);
         margin-left: 3px;
     }
-    .fr-wrapper > div:first-of-type {
+    /* .fr-wrapper > div:first-of-type {
         display: none !important;
-    }
+    } */
 /* #endregion */
 
 
@@ -175,7 +175,7 @@
         transition: all 0.1s;
     }
     .backend-content.full-width {
-        padding-left: 20px;
+        padding-left: 60px;
         transition: all 0.1s;
     }
 /* #endregion */
@@ -367,7 +367,7 @@
             padding-right: 10px;
         }
         .backend-content.full-width {
-            padding-left: 10px;
+            padding-left: 55px;
         }
         .notification-modal .title {
             font-size: 20px;
@@ -430,7 +430,7 @@
             padding-right: 0px;
         }
         .backend-content.full-width {
-            padding-left: 0;
+            padding-left: 50px;
         }
 
         .message-sidebar .title {

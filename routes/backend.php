@@ -358,7 +358,7 @@ require __DIR__.'/auth/backend.php';
             Route::controller(TenantWarehouseController::class)->prefix('warehouses')->name('warehouses.')->group(function() {
                 Route::get('/', 'index')->name('index');
                 Route::get('filter', 'filter')->name('filter');
-                Route::get('approve-quote', 'approveQuote')->name('approve-quote');
+                Route::get('review/{warehouse}', 'review')->name('review');
             });
         // Warehouses routes
 

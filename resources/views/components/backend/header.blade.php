@@ -1,7 +1,7 @@
 <div class="container-fluid navbar-fluid">
-    <i class="bi bi-text-paragraph collapse-icon"></i>
+    <i class="bi bi-list collapse-icon"></i>
 
-    <div class="container">
+    <div class="container-fluid">
         <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand" href="{{ route(auth()->user()->role . '.dashboard') }}">
                 <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->logo) }}" alt="Logo" class="logo">
