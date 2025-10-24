@@ -55,6 +55,11 @@ return new class extends Migration
             $table->string('off_loading_image')->nullable();
             $table->string('handling_equipment_image')->nullable();
             $table->string('storage_area_image')->nullable();
+
+            $table->text('storage_charges')->nullable();
+            $table->text('movement_services')->nullable();
+            $table->text('pallet_services')->nullable();
+
             $table->text('videos')->nullable();
             $table->text('licenses')->nullable();
             $table->boolean('is_new')->default(1);
