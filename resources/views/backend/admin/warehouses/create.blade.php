@@ -92,21 +92,21 @@
                     <label for="license" class="form-label label">License</label>
                     <select class="form-select input-field js-single" id="license" name="license">
                         <option value="">Select license</option>
-                        <option value="retail">Retail</option>
-						<option value="ecommerce">E-commerce</option>
-						<option value="manufacturing">Manufacturing</option>
-						<option value="logistics_transportation">Logistics & Transportation</option>
-						<option value="food_beverage">Food & Beverage</option>
-						<option value="pharmaceuticals">Pharmaceuticals</option>
-						<option value="automotive">Automotive</option>
-						<option value="textiles_apparel">Textiles & Apparel</option>
-						<option value="electronics">Electronics</option>
-						<option value="construction">Construction</option>
-						<option value="consumer_goods">Consumer Goods</option>
-						<option value="chemicals">Chemicals</option>
-						<option value="furniture_home_goods">Furniture & Home Goods</option>
-						<option value="aerospace">Aerospace</option>
-						<option value="energy_utilities">Energy & Utilities</option>
+                        <option value="Retail">Retail</option>
+						<option value="E-commerce">E-commerce</option>
+						<option value="Manufacturing">Manufacturing</option>
+						<option value="Logistics & Transportation">Logistics & Transportation</option>
+						<option value="Food & Beverage">Food & Beverage</option>
+						<option value="Pharmaceuticals">Pharmaceuticals</option>
+						<option value="Automotive">Automotive</option>
+						<option value="Textiles & Apparel">Textiles & Apparel</option>
+						<option value="Electronics">Electronics</option>
+						<option value="Construction">Construction</option>
+						<option value="Consumer Goods">Consumer Goods</option>
+						<option value="Chemicals">Chemicals</option>
+						<option value="Furniture & Home Goods">Furniture & Home Goods</option>
+						<option value="Aerospace">Aerospace</option>
+						<option value="Energy & Utilities">Energy & Utilities</option>
                     </select>
                     <x-backend.input-error field="license"></x-backend.input-error>
                 </div>

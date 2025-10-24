@@ -970,7 +970,7 @@
             border: 1px solid var(--input_border);
         }
         .page .warehouse-card .price-section {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         .page .warehouse-card .price-section .price-title {
             font-size: 16px;
@@ -992,6 +992,9 @@
             font-weight: 600;
             color: var(--light_black);
             font-size: 14px;
+        }
+        .page .warehouse-card .price-section .table th.second-column {
+            width: 180px;
         }
         .page .warehouse-card .price-section .table td {
             color: #6c757d;
@@ -1018,6 +1021,7 @@
         }
     /* #endregion */
 
+    
     /* #region: Warehouse review page */
         .page .content .quote-inputs {
             display: flex;
@@ -1114,6 +1118,9 @@
             font-weight: 600;
             color: var(--light_black);
             font-size: 14px;
+        }
+        .page .content .price-section .table th.second-column {
+            width: 250px;
         }
         .page .content .price-section .card .table td {
             color: #6c757d;

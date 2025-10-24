@@ -40,45 +40,37 @@
 
                 <div class="price-section">
                     <div class="accordion" id="accordion">
-                        <div class="accordion-item card">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button price-title" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Storage
-                                </button>
-                            </h2>
+                        @if($warehouse->storage_charges)
+                            <div class="accordion-item card">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button price-title" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Storage Charges
+                                    </button>
+                                </h2>
 
-                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordion">
-                                <div class="accordion-body">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>SERVICE</th>
-                                                <th>RATE</th>
-                                            </tr>
-                                        </thead>
+                                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordion">
+                                    <div class="accordion-body">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>NAME</th>
+                                                    <th class="second-column">PRICE</th>
+                                                </tr>
+                                            </thead>
 
-                                        <tbody>
-                                            <tr>
-                                                <td>Ambient Pallet | Feed Items | 18°-27°C</td>
-                                                <td>80 SAR / PALLET</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ambient Food Pallet</td>
-                                                <td>80 SAR / PALLET</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ambient Pallet | Cosmotology Goods | 18°-27°C</td>
-                                                <td>80 SAR / PALLET</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ambient Medical Supplies</td>
-                                                <td>80 SAR / PALLET</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                            <tbody>
+                                                @foreach(json_decode($warehouse->storage_charges) as $storage_charge)
+                                                    <tr>
+                                                        <td>{{ $storage_charge->name }}</td>
+                                                        <td>{{ $storage_charge->price }} SAR</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
 
                         <div class="accordion-item card">
                             <h2 class="accordion-header">
@@ -92,28 +84,18 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>SERVICE</th>
-                                                <th>RATE</th>
+                                                <th>NAME</th>
+                                                <th class="second-column">PRICE</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                            <tr>
-                                                <td>Ambient Pallet | Feed Items | 18°-27°C</td>
-                                                <td>80 SAR / PALLET</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ambient Food Pallet</td>
-                                                <td>80 SAR / PALLET</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ambient Pallet | Cosmotology Goods | 18°-27°C</td>
-                                                <td>80 SAR / PALLET</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ambient Medical Supplies</td>
-                                                <td>80 SAR / PALLET</td>
-                                            </tr>
+                                            @foreach(json_decode($warehouse->movement_services) as $movement_service)
+                                                <tr>
+                                                    <td>{{ $movement_service->name }}</td>
+                                                    <td>{{ $movement_service->price }} SAR</td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -132,28 +114,18 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>SERVICE</th>
-                                                <th>RATE</th>
+                                                <th>NAME</th>
+                                                <th class="second-column">PRICE</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                            <tr>
-                                                <td>Ambient Pallet | Feed Items | 18°-27°C</td>
-                                                <td>80 SAR / PALLET</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ambient Food Pallet</td>
-                                                <td>80 SAR / PALLET</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ambient Pallet | Cosmotology Goods | 18°-27°C</td>
-                                                <td>80 SAR / PALLET</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ambient Medical Supplies</td>
-                                                <td>80 SAR / PALLET</td>
-                                            </tr>
+                                            @foreach(json_decode($warehouse->pallet_services) as $pallet_service)
+                                                <tr>
+                                                    <td>{{ $pallet_service->name }}</td>
+                                                    <td>{{ $pallet_service->price }} SAR</td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

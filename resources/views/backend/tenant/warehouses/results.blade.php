@@ -131,51 +131,74 @@
 
                                 <hr class="my-4 line">
 
-                                <div class="price-section">
-                                    <p class="price-title">Storage Price</p>
+                                @if($warehouse->storage_charges)
+                                    <div class="price-section">
+                                        <p class="price-title">Storage Charges</p>
+                                    
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>NAME</th>
+                                                    <th class="second-column">PRICE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach(json_decode($warehouse->storage_charges) as $storage_charge)
+                                                    <tr>
+                                                        <td>{{ $storage_charge->name }}</td>
+                                                        <td>{{ $storage_charge->price }} SAR</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @endif
 
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>NAME</th>
-                                                <th>1-50</th>
-                                                <th>51-100</th>
-                                                <th>101-200</th>
-                                                <th>200+</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Ambient Pallet | Feed Items | 18°-27°C</td>
-                                                <td>80 SAR</td>
-                                                <td>80 SAR</td>
-                                                <td>80 SAR</td>
-                                                <td>Book A Call</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ambient Food Pallet</td>
-                                                <td>80 SAR</td>
-                                                <td>80 SAR</td>
-                                                <td>80 SAR</td>
-                                                <td>Book A Call</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ambient Pallet | Cosmotology Goods | 18°-27°C</td>
-                                                <td>80 SAR</td>
-                                                <td>80 SAR</td>
-                                                <td>80 SAR</td>
-                                                <td>Book A Call</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ambient Medical Supplies</td>
-                                                <td>80 SAR</td>
-                                                <td>80 SAR</td>
-                                                <td>80 SAR</td>
-                                                <td>Book A Call</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                @if($warehouse->movement_services)
+                                    <div class="price-section">
+                                        <p class="price-title">Movement Services</p>
+                                    
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>NAME</th>
+                                                    <th class="second-column">PRICE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach(json_decode($warehouse->movement_services) as $movement_service)
+                                                    <tr>
+                                                        <td>{{ $movement_service->name }}</td>
+                                                        <td>{{ $movement_service->price }} SAR</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @endif
+
+                                @if($warehouse->pallet_services)
+                                    <div class="price-section">
+                                        <p class="price-title">Pallet Services</p>
+                                    
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>NAME</th>
+                                                    <th class="second-column">PRICE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach(json_decode($warehouse->pallet_services) as $pallet_service)
+                                                    <tr>
+                                                        <td>{{ $pallet_service->name }}</td>
+                                                        <td>{{ $pallet_service->price }} SAR</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @endif
 
                                 <a href="{{ route('tenant.warehouses.review', $warehouse) }}" class="quote-btn">Get an Instant Quote</a>
                             </div>
