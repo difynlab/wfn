@@ -388,6 +388,51 @@
                     <x-backend.input-error field="new_licenses.*"></x-backend.input-error>
                 </div>
 
+                <div class="col-12 mb-3 mb-md-4">
+                    <div class="row align-items-center">
+                        <div class="col-6 col-md-9">
+                            <label class="form-label label add-label">Storage Charges</label>
+                        </div>
+
+                        <div class="col-6 col-md-3 text-end">
+                            <button type="button" class="add-row-button add-storage-charges">
+                                <i class="bi bi-plus-lg"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 mb-3 mb-md-4">
+                    <div class="row align-items-center">
+                        <div class="col-6 col-md-9">
+                            <label class="form-label label add-label">Movement Services</label>
+                        </div>
+
+                        <div class="col-6 col-md-3 text-end">
+                            <button type="button" class="add-row-button add-movement-services">
+                                <i class="bi bi-plus-lg"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 mb-3 mb-md-4">
+                    <div class="row align-items-center">
+                        <div class="col-6 col-md-9">
+                            <label class="form-label label add-label">Pallet Services</label>
+                        </div>
+
+                        <div class="col-6 col-md-3 text-end">
+                            <button type="button" class="add-row-button add-pallet-services">
+                                <i class="bi bi-plus-lg"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <x-backend.create></x-backend.create>
                 <x-backend.notification></x-backend.notification>
             </div>
@@ -520,6 +565,81 @@
 
                                 <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="detail_descriptions_ar[]" placeholder="Description" required>
+                                </div>
+
+                                <div class="col-12 col-md-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
+        });
+
+        $('.add-storage-charges').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <select class="form-select input-field" name="storage_charge_types[]" required>
+                                        <option value="">Select Type</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <input type="text" class="form-control input-field" name="storage_charge_price[]" placeholder="Price" required>
+                                </div>
+
+                                <div class="col-12 col-md-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
+        });
+
+        $('.add-movement-services').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <select class="form-select input-field" name="movement_services[]" required>
+                                        <option value="">Select Type</option>
+                                        <option value="Pallet/SqM Inbound Charges">Pallet/SqM Inbound Charges</option>
+                                        <option value="Pallet/SqM Outbound Charges">Pallet/SqM Outbound Charges</option>
+                                        <option value="Case Handling Charges">Case Handling Charges</option>
+                                        <option value="Item / Unit Handling Charges">Item / Unit Handling Charges</option>
+                                        <option value="Loose Container Unloading">Loose Container Unloading</option>
+                                        <option value="Loose Container Unloading">Loose Container Unloading</option>
+                                        <option value="Loose Container Unloading">Loose Container Unloading</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <input type="text" class="form-control input-field" name="movement_services_price[]" placeholder="Price" required>
+                                </div>
+
+                                <div class="col-12 col-md-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
+        });
+
+        $('.add-pallet-services').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <select class="form-select input-field" name="pallet_services[]" required>
+                                        <option value="">Select Type</option>
+                                        <option value="Wooden Pallet Supply">Wooden Pallet Supply</option>
+                                        <option value="Palletization">Palletization</option>
+                                        <option value="Segregation">Segregation</option>
+                                        <option value="Additional Shrink Wrap">Additional Shrink Wrap</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <input type="text" class="form-control input-field" name="pallet_services_price[]" placeholder="Price" required>
                                 </div>
 
                                 <div class="col-12 col-md-1 d-flex align-items-center">
