@@ -74,7 +74,7 @@
                     <label for="user_id" class="form-label label">Landlord<span class="asterisk">*</span></label>
                     <select class="form-select input-field js-single" id="user_id" name="user_id" required>
                         <option value="">Select landlord</option>
-                        <option value="1">Admin</option>
+                        <option value="1" {{ old('user_id', $warehouse->user_id) == 1 ? 'selected' : '' }}>Admin</option>
                         @foreach($users as $user)
                             <option value="{{ $user->id }}" {{ old('user_id', $warehouse->user_id) == $user->id ? 'selected' : '' }}>{{ $user->first_name }} {{ $user->last_name }}</option>
                         @endforeach
@@ -489,6 +489,120 @@
                     <x-backend.input-error field="new_licenses.*"></x-backend.input-error>
                 </div>
 
+                <div class="col-12 mb-3 mb-md-4">
+                    <div class="row align-items-center">
+                        <div class="col-6 col-md-9">
+                            <label class="form-label label add-label">Storage Charges</label>
+                        </div>
+
+                        <div class="col-6 col-md-3 text-end">
+                            <button type="button" class="add-row-button add-storage-charges">
+                                <i class="bi bi-plus-lg"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+
+                    @if($warehouse->storage_charges)
+                        @foreach(json_decode($warehouse->storage_charges) as $storage_charge)
+                            <div class="row single-item mt-3 mt-md-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <select class="form-select input-field" name="storage_charge_names[]" required>
+                                        <option value="">Select</option>
+                                        <option value="A" {{ $storage_charge->name == 'A' ? 'selected' : '' }}>A</option>
+                                        <option value="B" {{ $storage_charge->name == 'B' ? 'selected' : '' }}>B</option>
+                                        <option value="C" {{ $storage_charge->name == 'C' ? 'selected' : '' }}>C</option>
+                                        <option value="D" {{ $storage_charge->name == 'D' ? 'selected' : '' }}>D</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <input type="text" class="form-control input-field" name="storage_charge_prices[]" value="{{ $storage_charge->price }}" placeholder="Price" required>
+                                </div>
+                                <div class="col-12 col-md-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+
+                <div class="col-12 mb-3 mb-md-4">
+                    <div class="row align-items-center">
+                        <div class="col-6 col-md-9">
+                            <label class="form-label label add-label">Movement Services</label>
+                        </div>
+
+                        <div class="col-6 col-md-3 text-end">
+                            <button type="button" class="add-row-button add-movement-services">
+                                <i class="bi bi-plus-lg"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+
+                    @if($warehouse->movement_services)
+                        @foreach(json_decode($warehouse->movement_services) as $movement_service)
+                            <div class="row single-item mt-3 mt-md-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <select class="form-select input-field" name="movement_service_names[]" required>
+                                        <option value="">Select</option>
+                                        <option value="Pallet/SqM Inbound Charges" {{ $movement_service->name == 'Pallet/SqM Inbound Charges' ? 'selected' : '' }}>Pallet/SqM Inbound Charges</option>
+                                        <option value="Pallet/SqM Outbound Charges" {{ $movement_service->name == 'Pallet/SqM Outbound Charges' ? 'selected' : '' }}>Pallet/SqM Outbound Charges</option>
+                                        <option value="Case Handling Charges" {{ $movement_service->name == 'Case Handling Charges' ? 'selected' : '' }}>Case Handling Charges</option>
+                                        <option value="Item/ Unit Handling Charges" {{ $movement_service->name == 'Item/ Unit Handling Charges' ? 'selected' : '' }}>Item/ Unit Handling Charges</option>
+                                        <option value="Loose Container Unloading - Per 4-ton diyanna" {{ $movement_service->name == 'Loose Container Unloading - Per 4-ton diyanna' ? 'selected' : '' }}>Loose Container Unloading - Per 4-ton diyanna</option>
+                                        <option value="Loose Container Unloading - Per 20ft" {{ $movement_service->name == 'Loose Container Unloading - Per 20ft' ? 'selected' : '' }}>Loose Container Unloading - Per 20ft</option>
+                                        <option value="Loose Container Unloading - Per 40ft" {{ $movement_service->name == 'Loose Container Unloading - Per 40ft' ? 'selected' : '' }}>Loose Container Unloading - Per 40ft</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <input type="text" class="form-control input-field" name="movement_service_prices[]" value="{{ $movement_service->price }}" placeholder="Price" required>
+                                </div>
+                                <div class="col-12 col-md-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+
+                <div class="col-12 mb-3 mb-md-4">
+                    <div class="row align-items-center">
+                        <div class="col-6 col-md-9">
+                            <label class="form-label label add-label">Pallet Services</label>
+                        </div>
+
+                        <div class="col-6 col-md-3 text-end">
+                            <button type="button" class="add-row-button add-pallet-services">
+                                <i class="bi bi-plus-lg"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+
+                    @if($warehouse->pallet_services)
+                        @foreach(json_decode($warehouse->pallet_services) as $pallet_service)
+                            <div class="row single-item mt-3 mt-md-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <select class="form-select input-field" name="pallet_service_names[]" required>
+                                        <option value="">Select</option>
+                                        <option value="Wooden Pallet Supply" {{ $pallet_service->name == 'Wooden Pallet Supply' ? 'selected' : '' }}>Wooden Pallet Supply</option>
+                                        <option value="Palletization" {{ $pallet_service->name == 'Palletization' ? 'selected' : '' }}>Palletization</option>
+                                        <option value="Segregation" {{ $pallet_service->name == 'Segregation' ? 'selected' : '' }}>Segregation</option>
+                                        <option value="Additional Shrink Wrap" {{ $pallet_service->name == 'Additional Shrink Wrap' ? 'selected' : '' }}>Additional Shrink Wrap</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <input type="text" class="form-control input-field" name="pallet_service_prices[]" value="{{ $pallet_service->price }}" placeholder="Price" required>
+                                </div>
+                                <div class="col-12 col-md-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+
                 <x-backend.edit :data="$warehouse"></x-backend.edit>
                 <x-backend.notification></x-backend.notification>
             </div>
@@ -625,6 +739,81 @@
 
                                 <div class="col-12 col-md mb-1 mb-md-0">
                                     <input type="text" class="form-control input-field" name="detail_descriptions_ar[]" placeholder="Description" required>
+                                </div>
+
+                                <div class="col-12 col-md-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
+        });
+
+        $('.add-storage-charges').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <select class="form-select input-field" name="storage_charge_names[]" required>
+                                        <option value="">Select</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <input type="text" class="form-control input-field" name="storage_charge_prices[]" placeholder="Price" required>
+                                </div>
+
+                                <div class="col-12 col-md-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
+        });
+
+        $('.add-movement-services').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <select class="form-select input-field" name="movement_service_names[]" required>
+                                        <option value="">Select</option>
+                                        <option value="Pallet/SqM Inbound Charges">Pallet/SqM Inbound Charges</option>
+                                        <option value="Pallet/SqM Outbound Charges">Pallet/SqM Outbound Charges</option>
+                                        <option value="Case Handling Charges">Case Handling Charges</option>
+                                        <option value="Item/ Unit Handling Charges">Item/ Unit Handling Charges</option>
+                                        <option value="Loose Container Unloading - Per 4-ton diyanna">Loose Container Unloading - Per 4-ton diyanna</option>
+                                        <option value="Loose Container Unloading - Per 20ft">Loose Container Unloading - Per 20ft</option>
+                                        <option value="Loose Container Unloading - Per 40ft">Loose Container Unloading - Per 40ft</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <input type="text" class="form-control input-field" name="movement_service_prices[]" placeholder="Price" required>
+                                </div>
+
+                                <div class="col-12 col-md-1 d-flex align-items-center">
+                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>`;
+
+            $(this).closest('.row').parent().append(html);
+        });
+
+        $('.add-pallet-services').on('click', function() {
+            let html = `<div class="row single-item mt-2">
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <select class="form-select input-field" name="pallet_service_names[]" required>
+                                        <option value="">Select</option>
+                                        <option value="Wooden Pallet Supply">Wooden Pallet Supply</option>
+                                        <option value="Palletization">Palletization</option>
+                                        <option value="Segregation">Segregation</option>
+                                        <option value="Additional Shrink Wrap">Additional Shrink Wrap</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12 col-md mb-1 mb-md-0">
+                                    <input type="text" class="form-control input-field" name="pallet_service_prices[]" placeholder="Price" required>
                                 </div>
 
                                 <div class="col-12 col-md-1 d-flex align-items-center">

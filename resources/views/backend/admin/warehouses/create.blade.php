@@ -578,8 +578,8 @@
         $('.add-storage-charges').on('click', function() {
             let html = `<div class="row single-item mt-2">
                                 <div class="col-12 col-md mb-1 mb-md-0">
-                                    <select class="form-select input-field" name="storage_charge_types[]" required>
-                                        <option value="">Select Type</option>
+                                    <select class="form-select input-field" name="storage_charge_names[]" required>
+                                        <option value="">Select</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
                                         <option value="C">C</option>
@@ -588,7 +588,7 @@
                                 </div>
 
                                 <div class="col-12 col-md mb-1 mb-md-0">
-                                    <input type="text" class="form-control input-field" name="storage_charge_price[]" placeholder="Price" required>
+                                    <input type="text" class="form-control input-field" name="storage_charge_prices[]" placeholder="Price" required>
                                 </div>
 
                                 <div class="col-12 col-md-1 d-flex align-items-center">
@@ -602,20 +602,20 @@
         $('.add-movement-services').on('click', function() {
             let html = `<div class="row single-item mt-2">
                                 <div class="col-12 col-md mb-1 mb-md-0">
-                                    <select class="form-select input-field" name="movement_services[]" required>
-                                        <option value="">Select Type</option>
+                                    <select class="form-select input-field" name="movement_service_names[]" required>
+                                        <option value="">Select</option>
                                         <option value="Pallet/SqM Inbound Charges">Pallet/SqM Inbound Charges</option>
                                         <option value="Pallet/SqM Outbound Charges">Pallet/SqM Outbound Charges</option>
                                         <option value="Case Handling Charges">Case Handling Charges</option>
-                                        <option value="Item / Unit Handling Charges">Item / Unit Handling Charges</option>
-                                        <option value="Loose Container Unloading">Loose Container Unloading</option>
-                                        <option value="Loose Container Unloading">Loose Container Unloading</option>
-                                        <option value="Loose Container Unloading">Loose Container Unloading</option>
+                                        <option value="Item/ Unit Handling Charges">Item/ Unit Handling Charges</option>
+                                        <option value="Loose Container Unloading - Per 4-ton diyanna">Loose Container Unloading - Per 4-ton diyanna</option>
+                                        <option value="Loose Container Unloading - Per 20ft">Loose Container Unloading - Per 20ft</option>
+                                        <option value="Loose Container Unloading - Per 40ft">Loose Container Unloading - Per 40ft</option>
                                     </select>
                                 </div>
 
                                 <div class="col-12 col-md mb-1 mb-md-0">
-                                    <input type="text" class="form-control input-field" name="movement_services_price[]" placeholder="Price" required>
+                                    <input type="text" class="form-control input-field" name="movement_service_prices[]" placeholder="Price" required>
                                 </div>
 
                                 <div class="col-12 col-md-1 d-flex align-items-center">
@@ -629,8 +629,8 @@
         $('.add-pallet-services').on('click', function() {
             let html = `<div class="row single-item mt-2">
                                 <div class="col-12 col-md mb-1 mb-md-0">
-                                    <select class="form-select input-field" name="pallet_services[]" required>
-                                        <option value="">Select Type</option>
+                                    <select class="form-select input-field" name="pallet_service_names[]" required>
+                                        <option value="">Select</option>
                                         <option value="Wooden Pallet Supply">Wooden Pallet Supply</option>
                                         <option value="Palletization">Palletization</option>
                                         <option value="Segregation">Segregation</option>
@@ -639,7 +639,7 @@
                                 </div>
 
                                 <div class="col-12 col-md mb-1 mb-md-0">
-                                    <input type="text" class="form-control input-field" name="pallet_services_price[]" placeholder="Price" required>
+                                    <input type="text" class="form-control input-field" name="pallet_service_prices[]" placeholder="Price" required>
                                 </div>
 
                                 <div class="col-12 col-md-1 d-flex align-items-center">

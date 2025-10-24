@@ -268,6 +268,45 @@ class WarehouseController extends Controller
             $details_ar = $details_ar ? json_encode($details_ar) : null;
         // Details AR
 
+        // Storage Charges
+            $storage_charges = [];
+            if($request->storage_charge_names) {
+                foreach($request->storage_charge_names as $key => $storage_charge_name) {
+                    array_push($storage_charges, [
+                        'name' => $storage_charge_name,
+                        'price' => $request->storage_charge_prices[$key] ?? null
+                    ]);
+                }
+            }
+            $storage_charges = $storage_charges ? json_encode($storage_charges) : null;
+        // Storage Charges
+
+        // Movement Services
+            $movement_services = [];
+            if($request->movement_service_names) {
+                foreach($request->movement_service_names as $key => $movement_service_name) {
+                    array_push($movement_services, [
+                        'name' => $movement_service_name,
+                        'price' => $request->movement_service_prices[$key] ?? null
+                    ]);
+                }
+            }
+            $movement_services = $movement_services ? json_encode($movement_services) : null;
+        // Movement Services
+
+        // Pallet Services
+            $pallet_services = [];
+            if($request->pallet_service_names) {
+                foreach($request->pallet_service_names as $key => $pallet_service_name) {
+                    array_push($pallet_services, [
+                        'name' => $pallet_service_name,
+                        'price' => $request->pallet_service_prices[$key] ?? null
+                    ]);
+                }
+            }
+            $pallet_services = $pallet_services ? json_encode($pallet_services) : null;
+        // Pallet Services
+
         $data = $request->except(
             'old_thumbnail',
             'new_thumbnail',
@@ -297,12 +336,12 @@ class WarehouseController extends Controller
             'detail_descriptions_en',
             'detail_titles_ar',
             'detail_descriptions_ar',
-            'storage_charge_types',
-            'storage_charge_price',
-            'movement_services',
-            'movement_services_price',
-            'pallet_services',
-            'pallet_services_price',
+            'storage_charge_names',
+            'storage_charge_prices',
+            'movement_service_names',
+            'movement_service_prices',
+            'pallet_service_names',
+            'pallet_service_prices',
         );
         $data['thumbnail'] = $thumbnail_name;
         $data['outside_image'] = $outside_image_name;
@@ -318,46 +357,6 @@ class WarehouseController extends Controller
         $data['amenities_ar'] = $amenities_ar;
         $data['details_en'] = $details_en;
         $data['details_ar'] = $details_ar;
-
-        // Storage Charges
-            $storage_charges = [];
-            if($request->storage_charge_types) {
-                foreach($request->storage_charge_types as $key => $type) {
-                    array_push($storage_charges, [
-                        'name' => $type,
-                        'price' => $request->storage_charge_price[$key] ?? null
-                    ]);
-                }
-            }
-            $storage_charges = $storage_charges ? json_encode($storage_charges) : null;
-        // Storage Charges
-
-        // Movement Services
-            $movement_services = [];
-            if($request->movement_services) {
-                foreach($request->movement_services as $key => $service) {
-                    array_push($movement_services, [
-                        'name' => $service,
-                        'price' => $request->movement_services_price[$key] ?? null
-                    ]);
-                }
-            }
-            $movement_services = $movement_services ? json_encode($movement_services) : null;
-        // Movement Services
-
-        // Pallet Services
-            $pallet_services = [];
-            if($request->pallet_services) {
-                foreach($request->pallet_services as $key => $service) {
-                    array_push($pallet_services, [
-                        'name' => $service,
-                        'price' => $request->pallet_services_price[$key] ?? null
-                    ]);
-                }
-            }
-            $pallet_services = $pallet_services ? json_encode($pallet_services) : null;
-        // Pallet Services
-
         $data['storage_charges'] = $storage_charges;
         $data['movement_services'] = $movement_services;
         $data['pallet_services'] = $pallet_services;
@@ -663,6 +662,45 @@ class WarehouseController extends Controller
             $details_ar = $details_ar ? json_encode($details_ar) : null;
         // Details AR
 
+        // Storage Charges
+            $storage_charges = [];
+            if($request->storage_charge_names) {
+                foreach($request->storage_charge_names as $key => $storage_charge_name) {
+                    array_push($storage_charges, [
+                        'name' => $storage_charge_name,
+                        'price' => $request->storage_charge_prices[$key] ?? null
+                    ]);
+                }
+            }
+            $storage_charges = $storage_charges ? json_encode($storage_charges) : null;
+        // Storage Charges
+
+        // Movement Services
+            $movement_services = [];
+            if($request->movement_service_names) {
+                foreach($request->movement_service_names as $key => $movement_service_name) {
+                    array_push($movement_services, [
+                        'name' => $movement_service_name,
+                        'price' => $request->movement_service_prices[$key] ?? null
+                    ]);
+                }
+            }
+            $movement_services = $movement_services ? json_encode($movement_services) : null;
+        // Movement Services
+
+        // Pallet Services
+            $pallet_services = [];
+            if($request->pallet_service_names) {
+                foreach($request->pallet_service_names as $key => $pallet_service_name) {
+                    array_push($pallet_services, [
+                        'name' => $pallet_service_name,
+                        'price' => $request->pallet_service_prices[$key] ?? null
+                    ]);
+                }
+            }
+            $pallet_services = $pallet_services ? json_encode($pallet_services) : null;
+        // Pallet Services
+
         $data = $request->except(
             'old_thumbnail',
             'new_thumbnail',
@@ -692,6 +730,12 @@ class WarehouseController extends Controller
             'detail_descriptions_en',
             'detail_titles_ar',
             'detail_descriptions_ar',
+            'storage_charge_names',
+            'storage_charge_prices',
+            'movement_service_names',
+            'movement_service_prices',
+            'pallet_service_names',
+            'pallet_service_prices',
         );
 
         $data['thumbnail'] = $thumbnail_name;
@@ -708,6 +752,9 @@ class WarehouseController extends Controller
         $data['amenities_ar'] = $amenities_ar;
         $data['details_en'] = $details_en;
         $data['details_ar'] = $details_ar;
+        $data['storage_charges'] = $storage_charges;
+        $data['movement_services'] = $movement_services;
+        $data['pallet_services'] = $pallet_services;
         $warehouse->fill($data)->save();
         
         return redirect()->back()->with([
