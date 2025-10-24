@@ -12,164 +12,178 @@
 		</div>
 
         <div class="content">
-            <div class="quote-inputs">
-                <div class="input-container">
-                    <label class="form-label">No of Pallets</label>
-                    <div class="number-controls">
-                        <button type="button" class="btn-minus btn-pallet-minus">-</button>
-                        <p id="pallets" class="number-input">{{ session('number_of_pallets') ?? 0 }}</p>
-                        <input type="hidden" id="pallets-input" value="{{ session('number_of_pallets') ?? 0 }}">
-                        <button type="button" class="btn-plus btn-pallet-plus">+</button>
-                    </div>
-                </div>
-
-                <div class="separator"></div>
-
-                <div class="input-container">
-                    <label class="form-label">No of SqM</label>
-                    <div class="number-controls">
-                        <button type="button" class="btn-minus btn-sqm-minus">-</button>
-                        <p id="sqm" class="number-input">{{ session('square_meters') ?? 0 }}</p>
-                        <input type="hidden" id="sqm-input" value="{{ session('square_meters') ?? 0 }}">
-                        <button type="button" class="btn-plus btn-sqm-plus">+</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="price-section">
-                <div class="accordion" id="accordion">
-                    <div class="accordion-item card">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button price-title" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Storage
-                            </button>
-                        </h2>
-
-                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordion">
-                            <div class="accordion-body">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>SERVICE</th>
-                                            <th>RATE</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <tr>
-                                            <td>Ambient Pallet | Feed Items | 18°-27°C</td>
-                                            <td>80 SAR / PALLET</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ambient Food Pallet</td>
-                                            <td>80 SAR / PALLET</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ambient Pallet | Cosmotology Goods | 18°-27°C</td>
-                                            <td>80 SAR / PALLET</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ambient Medical Supplies</td>
-                                            <td>80 SAR / PALLET</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+            <form action="{{ route('tenant.warehouses.booking') }}" method="POST" class="form">
+                @csrf
+                <div class="quote-inputs">
+                    <div class="input-container">
+                        <label class="form-label">No of Pallets</label>
+                        <div class="number-controls">
+                            <button type="button" class="btn-minus btn-pallet-minus">-</button>
+                            <p id="pallets" class="number-input">{{ session('no_of_pallets') ?? 0 }}</p>
+                            <input type="hidden" id="pallets-input" name="no_of_pallets" value="{{ session('no_of_pallets') ?? 0 }}">
+                            <button type="button" class="btn-plus btn-pallet-plus">+</button>
                         </div>
                     </div>
 
-                    <div class="accordion-item card">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button price-title" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Movement Services
-                            </button>
-                        </h2>
+                    <div class="separator"></div>
 
-                        <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>SERVICE</th>
-                                            <th>RATE</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <tr>
-                                            <td>Ambient Pallet | Feed Items | 18°-27°C</td>
-                                            <td>80 SAR / PALLET</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ambient Food Pallet</td>
-                                            <td>80 SAR / PALLET</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ambient Pallet | Cosmotology Goods | 18°-27°C</td>
-                                            <td>80 SAR / PALLET</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ambient Medical Supplies</td>
-                                            <td>80 SAR / PALLET</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                    <div class="input-container">
+                        <label class="form-label">No of SqM</label>
+                        <div class="number-controls">
+                            <button type="button" class="btn-minus btn-sqm-minus">-</button>
+                            <p id="sqm" class="number-input">{{ session('square_meters') ?? 0 }}</p>
+                            <input type="hidden" id="sqm-input" name="square_meters" value="{{ session('square_meters') ?? 0 }}">
+                            <button type="button" class="btn-plus btn-sqm-plus">+</button>
                         </div>
                     </div>
+                </div>
 
-                    <div class="accordion-item card">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button price-title" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Pallet Services
-                            </button>
-                        </h2>
+                <div class="price-section">
+                    <div class="accordion" id="accordion">
+                        <div class="accordion-item card">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button price-title" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Storage
+                                </button>
+                            </h2>
 
-                        <div id="collapseThree" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>SERVICE</th>
-                                            <th>RATE</th>
-                                        </tr>
-                                    </thead>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordion">
+                                <div class="accordion-body">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>SERVICE</th>
+                                                <th>RATE</th>
+                                            </tr>
+                                        </thead>
 
-                                    <tbody>
-                                        <tr>
-                                            <td>Ambient Pallet | Feed Items | 18°-27°C</td>
-                                            <td>80 SAR / PALLET</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ambient Food Pallet</td>
-                                            <td>80 SAR / PALLET</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ambient Pallet | Cosmotology Goods | 18°-27°C</td>
-                                            <td>80 SAR / PALLET</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ambient Medical Supplies</td>
-                                            <td>80 SAR / PALLET</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                        <tbody>
+                                            <tr>
+                                                <td>Ambient Pallet | Feed Items | 18°-27°C</td>
+                                                <td>80 SAR / PALLET</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ambient Food Pallet</td>
+                                                <td>80 SAR / PALLET</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ambient Pallet | Cosmotology Goods | 18°-27°C</td>
+                                                <td>80 SAR / PALLET</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ambient Medical Supplies</td>
+                                                <td>80 SAR / PALLET</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item card">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button price-title" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Movement Services
+                                </button>
+                            </h2>
+
+                            <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>SERVICE</th>
+                                                <th>RATE</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr>
+                                                <td>Ambient Pallet | Feed Items | 18°-27°C</td>
+                                                <td>80 SAR / PALLET</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ambient Food Pallet</td>
+                                                <td>80 SAR / PALLET</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ambient Pallet | Cosmotology Goods | 18°-27°C</td>
+                                                <td>80 SAR / PALLET</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ambient Medical Supplies</td>
+                                                <td>80 SAR / PALLET</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item card">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button price-title" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Pallet Services
+                                </button>
+                            </h2>
+
+                            <div id="collapseThree" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>SERVICE</th>
+                                                <th>RATE</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr>
+                                                <td>Ambient Pallet | Feed Items | 18°-27°C</td>
+                                                <td>80 SAR / PALLET</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ambient Food Pallet</td>
+                                                <td>80 SAR / PALLET</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ambient Pallet | Cosmotology Goods | 18°-27°C</td>
+                                                <td>80 SAR / PALLET</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ambient Medical Supplies</td>
+                                                <td>80 SAR / PALLET</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="action-buttons">
-                <button type="button" class="btn-cancel">Cancel</button>
-                <button type="button" class="btn-approve">Approve Quote</button>
-                <button type="button" class="btn-save">Save Changes</button>
-            </div>
+                <div class="action-buttons">
+                    <a href="{{ route('tenant.warehouses.cancel') }}" class="btn-cancel">Cancel</a>
+                    <input type="hidden" name="warehouse_id" value="{{ $warehouse->id }}">
+                    <input type="hidden" name="recaptcha_token" id="recaptcha_token">
+                    <x-backend.input-error field="recaptcha_token"></x-backend.input-error>
+                    <button type="submit" class="btn-approve">Approve Quote</button>
+                    <!-- <button type="button" class="btn-save">Save Changes</button> -->
+                </div>
+            </form>
         </div>
+
+        <x-backend.notification></x-backend.notification>
     </div>
 @endsection
 
 @push('after-scripts')
+    <script src="{{ asset('backend/js/recaptcha.js') }}"></script>
+
+    <script>
+        window.recaptchaAction = 'booking';
+    </script>
+
     <script>
         $('.btn-pallet-plus').on('click', function() {
             let value = $('#pallets-input').val();

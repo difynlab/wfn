@@ -287,7 +287,7 @@
 
                                         <input type="hidden" name="warehouse_id" value="{{ $warehouse->id }}">
                                         <input type="hidden" name="recaptcha_token" id="recaptcha_token">
-                                        <x-backend.input-error field="recaptcha_token"></x-backend.input-error>
+                                        <x-frontend.input-error field="recaptcha_token"></x-frontend.input-error>
                                         <button type="submit" class="confirm-button">{{ $contents->{'inner_page_modal_button_' . $middleware_language} ?? $contents->inner_page_modal_button_en }}</button>
                                     </form>
                                 </div>

@@ -32,8 +32,8 @@
 					<div class="tab-pane fade show active" id="warehouses-tab-pane" role="tabpanel" aria-labelledby="warehouses-tab" tabindex="0">
 						<div class="box">
 							<img src="{{ asset('storage/frontend/test_w.png') }}" alt="No Warehouses" class="box-image">
-							<p class="box-title">No warehouses yet</p>
-							<p class="box-description">Request and approve a quote then come back to view and manage your warehouse.</p>
+							<p class="box-title">{{ $success_title ?? $title  }}</p>
+							<p class="box-description">{{ $success_description ?? $description }}</p>
 							<a class="box-button popup-open-button">
 								<i class="bi bi-envelope"></i>
 								Request a Quote
@@ -91,6 +91,8 @@
 				</div>
 			</div>
 		</div>
+
+		<x-backend.notification></x-backend.notification>
 	</div>
 
 	<div class="warehouse-popup">
@@ -132,7 +134,7 @@
 				<div class="form-group">
 					<label class="form-label" for="licensing">Licensing <span class="optional">(Optional)</span></label>
 					<select class="form-control input-field" id="licensing" name="licensing" >
-						<option value="">Choose</option>
+						<option value="all">Choose</option>
 						<option value="retail">Retail</option>
 						<option value="ecommerce">E-commerce</option>
 						<option value="manufacturing">Manufacturing</option>
@@ -187,44 +189,73 @@
 				</div>
 				
 				<div class="form-group number-of-pallets">
-					<label class="form-label" for="number_of_pallets">How many pallet positions do you expect to reserve?</label>
-					<input type="number" class="form-control input-field" id="number_of_pallets" name="number_of_pallets" placeholder="Number of pallets" min="0">
+					<label class="form-label" for="no_of_pallets">How many pallet positions do you expect to reserve?<span class="asterisk">*</span></label>
+					<input type="number" class="form-control input-field" id="no_of_pallets" name="no_of_pallets" placeholder="Number of pallets" min="0" required>
 				</div>
 
 				<div class="form-group square-meters d-none">
-					<label class="form-label" for="square_meters">How much sq.m do you expect to reserve?</label>
+					<label class="form-label" for="square_meters">How much sq.m do you expect to reserve?<span class="asterisk">*</span></label>
 					<input type="number" class="form-control input-field" id="square_meters" name="square_meters" placeholder="Sq.m" min="0">
 				</div>
 
 				<div class="row form-group">
 					<div class="col-6">
-						<label class="form-label" for="start_date">Start Date</label>
-						<input type="text" class="form-control input-field date-picker-field" id="start_date" name="start_date" value="{{ old('start_date') }}" required>
+						<label class="form-label" for="tenancy_date">Tenancy Date<span class="asterisk">*</span></label>
+						<input type="text" class="form-control input-field date-picker-field" id="tenancy_date" name="tenancy_date" value="{{ old('tenancy_date') }}" required>
 					</div>
 
 					<div class="col-6">
-						<label class="form-label" for="end_date">End Date</label>
-						<input type="text" class="form-control input-field date-picker-field" id="end_date" name="end_date" value="{{ old('end_date') }}" required>
+						<label class="form-label" for="renewal_date">Renewal Date<span class="asterisk">*</span></label>
+						<input type="text" class="form-control input-field date-picker-field" id="renewal_date" name="renewal_date" value="{{ old('renewal_date') }}" required>
 					</div>
 				</div>
 				
 				<div class="form-group buttons">
-					<button type="button" class="cancel-button">Cancel</button>
+					<button type="button" class="popup-cancel-button">Cancel</button>
 					<button type="submit" class="search-button">Search</button>
 				</div>
 			</form>
 		</div>
+
+		
 	</div>
 @endsection
 
 @push('after-scripts')
 	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+            const tenancyInput = document.getElementById('tenancy_date');
+            const renewalInput = document.getElementById('renewal_date');
+
+            setTimeout(() => {
+                tenancyInput.removeAttribute('readonly');
+                renewalInput.removeAttribute('readonly');
+            }, 100);
+
+            tenancyInput.addEventListener('keydown', function (e) {
+                e.preventDefault();
+            });
+            renewalInput.addEventListener('keydown', function (e) {
+                e.preventDefault();
+            });
+        });
+
+        $('#tenure_start').on('change', function() {
+            let value = $(this).val()
+            $('#tenancy_date').val(value);
+        });
+
+        $('#tenure_end').on('change', function() {
+            let value = $(this).val()
+            $('#renewal_date').val(value);
+        });
+
 		$('.popup-open-button').on('click', function() {
 			$('.warehouse-popup').toggleClass('active');
 			$('.popup-close').toggleClass('d-none');
 		})
 
-		$('.popup-close, .cancel-button').on('click', function() {
+		$('.popup-close, .popup-cancel-button').on('click', function() {
 			$('.warehouse-popup').toggleClass('active');
 			$('.popup-close').toggleClass('d-none');
 		})
@@ -240,13 +271,50 @@
 				$('.square-meters').addClass('d-none');
 
 				$('.square-meters').find('input').val('');
+				$('.square-meters').find('input').attr('required', false);
 			}
 			else {
 				$('.number-of-pallets').addClass('d-none');
 				$('.square-meters').removeClass('d-none');
 
 				$('.number-of-pallets').find('input').val('');
+				$('.number-of-pallets').find('input').attr('required', false);
 			}
 		})
+
+		$(document).ready(function() {
+            setMinRenewalDate();
+        });
+
+		$('#tenancy_date').on('change', function() {
+            setMinRenewalDate();
+        });
+
+        function setMinRenewalDate() {
+            const tenancyDate = document.getElementById('tenancy_date').value;
+            
+            if(tenancyDate) {
+                const dateParts = tenancyDate.split('-');
+                if(dateParts.length === 3) {
+                    const year = parseInt(dateParts[0], 10);
+                    const month = parseInt(dateParts[1], 10) - 1;
+                    const day = parseInt(dateParts[2], 10);
+                    const tenancyDateObj = new Date(year, month, day);
+                    
+                    tenancyDateObj.setMonth(tenancyDateObj.getMonth() + 1);
+                    const renewalDateInput = document.getElementById('renewal_date');
+                    var datePicker = renewalDateInput.DatePickerX;
+                    datePicker.remove();
+
+                    renewalDateInput.DatePickerX.init({
+                        format: 'yyyy-mm-dd',
+                        minDate: tenancyDateObj,
+                    });
+
+                    renewalDateInput.DatePickerX.setValue(tenancyDateObj);
+                    renewalDateInput.setAttribute('min', tenancyDateObj.toISOString().split('T')[0]);
+                }
+        	}
+        }
 	</script>
 @endpush

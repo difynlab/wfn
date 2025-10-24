@@ -822,7 +822,7 @@
             gap: 10px;
             justify-content: end;
         }
-        .warehouse-popup .buttons .cancel-button {
+        .warehouse-popup .buttons .popup-cancel-button {
             border: 1px solid var(--light_black);
             color: var(--light_black);
             background-color: transparent;

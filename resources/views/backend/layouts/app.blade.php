@@ -31,6 +31,10 @@
         </div>
     
         @stack('before-scripts')
+            <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>
+            <script>
+                window.siteKey = '{{ config('services.recaptcha.site_key') }}';
+            </script>
             <script src="{{ asset('backend/js/jquery.js') }}"></script>
             <script src="{{ asset('backend/js/bootstrap.js') }}"></script>
             <script src="{{ asset('backend/js/froala.js') }}"></script>

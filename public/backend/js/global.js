@@ -62,7 +62,8 @@ $(document).ready(function() {
 
         dateInputs.forEach(input => {
             input.DatePickerX.init({
-                format: 'yyyy-mm-dd' // Ensure correct display and parsing format
+                format: 'yyyy-mm-dd',
+                minDate: new Date(),
             });
 
             if(input.value) {
@@ -77,15 +78,15 @@ $(document).ready(function() {
                 }
             }
 
-            input.addEventListener('click', function () {
-                setTimeout(() => {
-                    const picker = document.querySelector('.date-picker-x.active');
-                    if(picker) {
-                        picker.classList.remove('to-top');
-                        picker.classList.add('to-bottom');
-                    }
-                }, 0);
-            });
+            // input.addEventListener('click', function () {
+            //     setTimeout(() => {
+            //         const picker = document.querySelector('.date-picker-x.active');
+            //         if(picker) {
+            //             picker.classList.remove('to-top');
+            //             picker.classList.add('to-bottom');
+            //         }
+            //     }, 0);
+            // });
         });
     });
 // Date picker X

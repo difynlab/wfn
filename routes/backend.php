@@ -359,6 +359,8 @@ require __DIR__.'/auth/backend.php';
                 Route::get('/', 'index')->name('index');
                 Route::get('filter', 'filter')->name('filter');
                 Route::get('review/{warehouse}', 'review')->name('review');
+                Route::get('cancel', 'cancel')->name('cancel');
+                Route::post('/', 'booking')->name('booking');
             });
         // Warehouses routes
 
