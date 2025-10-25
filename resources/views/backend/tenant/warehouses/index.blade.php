@@ -157,7 +157,7 @@
 					<label class="form-label">Warehouse Type</label>
 					<div class="storage-option active" value="pallet">
 						<div class="row">
-							<div class="col-9">
+							<div class="col-12 col-sm-9">
 								<p class="type-title">Pallets</p>
 								<ul class="type-points">
 									<li><strong>Pallet:</strong> The bottom base on which cartons/boxes are arranged.</li>
@@ -166,7 +166,7 @@
 								</ul>
 							</div>
 
-							<div class="col-3 text-end">
+							<div class="col-12 col-sm-3 text-end">
 								<img src="{{ asset('storage/frontend/test_s_popup.png') }}" alt="Pallets" class="type-image">
 							</div>
 						</div>
@@ -174,14 +174,14 @@
 
 					<div class="storage-option" value="free-space">
 						<div class="row">
-							<div class="col-9">
+							<div class="col-12 col-sm-9">
 								<p class="type-title">Free Space</p>
 								<ul class="type-points">
 									<li><strong>Floor area:</strong> is measured in square meters, with a height of 1.5m. It serves various purposes, particularly for accommodating heavy equipment or anything that cannot be placed on a pallet.</li>
 								</ul>
 							</div>
 
-							<div class="col-3 text-end">
+							<div class="col-12 col-sm-3 text-end">
 								<img src="{{ asset('storage/frontend/test_f_popup.png') }}" alt="Pallets" class="type-image">
 							</div>
 						</div>
