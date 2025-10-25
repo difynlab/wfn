@@ -13,7 +13,7 @@
 
         @if($warehouses->isNotEmpty())
             <div class="row mb-3 mb-md-4">
-                <div class="col-4">
+                <div class="col-5 col-lg-4">
                     @foreach($warehouses as $key => $warehouse)
                         <div class="single-warehouse {{ $key == 0 ? 'active' : '' }}" index="{{ $key }}">
                             <p class="name">
@@ -53,7 +53,7 @@
                     @endforeach
                 </div>
                 
-                <div class="col-8">
+                <div class="col-7 col-lg-8">
                     @foreach($warehouses as $key => $warehouse)
                         <div class="right-single-warehouse {{ $key != 0 ? 'd-none' : '' }}" id="{{ $key }}">
                             @php
@@ -108,7 +108,7 @@
 
                             <div class="warehouse-card">
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-12 col-lg-6 mb-4 mb-lg-0">
                                         <p class="warehouse-title">{{ $warehouse->name_en }}</p>
                                 
                                         <div class="warehouse-info">{!! $warehouse->description_en !!}</div>
@@ -116,20 +116,18 @@
                                         <p class="license-tag">{{ $warehouse->license }}</p>
                                     </div>
 
-                                    <div class="col-6">
+                                    <div class="col-12 col-lg-6">
                                         <div
                                             id="map-{{ $warehouse->id }}"
                                             class="warehouse-map"
                                             data-lat="{{ $warehouse->latitude }}"
                                             data-lng="{{ $warehouse->longitude }}"
-                                            data-title="{{ $warehouse->name_en }}"
-                                            style="width:100%;height:300px;border-radius:12px;overflow:hidden;"
-                                            >
+                                            data-title="{{ $warehouse->name_en }}">
                                         </div>
                                     </div>
                                 </div>
 
-                                <hr class="my-4 line">
+                                <hr class="my-3 my-md-4 line">
 
                                 @if($warehouse->storage_charges)
                                     <div class="price-section">

@@ -199,10 +199,10 @@
     @media (width <= 721px) {}
     @media (width <= 651px) {}
     @media (width <= 576px) {
-        /* .sidebar.active {
-            width: 0;
-        } */
         .sidebar.active {
+            width: 0;
+        }
+        .sidebar {
             width: 200px;
         }
     }

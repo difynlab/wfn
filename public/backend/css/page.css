@@ -969,7 +969,7 @@
             font-size: 13px;
             font-weight: 500;
         }
-        .page .warehouse-card #map {
+        .page .warehouse-card .warehouse-map {
             width: 100%;
             height: 300px;
             border-radius: 10px;
@@ -1188,7 +1188,13 @@
     @media (width <= 1801px) {}
     @media (width <= 1751px) {}
     @media (width <= 1681px) {}
-    @media (width <= 1601px) {}
+    @media (width <= 1601px) {
+        /* New styles */
+            .page .tab-content .box {
+                width: 50%;
+            }
+        /* New styles */
+    }
     @media (width <= 1537px) {
         .dashboard .single-box .text {
             font-size: 14px;
@@ -1196,9 +1202,6 @@
 
         .page .messages .top-row .icons {
             width: 15%;
-        }
-        .page .tab-content .box {
-            width: 50%;
         }
     }
     @media (width <= 1441px) {
@@ -1209,13 +1212,16 @@
             font-size: 13px;
         }
     }
-    @media (width <= 1367px) {}
+    @media (width <= 1367px) {
+        /* New styles */
+            .page .tab-content .box {
+                width: 65%;
+            }
+        /* New styles */
+    }
     @media (width <= 1301px) {
         .dashboard .single-box {
             padding: 5px;
-        }
-        .page .tab-content .box {
-            width: 55%;
         }
     }
     @media (width <= 1281px) {
@@ -1356,176 +1362,85 @@
             font-size: 20px;
         }
 
-        .page .nav-tabs {
-            height: 60px;
-            margin-bottom: 40px;
-        }
-        .page .nav-tabs .nav-item .nav-link {
-            height: 60px;
-            font-size: 14px;
-        }
-        .page .nav-tabs .nav-item .nav-link i {
-            font-size: 18px;
-            margin-right: 8px;
-        }
-        .page .tab-content .box {
-            width: 50%;
-            padding: 30px;
-        }
-        .page .tab-content .box .box-image {
-            width: 220px;
-            height: 120px;
-        }
-        .page .tab-content .box .box-title {
-            font-size: 20px;
-        }
-        .page .tab-content .box .box-description {
-            font-size: 14px;
-            margin-bottom: 20px!important;
-        }
-        .page .tab-content .box .box-button {
-            font-size: 13px;
-            width: 45%;
-        }
-        .page .tab-content .box .box-button i {
-            font-size: 16px;
-        }
+        /* New styles */
+            .page .nav-tabs {
+                height: 60px;
+                margin-bottom: 40px;
+            }
+            .page .nav-tabs .nav-item .nav-link {
+                height: 60px;
+                font-size: 15px;
+            }
+            .page .nav-tabs .nav-item .nav-link i {
+                font-size: 18px;
+                margin-right: 8px;
+            }
+            .page .tab-content .box .box-title {
+                font-size: 22px;
+            }
 
-        .warehouse-popup.active {
-            width: 70%;
-            padding: 25px;
-        }
-        .warehouse-popup .warehouse-popup-header .popup-title {
-            font-size: 20px;
-        }
-        .warehouse-popup .warehouse-popup-header .popup-description {
-            font-size: 14px;
-        }
-        .warehouse-popup .warehouse-popup-header .popup-close {
-            font-size: 22px;
-        }
-        .warehouse-popup .warehouse-popup-body .form-group {
-            margin-bottom: 25px;
-        }
-        .warehouse-popup .warehouse-popup-body .form-label {
-            font-size: 14px;
-        }
-        .warehouse-popup .warehouse-popup-body .input-field {
-            font-size: 14px;
-            height: 45px;
-        }
-        .warehouse-popup .storage-option {
-            padding: 25px;
-        }
-        .warehouse-popup .storage-option .type-title {
-            font-size: 20px;
-        }
-        .warehouse-popup .storage-option .type-points {
-            font-size: 14px;
-        }
-        .warehouse-popup .storage-option .type-image {
-            height: 150px;
-        }
-        .warehouse-popup .buttons {
-            font-size: 14px;
-        }
-        .warehouse-popup .buttons .popup-cancel-button, .warehouse-popup .buttons .search-button {
-            width: 110px;
-            height: 45px;
-        }
+            .warehouse-popup.active {
+                width: 70%;
+            }
+            .warehouse-popup .warehouse-popup-header {
+                margin-bottom: 20px;
+            }
+            .warehouse-popup .warehouse-popup-header .popup-title {
+                font-size: 22px;
+            }
+            .warehouse-popup .warehouse-popup-body .form-group {
+                margin-bottom: 25px;
+            }
+            .warehouse-popup .storage-option {
+                padding: 25px;
+            }
+            .warehouse-popup .storage-option .type-title {
+                font-size: 20px;
+            }
+            .warehouse-popup .storage-option .type-points {
+                font-size: 15px;
+            }
 
-        .page .single-warehouse {
-            padding: 15px;
-        }
-        .page .single-warehouse .name {
-            font-size: 16px;
-        }
-        .page .single-warehouse .description {
-            font-size: 13px;
-        }
-        .page .single-warehouse .details .detail {
-            font-size: 13px;
-        }
-        .page .single-warehouse .details .detail i {
-            font-size: 14px;
-        }
-        .page .swiper-card {
-            padding: 15px;
-        }
-        .page .swiper-card .swiper-resource {
-            height: 220px;
-        }
-        .page .warehouse-card {
-            padding: 15px;
-        }
-        .page .warehouse-card .warehouse-title {
-            font-size: 20px;
-        }
-        .page .warehouse-card .warehouse-info {
-            font-size: 13px;
-        }
-        .page .warehouse-card .license-tag {
-            font-size: 12px;
-            padding: 8px 12px;
-        }
-        .page .warehouse-card #map {
-            height: 250px;
-        }
-        .page .warehouse-card .price-section .price-title {
-            font-size: 14px;
-        }
-        .page .warehouse-card .price-section .table th, .page .warehouse-card .price-section .table td {
-            padding: 10px 6px;
-            font-size: 13px;
-        }
-        .page .warehouse-card .price-section .table th.second-column {
-            width: 160px;
-        }
-        .page .warehouse-card .quote-btn {
-            font-size: 14px;
-            padding: 12px 18px;
-        }
+            .page .single-warehouse .name {
+                font-size: 17px;
+                padding-bottom: 3px;
+            }
+            .page .warehouse-card .warehouse-title {
+                font-size: 20px;
+            }
 
-        .page .content .quote-inputs {
-            gap: 20px;
-        }
-        .page .content .quote-inputs .input-container .form-label {
-            font-size: 14px;
-        }
-        .page .content .quote-inputs .input-container .number-controls .btn-minus, .page .content .quote-inputs .input-container .number-controls .btn-plus {
-            font-size: 20px;
-            width: 40px;
-            height: 36px;
-        }
-        .page .content .quote-inputs .input-container .number-controls .number-input {
-            font-size: 18px;
-            margin: 0 20px;
-        }
-        .page .content .quote-inputs .separator {
-            height: 30px;
-            margin: 0 15px;
-        }
-        .page .content .price-section .card {
-            padding: 15px;
-        }
-        .page .content .price-section .card .accordion-button {
-            font-size: 18px;
-        }
-        .page .content .price-section .card .table th, .page .content .price-section .card .table td {
-            padding: 10px 6px;
-            font-size: 13px;
-        }
-        .page .content .price-section .table th.second-column {
-            width: 220px;
-        }
-        .page .content .action-buttons {
-            gap: 10px;
-            margin-top: 25px;
-        }
-        .page .content .action-buttons .btn-cancel, .page .content .action-buttons .btn-approve, .page .content .action-buttons .btn-save {
-            padding: 8px 15px;
-            font-size: 14px;
-        }
+            .page .content .quote-inputs {
+                gap: 20px;
+            }
+            .page .content .quote-inputs .input-container .form-label {
+                font-size: 15px;
+            }
+            .page .content .quote-inputs .input-container .number-controls .btn-minus, .page .content .quote-inputs .input-container .number-controls .btn-plus {
+                font-size: 20px;
+                width: 40px;
+                height: 36px;
+            }
+            .page .content .quote-inputs .input-container .number-controls .number-input {
+                font-size: 18px;
+                margin: 0 20px;
+            }
+            .page .content .quote-inputs .separator {
+                height: 30px;
+                margin: 0 15px;
+            }
+            .page .content .price-section .card {
+                padding: 15px;
+            }
+            .page .content .price-section .card .accordion-button {
+                font-size: 18px;
+            }
+            .page .content .price-section .table th.second-column {
+                width: 220px;
+            }
+            .page .content .action-buttons {
+                margin-top: 25px;
+            }
+        /* New styles */
     }
     @media (width < 1200px) {
         .dashboard .single-box {
@@ -1547,6 +1462,12 @@
         .page .filter-form .select2-container--default .select2-selection--single {
             width: 200px;
         }
+
+        /* New styles */
+            .page .tab-content .box {
+                width: 80%;
+            }
+        /* New styles */
     }
     @media (width <= 1025px) {
         .page .messages .single-message .message-content {
@@ -1561,6 +1482,31 @@
         .page .messages .single-message .message-content {
             font-size: 12px;
         }
+
+        /* New styles */
+            .page .tab-content .box .box-button {
+                width: 80%;
+            }
+
+            .warehouse-popup .storage-option .type-image {
+                height: 140px;
+            }
+
+            .page .warehouse-card .price-section .table th.second-column {
+                width: 100px;
+            }
+            .page .single-warehouse {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            .page .swiper-card {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            .page .warehouse-card {
+                padding: 10px;
+            }
+        /* New styles */
     }
     @media (width <= 845px) {
         .page .filter-form {
@@ -1608,13 +1554,11 @@
             font-size: 12px;
         }
 
-        .page .tab-content .box {
-            width: 80%;
-        }
-        .page .warehouse-card .warehouse-title {
-            font-size: 18px;
-        }
-
+        /* New styles */
+            .page .warehouse-card .warehouse-title {
+                font-size: 18px;
+            }
+        /* New styles */
     }
     @media (width <= 768px) {
         .page .title {
@@ -1673,195 +1617,150 @@
             font-size: 18px;
         }
 
-        .page .nav-tabs {
-            height: 50px;
-            margin-bottom: 30px;
-        }
-        .page .nav-tabs .nav-item .nav-link {
-            height: 50px;
-            font-size: 12px;
-        }
-        .page .nav-tabs .nav-item .nav-link i {
-            font-size: 16px;
-            margin-right: 6px;
-        }
-        .page .tab-content .box {
-            width: 70%;
-            padding: 25px;
-        }
-        .page .tab-content .box .box-image {
-            width: 180px;
-            height: 100px;
-        }
-        .page .tab-content .box .box-title {
-            font-size: 18px;
-        }
-        .page .tab-content .box .box-description {
-            font-size: 13px;
-            margin-bottom: 15px!important;
-        }
-        .page .tab-content .box .box-button {
-            font-size: 12px;
-            width: 50%;
-        }
-        .page .tab-content .box .box-button i {
-            font-size: 14px;
-        }
-        .warehouse-popup.active {
-            width: 73%;
-            padding: 20px;
-            z-index: 9;
-        }
-        .warehouse-popup .warehouse-popup-header .popup-title {
-            font-size: 18px;
-        }
-        .warehouse-popup .warehouse-popup-header .popup-description {
-            font-size: 13px;
-        }
-        .warehouse-popup .warehouse-popup-header .popup-close {
-            font-size: 20px;
-        }
-        .warehouse-popup .warehouse-popup-body .form-group {
-            margin-bottom: 20px;
-        }
-        .warehouse-popup .warehouse-popup-body .form-label {
-            font-size: 13px;
-        }
-        .warehouse-popup .warehouse-popup-body .input-field {
-            font-size: 13px;
-            height: 40px;
-        }
-        .warehouse-popup .storage-option {
-            padding: 20px;
-        }
-        .warehouse-popup .storage-option .type-title {
-            font-size: 18px;
-        }
-        .warehouse-popup .storage-option .type-points {
-            font-size: 13px;
-        }
-        .warehouse-popup .storage-option .type-image {
-            height: 120px;
-        }
-        .warehouse-popup .buttons {
-            font-size: 13px;
-        }
-        .warehouse-popup .buttons .popup-cancel-button, .warehouse-popup .buttons .search-button {
-            width: 100px;
-            height: 40px;
-        }
+        /* New styles */
+            .page .nav-tabs {
+                height: 50px;
+                margin-bottom: 30px;
+            }
+            .page .nav-tabs .nav-item .nav-link {
+                height: 50px;
+                font-size: 13px;
+            }
+            .page .nav-tabs .nav-item .nav-link i {
+                font-size: 16px;
+                margin-right: 6px;
+            }
+            .page .tab-content .box .box-title {
+                font-size: 20px;
+            }
+            .page .tab-content .box .box-description {
+                font-size: 13px;
+                margin-bottom: 15px!important;
+            }
 
-        .page .single-warehouse {
-            padding: 12px;
-        }
-        .page .single-warehouse .name {
-            font-size: 15px;
-        }
-        .page .single-warehouse .description {
-            font-size: 12px;
-        }
-        .page .single-warehouse .details .detail {
-            font-size: 12px;
-        }
-        .page .single-warehouse .details .detail i {
-            font-size: 13px;
-        }
-        .page .swiper-card {
-            padding: 12px;
-        }
-        .page .swiper-card .swiper-resource {
-            height: 180px;
-        }
-        .page .warehouse-card {
-            padding: 12px;
-        }
-        .page .warehouse-card .warehouse-title {
-            font-size: 18px;
-        }
-        .page .warehouse-card .warehouse-info {
-            font-size: 12px;
-        }
-        .page .warehouse-card .license-tag {
-            font-size: 11px;
-            padding: 6px 10px;
-        }
-        .page .warehouse-card #map {
-            height: 200px;
-        }
-        .page .warehouse-card .price-section .price-title {
-            font-size: 13px;
-        }
-        .page .warehouse-card .price-section .table th, .page .warehouse-card .price-section .table td {
-            padding: 8px 4px;
-            font-size: 12px;
-        }
-        .page .warehouse-card .price-section .table th.second-column {
-            width: 140px;
-        }
-        .page .warehouse-card .quote-btn {
-            font-size: 13px;
-            padding: 10px 15px;
-        }
+            .warehouse-popup {
+                top: 60px;
+            }
+            .warehouse-popup.active {
+                width: 72%;
+                padding: 20px;
+                z-index: 9;
+            }
+            .warehouse-popup .warehouse-popup-header .popup-title {
+                font-size: 18px;
+            }
+            .warehouse-popup .warehouse-popup-header .popup-description {
+                font-size: 13px;
+            }
+            .warehouse-popup .warehouse-popup-header .popup-close {
+                font-size: 20px;
+            }
+            .warehouse-popup .warehouse-popup-body .form-group {
+                margin-bottom: 20px;
+            }
+            .warehouse-popup .warehouse-popup-body .form-label {
+                font-size: 14px;
+            }
+            .warehouse-popup .warehouse-popup-body .input-field {
+                font-size: 13px;
+                height: 45px;
+            }
+            .warehouse-popup .storage-option {
+                padding: 20px;
+            }
+            .warehouse-popup .storage-option .type-title {
+                font-size: 18px;
+            }
+            .warehouse-popup .storage-option .type-points {
+                font-size: 13px;
+            }
+            .warehouse-popup .storage-option .type-image {
+                height: 120px;
+            }
+            .warehouse-popup .buttons {
+                font-size: 15px;
+            }
+            .warehouse-popup .buttons .popup-cancel-button, .warehouse-popup .buttons .search-button {
+                width: 120px;
+                height: 45px;
+            }
 
-        .page .content .quote-inputs {
-            gap: 15px;
-        }
-        .page .content .quote-inputs .input-container .form-label {
-            font-size: 13px;
-        }
-        .page .content .quote-inputs .input-container .number-controls .btn-minus, .page .content .quote-inputs .input-container .number-controls .btn-plus {
-            font-size: 18px;
-            width: 36px;
-            height: 32px;
-        }
-        .page .content .quote-inputs .input-container .number-controls .number-input {
-            font-size: 16px;
-            margin: 0 15px;
-        }
-        .page .content .quote-inputs .separator {
-            height: 25px;
-            margin: 0 10px;
-        }
-        .page .content .price-section .card {
-            padding: 12px;
-        }
-        .page .content .price-section .card .accordion-button {
-            font-size: 16px;
-        }
-        .page .content .price-section .card .table th, .page .content .price-section .card .table td {
-            padding: 8px 4px;
-            font-size: 12px;
-        }
-        .page .content .price-section .table th.second-column {
-            width: 180px;
-        }
-        .page .content .action-buttons {
-            gap: 8px;
-            margin-top: 20px;
-        }
-        .page .content .action-buttons .btn-cancel, .page .content .action-buttons .btn-approve, .page .content .action-buttons .btn-save {
-            padding: 6px 12px;
-            font-size: 13px;
-        }
-        .page .row .col-4 {
-            width: 100%;
-            margin-bottom: 15px;
-        }
-        .page .row .col-8 {
-            width: 100%;
-        }
+            .page .single-warehouse .name {
+                font-size: 15px;
+            }
+            .page .single-warehouse .description {
+                font-size: 12px;
+            }
+            .page .single-warehouse .details .detail {
+                font-size: 12px;
+            }
+            .page .single-warehouse .details .detail i {
+                font-size: 13px;
+            }
+            .page .swiper-card .swiper-resource {
+                height: 180px;
+            }
+            .page .warehouse-card .warehouse-info {
+                font-size: 12px;
+            }
+            .page .warehouse-card .license-tag {
+                font-size: 11px;
+                padding: 6px 10px;
+            }
+            .page .warehouse-card .warehouse-map {
+                height: 200px;
+            }
+            .page .warehouse-card .price-section .price-title {
+                font-size: 14px;
+            }
+            .page .warehouse-card .price-section .table th, .page .warehouse-card .price-section .table td {
+                padding: 8px 4px;
+                font-size: 12px;
+            }
+            .page .warehouse-card .quote-btn {
+                font-size: 14px;
+                padding: 10px 15px;
+            }
+
+            .page .content .quote-inputs {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+            .page .content .quote-inputs .input-container .form-label {
+                font-size: 14px;
+            }
+            .page .content .quote-inputs .input-container .number-controls .btn-minus, .page .content .quote-inputs .input-container .number-controls .btn-plus {
+                font-size: 18px;
+                width: 36px;
+                height: 32px;
+            }
+            .page .content .quote-inputs .input-container .number-controls .number-input {
+                font-size: 16px;
+                margin: 0 15px;
+            }
+            .page .content .quote-inputs .separator {
+                height: 25px;
+                margin: 0 10px;
+            }
+            .page .content .price-section .card .accordion-button {
+                font-size: 16px;
+            }
+            .page .content .price-section .card .table th, .page .content .price-section .card .table td {
+                padding: 10px 6px;
+                font-size: 13px;
+            }
+            .page .content .price-section .table th.second-column {
+                width: 150px;
+            }
+            .page .content .action-buttons {
+                margin-top: 20px;
+            }
+            .page .content .action-buttons .btn-cancel, .page .content .action-buttons .btn-approve, .page .content .action-buttons .btn-save {
+                font-size: 13px;
+            }
+        /* New styles */
     }
-    @media (width <= 721px) {
-        .warehouse-popup.active {
-            width: 72%;
-        }
-        .page .warehouse-card .warehouse-title {
-            font-size: 15px;
-        }
-        .page .warehouse-card .warehouse-info {
-            font-size: 13px;
-        }
-    }
+    @media (width <= 721px) {}
     @media (width <= 651px) {}
     @media (width <= 576px) {
         .page nav .pagination {
@@ -1871,176 +1770,38 @@
         .page .messages .top-row .icons {
             width: 18%;
         }
-        .page .nav-tabs {
-            height: 45px;
-            margin-bottom: 25px;
-        }
-        .page .nav-tabs .nav-item .nav-link {
-            height: 45px;
-            font-size: 11px;
-        }
-        .page .nav-tabs .nav-item .nav-link i {
-            font-size: 14px;
-            margin-right: 4px;
-        }
-        .page .tab-content .box {
-            width: 80%;
-            padding: 20px;
-        }
-        .page .tab-content .box .box-image {
-            width: 150px;
-            height: 80px;
-        }
-        .page .tab-content .box .box-title {
-            font-size: 16px;
-        }
-        .page .tab-content .box .box-description {
-            font-size: 12px;
-            margin-bottom: 12px!important;
-        }
-        .page .tab-content .box .box-button {
-            font-size: 11px;
-            width: 55%;
-        }
-        .page .tab-content .box .box-button i {
-            font-size: 12px;
-        }
 
-        .warehouse-popup.active {
-            width: 90%;
-            padding: 15px;
-        }
-        .warehouse-popup .warehouse-popup-header .popup-title {
-            font-size: 16px;
-        }
-        .warehouse-popup .warehouse-popup-header .popup-description {
-            font-size: 12px;
-        }
-        .warehouse-popup .warehouse-popup-header .popup-close {
-            font-size: 18px;
-        }
-        .warehouse-popup .warehouse-popup-body .form-group {
-            margin-bottom: 15px;
-        }
-        .warehouse-popup .warehouse-popup-body .form-label {
-            font-size: 12px;
-        }
-        .warehouse-popup .warehouse-popup-body .input-field {
-            font-size: 12px;
-            height: 35px;
-        }
-        .warehouse-popup .storage-option {
-            padding: 15px;
-        }
-        .warehouse-popup .storage-option .type-title {
-            font-size: 16px;
-        }
-        .warehouse-popup .storage-option .type-points {
-            font-size: 12px;
-        }
-        .warehouse-popup .storage-option .type-image {
-            height: 100px;
-        }
-        .warehouse-popup .buttons {
-            font-size: 12px;
-        }
-        .warehouse-popup .buttons .popup-cancel-button, .warehouse-popup .buttons .search-button {
-            width: 90px;
-            height: 35px;
-        }
+        /* New styles */
+            .page .nav-tabs {
+                height: 45px;
+                margin-bottom: 25px;
+            }
+            .page .nav-tabs .nav-item .nav-link {
+                height: 45px;
+            }
+            .page .tab-content .box {
+                width: 100%;
+                padding: 30px;
+            }
+            .page .tab-content .box .box-title {
+                font-size: 18px;
+                margin-bottom: 5px!important;
+            }
+            .page .tab-content .box .box-button {
+                width: 55%;
+            }
 
-        .page .single-warehouse {
-            padding: 10px;
-        }
-        .page .single-warehouse .name {
-            font-size: 14px;
-        }
-        .page .single-warehouse .description {
-            font-size: 11px;
-        }
-        .page .single-warehouse .details .detail {
-            font-size: 11px;
-        }
-        .page .single-warehouse .details .detail i {
-            font-size: 12px;
-        }
-        .page .swiper-card {
-            padding: 10px;
-        }
-        .page .swiper-card .swiper-resource {
-            height: 150px;
-        }
-        .page .warehouse-card {
-            padding: 10px;
-        }
-        .page .warehouse-card .warehouse-title {
-            font-size: 16px;
-        }
-        .page .warehouse-card .warehouse-info {
-            font-size: 11px;
-        }
-        .page .warehouse-card .license-tag {
-            font-size: 10px;
-            padding: 5px 8px;
-        }
-        .page .warehouse-card #map {
-            height: 150px;
-        }
-        .page .warehouse-card .price-section .price-title {
-            font-size: 12px;
-        }
-        .page .warehouse-card .price-section .table th, .page .warehouse-card .price-section .table td {
-            padding: 6px 3px;
-            font-size: 11px;
-        }
-        .page .warehouse-card .price-section .table th.second-column {
-            width: 120px;
-        }
-        .page .warehouse-card .quote-btn {
-            font-size: 12px;
-            padding: 8px 12px;
-        }
+            .warehouse-popup.active {
+                width: 90%;
+            }
+            .warehouse-popup .storage-option .type-image {
+                display: none;
+            }
 
-        .page .content .quote-inputs {
-            gap: 10px;
-        }
-        .page .content .quote-inputs .input-container .form-label {
-            font-size: 12px;
-        }
-        .page .content .quote-inputs .input-container .number-controls .btn-minus, .page .content .quote-inputs .input-container .number-controls .btn-plus {
-            font-size: 16px;
-            width: 32px;
-            height: 28px;
-        }
-        .page .content .quote-inputs .input-container .number-controls .number-input {
-            font-size: 14px;
-            margin: 0 12px;
-        }
-        .page .content .quote-inputs .separator {
-            height: 20px;
-            margin: 0 8px;
-        }
-        .page .content .price-section .card {
-            padding: 10px;
-        }
-        .page .content .price-section .card .accordion-button {
-            font-size: 14px;
-        }
-        .page .content .price-section .card .table th, .page .content .price-section .card .table td {
-            padding: 6px 3px;
-            font-size: 11px;
-        }
-        .page .content .price-section .table th.second-column {
-            width: 150px;
-        }
-        .page .content .action-buttons {
-            gap: 6px;
-            margin-top: 15px;
-        }
-        .page .content .action-buttons .btn-cancel, .page .content .action-buttons .btn-approve, .page .content .action-buttons .btn-save {
-            padding: 5px 10px;
-            font-size: 12px;
-        }
+            .page .warehouse-card .price-section .table th.second-column {
+                width: 60px;
+            }
+        /* New styles */
     }
     @media (width <= 481px) {
         .page .filter-form .input-group {
@@ -2056,182 +1817,28 @@
         .page .messages .top-row .icons {
             width: 21%;
         }
-        .page .nav-tabs {
-            height: 40px;
-            margin-bottom: 20px;
-        }
-        .page .nav-tabs .nav-item .nav-link {
-            height: 40px;
-            font-size: 10px;
-        }
-        .page .nav-tabs .nav-item .nav-link i {
-            font-size: 12px;
-            margin-right: 3px;
-        }
-        .page .tab-content .box {
-            width: 90%;
-            padding: 15px;
-        }
-        .page .tab-content .box .box-image {
-            width: 120px;
-            height: 60px;
-        }
-        .page .tab-content .box .box-title {
-            font-size: 14px;
-        }
-        .page .tab-content .box .box-description {
-            font-size: 11px;
-            margin-bottom: 10px!important;
-        }
-        .page .tab-content .box .box-button {
-            font-size: 10px;
-            width: 60%;
-        }
-        .page .tab-content .box .box-button i {
-            font-size: 11px;
-        }
-        .warehouse-popup.active {
-            width: 88%;
-            padding: 12px;
-        }
-        .warehouse-popup .warehouse-popup-header .popup-title {
-            font-size: 13px;
-        }
-        .warehouse-popup .warehouse-popup-header .popup-description {
-            font-size: 11px;
-        }
-        .warehouse-popup .warehouse-popup-header .popup-close {
-            font-size: 16px;
-        }
-        .warehouse-popup .warehouse-popup-body .form-group {
-            margin-bottom: 12px;
-        }
-        .warehouse-popup .warehouse-popup-body .form-label {
-            font-size: 11px;
-        }
-        .warehouse-popup .warehouse-popup-body .input-field {
-            font-size: 11px;
-            height: 32px;
-        }
-        .warehouse-popup .storage-option {
-            padding: 12px;
-        }
-        .warehouse-popup .storage-option .type-title {
-            font-size: 14px;
-        }
-        .warehouse-popup .storage-option .type-points {
-            font-size: 11px;
-        }
-        .warehouse-popup .storage-option .type-image {
-            height: 80px;
-        }
-        .warehouse-popup .buttons {
-            font-size: 11px;
-        }
-        .warehouse-popup .buttons .popup-cancel-button, .warehouse-popup .buttons .search-button {
-            width: 80px;
-            height: 32px;
-        }
 
-        .page .single-warehouse {
-            padding: 8px;
-        }
-        .page .single-warehouse .name {
-            font-size: 13px;
-        }
-        .page .single-warehouse .description {
-            font-size: 10px;
-        }
-        .page .single-warehouse .details .detail {
-            font-size: 10px;
-        }
-        .page .single-warehouse .details .detail i {
-            font-size: 11px;
-        }
-        .page .swiper-card {
-            padding: 8px;
-        }
-        .page .swiper-card .swiper-resource {
-            height: 120px;
-        }
-        .page .warehouse-card {
-            padding: 8px;
-        }
-        .page .warehouse-card .warehouse-title {
-            font-size: 14px;
-        }
-        .page .warehouse-card .warehouse-info {
-            font-size: 10px;
-        }
-        .page .warehouse-card .license-tag {
-            font-size: 9px;
-            padding: 4px 6px;
-        }
-        .page .warehouse-card #map {
-            height: 120px;
-        }
-        .page .warehouse-card .price-section .price-title {
-            font-size: 11px;
-        }
-        .page .warehouse-card .price-section .table th, .page .warehouse-card .price-section .table td {
-            padding: 4px 2px;
-            font-size: 10px;
-        }
-        .page .warehouse-card .price-section .table th.second-column {
-            width: 100px;
-        }
-        .page .warehouse-card .quote-btn {
-            font-size: 11px;
-            padding: 6px 10px;
-        }
+        /* New styles */
+            .warehouse-popup .warehouse-popup-header .popup-title {
+                font-size: 16px;
+            }
+            .warehouse-popup .warehouse-popup-body .form-group {
+                margin-bottom: 12px;
+            }
+            .warehouse-popup .warehouse-popup-body .form-label {
+                font-size: 13px;
+            }
+            .warehouse-popup .storage-option .type-title {
+                font-size: 16px;
+            }
+            .warehouse-popup .storage-option .type-points {
+                margin-bottom: 0;
+            }
 
-        .page .content .quote-inputs {
-            gap: 8px;
-        }
-        .page .content .quote-inputs .input-container .form-label {
-            font-size: 11px;
-        }
-        .page .content .quote-inputs .input-container .number-controls .btn-minus, .page .content .quote-inputs .input-container .number-controls .btn-plus {
-            font-size: 14px;
-            width: 28px;
-            height: 24px;
-        }
-        .page .content .quote-inputs .input-container .number-controls .number-input {
-            font-size: 12px;
-            margin: 0 10px;
-        }
-        .page .content .quote-inputs .separator {
-            height: 18px;
-            margin: 0 6px;
-        }
-        .page .content .price-section .card {
-            padding: 8px;
-        }
-        .page .content .price-section .card .accordion-button {
-            font-size: 12px;
-        }
-        .page .content .price-section .card .table th, .page .content .price-section .card .table td {
-            padding: 4px 2px;
-            font-size: 10px;
-        }
-        .page .content .price-section .table th.second-column {
-            width: 120px;
-        }
-        .page .content .action-buttons {
-            gap: 4px;
-            margin-top: 12px;
-        }
-        .page .content .action-buttons .btn-cancel, .page .content .action-buttons .btn-approve, .page .content .action-buttons .btn-save {
-            padding: 4px 8px;
-            font-size: 11px;
-        }
-        .page .row .col-4 {
-            width: 100%;
-            margin-bottom: 20px;
-        }
-        .page .row .col-8 {
-            width: 100%;
-        }
+            .page .content .price-section .table th.second-column {
+                width: 70px;
+            }
+        /* New styles */
     }
     @media (width <= 429px) {}
     @media (width <= 415px) {
@@ -2241,7 +1848,21 @@
     }
     @media (width <= 396px) {}
     @media (width <= 377px) {}
-    @media (width <= 361px) {}
+    @media (width <= 361px) {
+        /* New styles */
+            .page .tab-content .box .box-button {
+                width: 80%;
+            }
+
+            .warehouse-popup.active {
+                width: 100%;
+            }
+            .warehouse-popup .warehouse-popup-header .popup-close {
+                right: -15px;
+                top: -15px;
+            }
+        /* New styles */
+    }
     @media (width <= 331px) {
         .page .single-page {
             padding: 10px;
@@ -2258,16 +1879,11 @@
         .page .single-page .links .link i {
             padding-right: 2px;
         }
-        .page .tab-content .box {
-            width: 95%;
-            padding: 15px;
-        }
-        .warehouse-popup.active {
-            width: 84%;
-            padding: 12px;
-        }
-        .page .content .quote-inputs .input-container .form-label {
-            font-size: 8px;
-        }
+
+        /* New styles */
+            .page .tab-content .box {
+                padding: 20px;
+            }
+        /* New styles */
     }
 /* #endregion */
