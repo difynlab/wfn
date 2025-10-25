@@ -52,7 +52,10 @@
         margin-left: 3px;
     }
     .fr-wrapper > div:first-of-type {
-        display: none !important;
+        display: none!important;
+    }
+    p[data-f-id="pbf"], p[data-f-id="pbf"] a {
+        display: none!important;
     }
 /* #endregion */
 
