@@ -12,10 +12,8 @@ class FroalaController extends Controller
     public function upload(Request $request)
     {
         if($request->hasFile('upload')) {
-            $image = $request->file('upload');
-            $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('backend/froala', $image_name);
-            $url = asset('storage/backend/froala/' . $image_name);
+            $processed_image = process_image($request->file('upload'), 'backend/froala');
+            $url = asset('storage/backend/froala/' . $processed_image);
             
             return response()->json([
                 'link' => $url
