@@ -20,7 +20,7 @@ if(!function_exists('send_email')) {
 
         foreach($emails as $email) {
             try {
-                Mail::to($email)->send(clone $mailable);
+                Mail::to($email)->queue(clone $mailable);
             }
             catch (\Throwable $e) {
                 Log::error("Failed to send email to {$email}: " . $e->getMessage());

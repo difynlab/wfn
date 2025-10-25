@@ -306,7 +306,7 @@
                     const position = { lat, lng };
 
                     const icon = document.createElement('i');
-                    icon.className = 'bi bi-cursor-fill';
+                    icon.className = 'bi bi-geo-alt-fill';
                     icon.style.fontSize = '50px';
                     icon.style.color = '#E31D1D';
                     icon.style.cursor = 'pointer';

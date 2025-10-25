@@ -186,9 +186,14 @@
                         <input type="text" class="form-control input-field" id="register_have_account_{{ $short_code }}" name="register_have_account_{{ $short_code }}" value="{{ $contents->{'register_have_account_' . $short_code} ?? '' }}" placeholder="Have Account">
                     </div>
 
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-6 mb-3 mb-md-4">
                         <label for="register_login_{{ $short_code }}" class="form-label label">Log In</label>
                         <input type="text" class="form-control input-field" id="register_login_{{ $short_code }}" name="register_login_{{ $short_code }}" value="{{ $contents->{'register_login_' . $short_code} ?? '' }}" placeholder="Log In">
+                    </div>
+
+                    <div class="col-12">
+                        <x-backend.upload-image old_name="old_register_image" old_value="{{ $contents->{'register_image_' . $short_code} ?? '' }}" new_name="new_register_image" path="pages"></x-backend.upload-image>
+                        <x-backend.input-error field="new_register_image"></x-backend.input-error>
                     </div>
                 </div>
             </div>

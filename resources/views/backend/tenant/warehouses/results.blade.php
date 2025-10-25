@@ -255,7 +255,7 @@
                     if(!Number.isFinite(lat) || !Number.isFinite(lng)) return;
 
                     const map = new Map(el, {
-                        zoom: 8,
+                        zoom: 13,
                         center: position,
                         mapId: "DEMO_MAP_ID",
                         scrollwheel: false,

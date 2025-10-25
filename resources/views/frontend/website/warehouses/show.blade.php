@@ -556,7 +556,7 @@
             const infoTitle = warehouse[`name_${language}`] || warehouse.name_en;
 
             let map = new Map(document.getElementById("map"), {
-                zoom: 8,
+                zoom: 12,
                 center: position,
                 mapId: "DEMO_MAP_ID",
                 scrollwheel: false,
