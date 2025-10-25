@@ -268,15 +268,17 @@
 
 			if(value == 'pallet') {
 				$('.number-of-pallets').removeClass('d-none');
+				$('.number-of-pallets').find('input').attr('required', true);
+				
 				$('.square-meters').addClass('d-none');
-
 				$('.square-meters').find('input').val('');
 				$('.square-meters').find('input').attr('required', false);
 			}
 			else {
-				$('.number-of-pallets').addClass('d-none');
 				$('.square-meters').removeClass('d-none');
+				$('.square-meters').find('input').attr('required', true);
 
+				$('.number-of-pallets').addClass('d-none');
 				$('.number-of-pallets').find('input').val('');
 				$('.number-of-pallets').find('input').attr('required', false);
 			}
