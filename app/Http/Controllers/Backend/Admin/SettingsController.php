@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
 class SettingsController extends Controller
 {
@@ -299,23 +298,10 @@ class SettingsController extends Controller
 
         // Image
             if($request->file('new_image')) {
-                if($request->old_image) {
-                    Storage::delete('backend/users/' . $request->old_image);
-                }
-
-                $image = $request->file('new_image');
-                $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-                $image->storeAs('backend/users', $image_name);
-            }
-            else if($request->old_image == null) {
-                if($user->image) {
-                    Storage::delete('backend/users/' . $user->image);
-                }
-
-                $image_name = null;
+                $processed_image = process_image($request->file('new_image'), 'backend/users', $request->old_image);
             }
             else {
-                $image_name = $request->old_image;
+                $processed_image = $request->old_image;
             }
         // Image
         
@@ -324,7 +310,7 @@ class SettingsController extends Controller
             'new_image'
         );
 
-        $data['image'] = $image_name;
+        $data['image'] = $processed_image;
         $user->fill($data)->save();
 
         return redirect()->back()->with([

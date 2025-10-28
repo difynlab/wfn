@@ -8,8 +8,6 @@ use App\Models\ArticleCategory;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -83,19 +81,17 @@ class ArticleController extends Controller
         }
 
         if($request->file('new_thumbnail')) {
-            $thumbnail = $request->file('new_thumbnail');
-            $thumbnail_name = Str::random(40) . '.' . $thumbnail->getClientOriginalExtension();
-            $thumbnail->storeAs('backend/articles', $thumbnail_name);
+            $processed_image = process_image($request->file('new_thumbnail'), 'backend/articles', $request->old_thumbnail);
         }
         else {
-            $thumbnail_name = $request->old_thumbnail;
+            $processed_image = $request->old_thumbnail;
         }
 
         $data = $request->except(
             'old_thumbnail',
             'new_thumbnail',
         );
-        $data['thumbnail'] = $thumbnail_name;
+        $data['thumbnail'] = $processed_image;
         $article = Article::create($data); 
 
         return redirect()->route('admin.articles.edit', $article)->with([
@@ -133,29 +129,17 @@ class ArticleController extends Controller
         }
 
         if($request->file('new_thumbnail')) {
-            if($request->old_thumbnail) {
-                Storage::delete('backend/articles/' . $request->old_thumbnail);
-            }
-
-            $thumbnail = $request->file('new_thumbnail');
-            $thumbnail_name = Str::random(40) . '.' . $thumbnail->getClientOriginalExtension();
-            $thumbnail->storeAs('backend/articles', $thumbnail_name);
-        }
-        else if($request->old_thumbnail == null) {
-            if($article->thumbnail) {
-                Storage::delete('backend/articles/' . $article->thumbnail);
-            }
-            $thumbnail_name = null;
+            $processed_image = process_image($request->file('new_thumbnail'), 'backend/articles', $request->old_thumbnail);
         }
         else {
-            $thumbnail_name = $request->old_thumbnail;
+            $processed_image = $request->old_thumbnail;
         }
 
         $data = $request->except(
             'old_thumbnail',
             'new_thumbnail',
         );
-        $data['thumbnail'] = $thumbnail_name;
+        $data['thumbnail'] = $processed_image;
         $article->fill($data)->save();
         
         return redirect()->back()->with([

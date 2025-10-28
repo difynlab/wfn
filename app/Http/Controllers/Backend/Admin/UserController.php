@@ -8,12 +8,9 @@ use App\Mail\CompanyApprovalMail;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -349,17 +346,10 @@ class UserController extends Controller
             ]);
         }
 
-        if($request->file('new_image')) {
-            $image = $request->file('new_image');
-            $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('backend/users', $image_name);
-        }
-        else {
-            $image_name = $request->old_image;
-        }
+        $processed_image = process_image($request->file('new_image'), 'backend/users');
 
         $data = $request->except('old_image', 'new_image', 'confirm_password');
-        $data['image'] = $image_name;
+        $data['image'] = $processed_image;
         $user = User::create($data);
 
         if($user->role != 'admin') {
@@ -688,23 +678,10 @@ class UserController extends Controller
         }
 
         if($request->file('new_image')) {
-            if($request->old_image) {
-                Storage::delete('backend/users/' . $request->old_image);
-            }
-
-            $image = $request->file('new_image');
-            $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('backend/users', $image_name);
-        }
-        else if($request->old_image == null) {
-            if($user->image) {
-                Storage::delete('backend/users/' . $user->image);
-            }
-
-            $image_name = null;
+            $processed_image = process_image($request->file('new_image'), 'backend/users', $request->old_image);
         }
         else {
-            $image_name = $request->old_image;
+            $processed_image = $request->old_image;
         }
 
         if($user->status != $request->status && $request->status == 1) {
@@ -716,7 +693,7 @@ class UserController extends Controller
             send_email(new AccountApprovalMail($mail_data), $request->email);
         }
 
-        $data['image'] = $image_name;
+        $data['image'] = $processed_image;
         $user->fill($data)->save();
 
         return redirect()->back()->with([
@@ -840,14 +817,14 @@ class UserController extends Controller
             $current_registration_certificates  = json_decode(htmlspecialchars_decode($request->old_registration_certificates ?? '[]'), true);
 
             foreach(array_diff($existing_registration_certificates, $current_registration_certificates) as $registration_certificate) {
-                Storage::delete('backend/warehouses/' . $registration_certificate);
+                $processed_image = process_image(null, 'backend/warehouses', $registration_certificate);
+                $processed_image = process_image(null, 'backend/warehouses/thumbnails', $registration_certificate);
             }
 
             if($request->file('new_registration_certificates')) {
                 foreach($request->file('new_registration_certificates') as $registration_certificate) {
-                    $registration_certificate_name = Str::random(40) . '.' . $registration_certificate->getClientOriginalExtension();
-                    $registration_certificate->storeAs('backend/warehouses', $registration_certificate_name);
-                    $current_registration_certificates[] = $registration_certificate_name;
+                    $processed_image = process_image($registration_certificate, 'backend/warehouses');
+                    $current_registration_certificates[] = $processed_image;
                 }
             }
             

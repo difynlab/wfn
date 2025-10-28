@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Backend\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Review;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
 class ReviewController extends Controller
 {
@@ -73,19 +71,17 @@ class ReviewController extends Controller
         }
 
         if($request->file('new_image')) {
-            $image = $request->file('new_image');
-            $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('backend/reviews', $image_name);
+            $processed_image = process_image($request->file('new_image'), 'backend/reviews', $request->old_image);
         }
         else {
-            $image_name = $request->old_image;
+            $processed_image = $request->old_image;
         }
 
         $data = $request->except(
             'old_image',
             'new_image',
         );
-        $data['image'] = $image_name;
+        $data['image'] = $processed_image;
         $review = Review::create($data);  
 
         return redirect()->route('admin.reviews.edit', $review)->with([
@@ -121,29 +117,17 @@ class ReviewController extends Controller
         }
 
         if($request->file('new_image')) {
-            if($request->old_image) {
-                Storage::delete('backend/reviews/' . $request->old_image);
-            }
-
-            $image = $request->file('new_image');
-            $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('backend/reviews', $image_name);
-        }
-        else if($request->old_image == null) {
-            if($review->image) {
-                Storage::delete('backend/reviews/' . $review->image);
-            }
-            $image_name = null;
+            $processed_image = process_image($request->file('new_image'), 'backend/reviews', $request->old_image);
         }
         else {
-            $image_name = $request->old_image;
+            $processed_image = $request->old_image;
         }
 
         $data = $request->except(
             'old_image',
             'new_image',
         );
-        $data['image'] = $image_name;
+        $data['image'] = $processed_image;
 
         $review->fill($data)->save();
         

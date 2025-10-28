@@ -30,6 +30,7 @@ return new class extends Migration
             $table->text('register_name_en')->nullable();
             $table->text('register_title_en')->nullable();
             $table->text('register_description_en')->nullable();
+            $table->text('register_image_en')->nullable();
             $table->text('register_agent_en')->nullable();
             $table->text('register_company_en')->nullable();
             $table->text('register_first_name_en')->nullable();
@@ -83,6 +84,7 @@ return new class extends Migration
             $table->text('register_name_ar')->nullable();
             $table->text('register_title_ar')->nullable();
             $table->text('register_description_ar')->nullable();
+            $table->text('register_image_ar')->nullable();
             $table->text('register_agent_ar')->nullable();
             $table->text('register_company_ar')->nullable();
             $table->text('register_first_name_ar')->nullable();

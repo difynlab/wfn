@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Backend\Admin\Page;
 use App\Http\Controllers\Controller;
 use App\Models\AuthenticationContent;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
 class AuthenticationController extends Controller
 {
@@ -62,45 +60,19 @@ class AuthenticationController extends Controller
 
         // Login image
             if($request->file('new_login_image')) {
-                if($request->old_login_image) {
-                    Storage::delete('backend/pages/' . $request->old_login_image);
-                }
-
-                $new_login_image = $request->file('new_login_image');
-                $login_image_name = Str::random(40) . '.' . $new_login_image->getClientOriginalExtension();
-                $new_login_image->storeAs('backend/pages', $login_image_name);
-            }
-            else if($request->old_login_image == null) {
-                if($contents->{'login_image_' . $short_code}) {
-                    Storage::delete('backend/pages/' . $contents->{'login_image_' . $short_code});
-                }
-
-                $login_image_name = null;
+                $login_image = process_image($request->file('new_login_image'), 'backend/pages', $request->old_login_image);
             }
             else {
-                $login_image_name = $request->old_login_image;
+                $login_image = $request->old_login_image;
             }
         // Login image
 
         // Register image
             if($request->file('new_register_image')) {
-                if($request->old_register_image) {
-                    Storage::delete('backend/pages/' . $request->old_register_image);
-                }
-
-                $new_register_image = $request->file('new_register_image');
-                $register_image_name = Str::random(40) . '.' . $new_register_image->getClientOriginalExtension();
-                $new_register_image->storeAs('backend/pages', $register_image_name);
-            }
-            else if($request->old_register_image == null) {
-                if($contents->{'register_image_' . $short_code}) {
-                    Storage::delete('backend/pages/' . $contents->{'register_image_' . $short_code});
-                }
-
-                $register_image_name = null;
+                $register_image = process_image($request->file('new_register_image'), 'backend/pages', $request->old_register_image);
             }
             else {
-                $register_image_name = $request->old_register_image;
+                $register_image = $request->old_register_image;
             }
         // Register image
 
@@ -111,8 +83,8 @@ class AuthenticationController extends Controller
             'new_register_image',
         );
 
-        $data['login_image_' . '' . $short_code] = $login_image_name;
-        $data['register_image_' . '' . $short_code] = $register_image_name;
+        $data['login_image_' . '' . $short_code] = $login_image;
+        $data['register_image_' . '' . $short_code] = $register_image;
         $contents->fill($data)->save();
 
         return redirect()->back()->with('success', "Successfully updated!");

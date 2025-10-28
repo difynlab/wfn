@@ -72,67 +72,28 @@ class AboutController extends Controller
 
         // Section 2 image
             if($request->file('new_section_2_image')) {
-                if($request->old_section_2_image) {
-                    Storage::delete('backend/pages/' . $request->old_section_2_image);
-                }
-
-                $new_section_2_image = $request->file('new_section_2_image');
-                $section_2_image_name = Str::random(40) . '.' . $new_section_2_image->getClientOriginalExtension();
-                $new_section_2_image->storeAs('backend/pages', $section_2_image_name);
-            }
-            else if($request->old_section_2_image == null) {
-                if($contents->{'section_2_image_' . $short_code}) {
-                    Storage::delete('backend/pages/' . $contents->{'section_2_image_' . $short_code});
-                }
-
-                $section_2_image_name = null;
+                $section_2_image = process_image($request->file('new_section_2_image'), 'backend/pages', $request->old_section_2_image);
             }
             else {
-                $section_2_image_name = $request->old_section_2_image;
+                $section_2_image = $request->old_section_2_image;
             }
         // Section 2 image
 
         // Section 4 image 1
             if($request->file('new_section_4_image_1')) {
-                if($request->old_section_4_image_1) {
-                    Storage::delete('backend/pages/' . $request->old_section_4_image_1);
-                }
-
-                $new_section_4_image_1 = $request->file('new_section_4_image_1');
-                $section_4_image_1_name = Str::random(40) . '.' . $new_section_4_image_1->getClientOriginalExtension();
-                $new_section_4_image_1->storeAs('backend/pages', $section_4_image_1_name);
-            }
-            else if($request->old_section_4_image_1 == null) {
-                if($contents->{'section_4_image_1_' . $short_code}) {
-                    Storage::delete('backend/pages/' . $contents->{'section_4_image_1_' . $short_code});
-                }
-
-                $section_4_image_1_name = null;
+                $section_4_image_1 = process_image($request->file('new_section_4_image_1'), 'backend/pages', $request->old_section_4_image_1);
             }
             else {
-                $section_4_image_1_name = $request->old_section_4_image_1;
+                $section_4_image_1 = $request->old_section_4_image_1;
             }
         // Section 4 image 1
 
         // Section 4 image 2
             if($request->file('new_section_4_image_2')) {
-                if($request->old_section_4_image_2) {
-                    Storage::delete('backend/pages/' . $request->old_section_4_image_2);
-                }
-
-                $new_section_4_image_2 = $request->file('new_section_4_image_2');
-                $section_4_image_2_name = Str::random(40) . '.' . $new_section_4_image_2->getClientOriginalExtension();
-                $new_section_4_image_2->storeAs('backend/pages', $section_4_image_2_name);
-            }
-            else if($request->old_section_4_image_2 == null) {
-                if($contents->{'section_4_image_2_' . $short_code}) {
-                    Storage::delete('backend/pages/' . $contents->{'section_4_image_2_' . $short_code});
-                }
-
-                $section_4_image_2_name = null;
+                $section_4_image_2 = process_image($request->file('new_section_4_image_2'), 'backend/pages', $request->old_section_4_image_2);
             }
             else {
-                $section_4_image_2_name = $request->old_section_4_image_2;
+                $section_4_image_2 = $request->old_section_4_image_2;
             }
         // Section 4 image 2
 
@@ -160,23 +121,10 @@ class AboutController extends Controller
 
         // Section 7 image
             if($request->file('new_section_7_image')) {
-                if($request->old_section_7_image) {
-                    Storage::delete('backend/pages/' . $request->old_section_7_image);
-                }
-
-                $new_section_7_image = $request->file('new_section_7_image');
-                $section_7_image_name = Str::random(40) . '.' . $new_section_7_image->getClientOriginalExtension();
-                $new_section_7_image->storeAs('backend/pages', $section_7_image_name);
-            }
-            else if($request->old_section_7_image == null) {
-                if($contents->{'section_7_image_' . $short_code}) {
-                    Storage::delete('backend/pages/' . $contents->{'section_7_image_' . $short_code});
-                }
-
-                $section_7_image_name = null;
+                $section_7_image = process_image($request->file('new_section_7_image'), 'backend/pages', $request->old_section_7_image);
             }
             else {
-                $section_7_image_name = $request->old_section_7_image;
+                $section_7_image = $request->old_section_7_image;
             }
         // Section 7 image
 
@@ -204,23 +152,10 @@ class AboutController extends Controller
 
         // Section 10 image
             if($request->file('new_section_10_image')) {
-                if($request->old_section_10_image) {
-                    Storage::delete('backend/pages/' . $request->old_section_10_image);
-                }
-
-                $new_section_10_image = $request->file('new_section_10_image');
-                $section_10_image_name = Str::random(40) . '.' . $new_section_10_image->getClientOriginalExtension();
-                $new_section_10_image->storeAs('backend/pages', $section_10_image_name);
-            }
-            else if($request->old_section_10_image == null) {
-                if($contents->{'section_10_image_' . $short_code}) {
-                    Storage::delete('backend/pages/' . $contents->{'section_10_image_' . $short_code});
-                }
-
-                $section_10_image_name = null;
+                $section_10_image = process_image($request->file('new_section_10_image'), 'backend/pages', $request->old_section_10_image);
             }
             else {
-                $section_10_image_name = $request->old_section_10_image;
+                $section_10_image = $request->old_section_10_image;
             }
         // Section 10 image
 
@@ -256,13 +191,13 @@ class AboutController extends Controller
             'answers'
         );
 
-        $data['section_2_image_' . '' . $short_code] = $section_2_image_name;
-        $data['section_4_image_1_' . '' . $short_code] = $section_4_image_1_name;
-        $data['section_4_image_2_' . '' . $short_code] = $section_4_image_2_name;
+        $data['section_2_image_' . '' . $short_code] = $section_2_image;
+        $data['section_4_image_1_' . '' . $short_code] = $section_4_image_1;
+        $data['section_4_image_2_' . '' . $short_code] = $section_4_image_2;
         $data['section_5_video_' . '' . $short_code] = $section_5_video_name;
-        $data['section_7_image_' . '' . $short_code] = $section_7_image_name;
+        $data['section_7_image_' . '' . $short_code] = $section_7_image;
         $data['section_8_video_' . '' . $short_code] = $section_8_video_name;
-        $data['section_10_image_' . '' . $short_code] = $section_10_image_name;
+        $data['section_10_image_' . '' . $short_code] = $section_10_image;
         $data['section_11_faqs_' . '' . $short_code] = $faqs;
         $contents->fill($data)->save();
 

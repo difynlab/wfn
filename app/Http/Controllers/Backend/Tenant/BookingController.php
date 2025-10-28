@@ -11,9 +11,7 @@ use App\Models\User;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
 class BookingController extends Controller
 {
@@ -92,14 +90,14 @@ class BookingController extends Controller
             $current_documents  = json_decode(htmlspecialchars_decode($request->old_documents ?? '[]'), true);
 
             foreach(array_diff($existing_documents, $current_documents) as $document) {
-                Storage::delete('backend/bookings/' . $document);
+                $processed_image = process_image(null, 'backend/bookings', $document);
+                $processed_image = process_image(null, 'backend/bookings/thumbnails', $document);
             }
 
             if($request->file('new_documents')) {
                 foreach($request->file('new_documents') as $document) {
-                    $document_name = Str::random(40) . '.' . $document->getClientOriginalExtension();
-                    $document->storeAs('backend/bookings', $document_name);
-                    $current_documents[] = $document_name;
+                    $processed_image = process_image($document, 'backend/bookings');
+                    $current_documents[] = $processed_image;
                 }
             }
             
