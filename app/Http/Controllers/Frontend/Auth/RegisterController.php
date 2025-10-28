@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -452,7 +451,7 @@ class RegisterController extends Controller
         ];
 
         send_email(new AccountRegisterMail($mail_data), $request->email);
-        // send_email(new AdminAccountRegisterMail($mail_data), config('app.admin_email'));
+        send_email(new AdminAccountRegisterMail($mail_data), config('app.admin_email'));
 
         Auth::login($user);
         $request->session()->regenerate();

@@ -11,11 +11,11 @@
         <div class="row">
             <div class="col-12 col-lg-5 col-xl-4 left">
                 @if($contents->{'login_image_' . $middleware_language})
-                    <img src="{{ asset('storage/backend/pages/' . $contents->{'login_image_' . $middleware_language}) }}" alt="Log In" class="image">
+                    <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->{'login_image_' . $middleware_language}) }}" data-src="{{ asset('storage/backend/pages/' . $contents->{'login_image_' . $middleware_language}) }}" alt="Log In" class="image lazyload">
                 @elseif($contents->login_image_en)
-                    <img src="{{ asset('storage/backend/pages/' . $contents->login_image_en) }}" alt="Log In" class="image">
+                    <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->login_image_en) }}" data-src="{{ asset('storage/backend/pages/' . $contents->login_image_en) }}" alt="Log In" class="image lazyload">
                 @else
-                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Log In" class="image">
+                    <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Log In" class="image lazyload">
                 @endif
             </div>
 

@@ -35,6 +35,7 @@
             <script src="{{ asset('frontend/js/bootstrap.js') }}"></script>
             <script src="{{ asset('frontend/js/swiper.js') }}"></script>
             <script src="{{ asset('frontend/js/select2.js') }}"></script>
+            <script src="{{ asset('frontend/js/lazyload.js') }}"></script>
             <script src="{{ asset('frontend/js/date-picker-x.js') }}"></script>
             <script src="{{ asset('frontend/js/global.js') }}"></script>
         @stack('after-scripts')
