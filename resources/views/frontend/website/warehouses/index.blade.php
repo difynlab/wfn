@@ -122,9 +122,9 @@
                                             @endif -->
                                             
                                             @if($warehouse->thumbnail)
-                                                <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="image">
+                                                <img src="{{ asset('storage/backend/warehouses/thumbnails/' . $warehouse->thumbnail) }}" data-src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="image lazyload">
                                             @else
-                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image">
+                                                <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image lazyload">
                                             @endif
                                         </div>
 
@@ -251,9 +251,9 @@
                             <a href="{{ route('warehouses.show', $warehouse) }}">
                                 <div class="single-warehouse">
                                     @if($warehouse->thumbnail)
-                                        <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="image">
+                                        <img src="{{ asset('storage/backend/warehouses/thumbnails/' . $warehouse->thumbnail) }}" data-src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="image lazyload">
                                     @else
-                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image">
+                                        <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image lazyload">
                                     @endif
 
                                     <div class="details">

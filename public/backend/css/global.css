@@ -51,9 +51,9 @@
         color: var(--red);
         margin-left: 3px;
     }
-    .fr-wrapper > div:first-of-type {
+    /* .fr-wrapper > div:first-of-type {
         display: none!important;
-    }
+    } */
     p[data-f-id="pbf"], p[data-f-id="pbf"] a {
         display: none!important;
     }

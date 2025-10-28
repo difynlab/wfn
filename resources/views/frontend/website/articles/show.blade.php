@@ -37,9 +37,9 @@
             </div>
 
             @if($article->thumbnail)
-                <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="thumbnail-image">
+                <img src="{{ asset('storage/backend/articles/thumbnails/' . $article->thumbnail) }}" data-src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="Article Image" class="thumbnail-image lazyload">
             @else
-                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="thumbnail-image">
+                <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Article Image" class="thumbnail-image lazyload">
             @endif
 
             <div class="section-description">{!! $article->content !!}</div>
@@ -53,9 +53,9 @@
                     @foreach($related_articles as $related_article)
                         <div class="col-12 mb-4 mb-lg-0 col-lg-4 single-article">
                             @if($related_article->thumbnail)
-                                <img src="{{ asset('storage/backend/articles/' . $related_article->thumbnail) }}" alt="article-image" class="image">
+                                <img src="{{ asset('storage/backend/articles/thumbnails/' . $related_article->thumbnail) }}" data-src="{{ asset('storage/backend/articles/' . $related_article->thumbnail) }}" alt="Article Image" class="image lazyload">
                             @else
-                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="image">
+                                <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Article Image" class="image lazyload">
                             @endif
 
                             <p class="date">{{ \Carbon\Carbon::parse($related_article->created_at)->format('F d, Y') }}</p>

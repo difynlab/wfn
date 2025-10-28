@@ -11,11 +11,11 @@
         @if($contents->section_1_title_en)
             <div class="section-1 section-margin">
                 @if($contents->{'section_1_image_' . $middleware_language})
-                    <img src="{{ asset('storage/backend/pages/' . $contents->{'section_1_image_' . $middleware_language}) }}" alt="Banner" class="banner">
+                    <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->{'section_1_image_' . $middleware_language}) }}" data-src="{{ asset('storage/backend/pages/' . $contents->{'section_1_image_' . $middleware_language}) }}" alt="Banner" class="banner lazyload">
                 @elseif($contents->section_1_image_en)
-                    <img src="{{ asset('storage/backend/pages/' . $contents->section_1_image_en) }}" alt="Banner" class="banner">
+                    <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->section_1_image_en) }}" data-src="{{ asset('storage/backend/pages/' . $contents->section_1_image_en) }}" alt="Banner" class="banner lazyload">
                 @else
-                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Banner" class="banner">
+                    <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Banner" class="banner lazyload">
                 @endif
 
                 <div class="overlay">
@@ -254,9 +254,9 @@
                                                     @endphp -->
 
                                                     @if($warehouse->thumbnail)
-                                                        <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
+                                                        <img src="{{ asset('storage/backend/warehouses/thumbnails/' . $warehouse->thumbnail) }}" data-src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image lazyload">
                                                     @else
-                                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image">
+                                                        <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image lazyload">
                                                     @endif
 
                                                     <p class="type">
@@ -336,9 +336,9 @@
                                                     @endphp -->
 
                                                     @if($warehouse->thumbnail)
-                                                        <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
+                                                        <img src="{{ asset('storage/backend/warehouses/thumbnails/' . $warehouse->thumbnail) }}" data-src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image lazyload">
                                                     @else
-                                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image">
+                                                        <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image lazyload">
                                                     @endif
 
                                                     <p class="type">
@@ -418,9 +418,9 @@
                                                     @endphp -->
 
                                                     @if($warehouse->thumbnail)
-                                                        <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
+                                                        <img src="{{ asset('storage/backend/warehouses/thumbnails/' . $warehouse->thumbnail) }}" data-src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image lazyload">
                                                     @else
-                                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image">
+                                                        <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image lazyload">
                                                     @endif
 
                                                     <p class="type">
@@ -500,9 +500,9 @@
                                                     @endphp -->
 
                                                     @if($warehouse->thumbnail)
-                                                        <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image">
+                                                        <img src="{{ asset('storage/backend/warehouses/thumbnails/' . $warehouse->thumbnail) }}" data-src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="card-image lazyload">
                                                     @else
-                                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image">
+                                                        <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="card-image lazyload">
                                                     @endif
 
                                                     <p class="type">
@@ -581,11 +581,11 @@
                             <div class="row card-row">
                                 <div class="col-4 col-md-3">
                                     @if($contents->{'section_3_page_1_thumbnail_' . $middleware_language})
-                                        <img src="{{ asset('storage/backend/pages/' . $contents->{'section_3_page_1_thumbnail_' . $middleware_language}) }}" alt="Image" class="image">
+                                        <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->{'section_3_page_1_thumbnail_' . $middleware_language}) }}" data-src="{{ asset('storage/backend/pages/' . $contents->{'section_3_page_1_thumbnail_' . $middleware_language}) }}" alt="Image" class="image lazyload">
                                     @elseif($contents->section_3_page_1_thumbnail_en)
-                                        <img src="{{ asset('storage/backend/pages/' . $contents->section_3_page_1_thumbnail_en) }}" alt="Image" class="image">
+                                        <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->section_3_page_1_thumbnail_en) }}" data-src="{{ asset('storage/backend/pages/' . $contents->section_3_page_1_thumbnail_en) }}" alt="Image" class="image lazyload">
                                     @else
-                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Image" class="image">
+                                        <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Image" class="image lazyload">
                                     @endif
                                 </div>
                                 <div class="col-8 col-md-9">
@@ -602,11 +602,11 @@
                             <div class="row card-row">
                                 <div class="col-4 col-md-3">
                                     @if($contents->{'section_3_page_2_thumbnail_' . $middleware_language})
-                                        <img src="{{ asset('storage/backend/pages/' . $contents->{'section_3_page_2_thumbnail_' . $middleware_language}) }}" alt="Image" class="image">
+                                        <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->{'section_3_page_2_thumbnail_' . $middleware_language}) }}" data-src="{{ asset('storage/backend/pages/' . $contents->{'section_3_page_2_thumbnail_' . $middleware_language}) }}" alt="Image" class="image lazyload">
                                     @elseif($contents->section_3_page_2_thumbnail_en)
-                                        <img src="{{ asset('storage/backend/pages/' . $contents->section_3_page_2_thumbnail_en) }}" alt="Image" class="image">
+                                        <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->section_3_page_2_thumbnail_en) }}" data-src="{{ asset('storage/backend/pages/' . $contents->section_3_page_2_thumbnail_en) }}" alt="Image" class="image lazyload">
                                     @else
-                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Image" class="image">
+                                        <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Image" class="image lazyload">
                                     @endif
                                 </div>
                                 <div class="col-8 col-md-9">
@@ -623,11 +623,11 @@
                             <div class="row card-row">
                                 <div class="col-4 col-md-3">
                                     @if($contents->{'section_3_page_3_thumbnail_' . $middleware_language})
-                                        <img src="{{ asset('storage/backend/pages/' . $contents->{'section_3_page_3_thumbnail_' . $middleware_language}) }}" alt="Image" class="image">
+                                        <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->{'section_3_page_3_thumbnail_' . $middleware_language}) }}" data-src="{{ asset('storage/backend/pages/' . $contents->{'section_3_page_3_thumbnail_' . $middleware_language}) }}" alt="Image" class="image lazyload">
                                     @elseif($contents->section_3_page_3_thumbnail_en)
-                                        <img src="{{ asset('storage/backend/pages/' . $contents->section_3_page_3_thumbnail_en) }}" alt="Image" class="image">
+                                        <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->section_3_page_3_thumbnail_en) }}" data-src="{{ asset('storage/backend/pages/' . $contents->section_3_page_3_thumbnail_en) }}" alt="Image" class="image lazyload">
                                     @else
-                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Image" class="image">
+                                        <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Image" class="image lazyload">
                                     @endif
                                 </div>
                                 <div class="col-8 col-md-9">
@@ -644,11 +644,11 @@
                             <div class="row card-row">
                                 <div class="col-4 col-md-3">
                                     @if($contents->{'section_3_page_4_thumbnail_' . $middleware_language})
-                                        <img src="{{ asset('storage/backend/pages/' . $contents->{'section_3_page_4_thumbnail_' . $middleware_language}) }}" alt="Image" class="image">
+                                        <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->{'section_3_page_4_thumbnail_' . $middleware_language}) }}" data-src="{{ asset('storage/backend/pages/' . $contents->{'section_3_page_4_thumbnail_' . $middleware_language}) }}" alt="Image" class="image lazyload">
                                     @elseif($contents->section_3_page_4_thumbnail_en)
-                                        <img src="{{ asset('storage/backend/pages/' . $contents->section_3_page_4_thumbnail_en) }}" alt="Image" class="image">
+                                        <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->section_3_page_4_thumbnail_en) }}" data-src="{{ asset('storage/backend/pages/' . $contents->section_3_page_4_thumbnail_en) }}" alt="Image" class="image lazyload">
                                     @else
-                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Image" class="image">
+                                        <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Image" class="image lazyload">
                                     @endif
                                 </div>
                                 <div class="col-8 col-md-9">
@@ -690,11 +690,11 @@
 
                         <div class="col-12 col-lg-6">
                             @if($contents->{'section_4_image_' . $middleware_language})
-                                <img src="{{ asset('storage/backend/pages/' . $contents->{'section_4_image_' . $middleware_language}) }}" alt="Coming Soon App" class="image">
+                                <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->{'section_4_image_' . $middleware_language}) }}" data-src="{{ asset('storage/backend/pages/' . $contents->{'section_4_image_' . $middleware_language}) }}" alt="Coming Soon App" class="image lazyload">
                             @elseif($contents->section_4_image_en)
-                                <img src="{{ asset('storage/backend/pages/' . $contents->section_4_image_en) }}" alt="Coming Soon App" class="image">
+                                <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->section_4_image_en) }}" data-src="{{ asset('storage/backend/pages/' . $contents->section_4_image_en) }}" alt="Coming Soon App" class="image lazyload">
                             @else
-                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Coming Soon App" class="image">
+                                <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Coming Soon App" class="image lazyload">
                             @endif
                         </div>
                     </div>
@@ -720,9 +720,9 @@
                         @if($key == 0)
                             <div class="col-12 col-md-8 left">
                                 @if($article->thumbnail)
-                                    <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="left-image">
+                                    <img src="{{ asset('storage/backend/articles/thumbnails/' . $article->thumbnail) }}" data-src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="Article Image" class="left-image lazyload">
                                 @else
-                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="left-image">
+                                    <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Article Image" class="left-image lazyload">
                                 @endif
 
                                 <div class="content">
@@ -740,10 +740,11 @@
                             @if($key != 0)
                                 <div class="single-article">
                                     @if($article->thumbnail)
-                                        <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="right-image">
+                                        <img src="{{ asset('storage/backend/articles/thumbnails/' . $article->thumbnail) }}" data-src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="Article Image" class="right-image lazyload">
                                     @else
-                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="right-image">
+                                        <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Article Image" class="right-image lazyload">
                                     @endif
+
                                     <p class="title">{{ $article->title }}</p>
                                     <p class="description">{{ Str::limit(strip_tags($article->content), 60) }}</p>
                                     <a href="{{ route('articles.show', $article->id) }}" class="read-more-button">{{ $contents->{'section_5_read_more_' . $middleware_language} ?? $contents->section_5_read_more_en }}</a>

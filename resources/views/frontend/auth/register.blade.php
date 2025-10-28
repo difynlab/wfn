@@ -113,13 +113,12 @@
         
             <div class="col-12 col-lg-6 right">
                 @if($contents->{'register_image_' . $middleware_language})
-                    <img src="{{ asset('storage/backend/pages/' . $contents->{'register_image_' . $middleware_language}) }}" alt="Register" class="image">
+                    <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->{'register_image_' . $middleware_language}) }}" data-src="{{ asset('storage/backend/pages/' . $contents->{'register_image_' . $middleware_language}) }}" alt="Register" class="image lazyload">
                 @elseif($contents->register_image_en)
-                    <img src="{{ asset('storage/backend/pages/' . $contents->register_image_en) }}" alt="Register" class="image">
+                    <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->register_image_en) }}" data-src="{{ asset('storage/backend/pages/' . $contents->register_image_en) }}" alt="Register" class="image lazyload">
                 @else
-                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Register" class="image">
+                    <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Register" class="image lazyload">
                 @endif
-                
             </div>
         </div>
     </div>

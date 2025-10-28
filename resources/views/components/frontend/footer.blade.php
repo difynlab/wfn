@@ -82,7 +82,7 @@
         <div class="copyright">
             <div class="row align-items-center">
                 <div class="d-none d-sm-block col-sm-3 col-md-6">
-                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->footer_logo) }}" alt="Logo" class="logo">
+                    <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->logo) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->logo) }}" alt="Logo" class="logo lazyload">
                 </div>
 
                 <div class="col-12 col-sm-9 col-md-6 text-center text-sm-end">

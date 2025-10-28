@@ -12,9 +12,9 @@
             <div class="row">
                 <div class="col-7 left">
                     @if($warehouse->thumbnail)
-                        <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="main-image">
+                        <img src="{{ asset('storage/backend/warehouses/thumbnails/' . $warehouse->thumbnail) }}" data-src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="main-image lazyload">
                     @else
-                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="main-image">
+                        <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="main-image lazyload">
                     @endif
 
                     <i class="bi bi-images slider-toggle" data-bs-toggle="modal" data-bs-target="#slide-modal"></i>
@@ -22,15 +22,15 @@
 
                 <div class="col-5 right">
                     @if($warehouse->outside_image)
-                        <img src="{{ asset('storage/backend/warehouses/' . $warehouse->outside_image) }}" alt="Warehouse" class="side-image">
+                        <img src="{{ asset('storage/backend/warehouses/thumbnails/' . $warehouse->outside_image) }}" data-src="{{ asset('storage/backend/warehouses/' . $warehouse->outside_image) }}" alt="Warehouse" class="side-image lazyload">
                     @else
-                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="side-image">
+                        <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="side-image lazyload">
                     @endif
 
                     @if($warehouse->loading_image)
-                        <img src="{{ asset('storage/backend/warehouses/' . $warehouse->loading_image) }}" alt="Warehouse" class="side-image">
+                        <img src="{{ asset('storage/backend/warehouses/thumbnails/' . $warehouse->loading_image) }}" data-src="{{ asset('storage/backend/warehouses/' . $warehouse->loading_image) }}" alt="Warehouse" class="side-image lazyload">
                     @else
-                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="side-image">
+                        <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="side-image lazyload">
                     @endif
                 </div>
             </div>
@@ -48,9 +48,9 @@
                                         <div class="swiper-slide">
                                             @if($slider['type'] === 'image')
                                                 @if($slider['name'])
-                                                    <img src="{{ asset('storage/backend/warehouses/' . $slider['name']) }}" alt="Warehouse">
+                                                    <img src="{{ asset('storage/backend/warehouses/thumbnails/' . $slider['name']) }}" data-src="{{ asset('storage/backend/warehouses/' . $slider['name']) }}" alt="Warehouse" class="lazyload">
                                                 @else
-                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse">
+                                                    <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="lazyload">
                                                 @endif
                                             @elseif($slider['type'] === 'video')
                                                 @if($slider['name'])
@@ -59,7 +59,7 @@
                                                         Your browser does not support the video tag.
                                                     </video>
                                                 @else
-                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse">
+                                                    <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="lazyload">
                                                 @endif
                                             @endif
                                         </div>
@@ -73,9 +73,9 @@
                                         <div class="swiper-slide">
                                             @if($slider['type'] === 'image')
                                                 @if($slider['name'])
-                                                    <img src="{{ asset('storage/backend/warehouses/' . $slider['name']) }}" alt="Warehouse">
+                                                    <img src="{{ asset('storage/backend/warehouses/thumbnails/' . $slider['name']) }}" data-src="{{ asset('storage/backend/warehouses/' . $slider['name']) }}" alt="Warehouse" class="lazyload">
                                                 @else
-                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse">
+                                                    <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="lazyload">
                                                 @endif
                                             @elseif($slider['type'] === 'video')
                                                 @if($slider['name'])
@@ -86,7 +86,7 @@
 
                                                     <i class="bi bi-play-circle-fill video-play"></i>
                                                 @else
-                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse">
+                                                    <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="lazyload">
                                                 @endif
                                             @endif
                                         </div>
@@ -105,9 +105,9 @@
                     <div class="row profile-row">
                         <div class="col-8 left">
                             @if($warehouse->user->image)
-                                <img src="{{ asset('storage/backend/users/' . $warehouse->user->image) }}" alt="User" class="image">
+                                <img src="{{ asset('storage/backend/users/thumbnails/' . $warehouse->user->image) }}" data-src="{{ asset('storage/backend/users/' . $warehouse->user->image) }}" alt="User" class="image lazyload">
                             @else
-                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_profile_image) }}" alt="User" class="image">
+                                <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="User" class="image lazyload">
                             @endif
 
                             <div class="profile">
@@ -240,9 +240,9 @@
 
                                     <div class="property">
                                         @if($warehouse->thumbnail)
-                                            <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="image">
+                                            <img src="{{ asset('storage/backend/warehouses/thumbnails/' . $warehouse->thumbnail) }}" data-src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="image lazyload">
                                         @else
-                                            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image">
+                                            <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image lazyload">
                                         @endif
 
                                         <div class="details">
@@ -438,9 +438,9 @@
                             <a href="{{ route('warehouses.show', $more_warehouse) }}">
                                 <div class="single-warehouse">
                                     @if($more_warehouse->thumbnail)
-                                        <img src="{{ asset('storage/backend/warehouses/' . $more_warehouse->thumbnail) }}" alt="Warehouse" class="image">
+                                        <img src="{{ asset('storage/backend/warehouses/thumbnails/' . $more_warehouse->thumbnail) }}" data-src="{{ asset('storage/backend/warehouses/' . $more_warehouse->thumbnail) }}" alt="Warehouse" class="image lazyload">
                                     @else
-                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image">
+                                        <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image lazyload">
                                     @endif
 
                                     <div class="details">

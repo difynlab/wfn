@@ -44,9 +44,9 @@
                                 <div class="row single-article">
                                     <div class="col-12 mb-2 mb-sm-4 mb-lg-0 col-lg-5">
                                         @if($article->thumbnail)
-                                            <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="image">
+                                            <img src="{{ asset('storage/backend/articles/thumbnails/' . $article->thumbnail) }}" data-src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="Article Image" class="image lazyload">
                                         @else
-                                            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="image">
+                                            <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Article Image" class="image lazyload">
                                         @endif
                                     </div>
 
@@ -73,9 +73,9 @@
                                 @foreach($articles as $article)
                                     <div class="col-6 mb-2 mb-sm-4 mb-lg-0 col-lg-4 single-article">
                                         @if($article->thumbnail)
-                                            <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="image">
+                                            <img src="{{ asset('storage/backend/articles/thumbnails/' . $article->thumbnail) }}" data-src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="Article Image" class="image lazyload">
                                         @else
-                                            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="image">
+                                            <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Article Image" class="image lazyload">
                                         @endif
 
                                         <p class="date">{{ \Carbon\Carbon::parse($article->created_at)->format('M d, Y') }}</p>
@@ -107,9 +107,9 @@
                                         <div class="row single-article">
                                             <div class="col-12 mb-2 mb-sm-4 mb-lg-0 col-lg-5">
                                                 @if($article->thumbnail)
-                                                    <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="image">
+                                                    <img src="{{ asset('storage/backend/articles/thumbnails/' . $article->thumbnail) }}" data-src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="Article Image" class="image lazyload">
                                                 @else
-                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="image">
+                                                    <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Article Image" class="image lazyload">
                                                 @endif
                                             </div>
 
@@ -136,9 +136,9 @@
                                         @foreach($filtered_articles as $article)
                                             <div class="col-6 mb-2 mb-sm-4 mb-lg-0 col-lg-4 single-article">
                                                 @if($article->thumbnail)
-                                                    <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="image">
+                                                    <img src="{{ asset('storage/backend/articles/thumbnails/' . $article->thumbnail) }}" data-src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="Article Image" class="image lazyload">
                                                 @else
-                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="image">
+                                                    <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Article Image" class="image lazyload">
                                                 @endif
 
                                                 <p class="date">{{ \Carbon\Carbon::parse($article->created_at)->format('M d, Y') }}</p>

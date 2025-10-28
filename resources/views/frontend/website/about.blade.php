@@ -21,11 +21,11 @@
                 <div class="row our-story-row">
                     <div class="col-12 col-md-5 col-lg-5 col-xxl-5 left">
                         @if($contents->{'section_2_image_' . $middleware_language})
-                            <img src="{{ asset('storage/backend/pages/' . $contents->{'section_2_image_' . $middleware_language}) }}" alt="Our Story" class="image">
+                            <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->{'section_2_image_' . $middleware_language}) }}" data-src="{{ asset('storage/backend/pages/' . $contents->{'section_2_image_' . $middleware_language}) }}" alt="Our Story" class="image lazyload">
                         @elseif($contents->section_2_image_en)
-                            <img src="{{ asset('storage/backend/pages/' . $contents->section_2_image_en) }}" alt="Our Story" class="image">
+                            <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->section_2_image_en) }}" data-src="{{ asset('storage/backend/pages/' . $contents->section_2_image_en) }}" alt="Our Story" class="image lazyload">
                         @else
-                            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Our Story" class="image">
+                            <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Our Story" class="image lazyload">
                         @endif
                     </div>
 
@@ -116,11 +116,11 @@
                             </div>
 
                             @if($contents->{'section_4_image_1_' . $middleware_language})
-                                <img src="{{ asset('storage/backend/pages/' . $contents->{'section_4_image_1_' . $middleware_language}) }}" alt="Business Storage" class="image">
+                                <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->{'section_4_image_1_' . $middleware_language}) }}" data-src="{{ asset('storage/backend/pages/' . $contents->{'section_4_image_1_' . $middleware_language}) }}" alt="Business Storage" class="image lazyload">
                             @elseif($contents->section_4_image_1_en)
-                                <img src="{{ asset('storage/backend/pages/' . $contents->section_4_image_1_en) }}" alt="Business Storage" class="image">
+                                <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->section_4_image_1_en) }}" data-src="{{ asset('storage/backend/pages/' . $contents->section_4_image_1_en) }}" alt="Business Storage" class="image lazyload">
                             @else
-                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Business Storage" class="image">
+                                <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Business Storage" class="image lazyload">
                             @endif
                         </div>
 
@@ -131,11 +131,11 @@
                             </div>
 
                             @if($contents->{'section_4_image_2_' . $middleware_language})
-                                <img src="{{ asset('storage/backend/pages/' . $contents->{'section_4_image_2_' . $middleware_language}) }}" alt="Business Storage" class="image">
+                                <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->{'section_4_image_2_' . $middleware_language}) }}" data-src="{{ asset('storage/backend/pages/' . $contents->{'section_4_image_2_' . $middleware_language}) }}" alt="Personal Storage" class="image lazyload">
                             @elseif($contents->section_4_image_2_en)
-                                <img src="{{ asset('storage/backend/pages/' . $contents->section_4_image_2_en) }}" alt="Business Storage" class="image">
+                                <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->section_4_image_2_en) }}" data-src="{{ asset('storage/backend/pages/' . $contents->section_4_image_2_en) }}" alt="Personal Storage" class="image lazyload">
                             @else
-                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Business Storage" class="image">
+                                <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Personal Storage" class="image lazyload">
                             @endif
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                         @elseif($contents->section_5_video_en)
                             <video controls src="{{ asset('storage/backend/pages/' . $contents->section_5_video_en) }}" class="image"></video>
                         @else
-                            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Video" class="image">
+                            <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Video" class="image lazyload">
                         @endif
                     </div>
 
@@ -273,11 +273,11 @@
 
                     <div class="col-6 right">
                         @if($contents->{'section_7_image_' . $middleware_language})
-                            <img src="{{ asset('storage/backend/pages/' . $contents->{'section_7_image_' . $middleware_language}) }}" alt="Founders" class="image">
+                            <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->{'section_7_image_' . $middleware_language}) }}" data-src="{{ asset('storage/backend/pages/' . $contents->{'section_7_image_' . $middleware_language}) }}" alt="Founders" class="image lazyload">
                         @elseif($contents->section_7_image_en)
-                            <img src="{{ asset('storage/backend/pages/' . $contents->section_7_image_en) }}" alt="Founders" class="image">
+                            <img src="{{ asset('storage/backend/pages/thumbnails/' . $contents->section_7_image_en) }}" data-src="{{ asset('storage/backend/pages/' . $contents->section_7_image_en) }}" alt="Founders" class="image lazyload">
                         @else
-                            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Founders" class="image">
+                            <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Founders" class="image lazyload">
                         @endif
                     </div>
                 </div>
@@ -321,7 +321,7 @@
                         @elseif($contents->section_8_video_en)
                             <video controls src="{{ asset('storage/backend/pages/' . $contents->section_8_video_en) }}" alt="Video" class="image"></video>
                         @else
-                            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Video" class="image">
+                            <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Video" class="image lazyload">
                         @endif
                     </div>
                 </div>
@@ -357,9 +357,9 @@
 
                                         <div class="right">
                                             @if($review->image)
-                                                <img src="{{ asset('storage/backend/reviews/' . $review->image) }}" alt="Image" class="image">
+                                                <img src="{{ asset('storage/backend/reviews/thumbnails/' . $review->image) }}" data-src="{{ asset('storage/backend/reviews/' . $review->image) }}" alt="Image" class="image lazyload">
                                             @else
-                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Image" class="image">
+                                                <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Image" class="image lazyload">
                                             @endif
                                         </div>
                                     </div>
