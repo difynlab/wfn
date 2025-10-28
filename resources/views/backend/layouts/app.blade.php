@@ -40,6 +40,7 @@
             <script src="{{ asset('backend/js/froala.js') }}"></script>
             <script src="{{ asset('backend/js/select2.js') }}"></script>
             <script src="{{ asset('backend/js/swiper.js') }}"></script>
+            <script src="{{ asset('backend/js/lazyload.js') }}"></script>
             <script src="{{ asset('backend/js/date-picker-x.js') }}"></script>
             <script src="{{ asset('backend/js/chart.js') }}"></script>
             <script src="{{ asset('backend/js/global.js') }}"></script>
