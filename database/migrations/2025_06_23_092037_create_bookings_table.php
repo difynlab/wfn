@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->integer('no_of_pallets')->nullable();
-            $table->integer('square_meters')->nullable();
+            $table->integer('no_of_square_meters')->nullable();
             $table->decimal('total_rent', 10, 2)->nullable();
             $table->date('tenancy_date');
             $table->date('renewal_date');

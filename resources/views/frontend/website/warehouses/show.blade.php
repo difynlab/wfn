@@ -278,8 +278,37 @@
                                             </div>
 
                                             <div class="single-detail">
+                                                <p class="text">{{ $contents->{'inner_page_modal_warehouse_type_' . $middleware_language} ?? $contents->inner_page_modal_warehouse_type_en }}</p>
+
+                                                <div class="row radios">
+                                                    <div class="col-6">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input radio" type="radio" id="radio1"  name="warehouse_type" value="pallet" checked>
+                                                            <label class="form-check-label" for="radio1">
+                                                                {{ $contents->{'inner_page_modal_pallets_' . $middleware_language} ?? $contents->inner_page_modal_pallets_en }}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input radio" type="radio" id="radio2" name="warehouse_type" value="square-meter">
+                                                            <label class="form-check-label" for="radio2">
+                                                                {{ $contents->{'inner_page_modal_square_meters_' . $middleware_language} ?? $contents->inner_page_modal_square_meters_en }}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="single-detail number-of-pallets">
                                                 <p class="text">{{ $contents->{'inner_page_modal_no_of_pallets_' . $middleware_language} ?? $contents->inner_page_modal_no_of_pallets_en }}</p>
                                                 <input type="number" class="value" id="no_of_pallets" name="no_of_pallets" min="1" value="{{ old('no_of_pallets') }}" required>
+                                            </div>
+
+                                            <div class="single-detail square-meters d-none">
+                                                <p class="text">{{ $contents->{'inner_page_modal_no_of_square_meters_' . $middleware_language} ?? $contents->inner_page_modal_no_of_square_meters_en }}</p>
+                                                <input type="number" class="value" id="no_of_square_meters" name="no_of_square_meters" min="1" value="{{ old('no_of_square_meters') }}">
                                             </div>
                                         </div>
 
@@ -650,5 +679,28 @@
                 }
             }
         }
+    </script>
+
+    <script>
+        $('.radios .radio').on('change', function() {
+            let value = $(this).val();
+
+            if(value == 'pallet') {
+				$('.number-of-pallets').removeClass('d-none');
+				$('.number-of-pallets').find('input').attr('required', true);
+				
+				$('.square-meters').addClass('d-none');
+				$('.square-meters').find('input').val('');
+				$('.square-meters').find('input').attr('required', false);
+			}
+			else {
+				$('.square-meters').removeClass('d-none');
+				$('.square-meters').find('input').attr('required', true);
+
+				$('.number-of-pallets').addClass('d-none');
+				$('.number-of-pallets').find('input').val('');
+				$('.number-of-pallets').find('input').attr('required', false);
+			}
+        });
     </script>
 @endpush

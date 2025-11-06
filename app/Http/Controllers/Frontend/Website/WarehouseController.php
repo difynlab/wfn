@@ -259,82 +259,106 @@ class WarehouseController extends Controller
 
     public function store(Request $request)
     {
-        $recaptcha_token = $request->input('recaptcha_token');
-
-        if(empty($recaptcha_token)) {
-            Log::warning('reCAPTCHA token missing or empty', [
-                'ip' => $request->ip(),
-                'user_agent' => $request->userAgent(),
-                'activity' => 'booking',
-            ]);
-            
-            return redirect()->back()->withErrors(['email' => 'reCAPTCHA token missing'])->withInput();
-        }
-
-        $validator = Validator::make($request->all(), [
-            'warehouse_id' => 'required|integer',
-            'no_of_pallets' => 'required|integer',
-            'tenancy_date' => 'required|date',
-            'renewal_date' => 'required|date',
-            'recaptcha_token' => 'required|string',
+        session([
+            'tenancy_date' => $request->tenancy_date ?? null,
+            'renewal_date' => $request->renewal_date ?? null,
+            'no_of_pallets' => $request->no_of_pallets ?? null,
+            'no_of_square_meters' => $request->no_of_square_meters ?? null,
         ]);
 
-        $validator->after(function ($validator) use ($request, $recaptcha_token) {
-            $check = Recaptcha::verify($recaptcha_token, 'booking');
-
-            if(!$check['passes']) {
-                $validator->errors()->add('recaptcha_token', 'reCAPTCHA verification failed.');
-
-                Log::warning('Captcha verification failed', [
-                    'ip' => $request->ip(),
-                    'score' => $check['score'],
-                    'activity' => 'subscription',
-                    'user_agent' => $request->userAgent(),
-                ]);
-            }
-        });
-        
-        if($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput()->with(
-                [
-                    'error' => 'Booking Failed',
-                    'message' => 'Please recheck and submit again.',
-                ]
-            );
-        }
-
-        $tenant = Auth::user();
         $warehouse = Warehouse::find($request->warehouse_id);
-        $landlord = User::find($warehouse->user_id);
 
-        $data = $request->except('recaptcha_token');
-        $data['user_id'] = $tenant->id;
-        $data['status'] = 2;
-        $booking = Booking::create($data);
-
-        $mail_data = [
-            'tenant_name' => $tenant->first_name . ' ' . $tenant->last_name,
-            'tenant_email' => $tenant->email,
-            'landlord_name' => $landlord->first_name . ' ' . $landlord->last_name,
-            'landlord_email' => $landlord->email,
-            'warehouse_name' => $warehouse->name_en,
-            'tenancy_date' => $booking->tenancy_date,
-            'renewal_date' => $booking->renewal_date,
-            'no_of_pallets' => $booking->no_of_pallets,
-            'booking_id' => $booking->id,
-        ];
-
-        send_email(new BookingMail($mail_data), $tenant->email);
-        send_email(new LandlordBookingMail($mail_data), $landlord->email);
-        send_email(new AdminBookingMail($mail_data), config('app.admin_email'));
-
-        return redirect()->route('warehouses.show', $request->warehouse_id)->with(
-            [
-                'success' => 'Your warehouse is now ready',
-                'message' => 'Thanks for your time. An expert will be reaching out to you soon to finalize your agreement.',
-            ]
-        );
+        return view('backend.tenant.bookings.review', [
+            'warehouse' => $warehouse
+        ]);
     }
+
+    // public function store(Request $request)
+    // {
+    //     dd($request->all());
+    //     session([
+    //         'tenancy_date' => $request->tenancy_date ?? null,
+    //         'renewal_date' => $request->renewal_date ?? null,
+    //         'no_of_pallets' => $request->no_of_pallets ?? null,
+    //         'no_of_square_meters' => $request->no_of_square_meters ?? null,
+    //     ]);
+
+    //     $recaptcha_token = $request->input('recaptcha_token');
+
+    //     if(empty($recaptcha_token)) {
+    //         Log::warning('reCAPTCHA token missing or empty', [
+    //             'ip' => $request->ip(),
+    //             'user_agent' => $request->userAgent(),
+    //             'activity' => 'booking',
+    //         ]);
+            
+    //         return redirect()->back()->withErrors(['email' => 'reCAPTCHA token missing'])->withInput();
+    //     }
+
+    //     $validator = Validator::make($request->all(), [
+    //         'warehouse_id' => 'required|integer',
+    //         'no_of_pallets' => 'required|integer',
+    //         'tenancy_date' => 'required|date',
+    //         'renewal_date' => 'required|date',
+    //         'recaptcha_token' => 'required|string',
+    //     ]);
+
+    //     $validator->after(function ($validator) use ($request, $recaptcha_token) {
+    //         $check = Recaptcha::verify($recaptcha_token, 'booking');
+
+    //         if(!$check['passes']) {
+    //             $validator->errors()->add('recaptcha_token', 'reCAPTCHA verification failed.');
+
+    //             Log::warning('Captcha verification failed', [
+    //                 'ip' => $request->ip(),
+    //                 'score' => $check['score'],
+    //                 'activity' => 'subscription',
+    //                 'user_agent' => $request->userAgent(),
+    //             ]);
+    //         }
+    //     });
+        
+    //     if($validator->fails()) {
+    //         return redirect()->back()->withErrors($validator)->withInput()->with(
+    //             [
+    //                 'error' => 'Booking Failed',
+    //                 'message' => 'Please recheck and submit again.',
+    //             ]
+    //         );
+    //     }
+
+    //     $tenant = Auth::user();
+    //     $warehouse = Warehouse::find($request->warehouse_id);
+    //     $landlord = User::find($warehouse->user_id);
+
+    //     $data = $request->except('recaptcha_token');
+    //     $data['user_id'] = $tenant->id;
+    //     $data['status'] = 2;
+    //     $booking = Booking::create($data);
+
+    //     $mail_data = [
+    //         'tenant_name' => $tenant->first_name . ' ' . $tenant->last_name,
+    //         'tenant_email' => $tenant->email,
+    //         'landlord_name' => $landlord->first_name . ' ' . $landlord->last_name,
+    //         'landlord_email' => $landlord->email,
+    //         'warehouse_name' => $warehouse->name_en,
+    //         'tenancy_date' => $booking->tenancy_date,
+    //         'renewal_date' => $booking->renewal_date,
+    //         'no_of_pallets' => $booking->no_of_pallets,
+    //         'booking_id' => $booking->id,
+    //     ];
+
+    //     send_email(new BookingMail($mail_data), $tenant->email);
+    //     send_email(new LandlordBookingMail($mail_data), $landlord->email);
+    //     send_email(new AdminBookingMail($mail_data), config('app.admin_email'));
+
+    //     return redirect()->route('warehouses.show', $request->warehouse_id)->with(
+    //         [
+    //             'success' => 'Your warehouse is now ready',
+    //             'message' => 'Thanks for your time. An expert will be reaching out to you soon to finalize your agreement.',
+    //         ]
+    //     );
+    // }
 
     public function area(Request $request, $area)
     {

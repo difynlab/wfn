@@ -337,6 +337,10 @@
     .notification-modal .modal-delete-button .delete-icon {
         padding-right: 5px;
     }
+    .notification-modal .box-image {
+        width: 265px;
+        height: 140px;
+    }
 /* #endregion */
 
 

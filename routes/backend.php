@@ -354,16 +354,6 @@ require __DIR__.'/auth/backend.php';
     Route::middleware(['auth', 'role:tenant'])->prefix('tenant')->name('tenant.')->group(function () {
         Route::get('dashboard', [TenantDashboardController::class, 'index'])->name('dashboard');
 
-        // Warehouses routes
-            Route::controller(TenantWarehouseController::class)->prefix('warehouses')->name('warehouses.')->group(function() {
-                Route::get('/', 'index')->name('index');
-                Route::get('filter', 'filter')->name('filter');
-                Route::get('review/{warehouse}', 'review')->name('review');
-                Route::get('cancel', 'cancel')->name('cancel');
-                Route::post('/', 'booking')->name('booking');
-            });
-        // Warehouses routes
-
         // Bookings routes
             Route::middleware('company')->controller(TenantBookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
                 Route::get('/', 'index')->name('index');
@@ -371,6 +361,11 @@ require __DIR__.'/auth/backend.php';
                 Route::get('{booking}/edit', 'edit')->name('edit');
                 Route::post('{booking}', 'update')->name('update');
                 Route::delete('{booking}', 'destroy')->name('destroy');
+
+                Route::get('search', 'search')->name('search');
+                Route::get('review/{warehouse}', 'review')->name('review');
+                Route::get('cancel', 'cancel')->name('cancel');
+                Route::post('/', 'booking')->name('booking');
             });
         // Bookings routes
 

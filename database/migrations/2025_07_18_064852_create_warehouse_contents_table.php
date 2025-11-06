@@ -71,7 +71,11 @@ return new class extends Migration
             $table->text('inner_page_modal_details_en')->nullable();
             $table->text('inner_page_modal_tenure_start_date_en')->nullable();
             $table->text('inner_page_modal_tenure_end_date_en')->nullable();
+            $table->text('inner_page_modal_warehouse_type_en')->nullable();
+            $table->text('inner_page_modal_pallets_en')->nullable();
+            $table->text('inner_page_modal_square_meters_en')->nullable();
             $table->text('inner_page_modal_no_of_pallets_en')->nullable();
+            $table->text('inner_page_modal_no_of_square_meters_en')->nullable();
             $table->text('inner_page_modal_button_en')->nullable();
 
             $table->text('inner_page_expert_modal_title_en')->nullable();
@@ -142,7 +146,11 @@ return new class extends Migration
             $table->text('inner_page_modal_details_ar')->nullable();
             $table->text('inner_page_modal_tenure_start_date_ar')->nullable();
             $table->text('inner_page_modal_tenure_end_date_ar')->nullable();
+            $table->text('inner_page_modal_warehouse_type_ar')->nullable();
+            $table->text('inner_page_modal_pallets_ar')->nullable();
+            $table->text('inner_page_modal_square_meters_ar')->nullable();
             $table->text('inner_page_modal_no_of_pallets_ar')->nullable();
+            $table->text('inner_page_modal_no_of_square_meters_ar')->nullable();
             $table->text('inner_page_modal_button_ar')->nullable();
 
             $table->text('inner_page_expert_modal_title_ar')->nullable();

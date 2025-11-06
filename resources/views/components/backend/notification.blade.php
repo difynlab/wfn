@@ -103,9 +103,9 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body">
-                <i class="bi bi-x-circle-fill close-icon"></i>
-                <p class="title">{{ session('tenant-booking-error') }}</p>
-                <p class="description">{{ session('tenant-booking-error-message') }}</p>
+                <img src="{{ asset('storage/backend/box-image.png') }}" alt="No Warehouses" class="box-image">
+                <p class="title">{{ session('tenant-booking') }}</p>
+                <p class="description">{{ session('tenant-booking-message') }}</p>
 
                 <div class="buttons">
                     <button type="button" class="btn close-button" data-bs-dismiss="modal" title="Close">Close</button>
@@ -164,7 +164,7 @@
         </script>
     @endif
 
-    @if(session('tenant-booking-error'))
+    @if(session('tenant-booking'))
         <script>
             $(document).ready(function() {
                 $('#tenant-booking-modal').modal('show');

@@ -198,7 +198,7 @@
                                     </div>
                                 @endif
 
-                                <a href="{{ route('tenant.warehouses.review', $warehouse) }}" class="quote-btn">Get an Instant Quote</a>
+                                <a href="{{ route('tenant.bookings.review', $warehouse) }}" class="quote-btn">Get an Instant Quote</a>
                             </div>
                         </div>
                     @endforeach

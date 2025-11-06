@@ -352,21 +352,21 @@
 
         <ul class="main-menu">
             <li class="link">
-                <a href="{{ route('tenant.bookings.index') }}" class="{{ Request::segment(2) == 'bookings' ? 'active' : '' }}">
-                    <div class="box"></div>
-                    <div class="actual-link">
-                        <i class="bi bi-ui-checks"></i>
-                        Bookings
-                    </div>
-                </a>
-            </li>
-            
-            <li class="link">
-                <a href="{{ route('tenant.warehouses.index') }}" class="{{ Request::segment(2) == 'warehouses' ? 'active' : '' }}">
+                <a href="{{ route('warehouses.index') }}" class="{{ Request::segment(2) == 'warehouses' ? 'active' : '' }}">
                     <div class="box"></div>
                     <div class="actual-link">
                         <i class="bi bi-houses"></i>
                         Warehouses
+                    </div>
+                </a>
+            </li>
+
+            <li class="link">
+                <a href="{{ route('tenant.bookings.index') }}" class="{{ Request::segment(2) == 'bookings' ? 'active' : '' }}">
+                    <div class="box"></div>
+                    <div class="actual-link">
+                        <i class="bi bi-ui-checks"></i>
+                        My Quotations
                     </div>
                 </a>
             </li>

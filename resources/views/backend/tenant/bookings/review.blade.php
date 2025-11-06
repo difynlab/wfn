@@ -12,7 +12,7 @@
 		</div>
 
         <div class="content">
-            <form action="{{ route('tenant.warehouses.booking') }}" method="POST" class="form">
+            <form action="{{ route('tenant.bookings.booking') }}" method="POST" class="form">
                 @csrf
                 <div class="quote-inputs">
                     <div class="input-container">
@@ -31,8 +31,8 @@
                         <label class="form-label">No of SqM</label>
                         <div class="number-controls">
                             <button type="button" class="btn-minus btn-sqm-minus">-</button>
-                            <p id="sqm" class="number-input">{{ session('square_meters') ?? 0 }}</p>
-                            <input type="hidden" id="sqm-input" name="square_meters" value="{{ session('square_meters') ?? 0 }}">
+                            <p id="sqm" class="number-input">{{ session('no_of_square_meters') ?? 0 }}</p>
+                            <input type="hidden" id="sqm-input" name="no_of_square_meters" value="{{ session('no_of_square_meters') ?? 0 }}">
                             <button type="button" class="btn-plus btn-sqm-plus">+</button>
                         </div>
                     </div>
@@ -72,70 +72,74 @@
                             </div>
                         @endif
 
-                        <div class="accordion-item card">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button price-title" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Movement Services
-                                </button>
-                            </h2>
+                        @if($warehouse->movement_services)
+                            <div class="accordion-item card">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button price-title" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Movement Services
+                                    </button>
+                                </h2>
 
-                            <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>NAME</th>
-                                                <th class="second-column">PRICE</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            @foreach(json_decode($warehouse->movement_services) as $movement_service)
+                                <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <table class="table">
+                                            <thead>
                                                 <tr>
-                                                    <td>{{ $movement_service->name }}</td>
-                                                    <td>{{ $movement_service->price }} SAR</td>
+                                                    <th>NAME</th>
+                                                    <th class="second-column">PRICE</th>
                                                 </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                            </thead>
+
+                                            <tbody>
+                                                @foreach(json_decode($warehouse->movement_services) as $movement_service)
+                                                    <tr>
+                                                        <td>{{ $movement_service->name }}</td>
+                                                        <td>{{ $movement_service->price }} SAR</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
 
-                        <div class="accordion-item card">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button price-title" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Pallet Services
-                                </button>
-                            </h2>
+                        @if($warehouse->pallet_services)
+                            <div class="accordion-item card">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button price-title" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Pallet Services
+                                    </button>
+                                </h2>
 
-                            <div id="collapseThree" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>NAME</th>
-                                                <th class="second-column">PRICE</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            @foreach(json_decode($warehouse->pallet_services) as $pallet_service)
+                                <div id="collapseThree" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <table class="table">
+                                            <thead>
                                                 <tr>
-                                                    <td>{{ $pallet_service->name }}</td>
-                                                    <td>{{ $pallet_service->price }} SAR</td>
+                                                    <th>NAME</th>
+                                                    <th class="second-column">PRICE</th>
                                                 </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                            </thead>
+
+                                            <tbody>
+                                                @foreach(json_decode($warehouse->pallet_services) as $pallet_service)
+                                                    <tr>
+                                                        <td>{{ $pallet_service->name }}</td>
+                                                        <td>{{ $pallet_service->price }} SAR</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
 
                 <div class="action-buttons">
-                    <a href="{{ route('tenant.warehouses.cancel') }}" class="btn-cancel">Cancel</a>
+                    <a href="{{ route('tenant.bookings.cancel') }}" class="btn-cancel">Cancel</a>
                     <input type="hidden" name="warehouse_id" value="{{ $warehouse->id }}">
                     <input type="hidden" name="recaptcha_token" id="recaptcha_token">
                     <x-backend.input-error field="recaptcha_token"></x-backend.input-error>

@@ -53,8 +53,8 @@
     }
     .warehouses .section-2 .bottom-row .apply-filters-button {
         border: none;
-        font-style: 14px;
-        border-radius: 30px;
+        font-size: 14px;
+        border-radius: 40px;
         width: 100%;
         height: 50px;
         background-color: var(--light_black);

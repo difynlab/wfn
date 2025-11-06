@@ -98,6 +98,7 @@
     .inner-page .form .submit-button {
         color: var(--white);
         border: none;
+        border-radius: 40px;
         background: var(--light_black);
         font-size: 17px;
         width: 200px;
@@ -128,8 +129,8 @@
         background-color: var(--red);
         color: var(--white);
         border: none;
+        border-radius: 40px;
         padding: 5px 12px;
-        border-radius: 0;
         transition: all 0.3s;
         &:hover {
             background: var(--light_black);
