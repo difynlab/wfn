@@ -625,12 +625,6 @@
 /* #endregion */
 
 
-/* Ensure date picker popup overlays booking box and nearby content */
-    .date-picker-x {
-        z-index: 1000;
-    }
-
-
 /* #region Responsive */
     @media (width <= 1921px) {}
     @media (width <= 1901px) {}
@@ -672,7 +666,6 @@
             width: 100%;
             text-align: left;
         }
-
     }
     @media (width <= 1025px) {
         .warehouse .section-2 .booking-box {
@@ -681,18 +674,18 @@
         }
     }
     @media (width <= 991px) {
-        .warehouse .section-1 .left,
-        .warehouse .section-1 .right { display: none; }
-        .warehouse .section-1 .mobile-gallery { display: block; }
-
+        .warehouse .section-1 .left, .warehouse .section-1 .right {
+            display: none;
+        }
+        .warehouse .section-1 .mobile-gallery {
+            display: block;
+        }
         .warehouse .section-2 .profile-row .right .expert {
             font-size: 16px;
         }
-
-        /* Stack details and booking box full-width */
-        .warehouse .section-2 .row > .col-8,
-        .warehouse .section-2 .row > .col-4 { width: 100%; }
-
+        .warehouse .section-2 .row > .col-8, .warehouse .section-2 .row > .col-4 {
+            width: 100%;
+        }
         .warehouse .section-2 .booking-box {
             padding: 15px;
             margin-top: 15px;
@@ -708,7 +701,6 @@
         .warehouse .section-2 .booking-box .price i {
             font-size: 22px;
         }
-
         .warehouse .section-2 .booking-box .book-now-button {
             width: 55%;
             height: 55px;
@@ -732,11 +724,9 @@
         .warehouse .section-2 .title-row .right {
             gap: 20px;
         }
-
         .warehouse .section-2 .title-row .right .rating .score {
             font-size: 22px;
         }
-
         .warehouse .booking-modal .modal-title, .warehouse .expert-modal .modal-title, .warehouse .report-modal .modal-title {
             font-size: 22px;
         }
@@ -748,7 +738,7 @@
         .warehouse .section-2 .title-row .left .title {
             font-size: 18px;
         }
-            .warehouse .section-2 .booking-box .price {
+        .warehouse .section-2 .booking-box .price {
             font-size: 22px;
         }
         .warehouse .section-2 .booking-box .price i {
@@ -766,17 +756,13 @@
     }
     @media (width <= 576px) {}
     @media (width <= 481px) {
-        .warehouse .section-1 .mobile-gallery .swiper-slide img,
-        .warehouse .section-1 .mobile-gallery .swiper-slide video {
+        .warehouse .section-1 .mobile-gallery .swiper-slide img, .warehouse .section-1 .mobile-gallery .swiper-slide video {
             height: 300px;
         }
-
-        .slider-modal .mySwiper2 .swiper-slide img,
-        .slider-modal .mySwiper2 .swiper-slide video {
+        .slider-modal .mySwiper2 .swiper-slide img, .slider-modal .mySwiper2 .swiper-slide video {
             height: 320px;
         }
-        .slider-modal .mySwiper .swiper-slide img,
-        .slider-modal .mySwiper .swiper-slide video {
+        .slider-modal .mySwiper .swiper-slide img, .slider-modal .mySwiper .swiper-slide video {
             height: 70px;
         }
         .slider-modal .mySwiper .swiper-slide .video-play {
@@ -798,7 +784,6 @@
         .warehouse .section-2 .title-row .right .rating .label { 
             font-size: 12px; 
         }
-
         .warehouse .section-2 .profile-row .left .image { 
             width: 44px; 
             height: 44px; 
@@ -820,7 +805,6 @@
             font-size: 14px; 
             line-height: 24px; 
         }
-
         .warehouse .section-2 .features-row .single-feature { 
             gap: 12px; 
         }
@@ -833,7 +817,6 @@
         .warehouse .section-2 .features-row .single-feature .details .description { 
             font-size: 13px; 
         }
-
         .warehouse .section-2 .booking-box { 
             padding: 15px; 
         }
@@ -865,9 +848,7 @@
             font-size: 12px; 
         }
 
-        .warehouse .booking-modal .modal-title,
-        .warehouse .expert-modal .modal-title,
-        .warehouse .report-modal .modal-title { 
+        .warehouse .booking-modal .modal-title, .warehouse .expert-modal .modal-title, .warehouse .report-modal .modal-title { 
             font-size: 20px; 
         }
         .warehouse .booking-modal .modal-description,

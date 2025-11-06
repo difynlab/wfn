@@ -549,7 +549,7 @@
             },
         });
 
-         var swiper = new Swiper(".mySwiper3", {
+        var swiper = new Swiper(".mySwiper3", {
             // direction: "vertical",
             mousewheel: true,
             slidesPerView: 2,
@@ -567,10 +567,8 @@
             // }
         });
 
-        // Mobile gallery (<= 991px)
         var mobileSwiper = new Swiper(".mobileSwiper", {
             slidesPerView: 1,
-            spaceBetween: 10,
             loop: true,
             pagination: {
                 el: ".mobile-gallery .swiper-pagination",
