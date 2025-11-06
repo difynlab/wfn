@@ -97,13 +97,41 @@
                     </div>
                 </div>
             </div>
+
+            <div class="mobile-gallery">
+                <div class="swiper mobileSwiper">
+                    <div class="swiper-wrapper">
+                        @foreach($sliders as $slider)
+                            <div class="swiper-slide">
+                                @if($slider['type'] === 'image')
+                                    @if($slider['name'])
+                                        <img src="{{ asset('storage/backend/warehouses/thumbnails/' . $slider['name']) }}" data-src="{{ asset('storage/backend/warehouses/' . $slider['name']) }}" alt="Warehouse" class="lazyload">
+                                    @else
+                                        <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="lazyload">
+                                    @endif
+                                @elseif($slider['type'] === 'video')
+                                    @if($slider['name'])
+                                        <video controls>
+                                            <source src="{{ asset('storage/backend/warehouses/' . $slider['name']) }}" type="video/mp4" alt="Warehouse">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    @else
+                                        <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="lazyload">
+                                    @endif
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
         </div>
         
         <div class="section-2 container section-margin">
             <div class="row">
                 <div class="col-8">
                     <div class="row profile-row">
-                        <div class="col-8 left">
+                        <div class="col-6 left">
                             @if($warehouse->user->image)
                                 <img src="{{ asset('storage/backend/users/thumbnails/' . $warehouse->user->image) }}" data-src="{{ asset('storage/backend/users/' . $warehouse->user->image) }}" alt="User" class="image lazyload">
                             @else
@@ -119,7 +147,7 @@
                             </div>
                         </div>
          
-                        <div class="col-4 right">
+                        <div class="col-6 right">
                             <span onClick="favoriteToggle({{ auth()->user()->id }}, {{ $warehouse->id }}, '{{ route('warehouses.favorite') }}', {{ isFavorite(auth()->user()->id, $warehouse->id) ? 1 : 0 }}, this)">
                                 <i class="bi {{ isFavorite(auth()->user()->id, $warehouse->id) ? 'bi-heart-fill' : 'bi-heart' }}"></i>
                             </span>
@@ -165,12 +193,12 @@
                     </div>
 
                     <div class="row title-row">
-                        <div class="col-8 left">
+                        <div class="col-6 left">
                             <h1 class="title">{{ $warehouse->{'name_' . $middleware_language} ?? $warehouse->name_en }}</h1>
                             <p class="description">{{ $warehouse->{'city_' . $middleware_language} ?? $warehouse->city_en }}</p>
                         </div>
 
-                        <div class="col-4 right">
+                        <div class="col-6 right">
                             <div class="rating">
                                 <p class="score">{{ $rating }}</p>
                                 <p class="label">{{ $contents->{'inner_page_section_2_rating_' . $middleware_language} ?? $contents->inner_page_section_2_rating_en }}</p>
@@ -537,6 +565,17 @@
             //         spaceBetween: 10,
             //     }
             // }
+        });
+
+        // Mobile gallery (<= 991px)
+        var mobileSwiper = new Swiper(".mobileSwiper", {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            loop: true,
+            pagination: {
+                el: ".mobile-gallery .swiper-pagination",
+                clickable: true,
+            },
         });
 
         document.addEventListener('DOMContentLoaded', function () {

@@ -55,6 +55,16 @@
         object-fit: cover;
         border-radius: 5px;
     }
+    .warehouse .section-1 .mobile-gallery { 
+        display: none; 
+    }
+    .warehouse .section-1 .mobile-gallery .swiper-slide img,
+    .warehouse .section-1 .mobile-gallery .swiper-slide video {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
 /* #endregion */
 
 
@@ -615,6 +625,12 @@
 /* #endregion */
 
 
+/* Ensure date picker popup overlays booking box and nearby content */
+    .date-picker-x {
+        z-index: 1000;
+    }
+
+
 /* #region Responsive */
     @media (width <= 1921px) {}
     @media (width <= 1901px) {}
@@ -629,19 +645,341 @@
     @media (width <= 1301px) {}
     @media (width <= 1281px) {}
     @media (width <= 1151px) {}
-    @media (width <= 1076px) {}
-    @media (width <= 1025px) {}
-    @media (width <= 991px) {}
-    @media (width <= 845px) {}
-    @media (width <= 768px) {}
-    @media (width <= 721px) {}
-    @media (width <= 651px) {}
+    @media (width <= 1076px) {
+        .warehouse .section-2 .booking-box {
+            position: relative;
+            z-index: 3;
+        }
+        .warehouse .section-2 .booking-box .price {
+            font-size: 28px;
+        }
+        .warehouse .section-2 .booking-box .price i {
+            font-size: 24px;
+        }
+        .warehouse .section-2 .booking-box .date-picker {
+            flex-direction: column;
+            justify-content: center;
+            align-items: stretch;
+            gap: 10px;
+        }
+        .warehouse .section-2 .booking-box .date-picker .line {
+            display: none;
+        }
+        .warehouse .section-2 .booking-box .date-picker .check {
+            text-align: left;
+        }
+        .warehouse .section-2 .booking-box .date-picker .date {
+            width: 100%;
+            text-align: left;
+        }
+
+    }
+    @media (width <= 1025px) {
+        .warehouse .section-2 .booking-box {
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    }
+    @media (width <= 991px) {
+        .warehouse .section-1 .left,
+        .warehouse .section-1 .right { display: none; }
+        .warehouse .section-1 .mobile-gallery { display: block; }
+
+        .warehouse .section-2 .profile-row .right .expert {
+            font-size: 16px;
+        }
+
+        /* Stack details and booking box full-width */
+        .warehouse .section-2 .row > .col-8,
+        .warehouse .section-2 .row > .col-4 { width: 100%; }
+
+        .warehouse .section-2 .booking-box {
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .warehouse .section-2 .booking-box .date-picker {
+            flex-direction: row;
+        }
+    }
+    @media (width <= 845px) {
+        .warehouse .section-2 .booking-box .price {
+            font-size: 24px;
+        }
+        .warehouse .section-2 .booking-box .price i {
+            font-size: 22px;
+        }
+
+        .warehouse .section-2 .booking-box .book-now-button {
+            width: 55%;
+            height: 55px;
+            font-size: 16px;
+            margin: 15px auto;
+            display: block;
+        }
+    }
+    @media (width <= 768px) {
+        .warehouse .section-2 .title-row .left .title {
+            font-size: 18px;
+        }
+        .warehouse .section-2 .title-row .left .title {
+            font-size: 22px;
+        }
+    }
+    @media (width <= 721px) {
+        .warehouse .section-1 .mobile-gallery .swiper-slide img, .warehouse .section-1 .mobile-gallery .swiper-slide video {
+            height: 350px;
+        }
+        .warehouse .section-2 .title-row .right {
+            gap: 20px;
+        }
+
+        .warehouse .section-2 .title-row .right .rating .score {
+            font-size: 22px;
+        }
+
+        .warehouse .booking-modal .modal-title, .warehouse .expert-modal .modal-title, .warehouse .report-modal .modal-title {
+            font-size: 22px;
+        }
+        .warehouse .booking-modal .property .title {
+            font-size: 18px;
+        }
+    }
+    @media (width <= 651px) {
+        .warehouse .section-2 .title-row .left .title {
+            font-size: 18px;
+        }
+            .warehouse .section-2 .booking-box .price {
+            font-size: 22px;
+        }
+        .warehouse .section-2 .booking-box .price i {
+            font-size: 20px;
+        }
+        .warehouse .section-2 .booking-box .book-now-button {
+            width: 50%;
+            height: 50px;
+            font-size: 14px;
+        }
+        .warehouse .section-4 #map {
+            width: 100%;
+            height: 500px;
+        }
+    }
     @media (width <= 576px) {}
-    @media (width <= 481px) {}
+    @media (width <= 481px) {
+        .warehouse .section-1 .mobile-gallery .swiper-slide img,
+        .warehouse .section-1 .mobile-gallery .swiper-slide video {
+            height: 300px;
+        }
+
+        .slider-modal .mySwiper2 .swiper-slide img,
+        .slider-modal .mySwiper2 .swiper-slide video {
+            height: 320px;
+        }
+        .slider-modal .mySwiper .swiper-slide img,
+        .slider-modal .mySwiper .swiper-slide video {
+            height: 70px;
+        }
+        .slider-modal .mySwiper .swiper-slide .video-play {
+            font-size: 28px;
+        }
+
+        .warehouse .section-2 .title-row .left .title { 
+            font-size: 18px; 
+        }
+        .warehouse .section-2 .title-row .left .description { 
+            font-size: 13px; 
+        }
+        .warehouse .section-2 .title-row .right { 
+            gap: 14px; 
+        }
+        .warehouse .section-2 .title-row .right .rating .score { 
+            font-size: 20px; 
+        }
+        .warehouse .section-2 .title-row .right .rating .label { 
+            font-size: 12px; 
+        }
+
+        .warehouse .section-2 .profile-row .left .image { 
+            width: 44px; 
+            height: 44px; 
+        }
+        .warehouse .section-2 .profile-row .left .name { 
+            font-size: 15px; 
+        }
+        .warehouse .section-2 .profile-row .left .description { 
+            font-size: 12px; 
+        }
+        .warehouse .section-2 .profile-row .right i { 
+            font-size: 18px; 
+        }
+        .warehouse .section-2 .profile-row .right .expert { 
+            font-size: 16px; 
+        }
+
+        .warehouse .section-2 .warehouse-description { 
+            font-size: 14px; 
+            line-height: 24px; 
+        }
+
+        .warehouse .section-2 .features-row .single-feature { 
+            gap: 12px; 
+        }
+        .warehouse .section-2 .features-row .single-feature i { 
+            font-size: 22px; 
+        }
+        .warehouse .section-2 .features-row .single-feature .details .title { 
+            font-size: 13px; 
+        }
+        .warehouse .section-2 .features-row .single-feature .details .description { 
+            font-size: 13px; 
+        }
+
+        .warehouse .section-2 .booking-box { 
+            padding: 15px; 
+        }
+        .warehouse .section-2 .booking-box .cost { 
+            font-size: 14px; 
+        }
+        .warehouse .section-2 .booking-box .price { 
+            font-size: 20px; 
+        }
+        .warehouse .section-2 .booking-box .price i { 
+            font-size: 18px; 
+            bottom: 14px; 
+        }
+        .warehouse .section-2 .booking-box .date-picker { 
+            padding: 12px; 
+        }
+        .warehouse .section-2 .booking-box .date-picker .check { 
+            font-size: 13px; 
+        }
+        .warehouse .section-2 .booking-box .date-picker .date { 
+            font-size: 12px; 
+        }
+        .warehouse .section-2 .booking-box .book-now-button { 
+            width: 100%; 
+            height: 48px; 
+            font-size: 14px; 
+        }
+        .warehouse .section-2 .booking-box .note { 
+            font-size: 12px; 
+        }
+
+        .warehouse .booking-modal .modal-title,
+        .warehouse .expert-modal .modal-title,
+        .warehouse .report-modal .modal-title { 
+            font-size: 20px; 
+        }
+        .warehouse .booking-modal .modal-description,
+        .warehouse .expert-modal .modal-description,
+        .warehouse .report-modal .modal-description { 
+            font-size: 14px; 
+        }
+        .warehouse .expert-modal .input-field,
+        .warehouse .report-modal .input-field { 
+            height: 46px; 
+            font-size: 13px; 
+        }
+        .warehouse .expert-modal .label,
+        .warehouse .report-modal .label { 
+            font-size: 14px; 
+        }
+
+        .warehouse .booking-modal .property { 
+            gap: 16px; 
+        }
+        .warehouse .booking-modal .property .image { 
+            width: 120px; 
+            height: 80px; 
+        }
+        .warehouse .booking-modal .property .type { 
+            font-size: 13px; 
+        }
+        .warehouse .booking-modal .property .title { 
+            font-size: 16px; 
+        }
+        .warehouse .booking-modal .property .subtitle { 
+            font-size: 13px; 
+        }
+        .warehouse .booking-modal .property .rating .value { 
+            font-size: 13px; 
+        }
+        .warehouse .booking-modal .property .rating .count { 
+            font-size: 12px; 
+        }
+
+        .warehouse .booking-modal .booking-details .title { 
+            font-size: 17px; 
+        }
+        .warehouse .booking-modal .booking-details .single-detail .text { 
+            font-size: 14px; 
+        }
+        .warehouse .booking-modal .booking-details .single-detail .value { 
+            width: 120px; 
+            height: 38px; 
+            font-size: 14px; 
+        }
+        .warehouse .booking-modal .confirm-button,
+        .warehouse .expert-modal .confirm-button,
+        .warehouse .report-modal .confirm-button { 
+            width: 100%; 
+            height: 48px; 
+            font-size: 16px; 
+        }
+
+        .warehouse .section-3 .title,
+        .warehouse .section-5 .title,
+        .warehouse .section-6 .policy-title,
+        .warehouse .section-7 .title { 
+            font-size: 16px; 
+        }
+
+        .warehouse .section-5 .reviews .single-review .stars { 
+            font-size: 16px; 
+        }
+        .warehouse .section-5 .reviews .single-review .content { 
+            font-size: 14px; 
+            line-height: 22px; 
+        }
+        .warehouse .section-5 .reviews .single-review .name { 
+            font-size: 13px; 
+        }
+
+        .warehouse .section-7 .single-warehouse .image { 
+            height: 200px; 
+        }
+        .warehouse .section-7 .single-warehouse .details { 
+            padding: 16px 18px; 
+        }
+        .warehouse .section-7 .single-warehouse .details .title { 
+            font-size: 15px; 
+        }
+        .warehouse .section-7 .single-warehouse .details .subtitle { 
+            font-size: 13px; 
+        }
+        .warehouse .section-7 .single-warehouse .details .price { 
+            font-size: 15px; 
+        }
+
+        .warehouse .section-4 #map { 
+            height: 350px; 
+        }
+    }
     @media (width <= 429px) {}
     @media (width <= 415px) {}
-    @media (width <= 396px) {}
+    @media (width <= 396px) {
+        .warehouse .section-2 .title-row .left .title {
+            font-size: 16px;
+        }
+    }
     @media (width <= 377px) {}
     @media (width <= 361px) {}
-    @media (width <= 331px) {}
+    @media (width <= 331px) {
+        .warehouse .section-2 .profile-row .right i {
+            font-size: 20px;
+        }
+        .warehouse .section-2 .profile-row .right .expert {
+            font-size: 12px;
+        }
+    }
 /* #endregion */
