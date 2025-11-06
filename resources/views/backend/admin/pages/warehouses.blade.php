@@ -337,7 +337,7 @@
                         <input type="text" class="form-control input-field" id="inner_page_modal_no_of_pallets_{{ $short_code }}" name="inner_page_modal_no_of_pallets_{{ $short_code }}" value="{{ $contents->{'inner_page_modal_no_of_pallets_' . $short_code} ?? '' }}" placeholder="No of Pallets">
                     </div>
 
-                    <div class="col-12 col-md-6 mb-3 mb-md-4">
+                    <div class="col-12 col-md-6 mb-3 mb-md-0">
                         <label for="inner_page_modal_no_of_square_meters_{{ $short_code }}" class="form-label label">No of Square Meters</label>
                         <input type="text" class="form-control input-field" id="inner_page_modal_no_of_square_meters_{{ $short_code }}" name="inner_page_modal_no_of_square_meters_{{ $short_code }}" value="{{ $contents->{'inner_page_modal_no_of_square_meters_' . $short_code} ?? '' }}" placeholder="No of Square Meters">
                     </div>
