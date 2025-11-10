@@ -309,7 +309,7 @@
                                                 <p class="text">{{ $contents->{'inner_page_modal_warehouse_type_' . $middleware_language} ?? $contents->inner_page_modal_warehouse_type_en }}</p>
 
                                                 <div class="row radios">
-                                                    <div class="col-6">
+                                                    <div class="col-12 col-lg-6">
                                                         <div class="form-check">
                                                             <input class="form-check-input radio" type="radio" id="radio1"  name="warehouse_type" value="pallet" checked>
                                                             <label class="form-check-label" for="radio1">
@@ -318,7 +318,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-6">
+                                                    <div class="col-12 col-lg-6">
                                                         <div class="form-check">
                                                             <input class="form-check-input radio" type="radio" id="radio2" name="warehouse_type" value="square-meter">
                                                             <label class="form-check-label" for="radio2">

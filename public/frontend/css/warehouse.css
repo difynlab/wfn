@@ -634,7 +634,7 @@
     @media (width <= 1681px) {}
     @media (width <= 1601px) {}
     @media (width <= 1537px) {}
-    @media (width <= 1441px) {}
+	@media (width <= 1441px) {}
     @media (width <= 1367px) {}
     @media (width <= 1301px) {}
     @media (width <= 1281px) {}
@@ -657,7 +657,10 @@
             gap: 10px;
         }
         .warehouse .section-2 .booking-box .date-picker .line {
-            display: none;
+            width: 100%;
+            height: 1px;
+            border: 1px solid var(--input_border);
+            margin: 5px 0;
         }
         .warehouse .section-2 .booking-box .date-picker .check {
             text-align: left;
@@ -671,6 +674,9 @@
         .warehouse .section-2 .booking-box {
             padding: 10px;
             margin-bottom: 20px;
+        }
+        .warehouse .booking-modal .booking-details .single-detail .radios {
+            width: 23%;
         }
     }
     @media (width <= 991px) {
@@ -693,6 +699,19 @@
         .warehouse .section-2 .booking-box .date-picker {
             flex-direction: row;
         }
+        .warehouse .section-2 .booking-box .date-picker .line {
+            width: 1px;
+            height: 40px;
+            border: 1px solid var(--input_border);
+            align-self: stretch;
+        }
+        .warehouse .booking-modal .booking-details .single-detail .radios {
+            width: 37%;
+        }
+        .warehouse .section-4 #map {
+            width: 100%;
+            height: 500px;
+        }
     }
     @media (width <= 845px) {
         .warehouse .section-2 .booking-box .price {
@@ -710,12 +729,20 @@
         }
     }
     @media (width <= 768px) {
+        .warehouse .section-1 .mobile-gallery .swiper-slide img, .warehouse .section-1 .mobile-gallery .swiper-slide video {
+            height: 360px;
+        }
         .warehouse .section-2 .title-row .left .title {
             font-size: 18px;
         }
         .warehouse .section-2 .title-row .left .title {
             font-size: 22px;
         }
+        .warehouse .section-4 #map {
+            width: 100%;
+            height: 350px;
+        }
+
     }
     @media (width <= 721px) {
         .warehouse .section-1 .mobile-gallery .swiper-slide img, .warehouse .section-1 .mobile-gallery .swiper-slide video {
@@ -900,9 +927,10 @@
             height: 38px; 
             font-size: 14px; 
         }
-        .warehouse .booking-modal .confirm-button,
-        .warehouse .expert-modal .confirm-button,
-        .warehouse .report-modal .confirm-button { 
+        .warehouse .booking-modal .booking-details .single-detail .radios {
+            width: 33%;
+        }
+        .warehouse .booking-modal .confirm-button,.warehouse .expert-modal .confirm-button,.warehouse .report-modal .confirm-button { 
             width: 100%; 
             height: 48px; 
             font-size: 16px; 
@@ -952,7 +980,10 @@
         .warehouse .section-2 .title-row .left .title {
             font-size: 16px;
         }
-    }
+        .warehouse .booking-modal .booking-details .single-detail .radios {
+            width: 42%;
+        }
+}
     @media (width <= 377px) {}
     @media (width <= 361px) {}
     @media (width <= 331px) {

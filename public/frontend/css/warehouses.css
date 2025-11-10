@@ -29,6 +29,7 @@
         background-color: var(--medium_white);
         color: var(--gray);
         transition: all 0.3s;
+        white-space: nowrap;
         &:hover{
             border: none;
             color: var(--white);
@@ -253,6 +254,7 @@
         border: 1px solid var(--input_border);
         border-radius: 10px;
         padding: 25px 20px;
+        margin-left: 15px
     }
     .warehouses .section-3 .sidebar .divider {
         border: 1px solid var(--input_border);
@@ -387,17 +389,8 @@
         }
     }
     @media (width <= 991px) {
-        .warehouses .section-2 .top-row {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 15px;
-        }
-        .warehouses .section-2 .top-row .left {
-            width: 100%;
-        }
         .warehouses .section-2 .top-row .right {
-            width: 100%;
-            text-align: start;
+            text-align: end;
         }
         .warehouses .section-2 .bottom-row .col-lg {
             margin-bottom: 15px;
@@ -618,17 +611,17 @@
             font-size: 12px;
         }
         .warehouses .section-2 .top-row .right .map-view-button {
-            font-size: 10px;
+            font-size: 12px;
             padding: 6px 14px;
         }
         .warehouses .section-2 .bottom-row .input-field,
         .warehouses .section-2 .bottom-row .apply-filters-button {
             height: 40px;
-            font-size: 12px;
+            font-size: 13px;
         }
         .warehouses .section-2 .bottom-row .select2-container--default .select2-selection--single {
             height: 40px;
-            font-size: 12px;
+            font-size: 13px;
         }
         .warehouses .section-3 .warehouse-row .single-warehouse {
             padding: 8px;
@@ -638,7 +631,7 @@
             height: 180px;
         }
         .warehouses .section-3 .warehouse-row .single-warehouse .type {
-            font-size: 12px;
+            font-size: 13px;
             padding-bottom: 6px;
         }
         .warehouses .section-3 .warehouse-row .single-warehouse .price {
@@ -655,7 +648,7 @@
             padding-bottom: 6px;
         }
         .warehouses .section-3 .warehouse-row .single-warehouse .description {
-            font-size: 11px;
+            font-size: 12px;
             line-height: 16px;
         }
         .warehouses .section-3 .warehouse-row .single-warehouse .location {
@@ -666,7 +659,7 @@
             font-size: 14px;
         }
         .warehouses .section-3 .warehouse-row .single-warehouse .box {
-            font-size: 11px;
+            font-size: 12px;
             padding: 6px 10px;
             margin-top: 10px;
         }
@@ -687,8 +680,14 @@
             padding-bottom: 10px;
         }
         .warehouses .section-3 .sidebar .item {
-            font-size: 11px;
+            font-size: 13px;
             padding-bottom: 10px;
+        }
+        .warehouses .section-3 .pagination {
+            justify-content: center;
+        }
+        .warehouses .section-3 .pagination .page-link {
+            font-size: 14px;
         }
         .warehouses .section-4 .single-warehouse .image {
             height: 180px;
@@ -700,10 +699,10 @@
             font-size: 13px;
         }
         .warehouses .section-4 .single-warehouse .details .subtitle {
-            font-size: 11px;
+            font-size: 13px;
         }
         .warehouses .section-4 .single-warehouse .details .price {
-            font-size: 13px;
+            font-size: 15px;
         }
         .warehouses .section-4 .single-warehouse .details .price i {
             font-size: 10px;
@@ -761,20 +760,27 @@
         .warehouses .section-2 {
             padding: 12px 8px;
         }
+        .warehouses .section-2 .top-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .warehouses .section-2 .top-row .left {
+            width: 100%;
+        }
+        .warehouses .section-2 .top-row .right {
+            width: 100%;
+            text-align: start;
+        }
         .warehouses .section-2 .top-row .title {
             font-size: 14px;
         }
         .warehouses .section-2 .top-row .description {
             font-size: 11px;
         }
-        .warehouses .section-2 .bottom-row .input-field,
-        .warehouses .section-2 .bottom-row .apply-filters-button {
-            height: 38px;
-            font-size: 11px;
-        }
         .warehouses .section-2 .bottom-row .select2-container--default .select2-selection--single {
             height: 38px;
-            font-size: 11px;
+            font-size: 13px;
         }
         .warehouses .section-3 .warehouse-row .single-warehouse {
             padding: 6px;
@@ -784,30 +790,26 @@
             height: 110px;
         }
         .warehouses .section-3 .warehouse-row .single-warehouse .price {
-            font-size: 14px;
+            font-size: 15px;
         }
         .warehouses .section-3 .warehouse-row .single-warehouse .name {
-            font-size: 11px;
+            font-size: 13px;
         }
         .warehouses .section-3 .warehouse-row .single-warehouse .description {
-            font-size: 10px;
+            font-size: 12px;
             line-height: 14px;
         }
         .warehouses .section-3 .warehouse-row .single-warehouse .location {
             font-size: 10px;
         }
-        .warehouses .section-3 .warehouse-row .single-warehouse .box {
-            font-size: 10px;
-            padding: 5px 8px;
-        }
         .warehouses .section-3 .sidebar {
             padding: 12px 8px;
         }
         .warehouses .section-3 .sidebar .heading {
-            font-size: 12px;
+            font-size: 14px;
         }
         .warehouses .section-3 .sidebar .item {
-            font-size: 10px;
+            font-size: 13px;
         }
         .warehouses .section-4 .single-warehouse .image {
             height: 110px;
@@ -816,13 +818,13 @@
             padding: 10px 12px;
         }
         .warehouses .section-4 .single-warehouse .details .title {
-            font-size: 12px;
+            font-size: 13px;
         }
         .warehouses .section-4 .single-warehouse .details .subtitle {
             font-size: 10px;
         }
         .warehouses .section-4 .single-warehouse .details .price {
-            font-size: 12px;
+            font-size: 15px;
         }
     }
     @media (width <= 415px) {
@@ -833,6 +835,16 @@
         .warehouses .section-2 .top-row .map-view-button i {
             font-size: 12px;
             margin-right: 3px;
+        }
+        .warehouses .section-2 .bottom-row .select2-container--default {
+            width: 100% !important;
+        }
+        .warehouses .section-2 .bottom-row .select2-container--default .select2-selection--single {
+            display: flex !important;
+            align-items: center !important;
+            width: 100% !important;
+            height: 38px;
+            font-size: 13px;
         }
         .warehouses .section-3 .warehouse-row .single-warehouse .image {
             height: 100px;
@@ -857,11 +869,17 @@
         .warehouses .section-2 .bottom-row .input-field,
         .warehouses .section-2 .bottom-row .apply-filters-button {
             height: 35px;
-            font-size: 10px;
+            font-size: 12px;
+        }
+        .warehouses .section-2 .bottom-row .select2-container--default {
+            width: 100% !important;
         }
         .warehouses .section-2 .bottom-row .select2-container--default .select2-selection--single {
+            display: flex !important;
+            align-items: center !important;
+            width: 100% !important;
             height: 35px;
-            font-size: 10px;
+            font-size: 12px;
         }
         .warehouses .section-3 .warehouse-row .single-warehouse {
             padding: 5px;
@@ -871,30 +889,16 @@
             height: 90px;
         }
         .warehouses .section-3 .warehouse-row .single-warehouse .price {
-            font-size: 13px;
+            font-size: 14px;
         }
         .warehouses .section-3 .warehouse-row .single-warehouse .name {
-            font-size: 10px;
-        }
-        .warehouses .section-3 .warehouse-row .single-warehouse .description {
-            font-size: 10px;
-            line-height: 12px;
+            font-size: 13px;
         }
         .warehouses .section-3 .warehouse-row .single-warehouse .location {
             font-size: 9px;
         }
-        .warehouses .section-3 .warehouse-row .single-warehouse .box {
-            font-size: 9px;
-            padding: 4px 6px;
-        }
         .warehouses .section-3 .sidebar {
             padding: 10px 6px;
-        }
-        .warehouses .section-3 .sidebar .heading {
-            font-size: 11px;
-        }
-        .warehouses .section-3 .sidebar .item {
-            font-size: 9px;
         }
         .warehouses .section-4 .single-warehouse .image {
             height: 90px;
@@ -902,14 +906,8 @@
         .warehouses .section-4 .single-warehouse .details {
             padding: 8px 10px;
         }
-        .warehouses .section-4 .single-warehouse .details .title {
-            font-size: 11px;
-        }
         .warehouses .section-4 .single-warehouse .details .subtitle {
             font-size: 10px;
-        }
-        .warehouses .section-4 .single-warehouse .details .price {
-            font-size: 11px;
         }
     }
     @media (width <= 377px) {
@@ -941,15 +939,6 @@
         .warehouses .section-2 .top-row .description {
             font-size: 9px;
         }
-        .warehouses .section-2 .bottom-row .input-field,
-        .warehouses .section-2 .bottom-row .apply-filters-button {
-            height: 32px;
-            font-size: 9px;
-        }
-        .warehouses .section-2 .bottom-row .select2-container--default .select2-selection--single {
-            height: 32px;
-            font-size: 9px;
-        }
         .warehouses .section-3 .warehouse-row .single-warehouse {
             padding: 4px;
             margin-bottom: 8px;
@@ -957,31 +946,11 @@
         .warehouses .section-3 .warehouse-row .single-warehouse .image {
             height: 70px;
         }
-        .warehouses .section-3 .warehouse-row .single-warehouse .price {
-            font-size: 12px;
-        }
-        .warehouses .section-3 .warehouse-row .single-warehouse .name {
-            font-size: 9px;
-        }
-        .warehouses .section-3 .warehouse-row .single-warehouse .description {
-            font-size: 8px;
-            line-height: 10px;
-        }
         .warehouses .section-3 .warehouse-row .single-warehouse .location {
             font-size: 8px;
         }
-        .warehouses .section-3 .warehouse-row .single-warehouse .box {
-            font-size: 8px;
-            padding: 3px 5px;
-        }
         .warehouses .section-3 .sidebar {
             padding: 8px 4px;
-        }
-        .warehouses .section-3 .sidebar .heading {
-            font-size: 10px;
-        }
-        .warehouses .section-3 .sidebar .item {
-            font-size: 8px;
         }
         .warehouses .section-4 .single-warehouse .image {
             height: 70px;
@@ -989,14 +958,8 @@
         .warehouses .section-4 .single-warehouse .details {
             padding: 6px 8px;
         }
-        .warehouses .section-4 .single-warehouse .details .title {
-            font-size: 10px;
-        }
         .warehouses .section-4 .single-warehouse .details .subtitle {
             font-size: 8px;
-        }
-        .warehouses .section-4 .single-warehouse .details .price {
-            font-size: 10px;
         }
     }
     @media (width <= 331px) {
