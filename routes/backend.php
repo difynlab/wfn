@@ -358,9 +358,10 @@ require __DIR__.'/auth/backend.php';
             Route::middleware('company')->controller(TenantBookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
                 Route::get('/', 'index')->name('index');
                 Route::get('filter', 'filter')->name('filter');
-                Route::get('{booking}/edit', 'edit')->name('edit');
-                Route::post('{booking}', 'update')->name('update');
-                Route::delete('{booking}', 'destroy')->name('destroy');
+                Route::get('{booking}/view', 'view')->name('view');
+                // Route::get('{booking}/edit', 'edit')->name('edit');
+                // Route::post('{booking}', 'update')->name('update');
+                // Route::delete('{booking}', 'destroy')->name('destroy');
 
                 Route::get('search', 'search')->name('search');
                 Route::get('review/{warehouse}', 'review')->name('review');
