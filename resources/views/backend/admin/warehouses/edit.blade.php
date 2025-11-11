@@ -509,10 +509,9 @@
                                 <div class="col-12 col-md mb-1 mb-md-0">
                                     <select class="form-select input-field" name="storage_charge_names[]" required>
                                         <option value="">Select</option>
-                                        <option value="A" {{ $storage_charge->name == 'A' ? 'selected' : '' }}>A</option>
-                                        <option value="B" {{ $storage_charge->name == 'B' ? 'selected' : '' }}>B</option>
-                                        <option value="C" {{ $storage_charge->name == 'C' ? 'selected' : '' }}>C</option>
-                                        <option value="D" {{ $storage_charge->name == 'D' ? 'selected' : '' }}>D</option>
+                                        @foreach($storage_types as $storage_type)
+                                            <option value="{{ $storage_type->id }}" {{ $storage_type->id == $storage_charge->name ? 'selected' : '' }}>{{ $storage_type->name_en }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-12 col-md mb-1 mb-md-0">
@@ -749,15 +748,20 @@
             $(this).closest('.row').parent().append(html);
         });
 
+        const storageTypes = @json($storage_types->map->only(['id','name_en']));
+        function buildOptions() {
+            let opts = '<option value="">Select</option>';
+            for (const t of storageTypes) {
+                opts += `<option value="${t.id}">${t.name_en}</option>`;
+            }
+            return opts;
+        }
+
         $('.add-storage-charges').on('click', function() {
             let html = `<div class="row single-item mt-2">
                                 <div class="col-12 col-md mb-1 mb-md-0">
                                     <select class="form-select input-field" name="storage_charge_names[]" required>
-                                        <option value="">Select</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
+                                        ${buildOptions()}
                                     </select>
                                 </div>
 

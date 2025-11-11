@@ -132,7 +132,7 @@
                 <div class="col-8">
                     <div class="row profile-row">
                         <div class="col-6 left">
-                            @if($warehouse->user->image)
+                            <!-- @if($warehouse->user->image)
                                 <img src="{{ asset('storage/backend/users/thumbnails/' . $warehouse->user->image) }}" data-src="{{ asset('storage/backend/users/' . $warehouse->user->image) }}" alt="User" class="image lazyload">
                             @else
                                 <img src="{{ asset('storage/backend/global/thumbnails/' . App\Models\Setting::find(1)->no_image) }}" data-src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="User" class="image lazyload">
@@ -144,7 +144,7 @@
                                 @if($warehouse->user->landlord_experience)
                                     <p class="description">{{ $warehouse->user->landlord_experience }} {{ $contents->{'inner_page_section_2_description_' . $middleware_language} ?? $contents->inner_page_section_2_description_en }}</p>
                                 @endif
-                            </div>
+                            </div> -->
                         </div>
          
                         <div class="col-6 right">
