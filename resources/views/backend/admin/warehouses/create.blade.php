@@ -575,15 +575,20 @@
             $(this).closest('.row').parent().append(html);
         });
 
+        const storageTypes = @json($storage_types->map->only(['id','name_en']));
+        function buildOptions() {
+            let opts = '<option value="">Select</option>';
+            for (const t of storageTypes) {
+                opts += `<option value="${t.id}">${t.name_en}</option>`;
+            }
+            return opts;
+        }
+
         $('.add-storage-charges').on('click', function() {
             let html = `<div class="row single-item mt-2">
                                 <div class="col-12 col-md mb-1 mb-md-0">
                                     <select class="form-select input-field" name="storage_charge_names[]" required>
-                                        <option value="">Select</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
+                                        ${buildOptions()}
                                     </select>
                                 </div>
 

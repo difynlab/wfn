@@ -328,7 +328,7 @@
             </div>
         @endif
 
-        @if($contents->section_9_title_en)
+        <!-- @if($contents->section_9_title_en)
             <div class="section-9 container section-margin">
                 <p class="section-title">{{ $contents->{'section_9_title_' . $middleware_language} ?? $contents->section_9_title_en }}</p>
                 <p class="section-description">{{ $contents->{'section_9_description_' . $middleware_language} ?? $contents->section_9_description_en }}</p>
@@ -371,7 +371,7 @@
                     <div class="swiper-pagination"></div>
                 @endif
             </div>
-        @endif
+        @endif -->
 
         @if($contents->section_10_title_en)
             @if($contents->{'section_10_image_' . $middleware_language})
