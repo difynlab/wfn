@@ -188,16 +188,16 @@
 
 @push('after-scripts')
     <script>
-        $(document).ready(function() {
-            $('.page .table .delete-button').on('click', function() {
-                let id = $(this).attr('id');
-                let url = "{{ route('tenant.bookings.destroy', [':id']) }}";
-                destroy_url = url.replace(':id', id);
+        // $(document).ready(function() {
+        //     $('.page .table .delete-button').on('click', function() {
+        //         let id = $(this).attr('id');
+        //         let url = "('tenant.bookings.destroy', [':id'])";
+        //         destroy_url = url.replace(':id', id);
 
-                $('.page #delete-modal form').attr('action', destroy_url);
-                $('.page #delete-modal').modal('show');
-            });
-        });
+        //         $('.page #delete-modal form').attr('action', destroy_url);
+        //         $('.page #delete-modal').modal('show');
+        //     });
+        // });
     </script>
 
     <script>

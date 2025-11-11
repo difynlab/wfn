@@ -178,7 +178,7 @@
         transition: all 0.1s;
     }
     .backend-content.full-width {
-        padding-left: 60px;
+        padding-left: 85px;
         transition: all 0.1s;
     }
 /* #endregion */
@@ -374,7 +374,7 @@
             padding-right: 10px;
         }
         .backend-content.full-width {
-            padding-left: 55px;
+            padding-left: 80px;
         }
         .notification-modal .title {
             font-size: 20px;
@@ -433,11 +433,6 @@
         }
         .backend-content {
             padding-top: 70px;
-            padding-left: 200px;
-            padding-right: 0px;
-        }
-        .backend-content.full-width {
-            padding-left: 50px;
         }
 
         .message-sidebar .title {
@@ -457,6 +452,10 @@
     @media (width <= 576px) {
         .backend-content {
             padding-left: 0;
+            padding-right: 0;
+        }
+        .backend-content.full-width {
+            padding-left: 70px;
         }
     }
     @media (width <= 481px) {}

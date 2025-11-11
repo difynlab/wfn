@@ -353,7 +353,6 @@ class RegisterController extends Controller
             'last_name' => 'required|min:3|max:255',
             'email' => 'required|email|min:3|max:255|unique:users,email',
             'phone' => 'required|min:3|max:255|regex:/^\+?[0-9]+$/|unique:users,phone',
-            'city' => 'required|min:3|max:255',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password',
             'recaptcha_token' => 'required|string',
