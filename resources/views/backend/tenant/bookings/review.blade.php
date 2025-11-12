@@ -61,7 +61,7 @@
                                             <tbody>
                                                 @foreach(json_decode($warehouse->storage_charges) as $storage_charge)
                                                     <tr>
-                                                        <td>{{ $storage_charge->name }}</td>
+                                                        <td>{{ App\Models\StorageType::find($storage_charge->name)->name_en }}</td>
                                                         <td>{{ $storage_charge->price }} SAR</td>
                                                     </tr>
                                                 @endforeach
