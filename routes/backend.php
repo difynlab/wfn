@@ -281,8 +281,8 @@ require __DIR__.'/auth/backend.php';
     Route::middleware(['auth', 'role:landlord'])->prefix('landlord')->name('landlord.')->group(function () {
         Route::get('dashboard', [LandlordDashboardController::class, 'index'])->name('dashboard');
 
-        // Warehouses routes
-            Route::middleware('company')->controller(LandlordWarehouseController::class)->prefix('warehouses')->name('warehouses.')->group(function() {
+        // Warehouses routes - middleware('company')
+            Route::controller(LandlordWarehouseController::class)->prefix('warehouses')->name('warehouses.')->group(function() {
                 Route::get('/', 'index')->name('index');
                 Route::get('filter', 'filter')->name('filter');
                 Route::get('create', 'create')->name('create');
@@ -293,8 +293,8 @@ require __DIR__.'/auth/backend.php';
             });
         // Warehouses routes
 
-        // Bookings routes
-            Route::middleware('company')->controller(LandlordBookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
+        // Bookings routes - middleware('company')
+            Route::controller(LandlordBookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
                 Route::get('/', 'index')->name('index');
                 Route::get('filter', 'filter')->name('filter');
                 Route::get('{booking}/edit', 'edit')->name('edit');
@@ -354,8 +354,8 @@ require __DIR__.'/auth/backend.php';
     Route::middleware(['auth', 'role:tenant'])->prefix('tenant')->name('tenant.')->group(function () {
         Route::get('dashboard', [TenantDashboardController::class, 'index'])->name('dashboard');
 
-        // Bookings routes
-            Route::middleware('company')->controller(TenantBookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
+        // Bookings routes - middleware('company')
+            Route::controller(TenantBookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
                 Route::get('/', 'index')->name('index');
                 Route::get('filter', 'filter')->name('filter');
                 Route::get('{booking}/view', 'view')->name('view');
