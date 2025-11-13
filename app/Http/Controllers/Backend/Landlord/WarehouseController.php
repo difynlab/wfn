@@ -278,6 +278,7 @@ class WarehouseController extends Controller
         );
 
         $user = Auth::user();
+        $data['user_id'] = $user->id;
         $data['thumbnail'] = $thumbnail;
         $data['outside_image'] = $outside_image;
         $data['loading_image'] = $loading_image;
