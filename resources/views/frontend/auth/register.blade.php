@@ -121,6 +121,8 @@
                 @endif
             </div>
         </div>
+
+        <x-frontend.notification></x-frontend.notification>
     </div>
 @endsection
 

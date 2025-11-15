@@ -353,7 +353,6 @@ class RegisterController extends Controller
             'last_name' => 'required|min:3|max:255',
             'email' => 'required|email|min:3|max:255|unique:users,email',
             'phone' => 'required|min:3|max:255|regex:/^\+?[0-9]+$/|unique:users,phone',
-            'city' => 'required|min:3|max:255',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password',
             'recaptcha_token' => 'required|string',
@@ -441,6 +440,100 @@ class RegisterController extends Controller
             catch (\Throwable $e) {
                 Log::warning('Failed to sync contact to Odoo: '.$e->getMessage());
             }
+
+            // try {
+            //     $baseUrl  = rtrim(config('services.odoo.url'), '/');   // e.g. https://odoo.example.com
+            //     $url      = $baseUrl.'/jsonrpc';
+            //     $db       = config('services.odoo.db');
+            //     $username = config('services.odoo.username');
+            //     $password = config('services.odoo.password');
+
+            //     $client = new Client([
+            //         'http_errors' => false,      // don't throw on 4xx/5xx; we'll inspect responses
+            //         'timeout'     => 20,
+            //         'connect_timeout' => 10,
+            //         // 'verify' => false,        // uncomment ONLY if you have a self-signed cert in dev
+            //     ]);
+
+            //     // --- Authenticate ---
+            //     $authRes = $client->post($url, [
+            //         'json' => [
+            //             'jsonrpc' => '2.0',
+            //             'method'  => 'call',
+            //             'params'  => [
+            //                 'service' => 'common',
+            //                 // Odoo JSON-RPC uses "login" here (authenticate exists on XML-RPC)
+            //                 'method'  => 'login',
+            //                 'args'    => [$db, $username, $password],
+            //             ],
+            //             'id' => 1,
+            //         ],
+            //     ]);
+
+            //     $authBody = (string) $authRes->getBody();
+            //     $auth = json_decode($authBody, true);
+
+            //     if (json_last_error() !== JSON_ERROR_NONE) {
+            //         throw new \RuntimeException('Invalid JSON from Odoo auth: '.json_last_error_msg()." | body={$authBody}");
+            //     }
+
+            //     if (isset($auth['error'])) {
+            //         // JSON-RPC level error
+            //         throw new \RuntimeException('Odoo auth error: '.json_encode($auth['error']));
+            //     }
+
+            //     $uid = $auth['result'] ?? null;
+            //     if (empty($uid)) {
+            //         throw new \RuntimeException('Odoo auth failed: uid is empty/false. Check DB, username, or password.');
+            //     }
+
+            //     // --- Create Contact (res.partner) ---
+            //     $partnerPayload = [
+            //         'name'  => trim($request->first_name.' '.$request->last_name),
+            //         'email' => $request->email,
+            //         'phone' => ($request->phone_code ?? '').($request->phone ?? ''), // ensure e.g. +94xxxxxxxxx
+            //     ];
+
+            //     $createRes = $client->post($url, [
+            //         'json' => [
+            //             'jsonrpc' => '2.0',
+            //             'method'  => 'call',
+            //             'params'  => [
+            //                 'service' => 'object',
+            //                 'method'  => 'execute_kw',
+            //                 'args'    => [
+            //                     $db, $uid, $password,
+            //                     'res.partner', 'create',
+            //                     [[$partnerPayload]], // positional args
+            //                     // optional kwargs go in a separate dict after this, e.g. {}
+            //                 ],
+            //             ],
+            //             'id' => 2,
+            //         ],
+            //     ]);
+
+            //     $createBody = (string) $createRes->getBody();
+            //     $create = json_decode($createBody, true);
+
+            //     if (json_last_error() !== JSON_ERROR_NONE) {
+            //         throw new \RuntimeException('Invalid JSON from Odoo create: '.json_last_error_msg()." | body={$createBody}");
+            //     }
+
+            //     if (isset($create['error'])) {
+            //         // JSON-RPC level error from execute_kw
+            //         throw new \RuntimeException('Odoo create error: '.json_encode($create['error']).' | payload='.json_encode($partnerPayload));
+            //     }
+
+            //     $partnerId = $create['result'] ?? null;
+            //     if (empty($partnerId)) {
+            //         throw new \RuntimeException('Odoo create returned empty result. Raw: '.$createBody);
+            //     }
+
+            //     Log::info('Odoo: created res.partner id='.$partnerId.' for '.$partnerPayload['email']);
+            // }
+            // catch (\Throwable $e) {
+            //     Log::warning('Failed to sync contact to Odoo: '.$e->getMessage());
+            // }
         // ODOO INTEGRATION
 
         $mail_data = [

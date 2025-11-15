@@ -218,7 +218,7 @@
 @push('after-scripts')
     <script>
         window.moduleRoutes = {
-            destroyRoute: "{{ route('tenant.bookings.destroy', [':id']) }}",
+            // destroyRoute: "('tenant.bookings.destroy', [':id'])",
             filterRoute: "{{ route('tenant.bookings.filter') }}",
             indexRoute: "{{ route('tenant.bookings.index') }}",
             pageUrl: "{!! $items->url(1) !!}"

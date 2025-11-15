@@ -25,8 +25,10 @@ class BookingController extends Controller
     {
         foreach($items as $item) {
             $item->action = '
-            <a href="'. route('tenant.bookings.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
-            <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
+            <a href="'. route('tenant.bookings.view', $item->id) .'" class="action-button view-button" title="View"><i class="bi bi-pencil-square"></i></a>';
+
+            // <a href="'. route('tenant.bookings.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
+            // <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             $item->warehouse = $item->warehouse->name_en;
 
@@ -79,108 +81,118 @@ class BookingController extends Controller
         );
     }
 
-    public function edit(Booking $booking)
+    public function view(Booking $booking)
     {
         $warehouses = Warehouse::where('status', 1)->get();
 
-        return view('backend.tenant.bookings.edit', [
+        return view('backend.tenant.bookings.view', [
             'booking' => $booking,
             'warehouses' => $warehouses
         ]);
     }
 
-    public function update(Request $request, Booking $booking)
-    {
-        $validator = Validator::make($request->all(), [
-            'warehouse_id' => 'required|integer',
-            'no_of_pallets' => 'required|integer',
-            'tenancy_date' => 'required|date',
-            'renewal_date' => 'required|date',
-            'new_documents.*' => 'max:30720'
-        ]);
+    // public function edit(Booking $booking)
+    // {
+    //     $warehouses = Warehouse::where('status', 1)->get();
 
-        if($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput()->with([
-                'error' => 'Update Failed!',
-                'route' => route('tenant.bookings.index')
-            ]);
-        }
+    //     return view('backend.tenant.bookings.edit', [
+    //         'booking' => $booking,
+    //         'warehouses' => $warehouses
+    //     ]);
+    // }
 
-        // Documents
-            $existing_documents = json_decode($booking->documents ?? '[]', true);
-            $current_documents  = json_decode(htmlspecialchars_decode($request->old_documents ?? '[]'), true);
+    // public function update(Request $request, Booking $booking)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'warehouse_id' => 'required|integer',
+    //         'no_of_pallets' => 'required|integer',
+    //         'tenancy_date' => 'required|date',
+    //         'renewal_date' => 'required|date',
+    //         'new_documents.*' => 'max:30720'
+    //     ]);
 
-            foreach(array_diff($existing_documents, $current_documents) as $document) {
-                $processed_image = process_image(null, 'backend/bookings', $document);
-                $processed_image = process_image(null, 'backend/bookings/thumbnails', $document);
-            }
+    //     if($validator->fails()) {
+    //         return redirect()->back()->withErrors($validator)->withInput()->with([
+    //             'error' => 'Update Failed!',
+    //             'route' => route('tenant.bookings.index')
+    //         ]);
+    //     }
 
-            if($request->file('new_documents')) {
-                foreach($request->file('new_documents') as $document) {
-                    $processed_image = process_image($document, 'backend/bookings');
-                    $current_documents[] = $processed_image;
-                }
-            }
+    //     // Documents
+    //         $existing_documents = json_decode($booking->documents ?? '[]', true);
+    //         $current_documents  = json_decode(htmlspecialchars_decode($request->old_documents ?? '[]'), true);
+
+    //         foreach(array_diff($existing_documents, $current_documents) as $document) {
+    //             $processed_image = process_image(null, 'backend/bookings', $document);
+    //             $processed_image = process_image(null, 'backend/bookings/thumbnails', $document);
+    //         }
+
+    //         if($request->file('new_documents')) {
+    //             foreach($request->file('new_documents') as $document) {
+    //                 $processed_image = process_image($document, 'backend/bookings');
+    //                 $current_documents[] = $processed_image;
+    //             }
+    //         }
             
-            $documents = $current_documents ? json_encode($current_documents) : null;
-        // Documents
+    //         $documents = $current_documents ? json_encode($current_documents) : null;
+    //     // Documents
 
-        $tenant = Auth::user();
-        $warehouse = Warehouse::find($request->warehouse_id);
-        $landlord = User::find($warehouse->user_id);
+    //     $tenant = Auth::user();
+    //     $warehouse = Warehouse::find($request->warehouse_id);
+    //     $landlord = User::find($warehouse->user_id);
 
-        $data = $request->except(
-            'old_documents',
-            'new_documents'
-        );
-        $data['documents'] = $documents;
-        $data['status'] = 2;
-        $booking->fill($data)->save();
+    //     $data = $request->except(
+    //         'old_documents',
+    //         'new_documents'
+    //     );
+    //     $data['documents'] = $documents;
+    //     $data['status'] = 2;
+    //     $booking->fill($data)->save();
 
-        switch($booking->status) {
-            case 1:
-                $booking->status = 'Active';
-                break;
+    //     switch($booking->status) {
+    //         case 1:
+    //             $booking->status = 'Active';
+    //             break;
 
-            case 2:
-                $booking->status = 'Pending';
-                break;
+    //         case 2:
+    //             $booking->status = 'Pending';
+    //             break;
 
-            default:
-                $booking->status = 'Inactive';
-                break;
-        }
+    //         default:
+    //             $booking->status = 'Inactive';
+    //             break;
+    //     }
 
-        $mail_data = [
-            'warehouse'     => $warehouse->name_en,
-            'tenant_name'   => $tenant->first_name . ' ' . $tenant->last_name,
-            'tenant_email' => $tenant->email,
-            'landlord_name' => $landlord->first_name . ' ' . $landlord->last_name,
-            'landlord_email' => $landlord->email,
-            'pallets'       => $booking->no_of_pallets,
-            'tenancy_date'  => $booking->tenancy_date,
-            'renewal_date'  => $booking->renewal_date,
-            'total_rent'    => $booking->total_rent,
-            'status'        => $booking->status,
-            'booking_id'        => $booking->id,
-        ];
+    //     $mail_data = [
+    //         'warehouse'     => $warehouse->name_en,
+    //         'tenant_name'   => $tenant->first_name . ' ' . $tenant->last_name,
+    //         'tenant_email' => $tenant->email,
+    //         'landlord_name' => $landlord->first_name . ' ' . $landlord->last_name,
+    //         'landlord_email' => $landlord->email,
+    //         'pallets'       => $booking->no_of_pallets,
+    //         'tenancy_date'  => $booking->tenancy_date,
+    //         'renewal_date'  => $booking->renewal_date,
+    //         'total_rent'    => $booking->total_rent,
+    //         'status'        => $booking->status,
+    //         'booking_id'        => $booking->id,
+    //     ];
 
-        send_email(new BookingUpdateMail($mail_data), $tenant->email);
-        send_email(new LandlordBookingUpdateMail($mail_data), $landlord->email);
-        send_email(new AdminBookingUpdateMail($mail_data), config('app.admin_email'));
+    //     send_email(new BookingUpdateMail($mail_data), $tenant->email);
+    //     send_email(new LandlordBookingUpdateMail($mail_data), $landlord->email);
+    //     send_email(new AdminBookingUpdateMail($mail_data), config('app.admin_email'));
 
-        return redirect()->back()->with([
-            'success' => "Update Successful!",
-            'route' => route('tenant.bookings.index')
-        ]);
-    }
+    //     return redirect()->back()->with([
+    //         'success' => "Update Successful!",
+    //         'route' => route('tenant.bookings.index')
+    //     ]);
+    // }
 
-    public function destroy(Booking $booking)
-    {
-        $booking->delete();
+    // public function destroy(Booking $booking)
+    // {
+    //     $booking->delete();
 
-        return redirect()->back()->with('delete', 'Successfully Deleted!');
-    }
+    //     return redirect()->back()->with('delete', 'Successfully Deleted!');
+    // }
 
     public function filter(Request $request)
     {

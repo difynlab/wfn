@@ -2,6 +2,17 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
     <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J0F6HFZGGK"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-J0F6HFZGGK');
+        </script>
+        <!-- Google tag (gtag.js) -->
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
