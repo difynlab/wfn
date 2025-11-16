@@ -58,11 +58,33 @@
     .warehouse .section-1 .mobile-gallery { 
         display: none; 
     }
+    .warehouse .section-1 .mobile-gallery .swiper {
+        margin-top: 15px;
+    }
+    .warehouse .section-1 .mobile-gallery .swiper .swiper-slide {
+        border: 1px solid var(--input_border);
+        border-radius: 4px;
+        cursor: pointer;
+    }
     .warehouse .section-1 .mobile-gallery .swiper-slide img,
     .warehouse .section-1 .mobile-gallery .swiper-slide video {
         width: 100%;
         height: 400px;
         object-fit: cover;
+        border-radius: 4px;
+    }
+    .warehouse .section-1 .mobile-gallery .swiper-pagination {
+        position: relative;
+        margin-top: 10px;
+    }
+    .warehouse .section-1 .mobile-gallery .swiper-pagination .swiper-pagination-bullet {
+        background-color: var(--gray);
+        width: 10px;
+        border-radius: 5px;
+    }
+    .warehouse .section-1 .mobile-gallery .swiper-pagination .swiper-pagination-bullet-active {
+        background-color: var(--red);
+        width: 20px;
         border-radius: 5px;
     }
 /* #endregion */
@@ -827,7 +849,6 @@
         .warehouse .section-2 .profile-row .right .expert { 
             font-size: 16px; 
         }
-
         .warehouse .section-2 .warehouse-description { 
             font-size: 14px; 
             line-height: 24px; 
@@ -874,25 +895,19 @@
         .warehouse .section-2 .booking-box .note { 
             font-size: 12px; 
         }
-
         .warehouse .booking-modal .modal-title, .warehouse .expert-modal .modal-title, .warehouse .report-modal .modal-title { 
             font-size: 20px; 
         }
-        .warehouse .booking-modal .modal-description,
-        .warehouse .expert-modal .modal-description,
-        .warehouse .report-modal .modal-description { 
+        .warehouse .booking-modal .modal-description,.warehouse .expert-modal .modal-description,.warehouse .report-modal .modal-description { 
             font-size: 14px; 
         }
-        .warehouse .expert-modal .input-field,
-        .warehouse .report-modal .input-field { 
+        .warehouse .expert-modal .input-field,.warehouse .report-modal .input-field { 
             height: 46px; 
             font-size: 13px; 
         }
-        .warehouse .expert-modal .label,
-        .warehouse .report-modal .label { 
+        .warehouse .expert-modal .label,.warehouse .report-modal .label { 
             font-size: 14px; 
         }
-
         .warehouse .booking-modal .property { 
             gap: 16px; 
         }
@@ -915,7 +930,6 @@
         .warehouse .booking-modal .property .rating .count { 
             font-size: 12px; 
         }
-
         .warehouse .booking-modal .booking-details .title { 
             font-size: 17px; 
         }
@@ -935,14 +949,9 @@
             height: 48px; 
             font-size: 16px; 
         }
-
-        .warehouse .section-3 .title,
-        .warehouse .section-5 .title,
-        .warehouse .section-6 .policy-title,
-        .warehouse .section-7 .title { 
+        .warehouse .section-3 .title,.warehouse .section-5 .title,.warehouse .section-6 .policy-title,.warehouse .section-7 .title { 
             font-size: 16px; 
         }
-
         .warehouse .section-5 .reviews .single-review .stars { 
             font-size: 16px; 
         }
@@ -953,7 +962,6 @@
         .warehouse .section-5 .reviews .single-review .name { 
             font-size: 13px; 
         }
-
         .warehouse .section-7 .single-warehouse .image { 
             height: 200px; 
         }
@@ -969,7 +977,6 @@
         .warehouse .section-7 .single-warehouse .details .price { 
             font-size: 15px; 
         }
-
         .warehouse .section-4 #map { 
             height: 350px; 
         }
