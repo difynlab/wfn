@@ -1,469 +1,497 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
 
 /* #region: Import */
-    @import url("../../backend/css/sidebar.css");
-    @import url("../../backend/css/page.css");
-    @import url("../../backend/css/inner-page.css");
+@import url("../../backend/css/sidebar.css");
+@import url("../../backend/css/page.css");
+@import url("../../backend/css/inner-page.css");
 /* #endregion */
-
 
 /* #region: Global */
-    * {
-        font-family: "Manrope", serif;
-    }
-    :root {
-        --white: #ffffff;
-        --black: #000000;
-        --light_black: #231F20;
-        --red: #E31D1D;
-        --medium_red: #F4A2A2;
-        --gray: #484546;
-        --medium_gray: #7F7D7E;
-        --medium_white: #F5F5F5;
-        --input_border: #E9E9E9;
-        --background: #F4F5F9;
-        --blue: #3673F0;
-        --green_opacity: rgba(41, 255, 152, 0.2);
-        --dark_green: #095D35;
-        --gold: #FFAE4C;
-        --gold_opacity: rgba(255, 198, 29, 0.2);
-    }
-    body {
-        background-color: var(--background);
-    }
-    h1, h2, h3, h4, h5, h6, p {
-        margin-bottom: 0!important;
-    }
-    a, a:hover {
-        text-decoration: none!important;
-    }
-    .form-control:focus, .form-check-input:focus, .form-select:focus {
-        box-shadow: none!important;
-    }
-    form .error-message {
-        color: var(--red);
-        font-weight: 500;
-        font-size: 14px;
-        margin-top: 2px;
-    }
-    form .asterisk {
-        color: var(--red);
-        margin-left: 3px;
-    }
-    /* .fr-wrapper > div:first-of-type {
-        display: none!important;
-    } */
-    p[data-f-id="pbf"], p[data-f-id="pbf"] a {
-        display: none!important;
-    }
+* {
+    font-family: "Manrope", serif;
+}
+:root {
+    --white: #ffffff;
+    --black: #000000;
+    --light_black: #231f20;
+    --red: #e31d1d;
+    --medium_red: #f4a2a2;
+    --gray: #484546;
+    --medium_gray: #7f7d7e;
+    --medium_white: #f5f5f5;
+    --input_border: #e9e9e9;
+    --background: #f4f5f9;
+    --blue: #3673f0;
+    --green_opacity: rgba(41, 255, 152, 0.2);
+    --dark_green: #095d35;
+    --gold: #ffae4c;
+    --gold_opacity: rgba(255, 198, 29, 0.2);
+}
+body {
+    background-color: var(--background);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin-bottom: 0 !important;
+}
+a,
+a:hover {
+    text-decoration: none !important;
+}
+.form-control:focus,
+.form-check-input:focus,
+.form-select:focus {
+    box-shadow: none !important;
+}
+form .error-message {
+    color: var(--red);
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 2px;
+}
+form .asterisk {
+    color: var(--red);
+    margin-left: 3px;
+}
+.fr-wrapper > div:first-of-type {
+    display: none !important;
+}
+p[data-f-id="pbf"],
+p[data-f-id="pbf"] a {
+    display: none !important;
+}
 /* #endregion */
-
 
 /* #region: Navbar */
-    .navbar-fluid {
-        position: fixed;
-        height: 75px;
-        display: flex;
-        align-items: center;
-        z-index: 9;
-        background-color: var(--white);
-    }
-    .navbar-fluid .collapse-icon {
-        display: block;
-        color: var(--black);
-        font-size: 30px;
-        cursor: pointer;
-    }
-    .navbar {
-        padding: 0;
-    }
-    .navbar .navbar-brand {
-        padding: 0;
-        margin: 0;
-    }
-    .navbar .logo {
-        width: 150px;
-        height: 46px;
-        object-fit: cover;
-    }
-    .navbar .nav-item {
-        margin-left: 40px;
-    }
-    .navbar .nav-link {
-        font-size: 16px;
-        color: var(--light_black);
-    }
-    .navbar .nav-item:last-child {
-        margin-left: 0px!important;
-    }
-    .navbar .nav-item .notification-icon {
-        font-size: 25px;
-    }
-    .navbar .nav-item .notification-icon.nav-gap {
-        margin-left: 225px;
-    }
-    .navbar .nav-item .profile-image {
-        width: 50px;
-        height: 50px;
-        object-fit: cover;
-        border-radius: 50%;
-    }
-    .navbar .nav-item .name {
-        color: var(--light_black);
-        font-size: 14px;
-        font-weight: 600;
-    }
-    .navbar .nav-item .role {
-        color: var(--light_black);
-        font-size: 12px;
-        font-weight: 500;
-    }
-    .navbar .dropdown .dropdown-icon {
-        border: 1px solid var(--input_border);
-        padding: 3px 5px;
-        border-radius: 50%;
-        font-size: 12px;
-    }
-    .navbar .dropdown .dropdown-menu {
-        border: none;
-        font-size: 15px;
-        color: black;
-        left: -300%;
-        top: 175%;
-        border-radius: 0;
-        padding: 0;
-        margin: 0;
-    }
-    .navbar .dropdown .dropdown-menu .dropdown-item {
-        padding: 15px;
+.navbar-fluid {
+    position: fixed;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    z-index: 9;
+    background-color: var(--white);
+}
+.navbar-fluid .collapse-icon {
+    display: block;
+    color: var(--black);
+    font-size: 30px;
+    cursor: pointer;
+}
+.navbar {
+    padding: 0;
+}
+.navbar .navbar-brand {
+    padding: 0;
+    margin: 0;
+}
+.navbar .logo {
+    width: 150px;
+    height: 46px;
+    object-fit: cover;
+}
+.navbar .nav-item {
+    margin-left: 40px;
+}
+.navbar .nav-link {
+    font-size: 16px;
+    color: var(--light_black);
+}
+.navbar .nav-item:last-child {
+    margin-left: 0px !important;
+}
+.navbar .nav-item .notification-icon {
+    font-size: 25px;
+}
+.navbar .nav-item .notification-icon.nav-gap {
+    margin-left: 225px;
+}
+.navbar .nav-item .profile-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.navbar .nav-item .name {
+    color: var(--light_black);
+    font-size: 14px;
+    font-weight: 600;
+}
+.navbar .nav-item .role {
+    color: var(--light_black);
+    font-size: 12px;
+    font-weight: 500;
+}
+.navbar .dropdown .dropdown-icon {
+    border: 1px solid var(--input_border);
+    padding: 3px 5px;
+    border-radius: 50%;
+    font-size: 12px;
+}
+.navbar .dropdown .dropdown-menu {
+    border: none;
+    font-size: 15px;
+    color: black;
+    left: -300%;
+    top: 175%;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+}
+.navbar .dropdown .dropdown-menu .dropdown-item {
+    padding: 15px;
+    transition: all 0.3s;
+    &:hover {
+        background-color: #dc291e;
+        color: var(--white);
         transition: all 0.3s;
-        &:hover {
-            background-color: #DC291E;
-            color: var(--white);
-            transition: all 0.3s;
-        };
-        &:hover > form .log-out {
-            color: var(--white)!important;
-            transition: all 0.3s;
-        };
     }
-    .navbar .dropdown .dropdown-menu i {
-        padding-right: 8px;
+    &:hover > form .log-out {
+        color: var(--white) !important;
+        transition: all 0.3s;
     }
-    .navbar .dropdown .dropdown-menu .log-out {
-        border: none;
-        background-color: transparent;
-        padding: 0;
-        font-size: 15px;
-    }
-    .mobile-home {
-        position: absolute;
-        right: 30px;
-        top: 17px;
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--light_black);
-        display: none;
-    }
+}
+.navbar .dropdown .dropdown-menu i {
+    padding-right: 8px;
+}
+.navbar .dropdown .dropdown-menu .log-out {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    font-size: 15px;
+}
+.mobile-home {
+    position: absolute;
+    right: 30px;
+    top: 17px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--light_black);
+    display: none;
+}
 /* #endregion */
-
 
 /* #region: Content */
-    .backend-content {
-        padding-top: 110px;
-        padding-bottom: 35px;
-        padding-left: 320px;
-        padding-right: 20px;
-        transition: all 0.1s;
-    }
-    .backend-content.full-width {
-        padding-left: 85px;
-        transition: all 0.1s;
-    }
+.backend-content {
+    padding-top: 110px;
+    padding-bottom: 35px;
+    padding-left: 320px;
+    padding-right: 20px;
+    transition: all 0.1s;
+}
+.backend-content.full-width {
+    padding-left: 85px;
+    transition: all 0.1s;
+}
 /* #endregion */
 
-
 /* #region: Message */
-    .message-sidebar {
-        background-color: var(--white);
-        padding: 20px;
-        border-radius: 10px;
-    }
-    .message-sidebar .title {
-        font-size: 18px;
-        font-weight: 600;
-        padding-bottom: 10px;
-        color: var(--light_black);
-    }
-    .message-sidebar .title {
-        font-size: 18px;
-        font-weight: 600;
-        padding-bottom: 10px;
-        color: var(--light_black);
-    }
-    .message-sidebar .menu {
-        list-style-type: none;
-        padding-left: 0;
-        margin-bottom: 0;
-    }
-    .message-sidebar .link {
-        margin-bottom: 5px;
-    }
-    .message-sidebar .link:last-child {
-        margin-bottom: 0;
-    }
-    .message-sidebar .link .actual-link {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 15px;
-        font-weight: 400;
-        color: var(--light_black);
-        padding: 15px;
-        transition: all 0.3s;
-        &:hover {
-            background-color: rgb(244, 162, 162, 0.2);
-            border-radius: 5px;
-            transition: all 0.3s;
-            color: #B00606;
-            font-weight: 500;
-        }
-        &:hover .number {
-            color: #B00606;
-        }
-    }
-    .message-sidebar .link .actual-link .number {
-        color: var(--medium_gray);
-        font-size: 14px;
-        transition: all 0.3s;
-    }
-    .message-sidebar .link .actual-link.active {
+.message-sidebar {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+}
+.message-sidebar .title {
+    font-size: 18px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    color: var(--light_black);
+}
+.message-sidebar .title {
+    font-size: 18px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    color: var(--light_black);
+}
+.message-sidebar .menu {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.message-sidebar .link {
+    margin-bottom: 5px;
+}
+.message-sidebar .link:last-child {
+    margin-bottom: 0;
+}
+.message-sidebar .link .actual-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--light_black);
+    padding: 15px;
+    transition: all 0.3s;
+    &:hover {
         background-color: rgb(244, 162, 162, 0.2);
         border-radius: 5px;
         transition: all 0.3s;
-        color: #B00606;
+        color: #b00606;
         font-weight: 500;
     }
-    .message-sidebar .link .actual-link.active > .number {
-        color: #B00606;
+    &:hover .number {
+        color: #b00606;
     }
-    .message-sidebar .link .actual-link i {
-        margin-right: 20px;
-        font-size: 20px;
-        line-height: 0;
-    }
+}
+.message-sidebar .link .actual-link .number {
+    color: var(--medium_gray);
+    font-size: 14px;
+    transition: all 0.3s;
+}
+.message-sidebar .link .actual-link.active {
+    background-color: rgb(244, 162, 162, 0.2);
+    border-radius: 5px;
+    transition: all 0.3s;
+    color: #b00606;
+    font-weight: 500;
+}
+.message-sidebar .link .actual-link.active > .number {
+    color: #b00606;
+}
+.message-sidebar .link .actual-link i {
+    margin-right: 20px;
+    font-size: 20px;
+    line-height: 0;
+}
 /* #endregion */
-
 
 /* #region: Modal */
-    .notification-modal {
-        text-align: center;
-    }
-    .notification-modal .modal-body {
-        padding: 30px;
-    }
-    .notification-modal .tick-icon {
-        font-size: 35px;
-        color: var(--dark_green);
-    }
-    .notification-modal .title {
-        font-size: 24px;
-        font-weight: 600;
-        padding-bottom: 10px;
-        color: var(--black);
-    }
-    .notification-modal .description {
-        font-size: 16px;
-        color: var(--light_black);
-    }
-    .notification-modal .close-button {
-        border: 1px solid var(--light_black);
-        font-size: 14px;
-        font-weight: 600;
-        border-radius: 0;
-        color: var(--light_black);
-        transition: all 0.3s;
-        &:hover {
-            background-color: var(--light_black);
-            color: var(--white);
-            transition: all 0.3s;
-        }
-    }
-    .notification-modal .arrow-icon {
-        padding-right: 10px;
-    }
-    .notification-modal .triangle-icon {
-        font-size: 35px;
-        color: var(--medium_red);
-    }
-    .notification-modal .close-icon {
-        font-size: 35px;
-        color: var(--red);
-    }
-    .notification-modal .buttons {
-        display: flex;
-        align-items: center;
-        margin-top: 25px;
-        justify-content: center;
-        gap: 20px;
-    }
-    .notification-modal .cancel-button {
-        font-size: 16px;
-        font-weight: 600;
-        border-radius: 0;
-        color: var(--light_black);
-        transition: all 0.3s;
-        &:hover {
-            font-weight: 800;
-            transition: all 0.3s;
-        }
-    }
-    .notification-modal .modal-delete-button {
-        background-color: var(--red);
-        font-size: 16px;
-        font-weight: 600;
-        border-radius: 0;
-        border: none;
+.notification-modal {
+    text-align: center;
+}
+.notification-modal .modal-body {
+    padding: 30px;
+}
+.notification-modal .tick-icon {
+    font-size: 35px;
+    color: var(--dark_green);
+}
+.notification-modal .title {
+    font-size: 24px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    color: var(--black);
+}
+.notification-modal .description {
+    font-size: 16px;
+    color: var(--light_black);
+}
+.notification-modal .close-button {
+    border: 1px solid var(--light_black);
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 0;
+    color: var(--light_black);
+    transition: all 0.3s;
+    &:hover {
+        background-color: var(--light_black);
         color: var(--white);
-        width: 200px;
-        height: 60px;
         transition: all 0.3s;
-        &:hover {
-            background-color: var(--light_black);
-            transition: all 0.3s;
-        }
     }
-    .notification-modal .modal-delete-button .delete-icon {
-        padding-right: 5px;
+}
+.notification-modal .arrow-icon {
+    padding-right: 10px;
+}
+.notification-modal .triangle-icon {
+    font-size: 35px;
+    color: var(--medium_red);
+}
+.notification-modal .close-icon {
+    font-size: 35px;
+    color: var(--red);
+}
+.notification-modal .buttons {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    justify-content: center;
+    gap: 20px;
+}
+.notification-modal .cancel-button {
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 0;
+    color: var(--light_black);
+    transition: all 0.3s;
+    &:hover {
+        font-weight: 800;
+        transition: all 0.3s;
     }
-    .notification-modal .box-image {
-        width: 265px;
-        height: 140px;
+}
+.notification-modal .modal-delete-button {
+    background-color: var(--red);
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 0;
+    border: none;
+    color: var(--white);
+    width: 200px;
+    height: 60px;
+    transition: all 0.3s;
+    &:hover {
+        background-color: var(--light_black);
+        transition: all 0.3s;
     }
+}
+.notification-modal .modal-delete-button .delete-icon {
+    padding-right: 5px;
+}
+.notification-modal .box-image {
+    width: 265px;
+    height: 140px;
+}
 /* #endregion */
-
 
 /* #region: Responsive */
-    @media (width <= 1921px) {}
-    @media (width <= 1901px) {}
-    @media (width <= 1851px) {}
-    @media (width <= 1801px) {}
-    @media (width <= 1751px) {}
-    @media (width <= 1681px) {}
-    @media (width <= 1601px) {}
-    @media (width <= 1537px) {}
-    @media (width <= 1441px) {}
-    @media (width <= 1367px) {}
-    @media (width <= 1301px) {}
-    @media (width <= 1281px) {
-        .navbar .logo {
-            width: 120px;
-            height: 35px;
-        }
-        .navbar-fluid .collapse-icon {
-            font-size: 25px;
-        }
-        .navbar .nav-item .profile-image {
-            width: 40px;
-            height: 40px;
-        }
-        .backend-content {
-            padding-top: 90px;
-            padding-left: 240px;
-            padding-right: 10px;
-        }
-        .backend-content.full-width {
-            padding-left: 80px;
-        }
-        .notification-modal .title {
-            font-size: 20px;
-            padding-bottom: 5px;
-        }
-        .notification-modal .description {
-            font-size: 14px;
-        }
-        .notification-modal .buttons {
-            margin-top: 15px;
-            gap: 10px;
-        }
-        .notification-modal .modal-delete-button {
-            font-size: 14px;
-            width: 160px;
-            height: 45px;
-        }
-        .notification-modal .cancel-button {
-            font-size: 14px;
-        }
+@media (width <= 1921px) {
+}
+@media (width <= 1901px) {
+}
+@media (width <= 1851px) {
+}
+@media (width <= 1801px) {
+}
+@media (width <= 1751px) {
+}
+@media (width <= 1681px) {
+}
+@media (width <= 1601px) {
+}
+@media (width <= 1537px) {
+}
+@media (width <= 1441px) {
+}
+@media (width <= 1367px) {
+}
+@media (width <= 1301px) {
+}
+@media (width <= 1281px) {
+    .navbar .logo {
+        width: 120px;
+        height: 35px;
+    }
+    .navbar-fluid .collapse-icon {
+        font-size: 25px;
+    }
+    .navbar .nav-item .profile-image {
+        width: 40px;
+        height: 40px;
+    }
+    .backend-content {
+        padding-top: 90px;
+        padding-left: 240px;
+        padding-right: 10px;
+    }
+    .backend-content.full-width {
+        padding-left: 80px;
+    }
+    .notification-modal .title {
+        font-size: 20px;
+        padding-bottom: 5px;
+    }
+    .notification-modal .description {
+        font-size: 14px;
+    }
+    .notification-modal .buttons {
+        margin-top: 15px;
+        gap: 10px;
+    }
+    .notification-modal .modal-delete-button {
+        font-size: 14px;
+        width: 160px;
+        height: 45px;
+    }
+    .notification-modal .cancel-button {
+        font-size: 14px;
+    }
 
-        .message-sidebar, .inner-page .message-form {
-            padding: 10px;
-        }
-        .message-sidebar .title {
-            font-size: 16px;
-            padding-bottom: 0px;
-        }
-        .message-sidebar .link .actual-link {
-            font-size: 14px;
-        }
-        .message-sidebar .link .actual-link i {
-            margin-right: 10px;
-            font-size: 16px;
-        }
-        .message-sidebar .link .actual-link .number {
-            font-size: 13px;
-        }
+    .message-sidebar,
+    .inner-page .message-form {
+        padding: 10px;
     }
-    @media (width <= 1151px) {}
-    @media (width <= 1076px) {}
-    @media (width <= 1025px) {}
-    @media (width <= 992px) {
-        .mobile-home {
-            display: block;
-        }
+    .message-sidebar .title {
+        font-size: 16px;
+        padding-bottom: 0px;
+    }
+    .message-sidebar .link .actual-link {
+        font-size: 14px;
+    }
+    .message-sidebar .link .actual-link i {
+        margin-right: 10px;
+        font-size: 16px;
+    }
+    .message-sidebar .link .actual-link .number {
+        font-size: 13px;
+    }
+}
+@media (width <= 1151px) {
+}
+@media (width <= 1076px) {
+}
+@media (width <= 1025px) {
+}
+@media (width <= 992px) {
+    .mobile-home {
+        display: block;
+    }
 
-        .message-sidebar, .inner-page .message-form {
-            padding: 15px;
-        }
+    .message-sidebar,
+    .inner-page .message-form {
+        padding: 15px;
     }
-    @media (width <= 845px) {}
-    @media (width <= 768px) {
-        .navbar-fluid {
-            height: 60px;
-        }
-        .backend-content {
-            padding-top: 70px;
-        }
+}
+@media (width <= 845px) {
+}
+@media (width <= 768px) {
+    .navbar-fluid {
+        height: 60px;
+    }
+    .backend-content {
+        padding-top: 70px;
+    }
 
-        .message-sidebar .title {
-            font-size: 14px;
-            padding-bottom: 0px;
-        }
-        .message-sidebar .link .actual-link {
-            font-size: 13px;
-            padding: 10px 5px;
-        }
-        .message-sidebar .link .actual-link i {
-            font-size: 14px;
-        }
+    .message-sidebar .title {
+        font-size: 14px;
+        padding-bottom: 0px;
     }
-    @media (width <= 721px) {}
-    @media (width <= 651px) {}
-    @media (width <= 576px) {
-        .backend-content {
-            padding-left: 0;
-            padding-right: 0;
-        }
-        .backend-content.full-width {
-            padding-left: 70px;
-        }
+    .message-sidebar .link .actual-link {
+        font-size: 13px;
+        padding: 10px 5px;
     }
-    @media (width <= 481px) {}
-    @media (width <= 429px) {}
-    @media (width <= 415px) {}
-    @media (width <= 396px) {}
-    @media (width <= 377px) {}
-    @media (width <= 361px) {}
-    @media (width <= 331px) {}
+    .message-sidebar .link .actual-link i {
+        font-size: 14px;
+    }
+}
+@media (width <= 721px) {
+}
+@media (width <= 651px) {
+}
+@media (width <= 576px) {
+    .backend-content {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .backend-content.full-width {
+        padding-left: 70px;
+    }
+}
+@media (width <= 481px) {
+}
+@media (width <= 429px) {
+}
+@media (width <= 415px) {
+}
+@media (width <= 396px) {
+}
+@media (width <= 377px) {
+}
+@media (width <= 361px) {
+}
+@media (width <= 331px) {
+}
 /* #endregion */
-
