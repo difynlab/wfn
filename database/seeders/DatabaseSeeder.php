@@ -25,6 +25,9 @@ class DatabaseSeeder extends Seeder
             CommonContentSeeder::class,
             WarehouseContentSeeder::class,
             CompanySeeder::class,
+            LicenseSeeder::class,
+            MovementServiceSeeder::class,
+            PalletServiceSeeder::class,
         ]);
     }
 }

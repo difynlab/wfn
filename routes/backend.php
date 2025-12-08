@@ -5,7 +5,9 @@ use App\Http\Controllers\Backend\Admin\Article\ArticleController as ArticleArtic
 use App\Http\Controllers\Backend\Admin\BookingController;
 use App\Http\Controllers\Backend\Admin\FroalaController;
 use App\Http\Controllers\Backend\Admin\DashboardController;
+use App\Http\Controllers\Backend\Admin\LicenseController;
 use App\Http\Controllers\Backend\Admin\MessageController;
+use App\Http\Controllers\Backend\Admin\MovementServiceController;
 use App\Http\Controllers\Backend\Admin\Page\AboutController;
 use App\Http\Controllers\Backend\Admin\Page\ArticleController;
 use App\Http\Controllers\Backend\Admin\Page\AuthenticationController;
@@ -16,6 +18,7 @@ use App\Http\Controllers\Backend\Admin\Page\PrivacyPolicyController;
 use App\Http\Controllers\Backend\Admin\Page\SupportController;
 use App\Http\Controllers\Backend\Admin\Page\TermsOfUseController;
 use App\Http\Controllers\Backend\Admin\Page\WarehouseController;
+use App\Http\Controllers\Backend\Admin\PalletServiceController;
 use App\Http\Controllers\Backend\Admin\ReportController;
 use App\Http\Controllers\Backend\Admin\ReviewController;
 use App\Http\Controllers\Backend\Admin\SettingsController;
@@ -39,7 +42,6 @@ use App\Http\Controllers\Backend\Tenant\FavoriteController as TenantFavoriteCont
 use App\Http\Controllers\Backend\Tenant\MessageController as TenantMessageController;
 use App\Http\Controllers\Backend\Tenant\SettingsController as TenantSettingsController;
 use App\Http\Controllers\Backend\Tenant\TodoController as TenantTodoController;
-use App\Http\Controllers\Backend\Tenant\WarehouseController as TenantWarehouseController;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/auth/backend.php';
@@ -273,6 +275,42 @@ require __DIR__.'/auth/backend.php';
                 Route::delete('{report}', 'destroy')->name('destroy');
             });
         // Reports routes
+
+        // License routes
+            Route::controller(LicenseController::class)->prefix('licenses')->name('licenses.')->group(function() {
+                Route::get('/', 'index')->name('index');
+                Route::get('filter', 'filter')->name('filter');
+                Route::get('create', 'create')->name('create');
+                Route::post('/', 'store')->name('store');
+                Route::get('{license}/edit', 'edit')->name('edit');
+                Route::post('{license}', 'update')->name('update');
+                Route::delete('{license}', 'destroy')->name('destroy');
+            });
+        // License routes
+
+        // Pallet service routes
+            Route::controller(PalletServiceController::class)->prefix('pallet-services')->name('pallet-services.')->group(function() {
+                Route::get('/', 'index')->name('index');
+                Route::get('filter', 'filter')->name('filter');
+                Route::get('create', 'create')->name('create');
+                Route::post('/', 'store')->name('store');
+                Route::get('{pallet_service}/edit', 'edit')->name('edit');
+                Route::post('{pallet_service}', 'update')->name('update');
+                Route::delete('{pallet_service}', 'destroy')->name('destroy');
+            });
+        // Pallet service routes
+
+        // Movement service routes
+            Route::controller(MovementServiceController::class)->prefix('movement-services')->name('movement-services.')->group(function() {
+                Route::get('/', 'index')->name('index');
+                Route::get('filter', 'filter')->name('filter');
+                Route::get('create', 'create')->name('create');
+                Route::post('/', 'store')->name('store');
+                Route::get('{movement_service}/edit', 'edit')->name('edit');
+                Route::post('{movement_service}', 'update')->name('update');
+                Route::delete('{movement_service}', 'destroy')->name('destroy');
+            });
+        // Movement service routes
     });
 // Admin
 

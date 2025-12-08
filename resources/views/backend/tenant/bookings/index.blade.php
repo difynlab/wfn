@@ -50,6 +50,7 @@
                             <tr>
                                 <th scope="col">WAREHOUSE</th>
                                 <th scope="col">PALLETS RENTED <i class="bi bi-arrows-vertical sort-icon" data-name="no_of_pallets" data-order="desc"></i></th>
+                                <th scope="col">NO OF SQ.M RENTED <i class="bi bi-arrows-vertical sort-icon" data-name="no_of_square_meters" data-order="desc"></i></th>
                                 <th scope="col">TOTAL RENT <i class="bi bi-arrows-vertical sort-icon" data-name="total_rent" data-order="desc"></i></th>
                                 <th scope="col">TENANCY DATE <i class="bi bi-arrows-vertical sort-icon" data-name="tenancy_date" data-order="desc"></i></th>
                                 <th scope="col">RENEWAL DATE <i class="bi bi-arrows-vertical sort-icon" data-name="renewal_date" data-order="desc"></i></th>
@@ -63,7 +64,8 @@
                                 @foreach($items as $item)
                                     <tr>
                                         <td>{!! $item->warehouse !!}</td>
-                                        <td>{{ $item->no_of_pallets }}</td>
+                                        <td>{{ $item->no_of_pallets ?? '-' }}</td>
+                                        <td>{{ $item->no_of_square_meters ?? '-' }}</td>
                                         <td>{{ $item->total_rent ? $item->total_rent . 'SAR' : '-' }}</td>
                                         <td>{{ $item->tenancy_date }}</td>
                                         <td>{{ $item->renewal_date }}</td>
@@ -73,7 +75,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="7" style="text-align: center;">No data available in the table</td>
+                                    <td colspan="8" style="text-align: center;">No data available in the table</td>
                                 </tr>
                             @endif
                         </tbody>
@@ -127,24 +129,12 @@
 				</div>
 				
 				<div class="form-group">
-					<label class="form-label" for="licensing">Licensing <span class="optional">(Optional)</span></label>
-					<select class="form-control input-field" id="licensing" name="licensing" >
+					<label class="form-label" for="license">Licensing <span class="optional">(Optional)</span></label>
+					<select class="form-control input-field" id="license" name="license">
 						<option value="all">Choose</option>
-						<option value="Retail">Retail</option>
-						<option value="E-commerce">E-commerce</option>
-						<option value="Manufacturing">Manufacturing</option>
-						<option value="Logistics & Transportation">Logistics & Transportation</option>
-						<option value="Food & Beverage">Food & Beverage</option>
-						<option value="Pharmaceuticals">Pharmaceuticals</option>
-						<option value="Automotive">Automotive</option>
-						<option value="Textiles & Apparel">Textiles & Apparel</option>
-						<option value="Electronics">Electronics</option>
-						<option value="Construction">Construction</option>
-						<option value="Consumer Goods">Consumer Goods</option>
-						<option value="Chemicals">Chemicals</option>
-						<option value="Furniture & Home Goods">Furniture & Home Goods</option>
-						<option value="Aerospace">Aerospace</option>
-						<option value="Energy & Utilities">Energy & Utilities</option>
+						@foreach($licenses as $license)
+							<option value="{{ $license->id }}">{{ $license->name_en }}</option>
+						@endforeach
 					</select>
 				</div>
 				

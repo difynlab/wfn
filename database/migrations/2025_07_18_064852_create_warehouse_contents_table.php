@@ -35,14 +35,21 @@ return new class extends Migration
             $table->text('section_2_button_en')->nullable();
 
             // $table->text('section_3_new_en')->nullable();
-            $table->text('section_3_unlock_en')->nullable();
+            // $table->text('section_3_unlock_en')->nullable();
             // $table->text('section_3_listed_en')->nullable();
             // $table->text('section_3_day_ago_en')->nullable();
-            $table->text('section_3_like_en')->nullable();
-            $table->text('section_3_share_en')->nullable();
+            // $table->text('section_3_like_en')->nullable();
+            // $table->text('section_3_share_en')->nullable();
             // $table->text('section_3_report_en')->nullable();
-            $table->text('section_3_popular_en')->nullable();
-            $table->text('section_3_top_rated_en')->nullable();
+            // $table->text('section_3_popular_en')->nullable();
+            // $table->text('section_3_top_rated_en')->nullable();
+            $table->text('section_3_storage_charges_en')->nullable();
+            $table->text('section_3_movement_services_en')->nullable();
+            $table->text('section_3_pallet_services_en')->nullable();
+            $table->text('section_3_name_en')->nullable();
+            $table->text('section_3_price_en')->nullable();
+            $table->text('section_3_button_en')->nullable();
+            $table->text('section_3_no_data_en')->nullable();
 
             $table->text('section_4_title_en')->nullable();
             $table->text('section_4_unlock_en')->nullable();
@@ -110,14 +117,21 @@ return new class extends Migration
             $table->text('section_2_button_ar')->nullable();
 
             // $table->text('section_3_new_ar')->nullable();
-            $table->text('section_3_unlock_ar')->nullable();
+            // $table->text('section_3_unlock_ar')->nullable();
             // $table->text('section_3_listed_ar')->nullable();
             // $table->text('section_3_day_ago_ar')->nullable();
-            $table->text('section_3_like_ar')->nullable();
-            $table->text('section_3_share_ar')->nullable();
+            // $table->text('section_3_like_ar')->nullable();
+            // $table->text('section_3_share_ar')->nullable();
             // $table->text('section_3_report_ar')->nullable();
-            $table->text('section_3_popular_ar')->nullable();
-            $table->text('section_3_top_rated_ar')->nullable();
+            // $table->text('section_3_popular_ar')->nullable();
+            // $table->text('section_3_top_rated_ar')->nullable();
+            $table->text('section_3_storage_charges_ar')->nullable();
+            $table->text('section_3_movement_services_ar')->nullable();
+            $table->text('section_3_pallet_services_ar')->nullable();
+            $table->text('section_3_name_ar')->nullable();
+            $table->text('section_3_price_ar')->nullable();
+            $table->text('section_3_button_ar')->nullable();
+            $table->text('section_3_no_data_ar')->nullable();
 
             $table->text('section_4_title_ar')->nullable();
             $table->text('section_4_unlock_ar')->nullable();

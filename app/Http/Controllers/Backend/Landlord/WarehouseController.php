@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Landlord;
 
 use App\Http\Controllers\Controller;
+use App\Models\License;
 use App\Models\StorageType;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
@@ -54,9 +55,11 @@ class WarehouseController extends Controller
     public function create()
     {
         $storage_types = StorageType::where('status', 1)->get();
+        $licenses = License::where('status', 1)->get();
 
         return view('backend.landlord.warehouses.create', [
-            'storage_types' => $storage_types
+            'storage_types' => $storage_types,
+            'licenses' => $licenses,
         ]);
     }
     
@@ -305,10 +308,12 @@ class WarehouseController extends Controller
     public function edit(Warehouse $warehouse)
     {
         $storage_types = StorageType::where('status', 1)->get();
+        $licenses = License::where('status', 1)->get();
 
         return view('backend.landlord.warehouses.edit', [
             'warehouse' => $warehouse,
-            'storage_types' => $storage_types
+            'storage_types' => $storage_types,
+            'licenses' => $licenses,
         ]);
     }
 

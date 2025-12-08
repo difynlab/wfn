@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Frontend\Website;
 
 use App\Http\Controllers\Controller;
-use App\Mail\AdminBookingMail;
 use App\Mail\AdminReportMail;
 use App\Mail\AdminExpertMail;
-use App\Mail\BookingMail;
-use App\Mail\LandlordBookingMail;
 use App\Mail\ReportMail;
 use App\Mail\ExpertMail;
 use App\Models\Booking;
@@ -16,15 +13,12 @@ use App\Models\HomepageContent;
 use App\Models\Message;
 use App\Models\Report;
 use App\Models\StorageType;
-use App\Models\User;
 use App\Models\Warehouse;
 use App\Models\WarehouseContent;
 use App\Models\WarehouseReview;
-use App\Services\Recaptcha;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class WarehouseController extends Controller
@@ -40,39 +34,39 @@ class WarehouseController extends Controller
             return $warehouse;
         });
 
-        $warehouses = $warehouses->paginate(3);
+        $warehouses = $warehouses->paginate(5);
         $more_warehouses = Warehouse::where('status', 1)->inRandomOrder()->take(4)->get();
 
         // Top rated warehouses
-            $grouped_reviews = WarehouseReview::where('status', 1)->get()->groupBy('warehouse_id');
-            $warehouse_ratings = $grouped_reviews->map(function ($reviews, $warehouse_id) {
-                $star_count = $reviews->sum('star');
-                $review_count = $reviews->count();
+            // $grouped_reviews = WarehouseReview::where('status', 1)->get()->groupBy('warehouse_id');
+            // $warehouse_ratings = $grouped_reviews->map(function ($reviews, $warehouse_id) {
+            //     $star_count = $reviews->sum('star');
+            //     $review_count = $reviews->count();
 
-                $rating = $review_count > 0 ? number_format($star_count / $review_count, 2) : 0;
+            //     $rating = $review_count > 0 ? number_format($star_count / $review_count, 2) : 0;
 
-                return [
-                    'warehouse_id' => $warehouse_id,
-                    'total_stars' => $star_count,
-                    'review_count' => $review_count,
-                    'average_rating' => $rating
-                ];
-            });
-            $top_rated_warehouses = $warehouse_ratings->sortByDesc('average_rating')->take(5);
-            $top_ids = $top_rated_warehouses->pluck('warehouse_id')->toArray();
-            $top_rated_warehouses = Warehouse::whereIn('id', $top_ids)->get();
+            //     return [
+            //         'warehouse_id' => $warehouse_id,
+            //         'total_stars' => $star_count,
+            //         'review_count' => $review_count,
+            //         'average_rating' => $rating
+            //     ];
+            // });
+            // $top_rated_warehouses = $warehouse_ratings->sortByDesc('average_rating')->take(5);
+            // $top_ids = $top_rated_warehouses->pluck('warehouse_id')->toArray();
+            // $top_rated_warehouses = Warehouse::whereIn('id', $top_ids)->get();
         // Top rated warehouses
 
         // Popular warehouses
-            $popular_warehouses = Booking::where('status', 1)->get()->groupBy('warehouse_id')
-                                ->map(function ($group) {
-                                    return $group->count();
-                                })
-                                ->sortDesc()
-                                ->take(5);
+            // $popular_warehouses = Booking::where('status', 1)->get()->groupBy('warehouse_id')
+            //                     ->map(function ($group) {
+            //                         return $group->count();
+            //                     })
+            //                     ->sortDesc()
+            //                     ->take(5);
 
-            $top_warehouse_ids = $popular_warehouses->keys();
-            $popular_warehouses = Warehouse::whereIn('id', $top_warehouse_ids)->get();
+            // $top_warehouse_ids = $popular_warehouses->keys();
+            // $popular_warehouses = Warehouse::whereIn('id', $top_warehouse_ids)->get();
         // Popular warehouses
 
         $storage_types = StorageType::where('status', 1)->orderBy('id', 'desc')->get();
@@ -85,8 +79,8 @@ class WarehouseController extends Controller
             'more_warehouses' => $more_warehouses,
             'all_warehouses' => $all_warehouses,
             'storage_types' => $storage_types,
-            'popular_warehouses' => $popular_warehouses,
-            'top_rated_warehouses' => $top_rated_warehouses,
+            // 'popular_warehouses' => $popular_warehouses,
+            // 'top_rated_warehouses' => $top_rated_warehouses,
             'cities' => $cities
         ]);
     }
@@ -268,9 +262,7 @@ class WarehouseController extends Controller
 
         $warehouse = Warehouse::find($request->warehouse_id);
 
-        return view('backend.tenant.bookings.review', [
-            'warehouse' => $warehouse
-        ]);
+        return redirect()->route('tenant.bookings.review', $warehouse);
     }
 
     // public function store(Request $request)

@@ -103,24 +103,14 @@
         @endif
 
         <div class="section-3 container section-margin">
-            <div class="row warehouse-row">
-                @if($warehouses->count() > 0)
+            <!-- <div class="row warehouse-row"> -->
+                <!-- @if($warehouses->count() > 0)
                     <div class="col-12 mb-4 mb-md-0 col-md-8 left">
                         @foreach($warehouses as $key => $warehouse)
                             <div class="single-warehouse">
                                 <a href="{{ route('warehouses.show', $warehouse) }}">
                                     <div class="row align-items-center">
                                         <div class="col-5 col-md-4">
-                                            <!-- @php
-                                                $listed_date = $warehouse->created_at->copy()->startOfDay();
-                                                $today = now()->startOfDay();
-                                                $date_difference = $listed_date->diffInDays($today, false);
-                                            @endphp -->
-
-                                            <!-- @if($date_difference <= 30)
-                                                <p class="badge">{{ $contents->{'section_3_new_' . $middleware_language} ?? $contents->section_3_new_en }}</p>
-                                            @endif -->
-                                            
                                             @if($warehouse->thumbnail)
                                                 <img src="{{ asset('storage/backend/warehouses/thumbnails/' . $warehouse->thumbnail) }}" data-src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="image lazyload">
                                             @else
@@ -155,16 +145,6 @@
 
                                 <div class="box">
                                     <div class="row">
-                                        <!-- <div class="col-6">
-                                            <p class="posted-time">
-                                                {{ $contents->{'section_3_listed_' . $middleware_language} ?? $contents->section_3_listed_en }}
-
-                                                {{ $date_difference }}
-
-                                                {{ $contents->{'section_3_day_ago_' . $middleware_language} ?? $contents->section_3_day_ago_en }}
-                                            </p>
-                                        </div> -->
-                                      
                                         <div class="col-12 text-end">
                                             <span class="action" onClick="favoriteToggle({{ auth()->user()->id }}, {{ $warehouse->id }}, '{{ route('warehouses.favorite') }}', {{ isFavorite(auth()->user()->id, $warehouse->id) ? 1 : 0 }}, this)">
                                                 <i class="bi {{ isFavorite(auth()->user()->id, $warehouse->id) ? 'bi-heart-fill' : 'bi-heart' }}"></i>
@@ -200,11 +180,6 @@
                                                     </li>
                                                 </ul>
                                             </span>
-
-                                            <!-- <span class="action">
-                                                <i class="bi bi-flag"></i>
-                                                {{ $contents->{'section_3_report_' . $middleware_language} ?? $contents->section_3_report_en }}
-                                            </span> -->
                                         </div>
                                     </div>
                                 </div>
@@ -215,13 +190,226 @@
                     </div>
                 @else
                     <div class="col-8">
-                        <p class="no-data">No warehouses found</p>
+                        <p class="no-data">{{ $contents->{'section_3_no_data_' . $middleware_language} ?? $contents->section_3_no_data_en }}</p>
+                    </div>
+                @endif -->
+
+                @if($warehouses->isNotEmpty())
+                    <div class="row mb-3 mb-md-4">
+                        <div class="col-5 col-lg-4">
+                            @foreach($warehouses as $key => $warehouse)
+                                <div class="single-warehouse {{ $key == 0 ? 'active' : '' }}" index="{{ $key }}">
+                                    <p class="name">
+                                        {{ $warehouse->{'name_' . $middleware_language} ?? $warehouse->name_en }}
+                                    </p>
+
+                                    <p class="description">
+                                        {{ $warehouse->{'short_description_' . $middleware_language} ?? $warehouse->short_description_en }}
+                                    </p>
+
+                                    <div class="details">
+                                        <div class="detail">
+                                            <i class="bi bi-geo-alt"></i>
+                                            <span>{{ $warehouse->{'city_' . $middleware_language} ?? $warehouse->city_en }}</span>
+                                        </div>
+                                        <div class="detail">
+                                            <i class="bi bi-box"></i>
+                                            <span>{{ $warehouse->storageType->{'name_' . $middleware_language} ?? $warehouse->storageType->name_en }}</span>
+                                        </div>
+                                        <div class="detail">
+                                            <i class="bi bi-star"></i>
+                                            @php
+                                                $reviews = $warehouse->reviews()->where('status', 1)->orderBy('id', 'desc')->get();
+                                                $star_count = $reviews->sum('star');
+
+                                                if($star_count > 0) {
+                                                    $rating = number_format($star_count / $reviews->count(), 2);
+                                                }
+                                                else {
+                                                    $rating = 0.0;
+                                                }
+                                            @endphp
+                                            <span>{{ $rating }} ({{ $reviews->count() }} Reviews)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        
+                        <div class="col-7 col-lg-8">
+                            @foreach($warehouses as $key => $warehouse)
+                                <div class="right-single-warehouse {{ $key != 0 ? 'd-none' : '' }}" id="{{ $key }}">
+                                    @php
+                                        $sliders = [
+                                            ['type' => 'image', 'name' => $warehouse->thumbnail],
+                                            ['type' => 'image', 'name' => $warehouse->outside_image],
+                                            ['type' => 'image', 'name' => $warehouse->loading_image],
+                                            ['type' => 'image', 'name' => $warehouse->off_loading_image],
+                                            ['type' => 'image', 'name' => $warehouse->handling_equipment_image],
+                                            ['type' => 'image', 'name' => $warehouse->storage_area_image]
+                                        ];
+
+                                        if($warehouse->videos) {
+                                            foreach(json_decode($warehouse->videos) as $video) {
+                                                $sliders[] = [
+                                                    'type' => 'video',
+                                                    'name' => $video,
+                                                ];
+                                            }
+                                        }
+
+                                        shuffle($sliders);
+                                    @endphp
+
+                                    <div class="swiper-card">
+                                        <div class="swiper mySwiper">
+                                            <div class="swiper-wrapper">
+                                                @foreach($sliders as $slider)
+                                                    <div class="swiper-slide">
+                                                        @if($slider['type'] === 'image')
+                                                            @if($slider['name'])
+                                                                <img src="{{ asset('storage/backend/warehouses/' . $slider['name']) }}" alt="Warehouse" class="swiper-resource">
+                                                            @else
+                                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="swiper-resource">
+                                                            @endif
+                                                        @elseif($slider['type'] === 'video')
+                                                            @if($slider['name'])
+                                                                <video class="swiper-resource" controls>
+                                                                    <source src="{{ asset('storage/backend/warehouses/' . $slider['name']) }}" type="video/mp4" alt="Warehouse" class="swiper-resource">
+                                                                    Your browser does not support the video tag.
+                                                                </video>
+                                                            @else
+                                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="swiper-resource">
+                                                            @endif
+                                                        @endif
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <div class="swiper-pagination"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="warehouse-card">
+                                        <div class="row">
+                                            <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+                                                <p class="warehouse-title">{{ $warehouse->{'name_' . $middleware_language} ?? $warehouse->name_en }}</p>
+                                        
+                                                <div class="warehouse-info">{!! $warehouse->{'description_' . $middleware_language} ?? $warehouse->description_en !!}</div>
+
+                                                @if($warehouse->license)
+                                                    <div class="licenses">
+                                                        @foreach(json_decode($warehouse->license) as $license)
+                                                            <p class="license-tag">{{ App\Models\License::find($license)->{'name_' . $middleware_language} ?? App\Models\License::find($license)->name_en }}</p>
+                                                        @endforeach
+                                                    </div>
+                                                @endif
+                                            </div>
+
+                                            <div class="col-12 col-lg-6">
+                                                <div
+                                                    id="map-{{ $warehouse->id }}"
+                                                    class="warehouse-map"
+                                                    data-lat="{{ $warehouse->latitude }}"
+                                                    data-lng="{{ $warehouse->longitude }}"
+                                                    data-title="{{ $warehouse->name_en }}">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <hr class="my-3 my-md-4 line">
+
+                                        @if($warehouse->storage_charges)
+                                            <div class="price-section">
+                                                <p class="price-title">{{ $contents->{'section_3_storage_charges_' . $middleware_language} ?? $contents->section_3_storage_charges_en }}</p>
+                                            
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>{{ $contents->{'section_3_name_' . $middleware_language} ?? $contents->section_3_name_en }}</th>
+                                                            <th class="second-column">{{ $contents->{'section_3_price_' . $middleware_language} ?? $contents->section_3_price_en }}</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach(json_decode($warehouse->storage_charges) as $storage_charge)
+                                                            <tr>
+                                                                <td>{{ App\Models\StorageType::find($storage_charge->name)->{'name_' . $middleware_language} ?? App\Models\StorageType::find($storage_charge->name)->name_en }}</td>
+                                                                <td>{{ $storage_charge->price }} SAR</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        @endif
+
+                                        @if($warehouse->movement_services)
+                                            <div class="price-section">
+                                                <p class="price-title">{{ $contents->{'section_3_movement_services_' . $middleware_language} ?? $contents->section_3_movement_services_en }}</p>
+                                            
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>{{ $contents->{'section_3_name_' . $middleware_language} ?? $contents->section_3_name_en }}</th>
+                                                            <th class="second-column">{{ $contents->{'section_3_price_' . $middleware_language} ?? $contents->section_3_price_en }}</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach(json_decode($warehouse->movement_services) as $movement_service)
+                                                            <tr>
+                                                                <td>{{ App\Models\MovementService::find($movement_service->name)->{'name_' . $middleware_language} ?? App\Models\MovementService::find($movement_service->name)->name_en }}</td>
+                                                                <td>{{ $movement_service->price }} SAR</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        @endif
+
+                                        @if($warehouse->pallet_services)
+                                            <div class="price-section">
+                                                <p class="price-title">{{ $contents->{'section_3_pallet_services_' . $middleware_language} ?? $contents->section_3_pallet_services_en }}</p>
+                                            
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>{{ $contents->{'section_3_name_' . $middleware_language} ?? $contents->section_3_name_en }}</th>
+                                                            <th class="second-column">{{ $contents->{'section_3_price_' . $middleware_language} ?? $contents->section_3_price_en }}</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach(json_decode($warehouse->pallet_services) as $pallet_service)
+                                                            <tr>
+                                                                <td>{{ App\Models\PalletService::find($pallet_service->name)->{'name_' . $middleware_language} ?? App\Models\PalletService::find($pallet_service->name)->name_en }}</td>
+                                                                <td>{{ $pallet_service->price }} SAR</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        @endif
+
+                                        <a href="{{ route('warehouses.show', $warehouse) }}" class="quote-btn">{{ $contents->{'section_3_button_' . $middleware_language} ?? $contents->section_3_button_en }}</a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            {{ $warehouses->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
+                        </div>
+                    </div>
+                @else
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="no-data">{{ $contents->{'section_3_no_data_' . $middleware_language} ?? $contents->section_3_no_data_en }}</p>
+                        </div>
                     </div>
                 @endif
 
-                <div class="col-12 col-md-4 right">
+                <!-- <div class="col-12 col-md-4 right">
                     <div class="sidebar">
-                        @if($popular_warehouses->count() > 0)
+                        @if(#)
                             <p class="heading">{{ $contents->{'section_3_popular_' . $middleware_language} ?? $contents->section_3_popular_en }}</p>
 
                             @foreach($popular_warehouses as $key => $warehouse)
@@ -233,12 +421,12 @@
 
                         <p class="heading">{{ $contents->{'section_3_top_rated_' . $middleware_language} ?? $contents->section_3_top_rated_en }}</p>
     
-                        @foreach($top_rated_warehouses as $key => $warehouse)
+                        @foreach(#)
                             <a href="{{ route('warehouses.show', $warehouse) }}" class="item">{{ $warehouse->{'name_' . $middleware_language} ?? $warehouse->name_en }}</a>
                         @endforeach
                     </div>
-                </div>
-            </div>
+                </div> -->
+            <!-- </div> -->
         </div>
         
         @if($contents->section_4_title_en && $more_warehouses->count() > 0)
@@ -278,7 +466,7 @@
 @endsection
 
 @push('after-scripts')
-    <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
+    <!-- <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
         ({key: "{{ config('services.google_maps.key') }}", v: "weekly"});</script>
 
     <script>
@@ -349,11 +537,86 @@
         }
 
         initMap();
-    </script>
+    </script> -->
 
     <script>
         $(document).ready(function() {
             $('.js-single').select2();
         });
+    </script>
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
+
+    <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
+        ({key: "{{ config('services.google_maps.key') }}", v: "weekly"});
+    </script>
+
+    <script>
+        async function initWarehouseMaps() {
+            try {
+                const { Map } = await google.maps.importLibrary("maps");
+                const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+                const mapEls = document.querySelectorAll(".warehouse-map");
+                if(!mapEls.length) return;
+
+                mapEls.forEach(el => {
+                    const lat = parseFloat(el.dataset.lat);
+                    const lng = parseFloat(el.dataset.lng);
+                    const title = el.dataset.title || "Warehouse";
+
+                    const position = { lat: lat, lng: lng };
+
+                    if(!Number.isFinite(lat) || !Number.isFinite(lng)) return;
+
+                    const map = new Map(el, {
+                        zoom: 13,
+                        center: position,
+                        mapId: "DEMO_MAP_ID",
+                        scrollwheel: false,
+                        zoomControl: false,
+                    });
+
+                    const icon = document.createElement('i');
+                    icon.className = 'bi bi-geo-alt-fill';
+                    icon.style.fontSize = '50px';
+                    icon.style.color = '#E31D1D';
+                    icon.style.cursor = 'pointer';
+                    icon.style.border = '1px solid #F4A2A2';
+                    icon.style.padding = '100px';
+                    icon.style.borderRadius = '50%';
+
+                    new AdvancedMarkerElement({
+                        map,
+                        position,
+                        title,
+                        content: icon,
+                    });
+                });
+            }
+            catch (e) {
+                console.error("Map init error:", e);
+            }
+        }
+
+        window.addEventListener('load', initWarehouseMaps);
+    </script>
+
+    <script>
+        $('.single-warehouse').on('click', function() {
+            $(this).addClass('active').siblings().removeClass('active');
+
+            let id = $(this).attr('index');
+
+            $('.right-single-warehouse').addClass('d-none');
+            $('#' + id).removeClass('d-none');
+        })
     </script>
 @endpush

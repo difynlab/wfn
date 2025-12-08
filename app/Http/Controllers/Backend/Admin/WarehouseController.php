@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\License;
+use App\Models\MovementService;
+use App\Models\PalletService;
 use App\Models\StorageType;
 use App\Models\User;
 use App\Models\Warehouse;
@@ -59,10 +62,16 @@ class WarehouseController extends Controller
     {
         $users = User::where('status', 1)->where('role', 'landlord')->get();
         $storage_types = StorageType::where('status', 1)->get();
+        $licenses = License::where('status', 1)->get();
+        $pallet_services = PalletService::where('status', 1)->get();
+        $movement_services = MovementService::where('status', 1)->get();
 
         return view('backend.admin.warehouses.create', [
             'users' => $users,
-            'storage_types' => $storage_types
+            'storage_types' => $storage_types,
+            'licenses' => $licenses,
+            'pallet_services' => $pallet_services,
+            'movement_services' => $movement_services,
         ]);
     }
     
@@ -330,6 +339,7 @@ class WarehouseController extends Controller
             'pallet_service_names',
             'pallet_service_prices',
         );
+        $data['license'] = $request->license ? json_encode($request->license) : null;
         $data['thumbnail'] = $thumbnail;
         $data['outside_image'] = $outside_image;
         $data['loading_image'] = $loading_image;
@@ -359,11 +369,17 @@ class WarehouseController extends Controller
     {
         $users = User::where('status', 1)->where('role', 'landlord')->get();
         $storage_types = StorageType::where('status', 1)->get();
+        $licenses = License::where('status', 1)->get();
+        $pallet_services = PalletService::where('status', 1)->get();
+        $movement_services = MovementService::where('status', 1)->get();
 
         return view('backend.admin.warehouses.edit', [
             'warehouse' => $warehouse,
             'users' => $users,
-            'storage_types' => $storage_types
+            'storage_types' => $storage_types,
+            'licenses' => $licenses,
+            'pallet_services' => $pallet_services,
+            'movement_services' => $movement_services,
         ]);
     }
 

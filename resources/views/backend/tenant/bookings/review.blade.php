@@ -15,27 +15,31 @@
             <form action="{{ route('tenant.bookings.booking') }}" method="POST" class="form">
                 @csrf
                 <div class="quote-inputs">
-                    <div class="input-container">
-                        <label class="form-label">No of Pallets</label>
-                        <div class="number-controls">
-                            <button type="button" class="btn-minus btn-pallet-minus">-</button>
-                            <p id="pallets" class="number-input">{{ session('no_of_pallets') ?? 0 }}</p>
-                            <input type="hidden" id="pallets-input" name="no_of_pallets" value="{{ session('no_of_pallets') ?? 0 }}">
-                            <button type="button" class="btn-plus btn-pallet-plus">+</button>
+                    @if(session('no_of_pallets'))
+                        <div class="input-container">
+                            <label class="form-label">No of Pallets</label>
+                            <div class="number-controls">
+                                <button type="button" class="btn-minus btn-pallet-minus">-</button>
+                                <p id="pallets" class="number-input">{{ session('no_of_pallets') ?? 0 }}</p>
+                                <input type="hidden" id="pallets-input" name="no_of_pallets" value="{{ session('no_of_pallets') ?? 0 }}">
+                                <button type="button" class="btn-plus btn-pallet-plus">+</button>
+                            </div>
                         </div>
-                    </div>
+                    @endif
 
-                    <div class="separator"></div>
+                    @if(session('no_of_square_meters'))
+                        <!-- <div class="separator"></div> -->
 
-                    <div class="input-container">
-                        <label class="form-label">No of SqM</label>
-                        <div class="number-controls">
-                            <button type="button" class="btn-minus btn-sqm-minus">-</button>
-                            <p id="sqm" class="number-input">{{ session('no_of_square_meters') ?? 0 }}</p>
-                            <input type="hidden" id="sqm-input" name="no_of_square_meters" value="{{ session('no_of_square_meters') ?? 0 }}">
-                            <button type="button" class="btn-plus btn-sqm-plus">+</button>
+                        <div class="input-container">
+                            <label class="form-label">No of SqM</label>
+                            <div class="number-controls">
+                                <button type="button" class="btn-minus btn-sqm-minus">-</button>
+                                <p id="sqm" class="number-input">{{ session('no_of_square_meters') ?? 0 }}</p>
+                                <input type="hidden" id="sqm-input" name="no_of_square_meters" value="{{ session('no_of_square_meters') ?? 0 }}">
+                                <button type="button" class="btn-plus btn-sqm-plus">+</button>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
 
                 <div class="price-section">
@@ -93,7 +97,7 @@
                                             <tbody>
                                                 @foreach(json_decode($warehouse->movement_services) as $movement_service)
                                                     <tr>
-                                                        <td>{{ $movement_service->name }}</td>
+                                                        <td>{{ App\Models\MovementService::find($movement_service->name)->name_en }}</td>
                                                         <td>{{ $movement_service->price }} SAR</td>
                                                     </tr>
                                                 @endforeach
@@ -125,7 +129,7 @@
                                             <tbody>
                                                 @foreach(json_decode($warehouse->pallet_services) as $pallet_service)
                                                     <tr>
-                                                        <td>{{ $pallet_service->name }}</td>
+                                                        <td>{{ App\Models\PalletService::find($pallet_service->name)->name_en }}</td>
                                                         <td>{{ $pallet_service->price }} SAR</td>
                                                     </tr>
                                                 @endforeach

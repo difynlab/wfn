@@ -65,26 +65,17 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="license" class="form-label label">License</label>
-                    <select class="form-select input-field js-single" id="license" name="license">
+                    <label for="license" class="form-label label">License/s</label>
+                    <select class="form-select input-field js-multiple" id="license" name="license[]" multiple="multiple">
                         <option value="">Select license</option>
-                        <option value="retail">Retail</option>
-						<option value="ecommerce">E-commerce</option>
-						<option value="manufacturing">Manufacturing</option>
-						<option value="logistics_transportation">Logistics & Transportation</option>
-						<option value="food_beverage">Food & Beverage</option>
-						<option value="pharmaceuticals">Pharmaceuticals</option>
-						<option value="automotive">Automotive</option>
-						<option value="textiles_apparel">Textiles & Apparel</option>
-						<option value="electronics">Electronics</option>
-						<option value="construction">Construction</option>
-						<option value="consumer_goods">Consumer Goods</option>
-						<option value="chemicals">Chemicals</option>
-						<option value="furniture_home_goods">Furniture & Home Goods</option>
-						<option value="aerospace">Aerospace</option>
-						<option value="energy_utilities">Energy & Utilities</option>
+                        @foreach($licenses as $license)
+                            <option value="{{ $license->id }}" 
+                                {{ old('licenses') && in_array($license->id, old('licenses')) ? 'selected' : '' }}>
+                                {{ $license->name_en }}
+                            </option>
+                        @endforeach
                     </select>
-                    <x-backend.input-error field="license"></x-backend.input-error>
+                    <x-backend.input-error field="license.*"></x-backend.input-error>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">

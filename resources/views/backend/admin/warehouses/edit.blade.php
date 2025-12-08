@@ -95,25 +95,16 @@
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="license" class="form-label label">License</label>
-                    <select class="form-select input-field js-single" id="license" name="license">
+                    <select class="form-select input-field js-multiple" id="license" name="license[]" multiple="multiple">
                         <option value="">Select license</option>
-                        <option value="Retail" {{ old('license', $warehouse->license) == 'Retail' ? 'selected' : '' }}>Retail</option>
-						<option value="E-commerce" {{ old('license', $warehouse->license) == 'E-commerce' ? 'selected' : '' }}>E-commerce</option>
-						<option value="Manufacturing" {{ old('license', $warehouse->license) == 'Manufacturing' ? 'selected' : '' }}>Manufacturing</option>
-						<option value="Logistics & Transportation" {{ old('license', $warehouse->license) == 'Logistics & Transportation' ? 'selected' : '' }}>Logistics & Transportation</option>
-						<option value="Food & Beverage" {{ old('license', $warehouse->license) == 'Food & Beverage' ? 'selected' : '' }}>Food & Beverage</option>
-						<option value="Pharmaceuticals" {{ old('license', $warehouse->license) == 'Pharmaceuticals' ? 'selected' : '' }}>Pharmaceuticals</option>
-						<option value="Automotive" {{ old('license', $warehouse->license) == 'Automotive' ? 'selected' : '' }}>Automotive</option>
-						<option value="Textiles & Apparel" {{ old('license', $warehouse->license) == 'Textiles & Apparel' ? 'selected' : '' }}>Textiles & Apparel</option>
-						<option value="Electronics" {{ old('license', $warehouse->license) == 'Electronics' ? 'selected' : '' }}>Electronics</option>
-						<option value="Construction" {{ old('license', $warehouse->license) == 'Construction' ? 'selected' : '' }}>Construction</option>
-						<option value="Consumer Goods" {{ old('license', $warehouse->license) == 'Consumer Goods' ? 'selected' : '' }}>Consumer Goods</option>
-						<option value="Chemicals" {{ old('license', $warehouse->license) == 'Chemicals' ? 'selected' : '' }}>Chemicals</option>
-						<option value="Furniture & Home Goods" {{ old('license', $warehouse->license) == 'Furniture & Home Goods' ? 'selected' : '' }}>Furniture & Home Goods</option>
-						<option value="Aerospace" {{ old('license', $warehouse->license) == 'Aerospace' ? 'selected' : '' }}>Aerospace</option>
-						<option value="Energy & Utilities" {{ old('license', $warehouse->license) == 'Energy & Utilities' ? 'selected' : '' }}>Energy & Utilities</option>
+                        @foreach($licenses as $license)
+                            <option value="{{ $license->id }}" 
+                                {{ in_array($license->id, old('license', json_decode($warehouse->license) ?? [])) ? 'selected' : '' }}>
+                                {{ $license->name_en }}
+                            </option>
+                        @endforeach
                     </select>
-                    <x-backend.input-error field="license"></x-backend.input-error>
+                    <x-backend.input-error field="license.*"></x-backend.input-error>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
@@ -540,22 +531,18 @@
                     </div>
 
                     @if($warehouse->movement_services)
-                        @foreach(json_decode($warehouse->movement_services) as $movement_service)
+                        @foreach(json_decode($warehouse->movement_services) as $ms)
                             <div class="row single-item mt-3 mt-md-2">
                                 <div class="col-12 col-md mb-1 mb-md-0">
                                     <select class="form-select input-field" name="movement_service_names[]" required>
                                         <option value="">Select</option>
-                                        <option value="Pallet/SqM Inbound Charges" {{ $movement_service->name == 'Pallet/SqM Inbound Charges' ? 'selected' : '' }}>Pallet/SqM Inbound Charges</option>
-                                        <option value="Pallet/SqM Outbound Charges" {{ $movement_service->name == 'Pallet/SqM Outbound Charges' ? 'selected' : '' }}>Pallet/SqM Outbound Charges</option>
-                                        <option value="Case Handling Charges" {{ $movement_service->name == 'Case Handling Charges' ? 'selected' : '' }}>Case Handling Charges</option>
-                                        <option value="Item/ Unit Handling Charges" {{ $movement_service->name == 'Item/ Unit Handling Charges' ? 'selected' : '' }}>Item/ Unit Handling Charges</option>
-                                        <option value="Loose Container Unloading - Per 4-ton diyanna" {{ $movement_service->name == 'Loose Container Unloading - Per 4-ton diyanna' ? 'selected' : '' }}>Loose Container Unloading - Per 4-ton diyanna</option>
-                                        <option value="Loose Container Unloading - Per 20ft" {{ $movement_service->name == 'Loose Container Unloading - Per 20ft' ? 'selected' : '' }}>Loose Container Unloading - Per 20ft</option>
-                                        <option value="Loose Container Unloading - Per 40ft" {{ $movement_service->name == 'Loose Container Unloading - Per 40ft' ? 'selected' : '' }}>Loose Container Unloading - Per 40ft</option>
+                                        @foreach($movement_services as $movement_service)
+                                            <option value="{{ $movement_service->id }}" {{ $movement_service->id == $ms->name ? 'selected' : '' }}>{{ $movement_service->name_en }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-12 col-md mb-1 mb-md-0">
-                                    <input type="text" class="form-control input-field" name="movement_service_prices[]" value="{{ $movement_service->price }}" placeholder="Price" required>
+                                    <input type="text" class="form-control input-field" name="movement_service_prices[]" value="{{ $ms->price }}" placeholder="Price" required>
                                 </div>
                                 <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
@@ -580,19 +567,18 @@
                     </div>
 
                     @if($warehouse->pallet_services)
-                        @foreach(json_decode($warehouse->pallet_services) as $pallet_service)
+                        @foreach(json_decode($warehouse->pallet_services) as $ps)
                             <div class="row single-item mt-3 mt-md-2">
                                 <div class="col-12 col-md mb-1 mb-md-0">
                                     <select class="form-select input-field" name="pallet_service_names[]" required>
                                         <option value="">Select</option>
-                                        <option value="Wooden Pallet Supply" {{ $pallet_service->name == 'Wooden Pallet Supply' ? 'selected' : '' }}>Wooden Pallet Supply</option>
-                                        <option value="Palletization" {{ $pallet_service->name == 'Palletization' ? 'selected' : '' }}>Palletization</option>
-                                        <option value="Segregation" {{ $pallet_service->name == 'Segregation' ? 'selected' : '' }}>Segregation</option>
-                                        <option value="Additional Shrink Wrap" {{ $pallet_service->name == 'Additional Shrink Wrap' ? 'selected' : '' }}>Additional Shrink Wrap</option>
+                                        @foreach($pallet_services as $pallet_service)
+                                            <option value="{{ $pallet_service->id }}" {{ $pallet_service->id == $ps->name ? 'selected' : '' }}>{{ $pallet_service->name_en }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-12 col-md mb-1 mb-md-0">
-                                    <input type="text" class="form-control input-field" name="pallet_service_prices[]" value="{{ $pallet_service->price }}" placeholder="Price" required>
+                                    <input type="text" class="form-control input-field" name="pallet_service_prices[]" value="{{ $ps->price }}" placeholder="Price" required>
                                 </div>
                                 <div class="col-12 col-md-1 d-flex align-items-center">
                                     <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
@@ -749,10 +735,12 @@
         });
 
         const storageTypes = @json($storage_types->map->only(['id','name_en']));
-        function buildOptions() {
+        const palletServices = @json($pallet_services->map->only(['id','name_en']));
+        const movementServices = @json($movement_services->map->only(['id','name_en']));
+        function buildOptions(list) {
             let opts = '<option value="">Select</option>';
-            for (const t of storageTypes) {
-                opts += `<option value="${t.id}">${t.name_en}</option>`;
+            for (const item of list) {
+                opts += `<option value="${item.id}">${item.name_en}</option>`;
             }
             return opts;
         }
@@ -761,7 +749,7 @@
             let html = `<div class="row single-item mt-2">
                                 <div class="col-12 col-md mb-1 mb-md-0">
                                     <select class="form-select input-field" name="storage_charge_names[]" required>
-                                        ${buildOptions()}
+                                        ${buildOptions(storageTypes)}
                                     </select>
                                 </div>
 
@@ -781,14 +769,7 @@
             let html = `<div class="row single-item mt-2">
                                 <div class="col-12 col-md mb-1 mb-md-0">
                                     <select class="form-select input-field" name="movement_service_names[]" required>
-                                        <option value="">Select</option>
-                                        <option value="Pallet/SqM Inbound Charges">Pallet/SqM Inbound Charges</option>
-                                        <option value="Pallet/SqM Outbound Charges">Pallet/SqM Outbound Charges</option>
-                                        <option value="Case Handling Charges">Case Handling Charges</option>
-                                        <option value="Item/ Unit Handling Charges">Item/ Unit Handling Charges</option>
-                                        <option value="Loose Container Unloading - Per 4-ton diyanna">Loose Container Unloading - Per 4-ton diyanna</option>
-                                        <option value="Loose Container Unloading - Per 20ft">Loose Container Unloading - Per 20ft</option>
-                                        <option value="Loose Container Unloading - Per 40ft">Loose Container Unloading - Per 40ft</option>
+                                        ${buildOptions(movementServices)}
                                     </select>
                                 </div>
 
@@ -808,11 +789,7 @@
             let html = `<div class="row single-item mt-2">
                                 <div class="col-12 col-md mb-1 mb-md-0">
                                     <select class="form-select input-field" name="pallet_service_names[]" required>
-                                        <option value="">Select</option>
-                                        <option value="Wooden Pallet Supply">Wooden Pallet Supply</option>
-                                        <option value="Palletization">Palletization</option>
-                                        <option value="Segregation">Segregation</option>
-                                        <option value="Additional Shrink Wrap">Additional Shrink Wrap</option>
+                                        ${buildOptions(palletServices)}
                                     </select>
                                 </div>
 
