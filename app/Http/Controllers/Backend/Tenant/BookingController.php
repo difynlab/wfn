@@ -4,12 +4,10 @@ namespace App\Http\Controllers\Backend\Tenant;
 
 use App\Http\Controllers\Controller;
 use App\Mail\AdminBookingMail;
-use App\Mail\AdminBookingUpdateMail;
 use App\Mail\BookingMail;
-use App\Mail\BookingUpdateMail;
 use App\Mail\LandlordBookingMail;
-use App\Mail\LandlordBookingUpdateMail;
 use App\Models\Booking;
+use App\Models\License;
 use App\Models\StorageType;
 use App\Models\User;
 use App\Models\Warehouse;
@@ -60,7 +58,8 @@ class BookingController extends Controller
         $items = $this->processData($items);
 
         $cities = Warehouse::get()->pluck('city_en')->unique()->toArray();
-        $storage_types = StorageType::where('status', 1)->orderBy('id', 'desc')->get();
+        $storage_types = StorageType::where('status', 1)->get();
+        $licenses = License::where('status', 1)->get();
 
         return view('backend.tenant.bookings.index', [
             'items' => $items,
@@ -68,6 +67,7 @@ class BookingController extends Controller
             'warehouses' => $warehouses,
             'cities' => $cities,
             'storage_types' => $storage_types,
+            'licenses' => $licenses,
         ])
         ->with(
             [
@@ -201,7 +201,7 @@ class BookingController extends Controller
         $column = $request->column ?? 'id';
         $direction = $request->direction ?? 'desc';
 
-        $valid_columns = ['no_of_pallets', 'total_rent', 'tenancy_date', 'renewal_date', 'status', 'id'];
+        $valid_columns = ['no_of_pallets', 'no_of_square_meters', 'total_rent', 'tenancy_date', 'renewal_date', 'status', 'id'];
         $valid_directions = ['asc', 'desc'];
 
         if(!in_array($column, $valid_columns)) {
@@ -275,7 +275,7 @@ class BookingController extends Controller
         }
 
         if($license != 'all') {
-            $warehouses->where('license', $license);
+            $warehouses->whereJsonContains('license', $license);
         }
 
         $warehouses = $warehouses->paginate(6);

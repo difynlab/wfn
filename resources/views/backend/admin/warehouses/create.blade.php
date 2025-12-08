@@ -89,26 +89,17 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="license" class="form-label label">License</label>
-                    <select class="form-select input-field js-single" id="license" name="license">
+                    <label for="license" class="form-label label">License/s</label>
+                    <select class="form-select input-field js-multiple" id="license" name="license[]" multiple="multiple">
                         <option value="">Select license</option>
-                        <option value="Retail">Retail</option>
-						<option value="E-commerce">E-commerce</option>
-						<option value="Manufacturing">Manufacturing</option>
-						<option value="Logistics & Transportation">Logistics & Transportation</option>
-						<option value="Food & Beverage">Food & Beverage</option>
-						<option value="Pharmaceuticals">Pharmaceuticals</option>
-						<option value="Automotive">Automotive</option>
-						<option value="Textiles & Apparel">Textiles & Apparel</option>
-						<option value="Electronics">Electronics</option>
-						<option value="Construction">Construction</option>
-						<option value="Consumer Goods">Consumer Goods</option>
-						<option value="Chemicals">Chemicals</option>
-						<option value="Furniture & Home Goods">Furniture & Home Goods</option>
-						<option value="Aerospace">Aerospace</option>
-						<option value="Energy & Utilities">Energy & Utilities</option>
+                        @foreach($licenses as $license)
+                            <option value="{{ $license->id }}" 
+                                {{ old('licenses') && in_array($license->id, old('licenses')) ? 'selected' : '' }}>
+                                {{ $license->name_en }}
+                            </option>
+                        @endforeach
                     </select>
-                    <x-backend.input-error field="license"></x-backend.input-error>
+                    <x-backend.input-error field="license.*"></x-backend.input-error>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
@@ -576,10 +567,12 @@
         });
 
         const storageTypes = @json($storage_types->map->only(['id','name_en']));
-        function buildOptions() {
+        const palletServices = @json($pallet_services->map->only(['id','name_en']));
+        const movementServices = @json($movement_services->map->only(['id','name_en']));
+        function buildOptions(list) {
             let opts = '<option value="">Select</option>';
-            for (const t of storageTypes) {
-                opts += `<option value="${t.id}">${t.name_en}</option>`;
+            for (const item of list) {
+                opts += `<option value="${item.id}">${item.name_en}</option>`;
             }
             return opts;
         }
@@ -588,7 +581,7 @@
             let html = `<div class="row single-item mt-2">
                                 <div class="col-12 col-md mb-1 mb-md-0">
                                     <select class="form-select input-field" name="storage_charge_names[]" required>
-                                        ${buildOptions()}
+                                        ${buildOptions(storageTypes)}
                                     </select>
                                 </div>
 
@@ -608,14 +601,7 @@
             let html = `<div class="row single-item mt-2">
                                 <div class="col-12 col-md mb-1 mb-md-0">
                                     <select class="form-select input-field" name="movement_service_names[]" required>
-                                        <option value="">Select</option>
-                                        <option value="Pallet/SqM Inbound Charges">Pallet/SqM Inbound Charges</option>
-                                        <option value="Pallet/SqM Outbound Charges">Pallet/SqM Outbound Charges</option>
-                                        <option value="Case Handling Charges">Case Handling Charges</option>
-                                        <option value="Item/ Unit Handling Charges">Item/ Unit Handling Charges</option>
-                                        <option value="Loose Container Unloading - Per 4-ton diyanna">Loose Container Unloading - Per 4-ton diyanna</option>
-                                        <option value="Loose Container Unloading - Per 20ft">Loose Container Unloading - Per 20ft</option>
-                                        <option value="Loose Container Unloading - Per 40ft">Loose Container Unloading - Per 40ft</option>
+                                        ${buildOptions(movementServices)}
                                     </select>
                                 </div>
 
@@ -635,11 +621,7 @@
             let html = `<div class="row single-item mt-2">
                                 <div class="col-12 col-md mb-1 mb-md-0">
                                     <select class="form-select input-field" name="pallet_service_names[]" required>
-                                        <option value="">Select</option>
-                                        <option value="Wooden Pallet Supply">Wooden Pallet Supply</option>
-                                        <option value="Palletization">Palletization</option>
-                                        <option value="Segregation">Segregation</option>
-                                        <option value="Additional Shrink Wrap">Additional Shrink Wrap</option>
+                                        ${buildOptions(palletServices)}
                                     </select>
                                 </div>
 

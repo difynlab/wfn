@@ -130,6 +130,27 @@
             </li>
 
             <li class="link">
+                <a href="{{ route('admin.licenses.index') }}" class="single-link">
+                    <i class="bi bi-window-fullscreen"></i>
+                    <p class="{{ Request::segment(2) == 'licenses' ? 'active' : '' }}">Licenses</p>
+                </a>
+            </li>
+
+            <li class="link">
+                <a href="{{ route('admin.movement-services.index') }}" class="single-link">
+                    <i class="bi bi-arrows-move"></i>
+                    <p class="{{ Request::segment(2) == 'movement-services' ? 'active' : '' }}">Movement Services</p>
+                </a>
+            </li>
+
+            <li class="link">
+                <a href="{{ route('admin.pallet-services.index') }}" class="single-link">
+                    <i class="bi bi-view-stacked"></i>
+                    <p class="{{ Request::segment(2) == 'pallet-services' ? 'active' : '' }}">Pallet Services</p>
+                </a>
+            </li>
+
+            <li class="link">
                 <a href="{{ route('admin.article-categories.index') }}" class="single-link">
                     <i class="bi bi-bookmarks"></i>
                     <p class="{{ Request::segment(2) == 'article-categories' ? 'active' : '' }}">Article Categories</p>

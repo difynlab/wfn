@@ -18,7 +18,7 @@
                     <select class="form-select input-field js-single" id="warehouse_id" name="warehouse_id" disabled>
                         <option value="">Select warehouse</option>
                         @foreach($warehouses as $warehouse)
-                            <option value="{{ $warehouse->id }}" {{ old('warehouse_id', $booking->warehouse_id) == $warehouse->id ? 'selected' : '' }}>{{ $warehouse->name_en }}</option>
+                            <option value="{{ $warehouse->id }}" {{ $booking->warehouse_id == $warehouse->id ? 'selected' : '' }}>{{ $warehouse->name_en }}</option>
                         @endforeach
                     </select>
                     <x-backend.input-error field="warehouse_id"></x-backend.input-error>
@@ -26,25 +26,31 @@
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="no_of_pallets" class="form-label label">No of Pallets<span class="asterisk">*</span></label>
-                    <input type="number" class="form-control input-field" id="no_of_pallets" name="no_of_pallets" placeholder="No of Pallets" value="{{ old('no_of_pallets', $booking->no_of_pallets) }}" disabled>
+                    <input type="text" class="form-control input-field" id="no_of_pallets" name="no_of_pallets" placeholder="No of Pallets" value="{{ $booking->no_of_pallets ?? '-' }}" disabled>
                     <x-backend.input-error field="no_of_pallets"></x-backend.input-error>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
+                    <label for="no_of_square_meters" class="form-label label">No of Square Meters<span class="asterisk">*</span></label>
+                    <input type="text" class="form-control input-field" id="no_of_square_meters" name="no_of_square_meters" placeholder="No of Square Meters" value="{{ $booking->no_of_square_meters ?? '-' }}" disabled>
+                    <x-backend.input-error field="no_of_square_meters"></x-backend.input-error>
+                </div>
+
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="total_rent" class="form-label label">Total Rent<span class="asterisk">*</span></label>
-                    <input type="text" class="form-control input-field" id="total_rent" name="total_rent" placeholder="Total Rent" value="{{ old('total_rent', $booking->total_rent) }}" disabled>
+                    <input type="text" class="form-control input-field" id="total_rent" name="total_rent" placeholder="Total Rent" value="{{ $booking->total_rent }}" disabled>
                     <x-backend.input-error field="total_rent"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 col-md-6 mb-3 mb-md-4">
+                <div class="col-12 col-md-6 mb-3 mb-md-0">
                     <label for="tenancy_date" class="form-label label">Tenancy Date<span class="asterisk">*</span></label>
-                    <input type="date" class="form-control input-field date-picker-field" id="tenancy_date" name="tenancy_date" placeholder="Tenancy Date" value="{{ old('tenancy_date', $booking->tenancy_date) }}" disabled>
+                    <input type="date" class="form-control input-field date-picker-field" id="tenancy_date" name="tenancy_date" placeholder="Tenancy Date" value="{{ $booking->tenancy_date }}" disabled>
                     <x-backend.input-error field="tenancy_date"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 col-md-6 mb-3 mb-md-4">
+                <div class="col-12 col-md-6">
                     <label for="renewal_date" class="form-label label">Renewal Date<span class="asterisk">*</span></label>
-                    <input type="date" class="form-control input-field date-picker-field" id="renewal_date" name="renewal_date" placeholder="Renewal Date" value="{{ old('renewal_date', $booking->renewal_date) }}" disabled>
+                    <input type="date" class="form-control input-field date-picker-field" id="renewal_date" name="renewal_date" placeholder="Renewal Date" value="{{ $booking->renewal_date }}" disabled>
                     <x-backend.input-error field="renewal_date"></x-backend.input-error>
                 </div>
 

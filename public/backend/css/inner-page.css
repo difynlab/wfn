@@ -1,751 +1,804 @@
 /* #region: Page */
-    .inner-page .inner-page-top-title {
-        font-size: 26px;
-        font-weight: 600;
-        color: var(--black);
-    }
-    .inner-page .inner-page-top-description {
-        font-size: 18px;
-        color: var(--light_black);
-    }
-    .inner-page .page-details .title {
-        font-size: 24px;
-        font-weight: 600;
-        text-align: center;
-        color: var(--black);
-        padding-bottom: 5px;
-    }
-    .inner-page .page-details .description {
-        font-size: 16px;
-        text-align: center;
-        color: var(--black);
-        padding-bottom: 25px;
-    }
+.inner-page .inner-page-top-title {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--black);
+}
+.inner-page .inner-page-top-description {
+    font-size: 18px;
+    color: var(--light_black);
+}
+.inner-page .page-details .title {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--black);
+    padding-bottom: 5px;
+}
+.inner-page .page-details .description {
+    font-size: 16px;
+    text-align: center;
+    color: var(--black);
+    padding-bottom: 25px;
+}
 /* #endregion */
 
-
 /* #region: Form */
-    .inner-page .section {
-        border: 1px solid var(--input_border);
-        padding: 25px;
-        border-radius: 10px;
+.inner-page .section {
+    border: 1px solid var(--input_border);
+    padding: 25px;
+    border-radius: 10px;
+}
+.inner-page .inner-page-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--red);
+    /* text-decoration: underline; */
+    padding-bottom: 10px;
+}
+.inner-page .form .label {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--light_black);
+    margin-bottom: 10px !important;
+}
+.inner-page .form .add-label {
+    margin-bottom: 0px !important;
+}
+.inner-page .form .input-field {
+    border: 1px solid var(--input_border);
+    border-radius: 0;
+    height: 60px;
+    font-size: 15px;
+    color: var(--medium_gray);
+}
+.inner-page .form .textarea {
+    height: initial;
+}
+.inner-page .form .input-field::placeholder {
+    font-size: 15px;
+}
+.inner-page .form .toggle-password {
+    color: var(--medium_gray);
+    cursor: pointer;
+    position: absolute;
+    top: 50px;
+    font-size: 20px;
+    right: 25px;
+}
+.inner-page .form .radios {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.inner-page .form .form-check {
+    display: flex;
+    margin-bottom: 0;
+    align-items: center;
+    gap: 10px;
+}
+.inner-page .form .form-check .form-check-label {
+    line-height: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--light_black);
+    cursor: pointer;
+}
+.inner-page .form .form-check .form-check-input {
+    width: 25px;
+    height: 25px;
+    margin-top: 0;
+    cursor: pointer;
+}
+.inner-page .form .form-check .form-check-input:checked {
+    background-color: var(--red);
+    border-color: var(--red);
+}
+.inner-page .form .submit-button {
+    color: var(--white);
+    border: none;
+    border-radius: 40px;
+    background: var(--light_black);
+    font-size: 17px;
+    width: 200px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    transition: all 0.3s;
+    &:hover {
+        background: var(--red);
+        transition: all 0.3s;
     }
-    .inner-page .inner-page-title {
-        font-size: 18px;
-        font-weight: 600;
-        color: var(--red);
-        /* text-decoration: underline; */
-        padding-bottom: 10px;
+}
+.inner-page .form .ck.ck-content {
+    height: 250px;
+    border-color: var(--input_border) !important;
+}
+.inner-page .form .ck-toolbar {
+    border-color: var(--input_border) !important;
+}
+.inner-page
+    .form
+    .ck.ck-editor__editable.ck-focused:not(.ck-editor__nested-editable) {
+    box-shadow: none !important;
+    outline: none;
+}
+.inner-page .form .section .add-row-button,
+.inner-page .form .add-row-button {
+    font-size: 14px;
+    background-color: var(--red);
+    color: var(--white);
+    border: none;
+    border-radius: 40px;
+    padding: 5px 12px;
+    transition: all 0.3s;
+    &:hover {
+        background: var(--light_black);
+        transition: all 0.3s;
+    }
+}
+.inner-page .form .section .add-row-button i,
+.inner-page .form .add-row-button i {
+    font-size: 14px;
+    margin-right: 5px;
+}
+.inner-page .form .section .delete-button,
+.inner-page .form .delete-button {
+    margin: auto;
+    font-size: 20px;
+    -webkit-text-stroke: 0.5px;
+    cursor: pointer;
+    color: var(--red);
+    transition: all 0.3s;
+    &:hover {
+        color: var(--light_black);
+        transition: all 0.3s;
+    }
+}
+.inner-page .form .phone-div {
+    gap: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.inner-page .form .phone-div #phone_code {
+    width: 15%;
+}
+.inner-page .form .sub-page {
+    border: 1px solid var(--input_border);
+    padding: 20px;
+}
+/* #endregion */
+
+/* #region: Select 2 */
+.inner-page .select2-container--default .select2-selection--single,
+.inner-page .select2-container--default .select2-selection--multiple {
+    border: 1px solid var(--input_border);
+    border-radius: 0;
+    height: 60px;
+    font-size: 15px;
+    color: var(--medium_gray);
+    outline: none;
+    display: flex;
+    align-items: center;
+}
+.inner-page
+    .select2-container--default
+    .select2-selection--single
+    .select2-selection__arrow {
+    top: initial !important;
+}
+.inner-page
+    .select2-container--default
+    .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: var(--red);
+}
+.inner-page .select2-results__option {
+    font-size: 15px;
+}
+.inner-page .select2-container {
+    display: block;
+    width: 100% !important;
+}
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice {
+    margin-top: 15px;
+}
+/* #endregion */
+
+/* #region: Drop area */
+.inner-page .drop-area {
+    border: 1px dashed var(--medium_red);
+    background-color: #fef8f8;
+    height: 400px;
+    padding: 0 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+.inner-page .drop-area i {
+    font-size: 45px;
+    color: var(--red);
+}
+.inner-page .drop-area .drag-drop {
+    font-size: 20px;
+    color: var(--light_black);
+}
+.inner-page .drop-area .line-or {
+    align-items: center;
+    color: var(--gray);
+    font-size: 14px;
+    margin-top: 10px;
+    width: 100%;
+}
+.inner-page .drop-area .button {
+    color: var(--red);
+    border: 1px solid var(--red);
+    font-size: 13px;
+    width: 100px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    &:hover {
+        background-color: var(--light_black);
+        color: var(--white);
+        border: none;
+        transition: all 0.3s;
+    }
+}
+.inner-page .drop-area .close-icon,
+.inner-page .drop-area .download-icon {
+    position: absolute;
+    top: 0px;
+    background-color: var(--red);
+    color: var(--white);
+    border: none;
+    border-radius: 0;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.inner-page .drop-area .close-icon i,
+.inner-page .drop-area .download-icon i {
+    font-size: 20px;
+    color: var(--white);
+    line-height: 15px;
+}
+.inner-page .drop-area .close-icon {
+    right: 0px;
+}
+.inner-page .drop-area .download-icon {
+    right: 30px;
+}
+.inner-page .drop-area .condition {
+    font-size: 14px;
+    color: var(--gray);
+}
+.inner-page .drop-area.highlight {
+    border: 1px solid var(--red);
+}
+.inner-page .drop-area .image-preview,
+.inner-page .drop-area .video-preview {
+    width: 200px;
+    height: 125px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+.inner-page .drop-area .image-preview img,
+.inner-page .drop-area .video-preview video {
+    width: 200px;
+    height: 125px;
+    object-fit: cover;
+    cursor: pointer;
+}
+.inner-page .drop-area .images-preview,
+.inner-page .drop-area .videos-preview {
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+.inner-page .drop-area .images-preview .single-image,
+.inner-page .drop-area .videos-preview .single-video {
+    margin: 0 2px;
+}
+.inner-page .drop-area .images-preview img,
+.inner-page .drop-area .videos-preview video {
+    width: 100%;
+    height: 70px;
+    border-radius: 5px;
+    object-fit: cover;
+    margin: 0 2px;
+    cursor: pointer;
+}
+.inner-page .drop-area .images-preview .single-image:last-child,
+.inner-page .drop-area .videos-preview .single-video:last-child {
+    margin-right: 0;
+}
+/* #endregion */
+
+/* #region: Map */
+.inner-page .place-autocomplete-card {
+    background-color: var(--white);
+    border-radius: 0;
+    height: 60px;
+    font-size: 15px;
+    color: var(--medium_gray);
+}
+.inner-page .map-address {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--medium_gray);
+    margin-bottom: 10px !important;
+}
+/* #endregion */
+
+/* #region: Nav */
+.inner-page .nav-pills {
+    border-bottom: 1px solid var(--input_border);
+    margin-bottom: 25px;
+}
+.inner-page .nav-pills .nav-item {
+    margin-right: 50px;
+}
+.inner-page .nav-pills .nav-item .nav-link {
+    font-size: 16px;
+    padding: 0;
+    padding-bottom: 10px;
+    color: var(--gray);
+    border-radius: 0;
+}
+.inner-page .nav-pills .nav-item .nav-link.active {
+    background-color: transparent;
+    font-weight: 500;
+    color: var(--light_black);
+    border-bottom: 2px solid var(--red);
+}
+.inner-page .tab-content {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 30px;
+}
+.inner-page .tab-content .tab-content-title {
+    font-size: 17px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    color: var(--light_black);
+}
+/* #endregion */
+
+/* #region: Message */
+.inner-page .message-form {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+}
+.inner-page .message-form .chat-box {
+    overflow-y: scroll;
+    height: 350px;
+    padding: 0 10px;
+}
+.inner-page .message-form .chat-box .profile-image {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+.inner-page .message-form .chat-box .right-single-message {
+    display: flex;
+    width: 75%;
+    align-items: end;
+    justify-content: end;
+    margin-left: auto;
+    gap: 15px;
+}
+.inner-page .message-form .chat-box .right-single-message .right-message {
+    background-color: #ffefef;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 26px;
+}
+.inner-page .message-form .chat-box .left-single-message {
+    display: flex;
+    width: 75%;
+    align-items: end;
+    margin-right: auto;
+    gap: 15px;
+}
+.inner-page .message-form .chat-box .left-single-message .left-message {
+    background-color: #efeeee;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 26px;
+}
+.inner-page .message-form .chat-box .single-message:last-child {
+    margin-bottom: 0 !important;
+}
+.inner-page .message-form .chat-box .left-single-message .time {
+    font-size: 12px;
+    color: var(--medium_gray);
+    padding-top: 3px;
+}
+.inner-page .message-form .chat-box .right-single-message .time {
+    font-size: 12px;
+    color: var(--medium_gray);
+    padding-top: 3px;
+    text-align: end;
+}
+.inner-page .message-form .chat-box::-webkit-scrollbar {
+    width: 8px;
+}
+.inner-page .message-form .chat-box::-webkit-scrollbar-track {
+    background: var(--input_border);
+    border-radius: 5px;
+}
+.inner-page .message-form .chat-box::-webkit-scrollbar-thumb {
+    background-color: var(--red);
+    border-radius: 5px;
+}
+.inner-page .message-form .chat-box::-webkit-scrollbar-thumb:hover {
+    background-color: var(--light_black);
+    cursor: pointer;
+}
+/* #endregion */
+
+/* #region: Modal */
+.modal-image-preview .modal-content,
+.modal-video-preview .modal-content {
+    border-radius: 0;
+}
+.modal-image-preview .modal-body,
+.modal-video-preview .modal-body {
+    padding: 10px;
+}
+.modal-image-preview .modal-body .modal-image,
+.modal-video-preview .modal-body .modal-video {
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
+}
+.modal-image-preview .close-button,
+.modal-video-preview .close-button {
+    border: 1px solid var(--light_black);
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 0;
+    color: var(--light_black);
+    transition: all 0.3s;
+    &:hover {
+        background-color: var(--light_black);
+        color: var(--white);
+        transition: all 0.3s;
+    }
+}
+.modal-image-preview .download-button,
+.modal-video-preview .download-button {
+    background-color: var(--red);
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 0;
+    border: none;
+    color: var(--white);
+    transition: all 0.3s;
+    &:hover {
+        background-color: var(--light_black);
+        transition: all 0.3s;
+    }
+}
+/* #endregion */
+
+/* #region: Responsive */
+@media (width <= 1921px) {
+}
+@media (width <= 1901px) {
+}
+@media (width <= 1851px) {
+}
+@media (width <= 1801px) {
+}
+@media (width <= 1751px) {
+}
+@media (width <= 1681px) {
+}
+@media (width <= 1601px) {
+}
+@media (width <= 1537px) {
+}
+@media (width <= 1441px) {
+}
+@media (width <= 1367px) {
+}
+@media (width <= 1301px) {
+}
+@media (width <= 1281px) {
+    .inner-page .inner-page-top-title {
+        font-size: 21px;
+    }
+    .inner-page .inner-page-top-description {
+        font-size: 16px;
+    }
+    .inner-page .nav-pills {
+        margin-bottom: 15px;
+    }
+    .inner-page .nav-pills .nav-item .nav-link {
+        font-size: 15px;
+        padding-bottom: 5px;
+    }
+    .inner-page .tab-content {
+        padding: 15px;
+    }
+    .inner-page .tab-content .tab-content-title {
+        font-size: 16px;
+        padding-bottom: 5px;
+    }
+    .inner-page .page-details .title {
+        font-size: 21px;
+        padding-bottom: 0px;
     }
     .inner-page .form .label {
-        font-size: 16px;
-        font-weight: 500;
-        color: var(--light_black);
-        margin-bottom: 10px!important;
+        font-size: 15px;
+        margin-bottom: 3px !important;
     }
-    .inner-page .form .add-label {
-        margin-bottom: 0px!important;
+    .inner-page .map-address {
+        font-size: 13px;
+        margin-bottom: 5px !important;
     }
     .inner-page .form .input-field {
-        border: 1px solid var(--input_border);
-        border-radius: 0;
-        height: 60px;
-        font-size: 15px;
-        color: var(--medium_gray);
+        height: 50px;
+        font-size: 14px;
     }
     .inner-page .form .textarea {
         height: initial;
     }
     .inner-page .form .input-field::placeholder {
-        font-size: 15px;
+        font-size: 13px;
+    }
+    .inner-page .select2-container--default .select2-selection--single {
+        height: 50px;
+        font-size: 14px;
+    }
+    .inner-page .form .textarea {
+        height: initial;
     }
     .inner-page .form .toggle-password {
-        color: var(--medium_gray);
-        cursor: pointer;
-        position: absolute;
-        top: 50px;
-        font-size: 20px;
-        right: 25px;
+        top: 37px;
+        font-size: 18px;
+        right: 23px;
     }
-    .inner-page .form .radios {
-        display: flex;
-        align-items: center;
-        gap: 40px;
-    }
-    .inner-page .form .form-check {
-        display: flex;
-        margin-bottom: 0;
-        align-items: center;
-        gap: 10px;
-    }
-    .inner-page .form .form-check .form-check-label {
-        line-height: 15px;
-        font-size: 16px;
-        font-weight: 500;
-        color: var(--light_black);
-        cursor: pointer;
-    }
-    .inner-page .form .form-check .form-check-input {
-        width: 25px;
-        height: 25px;
-        margin-top: 0;
-        cursor: pointer;
-    }
-    .inner-page .form .form-check .form-check-input:checked {
-        background-color: var(--red);
-        border-color: var(--red);
-    }
-    .inner-page .form .submit-button {
-        color: var(--white);
-        border: none;
-        border-radius: 40px;
-        background: var(--light_black);
-        font-size: 17px;
-        width: 200px;
-        height: 60px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: auto;
-        transition: all 0.3s;
-        &:hover {
-            background: var(--red);
-            transition: all 0.3s;
-        }
-    }
-    .inner-page .form .ck.ck-content {
-        height: 250px;
-        border-color: var(--input_border)!important;
-    }
-    .inner-page .form .ck-toolbar {
-        border-color: var(--input_border)!important;
-    }
-    .inner-page .form .ck.ck-editor__editable.ck-focused:not(.ck-editor__nested-editable) {
-        box-shadow: none!important;
-        outline: none;
-    }
-    .inner-page .form .section .add-row-button, .inner-page .form .add-row-button {
-        font-size: 14px;
-        background-color: var(--red);
-        color: var(--white);
-        border: none;
-        border-radius: 40px;
-        padding: 5px 12px;
-        transition: all 0.3s;
-        &:hover {
-            background: var(--light_black);
-            transition: all 0.3s;
-        }
-    }
-    .inner-page .form .section .add-row-button i, .inner-page .form .add-row-button i {
-        font-size: 14px;
-        margin-right: 5px;
-    }
-    .inner-page .form .section .delete-button, .inner-page .form .delete-button {
-        margin: auto;
-        font-size: 20px;
-        -webkit-text-stroke: 0.5px;
-        cursor: pointer;
-        color: var(--red);
-        transition: all 0.3s;
-        &:hover {
-            color: var(--light_black);
-            transition: all 0.3s;
-        }
-    }
-    .inner-page .form .phone-div {
-        gap: 5px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .inner-page .form .phone-div #phone_code {
-        width: 15%;
-    }
-    .inner-page .form .sub-page {
-        border: 1px solid var(--input_border);
-        padding: 20px;
-    }
-/* #endregion */
-
-
-/* #region: Select 2 */
-    .inner-page .select2-container--default .select2-selection--single {
-        border: 1px solid var(--input_border);
-        border-radius: 0;
-        height: 60px;
-        font-size: 15px;
-        color: var(--medium_gray);
-        outline: none;
-        display: flex;
-        align-items: center;
-    }
-    .inner-page .select2-container--default .select2-selection--single .select2-selection__arrow {
-        top: initial!important;
-    }
-    .inner-page .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
-        background-color: var(--red);
-    }
-    .inner-page .select2-results__option {
-        font-size: 15px;
-    }
-    .inner-page .select2-container {
-        display: block;
-        width: 100%!important;
-    }
-/* #endregion */
-
-
-/* #region: Drop area */
     .inner-page .drop-area {
-        border: 1px dashed var(--medium_red);
-        background-color: #fef8f8;
-        height: 400px;
-        padding: 0 15%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        position: relative;
+        /* height: 275px; */
+        padding: 0 10%;
     }
     .inner-page .drop-area i {
-        font-size: 45px;
-        color: var(--red);
+        font-size: 35px;
     }
     .inner-page .drop-area .drag-drop {
-        font-size: 20px;
-        color: var(--light_black);
+        font-size: 18px;
     }
     .inner-page .drop-area .line-or {
-        align-items: center;
-        color: var(--gray);
-        font-size: 14px;
-        margin-top: 10px;
-        width: 100%;
+        margin-top: 5px;
     }
     .inner-page .drop-area .button {
-        color: var(--red);
-        border: 1px solid var(--red);
-        font-size: 13px;
-        width: 100px;
-        height: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all 0.3s;
-        margin-top: 10px;
-        margin-bottom: 25px;
-        cursor: pointer;
-        &:hover {
-            background-color: var(--light_black);
-            color: var(--white);
-            border: none;
-            transition: all 0.3s;
-        }
-    }
-    .inner-page .drop-area .close-icon, .inner-page .drop-area .download-icon {
-        position: absolute;
-        top: 0px;
-        background-color: var(--red);
-        color: var(--white);
-        border: none;
-        border-radius: 0;
-        width: 25px;
-        height: 25px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-    }
-    .inner-page .drop-area .close-icon i, .inner-page .drop-area .download-icon i {
-        font-size: 20px;
-        color: var(--white);
-        line-height: 15px;
-    }
-    .inner-page .drop-area .close-icon {
-        right: 0px;
-    }
-    .inner-page .drop-area .download-icon {
-        right: 30px;
+        margin-top: 5px;
+        margin-bottom: 15px;
     }
     .inner-page .drop-area .condition {
+        font-size: 13px;
+    }
+    .inner-page .drop-area .image-preview,
+    .inner-page .drop-area .video-preview {
+        width: 150px;
+        height: 100px;
+    }
+    .inner-page .drop-area .image-preview img,
+    .inner-page .drop-area .video-preview video {
+        width: 150px;
+        height: 100px;
+        object-fit: cover;
+        cursor: pointer;
+    }
+    .inner-page .form .radios {
+        gap: 25px;
+    }
+    .inner-page .form .form-check {
+        gap: 5px;
+    }
+    .inner-page .form .form-check .form-check-input {
+        width: 20px;
+        height: 20px;
+    }
+    .inner-page .form .form-check .form-check-label {
         font-size: 14px;
-        color: var(--gray);
     }
-    .inner-page .drop-area.highlight {
-        border: 1px solid var(--red);
-    }
-    .inner-page .drop-area .image-preview, .inner-page .drop-area .video-preview {
-        width: 200px;
-        height: 125px;
-        position: absolute;
-        right: 5px;
-        bottom: 5px;
-    }
-    .inner-page .drop-area .image-preview img, .inner-page .drop-area .video-preview video {
-        width: 200px;
-        height: 125px;
-        object-fit: cover;
-        cursor: pointer;
-    }
-    .inner-page .drop-area .images-preview, .inner-page .drop-area .videos-preview {
-        display: flex;
-        flex-wrap: nowrap;
-        position: absolute;
-        right: 5px;
-        bottom: 5px;
-    }
-    .inner-page .drop-area .images-preview .single-image, .inner-page .drop-area .videos-preview .single-video {
-        margin: 0 2px;
-    }
-    .inner-page .drop-area .images-preview img, .inner-page .drop-area .videos-preview video {
-        width: 100%;
-        height: 70px;
-        border-radius: 5px;
-        object-fit: cover;
-        margin: 0 2px;
-        cursor: pointer;
-    }
-    .inner-page .drop-area .images-preview .single-image:last-child, .inner-page .drop-area .videos-preview .single-video:last-child {
-        margin-right: 0;
-    }
-/* #endregion */
-
-
-/* #region: Map */
-    .inner-page .place-autocomplete-card {
-        background-color: var(--white);
-        border-radius: 0;
-        height: 60px;
+    .inner-page .form .submit-button {
         font-size: 15px;
-        color: var(--medium_gray);
+        width: 180px;
+        height: 50px;
     }
-    .inner-page .map-address {
-        font-size: 15px;
-        font-weight: 600;
-        color: var(--medium_gray);
-        margin-bottom: 10px!important;
-    }
-/* #endregion */
 
-
-/* #region: Nav */
-    .inner-page .nav-pills {
-        border-bottom: 1px solid var(--input_border);
-        margin-bottom: 25px;
-    }
-    .inner-page .nav-pills .nav-item {
-        margin-right: 50px;
-    }
-    .inner-page .nav-pills .nav-item .nav-link {
+    .inner-page .inner-page-title {
         font-size: 16px;
-        padding: 0;
-        padding-bottom: 10px;
-        color: var(--gray);
-        border-radius: 0;
+        padding-bottom: 5px;
     }
-    .inner-page .nav-pills .nav-item .nav-link.active {
-        background-color: transparent;
-        font-weight: 500;
-        color: var(--light_black);
-        border-bottom: 2px solid var(--red);
+    .inner-page .section {
+        padding: 15px;
     }
-    .inner-page .tab-content {
-        background-color: var(--white);
-        border-radius: 10px;
-        padding: 30px;
+    .inner-page .form .sub-page {
+        padding: 15px;
     }
-    .inner-page .tab-content .tab-content-title {
-        font-size: 17px;
-        font-weight: 600;
-        padding-bottom: 10px;
-        color: var(--light_black);
-    }
-/* #endregion */
 
-
-/* #region: Message */
-    .inner-page .message-form {
-        background-color: var(--white);
-        padding: 20px;
-        border-radius: 10px;
-    }
-    .inner-page .message-form .chat-box {
-        overflow-y: scroll;
-        height: 350px;
-        padding: 0 10px;
-    }
-    .inner-page .message-form .chat-box .profile-image {
-        height: 40px;
-        width: 40px;
-        border-radius: 50%;
-    }
-    .inner-page .message-form .chat-box .right-single-message {
-        display: flex;
-        width: 75%;
-        align-items: end;
-        justify-content: end;
-        margin-left: auto;
-        gap: 15px;
-    }
+    .inner-page .message-form .chat-box .left-single-message .left-message,
     .inner-page .message-form .chat-box .right-single-message .right-message {
-        background-color: #ffefef;
-        padding: 15px;
-        border-radius: 8px;
-        font-size: 14px;
-        line-height: 26px;
-    }
-    .inner-page .message-form .chat-box .left-single-message {
-        display: flex;
-        width: 75%;
-        align-items: end;
-        margin-right: auto;
-        gap: 15px;
-    }
-    .inner-page .message-form .chat-box .left-single-message .left-message {
-        background-color: #efeeee;
-        padding: 15px;
-        border-radius: 8px;
-        font-size: 14px;
-        line-height: 26px;
-    }
-    .inner-page .message-form .chat-box .single-message:last-child {
-        margin-bottom: 0!important;
-    }
-    .inner-page .message-form .chat-box .left-single-message .time {
-        font-size: 12px;
-        color: var(--medium_gray);
-        padding-top: 3px;
-    }
-    .inner-page .message-form .chat-box .right-single-message .time {
-        font-size: 12px;
-        color: var(--medium_gray);
-        padding-top: 3px;
-        text-align: end;
-    }
-    .inner-page .message-form .chat-box::-webkit-scrollbar {
-        width: 8px;
-    }
-    .inner-page .message-form .chat-box::-webkit-scrollbar-track {
-        background: var(--input_border);
-        border-radius: 5px;
-    }
-    .inner-page .message-form .chat-box::-webkit-scrollbar-thumb {
-        background-color: var(--red);
-        border-radius: 5px;
-    }
-    .inner-page .message-form .chat-box::-webkit-scrollbar-thumb:hover {
-        background-color: var(--light_black);
-        cursor: pointer;
-    }
-/* #endregion */
-
-
-/* #region: Modal */
-    .modal-image-preview .modal-content, .modal-video-preview .modal-content {
-        border-radius: 0;
-    }
-    .modal-image-preview .modal-body, .modal-video-preview .modal-body {
         padding: 10px;
     }
-    .modal-image-preview .modal-body .modal-image, .modal-video-preview .modal-body .modal-video {
-        width: 100%;
-        height: 80vh;
-        object-fit: cover;
+    .inner-page .message-form .chat-box .profile-image {
+        height: 30px;
+        width: 30px;
     }
-    .modal-image-preview .close-button, .modal-video-preview .close-button {
-        border: 1px solid var(--light_black);
-        font-size: 15px;
-        font-weight: 600;
-        border-radius: 0;
-        color: var(--light_black);
-        transition: all 0.3s;
-        &:hover {
-            background-color: var(--light_black);
-            color: var(--white);
-            transition: all 0.3s;
-        }
+    .inner-page .message-form .chat-box .left-single-message .time,
+    .inner-page .message-form .chat-box .right-single-message .time {
+        font-size: 11px;
     }
-    .modal-image-preview .download-button, .modal-video-preview .download-button {
-        background-color: var(--red);
+}
+@media (width <= 1151px) {
+}
+@media (width <= 1076px) {
+    .inner-page .form .phone-div #phone_code {
+        width: 20%;
+    }
+}
+@media (width <= 1025px) {
+    .inner-page .form .radios {
+        flex-wrap: wrap;
+    }
+    .inner-page .form .section .add-row-button,
+    .inner-page .form .add-row-button {
+        font-size: 12px;
+    }
+    .inner-page .form .section .add-row-button i,
+    .inner-page .form .add-row-button i {
+        font-size: 12px;
+    }
+}
+@media (width <= 992px) {
+    .modal-image-preview .modal-body .modal-image,
+    .modal-video-preview .modal-body .modal-video {
+        height: 50vh;
+        object-fit: contain;
+    }
+    .modal-image-preview .download-button,
+    .modal-video-preview .download-button {
+        font-size: 13px;
+    }
+    .modal-image-preview .close-button,
+    .modal-video-preview .close-button {
+        font-size: 12px;
+    }
+}
+@media (width <= 845px) {
+    .inner-page .form .phone-div #phone_code {
+        width: 30%;
+    }
+}
+@media (width <= 768px) {
+    .inner-page .inner-page-top-title {
+        font-size: 18px;
+    }
+    .inner-page .inner-page-top-description {
+        font-size: 13px;
+    }
+    .inner-page .nav-pills .nav-item {
+        margin-right: 25px;
+    }
+    .inner-page .nav-pills .nav-item .nav-link {
+        font-size: 14px;
+    }
+    .inner-page .page-details .title {
+        font-size: 18px;
+    }
+    .inner-page .page-details .description {
+        font-size: 13px;
+        padding-bottom: 5px;
+    }
+    .inner-page .form .label {
+        font-size: 13px;
+    }
+    .inner-page .form .input-field {
+        height: 45px;
+        font-size: 13px;
+    }
+    .inner-page .form .textarea {
+        height: initial;
+    }
+    .inner-page .form .input-field::placeholder {
+        font-size: 12px;
+    }
+    .inner-page .drop-area {
+        height: 360px;
+    }
+    .inner-page .drop-area i {
+        font-size: 30px;
+    }
+    .inner-page .drop-area .drag-drop {
         font-size: 16px;
-        font-weight: 600;
-        border-radius: 0;
-        border: none;
-        color: var(--white);
-        transition: all 0.3s;
-        &:hover {
-            background-color: var(--light_black);
-            transition: all 0.3s;
-        }
     }
+    .inner-page .drop-area .image-preview,
+    .inner-page .drop-area .video-preview {
+        width: 125px;
+        height: 80px;
+    }
+    .inner-page .drop-area .image-preview img,
+    .inner-page .drop-area .video-preview video {
+        width: 125px;
+        height: 80px;
+    }
+    .inner-page .form .form-check .form-check-label {
+        font-size: 13px;
+    }
+    .inner-page .form .submit-button {
+        width: 150px;
+        height: 40px;
+    }
+
+    .inner-page .inner-page-title {
+        font-size: 14px;
+        padding-bottom: 2px;
+    }
+
+    .inner-page .message-form .chat-box .left-single-message .left-message,
+    .inner-page .message-form .chat-box .right-single-message .right-message {
+        padding: 5px;
+        font-size: 12px;
+    }
+    .inner-page .message-form .chat-box .left-single-message,
+    .inner-page .message-form .chat-box .right-single-message {
+        width: 100%;
+        gap: 10px;
+    }
+}
+@media (width <= 721px) {
+}
+@media (width <= 651px) {
+}
+@media (width <= 576px) {
+}
+@media (width <= 481px) {
+}
+@media (width <= 429px) {
+    .inner-page .nav-pills {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+}
+@media (width <= 415px) {
+}
+@media (width <= 396px) {
+}
+@media (width <= 377px) {
+    .inner-page .form .radios {
+        gap: 20px;
+    }
+}
+@media (width <= 361px) {
+}
+@media (width <= 331px) {
+}
 /* #endregion */
-
-
-/* #region: Responsive */
-    @media (width <= 1921px) {}
-    @media (width <= 1901px) {}
-    @media (width <= 1851px) {}
-    @media (width <= 1801px) {}
-    @media (width <= 1751px) {}
-    @media (width <= 1681px) {}
-    @media (width <= 1601px) {}
-    @media (width <= 1537px) {}
-    @media (width <= 1441px) {}
-    @media (width <= 1367px) {}
-    @media (width <= 1301px) {}
-    @media (width <= 1281px) {
-        .inner-page .inner-page-top-title {
-            font-size: 21px;
-        }
-        .inner-page .inner-page-top-description {
-            font-size: 16px;
-        }
-        .inner-page .nav-pills {
-            margin-bottom: 15px;
-        }
-        .inner-page .nav-pills .nav-item .nav-link {
-            font-size: 15px;
-            padding-bottom: 5px;
-        }
-        .inner-page .tab-content {
-            padding: 15px;
-        }
-        .inner-page .tab-content .tab-content-title {
-            font-size: 16px;
-            padding-bottom: 5px;
-        }
-        .inner-page .page-details .title {
-            font-size: 21px;
-            padding-bottom: 0px;
-        }
-        .inner-page .form .label {
-            font-size: 15px;
-            margin-bottom: 3px!important;
-        }
-        .inner-page .map-address {
-            font-size: 13px;
-            margin-bottom: 5px !important;
-        }
-        .inner-page .form .input-field {
-            height: 50px;
-            font-size: 14px;
-        }
-        .inner-page .form .textarea {
-            height: initial;
-        }
-        .inner-page .form .input-field::placeholder {
-            font-size: 13px;
-        }
-        .inner-page .select2-container--default .select2-selection--single {
-            height: 50px;
-            font-size: 14px;
-        }
-        .inner-page .form .textarea {
-            height: initial;
-        }
-        .inner-page .form .toggle-password {
-            top: 37px;
-            font-size: 18px;
-            right: 23px;
-        }
-        .inner-page .drop-area {
-            /* height: 275px; */
-            padding: 0 10%;
-        }
-        .inner-page .drop-area i {
-            font-size: 35px;
-        }
-        .inner-page .drop-area .drag-drop {
-            font-size: 18px;
-        }
-        .inner-page .drop-area .line-or {
-            margin-top: 5px;
-        }
-        .inner-page .drop-area .button {
-            margin-top: 5px;
-            margin-bottom: 15px;
-        }
-        .inner-page .drop-area .condition {
-            font-size: 13px;
-        }
-        .inner-page .drop-area .image-preview, .inner-page .drop-area .video-preview {
-            width: 150px;
-            height: 100px;
-        }
-        .inner-page .drop-area .image-preview img, .inner-page .drop-area .video-preview video {
-            width: 150px;
-            height: 100px;
-            object-fit: cover;
-            cursor: pointer;
-        }
-        .inner-page .form .radios {
-            gap: 25px;
-        }
-        .inner-page .form .form-check {
-            gap: 5px;
-        }
-        .inner-page .form .form-check .form-check-input {
-            width: 20px;
-            height: 20px;
-        }
-        .inner-page .form .form-check .form-check-label {
-            font-size: 14px;
-        }
-        .inner-page .form .submit-button {
-            font-size: 15px;
-            width: 180px;
-            height: 50px;
-        }
-
-        .inner-page .inner-page-title {
-            font-size: 16px;
-            padding-bottom: 5px;
-        }
-        .inner-page .section {
-            padding: 15px;
-        }
-        .inner-page .form .sub-page {
-            padding: 15px;
-        }
-
-        .inner-page .message-form .chat-box .left-single-message .left-message, .inner-page .message-form .chat-box .right-single-message .right-message {
-            padding: 10px;
-        }
-        .inner-page .message-form .chat-box .profile-image {
-            height: 30px;
-            width: 30px;
-        }
-        .inner-page .message-form .chat-box .left-single-message .time, .inner-page .message-form .chat-box .right-single-message .time {
-            font-size: 11px;
-        }
-    }
-    @media (width <= 1151px) {}
-    @media (width <= 1076px) {
-        .inner-page .form .phone-div #phone_code {
-            width: 20%;
-        }
-    }
-    @media (width <= 1025px) {
-        .inner-page .form .radios {
-            flex-wrap: wrap;
-        }
-        .inner-page .form .section .add-row-button, .inner-page .form .add-row-button {
-            font-size: 12px;
-        }
-        .inner-page .form .section .add-row-button i, .inner-page .form .add-row-button i {
-            font-size: 12px;
-        }
-    }
-    @media (width <= 992px) {
-        .modal-image-preview .modal-body .modal-image, .modal-video-preview .modal-body .modal-video {
-            height: 50vh;
-            object-fit: contain;
-        }
-        .modal-image-preview .download-button, .modal-video-preview .download-button {
-            font-size: 13px;
-        }
-        .modal-image-preview .close-button, .modal-video-preview .close-button {
-            font-size: 12px;
-        }
-    }
-    @media (width <= 845px) {
-        .inner-page .form .phone-div #phone_code {
-            width: 30%;
-        }
-    }
-    @media (width <= 768px) {
-        .inner-page .inner-page-top-title {
-            font-size: 18px;
-        }
-        .inner-page .inner-page-top-description {
-            font-size: 13px;
-        }
-        .inner-page .nav-pills .nav-item {
-            margin-right: 25px;
-        }
-        .inner-page .nav-pills .nav-item .nav-link {
-            font-size: 14px;
-        }
-        .inner-page .page-details .title {
-            font-size: 18px;
-        }
-        .inner-page .page-details .description {
-            font-size: 13px;
-            padding-bottom: 5px;
-        }
-        .inner-page .form .label {
-            font-size: 13px;
-        }
-        .inner-page .form .input-field {
-            height: 45px;
-            font-size: 13px;
-        }
-        .inner-page .form .textarea {
-            height: initial;
-        }
-        .inner-page .form .input-field::placeholder {
-            font-size: 12px;
-        }
-        .inner-page .drop-area {
-            height: 360px;
-        }
-        .inner-page .drop-area i {
-            font-size: 30px;
-        }
-        .inner-page .drop-area .drag-drop {
-            font-size: 16px;
-        }
-        .inner-page .drop-area .image-preview, .inner-page .drop-area .video-preview {
-            width: 125px;
-            height: 80px;
-        }
-        .inner-page .drop-area .image-preview img, .inner-page .drop-area .video-preview video {
-            width: 125px;
-            height: 80px;
-        }
-        .inner-page .form .form-check .form-check-label {
-            font-size: 13px;
-        }
-        .inner-page .form .submit-button {
-            width: 150px;
-            height: 40px;
-        }
-
-        .inner-page .inner-page-title {
-            font-size: 14px;
-            padding-bottom: 2px;
-        }
-
-        .inner-page .message-form .chat-box .left-single-message .left-message, .inner-page .message-form .chat-box .right-single-message .right-message {
-            padding: 5px;
-            font-size: 12px;
-        }
-        .inner-page .message-form .chat-box .left-single-message, .inner-page .message-form .chat-box .right-single-message {
-            width: 100%;
-            gap: 10px;
-        }
-    }
-    @media (width <= 721px) {}
-    @media (width <= 651px) {}
-    @media (width <= 576px) {}
-    @media (width <= 481px) {}
-    @media (width <= 429px) {
-        .inner-page .nav-pills {
-            overflow-x: auto;
-            flex-wrap: nowrap;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-    }
-    @media (width <= 415px) {}
-    @media (width <= 396px) {}
-    @media (width <= 377px) {
-        .inner-page .form .radios {
-            gap: 20px;
-        }
-    }
-    @media (width <= 361px) {}
-    @media (width <= 331px) {}
-/* #endregion */
-

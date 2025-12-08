@@ -113,7 +113,13 @@
                                 
                                         <div class="warehouse-info">{!! $warehouse->description_en !!}</div>
 
-                                        <p class="license-tag">{{ $warehouse->license }}</p>
+                                        @if($warehouse->license)
+                                            <div class="licenses">
+                                                @foreach(json_decode($warehouse->license) as $license)
+                                                    <p class="license-tag">{{ App\Models\License::find($license)->name_en }}</p>
+                                                @endforeach
+                                            </div>
+                                        @endif
                                     </div>
 
                                     <div class="col-12 col-lg-6">
@@ -166,7 +172,7 @@
                                             <tbody>
                                                 @foreach(json_decode($warehouse->movement_services) as $movement_service)
                                                     <tr>
-                                                        <td>{{ $movement_service->name }}</td>
+                                                        <td>{{ App\Models\MovementService::find($movement_service->name)->name_en }}</td>
                                                         <td>{{ $movement_service->price }} SAR</td>
                                                     </tr>
                                                 @endforeach
@@ -189,7 +195,7 @@
                                             <tbody>
                                                 @foreach(json_decode($warehouse->pallet_services) as $pallet_service)
                                                     <tr>
-                                                        <td>{{ $pallet_service->name }}</td>
+                                                        <td>{{ App\Models\PalletService::find($pallet_service->name)->name_en }}</td>
                                                         <td>{{ $pallet_service->price }} SAR</td>
                                                     </tr>
                                                 @endforeach
