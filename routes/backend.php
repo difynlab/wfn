@@ -140,19 +140,17 @@ require __DIR__.'/auth/backend.php';
                 Route::get('{warehouse}/edit', 'edit')->name('edit');
                 Route::post('{warehouse}', 'update')->name('update');
                 Route::delete('{warehouse}', 'destroy')->name('destroy');
+
+                Route::controller(WarehouseReviewController::class)->prefix('reviews')->name('reviews.')->group(function() {
+                    Route::get('{warehouse}', 'index')->name('index');
+                    Route::get('{warehouse}/create', 'create')->name('create');
+                    Route::post('{warehouse}', 'store')->name('store');
+                    Route::get('{warehouse}/{warehouse_review}/edit', 'edit')->name('edit');
+                    Route::post('{warehouse}/{warehouse_review}', 'update')->name('update');
+                    Route::delete('{warehouse}/{warehouse_review}', 'destroy')->name('destroy');
+                });
             });
         // Warehouses routes
-
-        // Warehouse reviews routes
-            Route::controller(WarehouseReviewController::class)->prefix('warehouse-reviews')->name('warehouse-reviews.')->group(function() {
-                Route::get('{warehouse}', 'index')->name('index');
-                Route::get('{warehouse}/create', 'create')->name('create');
-                Route::post('{warehouse}', 'store')->name('store');
-                Route::get('{warehouse}/{warehouse_review}/edit', 'edit')->name('edit');
-                Route::post('{warehouse}/{warehouse_review}', 'update')->name('update');
-                Route::delete('{warehouse}/{warehouse_review}', 'destroy')->name('destroy');
-            });
-        // Warehouse reviews routes
 
         // Storage types routes
             Route::controller(StorageTypeController::class)->prefix('storage-types')->name('storage-types.')->group(function() {

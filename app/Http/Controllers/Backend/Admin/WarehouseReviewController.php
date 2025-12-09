@@ -15,7 +15,7 @@ class WarehouseReviewController extends Controller
     {
         foreach($items as $item) {
             $item->action = '
-            <a href="'. route('admin.warehouse-reviews.edit', [$item->warehouse_id, $item->id]) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
+            <a href="'. route('admin.warehouses.reviews.edit', [$item->warehouse_id, $item->id]) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             $tenant_name = $item->user->first_name . ' ' . $item->user->last_name;
@@ -48,7 +48,7 @@ class WarehouseReviewController extends Controller
         $items = WarehouseReview::where('warehouse_id', $warehouse->id)->orderBy('id', 'desc')->paginate($pagination);
         $items = $this->processData($items);
 
-        return view('backend.admin.warehouse-reviews.index', [
+        return view('backend.admin.warehouses.reviews.index', [
             'items' => $items,
             'pagination' => $pagination,
             'users' => $users,
@@ -61,7 +61,7 @@ class WarehouseReviewController extends Controller
     {
         $users = User::where('status', 1)->whereNot('role', 'admin')->get();
 
-        return view('backend.admin.warehouse-reviews.create', [
+        return view('backend.admin.warehouses.reviews.create', [
             'users' => $users,
             'warehouse' => $warehouse
         ]);
@@ -80,7 +80,7 @@ class WarehouseReviewController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Creation Failed!',
-                'route' => route('admin.warehouse-reviews.index', $warehouse)
+                'route' => route('admin.warehouses.reviews.index', $warehouse)
             ]);
         }
 
@@ -88,9 +88,9 @@ class WarehouseReviewController extends Controller
         $data['warehouse_id'] = $warehouse->id;
         $review = WarehouseReview::create($data);  
 
-        return redirect()->route('admin.warehouse-reviews.edit', [$warehouse, $review])->with([
+        return redirect()->route('admin.warehouses.reviews.edit', [$warehouse, $review])->with([
             'success' => "Update Successful!",
-            'route' => route('admin.warehouse-reviews.index', $warehouse)
+            'route' => route('admin.warehouses.reviews.index', $warehouse)
         ]);
     }
 
@@ -98,7 +98,7 @@ class WarehouseReviewController extends Controller
     {
         $users = User::where('status', 1)->whereNot('role', 'admin')->get();
 
-        return view('backend.admin.warehouse-reviews.edit', [
+        return view('backend.admin.warehouses.reviews.edit', [
             'users' => $users,
             'warehouse' => $warehouse,
             'warehouse_review' => $warehouse_review,
@@ -118,7 +118,7 @@ class WarehouseReviewController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Update Failed!',
-                'route' => route('admin.warehouse-reviews.index', $warehouse->id)
+                'route' => route('admin.warehouses.reviews.index', $warehouse->id)
             ]);
         }
 
@@ -127,7 +127,7 @@ class WarehouseReviewController extends Controller
         
         return redirect()->back()->with([
             'success' => "Update Successful!",
-            'route' => route('admin.warehouse-reviews.index', $warehouse->id)
+            'route' => route('admin.warehouses.reviews.index', $warehouse->id)
         ]);
     }
 
