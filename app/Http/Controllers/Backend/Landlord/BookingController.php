@@ -84,7 +84,19 @@ class BookingController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'warehouse_id' => 'required|integer',
-            'no_of_pallets' => 'required|integer',
+            'no_of_pallets' => [
+                'nullable',
+                'integer',
+                'required_without:no_of_square_meters',
+                'prohibited_with:no_of_square_meters',
+            ],
+
+            'no_of_square_meters' => [
+                'nullable',
+                'integer',
+                'required_without:no_of_pallets',
+                'prohibited_with:no_of_pallets',
+            ],
             'total_rent' => 'required|numeric|min:1',
             'tenancy_date' => 'required|date',
             'renewal_date' => 'required|date',
