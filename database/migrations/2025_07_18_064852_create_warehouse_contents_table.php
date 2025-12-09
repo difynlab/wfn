@@ -43,6 +43,7 @@ return new class extends Migration
             // $table->text('section_3_report_en')->nullable();
             // $table->text('section_3_popular_en')->nullable();
             // $table->text('section_3_top_rated_en')->nullable();
+            $table->text('section_3_reviews_en')->nullable();
             $table->text('section_3_storage_charges_en')->nullable();
             $table->text('section_3_movement_services_en')->nullable();
             $table->text('section_3_pallet_services_en')->nullable();
@@ -125,6 +126,7 @@ return new class extends Migration
             // $table->text('section_3_report_ar')->nullable();
             // $table->text('section_3_popular_ar')->nullable();
             // $table->text('section_3_top_rated_ar')->nullable();
+            $table->text('section_3_reviews_ar')->nullable();
             $table->text('section_3_storage_charges_ar')->nullable();
             $table->text('section_3_movement_services_ar')->nullable();
             $table->text('section_3_pallet_services_ar')->nullable();

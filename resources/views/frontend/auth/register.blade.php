@@ -39,29 +39,29 @@
                     
                     <div class="row mb-0 mb-md-4">
                         <div class="col-12 mb-3 mb-md-0 col-md-6">
-                            <label for="firstName" class="form-label label">{{ $contents->{'register_first_name_' . $middleware_language} ?? 'First Name' }}<span class="asterisk">*</span></label>
-                            <input type="text" class="form-control input-field" id="firstName" name="first_name" value="{{ old('first_name') }}" placeholder="Enter your first name" required>
+                            <label for="firstName" class="form-label label">{{ $contents->{'register_first_name_' . $middleware_language} ?? $contents->register_first_name_en }}<span class="asterisk">*</span></label>
+                            <input type="text" class="form-control input-field" id="firstName" name="first_name" value="{{ old('first_name') }}" placeholder="{{ $contents->{'register_first_name_placeholder_' . $middleware_language} ?? $contents->register_first_name_placeholder_en }}" required>
                             <x-frontend.input-error field="first_name"></x-frontend.input-error>
                         </div>
 
                         <div class="col-12 mb-3 mb-md-0 col-md-6">
-                            <label for="lastName" class="form-label label">{{ $contents->{'register_last_name_' . $middleware_language} ?? 'Last Name' }}<span class="asterisk">*</span></label>
-                            <input type="text" class="form-control input-field" id="lastName" name="last_name" value="{{ old('last_name') }}" placeholder="Enter your last name" required>
+                            <label for="lastName" class="form-label label">{{ $contents->{'register_last_name_' . $middleware_language} ?? $contents->register_last_name_en }}<span class="asterisk">*</span></label>
+                            <input type="text" class="form-control input-field" id="lastName" name="last_name" value="{{ old('last_name') }}" placeholder="{{ $contents->{'register_last_name_placeholder_' . $middleware_language} ?? $contents->register_last_name_placeholder_en }}" required>
                             <x-frontend.input-error field="last_name"></x-frontend.input-error>
                         </div>
                     </div>
 
                     <div class="row mb-0 mb-md-4">
                         <div class="col-12">
-                            <label for="email" class="form-label label">{{ $contents->{'register_email_' . $middleware_language} ?? 'Email' }}<span class="asterisk">*</span></label>
-                            <input type="email" class="form-control input-field" id="email" name="email" value="{{ old('email') }}" placeholder="email@gmail.com" required>
+                            <label for="email" class="form-label label">{{ $contents->{'register_email_' . $middleware_language} ?? $contents->register_email_en }}<span class="asterisk">*</span></label>
+                            <input type="email" class="form-control input-field" id="email" name="email" value="{{ old('email') }}" placeholder="{{ $contents->{'register_email_placeholder_' . $middleware_language} ?? $contents->register_email_placeholder_en }}" required>
                             <x-frontend.input-error field="email"></x-frontend.input-error>
                         </div>
                     </div>
 
                     <div class="row mb-0 mb-md-4">
                         <div class="col-12">
-                            <label for="phone" class="form-label label">{{ $contents->{'register_phone_' . $middleware_language} ?? 'Phone Number' }}<span class="asterisk">*</span></label>
+                            <label for="phone" class="form-label label">{{ $contents->{'register_phone_' . $middleware_language} ?? $contents->register_phone_en }}<span class="asterisk">*</span></label>
 
                             <div class="phone-div">
                                 <input type="text" class="form-control input-field" id="phone_code" name="phone_code" placeholder="+XXX" value="{{ old('phone_code') }}" required>
@@ -76,7 +76,7 @@
                     <div class="row mb-0 mb-md-4">
                         <div class="col-12 mb-3 mb-md-0 col-md-6">
                             <div class="position-relative">
-                                <label for="password" class="form-label label">{{ $contents->{'register_password_' . $middleware_language} ?? 'Password' }}<span class="asterisk">*</span></label>
+                                <label for="password" class="form-label label">{{ $contents->{'register_password_' . $middleware_language} ?? $contents->register_password_en }}<span class="asterisk">*</span></label>
                                 <input type="password" class="form-control input-field" id="password" name="password" placeholder="********" required>
                                 <span class="bi bi-eye-slash-fill toggle-password"></span>
                                 <x-backend.input-error field="password"></x-backend.input-error>
@@ -85,7 +85,7 @@
 
                         <div class="col-12 mb-4 mb-md-0 col-md-6">
                             <div class="position-relative">
-                                <label for="passwordConfirmation" class="form-label label">{{ $contents->{'register_confirm_password_' . $middleware_language} ?? 'Confirm Password' }}<span class="asterisk">*</span></label>
+                                <label for="passwordConfirmation" class="form-label label">{{ $contents->{'register_confirm_password_' . $middleware_language} ?? $contents->register_confirm_password_en }}<span class="asterisk">*</span></label>
                                 <input type="password" class="form-control input-field" id="passwordConfirmation" name="password_confirmation" placeholder="********" required/>
                                 <span class="bi bi-eye-slash-fill toggle-password"></span>
                                 <x-backend.input-error field="password_confirmation"></x-backend.input-error>

@@ -152,7 +152,7 @@
 							</div>
 
 							<div class="col-12 col-sm-3 text-end">
-								<img src="{{ asset('storage/backend/pallets.png') }}" alt="Pallets" class="type-image">
+                                <img src="{{ asset('storage/backend/global/thumbnails/pallets.webp') }}" data-src="{{ asset('storage/backend/global/pallets.webp') }}" alt="Pallets" class="type-image lazyload">
 							</div>
 						</div>
 					</div>
@@ -167,7 +167,7 @@
 							</div>
 
 							<div class="col-12 col-sm-3 text-end">
-								<img src="{{ asset('storage/backend/free-space.png') }}" alt="Free Space" class="type-image">
+                                <img src="{{ asset('storage/backend/global/thumbnails/free-space.webp') }}" data-src="{{ asset('storage/backend/global/free-space.webp') }}" alt="Free Space" class="type-image lazyload">
 							</div>
 						</div>
 					</div>

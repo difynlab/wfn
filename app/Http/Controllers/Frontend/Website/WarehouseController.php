@@ -71,7 +71,7 @@ class WarehouseController extends Controller
 
         $storage_types = StorageType::where('status', 1)->orderBy('id', 'desc')->get();
 
-        $cities = Warehouse::get()->pluck('city_en')->unique()->toArray();
+        $cities = session('middleware_language_name') == 'english' ? Warehouse::get()->pluck('city_en')->unique()->toArray() : Warehouse::get()->pluck('city_ar')->unique()->toArray();
 
         return view('frontend.website.warehouses.index', [
             'contents' => $contents,
@@ -206,7 +206,7 @@ class WarehouseController extends Controller
         ]);
     }
 
-    public function show(Request $request, Warehouse $warehouse)
+    public function show(Warehouse $warehouse)
     {
         $sliders = [
             ['type' => 'image', 'name' => $warehouse->thumbnail],
@@ -352,7 +352,7 @@ class WarehouseController extends Controller
     //     );
     // }
 
-    public function area(Request $request, $area)
+    public function area($area)
     {
         $contents = HomepageContent::find(1);
 

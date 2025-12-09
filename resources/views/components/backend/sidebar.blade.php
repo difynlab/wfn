@@ -14,7 +14,7 @@
                     <p class="{{ Request::segment(2) == 'users' ? 'active' : '' }}">
                         Users
                         <span class="new-count">
-                            {{ App\Models\User::where('is_new', 1)->count() != 0 ? App\Models\User::where('is_new', 1)->count() : ''; }}
+                            {{ App\Models\User::whereNot('role', 'admin')->where('is_new', 1)->count() != 0 ? App\Models\User::whereNot('role', 'admin')->where('is_new', 1)->count() : ''; }}
                         </span>
                     </p>
                 </a>

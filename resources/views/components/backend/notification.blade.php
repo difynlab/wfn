@@ -103,7 +103,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body">
-                <img src="{{ asset('storage/backend/box-image.png') }}" alt="No Warehouses" class="box-image">
+                <img src="{{ asset('storage/backend/global/thumbnails/box-image.webp') }}" data-src="{{ asset('storage/backend/global/box-image.webp') }}" alt="Image" class="box-image lazyload">
                 <p class="title">{{ session('tenant-booking') }}</p>
                 <p class="description">{{ session('tenant-booking-message') }}</p>
 

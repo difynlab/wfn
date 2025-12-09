@@ -229,7 +229,7 @@
                                                     $rating = 0.0;
                                                 }
                                             @endphp
-                                            <span>{{ $rating }} ({{ $reviews->count() }} Reviews)</span>
+                                            <span>{{ $rating }} ({{ $reviews->count() }} {{ $contents->{'section_3_reviews_' . $middleware_language} ?? $contents->section_3_reviews_en }})</span>
                                         </div>
                                     </div>
                                 </div>
