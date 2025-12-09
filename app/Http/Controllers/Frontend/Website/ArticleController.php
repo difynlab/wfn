@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Frontend\Website;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\ArticleContent;
 use App\Models\Article;
 use App\Models\ArticleCategory;
 
 class ArticleController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $contents = ArticleContent::find(1);
         

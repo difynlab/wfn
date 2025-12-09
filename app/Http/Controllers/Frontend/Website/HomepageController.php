@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Validator;
 
 class HomepageController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $contents = HomepageContent::find(1);
 

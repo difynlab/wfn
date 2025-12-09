@@ -467,77 +467,7 @@
 
 @push('after-scripts')
     <!-- <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
-        ({key: "{{ config('services.google_maps.key') }}", v: "weekly"});</script>
-
-    <script>
-        async function initMap() {
-            const position = { lat: 23.8859, lng: 45.0792 };
-            const { Map } = await google.maps.importLibrary("maps");
-            const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
-
-            const warehouses = @json($all_warehouses);
-            const language = @json($middleware_language ?? 'en');
-
-            let map = new Map(document.getElementById("map"), {
-                zoom: 7,
-                center: position,
-                mapId: "DEMO_MAP_ID",
-                scrollwheel: false,
-                zoomControl: false,
-            });
-
-            warehouses.forEach(warehouse => {
-                const lat = parseFloat(warehouse.latitude);
-                const lng = parseFloat(warehouse.longitude);
-
-                if(!isNaN(lat) && !isNaN(lng)) {
-                    const position = { lat, lng };
-
-                    const icon = document.createElement('i');
-                    icon.className = 'bi bi-geo-alt-fill';
-                    icon.style.fontSize = '50px';
-                    icon.style.color = '#E31D1D';
-                    icon.style.cursor = 'pointer';
-
-                    const infoTitle = warehouse[`name_${language}`] || warehouse.name_en;
-                    const infoSubtitle = warehouse[`city_${language}`] || warehouse.city_en;
-
-                    icon.addEventListener('click', () => {
-                        window.location.href = warehouse.url;
-                    });
-
-                    const infoWindow = new google.maps.InfoWindow({
-                        content: `
-                            <div class="custom-info-window">
-                                <div class="info-title">${infoTitle}</div>
-                                <div class="info-subtitle">${infoSubtitle}</div>
-                            </div>
-                        `
-                    });
-
-                    const marker = new AdvancedMarkerElement({
-                        map,
-                        position,
-                        title: infoTitle,
-                        content: icon,
-                    });
-
-                    icon.addEventListener('mouseenter', () => {
-                        infoWindow.open({
-                            anchor: marker,
-                            map,
-                        });
-                    });
-
-                    icon.addEventListener('mouseleave', () => {
-                        infoWindow.close();
-                    });
-                }
-            });
-        }
-
-        initMap();
-    </script> -->
+        ({key: "{{ config('services.google_maps.key') }}", v: "weekly"});</script> -->
 
     <script>
         $(document).ready(function() {
@@ -607,6 +537,76 @@
         }
 
         window.addEventListener('load', initWarehouseMaps);
+    </script>
+
+    <script>
+        async function initMap() {
+            const position = { lat: 23.8859, lng: 45.0792 };
+            const { Map } = await google.maps.importLibrary("maps");
+            const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
+
+            const warehouses = @json($all_warehouses);
+            const language = @json($middleware_language ?? 'en');
+
+            let map = new Map(document.getElementById("map"), {
+                zoom: 7,
+                center: position,
+                mapId: "DEMO_MAP_ID",
+                scrollwheel: false,
+                zoomControl: false,
+            });
+
+            warehouses.forEach(warehouse => {
+                const lat = parseFloat(warehouse.latitude);
+                const lng = parseFloat(warehouse.longitude);
+
+                if(!isNaN(lat) && !isNaN(lng)) {
+                    const position = { lat, lng };
+
+                    const icon = document.createElement('i');
+                    icon.className = 'bi bi-geo-alt-fill';
+                    icon.style.fontSize = '50px';
+                    icon.style.color = '#E31D1D';
+                    icon.style.cursor = 'pointer';
+
+                    const infoTitle = warehouse[`name_${language}`] || warehouse.name_en;
+                    const infoSubtitle = warehouse[`city_${language}`] || warehouse.city_en;
+
+                    icon.addEventListener('click', () => {
+                        window.location.href = warehouse.url;
+                    });
+
+                    const infoWindow = new google.maps.InfoWindow({
+                        content: `
+                            <div class="custom-info-window">
+                                <div class="info-title">${infoTitle}</div>
+                                <div class="info-subtitle">${infoSubtitle}</div>
+                            </div>
+                        `
+                    });
+
+                    const marker = new AdvancedMarkerElement({
+                        map,
+                        position,
+                        title: infoTitle,
+                        content: icon,
+                    });
+
+                    icon.addEventListener('mouseenter', () => {
+                        infoWindow.open({
+                            anchor: marker,
+                            map,
+                        });
+                    });
+
+                    icon.addEventListener('mouseleave', () => {
+                        infoWindow.close();
+                    });
+                }
+            });
+        }
+
+        initMap();
     </script>
 
     <script>

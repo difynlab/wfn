@@ -25,14 +25,14 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="no_of_pallets" class="form-label label">No of Pallets<span class="asterisk">*</span></label>
-                    <input type="text" class="form-control input-field" id="no_of_pallets" name="no_of_pallets" placeholder="No of Pallets" value="{{ $booking->no_of_pallets ?? '-' }}" disabled>
+                    <label for="no_of_pallets" class="form-label label">No of Pallets</label>
+                    <input type="text" class="form-control input-field" id="no_of_pallets" name="no_of_pallets" placeholder="No of Pallets" value="{{ $booking->no_of_pallets }}" disabled>
                     <x-backend.input-error field="no_of_pallets"></x-backend.input-error>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="no_of_square_meters" class="form-label label">No of Square Meters<span class="asterisk">*</span></label>
-                    <input type="text" class="form-control input-field" id="no_of_square_meters" name="no_of_square_meters" placeholder="No of Square Meters" value="{{ $booking->no_of_square_meters ?? '-' }}" disabled>
+                    <label for="no_of_square_meters" class="form-label label">No of Square Meters</label>
+                    <input type="text" class="form-control input-field" id="no_of_square_meters" name="no_of_square_meters" placeholder="No of Square Meters" value="{{ $booking->no_of_square_meters }}" disabled>
                     <x-backend.input-error field="no_of_square_meters"></x-backend.input-error>
                 </div>
 

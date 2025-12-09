@@ -37,13 +37,13 @@
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="no_of_pallets" class="form-label label">No of Pallets</label>
-                    <input type="number" class="form-control input-field" id="no_of_pallets" name="no_of_pallets" placeholder="No of Pallets" value="{{ old('no_of_pallets', $booking->no_of_pallets) ?? 0 }}">
+                    <input type="number" class="form-control input-field" id="no_of_pallets" name="no_of_pallets" placeholder="No of Pallets" value="{{ old('no_of_pallets', $booking->no_of_pallets) }}">
                     <x-backend.input-error field="no_of_pallets"></x-backend.input-error>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="no_of_square_meters" class="form-label label">No of Square Meters</label>
-                    <input type="number" class="form-control input-field" id="no_of_square_meters" name="no_of_square_meters" placeholder="No of Square Meters" value="{{ old('no_of_square_meters', $booking->no_of_square_meters) ?? 0 }}">
+                    <input type="number" class="form-control input-field" id="no_of_square_meters" name="no_of_square_meters" placeholder="No of Square Meters" value="{{ old('no_of_square_meters', $booking->no_of_square_meters) }}">
                     <x-backend.input-error field="no_of_square_meters"></x-backend.input-error>
                 </div>
 

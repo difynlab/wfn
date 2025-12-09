@@ -66,7 +66,7 @@
                                         <td>{!! $item->warehouse !!}</td>
                                         <td>{{ $item->no_of_pallets ?? '-' }}</td>
                                         <td>{{ $item->no_of_square_meters ?? '-' }}</td>
-                                        <td>{{ $item->total_rent ? $item->total_rent . 'SAR' : '-' }}</td>
+                                        <td>{{ $item->total_rent ? $item->total_rent . ' SAR' : '-' }}</td>
                                         <td>{{ $item->tenancy_date }}</td>
                                         <td>{{ $item->renewal_date }}</td>
                                         <td>{!! $item->status !!}</td>

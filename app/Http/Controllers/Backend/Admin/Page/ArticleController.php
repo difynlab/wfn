@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    private function shortCode($language) {
+    private function shortCode($language)
+    {
         switch($language){
             case 'english':
                 $short_code = 'en';
@@ -36,7 +37,7 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function update(Request $request, $language)
+    public function update(Request $request)
     {
         $contents = ArticleContent::find(1);
 

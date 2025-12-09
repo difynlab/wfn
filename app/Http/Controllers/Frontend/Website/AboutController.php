@@ -11,7 +11,6 @@ use App\Models\Subscription;
 use App\Services\Recaptcha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class AboutController extends Controller

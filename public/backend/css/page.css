@@ -322,11 +322,11 @@
     font-size: 17px;
     color: var(--black);
     font-weight: 500;
-    margin-bottom: 5px !important;
 }
 .page .single-todo .todo-description {
     font-size: 15px;
     color: var(--gray);
+    margin-top: 5px;
 }
 .page .single-todo .cross-line {
     text-decoration: line-through;
@@ -1317,10 +1317,10 @@
     }
     .page .single-todo .todo-name {
         font-size: 15px;
-        margin-bottom: 2px !important;
     }
     .page .single-todo .todo-description {
         font-size: 14px;
+        margin-top: 2px;
     }
     .page .single-todo .links {
         gap: 15px;

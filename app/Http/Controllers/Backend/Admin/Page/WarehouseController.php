@@ -37,7 +37,7 @@ class WarehouseController extends Controller
         ]);
     }
 
-    public function update(Request $request, $language)
+    public function update(Request $request)
     {
         $contents = WarehouseContent::find(1);
 

@@ -37,7 +37,7 @@ class CommonController extends Controller
         ]);
     }
 
-    public function update(Request $request, $language)
+    public function update(Request $request)
     {
         $contents = CommonContent::find(1);
 

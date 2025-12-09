@@ -28,7 +28,9 @@
 
                                     <div class="text">
                                         <p class="todo-name">{{ $item->title }}</p>
-                                        <p class="todo-description">{{ $item->description }}</p>
+                                        @if($item->description)
+                                            <p class="todo-description">{{ $item->description }}</p>
+                                        @endif
                                     </div>
                                 </div>
                                 
@@ -53,7 +55,9 @@
 
                                     <div class="text">
                                         <p class="todo-name cross-line">{{ $item->title }}</p>
-                                        <p class="todo-description cross-line">{{ $item->description }}</p>
+                                        @if($item->description)
+                                            <p class="todo-description cross-line">{{ $item->description }}</p>
+                                        @endif
                                     </div>
                                 </div>
                                 

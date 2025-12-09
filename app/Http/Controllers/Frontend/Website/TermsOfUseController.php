@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend\Website;
 
 use App\Http\Controllers\Controller;
 use App\Models\TermsOfUseContent;
-use Illuminate\Http\Request;
 
 class TermsOfUseController extends Controller
 {

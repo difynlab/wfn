@@ -115,7 +115,8 @@
                             <tr>
                                 <th scope="col">TENANT</th>
                                 <th scope="col">WAREHOUSE</th>
-                                <th scope="col">PALLET RENTED</th>
+                                <th scope="col">PALLETS RENTED</th>
+                                <th scope="col">NO OF SQ.M RENTED</th>
                                 <th scope="col">TOTAL RENT</th>
                                 <th scope="col">TENANCY DATE</th>
                                 <th scope="col">RENEWAL DATE</th>
@@ -130,8 +131,9 @@
                                     <tr>
                                         <td>{!! $item->tenant !!}</td>
                                         <td>{!! $item->warehouse !!}</td>
-                                        <td>{{ $item->no_of_pallets }}</td>
-                                        <td>{{ $item->total_rent ?? '-' }}</td>
+                                        <td>{{ $item->no_of_pallets ?? '-' }}</td>
+                                        <td>{{ $item->no_of_square_meters ?? '-' }}</td>
+                                        <td>{{ $item->total_rent ? $item->total_rent . ' SAR' : '-' }}</td>
                                         <td>{{ $item->tenancy_date }}</td>
                                         <td>{{ $item->renewal_date }}</td>
                                         <td>{!! $item->status !!}</td>
@@ -140,7 +142,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="8" style="text-align: center;">No data available in the table</td>
+                                    <td colspan="9" style="text-align: center;">No data available in the table</td>
                                 </tr>
                             @endif
                         </tbody>

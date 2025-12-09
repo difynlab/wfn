@@ -84,14 +84,12 @@ class BookingController extends Controller
                 'nullable',
                 'integer',
                 'required_without:no_of_square_meters',
-                'prohibited_with:no_of_square_meters',
             ],
 
             'no_of_square_meters' => [
                 'nullable',
                 'integer',
                 'required_without:no_of_pallets',
-                'prohibited_with:no_of_pallets',
             ],
             'total_rent' => 'required|numeric|min:1',
             'tenancy_date' => 'required|date',
@@ -99,6 +97,13 @@ class BookingController extends Controller
             'new_documents.*' => 'max:30720',
             'status' => 'required|in:0,1,2'
         ]);
+
+        $validator->after(function ($validator) use ($request) {
+            if($request->filled('no_of_pallets') && $request->filled('no_of_square_meters')) {
+                $validator->errors()->add('no_of_pallets', 'You cannot provide both pallets and square meters.');
+                $validator->errors()->add('no_of_square_meters', 'You cannot provide both pallets and square meters.');
+            }
+        });
         
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
@@ -149,14 +154,12 @@ class BookingController extends Controller
                 'nullable',
                 'integer',
                 'required_without:no_of_square_meters',
-                'prohibited_with:no_of_square_meters',
             ],
 
             'no_of_square_meters' => [
                 'nullable',
                 'integer',
                 'required_without:no_of_pallets',
-                'prohibited_with:no_of_pallets',
             ],
             'total_rent' => 'required|numeric|min:1',
             'tenancy_date' => 'required|date',
@@ -164,6 +167,13 @@ class BookingController extends Controller
             'new_documents.*' => 'max:30720',
             'status' => 'required|in:0,1,2'
         ]);
+
+        $validator->after(function ($validator) use ($request) {
+            if($request->filled('no_of_pallets') && $request->filled('no_of_square_meters')) {
+                $validator->errors()->add('no_of_pallets', 'You cannot provide both pallets and square meters.');
+                $validator->errors()->add('no_of_square_meters', 'You cannot provide both pallets and square meters.');
+            }
+        });
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
@@ -255,7 +265,7 @@ class BookingController extends Controller
         $column = $request->column ?? 'id';
         $direction = $request->direction ?? 'desc';
 
-        $valid_columns = ['no_of_pallets', 'total_rent', 'tenancy_date', 'renewal_date', 'status', 'id'];
+        $valid_columns = ['no_of_pallets', 'no_of_square_meters', 'total_rent', 'tenancy_date', 'renewal_date', 'status', 'id'];
         $valid_directions = ['asc', 'desc'];
 
         if(!in_array($column, $valid_columns)) {

@@ -10,12 +10,11 @@ use Illuminate\Http\Request;
 use App\Models\SupportContent;
 use App\Services\Recaptcha;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class SupportController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $contents = SupportContent::find(1);
 
@@ -72,7 +71,7 @@ class SupportController extends Controller
             );
         }
 
-        $data = $request->all();
+        $data = $request->except('recaptcha_token');
         $support = Support::create($data);
 
         $mail_data = [

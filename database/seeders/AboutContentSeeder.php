@@ -158,7 +158,7 @@ class AboutContentSeeder extends Seeder
                     'section_8_name_en' => 'Name',
                     'section_8_name_placeholder_en' => 'Please enter your name',
                     'section_8_email_en' => 'Email',
-                    'section_8_email_placeholder_en' => 'Ex: johnmercury@gmail.com',
+                    'section_8_email_placeholder_en' => 'Ex: abdul@gmail.com',
                     'section_8_check_label_en' => 'I have read and agree to the Terms and Conditions of the platform.',
                     'section_8_button_en' => 'Submit Now',
 
@@ -167,7 +167,7 @@ class AboutContentSeeder extends Seeder
                     'section_8_name_ar' => 'اسم',
                     'section_8_name_placeholder_ar' => 'الرجاء إدخال اسمك',
                     'section_8_email_ar' => 'بريد إلكتروني',
-                    'section_8_email_placeholder_ar' => 'مثال: johnmercury@gmail.com',
+                    'section_8_email_placeholder_ar' => 'مثال: abdul@gmail.com',
                     'section_8_check_label_ar' => 'لقد قرأت ووافقت على الشروط والأحكام الخاصة بالمنصة.',
                     'section_8_button_ar' => 'أرسل الآن',
                 // Section 8
