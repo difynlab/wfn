@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="inner-page">
-        <form action="{{ route('admin.warehouse-reviews.store', $warehouse) }}" method="POST" enctype="multipart/form-data" class="form">
+        <form action="{{ route('admin.warehouses.reviews.store', $warehouse) }}" method="POST" enctype="multipart/form-data" class="form">
             @csrf
 
             <div class="page-details">

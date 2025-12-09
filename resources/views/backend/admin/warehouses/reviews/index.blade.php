@@ -11,7 +11,7 @@
             </div>
 
             <div class="col-12 col-md-4 text-end">
-                <a href="{{ route('admin.warehouse-reviews.create', $warehouse) }}" class="add-button">
+                <a href="{{ route('admin.warehouses.reviews.create', $warehouse) }}" class="add-button">
                     <i class="bi bi-plus-lg"></i>
                     Add New Warehouse Review
                 </a>
@@ -87,9 +87,9 @@
     <script>
         let warehouse_id = '<?php echo $warehouse->id?>';
         window.moduleRoutes = {
-            destroyRoute: "{{ route('admin.warehouse-reviews.destroy', [':warehouse_id', ':id']) }}"
+            destroyRoute: "{{ route('admin.warehouses.reviews.destroy', [':warehouse_id', ':id']) }}"
                          .replace(':warehouse_id', "{{ $warehouse->id }}"),
-            indexRoute: "{{ route('admin.warehouse-reviews.index', [':warehouse_id']) }}",
+            indexRoute: "{{ route('admin.warehouses.reviews.index', [':warehouse_id']) }}",
             pageUrl: "{!! $items->url(1) !!}"
         };
     </script>

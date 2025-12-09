@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="inner-page">
-        <form action="{{ route('admin.warehouse-reviews.update', [$warehouse, $warehouse_review]) }}" method="POST" enctype="multipart/form-data" class="form">
+        <form action="{{ route('admin.warehouses.reviews.update', [$warehouse, $warehouse_review]) }}" method="POST" enctype="multipart/form-data" class="form">
             @csrf
             <div class="page-details">
                 <p class="title">Warehouse Review Details</p>
