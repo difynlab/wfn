@@ -3,7 +3,7 @@
 @section('title','Warehouses')
 
 @section('content')
-    <div class="page">
+    <div class="page booking-results">
         <div class="row align-items-center mb-3 mb-md-4">
 			<div class="col-12">
 				<p class="title">Warehouses</p>
@@ -15,7 +15,50 @@
             <div class="row mb-3 mb-md-4">
                 <div class="col-5 col-lg-4">
                     @foreach($warehouses as $key => $warehouse)
-                        <div class="single-warehouse {{ $key == 0 ? 'active' : '' }}" index="{{ $key }}">
+                        <div
+                            class="single-warehouse {{ $key == 0 ? 'active' : '' }}"
+                            index="{{ $key }}"
+                            data-url="{{ route('tenant.bookings.review', $warehouse) }}"
+                        >
+                            <div class="mobile-preview">
+                                @php
+                                    $fallback = App\Models\Setting::find(1)->no_image;
+                                    $mobile_sliders = [
+                                        $warehouse->thumbnail,
+                                        $warehouse->outside_image,
+                                        $warehouse->loading_image,
+                                        $warehouse->off_loading_image,
+                                        $warehouse->handling_equipment_image,
+                                        $warehouse->storage_area_image
+                                    ];
+                                    $mobile_sliders = array_values(array_filter($mobile_sliders));
+                                @endphp
+
+                                <div class="swiper mySwiper">
+                                    <div class="swiper-wrapper">
+                                        @if(count($mobile_sliders))
+                                            @foreach($mobile_sliders as $img)
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="{{ asset('storage/backend/warehouses/thumbnails/' . $img) }}"
+                                                        data-src="{{ asset('storage/backend/warehouses/' . $img) }}"
+                                                        alt="Warehouse"
+                                                        class="swiper-resource lazyload">
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <div class="swiper-slide">
+                                                <img
+                                                    src="{{ asset('storage/backend/global/thumbnails/' . $fallback) }}"
+                                                    data-src="{{ asset('storage/backend/global/' . $fallback) }}"
+                                                    alt="Warehouse"
+                                                    class="swiper-resource lazyload">
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
                             <p class="name">
                                 {{ $warehouse->name_en }}
                             </p>
@@ -228,12 +271,24 @@
 
 @push('after-scripts')
     <script>
-        var swiper = new Swiper(".mySwiper", {
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-        });
+        function initMobileResultSwipers() {
+            if (window.innerWidth > 481) return;
+
+            document.querySelectorAll(".booking-results .single-warehouse .mobile-preview .mySwiper").forEach((el) => {
+                if (el.swiper) return;
+
+                const paginationEl = el.querySelector(".swiper-pagination");
+                new Swiper(el, {
+                    pagination: {
+                        el: paginationEl,
+                        clickable: true,
+                    },
+                });
+            });
+        }
+
+        window.addEventListener("load", initMobileResultSwipers);
+        window.addEventListener("resize", initMobileResultSwipers);
     </script>
 
     <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
@@ -293,6 +348,12 @@
 
     <script>
         $('.single-warehouse').on('click', function() {
+            const url = $(this).data('url');
+            if (window.innerWidth <= 481 && url) {
+                window.location.href = url;
+                return;
+            }
+
             $(this).addClass('active').siblings().removeClass('active');
 
             let id = $(this).attr('index');
@@ -300,5 +361,9 @@
             $('.right-single-warehouse').addClass('d-none');
             $('#' + id).removeClass('d-none');
         })
+
+        $('.booking-results .single-warehouse .mobile-preview').on('click touchstart', function(e) {
+            e.stopPropagation();
+        });
     </script>
 @endpush

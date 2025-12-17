@@ -198,7 +198,61 @@
                     <div class="row mb-3 mb-md-4">
                         <div class="col-5 col-lg-4">
                             @foreach($warehouses as $key => $warehouse)
-                                <div class="single-warehouse {{ $key == 0 ? 'active' : '' }}" index="{{ $key }}">
+                                <div
+                                    class="single-warehouse {{ $key == 0 ? 'active' : '' }}"
+                                    index="{{ $key }}"
+                                    data-url="{{ route('warehouses.show', $warehouse) }}"
+                                >
+                                    <div class="thumb">
+                                        @php
+                                            $thumb = $warehouse->thumbnail;
+                                            $fallback = App\Models\Setting::find(1)->no_image;
+                                        @endphp
+                                        @if($thumb)
+                                            <img src="{{ asset('storage/backend/warehouses/thumbnails/' . $thumb) }}" alt="Warehouse thumbnail" class="image">
+                                        @else
+                                            <img src="{{ asset('storage/backend/global/thumbnails/' . $fallback) }}" alt="Warehouse thumbnail" class="image">
+                                        @endif
+                                    </div>
+
+                                    <div class="mobile-preview">
+                                        @php
+                                            $mobile_sliders = [
+                                                $warehouse->thumbnail,
+                                                $warehouse->outside_image,
+                                                $warehouse->loading_image,
+                                                $warehouse->off_loading_image,
+                                                $warehouse->handling_equipment_image,
+                                                $warehouse->storage_area_image
+                                            ];
+                                            $mobile_sliders = array_values(array_filter($mobile_sliders));
+                                        @endphp
+
+                                        <div class="swiper mySwiper">
+                                            <div class="swiper-wrapper">
+                                                @if(count($mobile_sliders))
+                                                    @foreach($mobile_sliders as $img)
+                                                        <div class="swiper-slide">
+                                                            <img
+                                                                src="{{ asset('storage/backend/warehouses/thumbnails/' . $img) }}"
+                                                                data-src="{{ asset('storage/backend/warehouses/' . $img) }}"
+                                                                alt="Warehouse"
+                                                                class="swiper-resource lazyload">
+                                                        </div>
+                                                    @endforeach
+                                                @else
+                                                    <div class="swiper-slide">
+                                                        <img
+                                                            src="{{ asset('storage/backend/global/thumbnails/' . $fallback) }}"
+                                                            data-src="{{ asset('storage/backend/global/' . $fallback) }}"
+                                                            alt="Warehouse"
+                                                            class="swiper-resource lazyload">
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <div class="swiper-pagination"></div>
+                                        </div>
+                                    </div>
                                     <p class="name">
                                         {{ $warehouse->{'name_' . $middleware_language} ?? $warehouse->name_en }}
                                     </p>
@@ -476,11 +530,14 @@
     </script>
 
     <script>
-        var swiper = new Swiper(".mySwiper", {
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
+        document.querySelectorAll(".mySwiper").forEach((el) => {
+            const paginationEl = el.querySelector(".swiper-pagination");
+            new Swiper(el, {
+                pagination: {
+                    el: paginationEl,
+                    clickable: true,
+                },
+            });
         });
     </script>
 
@@ -611,6 +668,13 @@
 
     <script>
         $('.single-warehouse').on('click', function() {
+            const url = $(this).data('url');
+
+            if (window.innerWidth <= 481 && url) {
+                window.location.href = url;
+                return;
+            }
+
             $(this).addClass('active').siblings().removeClass('active');
 
             let id = $(this).attr('index');
@@ -618,5 +682,9 @@
             $('.right-single-warehouse').addClass('d-none');
             $('#' + id).removeClass('d-none');
         })
+
+        $('.single-warehouse .mobile-preview').on('click touchstart', function(e) {
+            e.stopPropagation();
+        });
     </script>
 @endpush
