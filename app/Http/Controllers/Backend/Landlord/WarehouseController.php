@@ -67,12 +67,11 @@ class WarehouseController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name_en' => 'required|min:3|max:255',
+            'short_description_en' => 'required',
             'description_en' => 'required',
-            'address_name' => 'required|min:3|max:255',
             'address_en' => 'required|min:3|max:255',
-            'city_en' => 'required|min:3|max:255',
+            'city' => 'required|min:3|max:255',
             'address_ar' => 'required|min:3|max:255',
-            'city_ar' => 'required|min:3|max:255',
             'latitude' => 'required|min:3|max:255',
             'longitude' => 'required|min:3|max:255',
             'storage_type_id' => 'required|integer',
@@ -96,11 +95,9 @@ class WarehouseController extends Controller
             'new_videos.*' => 'max:204800',
             'new_licenses.*' => 'max:30720'
         ], [
-            'address_name' => 'Address field is required.',
             'address_en' => 'Address field is required.',
-            'city_en' => 'Address field is required.',
+            'city' => 'City field is required.',
             'address_ar' => 'Address field is required.',
-            'city_ar' => 'Address field is required.',
             'latitude' => 'Address field is required.',
             'longitude' => 'Address field is required.',
         ]);
@@ -321,12 +318,11 @@ class WarehouseController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name_en' => 'required|min:3|max:255',
+            'short_description_en' => 'required',
             'description_en' => 'required',
-            'address_name' => 'required|min:3|max:255',
             'address_en' => 'required|min:3|max:255',
-            'city_en' => 'required|min:3|max:255',
+            'city' => 'required|min:3|max:255',
             'address_ar' => 'required|min:3|max:255',
-            'city_ar' => 'required|min:3|max:255',
             'latitude' => 'required|min:3|max:255',
             'longitude' => 'required|min:3|max:255',
             'storage_type_id' => 'required|integer',
@@ -350,11 +346,9 @@ class WarehouseController extends Controller
             'new_videos.*' => 'max:204800',
             'new_licenses.*' => 'max:30720'
         ], [
-            'address_name' => 'Address field is required.',
             'address_en' => 'Address field is required.',
-            'city_en' => 'Address field is required.',
+            'city' => 'City field is required.',
             'address_ar' => 'Address field is required.',
-            'city_ar' => 'Address field is required.',
             'latitude' => 'Address field is required.',
             'longitude' => 'Address field is required.',
         ]);

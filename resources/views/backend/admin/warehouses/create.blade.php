@@ -26,21 +26,26 @@
                 </div>
 
                 <div class="col-12 mb-3 mb-md-4">
-                    <label for="address" class="form-label label">Address<span class="asterisk">*</span></label>
-                    <input type="hidden" id="address_name" name="address_name" required>
+                    <label class="form-label label">Address<span class="asterisk">*</span></label>
 
                     <input type="hidden" id="address_en" name="address_en" required>
-                    <input type="hidden" id="city_en" name="city_en" required>
-
                     <input type="hidden" id="address_ar" name="address_ar" required>
-                    <input type="hidden" id="city_ar" name="city_ar" required>
-                    
                     <input type="hidden" id="latitude" name="latitude" required>
                     <input type="hidden" id="longitude" name="longitude" required>
+                    <input type="hidden" id="country_short" name="country_short" required>
+                    <input type="hidden" id="country_long" name="country_long" required>
 
                     <p class="place-autocomplete-card form-control input-field" id="place-autocomplete-card"></p>
 
                     <x-backend.input-error field="address_en"></x-backend.input-error>
+                </div>
+
+                <div class="col-12 mb-3 mb-md-4">
+                    <label for="city" class="form-label label">City<span class="asterisk">*</span></label>
+                    <select class="form-select input-field js-single" id="city" name="city" required>
+                        <option value="">Select city</option>
+                    </select>
+                    <x-backend.input-error field="city"></x-backend.input-error>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
@@ -436,6 +441,38 @@
     <script src="{{ asset('backend/js/drag-drop-images.js') }}"></script>
     <script src="{{ asset('backend/js/drag-drop-videos.js') }}"></script>
     <script src="{{ asset('backend/js/google-map.js') }}" data-maps-key="{{ config('services.google_maps.key') }}"></script>
+
+    <script>
+        function fetchCities(country) {
+            if(!country) return;
+
+            $.ajax({
+                url: 'https://countriesnow.space/api/v0.1/countries/cities',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(
+                    { country: country }
+                ),
+                success: function (response) {
+                    if(response.error === false) {
+                        const citySelect = $('select[name="city"]');
+                        citySelect.empty();
+                        citySelect.append('<option value="">Select city</option>');
+
+                        $.each(response.data, function (index, city) {
+                            citySelect.append(`<option value="${city}">${city}</option>`);
+                        });
+                    }
+                    else {
+                        console.error("No cities found.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error fetching cities:", error);
+                }
+            });
+        }
+    </script>
 
     <script>
         $('#pallet_dimension').on('change', function() {

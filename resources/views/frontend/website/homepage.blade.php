@@ -273,7 +273,7 @@
 
                                                     <p class="location">
                                                         <i class="bi bi-geo-alt"></i>
-                                                        {{ $warehouse->{'city_' . $middleware_language} ?? $warehouse->city_en }}
+                                                        {{ $warehouse->city }}
                                                     </p>
                                                 </div>
                                             </a>
@@ -355,7 +355,7 @@
 
                                                     <p class="location">
                                                         <i class="bi bi-geo-alt"></i>
-                                                        {{ $warehouse->{'city_' . $middleware_language} ?? $warehouse->city_en }}
+                                                        {{ $warehouse->city }}
                                                     </p>
                                                 </div>
                                             </a>
@@ -437,7 +437,7 @@
 
                                                     <p class="location">
                                                         <i class="bi bi-geo-alt"></i>
-                                                        {{ $warehouse->{'city_' . $middleware_language} ?? $warehouse->city_en }}
+                                                        {{ $warehouse->city }}
                                                     </p>
                                                 </div>
                                             </a>
@@ -519,7 +519,7 @@
 
                                                     <p class="location">
                                                         <i class="bi bi-geo-alt"></i>
-                                                        {{ $warehouse->{'city_' . $middleware_language} ?? $warehouse->city_en }}
+                                                        {{ $warehouse->city }}
                                                     </p>
                                                 </div>
                                             </a>

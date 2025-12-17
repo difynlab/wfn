@@ -68,7 +68,6 @@ Element.prototype.attachShadow = function (init) {
 
 async function initMap() {
     await google.maps.importLibrary("places");
-    const { Geocoder } = await google.maps.importLibrary("geocoding");
 
     const placeAutocomplete = new google.maps.places.PlaceAutocompleteElement();
     document
@@ -94,32 +93,11 @@ async function initMap() {
                 ],
             });
 
-            document.getElementById("address_name").value =
-                place.displayName || "";
+            const country = pickComponent(place.addressComponents, ["country"]);
             document.getElementById("address_en").value =
                 place.formattedAddress || "";
-
-            const locality = pickComponent(place.addressComponents, [
-                "locality",
-            ]);
-
-            let cityEN = null;
-
-            if (locality) {
-                cityEN = locality;
-            } else {
-                cityEN = pickComponent(place.addressComponents, [
-                    "sublocality_level_1",
-                    "administrative_area_level_1",
-                    "administrative_area_level_2",
-                    "postal_town",
-                    "locality",
-                ]);
-            }
-
-            document.getElementById("city_en").value =
-                cityEN?.longText || cityEN?.long_name || "";
-
+            document.getElementById("country_short").value = country.shortText;
+            document.getElementById("country_long").value = country.longText;
             document.getElementById("latitude").value = place.location
                 .lat()
                 .toFixed(7);
@@ -140,27 +118,13 @@ async function initMap() {
 
                         document.getElementById("address_ar").value =
                             first.formatted_address || "";
-
-                        const cityAR = (first.address_components || []).find(
-                            (comp) =>
-                                comp.types.some((type) =>
-                                    [
-                                        "locality",
-                                        "postal_town",
-                                        "administrative_area_level_2",
-                                        "administrative_area_level_1",
-                                        "sublocality_level_1",
-                                    ].includes(type)
-                                )
-                        );
-
-                        document.getElementById("city_ar").value =
-                            cityAR?.long_name || "";
                     } else {
                         console.error("Geocoder failed:", status);
                     }
                 }
             );
+
+            fetchCities(country.longText);
         }
     );
 }

@@ -71,7 +71,7 @@ class WarehouseController extends Controller
 
         $storage_types = StorageType::where('status', 1)->orderBy('id', 'desc')->get();
 
-        $cities = session('middleware_language_name') == 'english' ? Warehouse::get()->pluck('city_en')->unique()->toArray() : Warehouse::get()->pluck('city_ar')->unique()->toArray();
+        $cities = Warehouse::get()->pluck('city')->unique()->toArray();
 
         return view('frontend.website.warehouses.index', [
             'contents' => $contents,
@@ -100,10 +100,7 @@ class WarehouseController extends Controller
         $warehouses = Warehouse::where('status', 1)->orderBy('id', 'desc');
 
         if($location) {
-            $warehouses->where(function ($query) use ($location) {
-                $query->where('city_en', 'like', '%' . $location . '%')
-                    ->orWhere('city_ar', 'like', '%' . $location . '%');
-            });
+            $warehouses->where('city', 'like', '%' . $location . '%');
         }
 
         if($warehouse_size != 'all') {
@@ -188,7 +185,7 @@ class WarehouseController extends Controller
 
         $storage_types = StorageType::where('status', 1)->orderBy('id', 'desc')->get();
 
-        $cities = Warehouse::get()->pluck('city_en')->unique()->toArray();
+        $cities = Warehouse::get()->pluck('city')->unique()->toArray();
 
         return view('frontend.website.warehouses.index', [
             'contents' => $contents,
@@ -239,7 +236,7 @@ class WarehouseController extends Controller
             $rating = 0;
         }
 
-        $more_warehouses = Warehouse::where('id', '!=', $warehouse->id)->where('city_en', $warehouse->city_en)->where('status', 1)->inRandomOrder()->take(4)->get();
+        $more_warehouses = Warehouse::where('id', '!=', $warehouse->id)->where('city', $warehouse->city)->where('status', 1)->inRandomOrder()->take(4)->get();
 
         return view('frontend.website.warehouses.show', [
             'contents' => $contents,

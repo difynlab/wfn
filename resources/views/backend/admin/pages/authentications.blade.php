@@ -136,7 +136,7 @@
                         <input type="text" class="form-control input-field" id="register_email_placeholder_{{ $short_code }}" name="register_email_placeholder_{{ $short_code }}" value="{{ $contents->{'register_email_placeholder_' . $short_code} ?? '' }}" placeholder="Email Placeholder">
                     </div>
 
-                    <div class="col-12 col-md-6 mb-3 mb-md-4">
+                    <!-- <div class="col-12 col-md-6 mb-3 mb-md-4">
                         <label for="register_country_{{ $short_code }}" class="form-label label">Country</label>
                         <input type="text" class="form-control input-field" id="register_country_{{ $short_code }}" name="register_country_{{ $short_code }}" value="{{ $contents->{'register_country_' . $short_code} ?? '' }}" placeholder="Country">
                     </div>
@@ -144,7 +144,7 @@
                     <div class="col-12 col-md-6 mb-3 mb-md-4">
                         <label for="register_country_placeholder_{{ $short_code }}" class="form-label label">Country Placeholder</label>
                         <input type="text" class="form-control input-field" id="register_country_placeholder_{{ $short_code }}" name="register_country_placeholder_{{ $short_code }}" value="{{ $contents->{'register_country_placeholder_' . $short_code} ?? '' }}" placeholder="Country Placeholder">
-                    </div>
+                    </div> -->
 
                     <div class="col-12 col-md-6 mb-3 mb-md-4">
                         <label for="register_phone_{{ $short_code }}" class="form-label label">Phone</label>
@@ -156,7 +156,7 @@
                         <input type="text" class="form-control input-field" id="register_phone_placeholder_{{ $short_code }}" name="register_phone_placeholder_{{ $short_code }}" value="{{ $contents->{'register_phone_placeholder_' . $short_code} ?? '' }}" placeholder="Phone Placeholder">
                     </div>
 
-                    <div class="col-12 col-md-6 mb-3 mb-md-4">
+                    <!-- <div class="col-12 col-md-6 mb-3 mb-md-4">
                         <label for="register_city_{{ $short_code }}" class="form-label label">City</label>
                         <input type="text" class="form-control input-field" id="register_city_{{ $short_code }}" name="register_city_{{ $short_code }}" value="{{ $contents->{'register_city_' . $short_code} ?? '' }}" placeholder="City">
                     </div>
@@ -164,7 +164,7 @@
                     <div class="col-12 col-md-6 mb-3 mb-md-4">
                         <label for="register_city_placeholder_{{ $short_code }}" class="form-label label">City Placeholder</label>
                         <input type="text" class="form-control input-field" id="register_city_placeholder_{{ $short_code }}" name="register_city_placeholder_{{ $short_code }}" value="{{ $contents->{'register_city_placeholder_' . $short_code} ?? '' }}" placeholder="City Placeholder">
-                    </div>
+                    </div> -->
 
                     <div class="col-12 col-md-6 mb-3 mb-md-4">
                         <label for="register_password_{{ $short_code }}" class="form-label label">Password</label>

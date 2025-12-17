@@ -137,7 +137,7 @@
 
                                             <p class="location">
                                                 <i class="bi bi-geo-alt"></i>
-                                                {{ $warehouse->{'city_' . $middleware_language} ?? $warehouse->city_en }}
+                                                {{ $warehouse->{'city_' . $middleware_language} ?? $warehouse->city }}
                                             </p>
                                         </div>
                                     </div>
@@ -210,7 +210,7 @@
                                     <div class="details">
                                         <div class="detail">
                                             <i class="bi bi-geo-alt"></i>
-                                            <span>{{ $warehouse->{'city_' . $middleware_language} ?? $warehouse->city_en }}</span>
+                                            <span>{{ $warehouse->city }}</span>
                                         </div>
                                         <div class="detail">
                                             <i class="bi bi-box"></i>
@@ -318,7 +318,7 @@
 
                                         <hr class="my-3 my-md-4 line">
 
-                                        @if($warehouse->storage_charges)
+                                        <!-- @if($warehouse->storage_charges)
                                             <div class="price-section">
                                                 <p class="price-title">{{ $contents->{'section_3_storage_charges_' . $middleware_language} ?? $contents->section_3_storage_charges_en }}</p>
                                             
@@ -385,7 +385,7 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        @endif
+                                        @endif -->
 
                                         <a href="{{ route('warehouses.show', $warehouse) }}" class="quote-btn">{{ $contents->{'section_3_button_' . $middleware_language} ?? $contents->section_3_button_en }}</a>
                                     </div>
@@ -570,7 +570,7 @@
                     icon.style.cursor = 'pointer';
 
                     const infoTitle = warehouse[`name_${language}`] || warehouse.name_en;
-                    const infoSubtitle = warehouse[`city_${language}`] || warehouse.city_en;
+                    const infoSubtitle = warehouse.city;
 
                     icon.addEventListener('click', () => {
                         window.location.href = warehouse.url;

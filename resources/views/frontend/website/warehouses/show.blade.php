@@ -195,7 +195,7 @@
                     <div class="row title-row">
                         <div class="col-6 left">
                             <h1 class="title">{{ $warehouse->{'name_' . $middleware_language} ?? $warehouse->name_en }}</h1>
-                            <p class="description">{{ $warehouse->{'city_' . $middleware_language} ?? $warehouse->city_en }}</p>
+                            <p class="description">{{ $warehouse->city }}</p>
                         </div>
 
                         <div class="col-6 right">
@@ -276,7 +276,7 @@
                                         <div class="details">
                                             <p class="type">{{ $warehouse->storageType->{'name_' . $middleware_language} ?? $warehouse->storageType->name_en }}</p>
                                             <p class="title">{{ $warehouse->{'name_' . $middleware_language} ?? $warehouse->name_en }}</p>
-                                            <p class="subtitle">{{ $warehouse->{'city_' . $middleware_language} ?? $warehouse->city_en }}</p>
+                                            <p class="subtitle">{{ $warehouse->city }}</p>
 
                                             <div class="rating">
                                                 <i class="bi bi-star-fill"></i>

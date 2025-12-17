@@ -22,10 +22,10 @@ class HomepageController extends Controller
     {
         $contents = HomepageContent::find(1);
 
-        $riyadh_warehouses = Warehouse::where('city_en', 'Riyadh')->where('status', 1)->inRandomOrder()->take(3)->get();
-        $jeddah_warehouses = Warehouse::where('city_en', 'Jeddah')->where('status', 1)->inRandomOrder()->take(3)->get();
-        $mecca_warehouses = Warehouse::where('city_en', 'Mecca')->where('status', 1)->inRandomOrder()->take(3)->get();
-        $medina_warehouses = Warehouse::where('city_en', 'Medina')->where('status', 1)->inRandomOrder()->take(3)->get();
+        $riyadh_warehouses = Warehouse::where('city', 'Riyadh')->where('status', 1)->inRandomOrder()->take(3)->get();
+        $jeddah_warehouses = Warehouse::where('city', 'Jeddah')->where('status', 1)->inRandomOrder()->take(3)->get();
+        $mecca_warehouses = Warehouse::where('city', 'Mecca')->where('status', 1)->inRandomOrder()->take(3)->get();
+        $medina_warehouses = Warehouse::where('city', 'Medina')->where('status', 1)->inRandomOrder()->take(3)->get();
 
         $article_categories = ArticleCategory::where('status', 1)->where('language', session('middleware_language_name'))->get();
 
@@ -40,7 +40,7 @@ class HomepageController extends Controller
 
         $storage_types = StorageType::where('status', 1)->orderBy('id', 'desc')->get();
 
-        $cities = Warehouse::get()->pluck('city_en')->unique()->toArray();
+        $cities = Warehouse::get()->pluck('city')->unique()->toArray();
 
         return view('frontend.website.homepage', [
             'contents' => $contents,

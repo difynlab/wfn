@@ -57,7 +57,7 @@ class BookingController extends Controller
         $items = $auth->bookings()->orderBy('id', 'desc')->paginate($pagination);
         $items = $this->processData($items);
 
-        $cities = Warehouse::get()->pluck('city_en')->unique()->toArray();
+        $cities = Warehouse::get()->pluck('city')->unique()->toArray();
         $storage_types = StorageType::where('status', 1)->get();
         $licenses = License::where('status', 1)->get();
 
@@ -264,10 +264,7 @@ class BookingController extends Controller
         $warehouses = Warehouse::where('status', 1)->orderBy('id', 'desc');
 
         if($location) {
-            $warehouses->where(function ($query) use ($location) {
-                $query->where('city_en', 'like', '%' . $location . '%')
-                    ->orWhere('city_ar', 'like', '%' . $location . '%');
-            });
+            $warehouses->where('city', 'like', '%' . $location . '%');
         }
 
         if($storage_type != 'all') {

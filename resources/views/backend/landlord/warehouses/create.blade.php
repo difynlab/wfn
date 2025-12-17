@@ -27,30 +27,45 @@
 
                 <div class="col-12 mb-3 mb-md-4">
                     <label for="address" class="form-label label">Address<span class="asterisk">*</span></label>
-                    <input type="hidden" id="address_name" name="address_name" required>
 
                     <input type="hidden" id="address_en" name="address_en" required>
-                    <input type="hidden" id="city_en" name="city_en" required>
-
                     <input type="hidden" id="address_ar" name="address_ar" required>
-                    <input type="hidden" id="city_ar" name="city_ar" required>
-                    
                     <input type="hidden" id="latitude" name="latitude" required>
                     <input type="hidden" id="longitude" name="longitude" required>
+                    <input type="hidden" id="country_short" name="country_short" required>
+                    <input type="hidden" id="country_long" name="country_long" required>
 
                     <p class="place-autocomplete-card form-control input-field" id="place-autocomplete-card"></p>
 
                     <x-backend.input-error field="address_en"></x-backend.input-error>
                 </div>
 
-                <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="description_en" class="form-label label">Description (EN)<span class="asterisk">*</span></label>
-                    <textarea type="text" class="form-control textarea input-field" id="description_en" name="description_en" rows="5" placeholder="Description (EN)" value="{{ old('description_en') }}" required></textarea>
+                <div class="col-12 mb-3 mb-md-4">
+                    <label for="city" class="form-label label">City<span class="asterisk">*</span></label>
+                    <select class="form-select input-field js-single" id="city" name="city" required>
+                        <option value="">Select city</option>
+                    </select>
+                    <x-backend.input-error field="city"></x-backend.input-error>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
+                    <label for="short_description_en" class="form-label label">Short Description (EN)<span class="asterisk">*</span></label>
+                    <textarea type="text" class="form-control textarea input-field" id="short_description_en" name="short_description_en" rows="5" placeholder="Short Description (EN)" value="{{ old('short_description_en') }}" required></textarea>
+                </div>
+
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
+                    <label for="short_description_ar" class="form-label label">Short Description (AR)</label>
+                    <textarea type="text" class="form-control textarea input-field" id="short_description_ar" name="short_description_ar" rows="5" placeholder="Short Description (AR)" value="{{ old('short_description_ar') }}"></textarea>
+                </div>
+
+                <div class="col-12 mb-3 mb-md-4">
+                    <label for="description_en" class="form-label label">Description (EN)<span class="asterisk">*</span></label>
+                    <textarea type="text" class="editor" id="description_en" name="description_en" rows="5" placeholder="Description (EN)" value="{{ old('description_en') }}" required></textarea>
+                </div>
+
+                <div class="col-12 mb-3 mb-md-4">
                     <label for="description_ar" class="form-label label">Description (AR)</label>
-                    <textarea type="text" class="form-control textarea input-field" id="description_ar" name="description_ar" rows="5" placeholder="Description (AR)" value="{{ old('description_ar') }}"></textarea>
+                    <textarea type="text" class="editor" id="description_ar" name="description_ar" rows="5" placeholder="Description (AR)" value="{{ old('description_ar') }}"></textarea>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
@@ -370,6 +385,38 @@
     <script src="{{ asset('backend/js/drag-drop-images.js') }}"></script>
     <script src="{{ asset('backend/js/drag-drop-videos.js') }}"></script>
     <script src="{{ asset('backend/js/google-map.js') }}" data-maps-key="{{ config('services.google_maps.key') }}"></script>
+
+    <script>
+        function fetchCities(country) {
+            if(!country) return;
+
+            $.ajax({
+                url: 'https://countriesnow.space/api/v0.1/countries/cities',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(
+                    { country: country }
+                ),
+                success: function (response) {
+                    if(response.error === false) {
+                        const citySelect = $('select[name="city"]');
+                        citySelect.empty();
+                        citySelect.append('<option value="">Select city</option>');
+
+                        $.each(response.data, function (index, city) {
+                            citySelect.append(`<option value="${city}">${city}</option>`);
+                        });
+                    }
+                    else {
+                        console.error("No cities found.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error fetching cities:", error);
+                }
+            });
+        }
+    </script>
 
     <script>
         $('#pallet_dimension').on('change', function() {

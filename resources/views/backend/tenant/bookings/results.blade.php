@@ -27,7 +27,7 @@
                             <div class="details">
                                 <div class="detail">
                                     <i class="bi bi-geo-alt"></i>
-                                    <span>{{ $warehouse->city_en }}</span>
+                                    <span>{{ $warehouse->city }}</span>
                                 </div>
                                 <div class="detail">
                                     <i class="bi bi-box"></i>

@@ -17,7 +17,6 @@ return new class extends Migration
             // English fields
             $table->string('name_en');
             $table->string('address_en');
-            $table->string('city_en');
             $table->text('short_description_en')->nullable();
             $table->text('description_en')->nullable();
             $table->text('features_en')->nullable();
@@ -27,14 +26,15 @@ return new class extends Migration
             // Arabic fields
             $table->string('name_ar')->nullable();
             $table->string('address_ar')->nullable();
-            $table->string('city_ar')->nullable();
             $table->text('short_description_ar')->nullable();
             $table->text('description_ar')->nullable();
             $table->text('features_ar')->nullable();
             $table->text('amenities_ar')->nullable();
             $table->text('details_ar')->nullable();
 
-            $table->string('address_name');
+            $table->string('city');
+            $table->string('country_short');
+            $table->string('country_long');
             $table->string('latitude');
             $table->string('longitude');
             $table->string('total_area');
