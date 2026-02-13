@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Favorite;
+use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -67,5 +68,16 @@ if(!function_exists('process_image')) {
         }
 
         return $filename;
+    }
+}
+
+if(!function_exists('apiResponse')) {
+    function apiResponse($message, $status, $data = []) {
+        return response()->json([
+            'http_status' => $status,
+            'http_status_message' => Response::$statusTexts[$status],
+            'message' => $message,
+            'data' => $data
+        ], $status);
     }
 }

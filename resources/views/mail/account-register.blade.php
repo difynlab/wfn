@@ -33,6 +33,12 @@
                     Thank you for signing up to <strong>{{ config('app.name') }}</strong>, your go-to platform to find and book warehouse spaces.
                 </p>
 
+                @if(isset($mail_data['password']))
+                    <p style="font-size: 16px; color: #555555;">
+                        You can login to your account using this password: <strong>{{ $mail_data['password'] }}</strong>
+                    </p>
+                @endif
+
                 <p style="font-size: 16px; color: #555555;">
                     Your account is currently under review. Once it's approved, you'll be able to:
                     <br>- Browse warehouses using advanced search filters
