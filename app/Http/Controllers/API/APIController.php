@@ -200,6 +200,7 @@ class APIController extends Controller
         $warehouse = Warehouse::find($request->warehouse_id);
         $landlord = User::find($warehouse->user_id);
 
+        unset($validated['conversation_id']);
         $validated['status'] = 2;
         $booking = Booking::create($validated);
 
@@ -247,7 +248,7 @@ class APIController extends Controller
 
         $bookings = $bookings->get();
 
-        foreach($bookings as $key => $booking) {
+        foreach($bookings as $booking) {
             $booking->warehouse = $booking->warehouse;
             $booking->conversation = $booking->conversation;
         }
