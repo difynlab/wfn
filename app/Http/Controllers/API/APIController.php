@@ -229,7 +229,7 @@ class APIController extends Controller
             'email' => ['required', 'email', 'min:3', 'max:255'],
             'phone' => ['required', 'min:3', 'max:255', 'regex:/^\+?[0-9]+$/'],
             'warehouse_id' => ['nullable', 'exists:warehouses,id'],
-            'conversation_id' => ['required', 'exists:conversations,id'],
+            'conversation_id' => ['nullable', 'exists:conversations,id'],
         ]);
 
         $tenant = User::where('email', $request->email)->where('status', 1)->first();
@@ -243,7 +243,7 @@ class APIController extends Controller
         }
 
         if($conversation_id) {
-            $bookings->where('id', $conversation_id);
+            $bookings->where('conversation_id', $conversation_id);
         }
 
         $bookings = $bookings->get();
