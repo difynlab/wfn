@@ -31,14 +31,11 @@ class APIController extends Controller
         return apiResponse('Data found', 200, $storage_types);
     }
 
-    public function search(Request $request)
+    public function auth(Request $request)
     {
         $validated = $request->validate([
             'email' => ['required', 'email', 'min:3', 'max:255'],
-            'phone' => ['required', 'min:3', 'max:255', 'regex:/^\+?[0-9]+$/'],
-            'conversation_id' => ['nullable', 'max:255'],
-            'city' => ['nullable', 'max:255'],
-            'storage_type_id' => ['nullable', 'exists:storage_types,id']
+            'phone' => ['required', 'min:3', 'max:255', 'regex:/^\+?[0-9]+$/']
         ]);
 
         $user = User::where('email', $request->email)->where('status', 1)->first();
@@ -125,6 +122,39 @@ class APIController extends Controller
         }
 
         $conversation = new Conversation();
+        $validated['user_id'] = $user->id;
+        $conversation->fill($validated)->save();
+ 
+        return apiResponse('Data found', 200, [
+            'user' => $user,
+            'conversation' => $conversation
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => ['required', 'email', 'min:3', 'max:255'],
+            'phone' => ['required', 'min:3', 'max:255', 'regex:/^\+?[0-9]+$/'],
+            'conversation_id' => ['required', 'max:255', 'exists:conversations,id'],
+            'ai_conversation_id' => ['nullable', 'max:255'],
+            'city' => ['nullable', 'max:255'],
+            'storage_type_id' => ['nullable', 'exists:storage_types,id'],
+            'tenancy_date' => ['nullable', 'date'],
+            'renewal_date' => ['nullable', 'date']
+        ]);
+
+        $user = User::where('email', $request->email)->where('status', 1)->first();
+        if(!$user) {
+            return apiResponse('User not found', 404);
+        }
+
+        $conversation = Conversation::where('email', $request->email)->where('phone', $request->phone)->find($request->conversation_id);
+        if(!$conversation) {
+            return apiResponse('Conversation not found', 404);
+        }
+
+        unset($validated['conversation_id']);
         $validated['user_id'] = $user->id;
         $conversation->fill($validated)->save();
 

@@ -16,14 +16,14 @@ return new class extends Migration
 
             $table->string('phone');
             $table->string('email');
-            $table->string('conversation_id')->nullable();
+            $table->string('ai_conversation_id')->nullable();
             $table->string('city')->nullable();
             $table->date('tenancy_date')->nullable();
             $table->date('renewal_date')->nullable();
             $table->boolean('status')->default(1);
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('storage_type_id')->constrained()->onDelete('cascade');
+            $table->foreignId('storage_type_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
