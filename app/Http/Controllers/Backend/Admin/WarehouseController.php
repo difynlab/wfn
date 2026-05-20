@@ -107,6 +107,7 @@ class WarehouseController extends Controller
             'new_storage_area_image' => 'max:30720',
             'new_videos.*' => 'max:204800',
             'new_licenses.*' => 'max:30720',
+            'new_board_image' => 'max:30720',
             'status' => 'required|in:0,1,2'
         ], [
             'address_en' => 'Address field is required.',
@@ -115,7 +116,7 @@ class WarehouseController extends Controller
             'latitude' => 'Address field is required.',
             'longitude' => 'Address field is required.',
         ]);
-        
+
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Creation Failed!',
@@ -163,6 +164,13 @@ class WarehouseController extends Controller
         }
         else {
             $storage_area_image = $request->old_storage_area_image;
+        }
+
+        if($request->file('new_board_image')) {
+            $board_image = process_image($request->file('new_board_image'), 'backend/warehouses', $request->old_board_image);
+        }
+        else {
+            $board_image = $request->old_board_image;
         }
 
         $new_videos = [];
@@ -312,6 +320,8 @@ class WarehouseController extends Controller
             'new_handling_equipment_image',
             'old_storage_area_image',
             'new_storage_area_image',
+            'old_board_image',
+            'new_board_image',
             'old_videos',
             'new_videos',
             'old_licenses',
@@ -342,6 +352,7 @@ class WarehouseController extends Controller
         $data['off_loading_image'] = $off_loading_image;
         $data['handling_equipment_image'] = $handling_equipment_image;
         $data['storage_area_image'] = $storage_area_image;
+        $data['board_image'] = $board_image;
         $data['videos'] = $new_videos ? json_encode($new_videos) : null;
         $data['licenses'] = $new_licenses ? json_encode($new_licenses) : null;
         $data['features_en'] = $features_en;
@@ -411,6 +422,7 @@ class WarehouseController extends Controller
             'new_storage_area_image' => 'max:30720',
             'new_videos.*' => 'max:204800',
             'new_licenses.*' => 'max:30720',
+            'new_board_image' => 'max:30720',
             'status' => 'required|in:0,1,2'
         ], [
             'address_en' => 'Address field is required.',
@@ -467,6 +479,13 @@ class WarehouseController extends Controller
         }
         else {
             $storage_area_image = $request->old_storage_area_image;
+        }
+
+        if($request->file('new_board_image')) {
+            $board_image = process_image($request->file('new_board_image'), 'backend/warehouses', $request->old_board_image);
+        }
+        else {
+            $board_image = $request->old_board_image;
         }
 
         // Videos
@@ -637,6 +656,8 @@ class WarehouseController extends Controller
             'new_handling_equipment_image',
             'old_storage_area_image',
             'new_storage_area_image',
+            'old_board_image',
+            'new_board_image',
             'old_videos',
             'new_videos',
             'old_licenses',
@@ -667,6 +688,7 @@ class WarehouseController extends Controller
         $data['off_loading_image'] = $off_loading_image;
         $data['handling_equipment_image'] = $handling_equipment_image;
         $data['storage_area_image'] = $storage_area_image;
+        $data['board_image'] = $board_image;
         $data['videos'] = $videos;
         $data['licenses'] = $licenses;
         $data['features_en'] = $features_en;

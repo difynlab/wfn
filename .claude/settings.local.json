@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path . -Recurse -Name)",
+      "Bash(xargs grep -l -i \"warehouse\")"
+    ]
+  }
+}

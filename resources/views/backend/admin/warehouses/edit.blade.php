@@ -592,6 +592,18 @@
                     @endif
                 </div>
 
+                {{-- Admin-only board fields --}}
+                <div class="col-12 col-md-6 mb-3 mb-md-4">
+                    <label for="board_name" class="form-label label">Board Name</label>
+                    <input type="text" class="form-control input-field" id="board_name" name="board_name" placeholder="Board Name" value="{{ old('board_name', $warehouse->board_name) }}">
+                    <x-backend.input-error field="board_name"></x-backend.input-error>
+                </div>
+
+                <div class="col-12 mb-3 mb-md-4">
+                    <x-backend.upload-image old_name="old_board_image" old_value="{{ $warehouse->board_image ?? old('board_image') }}" new_name="new_board_image" path="warehouses" label="Board Image"></x-backend.upload-image>
+                    <x-backend.input-error field="new_board_image"></x-backend.input-error>
+                </div>
+
                 <x-backend.edit :data="$warehouse"></x-backend.edit>
                 <x-backend.notification></x-backend.notification>
             </div>
