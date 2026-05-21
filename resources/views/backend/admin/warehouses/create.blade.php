@@ -437,7 +437,7 @@
                 </div>
 
                 <div class="col-12 mb-3 mb-md-4">
-                    <x-backend.upload-image old_name="old_board_image" old_value="{{ old('board_image') }}" new_name="new_board_image" path="warehouses" label="Board Image"></x-backend.upload-image>
+                    <x-backend.upload-image old_name="old_board_image" old_value="{{ old('board_image') }}" new_name="new_board_image" path="warehouses" label="Board"></x-backend.upload-image>
                     <x-backend.input-error field="new_board_image"></x-backend.input-error>
                 </div>
 
