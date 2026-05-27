@@ -48,7 +48,7 @@ class ReportController extends Controller
 
         Report::where('is_new', 1)->update(['is_new' => 0]);
         
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = Report::orderBy('id', 'desc')->paginate($pagination);
 
         $items = $this->processData($items);
@@ -138,7 +138,7 @@ class ReportController extends Controller
             $items->where('status', $status);
         }
 
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 

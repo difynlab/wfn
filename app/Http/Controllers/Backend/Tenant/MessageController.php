@@ -15,11 +15,19 @@ class MessageController extends Controller
 {
     private function processData($items)
     {
-        foreach($items as $item) {
-            $creator = User::where('status', 1)->find($item->creator);
+        $creatorIds = $items->pluck('creator')
+            ->filter(fn ($id) => (string) $id !== (string) auth()->id())
+            ->unique()
+            ->values();
 
-            if($item->creator != auth()->user()->id) {
-                $item->name = $creator->first_name . ' ' . $creator->last_name;
+        $creators = User::where('status', 1)->whereIn('id', $creatorIds)->get()->keyBy('id');
+
+        foreach($items as $item) {
+            if((string) $item->creator !== (string) auth()->id()) {
+                $creator = $creators->get($item->creator);
+                $item->name = $creator
+                    ? e($creator->first_name . ' ' . $creator->last_name)
+                    : 'Unknown';
             }
             else {
                 $item->name = 'Me';
@@ -35,7 +43,7 @@ class MessageController extends Controller
     public function index(Request $request, $category)
     {
         $user = Auth::user();
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
 
         $all_count = $user->messages()->where('user_status', 1)->get()->count();
         $starred_count = $user->messages()->where('user_status', 1)->where('user_favorite', 1)->get()->count();
@@ -112,6 +120,10 @@ class MessageController extends Controller
 
     public function edit(Message $message)
     {
+        if ($message->user_id !== Auth::id()) {
+            abort(403);
+        }
+
         $user = Auth::user();
         $all_count = $user->messages()->where('user_status', 1)->get()->count();
         $starred_count = $user->messages()->where('user_status', 1)->where('user_favorite', 1)->get()->count();
@@ -146,6 +158,10 @@ class MessageController extends Controller
 
     public function update(Request $request, Message $message)
     {
+        if ($message->user_id !== Auth::id()) {
+            abort(403);
+        }
+
         $validator = Validator::make($request->all(), [
             'message' => 'required'
         ]);
@@ -192,7 +208,7 @@ class MessageController extends Controller
             $items->where('subject', 'like', '%' . $text . '%');
         }
 
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 
@@ -209,6 +225,10 @@ class MessageController extends Controller
 
     public function favorite(Message $message)
     {
+        if ($message->user_id !== Auth::id()) {
+            abort(403);
+        }
+
         $message->user_favorite = !$message->user_favorite;
         $message->save();
 
@@ -218,7 +238,10 @@ class MessageController extends Controller
     public function bulkFavorite(Request $request)
     {
         foreach($request->selected_ids as $id) {
-            $message = Message::find($id);
+            $message = Message::where('user_id', Auth::id())->find($id);
+            if (!$message) {
+                continue;
+            }
             $message->user_favorite = !$message->user_favorite;
             $message->save();
         }
@@ -229,9 +252,10 @@ class MessageController extends Controller
     public function bulkDestroy(Request $request)
     {
         foreach($request->selected_ids as $id) {
-            $message = Message::find($id);
-            // $message->user_status = 0;
-            // $message->save();
+            $message = Message::where('user_id', Auth::id())->find($id);
+            if (!$message) {
+                continue;
+            }
 
             if($message->user_status == 0) {
                 $message->user_status = 2;
@@ -249,7 +273,10 @@ class MessageController extends Controller
     public function bulkRecover(Request $request)
     {
         foreach($request->selected_ids as $id) {
-            $message = Message::find($id);
+            $message = Message::where('user_id', Auth::id())->find($id);
+            if (!$message) {
+                continue;
+            }
             $message->user_status = 1;
             $message->save();
         }

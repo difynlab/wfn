@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PasswordResetToken extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'email',
+        'token',
+    ];
 }

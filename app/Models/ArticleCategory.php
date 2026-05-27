@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class ArticleCategory extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'language',
+        'status',
+    ];
 
     public function articles()
     {

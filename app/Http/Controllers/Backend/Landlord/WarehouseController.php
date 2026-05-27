@@ -42,7 +42,7 @@ class WarehouseController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = $user->warehouses()->orderBy('id', 'desc')->paginate($pagination);
         $items = $this->processData($items);
 
@@ -278,7 +278,6 @@ class WarehouseController extends Controller
         );
 
         $user = Auth::user();
-        $data['user_id'] = $user->id;
         $data['thumbnail'] = $thumbnail;
         $data['outside_image'] = $outside_image;
         $data['loading_image'] = $loading_image;
@@ -293,8 +292,11 @@ class WarehouseController extends Controller
         $data['amenities_ar'] = $amenities_ar;
         $data['details_en'] = $details_en;
         $data['details_ar'] = $details_ar;
-        $data['status'] = 2;
-        $warehouse = Warehouse::create($data);  
+        $warehouse = Warehouse::create($data);
+        $warehouse->forceFill([
+            'user_id' => $user->id,
+            'status' => 2,
+        ])->save();  
 
         return redirect()->route('landlord.warehouses.edit', $warehouse)->with([
             'success' => "Update Successful!",
@@ -304,6 +306,10 @@ class WarehouseController extends Controller
 
     public function edit(Warehouse $warehouse)
     {
+        if ($warehouse->user_id !== Auth::id()) {
+            abort(403);
+        }
+
         $storage_types = StorageType::where('status', 1)->get();
         $licenses = License::where('status', 1)->get();
 
@@ -316,6 +322,10 @@ class WarehouseController extends Controller
 
     public function update(Request $request, Warehouse $warehouse)
     {
+        if ($warehouse->user_id !== Auth::id()) {
+            abort(403);
+        }
+
         $validator = Validator::make($request->all(), [
             'name_en' => 'required|min:3|max:255',
             'short_description_en' => 'required',
@@ -573,6 +583,10 @@ class WarehouseController extends Controller
 
     public function destroy(Warehouse $warehouse)
     {
+        if ($warehouse->user_id !== Auth::id()) {
+            abort(403);
+        }
+
         $warehouse->delete();
 
         return redirect()->back()->with('delete', 'Successfully Deleted!');
@@ -618,7 +632,7 @@ class WarehouseController extends Controller
             $items->where('status', $status);
         }
 
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 

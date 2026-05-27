@@ -48,16 +48,17 @@ class APIController extends Controller
 
             $password = Str::random(12);
 
-            $data = [
+            $user = User::create([
                 'first_name' => 'New',
                 'last_name' => 'Tenant',
                 'phone' => $request->phone,
                 'email' => $request->email,
+                'password' => bcrypt($password),
+            ]);
+            $user->forceFill([
                 'role' => 'tenant',
-                'password' => bcrypt($password)
-            ];
-
-            $user = User::create($data);
+                'status' => 1,
+            ])->save();
 
             // ODOO INTEGRATION
                 try {

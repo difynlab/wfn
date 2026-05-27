@@ -23,7 +23,20 @@ class User extends Authenticatable
     //     'password',
     // ];
 
-    protected $guarded = [];
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'email_verified_at',
+        'phone_code',
+        'phone',
+        'address',
+        'city',
+        'country',
+        'landlord_experience',
+        'password',
+        'image',
+    ];
 
     public function warehouses()
     {

@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Todo extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'title',
+        'description',
+        'favorite',
+        'complete',
+        'status',
+    ];
 
     public function user()
     {

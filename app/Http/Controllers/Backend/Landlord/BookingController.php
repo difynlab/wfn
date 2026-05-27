@@ -22,9 +22,9 @@ class BookingController extends Controller
             <a href="'. route('landlord.bookings.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
-            $item->tenant = $item->user->first_name . ' ' . $item->user->last_name;
+            $item->tenant = e($item->user->first_name . ' ' . $item->user->last_name);
 
-            $item->warehouse = '<a href="'. route('landlord.warehouses.edit', $item->warehouse_id) .'" class="table-link">' . $item->warehouse->name_en . '</a>';
+            $item->warehouse = '<a href="'. route('landlord.warehouses.edit', $item->warehouse_id) .'" class="table-link">' . e($item->warehouse->name_en) . '</a>';
 
             switch ($item->status) {
                 case 1:
@@ -52,8 +52,8 @@ class BookingController extends Controller
 
         Booking::where('is_landlord_new', 1)->update(['is_landlord_new' => 0]);
         
-        $pagination = $request->pagination ?? 10;
-        $items = Booking::whereHas('warehouse', function ($query) use ($auth) {
+        $pagination = clamp_pagination($request->pagination);
+        $items = Booking::with(['user', 'warehouse'])->whereHas('warehouse', function ($query) use ($auth) {
             $query->where('user_id', $auth->id)
                 ->where('status', 1);
         })->orderBy('id', 'desc')->paginate($pagination);
@@ -69,6 +69,10 @@ class BookingController extends Controller
 
     public function edit(Booking $booking)
     {
+        if (!$booking->warehouse || $booking->warehouse->user_id !== Auth::id()) {
+            abort(403);
+        }
+
         $auth = Auth::user();
         $users = User::where('status', 1)->where('role', 'tenant')->get();
         $warehouses = $auth->warehouses()->where('status', 1)->get();
@@ -82,6 +86,10 @@ class BookingController extends Controller
 
     public function update(Request $request, Booking $booking)
     {
+        if (!$booking->warehouse || $booking->warehouse->user_id !== Auth::id()) {
+            abort(403);
+        }
+
         $validator = Validator::make($request->all(), [
             'warehouse_id' => 'required|integer',
             'no_of_pallets' => [
@@ -186,6 +194,12 @@ class BookingController extends Controller
 
     public function destroy(Booking $booking)
     {
+        $booking->loadMissing('warehouse');
+
+        if (!$booking->warehouse || $booking->warehouse->user_id !== Auth::id()) {
+            abort(403);
+        }
+
         $booking->delete();
 
         return redirect()->back()->with('delete', 'Successfully Deleted!');
@@ -228,7 +242,7 @@ class BookingController extends Controller
             $items->where('status', $status);
         }
 
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 

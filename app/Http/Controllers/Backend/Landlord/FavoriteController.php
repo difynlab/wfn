@@ -16,7 +16,7 @@ class FavoriteController extends Controller
             $item->action = '
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
-            $item->warehouse = '<a href="'. route('warehouses.show', $item->warehouse_id) .'" class="table-link">' . $item->warehouse->name_en . '</a>';
+            $item->warehouse = '<a href="'. route('warehouses.show', $item->warehouse_id) .'" class="table-link">' . e($item->warehouse->name_en) . '</a>';
         }
 
         return $items;
@@ -27,8 +27,8 @@ class FavoriteController extends Controller
         $auth = Auth::user();
         $warehouses = Warehouse::where('status', 1)->get();
         
-        $pagination = $request->pagination ?? 10;
-        $items = $auth->favorites()->paginate($pagination);
+        $pagination = clamp_pagination($request->pagination);
+        $items = $auth->favorites()->with('warehouse')->paginate($pagination);
         $items = $this->processData($items);
 
         return view('backend.landlord.favorites.index', [
@@ -40,6 +40,10 @@ class FavoriteController extends Controller
 
     public function destroy(Favorite $favorite)
     {
+        if ($favorite->user_id !== Auth::id()) {
+            abort(403);
+        }
+
         $favorite->delete();
 
         return redirect()->back()->with('delete', 'Successfully Deleted!');
@@ -70,7 +74,7 @@ class FavoriteController extends Controller
             $items->where('warehouse_id', $selected_warehouse);
         }
 
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 

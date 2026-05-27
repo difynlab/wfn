@@ -52,7 +52,7 @@ class BookingController extends Controller
 
         Booking::where('is_admin_new', 1)->update(['is_admin_new' => 0]);
         
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = Booking::orderBy('id', 'desc')->paginate($pagination);
         $items = $this->processData($items);
 
@@ -290,7 +290,7 @@ class BookingController extends Controller
             $items->where('status', $status);
         }
 
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 

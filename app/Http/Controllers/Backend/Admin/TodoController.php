@@ -14,7 +14,7 @@ class TodoController extends Controller
     {
         $user = Auth::user();
         
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = $user->todos()->orderBy('id', 'desc')->paginate($pagination);
 
         return view('backend.admin.todos.index', [
@@ -41,9 +41,11 @@ class TodoController extends Controller
             ]);
         }
 
-        $data = $request->all();
-        $data['user_id'] = auth()->user()->id;
-        $todo = Todo::create($data);  
+        $todo = Todo::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'user_id' => auth()->id(),
+        ]);  
 
         return redirect()->route('admin.todos.index');
     }

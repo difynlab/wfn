@@ -10,12 +10,17 @@ class LanguageMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        $language = session('language', 'en');
         $languages = [
             'en' => 'english',
             'ar' => 'arabic',
         ];
-        $language_name = $languages[$language] ?? 'english';
+
+        $language = session('language');
+
+        if (!is_string($language) || !array_key_exists($language, $languages)) {
+            $language = 'en';
+        }
+        $language_name = $languages[$language];
 
         View::share([
             'middleware_language' => $language,

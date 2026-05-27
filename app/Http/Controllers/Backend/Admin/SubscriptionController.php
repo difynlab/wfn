@@ -20,7 +20,7 @@ class SubscriptionController extends Controller
 
     public function index(Request $request)
     {
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = Subscription::orderBy('id', 'desc')->paginate($pagination);
         $items = $this->processData($items);
 
@@ -62,7 +62,7 @@ class SubscriptionController extends Controller
             $items->where('email', 'like', '%' . $email . '%');
         }
 
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 

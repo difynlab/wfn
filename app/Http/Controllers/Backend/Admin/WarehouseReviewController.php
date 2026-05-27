@@ -44,7 +44,7 @@ class WarehouseReviewController extends Controller
         $users = User::where('status', 1)->whereNot('role', 'admin')->get();
         $warehouses = Warehouse::where('status', 1)->get();
 
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = WarehouseReview::where('warehouse_id', $warehouse->id)->orderBy('id', 'desc')->paginate($pagination);
         $items = $this->processData($items);
 
@@ -171,7 +171,7 @@ class WarehouseReviewController extends Controller
     //         $items->where('status', $status);
     //     }
 
-    //     $pagination = $request->pagination ?? 10;
+    //     $pagination = clamp_pagination($request->pagination);
     //     $items = $items->paginate($pagination);
     //     $items = $this->processData($items);
 

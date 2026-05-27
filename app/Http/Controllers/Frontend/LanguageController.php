@@ -9,12 +9,14 @@ class LanguageController extends Controller
 {
     public function language(Request $request)
     {
-        $language = $request->language;
-        session(
-            [
-                'language' => $language
-            ]
-        );
+        $allowed = ['en', 'ar'];
+        $language = $request->input('language');
+
+        if (!in_array($language, $allowed, true)) {
+            return response()->json(['success' => false, 'error' => 'Invalid language'], 422);
+        }
+
+        session(['language' => $language]);
 
         return response()->json([
             'success' => true,

@@ -36,7 +36,7 @@ class LicenseController extends Controller
 
     public function index(Request $request)
     {
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = License::orderBy('id', 'desc')->paginate($pagination);
         $items = $this->processData($items);
 
@@ -144,7 +144,7 @@ class LicenseController extends Controller
             $items->where('status', $status);
         }
 
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 

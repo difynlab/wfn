@@ -14,7 +14,7 @@ class TodoController extends Controller
     {
         $user = Auth::user();
         
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = $user->todos()->orderBy('id', 'desc')->paginate($pagination);
 
         return view('backend.tenant.todos.index', [
@@ -41,15 +41,21 @@ class TodoController extends Controller
             ]);
         }
 
-        $data = $request->all();
-        $data['user_id'] = auth()->user()->id;
-        $todo = Todo::create($data);  
+        $todo = Todo::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'user_id' => auth()->id(),
+        ]);  
 
         return redirect()->route('tenant.todos.index');
     }
 
     public function complete(Request $request, Todo $todo)
     {
+        if ($todo->user_id !== auth()->id()) {
+            abort(403);
+        }
+
         $todo->complete = $request->complete;
         $todo->save();
 
@@ -58,6 +64,10 @@ class TodoController extends Controller
 
     public function favorite(Todo $todo)
     {
+        if ($todo->user_id !== auth()->id()) {
+            abort(403);
+        }
+
         $todo->favorite = !$todo->favorite;
         $todo->save();
 
@@ -66,6 +76,10 @@ class TodoController extends Controller
 
     public function destroy(Todo $todo)
     {
+        if ($todo->user_id !== auth()->id()) {
+            abort(403);
+        }
+
         $todo->delete();
 
         return response()->json(['success' => true]);

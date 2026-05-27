@@ -16,12 +16,22 @@ class CompanyStatusMiddleware
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user();
-        $company = $user->company;
-        $role = $user->role;
 
-        if($role == 'admin') {
+        if (!$user) {
+            return redirect()->route('authentication.login');
+        }
+
+        if ($user->role === 'admin') {
             return $next($request);
         }
+
+        $company = $user->company;
+
+        if (!$company) {
+            return $next($request);
+        }
+
+        $role = $user->role;
 
         if($company->status != 1) {
             if($role == 'landlord') {

@@ -42,7 +42,7 @@ class ArticleController extends Controller
     {
         $article_categories = ArticleCategory::where('status', '1')->get();
 
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = Article::orderBy('id', 'desc')->paginate($pagination);
         $items = $this->processData($items);
 
@@ -188,7 +188,7 @@ class ArticleController extends Controller
             $items->where('status', $status);
         }
 
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 

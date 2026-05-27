@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class StorageType extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'name_en',
+        'name_ar',
+        'status',
+    ];
 
     public function warehouses()
     {

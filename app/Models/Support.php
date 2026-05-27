@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Support extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'phone',
+        'email',
+        'category',
+        'subject',
+        'message',
+        'status',
+    ];
 }

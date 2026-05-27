@@ -53,7 +53,7 @@ class BookingController extends Controller
         $auth = Auth::user();
         $warehouses = Warehouse::where('status', 1)->get();
         
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = $auth->bookings()->orderBy('id', 'desc')->paginate($pagination);
         $items = $this->processData($items);
 
@@ -223,7 +223,7 @@ class BookingController extends Controller
             $items->where('status', $status);
         }
 
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 

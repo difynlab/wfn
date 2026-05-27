@@ -6,7 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Conversation extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'phone',
+        'email',
+        'ai_conversation_id',
+        'city',
+        'tenancy_date',
+        'renewal_date',
+        'status',
+        'user_id',
+        'storage_type_id',
+    ];
 
     public function user()
     {

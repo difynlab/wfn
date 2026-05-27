@@ -6,7 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class WarehouseReview extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'content',
+        'star',
+        'language',
+        'status',
+        'user_id',
+        'warehouse_id',
+    ];
 
     public function warehouse()
     {

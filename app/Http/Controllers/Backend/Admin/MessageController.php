@@ -26,7 +26,7 @@ class MessageController extends Controller
 
     public function index(Request $request, $category)
     {
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
 
         $all_count = Message::where('admin_status', 1)->get()->count();
         $general_count = Message::where('admin_status', 1)->where('category', 'general')->get()->count();
@@ -228,7 +228,7 @@ class MessageController extends Controller
             $items->where('subject', 'like', '%' . $text . '%');
         }
 
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 

@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class PalletService extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'name_en',
+        'name_ar',
+        'status',
+    ];
 }

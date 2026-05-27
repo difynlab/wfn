@@ -6,7 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'creator',
+        'subject',
+        'initial_message',
+        'date',
+        'time',
+        'category',
+        'warehouse',
+        'admin_favorite',
+        'user_favorite',
+        'admin_view',
+        'user_view',
+        'user_status',
+        'status',
+    ];
 
     public function user()
     {

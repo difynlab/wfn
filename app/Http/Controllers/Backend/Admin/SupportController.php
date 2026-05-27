@@ -20,7 +20,7 @@ class SupportController extends Controller
 
     public function index(Request $request)
     {
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = Support::orderBy('id', 'desc')->paginate($pagination);
         $items = $this->processData($items);
 
@@ -62,7 +62,7 @@ class SupportController extends Controller
             $items->where('name', 'like', '%' . $name . '%');
         }
 
-        $pagination = $request->pagination ?? 10;
+        $pagination = clamp_pagination($request->pagination);
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 

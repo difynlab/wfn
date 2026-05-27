@@ -369,7 +369,7 @@ class DashboardController extends Controller
             }
         // Pallet distribution chart
         
-        $items = Booking::orderBy('id', 'desc')->take(5)->get();
+        $items = Booking::with(['user', 'warehouse'])->orderBy('id', 'desc')->take(5)->get();
         foreach($items as $item) {
             $item->action = '
             <a href="'. route('admin.bookings.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
@@ -377,9 +377,9 @@ class DashboardController extends Controller
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             $tenant_name = $item->user->first_name . ' ' . $item->user->last_name;
-            $item->tenant = '<a href="'. route('admin.users.edit', $item->user_id) .'" class="table-link">' . $tenant_name . '</a>';
+            $item->tenant = '<a href="'. route('admin.users.edit', $item->user_id) .'" class="table-link">' . e($tenant_name) . '</a>';
 
-            $item->warehouse = '<a href="'. route('admin.warehouses.edit', $item->warehouse_id) .'" class="table-link">' . $item->warehouse->name_en . '</a>';
+            $item->warehouse = '<a href="'. route('admin.warehouses.edit', $item->warehouse_id) .'" class="table-link">' . e($item->warehouse->name_en) . '</a>';
 
             switch ($item->status) {
                 case 1:

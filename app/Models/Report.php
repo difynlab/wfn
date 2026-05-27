@@ -6,7 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Report extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'reason',
+        'status',
+        'user_id',
+        'warehouse_id',
+    ];
 
     public function user()
     {
